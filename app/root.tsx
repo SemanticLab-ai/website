@@ -5,10 +5,13 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { Navigation } from "~/components/Navigation";
+import { Footer } from "~/components/Footer";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -19,11 +22,20 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap",
   },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  let isAppRoute = false;
+  try {
+    // useLocation may throw during SSR error boundaries when no router context exists
+    const location = useLocation();
+    isAppRoute = location.pathname.startsWith("/app");
+  } catch {
+    // Fallback: show marketing chrome (nav/footer) if location is unavailable
+  }
+
   return (
     <html lang="en">
       <head>
@@ -33,7 +45,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        {!isAppRoute && <Navigation />}
+        <main>{children}</main>
+        {!isAppRoute && <Footer />}
         <ScrollRestoration />
         <Scripts />
       </body>
