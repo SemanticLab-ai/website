@@ -32,14 +32,14 @@ export function IEIntegrations() {
   ];
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-b from-white to-pearl">
+    <section className="relative py-24 md:py-32 overflow-hidden bg-dark-surface">
       <div className="container mx-auto px-6 lg:px-8 relative">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-4xl md:text-5xl lg:text-h1 font-bold text-charcoal leading-tight mb-6">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-h1 font-bold text-white leading-tight mb-6">
             Two Ways to{" "}
-            <span className="gradient-text italic">Enhance</span>
+            <span className="gradient-text-lime italic">Enhance</span>
           </h2>
-          <p className="text-lg text-slate">
+          <p className="text-lg text-white/50">
             Choose the workflow that fits your needs. Start self-serve, upgrade to Pinnacle when you're ready.
           </p>
         </div>
@@ -48,21 +48,21 @@ export function IEIntegrations() {
           {modes.map((mode) => {
             const colors = colorMap[mode.color];
             return (
-              <div key={mode.title} className={`bg-white rounded-3xl p-8 md:p-10 border-2 ${colors.border20} shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2`}>
-                <div className={`w-14 h-14 rounded-2xl ${colors.bg10} flex items-center justify-center mb-6`}>
-                  <mode.icon className={`w-7 h-7 ${colors.text}`} />
+              <div key={mode.title} className={`glass-card rounded-2xl p-8 md:p-10 border-2 ${colors.border20} hover-lift`}>
+                <div className={`w-14 h-14 rounded-2xl bg-lime/10 flex items-center justify-center mb-6`}>
+                  <mode.icon className={`w-7 h-7 text-lime`} />
                 </div>
 
-                <h3 className="text-2xl font-display font-bold text-charcoal mb-3">{mode.title}</h3>
-                <p className="text-slate mb-6">{mode.description}</p>
+                <h3 className="text-2xl font-display font-bold text-white mb-3">{mode.title}</h3>
+                <p className="text-white/50 mb-6">{mode.description}</p>
 
                 <ul className="space-y-3">
                   {mode.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-3">
-                      <div className={`w-5 h-5 rounded-full ${colors.bg10} flex items-center justify-center`}>
-                        <Check className={`w-3 h-3 ${colors.text}`} />
+                      <div className={`w-5 h-5 rounded-full bg-lime/10 flex items-center justify-center`}>
+                        <Check className={`w-3 h-3 text-lime`} />
                       </div>
-                      <span className="text-slate">{feature}</span>
+                      <span className="text-white/50">{feature}</span>
                     </li>
                   ))}
                 </ul>

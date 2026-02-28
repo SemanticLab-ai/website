@@ -27,42 +27,42 @@ export function IEPipeline() {
 
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-pearl via-white to-pearl" />
-      <div className="absolute inset-0 grid-pattern opacity-30" />
+      <div className="absolute inset-0 bg-dark-surface" />
+      <div className="absolute inset-0 dot-pattern opacity-30" />
 
       <div className="container mx-auto px-6 lg:px-8 relative">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur rounded-full border border-slate/10 shadow-lg mb-6">
-            <Sparkles className="w-4 h-4 text-neural-teal" />
-            <span className="text-sm font-semibold text-charcoal uppercase tracking-wider">How It Works</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-lime/10 backdrop-blur rounded-full border border-lime/20 mb-6">
+            <Sparkles className="w-4 h-4 text-lime" />
+            <span className="text-sm font-semibold text-lime uppercase tracking-wider">How It Works</span>
           </div>
 
-          <h2 className="font-display text-4xl md:text-5xl lg:text-h1 font-bold text-charcoal leading-tight mb-6">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-h1 font-bold text-white leading-tight mb-6">
             Three Steps to{" "}
-            <span className="gradient-text-teal italic">Perfect Photos</span>
+            <span className="gradient-text-lime italic">Perfect Photos</span>
           </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {steps.map((step, i) => (
             <div key={step.title} className="relative">
-              <div className="group bg-white rounded-3xl p-8 border border-slate/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 text-center overflow-hidden">
+              <div className="group glass-card rounded-2xl p-8 hover-lift text-center overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-br ${step.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
 
                 <div className={`relative mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center mb-6 shadow-xl group-hover:scale-110 transition-transform duration-300`}>
                   <step.icon className="w-8 h-8 text-white" />
                 </div>
 
-                <div className="text-sm font-bold text-slate uppercase tracking-wider mb-2">
+                <div className="text-sm font-bold text-white/50 uppercase tracking-wider mb-2">
                   Step {i + 1}
                 </div>
-                <h3 className="text-xl font-bold text-charcoal mb-3">{step.title}</h3>
-                <p className="text-slate leading-relaxed">{step.description}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                <p className="text-white/50 leading-relaxed">{step.description}</p>
               </div>
 
               {i < steps.length - 1 && (
                 <div className="hidden md:flex absolute top-1/2 -right-4 -translate-y-1/2 z-10">
-                  <ArrowRight className="w-6 h-6 text-slate/30" />
+                  <ArrowRight className="w-6 h-6 text-white/20" />
                 </div>
               )}
             </div>
