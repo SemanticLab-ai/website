@@ -21,7 +21,7 @@ export function VSPricingTeaser() {
         title={
           <>
             Pricing That{" "}
-            <span className="gradient-text-lime italic">Scales With You</span>
+            <span className="gradient-text-lime">Scales With You</span>
           </>
         }
         subtitle={

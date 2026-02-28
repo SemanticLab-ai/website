@@ -38,7 +38,7 @@ export function IEIntegrations() {
       <div className="text-center max-w-3xl mx-auto mb-16">
         <h2 className="font-display text-4xl md:text-5xl lg:text-h1 font-bold text-white leading-tight mb-6">
           Two Ways to{" "}
-          <span className="gradient-text-lime italic">Enhance</span>
+          <span className="gradient-text-lime">Enhance</span>
         </h2>
         <p className="text-lg text-white/50">
           Choose the workflow that fits your needs. Start self-serve, upgrade to Pinnacle when you're ready.

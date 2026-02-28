@@ -34,7 +34,7 @@ export function IEBeforeAfter() {
         title={
           <>
             Before &{" "}
-            <span className="gradient-text-lime italic">After</span>
+            <span className="gradient-text-lime">After</span>
           </>
         }
         subtitle="Drag the slider to see the transformation. These are real product photos processed by our AI."

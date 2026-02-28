@@ -33,7 +33,7 @@ export function IEPipeline() {
         title={
           <>
             Three Steps to{" "}
-            <span className="gradient-text-lime italic">Perfect Photos</span>
+            <span className="gradient-text-lime">Perfect Photos</span>
           </>
         }
       />

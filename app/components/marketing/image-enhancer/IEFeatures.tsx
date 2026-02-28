@@ -54,7 +54,7 @@ export function IEFeatures() {
         title={
           <>
             Everything You Need for{" "}
-            <span className="gradient-text-lime italic">Perfect Photos</span>
+            <span className="gradient-text-lime">Perfect Photos</span>
           </>
         }
       />

@@ -21,7 +21,7 @@ export function IEPricingTeaser() {
         title={
           <>
             Simple,{" "}
-            <span className="gradient-text-lime italic">Transparent Pricing</span>
+            <span className="gradient-text-lime">Transparent Pricing</span>
           </>
         }
       />

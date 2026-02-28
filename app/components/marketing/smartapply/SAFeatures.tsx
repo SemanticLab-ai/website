@@ -36,7 +36,7 @@ export function SAFeatures() {
           title={
             <>
               Built for{" "}
-              <span className="gradient-text-lime italic">Real Job Seekers</span>
+              <span className="gradient-text-lime">Real Job Seekers</span>
             </>
           }
           subtitle="Not another AI gimmick. SmartApply is built to help you land interviews faster."

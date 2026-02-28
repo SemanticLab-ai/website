@@ -17,7 +17,7 @@ export function SAHero() {
       title={
         <>
           Tailored Resumes.{" "}
-          <span className="gradient-text-lime italic">In Minutes, Not Hours.</span>
+          <span className="gradient-text-lime">In Minutes, Not Hours.</span>
         </>
       }
       subtitle={

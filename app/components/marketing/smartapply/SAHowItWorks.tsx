@@ -38,7 +38,7 @@ export function SAHowItWorks() {
           title={
             <>
               Three Steps to a{" "}
-              <span className="gradient-text-lime italic">Perfect Resume</span>
+              <span className="gradient-text-lime">Perfect Resume</span>
             </>
           }
           subtitle="No more copy-pasting between documents. No more guessing what recruiters want. Just results."

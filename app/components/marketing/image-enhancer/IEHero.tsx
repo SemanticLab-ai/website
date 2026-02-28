@@ -9,7 +9,7 @@ export function IEHero() {
       title={
         <>
           Turn Ugly Product Photos Into{" "}
-          <span className="gradient-text-lime italic">Professional Images</span>{" "}
+          <span className="gradient-text-lime">Professional Images</span>{" "}
           in Seconds
         </>
       }

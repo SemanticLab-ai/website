@@ -34,7 +34,7 @@ export function IETargetAudience() {
         title={
           <>
             Who Is This{" "}
-            <span className="gradient-text-lime italic">For?</span>
+            <span className="gradient-text-lime">For?</span>
           </>
         }
       />

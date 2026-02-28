@@ -11,7 +11,7 @@ export function VSHero() {
           <span className="block">The Visual Search</span>
           <span className="block mt-2">
             Your Shoppers{" "}
-            <span className="gradient-text-lime italic">Deserve</span>
+            <span className="gradient-text-lime">Deserve</span>
           </span>
         </>
       }
