@@ -29,7 +29,7 @@ export function StudioHero() {
             {/* Main Headline */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
               Turn Your Idea Into a{" "}
-              <span className="gradient-text-lime">Shipped, AI-Ready</span>{" "}
+              <span className="gradient-text-lime">Shipped, AI-Native</span>{" "}
               Product.
             </h1>
 
