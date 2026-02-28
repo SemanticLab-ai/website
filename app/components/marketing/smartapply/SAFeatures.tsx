@@ -1,4 +1,7 @@
 import { Shield, Target, FileText, Mail, Sparkles } from "lucide-react";
+import { SectionWrapper } from "~/components/shared/SectionWrapper";
+import { SectionHeader } from "~/components/shared/SectionHeader";
+import { FeatureCard } from "~/components/shared/FeatureCard";
 
 export function SAFeatures() {
   const features = [
@@ -25,45 +28,32 @@ export function SAFeatures() {
   ];
 
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden bg-dark-bg">
-      <div className="absolute inset-0 dot-pattern opacity-30" />
-
-      <div className="container mx-auto px-6 lg:px-8 relative">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-lime/10 backdrop-blur rounded-full border border-lime/20 mb-6">
-              <Sparkles className="w-4 h-4 text-lime" />
-              <span className="text-sm font-semibold text-lime uppercase tracking-wider">Features</span>
-            </div>
-
-            <h2 className="font-display text-4xl md:text-5xl lg:text-h1 font-bold text-white leading-tight mb-6">
+    <SectionWrapper bg="dark-bg">
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader
+          badge="Features"
+          badgeIcon={Sparkles}
+          title={
+            <>
               Built for{" "}
               <span className="gradient-text-lime italic">Real Job Seekers</span>
-            </h2>
+            </>
+          }
+          subtitle="Not another AI gimmick. SmartApply is built to help you land interviews faster."
+        />
 
-            <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto">
-              Not another AI gimmick. SmartApply is built to help you land interviews faster.
-            </p>
-          </div>
-
-          {/* Feature Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="group glass-card rounded-2xl p-8 hover-lift"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-lime/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-7 h-7 text-lime" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                <p className="text-white/50 leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
-          </div>
+        {/* Feature Grid */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {features.map((feature) => (
+            <FeatureCard
+              key={feature.title}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 }

@@ -1,5 +1,5 @@
-import { Button } from "~/components/ui/button";
-import { ArrowDown, ArrowUpRight, Sparkles, Check, Wand2 } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
+import { CTAButton } from "~/components/shared/CTAButton";
 
 export function StudioHero() {
   return (
@@ -21,7 +21,6 @@ export function StudioHero() {
           {/* Left: Content */}
           <div className="max-w-2xl">
 
-
             {/* Main Headline */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
               Turn Your Idea Into a{" "}
@@ -38,28 +37,18 @@ export function StudioHero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <Button
-                size="lg"
-                className="h-14 px-8 text-lg rounded-full bg-lime hover:bg-lime-dark text-dark-bg font-semibold shadow-xl shadow-lime/20 transition-all duration-300 hover:scale-105 hover:shadow-lime/40 group"
-                asChild
-              >
-                <a href="mailto:hello@semanticlab.ai?subject=I%20have%20an%20idea" className="flex items-center gap-3">
-                  Start Your Idea
-                  <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
-              </Button>
+              <CTAButton href="mailto:hello@semanticlab.ai?subject=I%20have%20an%20idea">
+                Start Your Idea
+                <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </CTAButton>
 
-              <Button
-                size="lg"
-                variant="outline"
-                className="h-14 px-8 text-lg rounded-full border-2 border-white/20 text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300 group"
-                asChild
+              <a
+                href="#platforms"
+                className="inline-flex items-center justify-center gap-3 h-14 px-8 text-lg rounded-full border-2 border-white/20 text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300 group"
               >
-                <a href="#platforms" className="flex items-center gap-3">
-                  See Our Work
-                  <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-                </a>
-              </Button>
+                See Our Work
+                <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+              </a>
             </div>
 
             {/* Founder intro */}
