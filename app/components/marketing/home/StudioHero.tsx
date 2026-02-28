@@ -51,28 +51,7 @@ export function StudioHero() {
               </a>
             </div>
 
-            {/* Founder intro */}
-            <div className="flex items-center gap-4">
-              <div className="flex -space-x-3">
-                {[
-                  "/images/founders/raihan-avatar.jpg",
-                  "/images/founders/naila-avatar.jpg",
-                ].map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt="Founder"
-                    className="w-10 h-10 rounded-full border-2 border-dark-bg shadow-lg object-cover"
-                  />
-                ))}
-              </div>
-              <div>
-                <p className="text-sm text-white/60">
-                  Built by <span className="font-semibold text-white">Raihan & Naila</span> in Melbourne
-                </p>
-                <p className="text-xs text-white/40">Strategy. Design. Execution.</p>
-              </div>
-            </div>
+
           </div>
 
           {/* Right: App Preview — Image Enhancer mockup */}
