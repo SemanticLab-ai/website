@@ -27,7 +27,7 @@ export function ProductGrid() {
           </h2>
 
           <p className="text-lg md:text-xl text-slate max-w-2xl mx-auto">
-            Every tool we build is designed to solve a real problem — faster, smarter, and without the bloat.
+            Every tool we build is designed to solve a real problem, faster, smarter, and without the bloat.
           </p>
         </div>
 

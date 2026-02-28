@@ -1,18 +1,20 @@
 import type { Route } from "./+types/home";
-import { UmbrellaHero } from "~/components/marketing/home/UmbrellaHero";
-import { SocialProofBar } from "~/components/marketing/home/SocialProofBar";
-import { FeaturedProduct } from "~/components/marketing/home/FeaturedProduct";
-import { ProductGrid } from "~/components/marketing/home/ProductGrid";
-import { FoundersSection } from "~/components/FoundersSection";
-import { UmbrellaCTA } from "~/components/marketing/home/UmbrellaCTA";
+import { StudioHero } from "~/components/marketing/home/StudioHero";
+import { OurStory } from "~/components/marketing/home/OurStory";
+import { WhatWeDo } from "~/components/marketing/home/WhatWeDo";
+import { HowWereDifferent } from "~/components/marketing/home/HowWereDifferent";
+import { PlatformsBuilt } from "~/components/marketing/home/PlatformsBuilt";
+import { WhoWeWorkWith } from "~/components/marketing/home/WhoWeWorkWith";
+import { OurProcess } from "~/components/marketing/home/OurProcess";
+import { StudioCTA } from "~/components/marketing/home/StudioCTA";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "SemanticLab — AI Products That Work As Hard As You Do" },
+    { title: "SemanticLab — Founder-Led AI Product Studio" },
     {
       name: "description",
       content:
-        "AI-powered products for e-commerce and careers: Image Enhancer for professional product photos, SmartApply for tailored resumes. Built by founders, not committees.",
+        "SemanticLab is a founder-led product studio helping ambitious individuals turn validated ideas into AI-ready digital platforms — from strategy to launch.",
     },
   ];
 }
@@ -20,12 +22,14 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <>
-      <UmbrellaHero />
-      <SocialProofBar />
-      <FeaturedProduct />
-      <ProductGrid />
-      <FoundersSection />
-      <UmbrellaCTA />
+      <StudioHero />
+      <OurStory />
+      <WhatWeDo />
+      <HowWereDifferent />
+      <PlatformsBuilt />
+      <WhoWeWorkWith />
+      <OurProcess />
+      <StudioCTA />
     </>
   );
 }

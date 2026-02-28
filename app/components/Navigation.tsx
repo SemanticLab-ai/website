@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 import { Button } from "~/components/ui/button";
-import { Menu, X, Sparkles, ChevronDown, ImagePlus, Search, ShoppingCart, Bot, Briefcase } from "lucide-react";
+import { Menu, X, Sparkles, ChevronDown, ImagePlus, Search, ShoppingCart, Bot, Briefcase, ArrowUpRight } from "lucide-react";
 import { products } from "~/lib/products";
 import { colorMap } from "~/lib/utils";
 
@@ -39,7 +39,7 @@ export function Navigation() {
     <nav
       className={`fixed top-0 z-50 w-full transition-all duration-500 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-xl shadow-lg shadow-charcoal/5 py-3"
+          ? "bg-dark-bg/90 backdrop-blur-xl shadow-lg shadow-black/20 py-3"
           : "bg-transparent py-6"
       }`}
     >
@@ -48,61 +48,61 @@ export function Navigation() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-vector-rose to-vector-rose-dark rounded-xl flex items-center justify-center text-white font-display font-bold text-lg shadow-lg shadow-vector-rose/30 group-hover:shadow-vector-rose/50 transition-shadow duration-300">
+              <div className="w-10 h-10 bg-lime rounded-xl flex items-center justify-center text-dark-bg font-display font-bold text-lg shadow-lg shadow-lime/20 group-hover:shadow-lime/40 transition-shadow duration-300">
                 S
               </div>
             </div>
-            <span className="text-xl font-display font-bold text-charcoal tracking-tight">
+            <span className="text-xl font-display font-bold text-white tracking-tight">
               SemanticLab
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10">
+          {/* Desktop Navigation — pill-shaped border */}
+          <div className="hidden md:flex items-center gap-8 px-6 py-2.5 border border-white/10 rounded-full bg-white/[0.03] backdrop-blur-sm">
             {/* Products Dropdown */}
             <div ref={dropdownRef} className="relative">
               <button
                 onClick={() => setProductsOpen(!productsOpen)}
-                className="relative text-sm font-medium text-slate hover:text-charcoal transition-colors duration-300 flex items-center gap-1 link-underline"
+                className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-1"
               >
                 Products
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`} />
               </button>
 
               {productsOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-80 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate/10 p-3 animate-fade-in-down">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-80 bg-dark-surface/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-lime/10 p-3 animate-fade-in-down">
                   {products.map((product) => {
                     const Icon = productIcons[product.icon] || Sparkles;
                     return (
                       <Link
                         key={product.slug}
                         to={product.href}
-                        className="flex items-center gap-4 p-3 rounded-xl hover:bg-pearl transition-colors group"
+                        className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors group"
                         onClick={() => setProductsOpen(false)}
                       >
-                        <div className={`w-10 h-10 rounded-xl ${colorMap[product.color].bg10} flex items-center justify-center`}>
-                          <Icon className={`w-5 h-5 ${colorMap[product.color].text}`} />
+                        <div className={`w-10 h-10 rounded-xl bg-lime/10 flex items-center justify-center`}>
+                          <Icon className="w-5 h-5 text-lime" />
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
-                            <span className="text-sm font-semibold text-charcoal">{product.name}</span>
+                            <span className="text-sm font-semibold text-white">{product.name}</span>
                             {product.status === "live" ? (
-                              <span className="flex items-center gap-1 px-2 py-0.5 bg-emerald-50 rounded-full">
-                                <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-                                <span className="text-[10px] font-semibold text-emerald-700">Live</span>
+                              <span className="flex items-center gap-1 px-2 py-0.5 bg-lime/10 rounded-full">
+                                <span className="w-1.5 h-1.5 bg-lime rounded-full animate-pulse" />
+                                <span className="text-[10px] font-semibold text-lime">Live</span>
                               </span>
                             ) : product.status === "beta" ? (
-                              <span className="flex items-center gap-1 px-2 py-0.5 bg-smart-indigo/10 rounded-full">
-                                <span className="w-1.5 h-1.5 bg-smart-indigo rounded-full animate-pulse" />
-                                <span className="text-[10px] font-semibold text-smart-indigo">Beta</span>
+                              <span className="flex items-center gap-1 px-2 py-0.5 bg-teal/10 rounded-full">
+                                <span className="w-1.5 h-1.5 bg-teal rounded-full animate-pulse" />
+                                <span className="text-[10px] font-semibold text-teal">Beta</span>
                               </span>
                             ) : (
-                              <span className="px-2 py-0.5 bg-slate/10 rounded-full text-[10px] font-semibold text-slate">
+                              <span className="px-2 py-0.5 bg-white/10 rounded-full text-[10px] font-semibold text-white/50">
                                 Coming Soon
                               </span>
                             )}
                           </div>
-                          <p className="text-xs text-slate mt-0.5">{product.tagline}</p>
+                          <p className="text-xs text-white/40 mt-0.5">{product.tagline}</p>
                         </div>
                       </Link>
                     );
@@ -113,35 +113,35 @@ export function Navigation() {
 
             <Link
               to="/products/image-enhancer/pricing"
-              className="relative text-sm font-medium text-slate hover:text-charcoal transition-colors duration-300 link-underline"
+              className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300"
             >
               Pricing
             </Link>
             <Link
               to="/founders"
-              className="relative text-sm font-medium text-slate hover:text-charcoal transition-colors duration-300 link-underline"
+              className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300"
             >
               Founders
             </Link>
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button — lime green pill */}
           <div className="hidden md:flex items-center gap-4">
             <Button
               size="sm"
-              className="rounded-full px-6 py-5 bg-charcoal hover:bg-vector-rose text-white font-medium transition-all duration-300 shadow-lg shadow-charcoal/20 hover:shadow-vector-rose/30 hover:scale-105 group"
+              className="rounded-full px-6 py-5 bg-lime hover:bg-lime-dark text-dark-bg font-semibold transition-all duration-300 shadow-lg shadow-lime/20 hover:shadow-lime/40 hover:scale-105 group"
               asChild
             >
-              <Link to="/#products" className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 group-hover:animate-pulse-soft" />
-                Get Started
-              </Link>
+              <a href="mailto:hello@semanticlab.ai?subject=I%20have%20an%20idea" className="flex items-center gap-2">
+                Start Your Idea
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-charcoal hover:bg-vector-rose/10 rounded-xl transition-colors"
+            className="md:hidden p-2 text-white hover:bg-white/10 rounded-xl transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -151,63 +151,63 @@ export function Navigation() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate/10 shadow-2xl py-8 px-6 flex flex-col gap-4 animate-fade-in-down">
-            <p className="text-xs font-bold text-slate uppercase tracking-wider mb-2">Products</p>
+          <div className="md:hidden absolute top-full left-0 w-full bg-dark-bg/95 backdrop-blur-xl border-b border-lime/10 shadow-2xl py-8 px-6 flex flex-col gap-4 animate-fade-in-down">
+            <p className="text-xs font-bold text-white/40 uppercase tracking-wider mb-2">Products</p>
             {products.map((product) => {
               const Icon = productIcons[product.icon] || Sparkles;
               return (
                 <Link
                   key={product.slug}
                   to={product.href}
-                  className="flex items-center gap-3 p-2 rounded-xl hover:bg-pearl transition-colors"
+                  className="flex items-center gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <div className={`w-8 h-8 rounded-lg ${colorMap[product.color].bg10} flex items-center justify-center`}>
-                    <Icon className={`w-4 h-4 ${colorMap[product.color].text}`} />
+                  <div className="w-8 h-8 rounded-lg bg-lime/10 flex items-center justify-center">
+                    <Icon className="w-4 h-4 text-lime" />
                   </div>
-                  <span className="text-sm font-medium text-charcoal">{product.name}</span>
+                  <span className="text-sm font-medium text-white">{product.name}</span>
                   {product.status === "live" ? (
-                    <span className="w-2 h-2 bg-emerald-500 rounded-full" />
+                    <span className="w-2 h-2 bg-lime rounded-full" />
                   ) : product.status === "beta" ? (
-                    <span className="text-[10px] text-smart-indigo bg-smart-indigo/10 px-2 py-0.5 rounded-full font-semibold">Beta</span>
+                    <span className="text-[10px] text-teal bg-teal/10 px-2 py-0.5 rounded-full font-semibold">Beta</span>
                   ) : (
-                    <span className="text-[10px] text-slate bg-slate/10 px-2 py-0.5 rounded-full">Soon</span>
+                    <span className="text-[10px] text-white/40 bg-white/10 px-2 py-0.5 rounded-full">Soon</span>
                   )}
                 </Link>
               );
             })}
 
-            <div className="border-t border-slate/10 pt-4 mt-2 space-y-3">
+            <div className="border-t border-white/10 pt-4 mt-2 space-y-3">
               <Link
                 to="/products/image-enhancer/pricing"
-                className="block text-sm font-medium text-charcoal hover:text-vector-rose transition-colors"
+                className="block text-sm font-medium text-white hover:text-lime transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Pricing
               </Link>
               <Link
                 to="/founders"
-                className="block text-sm font-medium text-charcoal hover:text-vector-rose transition-colors"
+                className="block text-sm font-medium text-white hover:text-lime transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Founders
               </Link>
             </div>
 
-            <div className="pt-4 border-t border-slate/10">
+            <div className="pt-4 border-t border-white/10">
               <Button
                 size="lg"
-                className="w-full rounded-full bg-gradient-to-r from-vector-rose to-vector-rose-dark text-white shadow-lg shadow-vector-rose/30"
+                className="w-full rounded-full bg-lime text-dark-bg font-semibold shadow-lg shadow-lime/20"
                 asChild
               >
-                <Link
-                  to="/#products"
+                <a
+                  href="mailto:hello@semanticlab.ai?subject=I%20have%20an%20idea"
                   className="flex items-center justify-center gap-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Sparkles className="w-5 h-5" />
-                  Get Started
-                </Link>
+                  Start Your Idea
+                  <ArrowUpRight className="w-5 h-5" />
+                </a>
               </Button>
             </div>
           </div>
