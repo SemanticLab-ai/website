@@ -9,7 +9,7 @@ export function Footer() {
       { name: "Image Enhancer", href: "/products/image-enhancer" },
       { name: "SmartApply", href: "/products/smartapply" },
       { name: "Visual Search", href: "/products/visual-search" },
-      { name: "Pricing", href: "/products/image-enhancer/pricing" },
+      { name: "Services", href: "/services" },
     ],
     Company: [
       { name: "Founders", href: "/founders" },

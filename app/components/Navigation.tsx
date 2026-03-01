@@ -112,10 +112,10 @@ export function Navigation() {
             </div>
 
             <Link
-              to="/products/image-enhancer/pricing"
+              to="/services"
               className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300"
             >
-              Pricing
+              Services
             </Link>
             <Link
               to="/founders"
@@ -179,11 +179,11 @@ export function Navigation() {
 
             <div className="border-t border-white/10 pt-4 mt-2 space-y-3">
               <Link
-                to="/products/image-enhancer/pricing"
+                to="/services"
                 className="block text-sm font-medium text-white hover:text-lime transition-colors"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Pricing
+                Services
               </Link>
               <Link
                 to="/founders"
