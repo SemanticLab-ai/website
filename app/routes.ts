@@ -4,6 +4,7 @@ export default [
   // Marketing routes
   index("routes/home.tsx"),
   route("founders", "routes/founders.tsx"),
+  route("services", "routes/services.tsx"),
 
   // Product marketing pages
   route("products/image-enhancer", "routes/products/image-enhancer.tsx"),
