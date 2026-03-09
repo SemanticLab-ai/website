@@ -7,6 +7,7 @@ export default [
   route("services", "routes/services.tsx"),
 
   // Product marketing pages
+  route("products/syncd", "routes/products/syncd.tsx"),
   route("products/image-enhancer", "routes/products/image-enhancer.tsx"),
   route("products/image-enhancer/pricing", "routes/products/image-enhancer.pricing.tsx"),
   route("products/smartapply", "routes/products/smartapply.tsx"),

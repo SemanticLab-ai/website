@@ -2,6 +2,19 @@ import type { Product } from "~/types/products";
 
 export const products: Product[] = [
   {
+    name: "Syncd",
+    slug: "syncd",
+    tagline: "Pinnacle to Shopify product sync",
+    description:
+      "Automatically sync your Pinnacle auto parts inventory to Shopify with smart field mapping, SEO templates, and tiered markup pricing.",
+    status: "live",
+    icon: "RefreshCw",
+    color: "sync-lime",
+    href: "/products/syncd",
+    externalHref: "https://apps.shopify.com",
+    category: "e-commerce",
+  },
+  {
     name: "Image Enhancer",
     slug: "image-enhancer",
     tagline: "Professional product photos in seconds",

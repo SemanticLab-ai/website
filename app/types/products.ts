@@ -7,7 +7,7 @@ export interface Product {
   description: string;
   status: ProductStatus;
   icon: string;
-  color: "vector-rose" | "neural-teal" | "signal-amber" | "smart-indigo";
+  color: "vector-rose" | "neural-teal" | "signal-amber" | "smart-indigo" | "sync-lime";
   href: string;
   appHref?: string;
   category?: "e-commerce" | "career";

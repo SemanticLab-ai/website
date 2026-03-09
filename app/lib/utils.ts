@@ -47,6 +47,15 @@ export const colorMap = {
     border20: "border-smart-indigo/20",
     from: "from-smart-indigo",
   },
+  "sync-lime": {
+    bg: "bg-lime",
+    bg5: "bg-lime/5",
+    bg10: "bg-lime/10",
+    bg20: "bg-lime/20",
+    text: "text-lime",
+    border20: "border-lime/20",
+    from: "from-lime",
+  },
 } as const;
 
 export type BrandColor = keyof typeof colorMap;
