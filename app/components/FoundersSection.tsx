@@ -105,6 +105,10 @@ export function FoundersSection() {
                 <img
                   src="/images/founders/founders.jpg"
                   alt="Raihan and Naila — SemanticLab founders"
+                  width={600}
+                  height={750}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 {/* Overlay gradient */}
@@ -127,6 +131,10 @@ export function FoundersSection() {
                     <img
                       src={founder.photo}
                       alt={founder.name}
+                      width={48}
+                      height={48}
+                      loading="lazy"
+                      decoding="async"
                       className="w-12 h-12 rounded-xl object-cover object-top shadow-lg"
                     />
                     <div>

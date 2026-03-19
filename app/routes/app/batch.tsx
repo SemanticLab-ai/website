@@ -6,6 +6,7 @@ export function meta() {
   return [
     { title: "Batch Processing — SemanticLab" },
     { name: "description", content: "Process multiple product images at once" },
+    { name: "robots", content: "noindex, nofollow" },
   ];
 }
 

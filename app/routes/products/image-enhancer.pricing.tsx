@@ -6,12 +6,26 @@ import { PricingCard } from "~/components/shared/PricingCard";
 import { FAQAccordion } from "~/components/shared/FAQAccordion";
 
 export function meta() {
+  const title =
+    "Image Enhancer Pricing — Start Free, Scale Up | SL";
+  const description =
+    "Simple, transparent pricing for Image Enhancer. Start free with 3 images, no credit card required. Paid plans from $29/month with batch processing and more.";
+  const ogImage = "/images/og-default.jpg";
+  const url = "https://semanticlab.ai/products/image-enhancer/pricing";
+
   return [
-    { title: "Pricing — Image Enhancer | SemanticLab" },
-    {
-      name: "description",
-      content: "Simple, transparent pricing for Image Enhancer. Start free with 3 images. Plans from $29/month.",
-    },
+    { title },
+    { name: "description", content: description },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: ogImage },
+    { property: "og:url", content: url },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: ogImage },
+    { tagName: "link", rel: "canonical", href: url },
   ];
 }
 

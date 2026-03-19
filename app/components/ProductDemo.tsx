@@ -68,6 +68,10 @@ export function ProductDemo() {
                       <img
                         src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=400&fit=crop"
                         alt="Uploaded reference"
+                        width={400}
+                        height={400}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -132,6 +136,10 @@ export function ProductDemo() {
                       <img
                         src={product.img}
                         alt={`Fashion result ${i + 1}`}
+                        width={300}
+                        height={400}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover"
                       />
                       {/* Hover overlay */}

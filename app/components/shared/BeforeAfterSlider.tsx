@@ -58,14 +58,14 @@ export function BeforeAfterSlider({
       onTouchMove={handleTouchMove}
     >
       {/* After (full background) */}
-      <img src={afterSrc} alt={afterLabel} className="w-full h-full object-cover" draggable={false} />
+      <img src={afterSrc} alt={afterLabel} loading="lazy" decoding="async" className="w-full h-full object-cover" draggable={false} />
 
       {/* Before (clipped) */}
       <div
         className="absolute inset-0 overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
       >
-        <img src={beforeSrc} alt={beforeLabel} className="w-full h-full object-cover" draggable={false} />
+        <img src={beforeSrc} alt={beforeLabel} loading="lazy" decoding="async" className="w-full h-full object-cover" draggable={false} />
       </div>
 
       {/* Divider line */}
@@ -78,6 +78,16 @@ export function BeforeAfterSlider({
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center cursor-col-resize"
           onMouseDown={handleMouseDown}
           onTouchStart={handleMouseDown}
+          role="slider"
+          tabIndex={0}
+          aria-label="Adjust before and after comparison"
+          aria-valuenow={Math.round(position)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft") setPosition((prev) => Math.max(0, prev - 5));
+            if (e.key === "ArrowRight") setPosition((prev) => Math.min(100, prev + 5));
+          }}
         >
           <svg className="w-5 h-5 text-charcoal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />

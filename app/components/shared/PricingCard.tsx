@@ -43,7 +43,7 @@ export function PricingCard({ tier }: { tier: PricingTier }) {
             <span className="text-3xl font-display font-bold text-white">{tier.price}</span>
           )}
         </div>
-        <p className="text-sm text-white/30 mt-2">{tier.specs}</p>
+        <p className="text-sm text-white/60 mt-2">{tier.specs}</p>
       </div>
 
       <ul className="space-y-3 mb-8">

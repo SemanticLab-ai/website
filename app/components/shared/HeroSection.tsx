@@ -137,6 +137,10 @@ export function HeroSection({
                     key={founder.alt}
                     src={founder.src}
                     alt={founder.alt}
+                    width={40}
+                    height={40}
+                    loading="eager"
+                    decoding="async"
                     className="w-10 h-10 rounded-full border-2 border-dark-bg object-cover"
                   />
                 ))}

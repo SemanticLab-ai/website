@@ -1,6 +1,10 @@
 import { type RouteConfig, index, route, layout } from "@react-router/dev/routes";
 
 export default [
+  // SEO
+  route("robots.txt", "routes/robots.txt.tsx"),
+  route("sitemap.xml", "routes/sitemap.xml.tsx"),
+
   // Marketing routes
   index("routes/home.tsx"),
   route("founders", "routes/founders.tsx"),

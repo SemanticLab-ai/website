@@ -3,12 +3,26 @@ import { Users, Code, Palette, Mail, Linkedin, ArrowRight, CheckCircle, Sparkles
 import { Link } from "react-router";
 
 export function meta() {
+  const title =
+    "Meet the Founders Behind SemanticLab | AI Product Studio";
+  const description =
+    "Meet Raihan and Naila, the husband-and-wife duo who left corporate tech to build AI products that actually work — from e-commerce tools to career platforms.";
+  const ogImage = "/images/og-default.jpg";
+  const url = "https://semanticlab.ai/founders";
+
   return [
-    { title: "Founders - SemanticLab" },
-    {
-      name: "description",
-      content: "Meet Raihan and Naila, the founders building AI products that actually work, from e-commerce tools to career tech."
-    },
+    { title },
+    { name: "description", content: description },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: ogImage },
+    { property: "og:url", content: url },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: ogImage },
+    { tagName: "link", rel: "canonical", href: url },
   ];
 }
 
@@ -57,6 +71,10 @@ export default function Founders() {
                 <img
                   src="/images/founders/raihan.jpg"
                   alt="Raihan Razi"
+                  width={96}
+                  height={96}
+                  loading="lazy"
+                  decoding="async"
                   className="w-24 h-24 rounded-2xl object-cover shadow-lg border border-lime/10"
                 />
                 <div>
@@ -102,6 +120,10 @@ export default function Founders() {
                 <img
                   src="/images/founders/naila.jpg"
                   alt="Naila Rahman"
+                  width={96}
+                  height={96}
+                  loading="lazy"
+                  decoding="async"
                   className="w-24 h-24 rounded-2xl object-cover object-top shadow-lg border border-teal/10"
                 />
                 <div>

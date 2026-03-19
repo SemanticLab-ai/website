@@ -8,22 +8,25 @@ import { SyncdFAQ } from "~/components/marketing/syncd/SyncdFAQ";
 import { UmbrellaCTA } from "~/components/marketing/home/UmbrellaCTA";
 
 export function meta() {
+  const title = "Syncd — Pinnacle to Shopify Product Sync | SemanticLab";
+  const description =
+    "Automatically sync your Pinnacle auto parts inventory to Shopify. Smart field mapping, SEO templates, tiered markup pricing, and optional AI-powered add-ons.";
+  const ogImage = "/images/og-default.jpg";
+  const url = "https://semanticlab.ai/products/syncd";
+
   return [
-    { title: "Syncd — Pinnacle to Shopify Product Sync | SemanticLab" },
-    {
-      name: "description",
-      content:
-        "Automatically sync your Pinnacle auto parts inventory to Shopify. Smart field mapping, SEO templates, tiered markup pricing, and optional AI add-ons. Built for auto parts businesses.",
-    },
-    {
-      property: "og:title",
-      content: "Syncd — Pinnacle to Shopify Product Sync",
-    },
-    {
-      property: "og:description",
-      content:
-        "Sync your Pinnacle inventory to Shopify automatically with intelligent field mapping, SEO templates, and flexible markup pricing.",
-    },
+    { title },
+    { name: "description", content: description },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: ogImage },
+    { property: "og:url", content: url },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: ogImage },
+    { tagName: "link", rel: "canonical", href: url },
   ];
 }
 

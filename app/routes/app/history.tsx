@@ -7,6 +7,7 @@ export function meta() {
   return [
     { title: "Processing History — SemanticLab" },
     { name: "description", content: "View your processed image history" },
+    { name: "robots", content: "noindex, nofollow" },
   ];
 }
 
@@ -63,6 +64,10 @@ export default function History() {
               <img
                 src={image.processedUrl}
                 alt={image.filename}
+                width={300}
+                height={300}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>

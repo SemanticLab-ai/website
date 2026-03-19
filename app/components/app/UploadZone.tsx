@@ -40,6 +40,9 @@ export function UploadZone({
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
         onClick={() => inputRef.current?.click()}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); inputRef.current?.click(); } }}
       >
         <input
           ref={inputRef}
@@ -81,7 +84,15 @@ export function UploadZone({
               className="group flex flex-col items-center gap-2"
             >
               <div className="w-16 h-16 rounded-xl overflow-hidden border-2 border-slate/10 group-hover:border-vector-rose/40 transition-all shadow-md group-hover:shadow-lg group-hover:-translate-y-1">
-                <img src={sample.url} alt={sample.label} className="w-full h-full object-cover" />
+                <img
+                  src={sample.url}
+                  alt={sample.label}
+                  width={64}
+                  height={64}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="text-xs text-slate group-hover:text-charcoal transition-colors">{sample.label}</span>
             </button>

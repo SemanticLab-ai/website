@@ -107,6 +107,10 @@ export function Results() {
                   <img
                     src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face"
                     alt="Sarah Chen"
+                    width={200}
+                    height={200}
+                    loading="lazy"
+                    decoding="async"
                     className="w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-white/20 shadow-2xl object-cover"
                   />
                   {/* Status indicator */}
@@ -136,10 +140,19 @@ export function Results() {
           <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white rounded-full px-6 py-3 shadow-xl border border-slate/10 flex items-center gap-3">
             <div className="flex -space-x-2">
               {[
-                "/images/founders/raihan-avatar.jpg",
-                "/images/founders/naila-avatar.jpg",
-              ].map((src, i) => (
-                <img key={i} src={src} alt="" className="w-8 h-8 rounded-full border-2 border-white object-cover" />
+                { src: "/images/founders/raihan-avatar.jpg", alt: "Raihan Razi" },
+                { src: "/images/founders/naila-avatar.jpg", alt: "Naila Rahman" },
+              ].map((founder) => (
+                <img
+                  key={founder.alt}
+                  src={founder.src}
+                  alt={founder.alt}
+                  width={32}
+                  height={32}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-8 h-8 rounded-full border-2 border-white object-cover"
+                />
               ))}
             </div>
             <p className="text-sm font-medium text-charcoal">Join 250+ happy merchants</p>

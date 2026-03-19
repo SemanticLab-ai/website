@@ -185,7 +185,7 @@ export function ServicesTiers() {
               </ul>
 
               {/* Outcome */}
-              <p className="text-xs text-white/30 leading-relaxed mb-6">
+              <p className="text-xs text-white/60 leading-relaxed mb-6">
                 <span className="font-bold text-white/40 uppercase tracking-wider">Outcome: </span>
                 {tier.outcome}
               </p>

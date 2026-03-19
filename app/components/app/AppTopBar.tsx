@@ -24,6 +24,7 @@ export function AppTopBar({ remaining }: { remaining: number }) {
         <button
           className="md:hidden p-2 text-charcoal hover:bg-pearl rounded-lg transition-colors"
           onClick={() => setMobileNavOpen(!mobileNavOpen)}
+          aria-label="Toggle navigation menu"
         >
           <Menu className="w-5 h-5" />
         </button>

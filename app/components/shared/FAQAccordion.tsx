@@ -16,6 +16,8 @@ export function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
           <button
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
             className="w-full text-left p-6 flex items-start justify-between gap-4"
+            aria-expanded={openIndex === i}
+            aria-controls={`faq-panel-${i}`}
           >
             <h3 className="text-lg font-semibold text-white flex items-start gap-3">
               <span className="text-lime mt-0.5">Q:</span>
@@ -28,7 +30,7 @@ export function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
             />
           </button>
           {openIndex === i && (
-            <div className="px-6 pb-6">
+            <div id={`faq-panel-${i}`} className="px-6 pb-6">
               <p className="text-white/50 pl-7">{faq.answer}</p>
             </div>
           )}

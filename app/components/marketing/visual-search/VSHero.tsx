@@ -24,12 +24,13 @@ export function VSHero() {
       }
     >
       <div className="mb-12">
-        <button
+        <a
+          href="mailto:hello@semanticlab.ai?subject=Visual Search - Get Notified"
           className="inline-flex items-center justify-center gap-3 h-14 px-8 text-lg rounded-full bg-lime hover:bg-lime-dark text-dark-bg font-semibold shadow-xl shadow-lime/20 transition-all duration-300 hover:scale-105 group"
         >
           <Bell className="w-5 h-5" />
           Get Notified When We Launch
-        </button>
+        </a>
       </div>
     </HeroSection>
   );

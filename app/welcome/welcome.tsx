@@ -10,11 +10,19 @@ export function Welcome() {
             <img
               src={logoLight}
               alt="React Router"
+              width={500}
+              height={100}
+              loading="eager"
+              decoding="async"
               className="block w-full dark:hidden"
             />
             <img
               src={logoDark}
               alt="React Router"
+              width={500}
+              height={100}
+              loading="eager"
+              decoding="async"
               className="hidden w-full dark:block"
             />
           </div>

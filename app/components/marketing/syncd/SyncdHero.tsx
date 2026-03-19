@@ -25,7 +25,7 @@ export function SyncdHero() {
       }
       primaryCTA={{
         label: "Install on Shopify",
-        href: "https://apps.shopify.com",
+        href: "https://apps.shopify.com/syncd",
         icon: ArrowRight,
         external: true,
       }}

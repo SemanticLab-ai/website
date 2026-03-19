@@ -53,13 +53,17 @@ export function OurStory() {
           <div className="flex items-center gap-4 pt-4">
             <div className="flex -space-x-3">
               {[
-                "/images/founders/raihan-avatar.jpg",
-                "/images/founders/naila-avatar.jpg",
-              ].map((src, i) => (
+                { src: "/images/founders/raihan-avatar.jpg", alt: "Raihan Razi" },
+                { src: "/images/founders/naila-avatar.jpg", alt: "Naila Rahman" },
+              ].map((founder) => (
                 <img
-                  key={i}
-                  src={src}
-                  alt="Founder"
+                  key={founder.alt}
+                  src={founder.src}
+                  alt={founder.alt}
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  decoding="async"
                   className="w-10 h-10 rounded-full border-2 border-dark-bg shadow-lg object-cover"
                 />
               ))}

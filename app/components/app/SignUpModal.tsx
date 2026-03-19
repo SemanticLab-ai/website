@@ -1,6 +1,6 @@
 import { X, Mail, Sparkles } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface SignUpModalProps {
   open: boolean;
@@ -10,6 +10,16 @@ interface SignUpModalProps {
 export function SignUpModal({ open, onClose }: SignUpModalProps) {
   const [email, setEmail] = useState("");
 
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    if (open) {
+      document.addEventListener("keydown", handleEscape);
+      return () => document.removeEventListener("keydown", handleEscape);
+    }
+  }, [open, onClose]);
+
   if (!open) return null;
 
   return (
@@ -18,7 +28,7 @@ export function SignUpModal({ open, onClose }: SignUpModalProps) {
       <div className="absolute inset-0 bg-charcoal/60 backdrop-blur-sm" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl">
+      <div className="relative bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="signup-modal-title">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 p-2 text-slate hover:text-charcoal rounded-lg transition-colors"
@@ -30,7 +40,7 @@ export function SignUpModal({ open, onClose }: SignUpModalProps) {
           <div className="mx-auto w-14 h-14 rounded-2xl bg-gradient-to-br from-vector-rose to-vector-rose-dark flex items-center justify-center mb-4 shadow-lg">
             <Sparkles className="w-7 h-7 text-white" />
           </div>
-          <h2 className="text-2xl font-display font-bold text-charcoal mb-2">
+          <h2 id="signup-modal-title" className="text-2xl font-display font-bold text-charcoal mb-2">
             You've used your free images!
           </h2>
           <p className="text-slate">
@@ -45,6 +55,7 @@ export function SignUpModal({ open, onClose }: SignUpModalProps) {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            aria-label="Email address"
             className="w-full px-4 py-3 rounded-xl border border-slate/20 text-charcoal placeholder:text-slate/50 focus:outline-none focus:border-vector-rose/50 focus:ring-2 focus:ring-vector-rose/10"
           />
           <Button

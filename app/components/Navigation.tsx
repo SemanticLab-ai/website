@@ -64,6 +64,8 @@ export function Navigation() {
               <button
                 onClick={() => setProductsOpen(!productsOpen)}
                 className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-1"
+                aria-expanded={productsOpen}
+                aria-haspopup="true"
               >
                 Products
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`} />
@@ -144,6 +146,7 @@ export function Navigation() {
             className="md:hidden p-2 text-white hover:bg-white/10 rounded-xl transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>

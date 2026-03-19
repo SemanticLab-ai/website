@@ -11,7 +11,7 @@ export const products: Product[] = [
     icon: "RefreshCw",
     color: "sync-lime",
     href: "/products/syncd",
-    externalHref: "https://apps.shopify.com",
+    externalHref: "https://apps.shopify.com/syncd",
     category: "e-commerce",
   },
   {
@@ -61,7 +61,7 @@ export const products: Product[] = [
     status: "coming-soon",
     icon: "ShoppingCart",
     color: "signal-amber",
-    href: "#",
+    href: "/products/commerce-ai",
     category: "e-commerce",
   },
   {
@@ -73,7 +73,7 @@ export const products: Product[] = [
     status: "coming-soon",
     icon: "Bot",
     color: "neural-teal",
-    href: "#",
+    href: "/products/agent-bridge",
     category: "e-commerce",
   },
 ];

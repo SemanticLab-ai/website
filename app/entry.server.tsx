@@ -28,6 +28,23 @@ export default async function handleRequest(
 
   responseHeaders.set("Content-Type", "text/html");
 
+  // Security headers
+  responseHeaders.set("X-Content-Type-Options", "nosniff");
+  responseHeaders.set("X-Frame-Options", "DENY");
+  responseHeaders.set(
+    "Referrer-Policy",
+    "strict-origin-when-cross-origin"
+  );
+  responseHeaders.set(
+    "Permissions-Policy",
+    "camera=(), microphone=(), geolocation=()"
+  );
+  responseHeaders.set(
+    "Strict-Transport-Security",
+    "max-age=31536000; includeSubDomains"
+  );
+  responseHeaders.set("X-XSS-Protection", "1; mode=block");
+
   return new Response(body, {
     headers: responseHeaders,
     status: responseStatusCode,

@@ -79,6 +79,10 @@ export function StudioHero() {
                       <img
                         src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop"
                         alt="Before enhancement"
+                        width={400}
+                        height={400}
+                        loading="eager"
+                        decoding="async"
                         className="w-full h-full object-cover opacity-60 saturate-50 brightness-75"
                       />
                     </div>
@@ -92,6 +96,10 @@ export function StudioHero() {
                       <img
                         src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop"
                         alt="After enhancement"
+                        width={400}
+                        height={400}
+                        loading="eager"
+                        decoding="async"
                         className="w-full h-full object-cover brightness-110 contrast-110 saturate-110"
                       />
                     </div>

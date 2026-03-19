@@ -68,13 +68,17 @@ export function UmbrellaHero() {
             <div className="flex items-center gap-4">
               <div className="flex -space-x-3">
                 {[
-                  "/images/founders/raihan-avatar.jpg",
-                  "/images/founders/naila-avatar.jpg",
-                ].map((src, i) => (
+                  { src: "/images/founders/raihan-avatar.jpg", alt: "Raihan Razi" },
+                  { src: "/images/founders/naila-avatar.jpg", alt: "Naila Rahman" },
+                ].map((founder) => (
                   <img
-                    key={i}
-                    src={src}
-                    alt="Founder"
+                    key={founder.alt}
+                    src={founder.src}
+                    alt={founder.alt}
+                    width={40}
+                    height={40}
+                    loading="eager"
+                    decoding="async"
                     className="w-10 h-10 rounded-full border-2 border-white shadow-lg object-cover"
                   />
                 ))}
@@ -112,6 +116,10 @@ export function UmbrellaHero() {
                       <img
                         src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop"
                         alt="Before enhancement"
+                        width={400}
+                        height={400}
+                        loading="eager"
+                        decoding="async"
                         className="w-full h-full object-cover opacity-70 saturate-50"
                       />
                     </div>
@@ -125,6 +133,10 @@ export function UmbrellaHero() {
                       <img
                         src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop"
                         alt="After enhancement"
+                        width={400}
+                        height={400}
+                        loading="eager"
+                        decoding="async"
                         className="w-full h-full object-cover brightness-110 contrast-110 saturate-110"
                       />
                     </div>

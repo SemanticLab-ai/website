@@ -8,13 +8,26 @@ import { IEPricingTeaser } from "~/components/marketing/image-enhancer/IEPricing
 import { UmbrellaCTA } from "~/components/marketing/home/UmbrellaCTA";
 
 export function meta() {
+  const title =
+    "Image Enhancer — AI Product Photo Enhancement | SL";
+  const description =
+    "Turn ugly product photos into professional images in seconds. AI-powered background removal, auto-centering, and enhancement for e-commerce sellers and brands.";
+  const ogImage = "/images/og-default.jpg";
+  const url = "https://semanticlab.ai/products/image-enhancer";
+
   return [
-    { title: "Image Enhancer — AI Product Photo Enhancement | SemanticLab" },
-    {
-      name: "description",
-      content:
-        "Turn ugly product photos into professional images in seconds. AI-powered background removal, auto-centering, and enhancement.",
-    },
+    { title },
+    { name: "description", content: description },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: ogImage },
+    { property: "og:url", content: url },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: ogImage },
+    { tagName: "link", rel: "canonical", href: url },
   ];
 }
 

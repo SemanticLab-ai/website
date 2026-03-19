@@ -115,7 +115,7 @@ export function SyncdPricing() {
 
               <CTAButton
                 variant={plan.popular ? "primary" : "secondary"}
-                href="https://apps.shopify.com"
+                href="https://apps.shopify.com/syncd"
                 external
               >
                 Get Started

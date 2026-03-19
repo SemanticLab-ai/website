@@ -6,12 +6,26 @@ import { FAQAccordion } from "~/components/shared/FAQAccordion";
 import { ComingSoonBadge } from "~/components/shared/ComingSoonBadge";
 
 export function meta() {
+  const title =
+    "Visual Search Pricing — Shopify Store Plans | SemanticLab";
+  const description =
+    "Visual Search pricing for Shopify stores. Plans from $99/month with a 14-day free trial, no credit card required. Scale from starter to enterprise. Coming soon.";
+  const ogImage = "/images/og-default.jpg";
+  const url = "https://semanticlab.ai/products/visual-search/pricing";
+
   return [
-    { title: "Pricing — Visual Search | SemanticLab" },
-    {
-      name: "description",
-      content: "Visual Search pricing. Plans from $99/month for growing Shopify stores. Coming soon.",
-    },
+    { title },
+    { name: "description", content: description },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: ogImage },
+    { property: "og:url", content: url },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: ogImage },
+    { tagName: "link", rel: "canonical", href: url },
   ];
 }
 

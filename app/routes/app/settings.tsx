@@ -7,6 +7,7 @@ export function meta() {
   return [
     { title: "Settings — SemanticLab" },
     { name: "description", content: "Account settings" },
+    { name: "robots", content: "noindex, nofollow" },
   ];
 }
 

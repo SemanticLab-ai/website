@@ -6,6 +6,7 @@ export function Footer() {
 
   const footerLinks = {
     Products: [
+      { name: "Syncd", href: "/products/syncd" },
       { name: "Image Enhancer", href: "/products/image-enhancer" },
       { name: "SmartApply", href: "/products/smartapply" },
       { name: "Visual Search", href: "/products/visual-search" },
@@ -16,14 +17,15 @@ export function Footer() {
       { name: "Support", href: "mailto:hello@semanticlab.ai" },
     ],
     Legal: [
+      // TODO: Replace with /privacy and /terms routes when pages are created
       { name: "Privacy Policy", href: "mailto:hello@semanticlab.ai?subject=Privacy%20Policy" },
       { name: "Terms of Service", href: "mailto:hello@semanticlab.ai?subject=Terms%20of%20Service" },
     ],
   };
 
   const socialLinks = [
-    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
-    { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
+    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/company/semanticlab" },
+    { name: "Twitter", icon: Twitter, href: "https://x.com/semanticlab_ai" },
     { name: "Email", icon: Mail, href: "mailto:hello@semanticlab.ai" },
   ];
 
@@ -138,6 +140,10 @@ export function Footer() {
               <img
                 src="/images/founders/founders-sm.jpg"
                 alt="Raihan & Naila — SemanticLab founders"
+                width={96}
+                height={96}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>

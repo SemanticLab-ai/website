@@ -96,7 +96,7 @@ export const visualSearchPricing: PricingTier[] = [
     ],
     popular: false,
     cta: "Get Notified",
-    ctaHref: "#",
+    ctaHref: "mailto:hello@semanticlab.ai?subject=Visual Search Early Access",
   },
   {
     name: "Growth",
@@ -113,7 +113,7 @@ export const visualSearchPricing: PricingTier[] = [
     ],
     popular: true,
     cta: "Get Notified",
-    ctaHref: "#",
+    ctaHref: "mailto:hello@semanticlab.ai?subject=Visual Search Early Access",
   },
   {
     name: "Scale",
@@ -130,6 +130,6 @@ export const visualSearchPricing: PricingTier[] = [
     ],
     popular: false,
     cta: "Get Notified",
-    ctaHref: "#",
+    ctaHref: "mailto:hello@semanticlab.ai?subject=Visual Search Early Access",
   },
 ];
