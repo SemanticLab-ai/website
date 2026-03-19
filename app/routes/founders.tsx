@@ -69,14 +69,14 @@ export default function Founders() {
               </div>
 
               <p className="text-white/50 leading-relaxed mb-6">
-                12 years building systems for millions of users. Led $12M platform transformations. Migrated 800+ APIs. But I was tired of building for others.
+                12+ years in tech, 7+ leading engineering teams. Director of Technology at Australia's largest grassroots sports platform. Led a $12M+ platform transformation and migrated 800+ APIs to modern microservices.
               </p>
 
               <div className="space-y-3 mb-6">
                 {[
-                  "Director of Technology @ PayPal competitor",
-                  "Led 40+ engineers across 5 product teams",
-                  "Stripe & API integration specialist",
+                  "Director of Technology @ Stack Sports (GameDay)",
+                  "Scaled engineering from 14 to 35 across multiple squads",
+                  "Cloud-native architecture & API platform specialist",
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-lime" />
@@ -114,14 +114,14 @@ export default function Founders() {
               </div>
 
               <p className="text-white/50 leading-relaxed mb-6">
-                10 years designing spaces, first as an architect, then as a UX designer. GameDay. Podly. Shopify Polaris. Making complex systems feel effortless.
+                Product designer with an architecture background. 7+ years designing physical spaces, now applying that systems thinking to digital products. Podly, GameDay, Codex — making complex platforms feel effortless.
               </p>
 
               <div className="space-y-3 mb-6">
                 {[
-                  "Lead UX Designer @ GameDay sports platform",
-                  "Designed mobile apps for 500k+ users",
-                  "Shopify Polaris design system specialist",
+                  "Product Designer @ Podly (sustainability SaaS)",
+                  "Project & Design Lead @ GameDay (iOS redesign)",
+                  "Architecture background — systems thinking in UX",
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-teal" />

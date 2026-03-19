@@ -13,9 +13,9 @@ export function FoundersSection() {
       gradient: "from-vector-rose to-pink-400",
       photo: "/images/founders/raihan.jpg",
       credentials: [
-        "12 years in tech infrastructure",
-        "$12M+ platform delivery",
-        "Stripe & API specialist",
+        "Director of Technology @ GameDay",
+        "$12M+ platform transformation",
+        "Cloud-native & API architecture",
       ],
       icon: Code,
     },
@@ -27,9 +27,9 @@ export function FoundersSection() {
       gradient: "from-neural-teal to-cyan-400",
       photo: "/images/founders/naila.jpg",
       credentials: [
-        "10 years UX/UI design",
-        "Shopify Polaris expert",
-        "Mobile-first specialist",
+        "Product Designer — Podly, GameDay",
+        "Architecture → UX/UI transition",
+        "Research-driven design systems",
       ],
       icon: PaletteIcon,
     },
@@ -67,8 +67,8 @@ export function FoundersSection() {
             </p>
 
             <p className="text-lg text-slate leading-relaxed mb-8">
-              We combined <span className="text-charcoal font-semibold">12 years in tech infrastructure</span> with
-              a <span className="text-charcoal font-semibold">decade designing high-conversion experiences</span> to build AI products people actually use.
+              We combined <span className="text-charcoal font-semibold">12+ years leading engineering teams</span> with
+              a <span className="text-charcoal font-semibold">background in architecture and product design</span> to build AI products people actually use.
             </p>
 
             {/* Quote */}
