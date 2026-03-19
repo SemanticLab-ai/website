@@ -75,12 +75,15 @@ export function Navigation() {
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-80 bg-dark-surface/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-lime/10 p-3 animate-fade-in-down">
                   {products.map((product) => {
                     const Icon = productIcons[product.icon] || Sparkles;
+                    const isComingSoon = product.status === "coming-soon";
+                    const Wrapper = isComingSoon ? "div" : Link;
+                    const wrapperProps = isComingSoon
+                      ? { key: product.slug }
+                      : { key: product.slug, to: product.href, onClick: () => setProductsOpen(false) };
                     return (
-                      <Link
-                        key={product.slug}
-                        to={product.href}
-                        className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors group"
-                        onClick={() => setProductsOpen(false)}
+                      <Wrapper
+                        {...wrapperProps as any}
+                        className={`flex items-center gap-4 p-3 rounded-xl transition-colors ${isComingSoon ? "opacity-50 cursor-default" : "hover:bg-white/5 group"}`}
                       >
                         <div className={`w-10 h-10 rounded-xl bg-lime/10 flex items-center justify-center`}>
                           <Icon className="w-5 h-5 text-lime" />
@@ -106,7 +109,7 @@ export function Navigation() {
                           </div>
                           <p className="text-xs text-white/40 mt-0.5">{product.tagline}</p>
                         </div>
-                      </Link>
+                      </Wrapper>
                     );
                   })}
                 </div>
@@ -158,12 +161,15 @@ export function Navigation() {
             <p className="text-xs font-bold text-white/40 uppercase tracking-wider mb-2">Products</p>
             {products.map((product) => {
               const Icon = productIcons[product.icon] || Sparkles;
+              const isComingSoon = product.status === "coming-soon";
+              const Wrapper = isComingSoon ? "div" : Link;
+              const wrapperProps = isComingSoon
+                ? { key: product.slug }
+                : { key: product.slug, to: product.href, onClick: () => setMobileMenuOpen(false) };
               return (
-                <Link
-                  key={product.slug}
-                  to={product.href}
-                  className="flex items-center gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
+                <Wrapper
+                  {...wrapperProps as any}
+                  className={`flex items-center gap-3 p-2 rounded-xl transition-colors ${isComingSoon ? "opacity-50 cursor-default" : "hover:bg-white/5"}`}
                 >
                   <div className="w-8 h-8 rounded-lg bg-lime/10 flex items-center justify-center">
                     <Icon className="w-4 h-4 text-lime" />
@@ -176,7 +182,7 @@ export function Navigation() {
                   ) : (
                     <span className="text-[10px] text-white/40 bg-white/10 px-2 py-0.5 rounded-full">Soon</span>
                   )}
-                </Link>
+                </Wrapper>
               );
             })}
 

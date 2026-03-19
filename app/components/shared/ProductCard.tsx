@@ -9,11 +9,14 @@ const icons: Record<string, React.ElementType> = { ImagePlus, Search, ShoppingCa
 export function ProductCard({ product }: { product: Product }) {
   const Icon = icons[product.icon] || Sparkles;
   const colors = colorMap[product.color];
+  const isComingSoon = product.status === "coming-soon";
+  const Wrapper = isComingSoon ? "div" : Link;
+  const wrapperProps = isComingSoon ? {} : { to: product.href };
 
   return (
-    <Link
-      to={product.href}
-      className="group relative bg-white rounded-3xl p-8 border border-slate/10 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col"
+    <Wrapper
+      {...wrapperProps as any}
+      className={`group relative bg-white rounded-3xl p-8 border border-slate/10 shadow-lg transition-all duration-500 overflow-hidden flex flex-col ${isComingSoon ? "opacity-75 cursor-default" : "hover:shadow-2xl hover:-translate-y-2"}`}
     >
       {/* Gradient accent on hover */}
       <div className={`absolute inset-0 ${colors.bg5} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -52,6 +55,6 @@ export function ProductCard({ product }: { product: Product }) {
 
       {/* Decorative corner */}
       <div className={`absolute top-0 right-0 w-20 h-20 ${colors.bg10} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-bl-[100px]`} />
-    </Link>
+    </Wrapper>
   );
 }

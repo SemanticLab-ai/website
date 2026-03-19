@@ -61,7 +61,7 @@ export const products: Product[] = [
     status: "coming-soon",
     icon: "ShoppingCart",
     color: "signal-amber",
-    href: "/products/commerce-ai",
+    href: "#",
     category: "e-commerce",
   },
   {
@@ -73,7 +73,7 @@ export const products: Product[] = [
     status: "coming-soon",
     icon: "Bot",
     color: "neural-teal",
-    href: "/products/agent-bridge",
+    href: "#",
     category: "e-commerce",
   },
 ];
