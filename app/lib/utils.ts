@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Lookup map for dynamic color classes.
- * Tailwind scans for complete class names at build time — template literals
+ * Tailwind scans for complete class names at build time - template literals
  * like `bg-${color}` are never matched. Use this map instead.
  */
 export const colorMap = {

@@ -35,13 +35,13 @@ export function ServicesHero() {
 
           {/* Headline */}
           <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
-            Build It Right — From Idea to{" "}
+            Build It Right - From Idea to{" "}
             <span className="gradient-text-lime">Launched Product.</span>
           </h1>
 
           {/* Subtext */}
           <p className="text-lg md:text-xl text-white/60 leading-relaxed mb-12 max-w-2xl mx-auto">
-            We partner with founders, creators, and growing teams to validate, design, build and ship AI-ready digital platforms — with clarity and care at every stage.
+            We partner with founders, creators, and growing teams to validate, design, build and ship AI-ready digital platforms - with clarity and care at every stage.
           </p>
 
           {/* Visual Timeline */}

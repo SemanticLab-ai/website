@@ -54,7 +54,7 @@ export function StudioHero() {
 
           </div>
 
-          {/* Right: App Preview — Image Enhancer mockup */}
+          {/* Right: App Preview - Image Enhancer mockup */}
           <div className="relative lg:pl-4 hidden lg:block">
             <div className="relative glass-card rounded-3xl overflow-hidden glow-lime">
               {/* Browser Chrome */}
@@ -69,7 +69,7 @@ export function StudioHero() {
                 </div>
               </div>
 
-              {/* App Content — Before/After */}
+              {/* App Content - Before/After */}
               <div className="p-6 bg-dark-bg/50">
                 {/* Before/After Grid */}
                 <div className="grid grid-cols-2 gap-4">

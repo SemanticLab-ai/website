@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 export function meta() {
   return [
-    { title: "Settings — SemanticLab" },
+    { title: "Settings - SemanticLab" },
     { name: "description", content: "Account settings" },
     { name: "robots", content: "noindex, nofollow" },
   ];
@@ -66,7 +66,7 @@ export default function Settings() {
           <Button className="rounded-full px-6 bg-charcoal text-white hover:bg-vector-rose">
             Save Changes
           </Button>
-          <p className="text-xs text-slate">Demo only — changes are not saved.</p>
+          <p className="text-xs text-slate">Demo only - changes are not saved.</p>
         </div>
       )}
 

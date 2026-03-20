@@ -13,7 +13,7 @@ export function SAFeatures() {
     {
       icon: Target,
       title: "Role-Specific Tailoring",
-      description: "Every resume is customized for the specific role — not a one-size-fits-all template with swapped job titles.",
+      description: "Every resume is customized for the specific role - not a one-size-fits-all template with swapped job titles.",
     },
     {
       icon: FileText,

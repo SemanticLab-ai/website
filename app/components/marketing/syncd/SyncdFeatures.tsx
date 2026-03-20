@@ -16,7 +16,7 @@ export function SyncdFeatures() {
       icon: ArrowLeftRight,
       title: "Smart Field Mapping",
       description:
-        "Map 8 Pinnacle fields to Shopify — titles, descriptions, vendor, tags, pricing, SKU, and more. Drag-and-drop template builder for dynamic product titles.",
+        "Map 8 Pinnacle fields to Shopify - titles, descriptions, vendor, tags, pricing, SKU, and more. Drag-and-drop template builder for dynamic product titles.",
       gradient: "from-lime to-emerald-400",
     },
     {
@@ -44,7 +44,7 @@ export function SyncdFeatures() {
       icon: Clock,
       title: "Flexible Sync Intervals",
       description:
-        "Choose sync frequency that fits your business — from every 10 minutes on Premium to every 4 hours on Lite. Background processing via Temporal workflows.",
+        "Choose sync frequency that fits your business - from every 10 minutes on Premium to every 4 hours on Lite. Background processing via Temporal workflows.",
       gradient: "from-lime to-emerald-400",
     },
     {

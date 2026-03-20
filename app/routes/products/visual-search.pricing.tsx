@@ -7,7 +7,7 @@ import { ComingSoonBadge } from "~/components/shared/ComingSoonBadge";
 
 export function meta() {
   const title =
-    "Visual Search Pricing — Shopify Store Plans | SemanticLab";
+    "Visual Search Pricing - Shopify Store Plans | SemanticLab";
   const description =
     "Visual Search pricing for Shopify stores. Plans from $99/month with a 14-day free trial, no credit card required. Scale from starter to enterprise. Coming soon.";
   const ogImage = "/images/og-default.jpg";

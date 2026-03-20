@@ -9,7 +9,7 @@ import { generateImageId } from "~/lib/mock-processor";
 
 export function meta() {
   return [
-    { title: "Image Enhancer — SemanticLab" },
+    { title: "Image Enhancer - SemanticLab" },
     { name: "description", content: "AI-powered product image enhancement" },
     { name: "robots", content: "noindex, nofollow" },
   ];

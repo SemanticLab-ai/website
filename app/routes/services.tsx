@@ -5,9 +5,9 @@ import { WhySemanticLab } from "~/components/marketing/services/WhySemanticLab";
 import { ServicesCTA } from "~/components/marketing/services/ServicesCTA";
 
 export function meta({}: Route.MetaArgs) {
-  const title = "Services — SemanticLab | From Idea to Launched Product";
+  const title = "Services - SemanticLab | From Idea to Launched Product";
   const description =
-    "We partner with founders, creators, and growing teams to validate, design, build and ship AI-ready digital platforms — from foundation to growth and scale.";
+    "We partner with founders, creators, and growing teams to validate, design, build and ship AI-ready digital platforms - from foundation to growth and scale.";
   const ogImage = "/images/og-default.jpg";
   const url = "https://semanticlab.ai/services";
 

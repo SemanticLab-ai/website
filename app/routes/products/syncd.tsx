@@ -8,7 +8,7 @@ import { SyncdFAQ } from "~/components/marketing/syncd/SyncdFAQ";
 import { UmbrellaCTA } from "~/components/marketing/home/UmbrellaCTA";
 
 export function meta() {
-  const title = "Syncd — Pinnacle to Shopify Product Sync | SemanticLab";
+  const title = "Syncd - Pinnacle to Shopify Product Sync | SemanticLab";
   const description =
     "Automatically sync your Pinnacle auto parts inventory to Shopify. Smart field mapping, SEO templates, tiered markup pricing, and optional AI-powered add-ons.";
   const ogImage = "/images/og-default.jpg";

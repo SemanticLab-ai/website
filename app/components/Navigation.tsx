@@ -57,7 +57,7 @@ export function Navigation() {
             </span>
           </Link>
 
-          {/* Desktop Navigation — pill-shaped border */}
+          {/* Desktop Navigation - pill-shaped border */}
           <div className="hidden md:flex items-center gap-8 px-6 py-2.5 border border-white/10 rounded-full bg-white/[0.03] backdrop-blur-sm">
             {/* Products Dropdown */}
             <div ref={dropdownRef} className="relative">
@@ -130,7 +130,7 @@ export function Navigation() {
             </Link>
           </div>
 
-          {/* CTA Button — lime green pill */}
+          {/* CTA Button - lime green pill */}
           <div className="hidden md:flex items-center gap-4">
             <Button
               size="sm"

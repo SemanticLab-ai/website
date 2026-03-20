@@ -7,7 +7,7 @@ import { CTAButton } from "~/components/shared/CTAButton";
 
 export function IEPricingTeaser() {
   const highlights = [
-    "3 free images — no sign-up",
+    "3 free images - no sign-up",
     "Plans from $29/month",
     "Batch processing on Pro+",
     "API access included",

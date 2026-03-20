@@ -23,7 +23,7 @@ export function SAHero() {
       subtitle={
         <>
           Upload your work artifacts, paste a job description, and let AI generate a resume that's{" "}
-          <span className="text-white font-semibold">tailored for the role</span> — not a generic template.
+          <span className="text-white font-semibold">tailored for the role</span> - not a generic template.
         </>
       }
       primaryCTA={{

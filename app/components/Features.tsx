@@ -12,7 +12,7 @@ export function Features() {
     {
       icon: MessageCircle,
       title: "AI Refine",
-      description: '"Make it longer," "in burgundy color" — text modifiers work naturally with your search.',
+      description: '"Make it longer," "in burgundy color" - text modifiers work naturally with your search.',
       color: "neural-teal",
       gradient: "from-neural-teal to-cyan-400",
     },
@@ -73,7 +73,7 @@ export function Features() {
           </h2>
 
           <p className="text-lg md:text-xl text-slate max-w-2xl mx-auto">
-            Everything you need to help shoppers find exactly what they want — and actually buy it.
+            Everything you need to help shoppers find exactly what they want - and actually buy it.
           </p>
         </div>
 

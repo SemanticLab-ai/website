@@ -139,7 +139,7 @@ export function Footer() {
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden border border-lime/10 flex-shrink-0">
               <img
                 src="/images/founders/founders-sm.jpg"
-                alt="Raihan & Naila — SemanticLab founders"
+                alt="Raihan & Naila - SemanticLab founders"
                 width={96}
                 height={96}
                 loading="lazy"
@@ -150,7 +150,7 @@ export function Footer() {
             <div>
               <p className="text-white font-semibold mb-1">Raihan Razi & Naila Rahman</p>
               <p className="text-white/40 text-sm leading-relaxed max-w-md">
-                The duo behind SemanticLab — 20+ years combined in tech infrastructure and UX design. Melbourne-based, founder-led, independently built.
+                The duo behind SemanticLab - 20+ years combined in tech infrastructure and UX design. Melbourne-based, founder-led, independently built.
               </p>
             </div>
           </div>

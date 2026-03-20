@@ -68,7 +68,7 @@ export function Problem() {
                         {point.quote}
                       </p>
                       <p className="text-sm text-slate mt-2">
-                        — Actual customer query
+                        - Actual customer query
                       </p>
                     </div>
                   </div>

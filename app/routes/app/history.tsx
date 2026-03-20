@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 export function meta() {
   return [
-    { title: "Processing History — SemanticLab" },
+    { title: "Processing History - SemanticLab" },
     { name: "description", content: "View your processed image history" },
     { name: "robots", content: "noindex, nofollow" },
   ];

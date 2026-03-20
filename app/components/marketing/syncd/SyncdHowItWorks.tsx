@@ -17,7 +17,7 @@ export function SyncdHowItWorks() {
       icon: Settings,
       title: "Configure Mappings",
       description:
-        "Map Pinnacle fields to Shopify — titles, descriptions, pricing, images. Smart Defaults get you started in seconds.",
+        "Map Pinnacle fields to Shopify - titles, descriptions, pricing, images. Smart Defaults get you started in seconds.",
       step: "02",
       gradient: "from-teal to-cyan-400",
     },
@@ -25,7 +25,7 @@ export function SyncdHowItWorks() {
       icon: Zap,
       title: "Activate & Sync",
       description:
-        "Review your settings and go live. Products sync automatically on your schedule — from every 10 minutes to every 4 hours.",
+        "Review your settings and go live. Products sync automatically on your schedule - from every 10 minutes to every 4 hours.",
       step: "03",
       gradient: "from-lime to-emerald-400",
     },
@@ -45,7 +45,7 @@ export function SyncdHowItWorks() {
             <span className="gradient-text-lime">3 Simple Steps</span>
           </>
         }
-        subtitle="From API credentials to synced products in minutes — not days."
+        subtitle="From API credentials to synced products in minutes - not days."
       />
 
       <div className="grid gap-8 grid-cols-1 md:grid-cols-3 max-w-5xl mx-auto">

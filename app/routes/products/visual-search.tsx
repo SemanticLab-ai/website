@@ -7,7 +7,7 @@ import { VSPricingTeaser } from "~/components/marketing/visual-search/VSPricingT
 
 export function meta() {
   const title =
-    "Visual Search — AI-Powered Shopify Discovery | SemanticLab";
+    "Visual Search - AI-Powered Shopify Discovery | SemanticLab";
   const description =
     "AI-powered visual search for fashion and lifestyle Shopify stores. Let your shoppers find products by uploading photos instead of typing keywords. Coming soon.";
   const ogImage = "/images/og-default.jpg";

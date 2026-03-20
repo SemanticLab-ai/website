@@ -58,10 +58,10 @@ export function HowWereDifferent() {
           <GlassCard className="relative p-8">
             <div className="absolute -left-[2px] top-8 w-1 h-16 bg-gradient-to-b from-lime to-teal rounded-full" />
             <p className="text-white font-display text-xl italic leading-relaxed mb-4">
-              "Every product we touch gets the same care we put into our own — because we know what it takes to ship something that lasts."
+              "Every product we touch gets the same care we put into our own - because we know what it takes to ship something that lasts."
             </p>
             <p className="text-sm text-white/40 font-medium">
-              — Raihan & Naila
+              - Raihan & Naila
             </p>
           </GlassCard>
         </div>

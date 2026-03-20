@@ -27,7 +27,7 @@ export function FoundersSection() {
       gradient: "from-neural-teal to-cyan-400",
       photo: "/images/founders/naila.jpg",
       credentials: [
-        "Product Designer — Podly, GameDay",
+        "Product Designer - Podly, GameDay",
         "Architecture → UX/UI transition",
         "Research-driven design systems",
       ],
@@ -75,10 +75,10 @@ export function FoundersSection() {
             <div className="relative bg-white rounded-2xl p-8 border border-slate/10 shadow-xl mb-8">
               <div className="absolute -left-3 top-8 w-1 h-16 bg-gradient-to-b from-vector-rose to-neural-teal rounded-full" />
               <p className="text-charcoal font-display text-xl italic leading-relaxed mb-4">
-                "We spent a decade learning what makes products work at scale. Now we channel that into building AI tools that solve real problems — for ourselves and for the founders we work with."
+                "We spent a decade learning what makes products work at scale. Now we channel that into building AI tools that solve real problems - for ourselves and for the founders we work with."
               </p>
               <p className="text-sm text-slate font-medium">
-                — Raihan & Naila
+                - Raihan & Naila
               </p>
             </div>
 
@@ -103,7 +103,7 @@ export function FoundersSection() {
                 {/* Combined founders image */}
                 <img
                   src="/images/founders/founders.jpg"
-                  alt="Raihan and Naila — SemanticLab founders"
+                  alt="Raihan and Naila - SemanticLab founders"
                   width={600}
                   height={750}
                   loading="lazy"

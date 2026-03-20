@@ -40,7 +40,7 @@ const tiers: ServiceTier[] = [
       "Strategic recommendation document",
     ],
     outcome:
-      "You leave with clarity, direction, and a structured product plan — ready to move into design.",
+      "You leave with clarity, direction, and a structured product plan - ready to move into design.",
     cta: "Book Consultation",
     ctaMailSubject: "Foundation%20Consultation",
   },
@@ -128,7 +128,7 @@ export function ServicesTiers() {
             <span className="gradient-text-lime">Starting Point.</span>
           </h2>
           <p className="text-lg text-white/50 max-w-2xl mx-auto">
-            Each tier reflects a real stage in the product lifecycle. Start wherever you are — we'll guide you forward.
+            Each tier reflects a real stage in the product lifecycle. Start wherever you are - we'll guide you forward.
           </p>
         </div>
 

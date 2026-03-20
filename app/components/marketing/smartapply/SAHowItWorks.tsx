@@ -8,7 +8,7 @@ export function SAHowItWorks() {
     {
       icon: FileText,
       title: "Add Artifacts",
-      description: "Upload your past work — resumes, portfolios, project summaries, performance reviews. The more context, the better.",
+      description: "Upload your past work - resumes, portfolios, project summaries, performance reviews. The more context, the better.",
       color: "smart-indigo",
     },
     {

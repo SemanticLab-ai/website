@@ -136,7 +136,7 @@ export function SyncdPricing() {
             </h3>
             <p className="text-white/50 mb-6 max-w-lg mx-auto">
               For businesses with 100,000+ SKUs, custom integrations, or
-              multi-store setups — let&apos;s talk.
+              multi-store setups - let&apos;s talk.
             </p>
             <CTAButton
               variant="secondary"

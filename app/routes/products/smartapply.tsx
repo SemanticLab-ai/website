@@ -5,7 +5,7 @@ import { UmbrellaCTA } from "~/components/marketing/home/UmbrellaCTA";
 
 export function meta() {
   const title =
-    "SmartApply — AI Resume Tailoring for Job Seekers | SemanticLab";
+    "SmartApply - AI Resume Tailoring for Job Seekers | SemanticLab";
   const description =
     "Tailored resumes in minutes, not hours. Upload your work artifacts, paste a job description, and let AI generate a role-specific resume that gets interviews.";
   const ogImage = "/images/og-default.jpg";

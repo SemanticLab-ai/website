@@ -24,7 +24,7 @@ const GTM_ID = "GTM-XXXXXXX";
 
 export function meta() {
   return [
-    { title: "SemanticLab — AI Product Studio" },
+    { title: "SemanticLab - AI Product Studio" },
     {
       name: "description",
       content:

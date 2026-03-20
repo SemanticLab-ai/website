@@ -9,7 +9,7 @@ import { UmbrellaCTA } from "~/components/marketing/home/UmbrellaCTA";
 
 export function meta() {
   const title =
-    "Image Enhancer — AI Product Photo Enhancement | SemanticLab";
+    "Image Enhancer - AI Product Photo Enhancement | SemanticLab";
   const description =
     "Turn ugly product photos into professional images in seconds. AI-powered background removal, auto-centering, and enhancement for e-commerce sellers and brands.";
   const ogImage = "/images/og-default.jpg";

@@ -35,7 +35,7 @@ export function UmbrellaHero() {
 
             {/* Subheadline */}
             <p className="text-xl md:text-2xl text-slate leading-relaxed mb-10 max-w-xl">
-              From product photos to tailored resumes —{" "}
+              From product photos to tailored resumes -{" "}
               <span className="text-charcoal font-semibold">AI products built to save you hours, not add complexity</span>.
             </p>
 

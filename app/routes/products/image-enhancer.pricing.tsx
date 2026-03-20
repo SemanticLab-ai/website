@@ -7,7 +7,7 @@ import { FAQAccordion } from "~/components/shared/FAQAccordion";
 
 export function meta() {
   const title =
-    "Image Enhancer Pricing — Start Free, Scale Up | SemanticLab";
+    "Image Enhancer Pricing - Start Free, Scale Up | SemanticLab";
   const description =
     "Simple, transparent pricing for Image Enhancer. Start free with 3 images, no credit card required. Paid plans from $29/month with batch processing and more.";
   const ogImage = "/images/og-default.jpg";

@@ -9,9 +9,9 @@ import { OurProcess } from "~/components/marketing/home/OurProcess";
 import { StudioCTA } from "~/components/marketing/home/StudioCTA";
 
 export function meta({}: Route.MetaArgs) {
-  const title = "SemanticLab — Founder-Led AI Product Studio";
+  const title = "SemanticLab - Founder-Led AI Product Studio";
   const description =
-    "SemanticLab is a founder-led product studio helping ambitious individuals turn validated ideas into AI-ready digital platforms — from strategy to launch.";
+    "SemanticLab is a founder-led product studio helping ambitious individuals turn validated ideas into AI-ready digital platforms - from strategy to launch.";
   const ogImage = "/images/og-default.jpg";
   const url = "https://semanticlab.ai/";
 

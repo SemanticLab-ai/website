@@ -66,7 +66,7 @@ export function WhoWeWorkWith() {
           </div>
         </div>
 
-        {/* Carousel — single row */}
+        {/* Carousel - single row */}
         <div className="mb-12">
           <MarqueeRow />
         </div>

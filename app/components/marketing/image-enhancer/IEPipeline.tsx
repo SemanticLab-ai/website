@@ -14,7 +14,7 @@ export function IEPipeline() {
     {
       icon: Wand2,
       title: "AI Processes",
-      description: "Our AI removes the background, auto-centers the product, and enhances quality — all in under 5 seconds.",
+      description: "Our AI removes the background, auto-centers the product, and enhances quality - all in under 5 seconds.",
       gradient: "from-neural-teal to-cyan-400",
     },
     {

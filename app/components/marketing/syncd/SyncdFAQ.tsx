@@ -7,12 +7,12 @@ const faqs = [
   {
     question: "What is Pinnacle and who is this app for?",
     answer:
-      "Pinnacle is a popular inventory management system used by auto parts businesses across Australia and New Zealand. Syncd is built specifically for Pinnacle users who also sell on Shopify — it bridges the gap between your parts catalog and your online store.",
+      "Pinnacle is a popular inventory management system used by auto parts businesses across Australia and New Zealand. Syncd is built specifically for Pinnacle users who also sell on Shopify - it bridges the gap between your parts catalog and your online store.",
   },
   {
     question: "How long does the initial sync take?",
     answer:
-      "The initial setup takes about 5 minutes. Your first full product sync depends on catalog size — typically 10–30 minutes for most stores. After that, syncs run automatically on your chosen schedule.",
+      "The initial setup takes about 5 minutes. Your first full product sync depends on catalog size - typically 10–30 minutes for most stores. After that, syncs run automatically on your chosen schedule.",
   },
   {
     question: "Can I customize how product titles and descriptions appear?",
