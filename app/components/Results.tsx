@@ -1,26 +1,26 @@
-import { TrendingUp, Zap, Store, Quote, BarChart } from "lucide-react";
+import { Zap, Shield, Palette, BarChart } from "lucide-react";
 
 export function Results() {
   const metrics = [
     {
-      value: "18%",
-      label: "Conversion Lift",
-      description: "Average increase vs text search",
-      icon: TrendingUp,
-      gradient: "from-vector-rose to-pink-400",
-    },
-    {
       value: "<500ms",
-      label: "Search Latency",
-      description: "Faster than typing",
+      label: "Search Speed",
+      description: "Real-time visual matching",
       icon: Zap,
       gradient: "from-neural-teal to-cyan-400",
     },
     {
-      value: "250+",
-      label: "Fashion Stores",
-      description: "Trust us daily",
-      icon: Store,
+      value: "Zero",
+      label: "Customer Data Stored",
+      description: "Privacy-first architecture",
+      icon: Shield,
+      gradient: "from-vector-rose to-pink-400",
+    },
+    {
+      value: "Native",
+      label: "Theme Integration",
+      description: "Matches your store's look",
+      icon: Palette,
       gradient: "from-signal-amber to-yellow-400",
     },
   ];
@@ -85,9 +85,9 @@ export function Results() {
           ))}
         </div>
 
-        {/* Testimonial */}
+        {/* Early Access CTA */}
         <div className="relative max-w-4xl mx-auto">
-          <div className="relative bg-gradient-to-br from-charcoal to-slate rounded-3xl p-10 md:p-14 shadow-2xl overflow-hidden">
+          <div className="relative bg-gradient-to-br from-charcoal to-slate rounded-3xl p-10 md:p-14 shadow-2xl overflow-hidden text-center">
             {/* Background pattern */}
             <div className="absolute inset-0 opacity-5">
               <div className="absolute inset-0" style={{
@@ -95,67 +95,13 @@ export function Results() {
               }} />
             </div>
 
-            {/* Decorative quote icon */}
-            <div className="absolute top-6 right-6 md:top-10 md:right-10 opacity-10">
-              <Quote className="w-20 h-20 text-white" />
+            <div className="relative z-10">
+              <p className="font-display text-xl md:text-2xl text-white leading-relaxed mb-6">
+                Be among the first stores to offer visual search.
+                <br />
+                <span className="text-signal-amber font-bold">Join the early access list.</span>
+              </p>
             </div>
-
-            <div className="relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-              {/* Avatar */}
-              <div className="flex-shrink-0">
-                <div className="relative">
-                  <img
-                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face"
-                    alt="Sarah Chen"
-                    width={200}
-                    height={200}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-white/20 shadow-2xl object-cover"
-                  />
-                  {/* Status indicator */}
-                  <div className="absolute bottom-1 right-1 w-6 h-6 bg-neural-teal rounded-full border-2 border-charcoal flex items-center justify-center">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              {/* Quote */}
-              <div className="flex-1 text-center md:text-left">
-                <p className="font-display text-xl md:text-2xl text-white italic leading-relaxed mb-6">
-                  "We saw a <span className="text-signal-amber font-bold not-italic">22% increase</span> in search-to-purchase conversion
-                  within the first month. It felt like magic watching customers find exactly what they wanted."
-                </p>
-                <div>
-                  <p className="font-bold text-white text-lg">Sarah Chen</p>
-                  <p className="text-white/60">Founder, Urban Chic Boutique</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Floating accent */}
-          <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white rounded-full px-6 py-3 shadow-xl border border-slate/10 flex items-center gap-3">
-            <div className="flex -space-x-2">
-              {[
-                { src: "/images/founders/raihan-avatar.jpg", alt: "Raihan Razi" },
-                { src: "/images/founders/naila-avatar.jpg", alt: "Naila Rahman" },
-              ].map((founder) => (
-                <img
-                  key={founder.alt}
-                  src={founder.src}
-                  alt={founder.alt}
-                  width={32}
-                  height={32}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-8 h-8 rounded-full border-2 border-white object-cover"
-                />
-              ))}
-            </div>
-            <p className="text-sm font-medium text-charcoal">Join 250+ happy merchants</p>
           </div>
         </div>
       </div>

@@ -103,15 +103,15 @@ export function Problem() {
 
                 <div className="mb-8">
                   <span className="font-display text-8xl md:text-[120px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-vector-rose via-signal-amber to-vector-rose animate-gradient-shift leading-none">
-                    $127
+                    67%
                   </span>
                 </div>
 
                 <p className="text-2xl md:text-3xl font-medium text-white mb-2">
-                  in lost sales
+                  of shoppers leave after a failed search
                 </p>
                 <p className="text-white/50">
-                  Per failed search. Per day. Per store.
+                  Industry research across e-commerce stores
                 </p>
               </div>
             </div>
@@ -124,7 +124,7 @@ export function Problem() {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-charcoal">68%</p>
-                  <p className="text-sm text-slate">bounce rate</p>
+                  <p className="text-sm text-slate">avg. bounce rate on failed searches</p>
                 </div>
               </div>
             </div>

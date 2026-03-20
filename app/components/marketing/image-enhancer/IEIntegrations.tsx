@@ -20,7 +20,7 @@ export function IEIntegrations() {
     },
     {
       icon: Crown,
-      title: "Pinnacle",
+      title: "Studio",
       description: "Our premium pipeline with human QA. Every image is reviewed before delivery. For brands that demand perfection.",
       color: "signal-amber",
       features: [
@@ -41,7 +41,7 @@ export function IEIntegrations() {
           <span className="gradient-text-lime">Enhance</span>
         </h2>
         <p className="text-lg text-white/50">
-          Choose the workflow that fits your needs. Start self-serve, upgrade to Pinnacle when you're ready.
+          Choose the workflow that fits your needs. Start self-serve, upgrade to Studio when you're ready.
         </p>
       </div>
 

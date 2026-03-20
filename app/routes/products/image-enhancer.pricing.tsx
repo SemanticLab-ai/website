@@ -7,7 +7,7 @@ import { FAQAccordion } from "~/components/shared/FAQAccordion";
 
 export function meta() {
   const title =
-    "Image Enhancer Pricing — Start Free, Scale Up | SL";
+    "Image Enhancer Pricing — Start Free, Scale Up | SemanticLab";
   const description =
     "Simple, transparent pricing for Image Enhancer. Start free with 3 images, no credit card required. Paid plans from $29/month with batch processing and more.";
   const ogImage = "/images/og-default.jpg";
@@ -43,8 +43,8 @@ const faqs = [
     answer: "Available on Pro and above. Upload multiple images at once and apply the same settings to all of them. Great for processing your entire catalog.",
   },
   {
-    question: "What is the Pinnacle pipeline?",
-    answer: "Pinnacle is our premium tier where every image goes through human QA. An image specialist reviews each photo against your brand guidelines before delivery.",
+    question: "What is the Studio pipeline?",
+    answer: "Studio is our premium tier where every image goes through human QA. An image specialist reviews each photo against your brand guidelines before delivery.",
   },
   {
     question: "Can I cancel anytime?",
@@ -160,7 +160,7 @@ export default function ImageEnhancerPricing() {
                   Need a Custom Solution?
                 </h2>
                 <p className="text-white/50 mb-8 max-w-xl mx-auto">
-                  For high-volume processing, custom pipelines, or Pinnacle quality at scale, let's talk.
+                  For high-volume processing, custom pipelines, or Studio quality at scale, let's talk.
                 </p>
 
                 <Button

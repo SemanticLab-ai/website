@@ -20,20 +20,15 @@ export function OurStory() {
         {/* Narrative */}
         <div className="space-y-6">
           <p className="text-2xl md:text-3xl text-white font-display font-bold leading-relaxed tracking-tight">
-            We spent years inside corporate systems, designing platforms, fixing friction, improving digital experiences for businesses that weren't ours.
+            Over a decade of building platforms at scale — payment systems, sports tech, SaaS products — taught us what works and what doesn't in product development.
           </p>
 
           <p className="text-lg text-white/50 leading-relaxed">
-            We helped scale products. We solved complex UX problems. We built systems that worked.
-            But something was missing.
+            As AI reshaped every industry, we kept seeing the same gap: <span className="text-white font-semibold">powerful technology trapped inside impressive demos that fell apart in real workflows.</span>
           </p>
 
           <p className="text-lg text-white/50 leading-relaxed">
-            As AI reshaped industries and e-commerce exploded, we saw more people wanting to build something of their own, products with purpose, platforms with independence, ideas that mattered.
-          </p>
-
-          <p className="text-lg text-white font-semibold leading-relaxed">
-            We were on the same journey.
+            We saw founders with great ideas struggling to build products that actually worked — and enterprise AI tools that were too generic to solve specific problems well.
           </p>
 
           <GlassCard className="relative my-10 p-8">
@@ -45,8 +40,7 @@ export function OurStory() {
           </GlassCard>
 
           <p className="text-lg text-white/50 leading-relaxed">
-            Not as another agency.
-            But as a focused, hands-on product studio, where strategy, design, and execution come together to help you ship something real.
+            A focused, hands-on product studio where deep engineering experience meets research-driven design — helping ideas become products people actually reach for every day.
           </p>
 
           {/* Founders attribution */}

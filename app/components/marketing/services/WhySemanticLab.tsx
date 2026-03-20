@@ -66,14 +66,14 @@ export function WhySemanticLab() {
             </h2>
 
             <p className="text-lg text-white/50 leading-relaxed mb-8">
-              We're not an agency. We're founders who build with you — not just for you.
+              We're not an agency. We're builders who go deep on every project — because your product deserves the same care as our own.
             </p>
 
             {/* Quote */}
             <div className="relative glass-card rounded-2xl p-8">
               <div className="absolute -left-[2px] top-8 w-1 h-16 bg-gradient-to-b from-lime to-teal rounded-full" />
               <p className="text-white font-display text-xl italic leading-relaxed mb-4">
-                "We've been on the other side, building products for someone else's roadmap. Now we help founders build their own."
+                "We bring the same obsession to your product that we bring to our own — because builder-to-builder is how the best work gets done."
               </p>
               <p className="text-sm text-white/40 font-medium">
                 — Raihan & Naila

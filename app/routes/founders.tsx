@@ -6,7 +6,7 @@ export function meta() {
   const title =
     "Meet the Founders Behind SemanticLab | AI Product Studio";
   const description =
-    "Meet Raihan and Naila, the husband-and-wife duo who left corporate tech to build AI products that actually work — from e-commerce tools to career platforms.";
+    "Meet Raihan and Naila — 12+ years of platform engineering and product design, now building AI products that actually work. From e-commerce tools to career platforms.";
   const ogImage = "/images/og-default.jpg";
   const url = "https://semanticlab.ai/founders";
 
@@ -47,12 +47,12 @@ export default function Founders() {
             </div>
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 tracking-tight">
-              We Left Corporate to Build{" "}
-              <span className="gradient-text-lime">Something We'd Be Proud Of</span>
+              We Build AI Products{" "}
+              <span className="gradient-text-lime">Backed by a Decade of Shipping at Scale.</span>
             </h1>
 
             <p className="text-xl text-white/50 max-w-2xl mx-auto">
-              Not a VC-funded startup chasing growth at all costs. A founder-led duo obsessed with building AI products that actually work.
+              A focused product studio combining deep engineering leadership with research-driven design. We build AI tools that work in the real world — not just in demos.
             </p>
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function Founders() {
               </div>
 
               <p className="text-white/50 leading-relaxed mb-6">
-                12+ years in tech, 7+ leading engineering teams. Director of Technology at Australia's largest grassroots sports platform. Led a $12M+ platform transformation and migrated 800+ APIs to modern microservices.
+                12+ years building platforms at scale. Led a $12M+ platform transformation, scaled engineering from 14 to 35, and migrated 800+ APIs to modern microservices. Deep expertise in cloud-native architecture and API platform design.
               </p>
 
               <div className="space-y-3 mb-6">
@@ -184,13 +184,13 @@ export default function Founders() {
 
               <div className="space-y-6 text-lg text-white/50 leading-relaxed">
                 <p>
-                  After years in corporate tech, building payment platforms, designing mobile apps, leading engineering teams, Raihan was made redundant in late 2024. Instead of jumping back into the corporate cycle, we saw an opportunity.
+                  After over a decade building platforms at scale — payment systems, sports tech, SaaS products — we kept seeing the same pattern.
                 </p>
                 <p>
-                  We realised that <span className="text-white font-semibold">AI was powerful enough to solve real problems, but most AI products were built for demos, not for daily use.</span>
+                  <span className="text-white font-semibold">AI was powerful enough to solve real problems, but most AI products were built for demos, not for daily use.</span>
                 </p>
                 <p>
-                  So we started SemanticLab at our dinner table in Melbourne, an AI product studio focused on building tools that people actually reach for every day.
+                  We started SemanticLab at our dinner table in Melbourne — an AI product studio focused on building tools that people actually reach for every day.
                 </p>
                 <p className="font-display text-xl text-white italic">
                   "We don't build AI for the sake of AI. We find real problems and build the simplest solution that works."
@@ -224,7 +224,7 @@ export default function Founders() {
                 },
                 {
                   num: "3",
-                  text: "Support was always a queue. Never the builder. We wanted users to talk directly to us, the people who actually write the code and design the interfaces.",
+                  text: "With most tools, support is a queue — never the builder. We wanted users to talk directly to the people who actually write the code and design the interfaces.",
                 },
               ].map((item) => (
                 <div key={item.num} className="flex gap-6 glass-card rounded-2xl p-6">

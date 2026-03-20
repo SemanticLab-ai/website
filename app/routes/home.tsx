@@ -35,12 +35,12 @@ export default function Home() {
   return (
     <>
       <StudioHero />
-      <OurStory />
       <WhatWeDo />
-      <HowWereDifferent />
       <PlatformsBuilt />
+      <HowWereDifferent />
       <WhoWeWorkWith />
       <OurProcess />
+      <OurStory />
       <StudioCTA />
     </>
   );

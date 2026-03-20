@@ -46,8 +46,8 @@ export function HowWereDifferent() {
             badgeIcon={Sparkles}
             title={
               <>
-                We're Founders,{" "}
-                <span className="gradient-text-lime">Not Just Service Providers.</span>
+                We Build With You,{" "}
+                <span className="gradient-text-lime">Not Just For You.</span>
               </>
             }
             subtitle="We stay close to the work. We stay close to you."
@@ -58,7 +58,7 @@ export function HowWereDifferent() {
           <GlassCard className="relative p-8">
             <div className="absolute -left-[2px] top-8 w-1 h-16 bg-gradient-to-b from-lime to-teal rounded-full" />
             <p className="text-white font-display text-xl italic leading-relaxed mb-4">
-              "We've been on the other side, building products for someone else's roadmap. Now we help founders build their own."
+              "Every product we touch gets the same care we put into our own — because we know what it takes to ship something that lasts."
             </p>
             <p className="text-sm text-white/40 font-medium">
               — Raihan & Naila

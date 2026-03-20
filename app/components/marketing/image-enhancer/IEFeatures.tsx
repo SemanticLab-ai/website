@@ -37,7 +37,7 @@ export function IEFeatures() {
     },
     {
       icon: Crown,
-      title: "Pinnacle Pipeline",
+      title: "Studio Pipeline",
       description: "Our premium tier with human-in-the-loop QA for enterprise-grade perfection on every image.",
       gradient: "from-signal-amber to-yellow-400",
     },

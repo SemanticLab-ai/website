@@ -75,8 +75,7 @@ export function FoundersSection() {
             <div className="relative bg-white rounded-2xl p-8 border border-slate/10 shadow-xl mb-8">
               <div className="absolute -left-3 top-8 w-1 h-16 bg-gradient-to-b from-vector-rose to-neural-teal rounded-full" />
               <p className="text-charcoal font-display text-xl italic leading-relaxed mb-4">
-                "We got tired of building products for other people's roadmaps.
-                So we started building AI products that solve problems we actually care about."
+                "We spent a decade learning what makes products work at scale. Now we channel that into building AI tools that solve real problems — for ourselves and for the founders we work with."
               </p>
               <p className="text-sm text-slate font-medium">
                 — Raihan & Naila
