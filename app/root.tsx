@@ -24,11 +24,11 @@ const GTM_ID = "GTM-XXXXXXX";
 
 export function meta() {
   return [
-    { title: "SemanticLab - AI Product Studio" },
+    { title: "SemanticLab - Designing Intelligent Businesses" },
     {
       name: "description",
       content:
-        "SemanticLab is a founder-led AI product studio building tools for e-commerce, career tech, and beyond. From strategy to launch.",
+        "SemanticLab is a product innovation partner helping businesses identify and build intelligent products, systems and experiences.",
     },
   ];
 }
@@ -43,7 +43,7 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..700&display=swap",
   },
 ];
 
