@@ -1,17 +1,10 @@
 import type { Route } from "./+types/home";
-import { StudioHero } from "~/components/marketing/home/StudioHero";
-import { OurStory } from "~/components/marketing/home/OurStory";
-import { WhatWeDo } from "~/components/marketing/home/WhatWeDo";
-import { HowWereDifferent } from "~/components/marketing/home/HowWereDifferent";
-import { PlatformsBuilt } from "~/components/marketing/home/PlatformsBuilt";
-import { WhoWeWorkWith } from "~/components/marketing/home/WhoWeWorkWith";
-import { OurProcess } from "~/components/marketing/home/OurProcess";
-import { StudioCTA } from "~/components/marketing/home/StudioCTA";
+import { IntelligentHome } from "~/components/marketing/home/IntelligentHome";
 
 export function meta({}: Route.MetaArgs) {
-  const title = "SemanticLab - Founder-Led AI Product Studio";
+  const title = "SemanticLab - Designing Intelligent Businesses";
   const description =
-    "SemanticLab is a founder-led product studio helping ambitious individuals turn validated ideas into AI-ready digital platforms - from strategy to launch.";
+    "SemanticLab is a product innovation partner helping founders and business leaders move from strategic opportunity to intelligent products and systems.";
   const ogImage = "/images/og-default.jpg";
   const url = "https://semanticlab.ai/";
 
@@ -32,16 +25,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return (
-    <>
-      <StudioHero />
-      <WhatWeDo />
-      <PlatformsBuilt />
-      <HowWereDifferent />
-      <WhoWeWorkWith />
-      <OurProcess />
-      <OurStory />
-      <StudioCTA />
-    </>
-  );
+  return <IntelligentHome />;
 }
