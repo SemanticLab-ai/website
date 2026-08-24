@@ -46,6 +46,12 @@ The final comparison places the source and normalised implementation together at
 - P2 — Six-column card titles were crowded at 1024 px. Card padding and type scale are now tuned specifically for the reference range.
 - Evidence: `tmp/design-qa/services-mobile-390x844.png`, `tmp/design-qa/services-mobile-390x844-pass-2.png` and `tmp/design-qa/services-comparison-final.png`.
 
+### Annotation pass
+
+- P2 — The qualification form submit hover was not visually apparent. The button now inverts from lime / ink to ink / warm white, with the same high-contrast treatment on keyboard focus.
+- P2 — The direct-email row did not align with the supporting copy above it. Its label, icon and address now share a flex alignment and the row begins on the same desktop content line as the principle copy.
+- Evidence: browser QA at 1187 × 1260 confirmed the submit state changes to `rgb(8, 11, 9)` / `rgb(246, 246, 244)` and the email label/link share the same top coordinate. A 390 × 844 follow-up confirmed no horizontal overflow.
+
 ### Final pass
 
 - The final equal-size comparison confirms the intended hero composition, editorial type, black / warm-white / lime palette, abstract data motif, six connected capabilities and fine-line surfaces.
@@ -59,6 +65,7 @@ The final comparison places the source and normalised implementation together at
 - Mobile navigation opens and closes, updates `aria-expanded`, locks background scroll and closes before following the Strategy Engagement anchor.
 - The Strategy Engagement anchor settles below the fixed header.
 - Form inputs, selects, textareas, focus treatment and populated states were exercised with synthetic local data.
+- The qualification form submit hover and keyboard-focus states use a visible high-contrast inversion.
 - Required fields, explicit labels, appropriate autocomplete values and semantic input types are present.
 - The final mail-app handoff was not launched by the browser runner because it crosses into an external application; the generated `mailto:` path is covered by typecheck and production build. This is a residual interaction test gap, not a visual defect.
 - Heading order begins with one `h1` and proceeds through section `h2` / card `h3` headings.

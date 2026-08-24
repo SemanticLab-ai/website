@@ -82,7 +82,7 @@ export function StrategyEngagement() {
           </div>
 
           <p className="strategy-engagement__email">
-            Prefer to write directly?{" "}
+            <span>Prefer to write directly?</span>
             <a href="mailto:hello@semanticlab.ai">
               <Mail aria-hidden="true" /> hello@semanticlab.ai
             </a>

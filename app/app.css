@@ -1961,9 +1961,15 @@ body {
 }
 
 .strategy-engagement__email {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
   margin-top: 42px;
+  padding-left: 29px;
   color: rgba(8, 11, 9, 0.5);
   font-size: 0.7rem;
+  line-height: 1.4;
 }
 
 .strategy-engagement__email a {
@@ -1972,6 +1978,11 @@ body {
   gap: 7px;
   color: var(--semantic-ink);
   font-weight: 600;
+  transition: color 160ms ease;
+}
+
+.strategy-engagement__email a:hover {
+  color: #376f1d;
 }
 
 .strategy-engagement__email svg {
@@ -2068,6 +2079,24 @@ body {
 .strategy-form__footer .strategy-button {
   flex: 0 0 auto;
   cursor: pointer;
+}
+
+.strategy-form__footer .strategy-button:hover {
+  border-color: var(--semantic-ink);
+  background: var(--semantic-ink);
+  color: var(--semantic-white);
+}
+
+.strategy-form__footer .strategy-button:focus-visible {
+  border-color: var(--semantic-ink);
+  background: var(--semantic-ink);
+  color: var(--semantic-white);
+  outline: 3px solid var(--semantic-ink);
+  outline-offset: 4px;
+}
+
+.strategy-form__footer .strategy-button:active {
+  transform: translateY(0);
 }
 
 .strategy-form__status {
