@@ -29,14 +29,15 @@ export function WorkEvidenceList({ items, tone }: WorkEvidenceListProps) {
     <div className={`work-evidence-list work-evidence-list--${tone}`}>
       {items.map((item, index) => {
         const Icon = motifIcons[item.motif];
+        const isExternal = item.href.startsWith("http");
 
         return (
           <a
             key={item.name}
             className="work-evidence-row"
             href={item.href}
-            target="_blank"
-            rel="noreferrer"
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noreferrer" : undefined}
             aria-label={`View ${item.name}`}
           >
             <span className="work-evidence-row__index">0{index + 1}</span>
