@@ -7,7 +7,7 @@ const navigation = [
   { label: "Vision", href: "/#vision" },
   { label: "Framework", href: "/#framework" },
   { label: "Services", href: "/services" },
-  { label: "Work", href: "/#work" },
+  { label: "Work", href: "/work" },
   { label: "About", href: "/#about" },
 ];
 
@@ -42,11 +42,19 @@ export function Navigation() {
         <BrandLogo />
 
         <nav className="site-nav" aria-label="Primary navigation">
-          {navigation.map((item) => (
-            <Link key={item.label} to={item.href}>
-              {item.label}
-            </Link>
-          ))}
+          {navigation.map((item) => {
+            const isActive = item.href === pathname;
+
+            return (
+              <Link
+                key={item.label}
+                to={item.href}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <a className="strategy-button strategy-button--compact" href={strategyHref}>
@@ -71,16 +79,21 @@ export function Navigation() {
         className={`mobile-navigation${mobileMenuOpen ? " is-open" : ""}`}
       >
         <nav aria-label="Mobile navigation">
-          {navigation.map((item, index) => (
-            <Link
-              key={item.label}
-              to={item.href}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <span>0{index + 1}</span>
-              {item.label}
-            </Link>
-          ))}
+          {navigation.map((item, index) => {
+            const isActive = item.href === pathname;
+
+            return (
+              <Link
+                key={item.label}
+                to={item.href}
+                aria-current={isActive ? "page" : undefined}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span>0{index + 1}</span>
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
         <a
           className="strategy-button"

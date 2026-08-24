@@ -9,6 +9,8 @@ import {
   Rocket,
 } from "lucide-react";
 import { Link } from "react-router";
+import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
+import { recentProductWork } from "~/data/work";
 
 const strategyHref = "/services#strategy-engagement";
 
@@ -91,24 +93,6 @@ const capabilities = [
       "Product engineering",
       "Deployment and operations",
     ],
-  },
-];
-
-const builtProducts = [
-  {
-    name: "Syncd",
-    type: "Connected commerce intelligence",
-    href: "/products/syncd",
-  },
-  {
-    name: "Image Enhancer",
-    type: "AI-assisted product imagery",
-    href: "/products/image-enhancer",
-  },
-  {
-    name: "SmartApply",
-    type: "A focused career workflow",
-    href: "/products/smartapply",
   },
 ];
 
@@ -308,27 +292,19 @@ export function IntelligentHome() {
         <div className="semantic-shell">
           <div className="semantic-section-heading">
             <div>
-              <p className="semantic-kicker">Built products</p>
-              <h2>Capability made tangible.</h2>
+              <p className="semantic-kicker">Recent product work</p>
+              <h2>Built to work in the real world.</h2>
             </div>
             <p>
-              Selected products are shown as evidence of how we think and
-              build, not as the primary path through the studio.
+              Current products show how we connect strategy, experience,
+              intelligence and engineering around real operational needs.
             </p>
           </div>
 
-          <div className="work-list">
-            {builtProducts.map((product, index) => (
-              <Link key={product.name} to={product.href}>
-                <span>0{index + 1}</span>
-                <div>
-                  <h3>{product.name}</h3>
-                  <p>{product.type}</p>
-                </div>
-                <ArrowUpRight aria-hidden="true" />
-              </Link>
-            ))}
-          </div>
+          <WorkEvidenceList items={recentProductWork} tone="light" />
+          <Link className="semantic-text-link semantic-text-link--dark" to="/work">
+            Explore selected work <ArrowUpRight aria-hidden="true" />
+          </Link>
         </div>
       </section>
 
