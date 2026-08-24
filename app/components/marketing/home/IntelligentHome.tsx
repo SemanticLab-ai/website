@@ -10,8 +10,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router";
 
-const strategyHref =
-  "mailto:hello@semanticlab.ai?subject=Strategy%20Engagement%20Request";
+const strategyHref = "/services#strategy-engagement";
 
 const disciplines = ["Strategy", "Experience", "Intelligence", "Engineering"];
 

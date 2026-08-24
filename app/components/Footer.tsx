@@ -2,8 +2,7 @@ import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
 import { Link } from "react-router";
 import { BrandLogo } from "~/components/BrandLogo";
 
-const strategyHref =
-  "mailto:hello@semanticlab.ai?subject=Strategy%20Engagement%20Request";
+const strategyHref = "/services#strategy-engagement";
 
 export function Footer() {
   return (
