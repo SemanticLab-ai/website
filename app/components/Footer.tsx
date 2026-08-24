@@ -22,7 +22,7 @@ export function Footer() {
             <Link to="/#vision">Vision</Link>
             <Link to="/#framework">Framework</Link>
             <Link to="/services">Services</Link>
-            <Link to="/#work">Work</Link>
+            <Link to="/work">Work</Link>
           </div>
           <div>
             <p className="site-footer__label">Company</p>
