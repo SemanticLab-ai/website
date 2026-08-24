@@ -11,8 +11,7 @@ const navigation = [
   { label: "About", href: "/#about" },
 ];
 
-const strategyHref =
-  "mailto:hello@semanticlab.ai?subject=Strategy%20Engagement%20Request";
+const strategyHref = "/services#strategy-engagement";
 
 export function Navigation() {
   const { pathname } = useLocation();
@@ -73,13 +72,21 @@ export function Navigation() {
       >
         <nav aria-label="Mobile navigation">
           {navigation.map((item, index) => (
-            <Link key={item.label} to={item.href}>
+            <Link
+              key={item.label}
+              to={item.href}
+              onClick={() => setMobileMenuOpen(false)}
+            >
               <span>0{index + 1}</span>
               {item.label}
             </Link>
           ))}
         </nav>
-        <a className="strategy-button" href={strategyHref}>
+        <a
+          className="strategy-button"
+          href={strategyHref}
+          onClick={() => setMobileMenuOpen(false)}
+        >
           Request a Strategy Engagement
           <ArrowUpRight aria-hidden="true" />
         </a>
