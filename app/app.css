@@ -501,7 +501,7 @@ body {
   overflow: hidden;
 }
 
-.brand-logo img {
+.brand-logo__lockup {
   display: block;
   width: 100%;
   height: auto;
