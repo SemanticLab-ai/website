@@ -13,6 +13,12 @@ const navigation = [
 
 const strategyHref = "/services#strategy-engagement";
 
+function isNavigationActive(href: string, pathname: string) {
+  if (href === "/work") return pathname.startsWith("/work");
+  if (href === "/#about") return pathname === "/founders";
+  return href === pathname;
+}
+
 export function Navigation() {
   const { pathname } = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -43,10 +49,7 @@ export function Navigation() {
 
         <nav className="site-nav" aria-label="Primary navigation">
           {navigation.map((item) => {
-            const isActive =
-              item.href === "/work"
-                ? pathname.startsWith("/work")
-                : item.href === pathname;
+            const isActive = isNavigationActive(item.href, pathname);
 
             return (
               <Link
@@ -83,10 +86,7 @@ export function Navigation() {
       >
         <nav aria-label="Mobile navigation">
           {navigation.map((item, index) => {
-            const isActive =
-              item.href === "/work"
-                ? pathname.startsWith("/work")
-                : item.href === pathname;
+            const isActive = isNavigationActive(item.href, pathname);
 
             return (
               <Link
