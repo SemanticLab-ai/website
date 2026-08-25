@@ -1,12 +1,36 @@
-import { Button } from "~/components/ui/button";
-import { Users, Code, Palette, Mail, Linkedin, ArrowRight, CheckCircle, Sparkles, Heart } from "lucide-react";
+import { ArrowUpRight, Linkedin } from "lucide-react";
 import { Link } from "react-router";
+import { previousFounderWork, recentProductWork } from "~/data/work";
+
+const strategyHref = "/services#strategy-engagement";
+
+const disciplines = [
+  {
+    index: "01",
+    name: "Strategy",
+    summary: "Start with the business decision, not a predetermined solution.",
+  },
+  {
+    index: "02",
+    name: "Experience",
+    summary: "Make complexity understandable to the people living with it.",
+  },
+  {
+    index: "03",
+    name: "Intelligence",
+    summary: "Apply AI where it improves a real decision or workflow.",
+  },
+  {
+    index: "04",
+    name: "Engineering",
+    summary: "Carry the idea into systems that can operate and evolve.",
+  },
+] as const;
 
 export function meta() {
-  const title =
-    "Meet the Founders Behind SemanticLab | AI Product Studio";
+  const title = "Founders | SemanticLab";
   const description =
-    "Meet Raihan and Naila - 12+ years of platform engineering and product design, now building AI products that actually work. From e-commerce tools to career platforms.";
+    "Meet Naila Rahman and Raihan Razi, the founder-led partnership connecting product strategy, experience design, intelligence and engineering at SemanticLab.";
   const ogImage = "/images/og-default.jpg";
   const url = "https://semanticlab.ai/founders";
 
@@ -28,285 +52,204 @@ export function meta() {
 
 export default function Founders() {
   return (
-    <div className="relative overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-dark-bg" />
-        <div className="absolute inset-0 dot-pattern opacity-30" />
-
-        {/* Decorative glows */}
-        <div className="absolute top-20 right-[10%] w-[500px] h-[500px] bg-lime/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-[5%] w-[400px] h-[400px] bg-teal/5 rounded-full blur-3xl" />
-
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-lime/10 backdrop-blur rounded-full border border-lime/20 mb-8">
-              <Users className="w-4 h-4 text-lime" />
-              <span className="text-sm font-semibold text-lime uppercase tracking-wider">Meet the Team</span>
-            </div>
-
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 tracking-tight">
-              We Build AI Products{" "}
-              <span className="gradient-text-lime">Backed by a Decade of Shipping at Scale.</span>
+    <div className="semantic-founders">
+      <section className="founders-hero" aria-labelledby="founders-hero-title">
+        <div className="semantic-shell founders-hero__inner">
+          <div className="founders-hero__copy">
+            <p className="semantic-kicker">Two disciplines. One mission.</p>
+            <h1 id="founders-hero-title">
+              One designs for <em>people.</em> One engineers for <em>scale.</em>
             </h1>
-
-            <p className="text-xl text-white/50 max-w-2xl mx-auto">
-              A focused product studio combining deep engineering leadership with research-driven design. We build AI tools that work in the real world - not just in demos.
+            <p>
+              SemanticLab brings product strategy, experience design,
+              intelligence and engineering into one founder-led partnership.
             </p>
+            <Link className="semantic-text-link" to="/work">
+              See how we work <ArrowUpRight aria-hidden="true" />
+            </Link>
           </div>
+
+          <figure className="founders-hero__portrait">
+            <span aria-hidden="true" className="founders-hero__marker founders-hero__marker--top" />
+            <img
+              src="/images/founders/founders.jpg"
+              alt="SemanticLab founders Raihan Razi and Naila Rahman"
+              width={1200}
+              height={900}
+              fetchPriority="high"
+            />
+            <figcaption>Founder-led from Melbourne, Australia</figcaption>
+            <span aria-hidden="true" className="founders-hero__marker founders-hero__marker--bottom" />
+          </figure>
         </div>
       </section>
 
-      {/* Founders Cards */}
-      <section className="relative py-20">
-        <div className="absolute inset-0 bg-dark-surface" />
-        <div className="absolute inset-0 dot-pattern opacity-20" />
+      <section className="founders-profiles" aria-labelledby="founders-profiles-title">
+        <div className="semantic-shell">
+          <p className="semantic-kicker">The partnership</p>
+          <h2 id="founders-profiles-title">
+            One perspective shapes how people <em>experience</em> complexity.
+            The other shapes how technology can <em>carry it.</em>
+          </h2>
 
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
-            {/* Raihan Card */}
-            <div className="glass-card rounded-3xl p-8 hover-lift">
-              <div className="flex items-start gap-6 mb-6">
-                <img
-                  src="/images/founders/raihan.jpg"
-                  alt="Raihan Razi"
-                  width={96}
-                  height={96}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-24 h-24 rounded-2xl object-cover shadow-lg border border-lime/10"
-                />
-                <div>
-                  <div className="w-12 h-12 rounded-xl bg-lime/10 flex items-center justify-center mb-3">
-                    <Code className="w-6 h-6 text-lime" />
-                  </div>
-                  <h3 className="text-2xl font-display font-bold text-white">Raihan Razi</h3>
-                  <p className="text-lime font-semibold">Technical Founder</p>
-                </div>
-              </div>
-
-              <p className="text-white/50 leading-relaxed mb-6">
-                12+ years building platforms at scale. Led a $12M+ platform transformation, scaled engineering from 14 to 35, and migrated 800+ APIs to modern microservices. Deep expertise in cloud-native architecture and API platform design.
-              </p>
-
-              <div className="space-y-3 mb-6">
-                {[
-                  "Director of Technology @ Stack Sports (GameDay)",
-                  "Scaled engineering from 14 to 35 across multiple squads",
-                  "Cloud-native architecture & API platform specialist",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-lime" />
-                    <span className="text-sm text-white/50">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <a
-                href="https://linkedin.com/in/raihanrazi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-lime font-semibold hover:gap-3 transition-all"
-              >
-                <Linkedin className="w-4 h-4" />
-                Connect on LinkedIn
-              </a>
-            </div>
-
-            {/* Naila Card */}
-            <div className="glass-card rounded-3xl p-8 hover-lift">
-              <div className="flex items-start gap-6 mb-6">
-                <img
-                  src="/images/founders/naila.jpg"
-                  alt="Naila Rahman"
-                  width={96}
-                  height={96}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-24 h-24 rounded-2xl object-cover object-top shadow-lg border border-teal/10"
-                />
-                <div>
-                  <div className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center mb-3">
-                    <Palette className="w-6 h-6 text-teal" />
-                  </div>
-                  <h3 className="text-2xl font-display font-bold text-white">Naila Rahman</h3>
-                  <p className="text-teal font-semibold">Design Founder</p>
-                </div>
-              </div>
-
-              <p className="text-white/50 leading-relaxed mb-6">
-                Product designer with an architecture background. 7+ years designing physical spaces, now applying that systems thinking to digital products. Podly, GameDay, Codex - making complex platforms feel effortless.
-              </p>
-
-              <div className="space-y-3 mb-6">
-                {[
-                  "Product Designer @ Podly (sustainability SaaS)",
-                  "Project & Design Lead @ GameDay (iOS redesign)",
-                  "Architecture background - systems thinking in UX",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-teal" />
-                    <span className="text-sm text-white/50">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              <a
-                href="https://www.linkedin.com/in/nailarahmanrazi/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-teal font-semibold hover:gap-3 transition-all"
-              >
-                <Linkedin className="w-4 h-4" />
-                Connect on LinkedIn
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Story Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-dark-bg" />
-        <div className="absolute inset-0 dot-pattern opacity-30" />
-        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-lime/5 rounded-full blur-3xl" />
-
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-lime/10 backdrop-blur rounded-full border border-lime/20 mb-8">
-              <Sparkles className="w-4 h-4 text-lime" />
-              <span className="text-sm font-semibold text-lime uppercase tracking-wider">Our Story</span>
-            </div>
-
-            <div className="relative glass-card rounded-3xl p-8 md:p-12">
-              <div className="absolute -left-[2px] top-12 w-1 h-32 bg-gradient-to-b from-lime to-teal rounded-full" />
-
-              <div className="space-y-6 text-lg text-white/50 leading-relaxed">
+          <div className="founders-profiles__grid">
+            <article className="founder-profile">
+              <img
+                src="/images/founders/naila.jpg"
+                alt="Naila Rahman"
+                width={1413}
+                height={1853}
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="founder-profile__copy">
+                <p className="founder-profile__role">
+                  Product strategy &amp; experience design
+                </p>
+                <h3>Naila Rahman</h3>
                 <p>
-                  After over a decade building platforms at scale - payment systems, sports tech, SaaS products - we kept seeing the same pattern.
+                  Architecture-trained and research-led, Naila shapes products
+                  and services around how people understand, decide and act.
                 </p>
                 <p>
-                  <span className="text-white font-semibold">AI was powerful enough to solve real problems, but most AI products were built for demos, not for daily use.</span>
+                  Her work connects discovery, product strategy, service design
+                  and interface decisions into a coherent experience.
                 </p>
-                <p>
-                  We started SemanticLab at our dinner table in Melbourne - an AI product studio focused on building tools that people actually reach for every day.
-                </p>
-                <p className="font-display text-xl text-white italic">
-                  "We don't build AI for the sake of AI. We find real problems and build the simplest solution that works."
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why SemanticLab */}
-      <section className="relative py-20">
-        <div className="absolute inset-0 bg-dark-surface" />
-        <div className="absolute inset-0 dot-pattern opacity-20" />
-
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-white text-center mb-12">
-              Why We Built <span className="gradient-text-lime">SemanticLab</span>
-            </h2>
-
-            <div className="space-y-6">
-              {[
-                {
-                  num: "1",
-                  text: "Most AI tools are impressive demos that fall apart in real workflows. We build products you'll actually use every day, not just once to see what AI can do.",
-                },
-                {
-                  num: "2",
-                  text: "Big companies build generic platforms. We build focused tools that do one thing exceptionally well, whether that's product photos or resume tailoring.",
-                },
-                {
-                  num: "3",
-                  text: "With most tools, support is a queue - never the builder. We wanted users to talk directly to the people who actually write the code and design the interfaces.",
-                },
-              ].map((item) => (
-                <div key={item.num} className="flex gap-6 glass-card rounded-2xl p-6">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-lime/10 flex items-center justify-center">
-                    <span className="text-xl font-bold text-lime">{item.num}</span>
-                  </div>
-                  <p className="text-white/50 leading-relaxed">{item.text}</p>
-                </div>
-              ))}
-            </div>
-
-            <p className="text-center text-xl font-display text-white mt-8">
-              We wanted to fix all three. <span className="gradient-text-lime">So we did.</span>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* What Founder-Led Means */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-dark-bg" />
-        <div className="absolute inset-0 dot-pattern opacity-30" />
-        <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-teal/5 rounded-full blur-3xl" />
-
-        <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-12">
-              What <span className="text-lime">"Founder-Led"</span> Actually Means
-            </h2>
-
-            <div className="grid gap-4 md:grid-cols-2 mb-12">
-              {[
-                "You email hello@semanticlab.ai, we reply (not a bot)",
-                "Feature requests go directly to the builders",
-                "Bug fixes ship in days, not quarters",
-                "Your success is our only KPI",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-4 glass-card rounded-xl p-4">
-                  <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
-                  <span className="text-white/80 text-left">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            <p className="text-white/50 text-lg mb-8">
-              We're small by choice. Focused by design.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="h-14 px-8 text-lg rounded-full bg-lime hover:bg-lime-dark text-dark-bg font-semibold shadow-2xl shadow-lime/30 transition-all duration-300 hover:scale-105"
-                asChild
-              >
-                <Link to="/#platforms" className="flex items-center gap-3">
-                  Explore Our Products
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </Button>
-
-              <Button
-                variant="outline"
-                size="lg"
-                className="h-14 px-8 text-lg rounded-full glass-card text-white hover:border-lime/30 transition-all duration-300 hover:scale-105"
-                asChild
-              >
-                <a href="mailto:hello@semanticlab.ai" className="flex items-center gap-3">
-                  <Mail className="w-5 h-5" />
-                  Get in Touch
+                <a
+                  className="founder-profile__link"
+                  href="https://www.linkedin.com/in/nailarahmanrazi/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Linkedin aria-hidden="true" /> LinkedIn
+                  <ArrowUpRight aria-hidden="true" />
                 </a>
-              </Button>
-            </div>
+              </div>
+            </article>
+
+            <article className="founder-profile">
+              <img
+                src="/images/founders/raihan.jpg"
+                alt="Raihan Razi"
+                width={300}
+                height={300}
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="founder-profile__copy">
+                <p className="founder-profile__role">Engineering &amp; AI delivery</p>
+                <h3>Raihan Razi</h3>
+                <p>
+                  Raihan connects product thinking with cloud, platform and AI
+                  delivery so complex systems remain useful in the real world.
+                </p>
+                <p>
+                  His previous roles span product management, platform
+                  leadership and enterprise system delivery. Selected systems
+                  are attributed below.
+                </p>
+                <a
+                  className="founder-profile__link"
+                  href="https://linkedin.com/in/raihanrazi"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Linkedin aria-hidden="true" /> LinkedIn
+                  <ArrowUpRight aria-hidden="true" />
+                </a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* Footer spacer with heart */}
-      <section className="py-12 bg-dark-bg text-center">
-        <div className="flex items-center justify-center gap-2 text-white/40">
-          <span>Built with</span>
-          <Heart className="w-4 h-4 text-lime fill-lime" />
-          <span>in Melbourne, Australia</span>
+      <section className="founders-connection" aria-labelledby="founders-connection-title">
+        <div className="semantic-shell">
+          <div className="founders-connection__heading">
+            <div>
+              <p className="semantic-kicker">Where the disciplines meet</p>
+              <h2 id="founders-connection-title">
+                The thinking stays connected all the way through.
+              </h2>
+            </div>
+            <p>
+              Founder-led means the people shaping the opportunity remain close
+              to the design and engineering decisions that make it real.
+            </p>
+          </div>
+
+          <ol className="founders-disciplines">
+            {disciplines.map((discipline) => (
+              <li key={discipline.name}>
+                <span>{discipline.index}</span>
+                <h3>{discipline.name}</h3>
+                <p>{discipline.summary}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="founders-evidence" aria-labelledby="founders-evidence-title">
+        <div className="semantic-shell">
+          <div className="founders-evidence__heading">
+            <h2 id="founders-evidence-title">
+              Experience that <em>carries</em> into the work.
+            </h2>
+            <p>
+              Current product work sits beside selected systems led in previous
+              roles. The attribution stays explicit.
+            </p>
+          </div>
+
+          <div className="founders-evidence__rails">
+            <div>
+              <p className="founders-evidence__label">Current product work</p>
+              <ul>
+                {recentProductWork.map((item) => (
+                  <li key={item.name}>
+                    <Link to={item.href}>
+                      <span>{item.name}</span>
+                      <ArrowUpRight aria-hidden="true" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="founders-evidence__label">
+                Selected previous-role work · Raihan Razi
+              </p>
+              <ul>
+                {previousFounderWork.map((item) => (
+                  <li key={item.name}>
+                    <a href={item.href} target="_blank" rel="noreferrer">
+                      <span>{item.name}</span>
+                      <ArrowUpRight aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <p className="founders-evidence__note">
+            Previous-role examples are provided for founder experience and are
+            not represented as SemanticLab client engagements.
+          </p>
+        </div>
+      </section>
+
+      <section className="founders-cta" aria-labelledby="founders-cta-title">
+        <div className="semantic-shell founders-cta__inner">
+          <h2 id="founders-cta-title">
+            Where could this combination create meaningful advantage?
+          </h2>
+          <a className="strategy-button" href={strategyHref}>
+            Request a Strategy Engagement
+            <ArrowUpRight aria-hidden="true" />
+          </a>
         </div>
       </section>
     </div>

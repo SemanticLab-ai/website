@@ -257,8 +257,8 @@ export function IntelligentHome() {
                 <p>Product strategy &amp; experience design</p>
                 <h3>Naila Rahman</h3>
                 <span>
-                  Research-led product thinking, service design and experiences
-                  that make complex systems clear.
+                  Architecture-trained and research-led product thinking that
+                  makes complex systems clear.
                 </span>
               </div>
             </article>
@@ -271,7 +271,7 @@ export function IntelligentHome() {
                 decoding="async"
               />
               <div>
-                <p>Engineering &amp; intelligence delivery</p>
+                <p>Engineering &amp; AI delivery</p>
                 <h3>Raihan Razi</h3>
                 <span>
                   Product engineering, cloud systems and AI delivery designed
@@ -285,6 +285,9 @@ export function IntelligentHome() {
             We don’t just design. We don’t just develop. <em>We design
             intelligent businesses.</em>
           </p>
+          <Link className="semantic-text-link founders-section__link" to="/founders">
+            Meet the founders <ArrowUpRight aria-hidden="true" />
+          </Link>
         </div>
       </section>
 
