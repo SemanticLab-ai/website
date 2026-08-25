@@ -33,7 +33,7 @@
   --color-blush: #FDF2F4;
 
   /* Typography */
-  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
@@ -84,7 +84,7 @@ body {
 
 /* Display font for headings */
 .font-display {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 /* === Gradient text utilities === */
@@ -475,9 +475,9 @@ body {
 .semantic-home h2,
 .semantic-home h3,
 .site-footer h2 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 500;
-  letter-spacing: -0.035em;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 450;
+  letter-spacing: -0.055em;
 }
 
 .semantic-home em {
@@ -618,15 +618,71 @@ body {
 }
 
 .semantic-hero__landscape {
+  --landscape-stage-opacity: 0.96;
   position: absolute;
   inset: 64px -3% -12% auto;
   width: min(78vw, 1220px);
-  height: auto;
+  aspect-ratio: 3 / 2;
+  max-width: none;
+  opacity: var(--landscape-stage-opacity);
+  animation: landscapeReveal 900ms ease-out both;
+}
+
+.data-landscape {
+  isolation: isolate;
+  pointer-events: none;
+}
+
+.data-landscape__layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
   max-width: none;
   object-fit: contain;
   object-position: right bottom;
-  opacity: 0.96;
-  animation: landscapeReveal 900ms ease-out both;
+  will-change: transform, opacity;
+}
+
+.data-landscape__layer--primary {
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 10%,
+    #000 76%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 10%,
+    #000 76%,
+    transparent 100%
+  );
+  animation: dataLandscapeSubmerge 12s 800ms ease-in-out infinite;
+}
+
+.data-landscape__layer--undertow {
+  z-index: 1;
+  opacity: 0.18;
+  filter: blur(1.1px) brightness(1.18);
+  mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 34%,
+    #000 55%,
+    #000 84%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 34%,
+    #000 55%,
+    #000 84%,
+    transparent 100%
+  );
+  animation: dataLandscapeUndertow 15s 350ms ease-in-out infinite;
 }
 
 .semantic-hero__shade {
@@ -736,8 +792,9 @@ body {
 .semantic-hero__disciplines p {
   margin-top: 9px;
   color: var(--semantic-white);
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   font-size: 1.34rem;
+  font-weight: 450;
   line-height: 1;
 }
 
@@ -1051,7 +1108,8 @@ body {
   margin: 96px auto 0;
   padding-top: 58px;
   border-top: 1px solid var(--semantic-line);
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 450;
   font-size: clamp(2.1rem, 3.6vw, 3.8rem);
   letter-spacing: -0.03em;
   line-height: 1.05;
@@ -1246,9 +1304,9 @@ body {
 .semantic-work-page h1,
 .semantic-work-page h2,
 .semantic-work-page h3 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 500;
-  letter-spacing: -0.035em;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 450;
+  letter-spacing: -0.055em;
 }
 
 .semantic-work-page em {
@@ -1267,14 +1325,14 @@ body {
 }
 
 .work-hero__landscape {
+  --landscape-stage-opacity: 0.88;
   position: absolute;
   top: 78px;
   right: -11%;
   width: min(80vw, 1240px);
   max-width: none;
-  height: auto;
-  object-fit: contain;
-  opacity: 0.88;
+  aspect-ratio: 3 / 2;
+  opacity: var(--landscape-stage-opacity);
   animation: landscapeReveal 900ms ease-out both;
 }
 
@@ -1298,16 +1356,16 @@ body {
 }
 
 .work-hero__copy {
-  width: min(100%, 790px);
+  width: min(100%, 810px);
   animation: copyReveal 700ms 120ms ease-out both;
 }
 
 .work-hero h1 {
-  max-width: 780px;
+  max-width: 800px;
   margin-top: 26px;
   color: var(--semantic-white);
-  font-size: clamp(4.7rem, 7vw, 7.5rem);
-  line-height: 0.84;
+  font-size: clamp(4.7rem, 6.2vw, 6.65rem);
+  line-height: 0.88;
 }
 
 .work-hero__copy > p:not(.semantic-kicker) {
@@ -1353,8 +1411,9 @@ body {
 .work-hero__register p {
   margin-top: 8px;
   color: var(--semantic-white);
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   font-size: 1.25rem;
+  font-weight: 450;
   line-height: 1;
 }
 
@@ -1515,8 +1574,40 @@ body {
     transform: translate3d(3%, 2%, 0) scale(1.03);
   }
   to {
-    opacity: 0.96;
+    opacity: var(--landscape-stage-opacity, 0.96);
     transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes dataLandscapeSubmerge {
+  0%,
+  100% {
+    transform: translate3d(0, 2.5%, 0) scale(1.025);
+  }
+  38% {
+    transform: translate3d(-1.15%, -1.8%, 0) scale(1.045);
+  }
+  67% {
+    transform: translate3d(0.75%, 0.8%, 0) scale(1.035);
+  }
+  86% {
+    transform: translate3d(0.15%, 4.8%, 0) scale(1.04);
+  }
+}
+
+@keyframes dataLandscapeUndertow {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: translate3d(2.2%, 7%, 0) scale(1.065);
+  }
+  43% {
+    opacity: 0.26;
+    transform: translate3d(-1.8%, -0.8%, 0) scale(1.095);
+  }
+  72% {
+    opacity: 0.16;
+    transform: translate3d(1%, 4.5%, 0) scale(1.075);
   }
 }
 
@@ -1641,8 +1732,9 @@ body {
     min-height: 72px;
     border-bottom: 1px solid var(--semantic-line);
     color: var(--semantic-white);
-    font-family: "Cormorant Garamond", Georgia, serif;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
     font-size: 2rem;
+    font-weight: 450;
   }
 
   .mobile-navigation nav span {
@@ -1669,9 +1761,9 @@ body {
   }
 
   .semantic-hero__landscape {
+    --landscape-stage-opacity: 0.72;
     inset: auto -28% 0 auto;
     width: 120vw;
-    opacity: 0.72;
   }
 
   .semantic-hero__shade {
@@ -1718,11 +1810,11 @@ body {
   }
 
   .work-hero__landscape {
+    --landscape-stage-opacity: 0.7;
     top: auto;
     right: -31%;
     bottom: -4%;
     width: 125vw;
-    opacity: 0.7;
   }
 
   .work-hero__shade {
@@ -2039,8 +2131,14 @@ body {
   .semantic-hero__landscape,
   .semantic-hero__copy,
   .work-hero__landscape,
-  .work-hero__copy {
+  .work-hero__copy,
+  .data-landscape__layer {
     animation: none;
+  }
+
+  .data-landscape__layer {
+    transform: none;
+    will-change: auto;
   }
 
   .strategy-button,
@@ -2060,9 +2158,9 @@ body {
 .semantic-services h1,
 .semantic-services h2,
 .semantic-services h3 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 500;
-  letter-spacing: -0.035em;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 450;
+  letter-spacing: -0.055em;
 }
 
 .semantic-services em {
@@ -2328,7 +2426,8 @@ body {
   max-width: 760px;
   margin: 64px auto 0;
   color: rgba(246, 246, 244, 0.75);
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 450;
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   letter-spacing: -0.025em;
   line-height: 1.12;
@@ -2790,9 +2889,9 @@ body {
 .semantic-case-study h3,
 .semantic-case-study dt,
 .semantic-case-study dd {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 500;
-  letter-spacing: -0.035em;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 450;
+  letter-spacing: -0.055em;
 }
 
 .case-study-hero {
@@ -2846,7 +2945,7 @@ body {
   max-width: 900px;
   margin-top: 34px;
   color: var(--semantic-white);
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(2.5rem, 4.2vw, 4.8rem);
   font-weight: 400;
   letter-spacing: -0.035em;
@@ -3398,9 +3497,9 @@ body {
 .semantic-founders h1,
 .semantic-founders h2,
 .semantic-founders h3 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 500;
-  letter-spacing: -0.045em;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 450;
+  letter-spacing: -0.055em;
 }
 
 .semantic-founders em {
@@ -3781,8 +3880,9 @@ body {
 }
 
 .founders-evidence li span {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   font-size: clamp(2rem, 2.8vw, 2.9rem);
+  font-weight: 450;
   letter-spacing: -0.035em;
   line-height: 1;
 }

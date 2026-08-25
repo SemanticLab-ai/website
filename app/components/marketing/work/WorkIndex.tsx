@@ -1,4 +1,5 @@
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { AnimatedDataLandscape } from "~/components/marketing/shared/AnimatedDataLandscape";
 import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
 import { previousFounderWork, recentProductWork } from "~/data/work";
 
@@ -8,13 +9,9 @@ export function WorkIndex() {
   return (
     <div className="semantic-work-page">
       <section className="work-hero" aria-labelledby="work-hero-title">
-        <img
+        <AnimatedDataLandscape
           className="work-hero__landscape"
-          src="/images/brand/semantic-data-landscape.png"
           alt=""
-          width={1536}
-          height={1024}
-          fetchPriority="high"
         />
         <div className="work-hero__shade" />
         <div className="semantic-shell work-hero__inner">
