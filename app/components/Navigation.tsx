@@ -43,7 +43,10 @@ export function Navigation() {
 
         <nav className="site-nav" aria-label="Primary navigation">
           {navigation.map((item) => {
-            const isActive = item.href === pathname;
+            const isActive =
+              item.href === "/work"
+                ? pathname.startsWith("/work")
+                : item.href === pathname;
 
             return (
               <Link
@@ -80,7 +83,10 @@ export function Navigation() {
       >
         <nav aria-label="Mobile navigation">
           {navigation.map((item, index) => {
-            const isActive = item.href === pathname;
+            const isActive =
+              item.href === "/work"
+                ? pathname.startsWith("/work")
+                : item.href === pathname;
 
             return (
               <Link

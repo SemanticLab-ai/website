@@ -16,7 +16,7 @@ export const recentProductWork: readonly WorkEvidence[] = [
       "Intelligent onboarding",
       "Workflow orchestration",
     ],
-    href: "https://partshq.io/",
+    href: "/work/partshq",
     motif: "commerce",
   },
   {
@@ -27,7 +27,7 @@ export const recentProductWork: readonly WorkEvidence[] = [
       "Content orchestration",
       "Sponsor reporting",
     ],
-    href: "https://www.sponsoredfeeds.com/",
+    href: "/work/sponsoredfeeds",
     motif: "broadcast",
   },
   {
@@ -38,7 +38,7 @@ export const recentProductWork: readonly WorkEvidence[] = [
       "Human review",
       "Queryable grids",
     ],
-    href: "https://instadash.io/",
+    href: "/work/instadash",
     motif: "data",
   },
 ];

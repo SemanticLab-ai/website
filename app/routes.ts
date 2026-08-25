@@ -10,6 +10,7 @@ export default [
   route("founders", "routes/founders.tsx"),
   route("services", "routes/services.tsx"),
   route("work", "routes/work.tsx"),
+  route("work/:slug", "routes/work-case-study.tsx"),
 
   // Product marketing pages
   route("products/syncd", "routes/products/syncd.tsx"),

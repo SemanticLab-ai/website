@@ -4,6 +4,9 @@ export function loader() {
     { loc: "https://semanticlab.ai/founders", changefreq: "monthly", priority: "0.6" },
     { loc: "https://semanticlab.ai/services", changefreq: "monthly", priority: "0.6" },
     { loc: "https://semanticlab.ai/work", changefreq: "monthly", priority: "0.8" },
+    { loc: "https://semanticlab.ai/work/partshq", changefreq: "monthly", priority: "0.7" },
+    { loc: "https://semanticlab.ai/work/sponsoredfeeds", changefreq: "monthly", priority: "0.7" },
+    { loc: "https://semanticlab.ai/work/instadash", changefreq: "monthly", priority: "0.7" },
   ];
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -12,7 +15,7 @@ ${urls
   .map(
     (url) => `  <url>
     <loc>${url.loc}</loc>
-    <lastmod>2026-08-24</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>${url.changefreq}</changefreq>
     <priority>${url.priority}</priority>
   </url>`
