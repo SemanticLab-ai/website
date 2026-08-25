@@ -5,6 +5,7 @@ These instructions apply to the entire repository.
 ## Read first
 
 - Read `CONTEXT.md` before changing positioning, offers, credibility claims, or product language.
+- Read `DESIGN_SYSTEM.md` before changing branded colours, typography, logo usage, layout rhythm, motion or shared interface primitives.
 - Read the relevant Wayfinder map and decision tickets before implementing the SemanticLab redesign.
 - Preserve user-authored work and unrelated changes already present in the worktree.
 
@@ -57,3 +58,11 @@ For visual changes, also verify the affected routes at mobile, tablet, and deskt
 - Do not publish illustrative client logos, metrics, testimonials, packages, prices, or outcomes as facts.
 - Built Products demonstrate capability; product trials and installs are not the primary marketing funnel.
 - The primary commercial conversion is a qualified Strategy Engagement request.
+
+## Design system
+
+- `app/styles/semantic-tokens.css` is the coded token source of truth.
+- `/design-system` is the unlinked, noindex reference surface for foundations and shared UI primitives.
+- Use the approved five-colour palette and Inter type system defined in `DESIGN_SYSTEM.md`.
+- Website lockups use the symbol and wordmark without the tagline.
+- Add new shared primitives to the reference surface and verify mobile, focus and reduced-motion states before reuse.

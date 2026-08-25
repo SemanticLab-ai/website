@@ -49,12 +49,14 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   let isAppRoute = false;
+  let usesOwnChrome = false;
   let pathname = "/";
   try {
     // useLocation may throw during SSR error boundaries when no router context exists
     const location = useLocation();
     pathname = location.pathname;
     isAppRoute = pathname.startsWith("/app");
+    usesOwnChrome = isAppRoute || pathname === "/design-system";
   } catch {
     // Fallback: show marketing chrome (nav/footer) if location is unavailable
   }
@@ -103,12 +105,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-lime-400 focus:text-black focus:px-4 focus:py-2 focus:rounded focus:text-sm focus:font-medium">
+        <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        {!isAppRoute && <Navigation />}
+        {!usesOwnChrome && <Navigation />}
         <main id="main-content">{children}</main>
-        {!isAppRoute && <Footer />}
+        {!usesOwnChrome && <Footer />}
         <ScrollRestoration />
         <Scripts />
       </body>

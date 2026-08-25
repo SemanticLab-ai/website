@@ -1,0 +1,107 @@
+:root {
+  color-scheme: dark;
+
+  /* Approved brand palette */
+  --sl-color-lime: #8bff4d;
+  --sl-color-white: #f6f6f4;
+  --sl-color-sage: #a8af94;
+  --sl-color-graphite: #33363a;
+  --sl-color-black: #0b0b0d;
+
+  /* Semantic colour roles */
+  --sl-canvas: var(--sl-color-black);
+  --sl-surface-1: #111114;
+  --sl-surface-2: #18191c;
+  --sl-surface-light: var(--sl-color-white);
+  --sl-text-primary: var(--sl-color-white);
+  --sl-text-secondary: var(--sl-color-sage);
+  --sl-text-on-light: var(--sl-color-black);
+  --sl-accent: var(--sl-color-lime);
+  --sl-accent-pressed: color-mix(
+    in srgb,
+    var(--sl-color-lime) 84%,
+    var(--sl-color-black)
+  );
+  --sl-border: color-mix(in srgb, var(--sl-color-white) 14%, transparent);
+  --sl-border-strong: color-mix(
+    in srgb,
+    var(--sl-color-white) 28%,
+    transparent
+  );
+  --sl-border-on-light: color-mix(
+    in srgb,
+    var(--sl-color-black) 16%,
+    transparent
+  );
+  --sl-focus-ring: 0 0 0 3px
+    color-mix(in srgb, var(--sl-color-lime) 38%, transparent);
+
+  /* Typography */
+  --sl-font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --sl-font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --sl-weight-light: 350;
+  --sl-weight-regular: 450;
+  --sl-weight-medium: 550;
+  --sl-weight-semibold: 650;
+  --sl-tracking-display: -0.055em;
+  --sl-tracking-title: -0.04em;
+  --sl-tracking-label: 0.19em;
+  --sl-leading-display: 0.88;
+  --sl-leading-title: 1;
+  --sl-leading-body: 1.65;
+  --sl-type-display-xl: clamp(4.75rem, 8vw, 8.5rem);
+  --sl-type-display-lg: clamp(3.8rem, 6vw, 6.75rem);
+  --sl-type-display-md: clamp(2.8rem, 4.2vw, 4.75rem);
+  --sl-type-title-lg: clamp(2rem, 2.7vw, 3rem);
+  --sl-type-title-md: clamp(1.4rem, 1.8vw, 2rem);
+  --sl-type-body-lg: clamp(1.05rem, 1.25vw, 1.2rem);
+  --sl-type-body: 0.94rem;
+  --sl-type-label: 0.69rem;
+
+  /* Spacing and layout */
+  --sl-space-1: 0.25rem;
+  --sl-space-2: 0.5rem;
+  --sl-space-3: 0.75rem;
+  --sl-space-4: 1rem;
+  --sl-space-5: 1.5rem;
+  --sl-space-6: 2rem;
+  --sl-space-7: 3rem;
+  --sl-space-8: 4rem;
+  --sl-space-9: 6rem;
+  --sl-space-10: 8rem;
+  --sl-shell-gutter: 2rem;
+  --sl-shell-max: 90rem;
+  --sl-section-space: clamp(5rem, 8vw, 8rem);
+
+  /* Shape and motion */
+  --sl-radius-sm: 0.5rem;
+  --sl-radius-md: 1rem;
+  --sl-radius-lg: 1.5rem;
+  --sl-radius-pill: 999px;
+  --sl-duration-fast: 160ms;
+  --sl-duration-base: 320ms;
+  --sl-duration-slow: 900ms;
+  --sl-ease-standard: cubic-bezier(0.2, 0.75, 0.25, 1);
+  --sl-ease-wave: ease-in-out;
+
+  /* Backward-compatible marketing aliases */
+  --semantic-ink: var(--sl-canvas);
+  --semantic-surface: var(--sl-surface-1);
+  --semantic-paper: var(--sl-surface-light);
+  --semantic-paper-muted: #deded8;
+  --semantic-white: var(--sl-text-primary);
+  --semantic-muted: var(--sl-text-secondary);
+  --semantic-line: var(--sl-border);
+  --semantic-line-dark: var(--sl-border-on-light);
+  --semantic-lime: var(--sl-accent);
+  --semantic-lime-dark: var(--sl-accent-pressed);
+}
+
+@media (max-width: 760px) {
+  :root {
+    --sl-shell-gutter: 1.125rem;
+    --sl-section-space: 4.5rem;
+    --sl-type-display-xl: clamp(3.6rem, 19vw, 5rem);
+    --sl-type-display-lg: clamp(3.25rem, 17vw, 4.4rem);
+  }
+}
