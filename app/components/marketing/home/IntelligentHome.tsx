@@ -261,7 +261,7 @@ export function IntelligentHome() {
             </article>
             <article>
               <img
-                src="/images/founders/raihan.jpg"
+                src="/images/founders/raihan-portrait-v4.png"
                 alt="Raihan Razi"
                 width={800}
                 height={1000}

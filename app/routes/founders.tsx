@@ -129,7 +129,7 @@ export default function Founders() {
 
             <article className="founder-profile">
               <img
-                src="/images/founders/raihan.jpg"
+                src="/images/founders/raihan-portrait-v4.png"
                 alt="Raihan Razi"
                 width={300}
                 height={300}
