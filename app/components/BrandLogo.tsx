@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { BrandLockup } from "~/components/BrandLockup";
 
 type BrandLogoProps = {
   className?: string;
@@ -11,13 +12,7 @@ export function BrandLogo({ className = "" }: BrandLogoProps) {
       className={`brand-logo ${className}`.trim()}
       aria-label="SemanticLab home"
     >
-      <img
-        src="/images/brand/semanticlab-logo-dark.png"
-        alt="SemanticLab - Designing intelligent businesses"
-        width={2172}
-        height={724}
-        decoding="async"
-      />
+      <BrandLockup />
     </Link>
   );
 }

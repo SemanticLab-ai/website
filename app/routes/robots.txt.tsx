@@ -2,6 +2,7 @@ export function loader() {
   const robotsTxt = `User-agent: *
 Allow: /
 Disallow: /app/
+Disallow: /design-system
 
 Sitemap: https://semanticlab.ai/sitemap.xml`;
 

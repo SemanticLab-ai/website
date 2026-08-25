@@ -1,82 +1,68 @@
-# Services and Strategy Engagement QA
+# SemanticLab Design System QA
 
 ## Visual truth
 
-- Source visual: `/Users/raihanrazi/Downloads/50B45E4C-A390-461A-B518-B9BFA4615667.png`
-- Implementation route: `/services`
-- Final implementation capture: `tmp/design-qa/services-reference-viewport-final.png`
-- Final side-by-side comparison: `tmp/design-qa/services-comparison-final.png`
-- Supporting full-page captures: `tmp/design-qa/services-full-desktop-1440.png` and `tmp/design-qa/services-full-mobile-390.png`
+- Source brand guideline: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_ITZUm4/Screenshot 2026-08-25 at 9.46.06 PM.png`
+- Implementation route: `/design-system`
+- Desktop hero capture: `/tmp/semanticlab-design-system-qa/final-hero.png`
+- Desktop full-page capture: `/tmp/semanticlab-design-system-qa/final-full.png`
+- Mobile hero capture: `/tmp/semanticlab-design-system-qa/design-system-mobile-hero-top.png`
+- Full comparison input: `/tmp/semanticlab-design-system-qa/brand-system-comparison.png`
+- Focused captures: `/tmp/semanticlab-design-system-qa/final-identity.png`, `/tmp/semanticlab-design-system-qa/final-colour.png`, `/tmp/semanticlab-design-system-qa/final-typography.png` and `/tmp/semanticlab-design-system-qa/final-motion.png`
 
-The source is treated as visual direction, not a claims source. Its prices, packages, audience labels and commercial promises are deliberately replaced with an evidence-safe connected engagement path and qualification form.
+The source is a compact brand board, while the implementation is an extended living reference page. The comparison therefore judges the same foundation surfaces—identity, palette, typography, meaning, values and motion—rather than pretending the two artifacts have identical information architecture.
 
 ## Normalisation
 
-| Artifact | Pixel size | CSS viewport | Density | State |
-| --- | ---: | ---: | ---: | --- |
-| Source visual | 1024 × 1536 | Artboard reference | 1× comparison scale | Services top, capabilities and engagement model |
-| Raw implementation capture | 1014 × 1521 | 1024 × 1536 | 1× | `/services`, page top, animations settled |
-| Normalised implementation | 1024 × 1536 | 1024 × 1536 | 1× | Raw capture padded by 10 px right and 15 px bottom to account for in-app browser chrome |
+| Artifact | Pixel size | CSS viewport | Density / state |
+| --- | ---: | ---: | --- |
+| Source guideline | 1521 × 1005 | supplied board | 1× source bitmap |
+| Desktop hero | 1430 × 993 | 1440 × 1000 | 1×, page top |
+| Desktop full page | 1430 × 10381 | 1440 × 1000 | 1×, all sections |
+| Mobile hero | 380 × 822 | 390 × 844 | 1×, page top |
+| Comparison | 3072 × 1024 | source plus four implementation regions | Source occupies the left half; identity, colour, typography and motion occupy equal right-hand panels |
 
-The final comparison places the source and normalised implementation together at equal pixel dimensions. The hero and six-capability region remain readable at this scale, so no additional crop was needed for those details. The connected engagement path and qualification form are intentional product adaptations not represented accurately by the source; their focused evidence comes from the desktop and mobile full-page captures.
+The in-app browser bitmap excludes its scrollbar gutter, which explains the small difference between CSS viewport and saved pixel width. Focused regions are required because the full route is much taller than the source board and its token labels would not remain legible at full-page comparison scale.
 
 ## Findings
 
 - No actionable P0, P1 or P2 findings remain.
-- Typography: Cormorant Garamond and Inter reproduce the source's editorial serif / technical sans hierarchy. Desktop and 1024 px headline wrapping, card labels and small UI copy are balanced; the mobile headline now fits without clipping.
-- Spacing and layout: the black hero, warm-paper capability grid and dark engagement region preserve the source's section rhythm. Six capability columns remain visible at the 1024 px reference width; tablet and mobile use progressively safer grids.
-- Colors and tokens: obsidian, warm white and SemanticLab lime map consistently to the shared site tokens. Fine borders provide structure without introducing generic elevated cards or shadows.
-- Image quality: the generated 1774 × 887 services particle asset matches the source's convergence motif, loads at natural resolution and blends into the pure-black hero without a visible panel edge.
-- Copy and content: prices, durations, package names, “most popular” badges and unsupported response promises are absent. The replacement architecture remains focused on a qualified Strategy Engagement rather than a product trial.
-- Icons: the existing Lucide family is used consistently at restrained stroke weights; there are no handcrafted SVG, CSS-art or placeholder substitutes.
+- Fonts and typography: every heading, label and body sample resolves to Inter. The weight range, negative display tracking, uppercase labels and italic emphasis reproduce the board without reintroducing a second type family. On Warm White, small labels use Graphite instead of low-contrast lime.
+- Spacing and layout rhythm: the implementation keeps the guideline's fine one-pixel dividers, connected grids, broad black fields and intentional light editorial panels. A 4px spacing base, 1440px shell and 80–128px section rhythm are coded as reusable tokens.
+- Colours and tokens: browser-computed swatches are exactly RGB `139 255 77`, `246 246 244`, `168 175 148`, `51 54 58` and `11 11 13`, matching the approved five-colour palette. Opacity and colour-mix values are used only for semantic borders and interaction states.
+- Image quality and asset fidelity: the approved high-resolution raster lockup and data landscape are reused. The logo is source-cropped without redrawing it, and the motion example retains the source artwork rather than substituting CSS art or a generated placeholder.
+- Copy and content: the reference route uses the approved Data + Focus + Intelligence = Impact logic, five brand values and evidence-safe commercial terms from `CONTEXT.md`. It does not introduce client claims, packages, prices or trial language.
+- Interaction and accessibility: rail navigation, section anchors, focus rings, labelled input, visible hover/focus states and reduced-motion behavior are present. The route is `noindex, nofollow`, unlinked from public navigation and absent from the shared marketing chrome.
 
 ## Comparison history
 
 ### Pass 1
 
-- P2 — At 1024 px, the initial implementation collapsed the source's six capability columns into three, materially changing the reference density. The capability breakpoint now retains six columns at the reference viewport and uses smaller, measured card type.
-- P2 — The fixed-header CTA wrapped to two lines at 1024 px. The compact header treatment now stays on one line without reducing its tap target.
-- P2 — The initial 1024 px hero was too tall, preventing the reference viewport from reaching the capability system. The hero is now 610 px at this range, with the visual and type rescaled proportionally.
-- Evidence: `tmp/design-qa/services-comparison-pass-1.png` and `tmp/design-qa/services-comparison-pass-2.png`.
-
-### Pass 2
-
-- P1 — The mobile hero headline clipped the word “Transformation”. The mobile display scale was reduced while retaining the source's two-line editorial impact.
-- P2 — The generated particle raster exposed a near-black rectangular edge against the hero. The hero now uses the asset's pure-black ground, producing a seamless blend.
-- P2 — Six-column card titles were crowded at 1024 px. Card padding and type scale are now tuned specifically for the reference range.
-- Evidence: `tmp/design-qa/services-mobile-390x844.png`, `tmp/design-qa/services-mobile-390x844-pass-2.png` and `tmp/design-qa/services-comparison-final.png`.
-
-### Annotation pass
-
-- P2 — The qualification form submit hover was not visually apparent. The button now inverts from lime / ink to ink / warm white, with the same high-contrast treatment on keyboard focus.
-- P2 — The direct-email row did not align with the supporting copy above it. Its label, icon and address now share a flex alignment and the row begins on the same desktop content line as the principle copy.
-- Evidence: browser QA at 1187 × 1260 confirmed the submit state changes to `rgb(8, 11, 9)` / `rgb(246, 246, 244)` and the email label/link share the same top coordinate. A 390 × 844 follow-up confirmed no horizontal overflow.
+- P2 — The initial no-tagline crop ended before the final “b” in SemanticLab and clipped the lowest row of the symbol. The source crop bounds and composite aspect ratio were expanded. Evidence: `/tmp/semanticlab-design-system-qa/logo-grid.png` and `/tmp/semanticlab-design-system-qa/logo-grid-pass-2.png`.
+- P2 — Small lime labels on Warm White were too low-contrast. Light-surface eyebrow, type metadata and surface labels now use approved Graphite while lime remains the primary dark-surface signal.
+- P2 — Native hash navigation competed with React Router scroll restoration. Shared section links now position targets deterministically below the 78px desktop or 72px mobile header.
 
 ### Final pass
 
-- The final equal-size comparison confirms the intended hero composition, editorial type, black / warm-white / lime palette, abstract data motif, six connected capabilities and fine-line surfaces.
-- The connected engagement model and qualification form intentionally replace the source's unsupported package and price cards.
-- No remaining P0, P1 or P2 visual differences are actionable.
+- The combined comparison confirms the approved mark, five exact colours, Inter typography, grid structure, restrained icon language and connected data motion.
+- Direct rail navigation positions the target at 78px below the desktop header.
+- Both data-landscape layers change transform independently after 2.6 seconds.
+- Fresh browser logs contain no application warnings or errors.
 
-## Responsive, interaction and accessibility checks
+## Responsive, interaction and build checks
 
-- Browser-rendered at 1440 × 900, 1024 × 1536, 768 × 1024 and 390 × 844 CSS-pixel viewports.
-- No horizontal overflow at any tested width.
-- Mobile navigation opens and closes, updates `aria-expanded`, locks background scroll and closes before following the Strategy Engagement anchor.
-- The Strategy Engagement anchor settles below the fixed header.
-- Form inputs, selects, textareas, focus treatment and populated states were exercised with synthetic local data.
-- The qualification form submit hover and keyboard-focus states use a visible high-contrast inversion.
-- Required fields, explicit labels, appropriate autocomplete values and semantic input types are present.
-- The final mail-app handoff was not launched by the browser runner because it crosses into an external application; the generated `mailto:` path is covered by typecheck and production build. This is a residual interaction test gap, not a visual defect.
-- Heading order begins with one `h1` and proceeds through section `h2` / card `h3` headings.
-- All raster assets load with non-empty alternative text.
-- Reduced-motion rules disable hero entrance animation and input transitions.
-- Fresh final browser-console check: no warnings or errors.
+- Browser-rendered at 1440 × 1000, 1024 × 768 and 390 × 844 CSS-pixel viewports.
+- The reference route reports zero horizontal overflow at every tested viewport.
+- Home, Work, Services and Founders retain Inter headings, the corrected no-tagline lockup and zero desktop horizontal overflow.
+- Home retains the shared lockup, menu control and zero horizontal overflow at 390 × 844.
+- Keyboard focus uses a 1px Signal Lime outline, 4px offset and a visible lime focus ring.
+- The design-system route emits `noindex, nofollow`; `robots.txt` disallows `/design-system`.
+- `git diff --check`, `npm run typecheck` and `npm run build` pass.
+- Production build emits only the existing stale Browserslist-data advisory.
 
 ## Follow-up polish
 
-- P3 — Replace the current high-resolution raster logo lockup with the original approved vector asset when it is supplied.
-- P3 — Confirm the final qualification fields and submission channel as part of the Strategy Engagement decision ticket; the present email-preparation flow is transparent and reversible.
+- P3 — Add original approved light-background logo and monogram/app-icon files when supplied. The design system deliberately refuses to synthesise them from CSS or approximate SVG artwork; the present production lockup and symbol use the approved dark raster only.
 
 ## Result
 

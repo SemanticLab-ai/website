@@ -84,6 +84,40 @@ export default function Founders() {
         </div>
       </section>
 
+      <section className="founders-story" aria-labelledby="founders-story-title">
+        <div className="semantic-shell founders-story__inner">
+          <div className="founders-story__heading">
+            <p className="semantic-kicker">Our story</p>
+            <h2 id="founders-story-title">
+              Where curiosity becomes <em>products.</em>
+            </h2>
+          </div>
+
+          <div className="founders-story__body">
+            <p className="founders-story__lead">
+              SemanticLab started with a simple belief: technology should make
+              life easier.
+            </p>
+            <p>
+              Long before there was a company, there were countless late nights
+              building ideas, testing products, and solving problems simply
+              because we couldn’t ignore them. Every experiment taught us
+              something. Some failed, some succeeded, but all of them reinforced
+              one thing.
+            </p>
+            <p className="founders-story__belief">
+              We love building things that genuinely help people.
+            </p>
+            <p className="founders-story__closing">
+              Eventually, we realised we were already doing this professionally
+              every day. So we combined our experience in design, engineering,
+              cloud and AI to create SemanticLab, a place where curiosity becomes
+              products, and good ideas become real solutions.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="founders-profiles" aria-labelledby="founders-profiles-title">
         <div className="semantic-shell">
           <p className="semantic-kicker">The partnership</p>
@@ -129,10 +163,10 @@ export default function Founders() {
 
             <article className="founder-profile">
               <img
-                src="/images/founders/raihan.jpg"
+                src="/images/founders/raihan-portrait-v4.png"
                 alt="Raihan Razi"
-                width={300}
-                height={300}
+                width={898}
+                height={1122}
                 loading="lazy"
                 decoding="async"
               />
@@ -238,6 +272,33 @@ export default function Founders() {
             Previous-role examples are provided for founder experience and are
             not represented as SemanticLab client engagements.
           </p>
+        </div>
+      </section>
+
+      <section className="founders-life" aria-labelledby="founders-life-title">
+        <div className="semantic-shell founders-life__inner">
+          <div className="founders-life__heading">
+            <p className="semantic-kicker">Life beyond the laptop</p>
+            <h2 id="founders-life-title">
+              We’re partners in business <em>and in life.</em>
+            </h2>
+          </div>
+
+          <div className="founders-life__body">
+            <p>
+              When we’re not designing products, you’ll usually find us
+              travelling, discovering great food, chasing our curious little
+              wonder around, or talking about ideas that somehow turn into our
+              next project.
+            </p>
+            <p>
+              The best inspiration rarely comes from sitting behind a desk. It
+              comes from new places, new people, and new experiences.
+            </p>
+            <p className="founders-life__closing">
+              That’s why we build technology that feels a little more human.
+            </p>
+          </div>
         </div>
       </section>
 

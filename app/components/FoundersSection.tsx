@@ -11,7 +11,7 @@ export function FoundersSection() {
       initial: "R",
       color: "vector-rose",
       gradient: "from-vector-rose to-pink-400",
-      photo: "/images/founders/raihan.jpg",
+      photo: "/images/founders/raihan-portrait-v4.png",
       credentials: [
         "Director of Technology @ GameDay",
         "$12M+ platform transformation",

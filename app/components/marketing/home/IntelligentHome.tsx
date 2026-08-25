@@ -9,6 +9,7 @@ import {
   Rocket,
 } from "lucide-react";
 import { Link } from "react-router";
+import { AnimatedDataLandscape } from "~/components/marketing/shared/AnimatedDataLandscape";
 import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
 import { recentProductWork } from "~/data/work";
 
@@ -100,13 +101,9 @@ export function IntelligentHome() {
   return (
     <div className="semantic-home">
       <section className="semantic-hero" aria-labelledby="hero-title">
-        <img
+        <AnimatedDataLandscape
           className="semantic-hero__landscape"
-          src="/images/brand/semantic-data-landscape.png"
           alt="Abstract field of connected data points forming an intelligent landscape"
-          width={1536}
-          height={1024}
-          fetchPriority="high"
         />
         <div className="semantic-hero__shade" />
         <div className="semantic-shell semantic-hero__inner">
@@ -264,7 +261,7 @@ export function IntelligentHome() {
             </article>
             <article>
               <img
-                src="/images/founders/raihan.jpg"
+                src="/images/founders/raihan-portrait-v4.png"
                 alt="Raihan Razi"
                 width={800}
                 height={1000}

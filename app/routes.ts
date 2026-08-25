@@ -11,6 +11,7 @@ export default [
   route("services", "routes/services.tsx"),
   route("work", "routes/work.tsx"),
   route("work/:slug", "routes/work-case-study.tsx"),
+  route("design-system", "routes/design-system.tsx"),
 
   // Product marketing pages
   route("products/syncd", "routes/products/syncd.tsx"),
