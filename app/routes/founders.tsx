@@ -284,6 +284,17 @@ export default function Founders() {
             </h2>
           </div>
 
+          <figure className="founders-life__portrait">
+            <img
+              src="/images/founders/founders-life.jpg"
+              alt="Naila Rahman and Raihan Razi together while travelling"
+              width={1200}
+              height={1600}
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+
           <div className="founders-life__body">
             <p>
               When we’re not designing products, you’ll usually find us

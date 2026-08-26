@@ -4043,8 +4043,11 @@ body {
 
 .founders-life__inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.88fr);
-  gap: clamp(70px, 10vw, 170px);
+  grid-template-columns:
+    minmax(0, 1.06fr)
+    minmax(270px, 0.62fr)
+    minmax(320px, 0.76fr);
+  gap: clamp(38px, 4vw, 68px);
   align-items: start;
 }
 
@@ -4057,6 +4060,19 @@ body {
 
 .founders-life h2 em {
   color: var(--sl-color-graphite);
+}
+
+.founders-life__portrait {
+  margin: 10px 0 0;
+}
+
+.founders-life__portrait img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--semantic-line-dark);
+  object-fit: cover;
+  object-position: center;
 }
 
 .founders-life__body {
@@ -4158,7 +4174,15 @@ body {
 
   .founders-life__inner {
     grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
-    gap: 64px;
+    gap: 64px 52px;
+  }
+
+  .founders-life__heading {
+    grid-column: 1 / -1;
+  }
+
+  .founders-life__portrait {
+    margin-top: 0;
   }
 
   .founder-profile,
@@ -4226,6 +4250,14 @@ body {
 
   .founders-life__inner {
     gap: 54px;
+  }
+
+  .founders-life__heading {
+    grid-column: auto;
+  }
+
+  .founders-life__portrait {
+    width: min(100%, 560px);
   }
 
   .founders-life__body {
