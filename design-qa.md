@@ -1,68 +1,66 @@
-# SemanticLab Design System QA
+# SemanticLab Founders Photo and Favicon QA
 
 ## Visual truth
 
-- Source brand guideline: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_ITZUm4/Screenshot 2026-08-25 at 9.46.06 PM.png`
-- Implementation route: `/design-system`
-- Desktop hero capture: `/tmp/semanticlab-design-system-qa/final-hero.png`
-- Desktop full-page capture: `/tmp/semanticlab-design-system-qa/final-full.png`
-- Mobile hero capture: `/tmp/semanticlab-design-system-qa/design-system-mobile-hero-top.png`
-- Full comparison input: `/tmp/semanticlab-design-system-qa/brand-system-comparison.png`
-- Focused captures: `/tmp/semanticlab-design-system-qa/final-identity.png`, `/tmp/semanticlab-design-system-qa/final-colour.png`, `/tmp/semanticlab-design-system-qa/final-typography.png` and `/tmp/semanticlab-design-system-qa/final-motion.png`
+- Founder photo source: `/Users/raihanrazi/Downloads/unnamed.jpg`
+- Approved logo source: `public/images/brand/semanticlab-logo-dark.png`
+- Implementation route: `/founders`
+- Desktop implementation: `/tmp/semanticlab-founder-photo-build/implementation-desktop-life.png`
+- Tablet implementation: `/tmp/semanticlab-founder-photo-build/implementation-tablet-life.png`
+- Mobile image implementation: `/tmp/semanticlab-founder-photo-build/implementation-mobile-life.png`
+- Mobile copy implementation: `/tmp/semanticlab-founder-photo-build/implementation-mobile-life-copy.png`
+- Founder photo comparison: `/tmp/semanticlab-founder-photo-build/reference-vs-desktop.png`
+- Favicon comparison: `/tmp/semanticlab-founder-photo-build/favicon-source-vs-output.png`
 
-The source is a compact brand board, while the implementation is an extended living reference page. The comparison therefore judges the same foundation surfaces—identity, palette, typography, meaning, values and motion—rather than pretending the two artifacts have identical information architecture.
+The source founder image defines the subject, colour and photographic treatment. The existing SemanticLab page defines the layout, typography, palette and spacing. The approved dark logo artwork defines the favicon mark.
 
 ## Normalisation
 
-| Artifact | Pixel size | CSS viewport | Density / state |
+| Artifact | Pixel size | CSS viewport / rendered size | Density and state |
 | --- | ---: | ---: | --- |
-| Source guideline | 1521 × 1005 | supplied board | 1× source bitmap |
-| Desktop hero | 1430 × 993 | 1440 × 1000 | 1×, page top |
-| Desktop full page | 1430 × 10381 | 1440 × 1000 | 1×, all sections |
-| Mobile hero | 380 × 822 | 390 × 844 | 1×, page top |
-| Comparison | 3072 × 1024 | source plus four implementation regions | Source occupies the left half; identity, colour, typography and motion occupy equal right-hand panels |
+| Original founder photo | 2316 × 3088 | supplied portrait | source bitmap |
+| Optimised founder photo | 1200 × 1600 | intrinsic image | production JPEG |
+| Desktop implementation | 1430 × 993 | 1440 × 1000; image 318 × 397 | 1×, Life section |
+| Tablet implementation | 890 × 989 | 900 × 1000; image 441 × 551 | 1×, Life section |
+| Mobile image implementation | 380 × 822 | 390 × 844; image 344 × 430 | 1×, Life section |
+| Mobile copy implementation | 380 × 822 | 390 × 844; copy 344px wide | 1×, Life section |
+| Founder comparison | 2190 × 1000 | source and desktop implementation side by side | source scaled to 1000px high |
+| Favicon comparison | 1024 × 512 | approved mark crop and output side by side | both 512 × 512 |
 
-The in-app browser bitmap excludes its scrollbar gutter, which explains the small difference between CSS viewport and saved pixel width. Focused regions are required because the full route is much taller than the source board and its token labels would not remain legible at full-page comparison scale.
+The in-app browser bitmap excludes its scrollbar gutter, explaining the ten-pixel difference between CSS viewport and saved screenshot width.
 
 ## Findings
 
 - No actionable P0, P1 or P2 findings remain.
-- Fonts and typography: every heading, label and body sample resolves to Inter. The weight range, negative display tracking, uppercase labels and italic emphasis reproduce the board without reintroducing a second type family. On Warm White, small labels use Graphite instead of low-contrast lime.
-- Spacing and layout rhythm: the implementation keeps the guideline's fine one-pixel dividers, connected grids, broad black fields and intentional light editorial panels. A 4px spacing base, 1440px shell and 80–128px section rhythm are coded as reusable tokens.
-- Colours and tokens: browser-computed swatches are exactly RGB `139 255 77`, `246 246 244`, `168 175 148`, `51 54 58` and `11 11 13`, matching the approved five-colour palette. Opacity and colour-mix values are used only for semantic borders and interaction states.
-- Image quality and asset fidelity: the approved high-resolution raster lockup and data landscape are reused. The logo is source-cropped without redrawing it, and the motion example retains the source artwork rather than substituting CSS art or a generated placeholder.
-- Copy and content: the reference route uses the approved Data + Focus + Intelligence = Impact logic, five brand values and evidence-safe commercial terms from `CONTEXT.md`. It does not introduce client claims, packages, prices or trial language.
-- Interaction and accessibility: rail navigation, section anchors, focus rings, labelled input, visible hover/focus states and reduced-motion behavior are present. The route is `noindex, nofollow`, unlinked from public navigation and absent from the shared marketing chrome.
+- Fonts and typography: the new image does not alter the established Inter hierarchy. The kicker, display headline, italic emphasis and body copy retain their approved weights, tracking and wrapping at all tested widths.
+- Spacing and layout rhythm: desktop uses a connected three-column editorial grid. Tablet promotes the heading to a full-width row with image and copy below. Mobile stacks heading, image and copy without horizontal overflow.
+- Colours and visual tokens: the photograph remains in natural colour against Warm White, providing the intended human contrast without introducing any new interface colours. Borders and text continue to use existing tokens.
+- Image quality and asset fidelity: the supplied 2316 × 3088 photo is optimised to a 1200 × 1600 JPEG and displayed at a native 4:5 crop. Both founders remain fully recognisable at desktop, tablet and mobile widths. The favicon uses a source crop from the approved production logo; it is not redrawn or approximated.
+- Copy and content: the Life Beyond the Laptop copy is unchanged. The meaningful image alternative text identifies Naila Rahman and Raihan Razi and provides the travel context.
+- Favicon delivery: the document links the 512 × 512 PNG, 48 × 48 ICO fallback and Apple touch icon. The old letter-S SVG is removed.
+- Interaction and accessibility: the page has no new interactive surface. The image is lazy-loaded, decodes asynchronously and creates no page overflow. Browser logs contain no warnings or errors.
 
 ## Comparison history
 
-### Pass 1
-
-- P2 — The initial no-tagline crop ended before the final “b” in SemanticLab and clipped the lowest row of the symbol. The source crop bounds and composite aspect ratio were expanded. Evidence: `/tmp/semanticlab-design-system-qa/logo-grid.png` and `/tmp/semanticlab-design-system-qa/logo-grid-pass-2.png`.
-- P2 — Small lime labels on Warm White were too low-contrast. Light-surface eyebrow, type metadata and surface labels now use approved Graphite while lime remains the primary dark-surface signal.
-- P2 — Native hash navigation competed with React Router scroll restoration. Shared section links now position targets deterministically below the 78px desktop or 72px mobile header.
-
 ### Final pass
 
-- The combined comparison confirms the approved mark, five exact colours, Inter typography, grid structure, restrained icon language and connected data motion.
-- Direct rail navigation positions the target at 78px below the desktop header.
-- Both data-landscape layers change transform independently after 2.6 seconds.
-- Fresh browser logs contain no application warnings or errors.
+- The founder source and desktop comparison confirms that the warm, candid photograph is preserved and framed cleanly within the existing editorial section.
+- Tablet and mobile captures confirm the intended responsive reflow and complete visibility of the image and accompanying copy.
+- The approved mark and favicon output comparison are visually identical after square padding and downsampling.
+- No visual fixes were required after the final comparison.
 
-## Responsive, interaction and build checks
+## Verification
 
-- Browser-rendered at 1440 × 1000, 1024 × 768 and 390 × 844 CSS-pixel viewports.
-- The reference route reports zero horizontal overflow at every tested viewport.
-- Home, Work, Services and Founders retain Inter headings, the corrected no-tagline lockup and zero desktop horizontal overflow.
-- Home retains the shared lockup, menu control and zero horizontal overflow at 390 × 844.
-- Keyboard focus uses a 1px Signal Lime outline, 4px offset and a visible lime focus ring.
-- The design-system route emits `noindex, nofollow`; `robots.txt` disallows `/design-system`.
+- Browser-rendered at 1440 × 1000, 900 × 1000 and 390 × 844 CSS-pixel viewports.
+- Zero horizontal overflow at tablet and mobile widths.
+- Founder photo loads at 1200 × 1600 intrinsic pixels.
+- Favicon link metadata resolves to `/favicon.png` and `/favicon.ico`.
 - `git diff --check`, `npm run typecheck` and `npm run build` pass.
 - Production build emits only the existing stale Browserslist-data advisory.
 
 ## Follow-up polish
 
-- P3 — Add original approved light-background logo and monogram/app-icon files when supplied. The design system deliberately refuses to synthesise them from CSS or approximate SVG artwork; the present production lockup and symbol use the approved dark raster only.
+- No P3 polish items are required for this change.
 
 ## Result
 
