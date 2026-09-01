@@ -353,14 +353,20 @@ function TiemanVisionVennSlide() {
           </section>
         ))}
 
-        <div className="tieman-vision-venn__core">
-          <img
-            src="/images/deck/tieman/vision-venn-core.png"
-            alt=""
-            width={1254}
-            height={1254}
-            aria-hidden="true"
+        <picture className="tieman-vision-venn__intersection" aria-hidden="true">
+          <source
+            media="(max-width: 760px), (orientation: portrait)"
+            srcSet="/images/deck/tieman/vision-venn-intersection-mobile.png"
           />
+          <img
+            src="/images/deck/tieman/vision-venn-intersection-desktop.png"
+            alt=""
+            width={2560}
+            height={2080}
+          />
+        </picture>
+
+        <div className="tieman-vision-venn__core">
           <span>The shared centre</span>
           <strong>Tieman&apos;s intelligent operating platform</strong>
           <small>One connected, trusted system for every tanker</small>
