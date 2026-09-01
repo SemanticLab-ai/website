@@ -899,6 +899,18 @@
   clip-path: inset(0 0 0 0);
 }
 
+.sales-deck__transition[data-deck-fragment-count="4"][data-deck-fragment-step="1"]
+  .tieman-solution-stack__source-grid article,
+.sales-deck__transition[data-deck-fragment-count="4"][data-deck-fragment-step="1"]
+  .tieman-solution-stack__source-grid .tieman-solution-stack__signal {
+  animation: none;
+}
+
+.sales-deck__transition[data-deck-fragment-count="4"][data-deck-fragment-step="1"]
+  .tieman-solution-stack__source-grid .tieman-solution-stack__signal {
+  opacity: 0;
+}
+
 .sales-deck__transition[data-deck-fragment-count="4"]:is(
   [data-deck-fragment-step="2"],
   [data-deck-fragment-step="3"],

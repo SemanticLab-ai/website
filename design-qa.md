@@ -32,7 +32,7 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - [P2] Excess unused space beneath the architecture made the solution feel undersized. Fixed by stretching the diagram through the available content row, enlarging all three architecture tracks and keeping a clean final gap before the footer.
 - [P2] The source, context and application layers read as one compressed block. Fixed with larger inter-layer gaps, longer connectors and larger cards, icons and supporting copy.
 - [P1] The automatic entrance sequence did not give the presenter control. Fixed with four fragments: data sources → unified context → apps and agents → secure-by-design bracket. Arrow Right, Space, Enter and the next button reveal one fragment; one additional action advances to slide 6. Arrow Left reverses the fragment sequence.
-- [P2] The source-only fragment showed six vertical connectors and ran card/signal loops before any destination layer existed. Fixed by keeping source cards and signals paused and all connector lines at zero opacity in fragment 1. The source-to-context connectors and motion now begin only in fragment 2.
+- [P2] The source-only fragment showed six vertical connectors and ran card/signal loops before any destination layer existed. Fixed by removing source-card and signal animations and setting every connector to zero opacity in fragment 1. The source-to-context connectors and motion now begin only in fragment 2.
 - [P2] On mobile, preserving the desktop visual order would put the first revealed fragment below invisible layers. Fixed by reordering the responsive flow to sources → context → applications → assurance.
 - No actionable P0, P1 or P2 findings remain after the fixes.
 
@@ -41,7 +41,7 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - Desktop final geometry: applications 234.6px high, context 208.6px high, sources 178.2px high and assurance bracket 673.2px high. The architecture ends at 985.5px, with the footer beginning at 1020.9px; nothing clips or collides.
 - The combined before/after image shows the final architecture using the lower canvas while preserving distinct layer gaps and footer separation.
 - The focused 1588 × 1260 source-only comparison shows the previous floating connector lines and active source borders removed. No typography, spacing, colour, icon, image or copy changes were introduced by this correction.
-- Browser-computed fragment-1 state: all six connector pseudo-elements report opacity `0`; all six source cards and signals report `animation-play-state: paused`; all six signals report opacity `0`.
+- Browser-computed fragment-1 state: all six connector pseudo-elements report opacity `0`; all six source cards and signals report `animation-name: none`; all six signals report opacity `0`.
 - Browser-computed fragment-2 state: all six connectors report opacity `0.48`; source-card and signal animations report `running`; the unified context layer is visible.
 - At 390 × 844, `documentElement.scrollWidth` equals 390px. The stage scrolls from 0 to 1056px, reaching the complete assurance panel and footer.
 - Mobile fragment 1 places the source layer at 443.3px and leaves context, applications and assurance hidden, confirming the reveal order is legible above the fold.
@@ -51,7 +51,7 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 
 - Slide 5 starts at fragment 0 with all architecture layers hidden.
 - The four reveal states were captured and checked independently.
-- Fragment 1 is a static source-system inventory with no implied connection. Fragment 2 introduces the connections and processing motion alongside the context layer.
+- Fragment 1 is a static source-system inventory with no implied connection. Fragment 2 introduces the connections and processing motion alongside the context layer; reversing from fragment 2 fully clears every signal and active border again.
 - At fragment 4 the next control is labelled `Next slide`; before completion it is labelled `Reveal next layer`.
 - The previous control is labelled `Hide previous layer` while a fragment can be reversed.
 - Slide 5 fragment 4 → slide 6 → Arrow Left returns to slide 5 fragment 4; another Arrow Left hides assurance.
