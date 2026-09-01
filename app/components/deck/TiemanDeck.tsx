@@ -275,7 +275,7 @@ function TiemanCoverSlide() {
     <DeckSlideFrame
       index={1}
       total={TOTAL_SLIDES}
-      descriptor="Tieman Data & AI Transformation."
+      descriptor="Tieman Tankers · Data & AI Transformation."
       className="tieman-cover"
     >
       <img
@@ -292,7 +292,7 @@ function TiemanCoverSlide() {
         <h1 id="deck-slide-1-title">
           Connected intelligence for Tieman&apos;s <em>next chapter.</em>
         </h1>
-        <p>Tieman Data &amp; AI Transformation</p>
+        <p>Tieman Tankers · Data &amp; AI Transformation</p>
       </div>
     </DeckSlideFrame>
   );
@@ -1214,7 +1214,7 @@ type TiemanDeckProps = {
 };
 
 export function TiemanDeck({
-  challengeVariant = "current",
+  challengeVariant = "story",
 }: TiemanDeckProps) {
   const selectedSlides = challengeVariant === "story"
     ? storyChallengeSlides

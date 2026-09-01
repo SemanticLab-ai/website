@@ -11,9 +11,9 @@ export function loader({ request }: Route.LoaderArgs) {
   }
 
   const searchParams = new URL(request.url).searchParams;
-  const challengeVariant = searchParams.get("challenges") === "story"
-    ? "story"
-    : "current";
+  const challengeVariant = searchParams.get("challenges") === "current"
+    ? "current"
+    : "story";
 
   return { challengeVariant } as const;
 }

@@ -1,5 +1,17 @@
 # Tieman Deck QA
 
+## Clean-route story merge and cover subtitle — QA
+
+- Source of visual truth: the user's cover annotation and instruction to merge the `?challenges=story` sequence into the main deck.
+- Desktop evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-main-route/01-cover-clean-route-desktop.png` at 1280 × 720.
+- Mobile evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-main-route/02-cover-clean-route-mobile.png` at 390 × 844.
+- The cover subtitle and footer descriptor now read `Tieman Tankers · Data & AI Transformation`; the title, partner lockup, imagery, composition and navigation are unchanged.
+- The clean `/deck/tieman-tankers` route now selects the story-led challenges sequence by default. The previous comparison sequence remains available only through `?challenges=current`, so no slide implementation was deleted.
+- Browser verification stepped through the definitive Venn vision reveal and confirmed that the next slide on the clean route is `The knowledge exists. It lives in different places.` with the `Where knowledge lives` control label.
+- Required fidelity surfaces passed: the existing display/UI typography is unchanged; spacing and layout rhythm are unchanged; SemanticLab colours and imagery are unchanged; the new subtitle remains readable at desktop and mobile sizes; all existing copy outside the scoped subtitle is unchanged.
+- The in-app browser reported no warning or error logs at either viewport.
+- Final result: passed.
+
 ## Visual truth
 
 - User annotation: slide 5 left too much unused space beneath the architecture, the cards needed to be larger, the layers needed more separation, and every layer needed to reveal on a presenter key press.
