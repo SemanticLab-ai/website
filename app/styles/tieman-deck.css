@@ -2450,8 +2450,8 @@
 .tieman-proof .deck-slide__content {
   display: grid;
   grid-template-columns: 0.67fr 1.33fr;
-  grid-template-rows: 1fr auto;
-  gap: 1.5cqw 5cqw;
+  grid-template-rows: 1fr;
+  column-gap: 5cqw;
 }
 
 .tieman-proof__heading {
@@ -2488,11 +2488,10 @@
 }
 
 .tieman-proof__identity h3 {
-  margin-top: 0.55cqw;
+  margin-top: 0;
   font-size: 1.28cqw;
 }
 
-.tieman-proof__identity small,
 .tieman-proof__measure small {
   color: color-mix(in srgb, var(--sl-text-primary) 45%, transparent);
 }
@@ -2516,14 +2515,6 @@
   color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
   font-size: 0.67cqw;
   line-height: 1.52;
-}
-
-.tieman-proof__note {
-  grid-column: 1 / -1;
-  border-top: 1px solid var(--sl-border);
-  padding-top: 0.85cqw;
-  color: color-mix(in srgb, var(--sl-text-primary) 45%, transparent);
-  font-size: 0.6cqw;
 }
 
 /* Approach */
@@ -3750,7 +3741,6 @@
   }
 
   .tieman-why-us__profiles span,
-  .tieman-proof__identity small,
   .tieman-proof__measure small,
   .tieman-operating-layer__stack small,
   .tieman-flow__steps small,
@@ -3783,7 +3773,7 @@
   }
 
   .tieman-proof__identity h3 {
-    margin-top: 8px;
+    margin-top: 0;
     font-size: 1.35rem;
   }
 
@@ -3798,13 +3788,6 @@
 
   .tieman-proof__rail p {
     font-size: 0.78rem;
-  }
-
-  .tieman-proof__note {
-    margin-top: 26px;
-    padding-top: 16px;
-    font-size: 0.64rem;
-    line-height: 1.5;
   }
 
   .tieman-approach__stages li,

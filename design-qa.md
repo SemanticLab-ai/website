@@ -1,5 +1,16 @@
 # Tieman Deck QA
 
+## Proof-slide attribution cleanup — QA
+
+- Source of truth: the user's slide annotation requesting removal of the labels above every project name and the bottom previous-role disclaimer.
+- Final desktop evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-proof-cleanup/01-proof-final-local.png` at 1280 × 720.
+- Removed `Raihan · previous role`, `SemanticLab product` and `Naila · previous role` from the proof data and rendered identity blocks.
+- Removed the full-width previous-role disclaimer and its responsive styling.
+- Simplified the proof grid from an occupied content row plus an empty note row to one content row, eliminating inherited bottom spacing.
+- GameDay, PartsHQ and Podly remain unchanged, as do all metrics, supporting descriptions, numbering, rules and typography.
+- Browser verification confirmed all three names, zero identity labels, no disclaimer, three equal 130.5px rows and no warning/error logs.
+- Final result: passed.
+
 ## Founder portrait framing — QA
 
 - Source of truth: the user-selected founder slide in the main SemanticLab deck at `/deck`, captured at `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-headshots/01-reference-founders.png`.

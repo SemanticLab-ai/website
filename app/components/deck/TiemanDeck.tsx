@@ -169,7 +169,6 @@ const proofPoints = [
   {
     index: "01",
     name: "GameDay",
-    provenance: "Raihan · previous role",
     headline: "$250M+",
     measure: "annual payment volume supported",
     detail: "Large-scale operational data, payment orchestration and platform modernisation with 95%+ Stripe adoption.",
@@ -177,7 +176,6 @@ const proofPoints = [
   {
     index: "02",
     name: "PartsHQ",
-    provenance: "SemanticLab product",
     headline: "100K+",
     measure: "parts across a distributed platform",
     detail: "Disconnected catalogue, supplier and commerce systems shaped into reliable workflow automation for six active clients.",
@@ -185,7 +183,6 @@ const proofPoints = [
   {
     index: "03",
     name: "Podly",
-    provenance: "Naila · previous role",
     headline: "Evidence",
     measure: "made usable inside the workflow",
     detail: "Product workflows that connect requirements, evidence, ownership and decision clarity.",
@@ -851,7 +848,6 @@ function ProofSlide() {
           <li key={proof.name}>
             <span>{proof.index}</span>
             <div className="tieman-proof__identity">
-              <small>{proof.provenance}</small>
               <h3>{proof.name}</h3>
             </div>
             <div className="tieman-proof__measure">
@@ -862,10 +858,6 @@ function ProofSlide() {
           </li>
         ))}
       </ol>
-
-      <p className="tieman-proof__note">
-        Previous-role work is explicitly attributed and is not represented as a SemanticLab client engagement.
-      </p>
     </DeckSlideFrame>
   );
 }
