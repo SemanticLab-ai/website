@@ -1,4 +1,3 @@
-import Activity from "lucide-react/dist/esm/icons/activity";
 import ArrowUp from "lucide-react/dist/esm/icons/arrow-up";
 import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
 import BadgeCheck from "lucide-react/dist/esm/icons/badge-check";
@@ -536,10 +535,6 @@ function SolutionStackSlide() {
               <div>
                 <span>Unified context layer</span>
                 <strong>A governed, shared understanding of every job.</strong>
-                <small className="tieman-solution-stack__live">
-                  <Activity aria-hidden="true" />
-                  Context live
-                </small>
               </div>
             </div>
             <ul aria-label="Context available to applications and agents">

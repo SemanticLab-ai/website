@@ -1,5 +1,18 @@
 # Tieman Deck QA
 
+## Unified context-layer refinement — QA
+
+- Source of truth: the user's slide 07 annotations requesting a less dominant context layer, separate component entrances and removal of the duplicated `CONTEXT LIVE` label.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-context-layer/01-before-live.png`.
+- Final desktop evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-context-layer/06-context-final-local.png`.
+- Reveal evidence: `04-context-early-local.png` and `05-context-mid-local.png` in the same folder show the context identity followed by the six capabilities resolving in order.
+- Replaced the full lime fill with the established dark surface token, a restrained 9% lime wash, a thin mixed border and a lime inset rail. Typography, geometry, architecture order, icons and copy remain within the existing deck system.
+- Removed the `CONTEXT LIVE` label and its unused icon import completely; DOM verification confirms it is absent.
+- Preserved the existing presenter-controlled architecture sequence. Fragment 2 now staggers the shield, layer label, headline and six context chips from 100–620ms, so the component detail appears one item at a time without adding another keypress.
+- Reduced-motion styling suppresses the stagger while leaving every context item visible.
+- Browser verification confirmed the final surface resolves to `--sl-surface-2`, all six items settle at opacity `1`, the mobile viewport has zero horizontal overflow and no browser warning/error logs were reported.
+- Final result: passed.
+
 ## Slide 05 reveal simplification and copy — QA
 
 - Source of truth: the user's three slide 05 annotations requesting removal of the intermediate convergence state and exact updates to the headline and takeaway.
