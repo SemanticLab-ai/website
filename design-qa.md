@@ -1,5 +1,17 @@
 # Tieman Deck QA
 
+## Solution application-card refinement — QA
+
+- Source of truth: the user's screenshot annotation requesting four revised application categories and a less white visual treatment.
+- Updated the cards to `AI Agents`, `Automated Workflows`, `Dashboards` and `Custom Portals`; corrected the supplied `Dashbnoards` typo to `Dashboards`.
+- Rewrote the short supporting lines to match each broader category and replaced the previous feature-specific icons with Bot, Workflow, Layout Dashboard and Portal icons.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-application-cards/01-before-live.png` at 1280 × 720.
+- Final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-application-cards/02-after-local.png` at the same viewport and fragment state.
+- Replaced the four near-white surfaces with the deck's existing dark elevated surface, a restrained 7% lime wash, lighter lime-mixed borders and outlined lime icon discs. Card geometry and the four-column architecture remain unchanged.
+- Browser verification confirmed all four cards have equal 143.2px heights, every title and supporting line stays inside its card, all old labels are absent, and the card grid remains hidden at fragment 2 before reappearing at fragment 3.
+- Browser warning/error logs were empty and no framework overlay was present.
+- Final result: passed.
+
 ## Context-to-source connector trim — QA
 
 - Source of truth: the user's screenshot annotation showing the lower context-layer connectors extending too far into the box.

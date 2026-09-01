@@ -1625,12 +1625,14 @@
   min-height: 0;
   align-content: center;
   column-gap: 1cqw;
-  border: 1px solid color-mix(in srgb, var(--sl-accent) 28%, var(--sl-border));
+  border: 1px solid color-mix(in srgb, var(--sl-accent) 24%, var(--sl-border));
   border-radius: 0.28cqw;
   padding: 1.15cqw 1.1cqw;
-  background: var(--sl-surface-light);
-  box-shadow: 0 1cqw 2.5cqw rgba(0, 0, 0, 0.22);
-  color: var(--sl-text-on-light);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--sl-accent) 7%, transparent), transparent 58%),
+    var(--sl-surface-2);
+  box-shadow: 0 1cqw 2.5cqw rgba(0, 0, 0, 0.18);
+  color: var(--sl-text-primary);
 }
 
 .tieman-solution-stack__application-grid article::after {
@@ -1651,10 +1653,11 @@
   width: 2.85cqw;
   height: 2.85cqw;
   align-self: center;
+  border: 1px solid color-mix(in srgb, var(--sl-accent) 42%, transparent);
   border-radius: 50%;
   padding: 0.7cqw;
-  background: var(--sl-accent);
-  color: var(--sl-text-on-light);
+  background: color-mix(in srgb, var(--sl-accent) 10%, var(--sl-surface-1));
+  color: var(--sl-accent);
   stroke-width: 1.6;
 }
 

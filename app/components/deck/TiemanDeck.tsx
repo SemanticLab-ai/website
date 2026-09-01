@@ -6,24 +6,24 @@ import Bot from "lucide-react/dist/esm/icons/bot";
 import BrainCircuit from "lucide-react/dist/esm/icons/brain-circuit";
 import Cable from "lucide-react/dist/esm/icons/cable";
 import CircleAlert from "lucide-react/dist/esm/icons/circle-alert";
-import ClipboardCheck from "lucide-react/dist/esm/icons/clipboard-check";
 import Cuboid from "lucide-react/dist/esm/icons/cuboid";
 import Database from "lucide-react/dist/esm/icons/database";
-import FileSearch from "lucide-react/dist/esm/icons/file-search";
 import FileText from "lucide-react/dist/esm/icons/file-text";
 import Hammer from "lucide-react/dist/esm/icons/hammer";
 import Layers3 from "lucide-react/dist/esm/icons/layers-3";
+import LayoutDashboard from "lucide-react/dist/esm/icons/layout-dashboard";
 import Lightbulb from "lucide-react/dist/esm/icons/lightbulb";
 import LockKeyhole from "lucide-react/dist/esm/icons/lock-keyhole";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import Network from "lucide-react/dist/esm/icons/network";
-import PackageSearch from "lucide-react/dist/esm/icons/package-search";
+import PanelsTopLeft from "lucide-react/dist/esm/icons/panels-top-left";
 import RotateCcw from "lucide-react/dist/esm/icons/rotate-ccw";
 import ScanSearch from "lucide-react/dist/esm/icons/scan-search";
 import Sheet from "lucide-react/dist/esm/icons/sheet";
 import ShieldCheck from "lucide-react/dist/esm/icons/shield-check";
 import TrendingUp from "lucide-react/dist/esm/icons/trending-up";
 import Users from "lucide-react/dist/esm/icons/users";
+import Workflow from "lucide-react/dist/esm/icons/workflow";
 import {
   DeckPresentation,
   DeckSlideFrame,
@@ -153,10 +153,10 @@ const storyImpactStates = [
 ] as const;
 
 const solutionApplications = [
-  { name: "Specification assistant", role: "Find gaps before handoff", icon: FileSearch },
-  { name: "Engineering readiness", role: "Bring the right context forward", icon: ClipboardCheck },
-  { name: "Long-lead agent", role: "Surface likely purchasing risk", icon: PackageSearch },
-  { name: "Future apps + agents", role: "Build against the same foundation", icon: Bot },
+  { name: "AI Agents", role: "Assist people with contextual decisions", icon: Bot },
+  { name: "Automated Workflows", role: "Move governed work between teams", icon: Workflow },
+  { name: "Dashboards", role: "Make operational signals visible", icon: LayoutDashboard },
+  { name: "Custom Portals", role: "Give each team a focused workspace", icon: PanelsTopLeft },
 ] as const;
 
 const contextCapabilities = [
