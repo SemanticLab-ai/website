@@ -1,14 +1,14 @@
 # Tieman Deck QA
 
-## Story landscape entrance restoration — QA
+## Story landscape entrance restoration and simplification — QA
 
 - Source of truth: the original SemanticLab fragmented-landscape motion already present in repository history and the user's slide 4 annotation asking for that initial animation back.
 - Entrance evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-landscape-animation/01-entrance-initial-local.png`, `02-entrance-mid-local.png` and `03-entrance-final-local.png` at 1280 × 720.
-- Presenter reveal evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-landscape-animation/04-fragment-reveal-local.png`.
 - Updated-headline evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-landscape-copy/01-headline-desktop-local.png`. The exact heading is `The knowledge exists, but in different systems.` and the existing second-line emphasis is preserved.
+- Simplified final state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-landscape-simplified/01-simplified-desktop-local.png` at 1280 × 720.
 - Restored the established 1.35-second topology fade/scale and 680ms staggered system-node entrance with the original 220–720ms delays. No geometry, copy, colour, typography or asset changes were introduced.
 - Computed-state verification confirmed the nodes begin at staggered opacity values, all settle at opacity `1`, and the backdrop settles at its existing `0.64` opacity.
-- The initial state remains fragment `0`: the tanker-job card, connectors and consequence stay hidden until the presenter advances. Fragment `1` still reveals all three at opacity `1`.
+- The tanker-job card, its six connectors and the bottom `THE REALITY` consequence section were removed. Slide 4 now has fragment count `0`, and its next control advances directly to slide 5.
 - Reduced-motion rules now suppress the restored entrance while preserving the complete static composition.
 - No browser warning or error logs were reported.
 - Final result: passed.

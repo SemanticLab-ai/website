@@ -15,7 +15,6 @@ import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import PackageSearch from "lucide-react/dist/esm/icons/package-search";
 import Sheet from "lucide-react/dist/esm/icons/sheet";
 import ShieldCheck from "lucide-react/dist/esm/icons/shield-check";
-import Truck from "lucide-react/dist/esm/icons/truck";
 import Users from "lucide-react/dist/esm/icons/users";
 import {
   DeckPresentation,
@@ -716,13 +715,7 @@ function StoryLandscapeSlide() {
         </h2>
       </div>
 
-      <div className="tieman-story-landscape__map" aria-label="One tanker job surrounded by Tieman systems and knowledge sources">
-        <div className="tieman-story-landscape__connectors" aria-hidden="true">
-          {tiemanSystems.map((system) => (
-            <span key={system.id} className={`is-${system.id}`} />
-          ))}
-        </div>
-
+      <div className="tieman-story-landscape__map" aria-label="Tieman systems and knowledge sources">
         {tiemanSystems.map((system) => {
           const SystemIcon = system.icon;
 
@@ -737,18 +730,7 @@ function StoryLandscapeSlide() {
             </article>
           );
         })}
-
-        <article className="tieman-story-landscape__job">
-          <Truck aria-hidden="true" />
-          <span>One tanker job</span>
-          <strong>Every decision must travel with it.</strong>
-        </article>
       </div>
-
-      <p className="tieman-story-landscape__consequence">
-        <span>The reality</span>
-        <strong>The systems work. The context between them is fragmented.</strong>
-      </p>
     </DeckSlideFrame>
   );
 }
@@ -1183,7 +1165,6 @@ const storyChallengeSlides: readonly DeckSlide[] = slides.flatMap((slide) => {
       {
         id: "tieman-story-landscape",
         label: "Where knowledge lives",
-        fragmentCount: 1,
         content: <StoryLandscapeSlide />,
       },
       {
