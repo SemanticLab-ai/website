@@ -873,7 +873,8 @@
 
 .tieman-story-landscape__backdrop {
   object-fit: cover;
-  opacity: 0.64;
+  opacity: 0;
+  animation: tiemanStoryTopologyReveal 1.35s var(--sl-ease-standard) 180ms both;
 }
 
 .tieman-story-landscape__shade {
@@ -920,7 +921,10 @@
   background: rgba(246, 246, 244, 0.96);
   box-shadow: 0 1.1cqw 2.8cqw rgba(0, 0, 0, 0.3);
   color: var(--sl-text-on-light);
+  opacity: 0;
   text-align: center;
+  transform: translateY(1.4cqw) scale(0.76);
+  animation: tiemanFragmentNodeIn 680ms var(--sl-ease-standard) both;
 }
 
 .tieman-story-landscape__node svg {
@@ -947,36 +951,53 @@
 .tieman-story-landscape__node.is-epicor {
   top: 2.2cqw;
   right: 1.4cqw;
+  animation-delay: 220ms;
 }
 
 .tieman-story-landscape__node.is-solidworks {
   top: 11.1cqw;
   left: 46.6cqw;
   width: 10cqw;
+  animation-delay: 320ms;
 }
 
 .tieman-story-landscape__node.is-pdm {
   top: 18.2cqw;
   right: 10.1cqw;
   width: 8.6cqw;
+  animation-delay: 420ms;
 }
 
 .tieman-story-landscape__node.is-documents {
   bottom: 4.3cqw;
   left: 1.1cqw;
   width: 9.8cqw;
+  animation-delay: 520ms;
 }
 
 .tieman-story-landscape__node.is-excel {
   bottom: 3cqw;
   left: 27.2cqw;
   width: 9cqw;
+  animation-delay: 620ms;
 }
 
 .tieman-story-landscape__node.is-people {
   right: 28cqw;
   bottom: 2.1cqw;
   width: 10cqw;
+  animation-delay: 720ms;
+}
+
+@keyframes tiemanStoryTopologyReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 0.64;
+    transform: scale(1);
+  }
 }
 
 .tieman-story-landscape__job {
@@ -4276,7 +4297,9 @@
 @media (prefers-reduced-motion: reduce) {
   .tieman-fragmentation__backdrop,
   .tieman-fragmentation__node,
-  .tieman-fragmentation__consequence {
+  .tieman-fragmentation__consequence,
+  .tieman-story-landscape__backdrop,
+  .tieman-story-landscape__node {
     opacity: 1;
     transform: none;
     animation: none;
@@ -4284,6 +4307,10 @@
 
   .tieman-fragmentation__backdrop {
     opacity: 0.68;
+  }
+
+  .tieman-story-landscape__backdrop {
+    opacity: 0.64;
   }
 
   .tieman-vision-venn__outcome,
