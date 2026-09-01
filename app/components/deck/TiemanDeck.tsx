@@ -910,16 +910,20 @@ function WhyUsSlide() {
 
       <div className="tieman-why-us__profiles">
         <article>
-          <img src="/images/founders/raihan-portrait-v4.png" alt="Raihan Razi" width={898} height={1122} />
-          <div>
+          <div className="tieman-why-us__portrait">
+            <img src="/images/founders/raihan-portrait-v4.png" alt="Raihan Razi" width={898} height={1122} />
+          </div>
+          <div className="tieman-why-us__bio">
             <span>Engineering &amp; AI delivery</span>
             <h3>Raihan Razi</h3>
             <p>15 years across product, software delivery and technology strategy, including GameDay-scale platforms and PartsHQ.</p>
           </div>
         </article>
         <article>
-          <img src="/images/founders/naila.jpg" alt="Naila Rahman" width={1413} height={1853} />
-          <div>
+          <div className="tieman-why-us__portrait">
+            <img src="/images/founders/naila.jpg" alt="Naila Rahman" width={1413} height={1853} />
+          </div>
+          <div className="tieman-why-us__bio">
             <span>Product strategy &amp; experience</span>
             <h3>Naila Rahman</h3>
             <p>Research-led product and workflow design across Podly and GameDay, connecting evidence, requirements and user decisions.</p>

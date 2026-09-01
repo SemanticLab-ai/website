@@ -241,6 +241,49 @@ The focused comparison covers the exact annotated header region. The initial, fi
 
 final result: passed
 
+## Slide 09 founder headshot framing — QA
+
+### Source and implementation evidence
+
+- User-reported crop defect: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_NCGEhh/Screenshot 2026-09-01 at 11.54.00 PM.png`
+- Pre-fix local slide: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/48-why-us-headshots-before-local.png`
+- Final desktop implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/64-why-us-headshots-desktop-approved.png`
+- Final focused source/implementation comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/66-why-us-headshots-comparison-approved.png`
+- Responsive capture: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/65-why-us-headshots-mobile-approved.png`
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| User source | 960 × 445 | Cropped desktop founder-card region | slide 09 crop defect |
+| Final desktop | 1280 × 720 | 1280 × 720 browser viewport; devicePixelRatio 1 | slide 09 |
+| Focused comparison | 1744 × 370 | Both founder-card regions normalised to 872 × 370 and combined side by side | defect → corrected framing |
+| Mobile captures | 390 × 844 and 390 × 1800 | 390px CSS viewport; devicePixelRatio 1 | slide 09 top and complete responsive content |
+
+The focused comparison is required because the defect is confined to the two portrait windows; the full desktop capture verifies that the correction preserves the surrounding slide composition, copy, footer and controls.
+
+### Findings, fixes and iteration history
+
+- Pass 0 — blocked: `object-fit: cover` enlarged both tall source portraits to fill shallow landscape windows, cutting off Raihan's hair and most of both faces.
+- [P1] Portrait crop. Fixed by giving each portrait a dedicated overflow-clipped media window, switching to contained source geometry and applying person-specific scale and focal origins. Both complete heads and faces are now visible without changing the card dimensions.
+- Pass 1 — blocked: the first contained treatment was safe but reduced both people too far, reading as full-body portraits rather than headshots.
+- [P2] Portrait scale. Fixed by tightening Raihan to `scale(1.65)` at a 36% vertical origin and Naila to `scale(1.5)` at a 38% vertical origin. This keeps the faces prominent while leaving visible headroom; the media wrapper prevents either transform from entering the copy row.
+- Pass 2 — passed: the final focused comparison and responsive captures show both heads fully framed with no overlap, clipping or horizontal overflow.
+
+### Fidelity and responsive verification
+
+- Fonts and typography: the heading, founder names, role labels and biographies are unchanged; their weight, wrapping, line height and hierarchy match the existing slide.
+- Spacing and layout rhythm: desktop keeps the two-column profile rail and all original card heights, borders and padding. The new media wrapper clips only the portrait surface and does not alter the text grid or slide footer clearance.
+- Colours and tokens: the dark deck canvas, lime accent, muted copy and hairline borders remain unchanged. A white media background matches both source portraits and removes visible letterbox seams.
+- Image quality and asset fidelity: the existing high-resolution Raihan and Naila source images are reused. No generated, placeholder or substitute asset was introduced; only crop scale and focal position changed.
+- Copy and content: no slide copy, labels, descriptors, order or navigation changed.
+- Responsive behaviour: at 390px width, both portrait cards stack in full, each head remains visible, and the complete founder section is reachable without horizontal clipping.
+- Browser verification: the local story route rendered slide 09 at desktop and responsive widths with an empty warning/error console.
+
+### Result
+
+final result: passed
+
 ## Operational impact slide — QA
 
 ### Source and implementation evidence
