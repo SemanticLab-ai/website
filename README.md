@@ -12,9 +12,10 @@ to production. The source contract lives in
 and server artifacts for verification.
 
 Preview builds disable indexing and production analytics. The private `/deck`
-sales presentation is enabled only in preview builds. Production retains the
-approved canonical origin and analytics configuration and returns 404 for the
-deck until the feature is explicitly authorised.
+sales presentation and `/deck/tieman-tankers` opportunity variant are enabled
+only in preview builds. Production retains the approved canonical origin and
+analytics configuration and returns 404 for both routes until the feature is
+explicitly authorised.
 
 Run `npm run check` before opening or updating a pull request. It typechecks,
 builds and asserts both environments, then runs
