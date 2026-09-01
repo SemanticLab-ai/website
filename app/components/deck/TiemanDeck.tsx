@@ -22,7 +22,7 @@ import {
   type DeckSlide,
 } from "~/components/deck/DeckPresentation";
 
-const TOTAL_SLIDES = 16;
+const TOTAL_SLIDES = 15;
 
 const agendaItems = [
   "Tieman's vision",
@@ -115,14 +115,6 @@ const rippleEffects = [
     detail: "Production can act on information that is no longer current.",
     handoff: "Planning → Production",
   },
-] as const;
-
-const opportunityFlow = [
-  "Connect data",
-  "Establish context",
-  "Govern access",
-  "Build intelligence",
-  "Power apps & agents",
 ] as const;
 
 const tiemanSystems = [
@@ -498,51 +490,17 @@ function FragmentedEstateSlide() {
   );
 }
 
-function FoundationOpportunitySlide() {
-  return (
-    <DeckSlideFrame
-      index={7}
-      total={TOTAL_SLIDES}
-      descriptor="One trusted foundation for data, intelligence and action."
-      className="tieman-foundation"
-    >
-      <div className="tieman-foundation__heading">
-        <p className="deck-kicker">What Tieman is trying to achieve</p>
-        <h2 id="deck-slide-7-title">
-          Create one trusted foundation for Tieman&apos;s <em>data and AI.</em>
-        </h2>
-        <p>
-          Tieman has the data, systems and decades of knowledge. The opportunity is to connect and govern them so the business can use them with confidence.
-        </p>
-      </div>
-
-      <ol className="tieman-foundation__flow" aria-label="Connected data and AI foundation">
-        {opportunityFlow.map((step, index) => (
-          <li key={step}>
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{step}</strong>
-          </li>
-        ))}
-      </ol>
-
-      <p className="tieman-foundation__result">
-        Once that foundation exists, applications and agents can operate on information that is connected, contextualised and governed.
-      </p>
-    </DeckSlideFrame>
-  );
-}
-
 function SolutionStackSlide() {
   return (
     <DeckSlideFrame
-      index={8}
+      index={7}
       total={TOTAL_SLIDES}
       descriptor="One trusted foundation for Tieman's data, intelligence and action."
       className="tieman-solution-stack"
     >
       <div className="tieman-solution-stack__heading">
         <p className="deck-kicker">The opportunity</p>
-        <h2 id="deck-slide-8-title">
+        <h2 id="deck-slide-7-title">
           One trusted foundation for Tieman&apos;s <em>data and AI.</em>
         </h2>
         <p className="tieman-solution-stack__summary">
@@ -835,14 +793,14 @@ function StoryImpactSlide() {
 function WhyUsSlide() {
   return (
     <DeckSlideFrame
-      index={9}
+      index={8}
       total={TOTAL_SLIDES}
       descriptor="Product thinking, experience and engineering stay connected."
       className="tieman-why-us"
     >
       <div className="tieman-why-us__heading">
         <p className="deck-kicker">Why SemanticLab</p>
-        <h2 id="deck-slide-9-title">
+        <h2 id="deck-slide-8-title">
           The people framing the problem stay close to the <em>build.</em>
         </h2>
       </div>
@@ -881,14 +839,14 @@ function WhyUsSlide() {
 function ProofSlide() {
   return (
     <DeckSlideFrame
-      index={10}
+      index={9}
       total={TOTAL_SLIDES}
       descriptor="Relevant proof across data, platforms and workflow design."
       className="tieman-proof"
     >
       <div className="tieman-proof__heading">
         <p className="deck-kicker">Proof of relevant work</p>
-        <h2 id="deck-slide-10-title">
+        <h2 id="deck-slide-9-title">
           Experience that maps to the <em>operating problem.</em>
         </h2>
       </div>
@@ -920,14 +878,14 @@ function ProofSlide() {
 function ApproachSlide() {
   return (
     <DeckSlideFrame
-      index={11}
+      index={10}
       total={TOTAL_SLIDES}
       descriptor="Start small. Prove value. Expand safely."
       className="tieman-approach"
     >
       <div className="tieman-approach__heading">
         <p className="deck-kicker">How we work</p>
-        <h2 id="deck-slide-11-title">
+        <h2 id="deck-slide-10-title">
           Start small. Prove value. <em>Expand safely.</em>
         </h2>
       </div>
@@ -952,14 +910,14 @@ function ApproachSlide() {
 function OperatingLayerSlide() {
   return (
     <DeckSlideFrame
-      index={12}
+      index={11}
       total={TOTAL_SLIDES}
       descriptor="Business meaning sits between source systems and applications."
       className="tieman-operating-layer"
     >
       <div className="tieman-operating-layer__heading">
         <p className="deck-kicker">A modern AI operating layer</p>
-        <h2 id="deck-slide-12-title">
+        <h2 id="deck-slide-11-title">
           Intelligence becomes useful when it understands the <em>business.</em>
         </h2>
       </div>
@@ -985,7 +943,7 @@ function OperatingLayerSlide() {
 function TiemanFlowSlide() {
   return (
     <DeckSlideFrame
-      index={13}
+      index={12}
       total={TOTAL_SLIDES}
       descriptor="One upstream flow can improve decisions across the job."
       tone="light"
@@ -993,7 +951,7 @@ function TiemanFlowSlide() {
     >
       <div className="tieman-flow__heading">
         <p className="deck-kicker">How it works for Tieman</p>
-        <h2 id="deck-slide-13-title">
+        <h2 id="deck-slide-12-title">
           Move an accepted request into Engineering with <em>trusted context.</em>
         </h2>
       </div>
@@ -1030,14 +988,14 @@ function TiemanFlowSlide() {
 function SecuritySlide() {
   return (
     <DeckSlideFrame
-      index={14}
+      index={13}
       total={TOTAL_SLIDES}
       descriptor="Secure, governed and accountable by design."
       className="tieman-security"
     >
       <div className="tieman-security__heading">
         <p className="deck-kicker">Secure by design</p>
-        <h2 id="deck-slide-14-title">
+        <h2 id="deck-slide-13-title">
           Trust is part of the architecture—not a <em>later control.</em>
         </h2>
       </div>
@@ -1058,7 +1016,7 @@ function SecuritySlide() {
 function PilotSlide() {
   return (
     <DeckSlideFrame
-      index={15}
+      index={14}
       total={TOTAL_SLIDES}
       descriptor="Start upstream because every downstream team inherits the handoff."
       tone="light"
@@ -1066,7 +1024,7 @@ function PilotSlide() {
     >
       <div className="tieman-pilot__heading">
         <p className="deck-kicker">Pilot recommendation</p>
-        <h2 id="deck-slide-15-title">
+        <h2 id="deck-slide-14-title">
           Start with the Sales-to-Engineering <em>handoff.</em>
         </h2>
         <p>
@@ -1095,7 +1053,7 @@ function PilotSlide() {
 function NextStepSlide() {
   return (
     <DeckSlideFrame
-      index={16}
+      index={15}
       total={TOTAL_SLIDES}
       descriptor="Discovery replaces assumptions with a clear pilot decision."
       className="tieman-next-step"
@@ -1110,7 +1068,7 @@ function NextStepSlide() {
       <div className="tieman-next-step__shade" aria-hidden="true" />
       <div className="tieman-next-step__copy">
         <p className="deck-kicker">The next step</p>
-        <h2 id="deck-slide-16-title">
+        <h2 id="deck-slide-15-title">
           Define the first proof—before committing to <em>implementation.</em>
         </h2>
         <p>
@@ -1142,7 +1100,6 @@ const slides: readonly DeckSlide[] = [
   { id: "tieman-challenges", label: "Challenges", content: <ChallengesSlide /> },
   { id: "tieman-ripple", label: "Operational impact", content: <RippleSlide /> },
   { id: "tieman-fragmentation", label: "Where context lives", content: <FragmentedEstateSlide /> },
-  { id: "tieman-foundation", label: "The opportunity", content: <FoundationOpportunitySlide /> },
   {
     id: "tieman-solution-stack",
     label: "The solution",

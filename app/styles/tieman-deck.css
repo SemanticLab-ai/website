@@ -1537,106 +1537,6 @@
   transition-delay: 0s;
 }
 
-/* Foundation */
-.tieman-foundation .deck-slide__content {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-}
-
-.tieman-foundation__heading {
-  display: grid;
-  grid-template-columns: 1fr 35cqw;
-  column-gap: 5.4cqw;
-}
-
-.tieman-foundation__heading .deck-kicker {
-  grid-column: 1 / -1;
-}
-
-.tieman-foundation__heading h2 {
-  max-width: 57cqw;
-  margin-top: 1.25cqw;
-  font-size: 4.35cqw;
-  line-height: 0.9;
-}
-
-.tieman-foundation__heading > p:last-child {
-  align-self: end;
-  max-width: 34cqw;
-  margin-bottom: 0.35cqw;
-  color: color-mix(in srgb, var(--sl-text-primary) 60%, transparent);
-  font-size: 0.88cqw;
-  line-height: 1.55;
-}
-
-.tieman-foundation__flow {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  align-self: end;
-  list-style: none;
-  margin-top: 2.4cqw;
-  border-top: 1px solid var(--sl-border);
-  border-bottom: 1px solid var(--sl-border);
-  padding: 0;
-}
-
-.tieman-foundation__flow li {
-  position: relative;
-  min-height: 8.6cqw;
-  border-right: 1px solid var(--sl-border);
-  padding: 1.15cqw 1.35cqw;
-}
-
-.tieman-foundation__flow li:last-child {
-  border-right: 0;
-  background: var(--sl-accent);
-  color: var(--sl-text-on-light);
-}
-
-.tieman-foundation__flow li:not(:last-child)::after {
-  position: absolute;
-  top: 50%;
-  right: -0.26cqw;
-  z-index: 2;
-  width: 0.5cqw;
-  height: 0.5cqw;
-  border-top: 1px solid var(--sl-accent);
-  border-right: 1px solid var(--sl-accent);
-  background: var(--sl-canvas);
-  content: "";
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.tieman-foundation__flow span {
-  color: color-mix(in srgb, currentColor 45%, transparent);
-  font-size: 0.58cqw;
-  letter-spacing: 0.12em;
-}
-
-.tieman-foundation__flow strong {
-  display: block;
-  max-width: 12cqw;
-  margin-top: 2.7cqw;
-  font-size: 1.08cqw;
-  font-weight: var(--sl-weight-regular);
-  line-height: 1.12;
-}
-
-.tieman-foundation__result {
-  display: grid;
-  grid-template-columns: 13cqw 1fr;
-  gap: 1.4cqw;
-  margin-top: 1.4cqw;
-  color: color-mix(in srgb, var(--sl-text-primary) 64%, transparent);
-  font-size: 0.78cqw;
-  line-height: 1.45;
-}
-
-.tieman-foundation__result::before {
-  color: var(--sl-accent);
-  content: "The opportunity";
-}
-
 /* Solution stack */
 .tieman-solution-stack .deck-slide__content {
   display: grid;
@@ -3054,7 +2954,6 @@
   .tieman-vision__heading h2,
   .tieman-vision-venn__heading h2,
   .tieman-challenges__heading h2,
-  .tieman-foundation__heading h2,
   .tieman-solution-stack__heading h2,
   .tieman-ripple__heading h2,
   .tieman-why-us__heading h2,
@@ -3199,7 +3098,6 @@
   .tieman-vision .deck-slide__content,
   .tieman-vision-venn .deck-slide__content,
   .tieman-challenges .deck-slide__content,
-  .tieman-foundation .deck-slide__content,
   .tieman-solution-stack .deck-slide__content,
   .tieman-ripple .deck-slide__content,
   .tieman-why-us .deck-slide__content,
@@ -3384,7 +3282,6 @@
   }
 
   .tieman-challenges__friction,
-  .tieman-foundation__flow,
   .tieman-ripple__pipeline,
   .tieman-why-us__profiles,
   .tieman-proof__rail,
@@ -3401,7 +3298,6 @@
   }
 
   .tieman-challenges__heading > p:last-child,
-  .tieman-foundation__heading > p:last-child,
   .tieman-pilot__heading > p:last-child {
     max-width: none;
     margin-top: 18px;
@@ -3487,7 +3383,6 @@
     font-size: 0.96rem;
   }
 
-  .tieman-foundation__result,
   .tieman-why-us__studio,
   .tieman-operating-layer__governance,
   .tieman-flow__outcome,
@@ -3498,7 +3393,6 @@
     padding-top: 18px;
   }
 
-  .tieman-foundation__result::before,
   .tieman-why-us__studio span,
   .tieman-operating-layer__governance span,
   .tieman-flow__outcome span,
@@ -3512,10 +3406,6 @@
   .tieman-pilot__promise strong {
     font-size: 1.08rem;
     line-height: 1.4;
-  }
-
-  .tieman-foundation__heading {
-    display: block;
   }
 
   .tieman-solution-stack__heading {
@@ -3717,7 +3607,6 @@
     font-size: 0.6rem;
   }
 
-  .tieman-foundation__flow,
   .tieman-ripple__pipeline,
   .tieman-ripple__effects,
   .tieman-why-us__profiles,
@@ -3726,7 +3615,6 @@
     grid-template-columns: 1fr;
   }
 
-  .tieman-foundation__flow li,
   .tieman-ripple__pipeline li {
     min-height: 0;
     border-right: 0;
@@ -3734,16 +3622,10 @@
     padding: 20px 0;
   }
 
-  .tieman-foundation__flow li:last-child {
-    padding: 20px;
-  }
-
-  .tieman-foundation__flow li:not(:last-child)::after,
   .tieman-ripple__pipeline li:not(:last-child)::after {
     display: none;
   }
 
-  .tieman-foundation__flow span,
   .tieman-ripple__pipeline li > span,
   .tieman-ripple__effects li > span,
   .tieman-approach__stages li > span,
@@ -3754,15 +3636,10 @@
     font-size: 0.62rem;
   }
 
-  .tieman-foundation__flow strong,
   .tieman-ripple__pipeline strong {
     max-width: none;
     margin-top: 10px;
     font-size: 1.12rem;
-  }
-
-  .tieman-foundation__result {
-    font-size: 0.8rem;
   }
 
   .tieman-ripple__heading > p:last-child {

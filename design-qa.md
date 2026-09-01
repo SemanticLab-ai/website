@@ -1,5 +1,16 @@
 # Tieman Deck QA
 
+## Redundant opportunity-summary removal — QA
+
+- Source of truth: the user's annotation identifying the standalone `WHAT TIEMAN IS TRYING TO ACHIEVE` opportunity summary as redundant.
+- Desktop transition evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-opportunity-removal/slide-06-impact.png` followed directly by `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-opportunity-removal/slide-07-solution.png` at 1280 × 720.
+- Mobile evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-opportunity-removal/slide-07-solution-mobile.png` at 390 × 844.
+- Removed the redundant component, its five-step flow data and its now-unused responsive styling. No other slide component or visual treatment was changed.
+- The definitive story sequence now advances directly from challenge impact slide `06 / 15` to the architecture solution slide `07 / 15`; the next complete architecture reveal advances to Why SemanticLab at `08 / 15`.
+- Reverse navigation returns from the solution directly to the fully revealed challenge-impact state. All five solution fragments remain presenter-controlled.
+- Browser verification confirmed meaningful rendered content, correct slide labels and numbering, no framework overlay, zero mobile horizontal overflow and no browser warning/error logs.
+- Final result: passed.
+
 ## Story landscape entrance restoration and simplification — QA
 
 - Source of truth: the original SemanticLab fragmented-landscape motion already present in repository history and the user's slide 4 annotation asking for that initial animation back.
