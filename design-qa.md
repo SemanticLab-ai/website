@@ -134,6 +134,11 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - Exact-intersection reveal sequence, fragments 0–4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-exact-sequence.png`
 - Exact-intersection desktop fragment 4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-exact-step-4.png`
 - Exact-intersection mobile fragment 4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-exact-mobile-viewport.png`
+- Core-copy source state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-exact-intersection-live.png`
+- Core-copy desktop implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-core-copy-desktop-final.png`
+- Core-copy mobile implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-core-copy-mobile-final.png`
+- Core-copy full-view comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-core-copy-before-after-full.png`
+- Core-copy focused comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-core-copy-before-after-focused.png`
 - Alternate implementation route: `/deck/tieman-tankers?vision=venn`; the existing `/deck/tieman-tankers` vision slide remains unchanged.
 
 ### Normalisation
@@ -159,6 +164,8 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - [P1] Shared-centre geometry. Fixed by measuring the circle asset's 1,132px visible diameter inside its 1,254px source canvas, applying that radius to the exact equilateral CSS geometry, and generating desktop and mobile transparent raster masks from the mathematical intersection of all three circles.
 - [P2] Shared-centre scale and hierarchy. Fixed by replacing the inset 22.5cqw core artwork with a full-diagram intersection mask. The new lime region terminates precisely on all three circle boundaries and is 202 × 196px in the checked desktop state, compared with the prior 185 × 181px visible centre.
 - Pass 3 — passed: the user-evidence comparison, complete five-state sequence, desktop view and mobile view contain no remaining actionable P0, P1 or P2 mismatch.
+- [P2] Core-copy density. The final intersection still contained a label, three-line title and supporting sentence, making the centre feel crowded. Fixed by retaining only `Tieman's` and `intelligent platform`, forcing the requested two-line composition and centre-aligning the group.
+- Pass 4 — passed: the full-view and focused before/after comparisons confirm the copy reduction is isolated to the shared centre. The desktop and mobile final captures show both lines fully contained by the lime intersection.
 - No actionable P0, P1 or P2 findings remain after the final comparison.
 
 ### Geometry and visual verification
@@ -173,6 +180,8 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - The final sequence board confirms fragments accumulate in the intended order: statement only → operational efficiency → future intelligence → risk and resilience → Tieman's intelligent operating platform.
 - The exact-intersection comparison confirms the final lime centre is no longer an independently positioned shape. Its apex and two lower corners are the three pairwise boundary intersections, while each curved side is contributed by one source circle.
 - Fragment 3 contains only the three translucent circles and their natural dark overlap; the bright intersection and centre copy remain fully absent until fragment 4.
+- The final desktop `intelligent platform` line measures 155.27 × 17.81px at x=948.20–1103.47px. At its tightest row, the lime intersection spans x=945–1106px, preserving approximately 3px of clearance on both sides; clearance increases toward the lower edge.
+- The 390 × 844 capture preserves the same two-line hierarchy inside the responsive intersection without clipping or horizontal overflow.
 - Required fidelity surfaces passed: typography uses the existing display and UI families with increased internal readability; spacing is derived from one symmetric geometry; colours remain on the existing dark-canvas/lime token system; both visible Venn assets are optimised transparent raster images with no masking halo or compression artifact; all requested outcome and operating-platform copy is present.
 - The generated circle and exact-intersection visuals are real raster assets. No placeholder, inline SVG, handcrafted SVG, CSS-drawn diagram or emoji is used.
 - The in-app browser warning/error console is empty.

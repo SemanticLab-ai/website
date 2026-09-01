@@ -421,35 +421,20 @@
   flex-direction: column;
 }
 
-.tieman-vision-venn__core > span,
-.tieman-vision-venn__core > strong,
-.tieman-vision-venn__core > small {
+.tieman-vision-venn__core > strong {
   position: relative;
   z-index: 1;
 }
 
-.tieman-vision-venn__core span {
-  color: color-mix(in srgb, var(--sl-text-on-light) 66%, transparent);
-  font-size: 0.48cqw;
-  font-weight: var(--sl-weight-semibold);
-  letter-spacing: var(--sl-tracking-label);
-  text-transform: uppercase;
-}
-
 .tieman-vision-venn__core strong {
-  max-width: 13.6cqw;
-  margin-top: 0.52cqw;
-  font-size: 1.25cqw;
+  font-size: 1.1cqw;
   font-weight: var(--sl-weight-medium);
   line-height: 1.02;
 }
 
-.tieman-vision-venn__core small {
-  max-width: 12.4cqw;
-  margin-top: 0.6cqw;
-  color: color-mix(in srgb, var(--sl-text-on-light) 64%, transparent);
-  font-size: 0.5cqw;
-  line-height: 1.35;
+.tieman-vision-venn__core strong > span {
+  display: block;
+  white-space: nowrap;
 }
 
 .sales-deck__transition[data-deck-fragment-count="4"]:is(
@@ -2077,22 +2062,9 @@
     min-height: 94px;
   }
 
-  .tieman-vision-venn__core span {
-    font-size: 0.34rem;
-  }
-
   .tieman-vision-venn__core strong {
-    max-width: 120px;
-    margin-top: 5px;
-    font-size: 0.74rem;
-    line-height: 1.03;
-  }
-
-  .tieman-vision-venn__core small {
-    max-width: 110px;
-    margin-top: 5px;
-    font-size: 0.36rem;
-    line-height: 1.2;
+    font-size: 0.56rem;
+    line-height: 1.02;
   }
 
   .tieman-problem__body,

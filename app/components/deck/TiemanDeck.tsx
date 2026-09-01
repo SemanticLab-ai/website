@@ -367,9 +367,10 @@ function TiemanVisionVennSlide() {
         </picture>
 
         <div className="tieman-vision-venn__core">
-          <span>The shared centre</span>
-          <strong>Tieman&apos;s intelligent operating platform</strong>
-          <small>One connected, trusted system for every tanker</small>
+          <strong>
+            <span>Tieman&apos;s</span>
+            <span>intelligent platform</span>
+          </strong>
         </div>
       </div>
     </DeckSlideFrame>
