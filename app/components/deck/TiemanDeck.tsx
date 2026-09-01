@@ -1089,7 +1089,7 @@ function SecuritySlide() {
       <div className="tieman-security__heading">
         <p className="deck-kicker">Secure by design</p>
         <h2 id="deck-slide-13-title">
-          Trust is part of the architecture—not a <em>later control.</em>
+          Trust is built into <em>every layer.</em>
         </h2>
       </div>
 

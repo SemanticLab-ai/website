@@ -1,5 +1,16 @@
 # Tieman Deck QA
 
+## Security headline refinement — QA
+
+- Source of truth: the user's security-slide annotation requesting stronger copy for `Trust is part of the architecture—not a later control.`
+- Revised headline: `Trust is built into every layer.` The existing lime italic emphasis now lands on `every layer.`
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-security-copy/01-before-live.png` at 1280 × 720.
+- Final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-security-copy/02-after-local.png` at the same viewport and slide state.
+- The shorter construction is direct, confident and connects the conclusion to the six adjacent layers of control without introducing new terminology.
+- Browser verification confirmed the old line is absent, all six security controls remain present, and the headline retains a 69.1px horizontal gap from the control grid with no clipping or collision.
+- No layout, control copy, slide descriptor or visual styling changed.
+- Final result: passed.
+
 ## AI operating-layer roadmap — QA
 
 - Source of truth: the user's slide annotation requesting that the static operating-layer stack become an animated timeline or roadmap.
