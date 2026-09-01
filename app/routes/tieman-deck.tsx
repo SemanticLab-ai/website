@@ -17,8 +17,7 @@ export function meta({}: Route.MetaArgs) {
     { title: "SemanticLab × Tieman Tankers | Opportunity" },
     {
       name: "description",
-      content:
-        "A private presentation of the Tieman Job Intelligence problem, solution and opportunity.",
+      content: "A private Connected Data & AI Transformation Brief for Tieman Tankers.",
     },
     { name: "robots", content: "noindex, nofollow, noarchive" },
   ];

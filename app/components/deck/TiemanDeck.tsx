@@ -5,34 +5,127 @@ import {
   type DeckSlide,
 } from "~/components/deck/DeckPresentation";
 
-const TOTAL_SLIDES = 5;
+const TOTAL_SLIDES = 12;
 
-const sourceSystems = ["Epicor", "SolidWorks", "PDM", "Word + PDF", "Excel", "People"];
+const rippleStages = [
+  "Sales",
+  "Specification",
+  "Engineering",
+  "BOM",
+  "Purchasing",
+  "Planning",
+  "Production",
+] as const;
 
-const opportunityMoves = [
+const opportunityFlow = [
+  "Connect data",
+  "Establish context",
+  "Govern access",
+  "Build intelligence",
+  "Power apps & agents",
+] as const;
+
+const proofPoints = [
   {
     index: "01",
-    title: "Find the right precedent",
-    detail: "Surface relevant historical jobs and show why each one matches.",
+    name: "GameDay",
+    provenance: "Raihan · previous role",
+    headline: "$250M+",
+    measure: "annual payment volume supported",
+    detail: "Large-scale operational data, payment orchestration and platform modernisation with 95%+ Stripe adoption.",
   },
   {
     index: "02",
-    title: "Check job readiness",
-    detail: "Expose missing, inconsistent or unresolved specification inputs earlier.",
+    name: "PartsHQ",
+    provenance: "SemanticLab product",
+    headline: "100K+",
+    measure: "parts across a distributed platform",
+    detail: "Disconnected catalogue, supplier and commerce systems shaped into reliable workflow automation for six active clients.",
   },
   {
     index: "03",
-    title: "See risk sooner",
-    detail: "Flag candidate long-lead items for Engineering review before they become urgent.",
+    name: "Podly",
+    provenance: "Naila · previous role",
+    headline: "Evidence",
+    measure: "made usable inside the workflow",
+    detail: "Product workflows that connect requirements, evidence, ownership and decision clarity.",
   },
 ] as const;
+
+const approachStages = [
+  {
+    index: "01",
+    title: "Understand",
+    summary: "Frame the business problem, workflow and decision before selecting technology.",
+  },
+  {
+    index: "02",
+    title: "Shape",
+    summary: "Validate the data, architecture, governance and narrowest valuable use case.",
+  },
+  {
+    index: "03",
+    title: "Prove",
+    summary: "Run one controlled pilot with human approvals and measurable outcomes.",
+  },
+  {
+    index: "04",
+    title: "Expand",
+    summary: "Reuse the foundation across workflows only after value and trust are established.",
+  },
+] as const;
+
+const operatingLayers = [
+  { index: "05", title: "Applications & agents", detail: "Useful tools inside real work" },
+  { index: "04", title: "Business meaning", detail: "Ontology, relationships and rules" },
+  { index: "03", title: "Semantic layer", detail: "Shared context around each job" },
+  { index: "02", title: "Connected data layer", detail: "Reliable movement and usable structure" },
+  { index: "01", title: "Source systems", detail: "Epicor · SolidWorks · PDM · documents" },
+] as const;
+
+const securityControls = [
+  { index: "01", title: "Governance", detail: "Clear ownership and rules for how operational data is used." },
+  { index: "02", title: "Access control", detail: "People and agents see only the information their role permits." },
+  { index: "03", title: "Australian hosting", detail: "Supported where required; the final pattern is confirmed in discovery." },
+  { index: "04", title: "Audit trail", detail: "Sources, actions and decisions remain traceable." },
+  { index: "05", title: "Human approval", detail: "People approve decisions before operational records change." },
+  { index: "06", title: "Revision control", detail: "Answers identify the current source and revision behind them." },
+] as const;
+
+const pilotCapabilities = [
+  {
+    index: "01",
+    title: "Historical job context",
+    detail: "Find relevant previous work and show why it is useful.",
+  },
+  {
+    index: "02",
+    title: "Specification readiness",
+    detail: "Surface missing, inconsistent or unresolved inputs earlier.",
+  },
+  {
+    index: "03",
+    title: "Long-lead visibility",
+    detail: "Flag candidate purchasing risks for Engineering review.",
+  },
+] as const;
+
+function TiemanPartnerLockup() {
+  return (
+    <div className="tieman-partner-lockup" aria-label="SemanticLab and Tieman Tankers">
+      <span>SemanticLab</span>
+      <i>×</i>
+      <img src="/images/deck/tieman/logo.png" alt="Tieman Tankers" width={426} height={78} />
+    </div>
+  );
+}
 
 function TiemanCoverSlide() {
   return (
     <DeckSlideFrame
       index={1}
       total={TOTAL_SLIDES}
-      descriptor="Tieman Job Intelligence opportunity."
+      descriptor="Connected Data & AI Transformation Brief."
       className="tieman-cover"
     >
       <img
@@ -45,189 +138,429 @@ function TiemanCoverSlide() {
       />
       <div className="tieman-cover__shade" aria-hidden="true" />
       <div className="tieman-cover__copy">
-        <div className="tieman-partner-lockup" aria-label="SemanticLab and Tieman Tankers">
-          <span>SemanticLab</span>
-          <i>×</i>
-          <img src="/images/deck/tieman/logo.png" alt="Tieman Tankers" width={426} height={78} />
-        </div>
+        <TiemanPartnerLockup />
         <h1 id="deck-slide-1-title">
-          One job. Complete context. <em>Confident decisions.</em>
+          Connected data &amp; AI for Tieman&apos;s <em>next chapter.</em>
         </h1>
-        <p>
-          A focused opportunity to improve the Sales-to-Engineering handoff without replacing the systems Tieman already trusts.
-        </p>
+        <p>Tieman Tankers · Connected Data &amp; AI Transformation Brief</p>
       </div>
     </DeckSlideFrame>
   );
 }
 
-function TiemanProblemSlide() {
+function ProblemSlide() {
   return (
     <DeckSlideFrame
       index={2}
       total={TOTAL_SLIDES}
-      descriptor="The information exists. The job context must be reconstructed."
+      descriptor="The data exists. The connection does not."
       tone="light"
       className="tieman-problem"
     >
-      <div className="tieman-problem__copy">
-        <p className="deck-kicker">The problem</p>
+      <div className="tieman-problem__heading">
+        <p className="deck-kicker">The problem became clear</p>
         <h2 id="deck-slide-2-title">
-          The systems hold the information. <em>People join the dots.</em>
+          Tieman doesn&apos;t have a data problem. It has a <em>disconnected data problem.</em>
+        </h2>
+      </div>
+
+      <div className="tieman-problem__body">
+        <p className="tieman-problem__lead">
+          Tieman already has decades of valuable operational knowledge.
+        </p>
+        <p>
+          It sits across Epicor, engineering systems, documents, spreadsheets and experienced people—different systems and formats that are difficult to connect, govern and use consistently.
+        </p>
+        <div className="tieman-problem__statement">
+          <span>The missing piece</span>
+          <strong>A unified foundation that brings it together.</strong>
+        </div>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function FoundationOpportunitySlide() {
+  return (
+    <DeckSlideFrame
+      index={3}
+      total={TOTAL_SLIDES}
+      descriptor="One trusted foundation for data, intelligence and action."
+      className="tieman-foundation"
+    >
+      <div className="tieman-foundation__heading">
+        <p className="deck-kicker">What Tieman is trying to achieve</p>
+        <h2 id="deck-slide-3-title">
+          Create one trusted foundation for Tieman&apos;s <em>data and AI.</em>
         </h2>
         <p>
-          Job knowledge is distributed across operational systems, documents and experienced employees.
+          Tieman has the data, systems and decades of knowledge. The opportunity is to connect and govern them so the business can use them with confidence.
         </p>
       </div>
 
-      <div className="tieman-problem__map" aria-label="Fragmented job information">
-        <ul className="tieman-system-rail">
-          {sourceSystems.map((system) => (
-            <li key={system}>{system}</li>
-          ))}
-        </ul>
-        <div className="tieman-context-gap">
-          <span>One accepted job</span>
-          <strong>Context reconstructed by hand</strong>
-        </div>
-        <ol className="tieman-friction-rail">
-          <li>Search</li>
-          <li>Cross-check</li>
-          <li>Re-enter</li>
-          <li>Clarify</li>
-        </ol>
-      </div>
+      <ol className="tieman-foundation__flow" aria-label="Connected data and AI foundation">
+        {opportunityFlow.map((step, index) => (
+          <li key={step}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{step}</strong>
+          </li>
+        ))}
+      </ol>
 
-      <p className="tieman-problem__consequence">
-        An upstream information gap can become engineering rework, late purchasing or a production delay.
+      <p className="tieman-foundation__result">
+        Once that foundation exists, applications and agents can operate on information that is connected, contextualised and governed.
       </p>
     </DeckSlideFrame>
   );
 }
 
-function TiemanSolutionSlide() {
-  return (
-    <DeckSlideFrame
-      index={3}
-      total={TOTAL_SLIDES}
-      descriptor="Connect the context without replacing the source systems."
-      className="tieman-solution"
-    >
-      <div className="tieman-solution__heading">
-        <p className="deck-kicker">The solution</p>
-        <h2 id="deck-slide-3-title">
-          Give every accepted job a <em>trusted context layer.</em>
-        </h2>
-        <p>
-          Existing systems remain the source of truth. A job intelligence layer connects what matters, shows the evidence and guides the handoff.
-        </p>
-      </div>
-
-      <ol className="tieman-layer-stack">
-        <li>
-          <span>03</span>
-          <div>
-            <small>People decide</small>
-            <strong>Sales resolves · Engineering approves</strong>
-          </div>
-        </li>
-        <li className="tieman-layer-stack__active">
-          <span>02</span>
-          <div>
-            <small>Job intelligence</small>
-            <strong>Requirements · history · readiness · evidence</strong>
-          </div>
-        </li>
-        <li>
-          <span>01</span>
-          <div>
-            <small>Trusted sources</small>
-            <strong>Epicor · SolidWorks · PDM · documents</strong>
-          </div>
-        </li>
-      </ol>
-    </DeckSlideFrame>
-  );
-}
-
-function TiemanOpportunitySlide() {
+function RippleSlide() {
   return (
     <DeckSlideFrame
       index={4}
       total={TOTAL_SLIDES}
-      descriptor="A narrow first opportunity with value across the job."
+      descriptor="An upstream context gap travels through the whole job."
       tone="light"
-      className="tieman-opportunity"
+      className="tieman-ripple"
     >
-      <div className="tieman-opportunity__heading">
-        <p className="deck-kicker">The opportunity</p>
+      <div className="tieman-ripple__heading">
+        <p className="deck-kicker">The ripple effect</p>
         <h2 id="deck-slide-4-title">
-          Start where context <em>breaks first.</em>
+          A gap upstream becomes a <em>delay downstream.</em>
         </h2>
-        <p>Sales → Engineering</p>
       </div>
 
-      <ol className="tieman-opportunity__moves">
-        {opportunityMoves.map((move) => (
-          <li key={move.index}>
-            <span>{move.index}</span>
-            <h3>{move.title}</h3>
-            <p>{move.detail}</p>
+      <ol className="tieman-ripple__pipeline" aria-label="Tieman operating flow">
+        {rippleStages.map((stage, index) => (
+          <li key={stage}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{stage}</strong>
           </li>
         ))}
       </ol>
 
-      <div className="tieman-opportunity__outcome">
-        <span>Phase 1 outcome</span>
-        <strong>Engineering receives a controlled, evidence-backed job package.</strong>
+      <ul className="tieman-ripple__effects" aria-label="Potential operational effects">
+        <li>Clarification delays</li>
+        <li>Engineering rework</li>
+        <li>Missed long-lead items</li>
+        <li>Revision risk</li>
+      </ul>
+
+      <p className="tieman-ripple__pattern">
+        This is a common engineered-manufacturing pattern: systems grow department by department, while the work must move across all of them.
+      </p>
+    </DeckSlideFrame>
+  );
+}
+
+function WhyUsSlide() {
+  return (
+    <DeckSlideFrame
+      index={5}
+      total={TOTAL_SLIDES}
+      descriptor="Product thinking, experience and engineering stay connected."
+      className="tieman-why-us"
+    >
+      <div className="tieman-why-us__heading">
+        <p className="deck-kicker">Why SemanticLab</p>
+        <h2 id="deck-slide-5-title">
+          The people framing the problem stay close to the <em>build.</em>
+        </h2>
+      </div>
+
+      <div className="tieman-why-us__profiles">
+        <article>
+          <img src="/images/founders/raihan-portrait-v4.png" alt="Raihan Razi" width={898} height={1122} />
+          <div>
+            <span>Engineering &amp; AI delivery</span>
+            <h3>Raihan Razi</h3>
+            <p>15 years across product, software delivery and technology strategy, including GameDay-scale platforms and PartsHQ.</p>
+          </div>
+        </article>
+        <article>
+          <img src="/images/founders/naila.jpg" alt="Naila Rahman" width={1413} height={1853} />
+          <div>
+            <span>Product strategy &amp; experience</span>
+            <h3>Naila Rahman</h3>
+            <p>Research-led product and workflow design across Podly and GameDay, connecting evidence, requirements and user decisions.</p>
+          </div>
+        </article>
+      </div>
+
+      <div className="tieman-why-us__studio">
+        <span>SemanticLab</span>
+        <strong>AI + cloud + operational workflow design in one founder-led partnership.</strong>
       </div>
     </DeckSlideFrame>
   );
 }
 
-function TiemanClosingSlide() {
+function ProofSlide() {
   return (
     <DeckSlideFrame
-      index={5}
+      index={6}
       total={TOTAL_SLIDES}
-      descriptor="Validate the opportunity before committing to implementation."
-      className="tieman-close"
+      descriptor="Relevant proof across data, platforms and workflow design."
+      tone="light"
+      className="tieman-proof"
+    >
+      <div className="tieman-proof__heading">
+        <p className="deck-kicker">Proof of relevant work</p>
+        <h2 id="deck-slide-6-title">
+          Experience that maps to the <em>operating problem.</em>
+        </h2>
+      </div>
+
+      <ol className="tieman-proof__rail">
+        {proofPoints.map((proof) => (
+          <li key={proof.name}>
+            <span>{proof.index}</span>
+            <div className="tieman-proof__identity">
+              <small>{proof.provenance}</small>
+              <h3>{proof.name}</h3>
+            </div>
+            <div className="tieman-proof__measure">
+              <strong>{proof.headline}</strong>
+              <small>{proof.measure}</small>
+            </div>
+            <p>{proof.detail}</p>
+          </li>
+        ))}
+      </ol>
+
+      <p className="tieman-proof__note">
+        Previous-role work is explicitly attributed and is not represented as a SemanticLab client engagement.
+      </p>
+    </DeckSlideFrame>
+  );
+}
+
+function ApproachSlide() {
+  return (
+    <DeckSlideFrame
+      index={7}
+      total={TOTAL_SLIDES}
+      descriptor="Start small. Prove value. Expand safely."
+      className="tieman-approach"
+    >
+      <div className="tieman-approach__heading">
+        <p className="deck-kicker">How we work</p>
+        <h2 id="deck-slide-7-title">
+          Start small. Prove value. <em>Expand safely.</em>
+        </h2>
+      </div>
+
+      <ol className="tieman-approach__stages">
+        {approachStages.map((stage) => (
+          <li key={stage.index}>
+            <span>{stage.index}</span>
+            <h3>{stage.title}</h3>
+            <p>{stage.summary}</p>
+          </li>
+        ))}
+      </ol>
+
+      <p className="tieman-approach__principle">
+        Every stage produces a decision—not a technology commitment.
+      </p>
+    </DeckSlideFrame>
+  );
+}
+
+function OperatingLayerSlide() {
+  return (
+    <DeckSlideFrame
+      index={8}
+      total={TOTAL_SLIDES}
+      descriptor="Business meaning sits between source systems and applications."
+      className="tieman-operating-layer"
+    >
+      <div className="tieman-operating-layer__heading">
+        <p className="deck-kicker">A modern AI operating layer</p>
+        <h2 id="deck-slide-8-title">
+          Intelligence becomes useful when it understands the <em>business.</em>
+        </h2>
+      </div>
+
+      <ol className="tieman-operating-layer__stack">
+        {operatingLayers.map((layer, index) => (
+          <li key={layer.index} className={index === 0 ? "is-active" : ""}>
+            <span>{layer.index}</span>
+            <strong>{layer.title}</strong>
+            <small>{layer.detail}</small>
+          </li>
+        ))}
+      </ol>
+
+      <div className="tieman-operating-layer__governance">
+        <span>Governed throughout</span>
+        <strong>Access · evidence · approvals · audit</strong>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function TiemanFlowSlide() {
+  return (
+    <DeckSlideFrame
+      index={9}
+      total={TOTAL_SLIDES}
+      descriptor="One upstream flow can improve decisions across the job."
+      tone="light"
+      className="tieman-flow"
+    >
+      <div className="tieman-flow__heading">
+        <p className="deck-kicker">How it works for Tieman</p>
+        <h2 id="deck-slide-9-title">
+          Move an accepted request into Engineering with <em>trusted context.</em>
+        </h2>
+      </div>
+
+      <ol className="tieman-flow__steps">
+        <li>
+          <span>01</span>
+          <small>Specification</small>
+          <h3>Capture the complete customer request.</h3>
+          <p>Connect requirements to the current source and revision.</p>
+        </li>
+        <li>
+          <span>02</span>
+          <small>Engineering readiness</small>
+          <h3>Resolve gaps before the handoff.</h3>
+          <p>Show missing information, comparable jobs and open decisions.</p>
+        </li>
+        <li>
+          <span>03</span>
+          <small>Long-lead purchasing</small>
+          <h3>Bring likely risk forward.</h3>
+          <p>Flag candidate items for human review while there is time to act.</p>
+        </li>
+      </ol>
+
+      <div className="tieman-flow__outcome">
+        <span>Outcome</span>
+        <strong>One controlled, evidence-backed job package.</strong>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function SecuritySlide() {
+  return (
+    <DeckSlideFrame
+      index={10}
+      total={TOTAL_SLIDES}
+      descriptor="Secure, governed and accountable by design."
+      className="tieman-security"
+    >
+      <div className="tieman-security__heading">
+        <p className="deck-kicker">Secure by design</p>
+        <h2 id="deck-slide-10-title">
+          Trust is part of the architecture—not a <em>later control.</em>
+        </h2>
+      </div>
+
+      <ol className="tieman-security__controls">
+        {securityControls.map((control) => (
+          <li key={control.index}>
+            <span>{control.index}</span>
+            <h3>{control.title}</h3>
+            <p>{control.detail}</p>
+          </li>
+        ))}
+      </ol>
+    </DeckSlideFrame>
+  );
+}
+
+function PilotSlide() {
+  return (
+    <DeckSlideFrame
+      index={11}
+      total={TOTAL_SLIDES}
+      descriptor="Start upstream because every downstream team inherits the handoff."
+      tone="light"
+      className="tieman-pilot"
+    >
+      <div className="tieman-pilot__heading">
+        <p className="deck-kicker">Pilot recommendation</p>
+        <h2 id="deck-slide-11-title">
+          Start with the Sales-to-Engineering <em>handoff.</em>
+        </h2>
+        <p>
+          It is upstream, frequent enough to learn from and creates context that every later phase can reuse.
+        </p>
+      </div>
+
+      <ol className="tieman-pilot__capabilities">
+        {pilotCapabilities.map((capability) => (
+          <li key={capability.index}>
+            <span>{capability.index}</span>
+            <h3>{capability.title}</h3>
+            <p>{capability.detail}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div className="tieman-pilot__promise">
+        <span>Phase 1 promise</span>
+        <strong>Prepare the next job, catch missing information and identify likely long-lead risk earlier.</strong>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function NextStepSlide() {
+  return (
+    <DeckSlideFrame
+      index={12}
+      total={TOTAL_SLIDES}
+      descriptor="Discovery replaces assumptions with a clear pilot decision."
+      className="tieman-next-step"
     >
       <img
-        className="tieman-close__image"
+        className="tieman-next-step__image"
         src="/images/deck/tieman/chemical.jpg"
         alt=""
         width={1024}
         height={683}
       />
-      <div className="tieman-close__shade" aria-hidden="true" />
-      <div className="tieman-close__copy">
-        <p className="deck-kicker">The next decision</p>
-        <h2 id="deck-slide-5-title">
-          Prove the opportunity before committing to a <em>build.</em>
+      <div className="tieman-next-step__shade" aria-hidden="true" />
+      <div className="tieman-next-step__copy">
+        <p className="deck-kicker">The next step</p>
+        <h2 id="deck-slide-12-title">
+          Define the first proof—before committing to <em>implementation.</em>
         </h2>
         <p>
-          A focused Discovery and Architecture phase validates the value, data, workflow and right first pilot.
+          A focused Solution Discovery validates the opportunity, data, architecture, governance and pilot definition.
         </p>
         <a href="mailto:hello@semanticlab.ai">
-          Define the first proof <ArrowUpRight aria-hidden="true" />
+          Start the discovery <ArrowUpRight aria-hidden="true" />
         </a>
       </div>
-      <ol className="tieman-close__outputs" aria-label="Discovery outputs">
-        <li>Problem and workflow map</li>
-        <li>Prioritised pilot</li>
-        <li>Architecture and cost view</li>
+
+      <ol className="tieman-next-step__outputs" aria-label="Discovery outputs">
+        <li>Workflow + system map</li>
+        <li>Reference architecture</li>
+        <li>Pilot scope + cost view</li>
       </ol>
     </DeckSlideFrame>
   );
 }
 
 const slides: readonly DeckSlide[] = [
-  { id: "tieman-cover", label: "Tieman opportunity", content: <TiemanCoverSlide /> },
-  { id: "tieman-problem", label: "The problem", content: <TiemanProblemSlide /> },
-  { id: "tieman-solution", label: "The solution", content: <TiemanSolutionSlide /> },
-  { id: "tieman-opportunity", label: "The opportunity", content: <TiemanOpportunitySlide /> },
-  { id: "tieman-next-step", label: "The next decision", content: <TiemanClosingSlide /> },
+  { id: "tieman-cover", label: "Transformation brief", content: <TiemanCoverSlide /> },
+  { id: "tieman-problem", label: "The problem", content: <ProblemSlide /> },
+  { id: "tieman-foundation", label: "The opportunity", content: <FoundationOpportunitySlide /> },
+  { id: "tieman-ripple", label: "The ripple effect", content: <RippleSlide /> },
+  { id: "tieman-why-us", label: "Why SemanticLab", content: <WhyUsSlide /> },
+  { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide /> },
+  { id: "tieman-approach", label: "How we work", content: <ApproachSlide /> },
+  { id: "tieman-operating-layer", label: "AI operating layer", content: <OperatingLayerSlide /> },
+  { id: "tieman-flow", label: "How it works", content: <TiemanFlowSlide /> },
+  { id: "tieman-security", label: "Secure by design", content: <SecuritySlide /> },
+  { id: "tieman-pilot", label: "Pilot recommendation", content: <PilotSlide /> },
+  { id: "tieman-next-step", label: "The next step", content: <NextStepSlide /> },
 ];
 
 export function TiemanDeck() {
