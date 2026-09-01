@@ -29,7 +29,7 @@ const agendaItems = [
   "Tieman's vision",
   "Challenges",
   "The opportunity",
-  "Why us?",
+  "Why us",
   "Next steps",
 ] as const;
 

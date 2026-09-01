@@ -198,6 +198,32 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 
 final result: passed
 
+## Agenda “Why us” label — QA
+
+### Evidence and state
+
+- Source visual truth: the user annotation on agenda item 04 requesting removal of the question mark.
+- Desktop implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agenda-copy/01-agenda-desktop-local.png` at 1280 × 720 CSS pixels and devicePixelRatio 1.
+- Mobile implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agenda-copy/02-agenda-mobile-local.png` at 390 × 844 CSS pixels and devicePixelRatio 1.
+- State: slide 02, standard agenda state. A focused comparison was not needed because the request changed one punctuation character and the full agenda remains readable in both captures.
+
+### Findings and verification
+
+- Pass 0 — blocked: agenda item 04 read `Why us?`.
+- [P1] Agenda copy. Fixed by removing only the question mark so the item reads `Why us`.
+- Pass 1 — passed: the revised item retains its established alignment, hierarchy and row height at desktop and mobile widths.
+- Fonts and typography: the family, weight, size and line height are unchanged.
+- Spacing and layout rhythm: no row, divider, gutter or alignment value changed.
+- Colours and visual tokens: the dark surface, white label and lime index remain unchanged.
+- Image quality and asset fidelity: the agenda contains no changed image asset.
+- Copy and content: only the targeted punctuation was removed; all other agenda items remain unchanged.
+- Interaction: slide navigation and keyboard controls remain unchanged.
+- Browser verification: the desktop and mobile agenda states rendered without warning or error console logs.
+
+### Result
+
+final result: passed
+
 ## Definitive Tieman vision slide — QA
 
 ### Source and implementation evidence
