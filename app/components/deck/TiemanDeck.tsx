@@ -272,7 +272,7 @@ function TiemanCoverSlide() {
     <DeckSlideFrame
       index={1}
       total={TOTAL_SLIDES}
-      descriptor="Connected Data & AI Transformation Brief."
+      descriptor="Tieman Data & AI Transformation."
       className="tieman-cover"
     >
       <img
@@ -287,9 +287,9 @@ function TiemanCoverSlide() {
       <div className="tieman-cover__copy">
         <TiemanPartnerLockup />
         <h1 id="deck-slide-1-title">
-          Connected data &amp; AI for Tieman&apos;s <em>next chapter.</em>
+          Connected intelligence for Tieman&apos;s <em>next chapter.</em>
         </h1>
-        <p>Tieman Tankers · Connected Data &amp; AI Transformation Brief</p>
+        <p>Tieman Data &amp; AI Transformation</p>
       </div>
     </DeckSlideFrame>
   );

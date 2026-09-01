@@ -198,6 +198,32 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 
 final result: passed
 
+## Tieman cover positioning copy — QA
+
+### Evidence and state
+
+- Source visual truth: the user annotation on the slide 01 headline with the approved headline and subtitle copy.
+- Desktop implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-cover-copy/01-cover-desktop-local.png` at 1280 × 720 CSS pixels and devicePixelRatio 1.
+- Mobile implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-cover-copy/02-cover-mobile-local.png` at 390 × 844 CSS pixels and devicePixelRatio 1.
+- State: slide 01 cover. A focused comparison was not needed because the complete headline, subtitle, partner lockup and hero image are clearly legible in both full-view captures.
+
+### Findings and verification
+
+- Pass 0 — blocked: the cover framed the engagement as `Connected data & AI` and used the longer `Tieman Tankers · Connected Data & AI Transformation Brief` subtitle.
+- [P1] Positioning copy. Fixed with the approved `Connected intelligence for Tieman's next chapter.` headline and `Tieman Data & AI Transformation` subtitle; the frame descriptor now mirrors the new subtitle.
+- Pass 1 — passed: the headline retains a strong two-line desktop composition and a readable mobile stack without truncation or horizontal overflow.
+- Fonts and typography: the existing display family, optical weight, line height and italic lime `next chapter` emphasis are preserved.
+- Spacing and layout rhythm: the partner lockup, title, subtitle and image composition retain their established alignment and separation.
+- Colours and visual tokens: the black-to-image shade, white headline and lime emphasis remain unchanged.
+- Image quality and asset fidelity: the approved tanker photograph and Tieman logo are unchanged and remain correctly cropped.
+- Copy and content: the headline and subtitle match the approved wording; the previous title and subtitle are absent from the cover.
+- Interaction: deck navigation, keyboard controls and fullscreen behaviour remain unchanged.
+- Browser verification: the desktop and mobile cover states rendered without warning or error console logs.
+
+### Result
+
+final result: passed
+
 ## Agenda “Why us” label — QA
 
 ### Evidence and state
