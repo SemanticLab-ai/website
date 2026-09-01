@@ -3067,7 +3067,7 @@
 .tieman-pilot__heading > p:last-child {
   max-width: 34cqw;
   margin-top: 1.6cqw;
-  color: color-mix(in srgb, var(--sl-text-on-light) 55%, transparent);
+  color: color-mix(in srgb, var(--sl-text-primary) 55%, transparent);
   font-size: 0.8cqw;
   line-height: 1.55;
 }
@@ -3075,7 +3075,7 @@
 .tieman-pilot__capabilities {
   align-self: center;
   list-style: none;
-  border-top: 1px solid var(--sl-border-on-light);
+  border-top: 1px solid var(--sl-border);
   padding: 0;
 }
 
@@ -3085,12 +3085,12 @@
   min-height: 9cqw;
   align-items: center;
   gap: 1cqw;
-  border-bottom: 1px solid var(--sl-border-on-light);
+  border-bottom: 1px solid var(--sl-border);
 }
 
 .tieman-pilot__capabilities li > span,
 .tieman-pilot__promise span {
-  color: #4b8f28;
+  color: var(--sl-accent);
 }
 
 .tieman-pilot__capabilities h3 {
@@ -3098,7 +3098,7 @@
 }
 
 .tieman-pilot__capabilities p {
-  color: color-mix(in srgb, var(--sl-text-on-light) 55%, transparent);
+  color: color-mix(in srgb, var(--sl-text-primary) 55%, transparent);
   font-size: 0.68cqw;
   line-height: 1.48;
 }
@@ -3106,7 +3106,7 @@
 .tieman-pilot__promise {
   grid-column: 1 / -1;
   grid-template-columns: 13cqw 1fr;
-  border-top: 1px solid var(--sl-border-on-light);
+  border-top: 1px solid var(--sl-border);
   padding-top: 1cqw;
 }
 

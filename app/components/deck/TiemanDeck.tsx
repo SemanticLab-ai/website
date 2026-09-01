@@ -1112,7 +1112,6 @@ function PilotSlide() {
       index={14}
       total={TOTAL_SLIDES}
       descriptor="Start upstream because every downstream team inherits the handoff."
-      tone="light"
       className="tieman-pilot"
     >
       <div className="tieman-pilot__heading">

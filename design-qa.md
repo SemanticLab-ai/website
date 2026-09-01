@@ -1,5 +1,16 @@
 # Tieman Deck QA
 
+## Pilot recommendation dark-mode conversion — QA
+
+- Source of truth: the user's annotation requesting dark mode for the `Pilot recommendation` slide.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-pilot-dark/01-before-live.png` at 1280 × 720.
+- Final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-pilot-dark/02-after-local-desktop.png` at the same viewport and slide state.
+- Replaced the slide's light tone with the existing Tieman dark canvas and subtle radial lime wash; no new visual language or layout was introduced.
+- Converted the supporting copy and capability descriptions from light-surface text tokens to dark-surface text tokens, all rules from `--sl-border-on-light` to `--sl-border`, and the section numbering to the standard lime accent.
+- Headline, supporting sentence, three capability rows, phase-one promise, footer descriptor and slide numbering are unchanged.
+- Browser verification confirmed meaningful content, no framework overlay, an empty warning/error console and the expected `deck-slide--dark` class. Previous/next navigation returned to the slide in the same dark state.
+- Final result: passed.
+
 ## Security headline refinement — QA
 
 - Source of truth: the user's security-slide annotation requesting stronger copy for `Trust is part of the architecture—not a later control.`
