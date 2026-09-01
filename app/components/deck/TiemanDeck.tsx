@@ -32,6 +32,33 @@ const agendaItems = [
   "Next steps",
 ] as const;
 
+const visionObjectives = [
+  {
+    index: "01",
+    title: "Find faster",
+    detail: "Historical answers become searchable and reusable.",
+    icon: FileSearch,
+  },
+  {
+    index: "02",
+    title: "Align earlier",
+    detail: "Sales, Engineering and Purchasing share context.",
+    icon: Activity,
+  },
+  {
+    index: "03",
+    title: "Build right",
+    detail: "Teams work from the latest approved revision.",
+    icon: BadgeCheck,
+  },
+  {
+    index: "04",
+    title: "Grow securely",
+    detail: "Australian-hosted, governed and auditable.",
+    icon: ShieldCheck,
+  },
+] as const;
+
 const rippleStages = [
   "Sales",
   "Specification",
@@ -230,54 +257,54 @@ function TiemanAgendaSlide() {
   );
 }
 
-function FragmentedEstateSlide() {
+function TiemanVisionSlide() {
   return (
     <DeckSlideFrame
       index={3}
       total={TOTAL_SLIDES}
-      descriptor="The systems are useful. The context between them is fragmented."
-      className="tieman-fragmentation"
+      descriptor="Connect existing systems. Grow throughput without growing overhead."
+      className="tieman-vision"
     >
-      <img
-        className="tieman-fragmentation__backdrop"
-        src="/images/deck/tieman/fragmented-topology.png"
-        alt=""
-        width={1672}
-        height={941}
-      />
-      <div className="tieman-fragmentation__shade" aria-hidden="true" />
-
-      <div className="tieman-fragmentation__heading">
-        <p className="deck-kicker">Where the context lives</p>
-        <h2 id="deck-slide-3-title">
-          The knowledge exists. It lives in <em>different places.</em>
-        </h2>
+      <div className="tieman-vision__heading">
+        <div>
+          <p className="deck-kicker">Tieman&apos;s vision</p>
+          <h2 id="deck-slide-3-title">
+            Grow production capacity. <em>Not administrative overhead.</em>
+          </h2>
+        </div>
         <p>
-          Each system solves a real need. The friction appears when one job has to move across all of them.
+          Connect the systems and knowledge Tieman already has—so teams can find,
+          reuse and act on trusted information.
         </p>
       </div>
 
-      <div className="tieman-fragmentation__map" aria-label="Tieman systems and knowledge sources">
-        {tiemanSystems.map((system) => {
-          const SystemIcon = system.icon;
+      <div className="tieman-vision__visual">
+        <article className="tieman-vision__north-star">
+          <div>
+            <span>North star</span>
+            <ArrowUp aria-hidden="true" />
+          </div>
+          <strong>More tankers through the same operation.</strong>
+          <p>Existing systems stay. The context becomes connected.</p>
+        </article>
 
-          return (
-            <article
-              key={system.id}
-              className={`tieman-fragmentation__node is-${system.id}`}
-            >
-              <SystemIcon aria-hidden="true" />
-              <strong>{system.name}</strong>
-              <span>{system.role}</span>
-            </article>
-          );
-        })}
+        <ol className="tieman-vision__objectives" aria-label="Tieman business objectives">
+          {visionObjectives.map((objective) => {
+            const ObjectiveIcon = objective.icon;
+
+            return (
+              <li key={objective.index}>
+                <div className="tieman-vision__objective-meta">
+                  <span>{objective.index}</span>
+                  <ObjectiveIcon aria-hidden="true" />
+                </div>
+                <strong>{objective.title}</strong>
+                <p>{objective.detail}</p>
+              </li>
+            );
+          })}
+        </ol>
       </div>
-
-      <p className="tieman-fragmentation__consequence">
-        <span>One job</span>
-        <strong>The work crosses every source. Its context does not travel with it.</strong>
-      </p>
     </DeckSlideFrame>
   );
 }
@@ -788,7 +815,7 @@ function NextStepSlide() {
 const slides: readonly DeckSlide[] = [
   { id: "tieman-cover", label: "Transformation brief", content: <TiemanCoverSlide /> },
   { id: "tieman-agenda", label: "Agenda", content: <TiemanAgendaSlide /> },
-  { id: "tieman-fragmentation", label: "Where context lives", content: <FragmentedEstateSlide /> },
+  { id: "tieman-vision", label: "Tieman's vision", content: <TiemanVisionSlide /> },
   { id: "tieman-problem", label: "The problem", content: <ProblemSlide /> },
   { id: "tieman-foundation", label: "The opportunity", content: <FoundationOpportunitySlide /> },
   {
