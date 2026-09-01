@@ -198,6 +198,43 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 
 final result: passed
 
+## Definitive Tieman vision slide — QA
+
+### Source and implementation evidence
+
+- Source visual truth: the previously approved and QA-reviewed Tieman Venn vision slide.
+- Default-route initial state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-venn-definitive/01-default-route-initial.png`
+- Default-route final reveal: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-venn-definitive/02-default-route-final.png`
+- Default-route mobile final reveal: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-venn-definitive/03-default-route-mobile-final.png`
+
+### Normalisation and state
+
+| Artifact | Pixel size | CSS viewport | State |
+| --- | ---: | ---: | --- |
+| Desktop initial | 1280 × 720 | 1280 × 720; devicePixelRatio 1 | canonical route, slide 03, fragment 00 |
+| Desktop final | 1280 × 720 | 1280 × 720; devicePixelRatio 1 | canonical route, slide 03, fragment 04 |
+| Mobile final | 390 × 844 | 390 × 844; devicePixelRatio 1 | canonical route, slide 03, fragment 04 |
+
+The approved Venn slide is the source itself; these captures verify that the same component and four-step reveal now appear without a `vision` query parameter. A separate focused comparison was unnecessary because no visual property of the approved component changed.
+
+### Findings, fixes and verification
+
+- Pass 0 — blocked: the standard deck route still selected the objectives-list vision slide unless `?vision=venn` was supplied.
+- [P1] Canonical direction. Fixed by placing the Venn slide directly in the canonical slide sequence, retaining its four fragments, and removing the runtime vision-variant prop and loader selection.
+- Pass 1 — passed: `/deck/tieman-tankers` now opens the Venn version by default, and the legacy `?vision=objectives` URL also resolves to the same definitive Venn slide.
+- Fonts and typography: the approved strategic-vision hierarchy, lime italic emphasis and outcome typography are unchanged.
+- Spacing and layout rhythm: the circle geometry, overlap, central intersection, headline column and footer alignment are unchanged.
+- Colours and visual tokens: the dark surface, green circle treatment and lime centre remain unchanged.
+- Image quality and asset fidelity: the approved circle and intersection assets are reused without replacement or resampling.
+- Copy and content: all three outcomes and the `Tieman's intelligent platform` centre label remain unchanged.
+- Interaction: the three circles and centre still appear across four presenter-controlled keypresses.
+- Responsive behaviour: the 390 × 844 canonical-route capture contains all outcomes and the centre state without horizontal overflow.
+- Browser verification: the canonical route and the former objectives query both rendered the Venn slide with no warning or error console logs.
+
+### Result
+
+final result: passed
+
 ## Slide 08 headline copy — QA
 
 ### Evidence and state

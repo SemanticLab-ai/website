@@ -48,22 +48,6 @@ const challengeImpacts = [
   "Avoidable delays",
 ] as const;
 
-const visionObjectives = [
-  { index: "01", title: "Increase throughput", detail: "Using existing resources" },
-  { index: "02", title: "Find knowledge faster", detail: "Historical jobs · specs · decisions" },
-  {
-    index: "03",
-    title: "Align every team",
-    detail: "Sales · Engineering · Purchasing · Production",
-  },
-  { index: "04", title: "Reduce delivery risk", detail: "Specifications · long leads · revisions" },
-  {
-    index: "05",
-    title: "Preserve + protect knowledge",
-    detail: "Australian-hosted · governed · secure",
-  },
-] as const;
-
 const visionOutcomes = [
   {
     id: "efficiency",
@@ -333,39 +317,6 @@ function TiemanAgendaSlide() {
           </li>
         ))}
       </ol>
-    </DeckSlideFrame>
-  );
-}
-
-function TiemanVisionSlide() {
-  return (
-    <DeckSlideFrame
-      index={3}
-      total={TOTAL_SLIDES}
-      descriptor="Five objectives for a connected Tieman operation."
-      className="tieman-vision"
-    >
-      <div className="tieman-vision__heading">
-        <p className="deck-kicker">Strategic vision</p>
-        <h2 id="deck-slide-3-title">
-          More production capacity. <em>Not more overhead.</em>
-        </h2>
-      </div>
-
-      <ol className="tieman-vision__objectives" aria-label="Tieman strategic objectives">
-        {visionObjectives.map((objective, index) => (
-          <li key={objective.index} className={index === 0 ? "is-active" : ""}>
-            <span>{objective.index}</span>
-            <strong>{objective.title}</strong>
-            <small>{objective.detail}</small>
-          </li>
-        ))}
-      </ol>
-
-      <div className="tieman-vision__foundation">
-        <span>Built on trusted context</span>
-        <strong>Connected · current · governed · Australian-hosted</strong>
-      </div>
     </DeckSlideFrame>
   );
 }
@@ -1194,7 +1145,12 @@ function NextStepSlide() {
 const slides: readonly DeckSlide[] = [
   { id: "tieman-cover", label: "Transformation brief", content: <TiemanCoverSlide /> },
   { id: "tieman-agenda", label: "Agenda", content: <TiemanAgendaSlide /> },
-  { id: "tieman-vision", label: "Tieman's vision", content: <TiemanVisionSlide /> },
+  {
+    id: "tieman-vision",
+    label: "Tieman's vision",
+    fragmentCount: 4,
+    content: <TiemanVisionVennSlide />,
+  },
   { id: "tieman-challenges", label: "Challenges", content: <ChallengesSlide /> },
   { id: "tieman-ripple", label: "Operational impact", content: <RippleSlide /> },
   { id: "tieman-fragmentation", label: "Where context lives", content: <FragmentedEstateSlide /> },
@@ -1246,34 +1202,16 @@ const storyChallengeSlides: readonly DeckSlide[] = slides.flatMap((slide) => {
   return [slide];
 });
 
-function withVisionVariant(deckSlides: readonly DeckSlide[]) {
-  return deckSlides.map((slide) =>
-    slide.id === "tieman-vision"
-      ? {
-          id: "tieman-vision-venn",
-          label: "Tieman's vision · Venn",
-          fragmentCount: 4,
-          content: <TiemanVisionVennSlide />,
-        }
-      : slide,
-  );
-}
-
-const vennSlides: readonly DeckSlide[] = withVisionVariant(slides);
-const storyChallengeVennSlides: readonly DeckSlide[] = withVisionVariant(storyChallengeSlides);
-
 type TiemanDeckProps = {
   challengeVariant?: "current" | "story";
-  visionVariant?: "objectives" | "venn";
 };
 
 export function TiemanDeck({
   challengeVariant = "current",
-  visionVariant = "objectives",
 }: TiemanDeckProps) {
   const selectedSlides = challengeVariant === "story"
-    ? (visionVariant === "venn" ? storyChallengeVennSlides : storyChallengeSlides)
-    : (visionVariant === "venn" ? vennSlides : slides);
+    ? storyChallengeSlides
+    : slides;
 
   return (
     <DeckPresentation
