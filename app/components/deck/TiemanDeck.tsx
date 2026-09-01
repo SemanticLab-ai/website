@@ -755,7 +755,12 @@ const slides: readonly DeckSlide[] = [
   { id: "tieman-fragmentation", label: "Where context lives", content: <FragmentedEstateSlide /> },
   { id: "tieman-problem", label: "The problem", content: <ProblemSlide /> },
   { id: "tieman-foundation", label: "The opportunity", content: <FoundationOpportunitySlide /> },
-  { id: "tieman-solution-stack", label: "The solution", content: <SolutionStackSlide /> },
+  {
+    id: "tieman-solution-stack",
+    label: "The solution",
+    fragmentCount: 4,
+    content: <SolutionStackSlide />,
+  },
   { id: "tieman-ripple", label: "The ripple effect", content: <RippleSlide /> },
   { id: "tieman-why-us", label: "Why SemanticLab", content: <WhyUsSlide /> },
   { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide /> },

@@ -473,21 +473,26 @@
 .tieman-solution-stack__architecture {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 11.3cqw;
-  align-self: start;
-  gap: 1.25cqw;
-  margin-top: 1.7cqw;
+  min-height: 0;
+  align-self: stretch;
+  gap: 1.55cqw;
+  margin-top: 1.55cqw;
 }
 
 .tieman-solution-stack__diagram {
   display: grid;
-  grid-template-rows: auto auto auto;
-  align-self: start;
-  gap: 0.92cqw;
+  grid-template-rows: minmax(0, 1.08fr) minmax(0, 0.96fr) minmax(0, 0.82fr);
+  min-height: 0;
+  align-self: stretch;
+  gap: 1.45cqw;
 }
 
 .tieman-solution-stack__applications,
 .tieman-solution-stack__sources {
   position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 0;
 }
 
 .tieman-solution-stack__layer-label {
@@ -505,67 +510,63 @@
 .tieman-solution-stack__application-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  min-height: 0;
   gap: 0.9cqw;
 }
 
 .tieman-solution-stack__application-grid article {
   position: relative;
   display: grid;
-  grid-template-columns: 2.5cqw 1fr;
+  grid-template-columns: 2.85cqw 1fr;
   grid-template-rows: auto auto;
-  min-height: 6.8cqw;
+  min-height: 0;
   align-content: center;
-  column-gap: 0.9cqw;
+  column-gap: 1cqw;
   border: 1px solid color-mix(in srgb, var(--sl-accent) 28%, var(--sl-border));
   border-radius: 0.28cqw;
-  padding: 0.9cqw 1cqw;
+  padding: 1.15cqw 1.1cqw;
   background: var(--sl-surface-light);
   box-shadow: 0 1cqw 2.5cqw rgba(0, 0, 0, 0.22);
   color: var(--sl-text-on-light);
-  opacity: 0;
-  transform: translateY(0.8cqw);
-  animation:
-    tiemanStackApplicationIn 520ms var(--sl-ease-standard) both,
-    tiemanStackApplicationPulse 6.4s ease-in-out infinite;
+  animation: tiemanStackApplicationPulse 6.4s ease-in-out infinite paused;
 }
 
 .tieman-solution-stack__application-grid article:nth-child(1) {
-  animation-delay: 960ms, 3.65s;
+  animation-delay: 0ms;
 }
 
 .tieman-solution-stack__application-grid article:nth-child(2) {
-  animation-delay: 1040ms, 3.88s;
+  animation-delay: 200ms;
 }
 
 .tieman-solution-stack__application-grid article:nth-child(3) {
-  animation-delay: 1120ms, 4.11s;
+  animation-delay: 400ms;
 }
 
 .tieman-solution-stack__application-grid article:nth-child(4) {
-  animation-delay: 1200ms, 4.34s;
+  animation-delay: 600ms;
 }
 
 .tieman-solution-stack__application-grid article::after {
   position: absolute;
-  bottom: -1.08cqw;
+  bottom: -1.48cqw;
   left: 50%;
   width: 1px;
-  height: 1.08cqw;
+  height: 1.48cqw;
   background: var(--sl-accent);
   content: "";
   opacity: 0.48;
-  transform: scaleY(0);
+  transform: scaleY(1);
   transform-origin: bottom;
-  animation: tiemanStackLineIn 380ms var(--sl-ease-standard) 820ms both;
 }
 
 .tieman-solution-stack__application-grid article > svg {
   grid-row: 1 / span 2;
-  width: 2.5cqw;
-  height: 2.5cqw;
+  width: 2.85cqw;
+  height: 2.85cqw;
   align-self: center;
   border-radius: 50%;
-  padding: 0.62cqw;
+  padding: 0.7cqw;
   background: var(--sl-accent);
   color: var(--sl-text-on-light);
   stroke-width: 1.6;
@@ -594,18 +595,18 @@
 }
 
 .tieman-solution-stack__application-grid .tieman-solution-stack__signal {
-  bottom: -1.02cqw;
-  animation: tiemanStackSignalUp 6.4s ease-out infinite;
+  bottom: -1.4cqw;
+  animation: tiemanStackSignalUp 6.4s ease-out infinite paused;
 }
 
-.tieman-solution-stack__application-grid article:nth-child(1) .tieman-solution-stack__signal { animation-delay: 3.65s; }
-.tieman-solution-stack__application-grid article:nth-child(2) .tieman-solution-stack__signal { animation-delay: 3.88s; }
-.tieman-solution-stack__application-grid article:nth-child(3) .tieman-solution-stack__signal { animation-delay: 4.11s; }
-.tieman-solution-stack__application-grid article:nth-child(4) .tieman-solution-stack__signal { animation-delay: 4.34s; }
+.tieman-solution-stack__application-grid article:nth-child(1) .tieman-solution-stack__signal { animation-delay: 0ms; }
+.tieman-solution-stack__application-grid article:nth-child(2) .tieman-solution-stack__signal { animation-delay: 200ms; }
+.tieman-solution-stack__application-grid article:nth-child(3) .tieman-solution-stack__signal { animation-delay: 400ms; }
+.tieman-solution-stack__application-grid article:nth-child(4) .tieman-solution-stack__signal { animation-delay: 600ms; }
 
 .tieman-solution-stack__application-grid strong {
   align-self: end;
-  font-size: 0.9cqw;
+  font-size: 0.96cqw;
   font-weight: var(--sl-weight-medium);
   line-height: 1.15;
 }
@@ -615,26 +616,22 @@
   align-self: start;
   margin-top: 0.26cqw;
   color: color-mix(in srgb, currentColor 48%, transparent);
-  font-size: 0.5cqw;
+  font-size: 0.54cqw;
   line-height: 1.3;
 }
 
 .tieman-solution-stack__context {
   display: grid;
   grid-template-columns: 0.72fr 1.28fr;
-  min-height: 6.8cqw;
+  min-height: 0;
   align-items: center;
   gap: 2cqw;
   border: 1px solid var(--sl-accent);
   border-radius: 0.28cqw;
-  padding: 1.05cqw 1.25cqw;
+  padding: 1.25cqw 1.4cqw;
   background: var(--sl-accent);
   color: var(--sl-text-on-light);
-  opacity: 0;
-  transform: scaleX(0.94);
-  animation:
-    tiemanStackContextIn 620ms var(--sl-ease-standard) 650ms both,
-    tiemanStackContextPulse 6.4s ease-in-out 2.82s infinite;
+  animation: tiemanStackContextPulse 6.4s ease-in-out infinite paused;
 }
 
 .tieman-solution-stack__context-title {
@@ -644,8 +641,8 @@
 }
 
 .tieman-solution-stack__context-title > svg {
-  width: 2.7cqw;
-  height: 2.7cqw;
+  width: 3.1cqw;
+  height: 3.1cqw;
   flex: 0 0 auto;
   stroke-width: 1.45;
 }
@@ -662,7 +659,7 @@
   display: block;
   max-width: 27cqw;
   margin-top: 0.35cqw;
-  font-size: 1.08cqw;
+  font-size: 1.18cqw;
   font-weight: var(--sl-weight-medium);
   line-height: 1.15;
 }
@@ -681,7 +678,7 @@
 .tieman-solution-stack__live svg {
   width: 0.7cqw;
   height: 0.7cqw;
-  animation: tiemanStackLivePulse 1.5s ease-in-out infinite;
+  animation: tiemanStackLivePulse 1.5s ease-in-out infinite paused;
 }
 
 .tieman-solution-stack__context ul {
@@ -695,8 +692,8 @@
 .tieman-solution-stack__context li {
   border: 1px solid rgba(11, 11, 13, 0.2);
   border-radius: 999px;
-  padding: 0.48cqw 0.7cqw;
-  font-size: 0.56cqw;
+  padding: 0.58cqw 0.78cqw;
+  font-size: 0.61cqw;
   font-weight: var(--sl-weight-medium);
   text-align: center;
 }
@@ -704,6 +701,7 @@
 .tieman-solution-stack__source-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
+  min-height: 0;
   border-top: 1px solid var(--sl-border);
   border-left: 1px solid var(--sl-border);
 }
@@ -711,66 +709,61 @@
 .tieman-solution-stack__source-grid article {
   position: relative;
   display: grid;
-  grid-template-columns: 1.6cqw 1fr;
+  grid-template-columns: 1.85cqw 1fr;
   grid-template-rows: auto auto;
-  min-height: 4.9cqw;
+  min-height: 0;
   align-content: center;
-  column-gap: 0.72cqw;
+  column-gap: 0.82cqw;
   border-right: 1px solid var(--sl-border);
   border-bottom: 1px solid var(--sl-border);
-  padding: 0.7cqw 0.8cqw;
-  opacity: 0;
-  transform: translateY(0.65cqw);
-  animation:
-    tiemanStackSourceIn 450ms var(--sl-ease-standard) both,
-    tiemanStackSourcePulse 6.4s ease-in-out infinite;
+  padding: 0.9cqw 0.88cqw;
+  animation: tiemanStackSourcePulse 6.4s ease-in-out infinite paused;
 }
 
-.tieman-solution-stack__source-grid article:nth-child(1) { animation-delay: 120ms, 1.72s; }
-.tieman-solution-stack__source-grid article:nth-child(2) { animation-delay: 190ms, 1.94s; }
-.tieman-solution-stack__source-grid article:nth-child(3) { animation-delay: 260ms, 2.16s; }
-.tieman-solution-stack__source-grid article:nth-child(4) { animation-delay: 330ms, 2.38s; }
-.tieman-solution-stack__source-grid article:nth-child(5) { animation-delay: 400ms, 2.6s; }
-.tieman-solution-stack__source-grid article:nth-child(6) { animation-delay: 470ms, 2.82s; }
+.tieman-solution-stack__source-grid article:nth-child(1) { animation-delay: 0ms; }
+.tieman-solution-stack__source-grid article:nth-child(2) { animation-delay: 160ms; }
+.tieman-solution-stack__source-grid article:nth-child(3) { animation-delay: 320ms; }
+.tieman-solution-stack__source-grid article:nth-child(4) { animation-delay: 480ms; }
+.tieman-solution-stack__source-grid article:nth-child(5) { animation-delay: 640ms; }
+.tieman-solution-stack__source-grid article:nth-child(6) { animation-delay: 800ms; }
 
 .tieman-solution-stack__source-grid article::before {
   position: absolute;
-  top: -2.05cqw;
+  top: -2.75cqw;
   left: 50%;
   width: 1px;
-  height: 2.05cqw;
+  height: 2.75cqw;
   background: var(--sl-accent);
   content: "";
   opacity: 0.48;
-  transform: scaleY(0);
+  transform: scaleY(1);
   transform-origin: top;
-  animation: tiemanStackLineIn 380ms var(--sl-ease-standard) 520ms both;
 }
 
 .tieman-solution-stack__source-grid article > svg {
   grid-row: 1 / span 2;
-  width: 1.6cqw;
-  height: 1.6cqw;
+  width: 1.85cqw;
+  height: 1.85cqw;
   align-self: center;
   color: var(--sl-accent);
   stroke-width: 1.45;
 }
 
 .tieman-solution-stack__source-grid .tieman-solution-stack__signal {
-  top: -1.95cqw;
-  animation: tiemanStackSignalUp 6.4s ease-out infinite;
+  top: -2.55cqw;
+  animation: tiemanStackSignalUp 6.4s ease-out infinite paused;
 }
 
-.tieman-solution-stack__source-grid article:nth-child(1) .tieman-solution-stack__signal { animation-delay: 1.72s; }
-.tieman-solution-stack__source-grid article:nth-child(2) .tieman-solution-stack__signal { animation-delay: 1.94s; }
-.tieman-solution-stack__source-grid article:nth-child(3) .tieman-solution-stack__signal { animation-delay: 2.16s; }
-.tieman-solution-stack__source-grid article:nth-child(4) .tieman-solution-stack__signal { animation-delay: 2.38s; }
-.tieman-solution-stack__source-grid article:nth-child(5) .tieman-solution-stack__signal { animation-delay: 2.6s; }
-.tieman-solution-stack__source-grid article:nth-child(6) .tieman-solution-stack__signal { animation-delay: 2.82s; }
+.tieman-solution-stack__source-grid article:nth-child(1) .tieman-solution-stack__signal { animation-delay: 0ms; }
+.tieman-solution-stack__source-grid article:nth-child(2) .tieman-solution-stack__signal { animation-delay: 160ms; }
+.tieman-solution-stack__source-grid article:nth-child(3) .tieman-solution-stack__signal { animation-delay: 320ms; }
+.tieman-solution-stack__source-grid article:nth-child(4) .tieman-solution-stack__signal { animation-delay: 480ms; }
+.tieman-solution-stack__source-grid article:nth-child(5) .tieman-solution-stack__signal { animation-delay: 640ms; }
+.tieman-solution-stack__source-grid article:nth-child(6) .tieman-solution-stack__signal { animation-delay: 800ms; }
 
 .tieman-solution-stack__source-grid strong {
   align-self: end;
-  font-size: 0.73cqw;
+  font-size: 0.8cqw;
   font-weight: var(--sl-weight-medium);
 }
 
@@ -783,9 +776,6 @@
   border-right: 1px solid color-mix(in srgb, var(--sl-accent) 54%, transparent);
   border-bottom: 1px solid color-mix(in srgb, var(--sl-accent) 54%, transparent);
   padding: 0.75cqw 0.72cqw 0.75cqw 1.05cqw;
-  opacity: 0;
-  clip-path: inset(50% 0 50% 0);
-  animation: tiemanStackAssuranceIn 720ms var(--sl-ease-standard) 1.15s both;
 }
 
 .tieman-solution-stack__assurance-label {
@@ -810,16 +800,12 @@
   align-items: center;
   gap: 0.58cqw;
   border-top: 1px solid color-mix(in srgb, var(--sl-text-primary) 16%, transparent);
-  opacity: 0;
-  transform: translateX(0.55cqw);
-  animation:
-    tiemanStackAssuranceItemIn 420ms var(--sl-ease-standard) both,
-    tiemanStackAssurancePulse 6.4s ease-in-out infinite;
+  animation: tiemanStackAssurancePulse 6.4s ease-in-out infinite paused;
 }
 
-.tieman-solution-stack__assurance li:nth-child(1) { animation-delay: 1.38s, 4.78s; }
-.tieman-solution-stack__assurance li:nth-child(2) { animation-delay: 1.55s, 5.04s; }
-.tieman-solution-stack__assurance li:nth-child(3) { animation-delay: 1.72s, 5.3s; }
+.tieman-solution-stack__assurance li:nth-child(1) { animation-delay: 0ms; }
+.tieman-solution-stack__assurance li:nth-child(2) { animation-delay: 260ms; }
+.tieman-solution-stack__assurance li:nth-child(3) { animation-delay: 520ms; }
 
 .tieman-solution-stack__assurance li > svg {
   width: 1.7cqw;
@@ -850,25 +836,90 @@
   line-height: 1.25;
 }
 
-@keyframes tiemanStackSourceIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__applications,
+.sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__context,
+.sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__sources,
+.sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__assurance {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    visibility 0s linear 560ms,
+    opacity 440ms var(--sl-ease-standard),
+    transform 560ms var(--sl-ease-standard);
 }
 
-@keyframes tiemanStackContextIn {
-  to {
-    opacity: 1;
-    transform: scaleX(1);
-  }
+.sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__applications {
+  transform: translateY(-0.85cqw);
 }
 
-@keyframes tiemanStackApplicationIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__context {
+  transform: scaleX(0.96);
+}
+
+.sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__sources {
+  transform: translateY(0.85cqw);
+}
+
+.sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__assurance {
+  clip-path: inset(46% 0 46% 0);
+  transform: translateX(0.85cqw);
+  transition:
+    visibility 0s linear 560ms,
+    opacity 440ms var(--sl-ease-standard),
+    clip-path 620ms var(--sl-ease-standard),
+    transform 560ms var(--sl-ease-standard);
+}
+
+.sales-deck__transition[data-deck-fragment-count="4"]:is(
+  [data-deck-fragment-step="1"],
+  [data-deck-fragment-step="2"],
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"]
+) .tieman-solution-stack__sources,
+.sales-deck__transition[data-deck-fragment-count="4"]:is(
+  [data-deck-fragment-step="2"],
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"]
+) .tieman-solution-stack__context,
+.sales-deck__transition[data-deck-fragment-count="4"]:is(
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"]
+) .tieman-solution-stack__applications,
+.sales-deck__transition[data-deck-fragment-count="4"][data-deck-fragment-step="4"] .tieman-solution-stack__assurance {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.sales-deck__transition[data-deck-fragment-count="4"][data-deck-fragment-step="4"] .tieman-solution-stack__assurance {
+  clip-path: inset(0 0 0 0);
+}
+
+.sales-deck__transition[data-deck-fragment-count="4"]:is(
+  [data-deck-fragment-step="1"],
+  [data-deck-fragment-step="2"],
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"]
+) .tieman-solution-stack__sources :is(article, .tieman-solution-stack__signal),
+.sales-deck__transition[data-deck-fragment-count="4"]:is(
+  [data-deck-fragment-step="2"],
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"]
+) .tieman-solution-stack__context,
+.sales-deck__transition[data-deck-fragment-count="4"]:is(
+  [data-deck-fragment-step="2"],
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"]
+) .tieman-solution-stack__live svg,
+.sales-deck__transition[data-deck-fragment-count="4"]:is(
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"]
+) .tieman-solution-stack__applications :is(article, .tieman-solution-stack__signal),
+.sales-deck__transition[data-deck-fragment-count="4"][data-deck-fragment-step="4"] .tieman-solution-stack__assurance li {
+  animation-play-state: running;
 }
 
 @keyframes tiemanStackSourcePulse {
@@ -935,20 +986,6 @@
   }
 }
 
-@keyframes tiemanStackAssuranceIn {
-  to {
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-@keyframes tiemanStackAssuranceItemIn {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 @keyframes tiemanStackAssurancePulse {
   0%, 14%, 100% {
     color: var(--sl-text-primary);
@@ -956,12 +993,6 @@
 
   4%, 9% {
     color: var(--sl-accent);
-  }
-}
-
-@keyframes tiemanStackLineIn {
-  to {
-    transform: scaleY(1);
   }
 }
 
@@ -1893,6 +1924,18 @@
     flex-direction: column;
   }
 
+  .tieman-solution-stack__sources {
+    order: 1;
+  }
+
+  .tieman-solution-stack__context {
+    order: 2;
+  }
+
+  .tieman-solution-stack__applications {
+    order: 3;
+  }
+
   .tieman-solution-stack__layer-label {
     position: relative;
     top: auto;
@@ -2307,6 +2350,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__applications,
+  .sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__context,
+  .sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__sources,
+  .sales-deck__transition[data-deck-fragment-count="4"] .tieman-solution-stack__assurance {
+    transition: none;
+  }
+
   .tieman-fragmentation__backdrop,
   .tieman-fragmentation__node,
   .tieman-fragmentation__consequence,

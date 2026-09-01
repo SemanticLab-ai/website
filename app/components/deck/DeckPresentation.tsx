@@ -14,6 +14,7 @@ export type DeckSlide = {
   id: string;
   label: string;
   content: ReactNode;
+  fragmentCount?: number;
 };
 
 type DeckPresentationProps = {
@@ -71,16 +72,36 @@ export function DeckPresentation({
   testId = "sales-deck",
 }: DeckPresentationProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentFragment, setCurrentFragment] = useState(0);
   const [fullscreenAvailable, setFullscreenAvailable] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const slide = slides[currentSlide];
+  const fragmentCount = slide.fragmentCount ?? 0;
 
   const previousSlide = useCallback(() => {
-    setCurrentSlide((current) => Math.max(0, current - 1));
-  }, []);
+    if (currentFragment > 0) {
+      setCurrentFragment((current) => current - 1);
+      return;
+    }
+
+    if (currentSlide > 0) {
+      const previousIndex = currentSlide - 1;
+      setCurrentSlide(previousIndex);
+      setCurrentFragment(slides[previousIndex].fragmentCount ?? 0);
+    }
+  }, [currentFragment, currentSlide, slides]);
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((current) => Math.min(slides.length - 1, current + 1));
-  }, [slides.length]);
+    if (currentFragment < fragmentCount) {
+      setCurrentFragment((current) => current + 1);
+      return;
+    }
+
+    if (currentSlide < slides.length - 1) {
+      setCurrentSlide((current) => current + 1);
+      setCurrentFragment(0);
+    }
+  }, [currentFragment, currentSlide, fragmentCount, slides.length]);
 
   const toggleFullscreen = useCallback(async () => {
     try {
@@ -115,9 +136,11 @@ export function DeckPresentation({
       } else if (event.key === "Home") {
         event.preventDefault();
         setCurrentSlide(0);
+        setCurrentFragment(0);
       } else if (event.key === "End") {
         event.preventDefault();
         setCurrentSlide(slides.length - 1);
+        setCurrentFragment(slides[slides.length - 1]?.fragmentCount ?? 0);
       } else if (event.key.toLowerCase() === "f") {
         event.preventDefault();
         void toggleFullscreen();
@@ -133,12 +156,15 @@ export function DeckPresentation({
     };
   }, [nextSlide, previousSlide, slides.length, toggleFullscreen]);
 
-  const slide = slides[currentSlide];
-
   return (
     <div className={`sales-deck ${className}`.trim()} data-testid={testId}>
       <div className="sales-deck__stage" aria-live="polite">
-        <div className="sales-deck__transition" key={slide.id}>
+        <div
+          className="sales-deck__transition"
+          key={slide.id}
+          data-deck-fragment-step={currentFragment}
+          data-deck-fragment-count={fragmentCount}
+        >
           {slide.content}
         </div>
       </div>
@@ -156,8 +182,8 @@ export function DeckPresentation({
         <button
           type="button"
           onClick={previousSlide}
-          disabled={currentSlide === 0}
-          aria-label="Previous slide"
+          disabled={currentSlide === 0 && currentFragment === 0}
+          aria-label={currentFragment > 0 ? "Hide previous layer" : "Previous slide"}
           data-testid="deck-previous"
         >
           <ChevronLeft aria-hidden="true" />
@@ -169,8 +195,8 @@ export function DeckPresentation({
         <button
           type="button"
           onClick={nextSlide}
-          disabled={currentSlide === slides.length - 1}
-          aria-label="Next slide"
+          disabled={currentSlide === slides.length - 1 && currentFragment === fragmentCount}
+          aria-label={currentFragment < fragmentCount ? "Reveal next layer" : "Next slide"}
           data-testid="deck-next"
         >
           <ChevronRight aria-hidden="true" />
