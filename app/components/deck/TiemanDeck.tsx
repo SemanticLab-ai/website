@@ -587,7 +587,7 @@ function SolutionStackSlide() {
       <div className="tieman-solution-stack__heading">
         <p className="deck-kicker">The opportunity</p>
         <h2 id="deck-slide-8-title">
-          Create one trusted foundation for Tieman&apos;s <em>data and AI.</em>
+          One trusted foundation for Tieman&apos;s <em>data and AI.</em>
         </h2>
         <p className="tieman-solution-stack__summary">
           Once that foundation exists, applications and agents can operate on information that is connected, contextualised and governed.

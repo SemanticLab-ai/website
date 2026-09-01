@@ -198,6 +198,33 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 
 final result: passed
 
+## Slide 08 headline copy — QA
+
+### Evidence and state
+
+- Source visual truth: the user annotation on `h2#deck-slide-8-title` in the deployed slide 08.
+- Desktop implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-08-headline/01-slide-08-headline-local.png` at a 1280 × 720 CSS viewport and devicePixelRatio 1.
+- Mobile implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-08-headline/02-slide-08-headline-mobile-local.png` at a 390 × 844 CSS viewport and devicePixelRatio 1.
+- State: slide 08 before architecture fragments reveal; the headline is visible in its normal presentation state.
+- Focused comparison was not needed because the annotation requested a one-word deletion and the full-view captures keep the complete line wrapping and surrounding composition readable.
+
+### Findings and verification
+
+- Pass 0 — blocked: the selected headline began with `Create`, contrary to the requested wording.
+- [P1] Headline copy. Fixed by removing only `Create`, producing `One trusted foundation for Tieman's data and AI.`
+- Pass 1 — passed: the desktop title remains balanced across two lines, and the mobile title wraps cleanly without truncation or overflow.
+- Fonts and typography: family, weight, italic lime emphasis, size and line height are unchanged.
+- Spacing and layout rhythm: no geometry, margin or padding changed; the shorter headline creates intentional breathing room without disturbing the architecture.
+- Colours and visual tokens: the existing dark surface, white display text and lime emphasis remain unchanged.
+- Image quality and asset fidelity: no image, icon or decorative asset changed.
+- Copy and content: only the targeted word was removed; slide 07 retains its existing headline and all slide 08 supporting copy is unchanged.
+- Interaction: slide navigation and the keypress-controlled architecture reveal sequence remain unchanged.
+- Browser verification: desktop and mobile states rendered without warning or error console logs.
+
+### Result
+
+final result: passed
+
 ## Slide 08 final-reveal summary copy — QA
 
 ### Source and implementation evidence
