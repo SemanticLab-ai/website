@@ -241,6 +241,47 @@ The focused comparison covers the exact annotated header region. The initial, fi
 
 final result: passed
 
+## Slide 10 dark proof treatment — QA
+
+### Source and implementation evidence
+
+- User-selected light slide and dark-mode request: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_hGni6O/Screenshot 2026-09-01 at 11.54.30 PM.png`
+- Pre-change local implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-proof-dark/01-proof-light-before-local.png`
+- Final dark desktop implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-proof-dark/02-proof-dark-pass-1-local.png`
+- Normalised full-slide comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-proof-dark/03-proof-light-dark-comparison.png`
+- Responsive implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-proof-dark/04-proof-dark-mobile-local.png`
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| User source | 1590 × 973 | Source includes surrounding black canvas around an approximately 1583 × 893 slide | slide 10 light treatment |
+| Final desktop | 1280 × 720 | 1280 × 720 browser viewport; devicePixelRatio 1 | slide 10 dark treatment |
+| Full-slide comparison | 2560 × 720 | Source slide cropped to 1583 × 893, normalised to 1280 × 720 and combined with the implementation | light → dark |
+| Mobile capture | 390 × 1800 | 390px CSS viewport; devicePixelRatio 1 | complete responsive slide 10 content |
+
+The full-slide comparison is sufficient because the requested change is a global theme conversion. It shows the complete composition, all three proof rows, attribution note, footer and slide numbering at equal 16:9 dimensions; no image or dense control requires a focused crop.
+
+### Findings, fixes and iteration history
+
+- Pass 0 — blocked: slide 10 was the only proof slide using a white surface, interrupting the dark executive narrative established by slides 08 and 09.
+- [P1] Theme discontinuity. Fixed by removing the light slide tone and remapping proof-specific borders, indices, metrics, labels, descriptions and attribution copy to the SemanticLab dark canvas tokens.
+- Pass 1 — passed: the normalised comparison shows the exact approved structure and evidence preserved on the dark canvas, with no actionable P0, P1 or P2 issue at desktop or mobile widths.
+
+### Fidelity and responsive verification
+
+- Fonts and typography: the heading, italic emphasis, proof names, metrics, labels and attribution hierarchy are unchanged. Line breaks and optical weights remain consistent with adjacent dark slides.
+- Spacing and layout rhythm: the two-column executive layout, three equal proof rows, rules, bottom note and footer clearance are preserved exactly.
+- Colours and tokens: the former light background and dark-text tokens are replaced with `--sl-canvas`, `--sl-text-primary`, `--sl-accent` and `--sl-border`. No off-system colour remains in the proof component.
+- Image quality and asset fidelity: the slide is intentionally text-led and contains no imagery or custom icon asset. No placeholder, generated asset or code-drawn substitute was introduced.
+- Copy and content: GameDay, PartsHQ, Podly, all metrics, all descriptions and the previous-role attribution remain verbatim and in the same order.
+- Responsive behaviour: at 390px width, the proof rows collapse to one readable column, every label and metric remains visible, the attribution note and footer are reachable, and no horizontal clipping occurs.
+- Browser verification: the local story route rendered slide 10 in dark mode at desktop and responsive widths with an empty warning/error console.
+
+### Result
+
+final result: passed
+
 ## Slide 09 founder headshot framing — QA
 
 ### Source and implementation evidence

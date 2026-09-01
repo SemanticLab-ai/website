@@ -945,7 +945,6 @@ function ProofSlide() {
       index={10}
       total={TOTAL_SLIDES}
       descriptor="Relevant proof across data, platforms and workflow design."
-      tone="light"
       className="tieman-proof"
     >
       <div className="tieman-proof__heading">

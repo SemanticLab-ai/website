@@ -2480,7 +2480,7 @@
 .tieman-proof__rail {
   align-self: center;
   list-style: none;
-  border-top: 1px solid var(--sl-border-on-light);
+  border-top: 1px solid var(--sl-border);
   padding: 0;
 }
 
@@ -2490,11 +2490,11 @@
   min-height: 10.2cqw;
   align-items: center;
   gap: 1.2cqw;
-  border-bottom: 1px solid var(--sl-border-on-light);
+  border-bottom: 1px solid var(--sl-border);
 }
 
 .tieman-proof__rail > li > span {
-  color: #4b8f28;
+  color: var(--sl-accent);
   font-size: 0.6cqw;
   letter-spacing: 0.12em;
 }
@@ -2506,12 +2506,12 @@
 
 .tieman-proof__identity small,
 .tieman-proof__measure small {
-  color: color-mix(in srgb, var(--sl-text-on-light) 45%, transparent);
+  color: color-mix(in srgb, var(--sl-text-primary) 45%, transparent);
 }
 
 .tieman-proof__measure strong {
   display: block;
-  color: #4b8f28;
+  color: var(--sl-accent);
   font-size: 1.6cqw;
   font-weight: var(--sl-weight-light);
 }
@@ -2525,16 +2525,16 @@
 }
 
 .tieman-proof__rail p {
-  color: color-mix(in srgb, var(--sl-text-on-light) 58%, transparent);
+  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
   font-size: 0.67cqw;
   line-height: 1.52;
 }
 
 .tieman-proof__note {
   grid-column: 1 / -1;
-  border-top: 1px solid var(--sl-border-on-light);
+  border-top: 1px solid var(--sl-border);
   padding-top: 0.85cqw;
-  color: color-mix(in srgb, var(--sl-text-on-light) 45%, transparent);
+  color: color-mix(in srgb, var(--sl-text-primary) 45%, transparent);
   font-size: 0.6cqw;
 }
 
