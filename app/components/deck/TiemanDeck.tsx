@@ -161,6 +161,7 @@ const storyImpactStates = [
   { stage: "Sales", title: "Missing requirement", detail: "The job begins with incomplete context." },
   { stage: "Specification", title: "Clarification", detail: "The missing detail has to be reconstructed." },
   { stage: "Engineering", title: "Engineering rework", detail: "Design work pauses or has to be revisited." },
+  { stage: "BOM", title: "Cross-team query", detail: "Spec-to-design gaps send teams chasing answers." },
   { stage: "Purchasing", title: "Long-lead surprise", detail: "Critical components are identified later." },
   { stage: "Production", title: "Production delay", detail: "A small upstream gap becomes schedule impact." },
 ] as const;
@@ -1229,7 +1230,7 @@ const storyChallengeSlides: readonly DeckSlide[] = slides.flatMap((slide) => {
       {
         id: "tieman-story-impact",
         label: "Why it matters",
-        fragmentCount: 5,
+        fragmentCount: 6,
         content: <StoryImpactSlide />,
       },
     ];

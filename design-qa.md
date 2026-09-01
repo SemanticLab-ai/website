@@ -245,6 +245,49 @@ The full-view comparison shows the complete source and implementation at equal 1
 
 final result: passed
 
+## BOM consequence state — QA
+
+### Source and implementation evidence
+
+- User-selected operational-impact state: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_9Cbrmb/Screenshot 2026-09-01 at 11.18.25 PM.png`
+- Final desktop browser capture: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/19-impact-bom-state-local.png`
+- Focused source/implementation comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/20-impact-bom-comparison.png`
+- Final downstream state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/21-impact-final-state-local.png`
+- Mobile top and lower-state captures: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/22-impact-bom-mobile-top.png` and `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/24-impact-bom-mobile-bottom.png`
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| User source | 1523 × 367 | Cropped desktop slide region | previous fragment 04, Purchasing active |
+| Final desktop | 1280 × 720 | 1280 × 720 browser viewport; devicePixelRatio 1 | slide 06, fragment 04, BOM active |
+| Focused comparison | 2416 × 289 | Source and implementation regions normalised to 1200 × 289 with a 16px gutter | previous state → added BOM state |
+| Mobile captures | 390 × 844 each | 390 × 844 browser viewport; devicePixelRatio 1 | slide 06, fragment 04, top and scrolled lower state |
+
+The focused comparison uses the selected slide region as the visual truth for pipeline geometry, typography, active-state treatment, signal styling and consequence hierarchy. The different active stage and copy are intentional: the requested BOM consequence has been inserted before the unchanged Purchasing state.
+
+### Findings, fixes and iteration history
+
+- Pass 0 — blocked: the impact sequence skipped from Engineering directly to Purchasing, so BOM had no corresponding presenter-controlled consequence state.
+- [P2] Missing BOM consequence. Fixed by inserting fragment 04 as `BOM — Cross-team query` with the supporting line `Spec-to-design gaps send teams chasing answers.`
+- [P2] Fragment sequencing. Fixed by increasing the slide from five to six controlled reveals, mapping the signal to the BOM cell at 50%, and moving Purchasing and Production to fragments 05 and 06 without changing their copy.
+- Pass 1 — passed: the equal-size focused comparison, complete desktop sequence and mobile captures contain no remaining actionable P0, P1 or P2 issue.
+
+### Fidelity and interaction verification
+
+- Fonts and typography: the new title and detail reuse the existing impact-state sizes, weights and line heights; both remain centred and unclipped on desktop and mobile.
+- Spacing and layout rhythm: the BOM state uses the same seven-column pipeline, active-cell fill, centred signal and consequence spacing as the selected reference.
+- Colours and tokens: no new colours were introduced; the state uses the existing canvas, lime accent, border and text-mix tokens.
+- Image and icon fidelity: no image asset was added or replaced. The existing alert icon is reused exactly.
+- Copy and content: the short label `Cross-team query` and the supporting line communicate spec-to-design misalignment and cross-department chasing while matching the brevity of the surrounding states.
+- Interaction: Arrow Right and the reveal control advance through Sales, Specification, Engineering, BOM, Purchasing and Production one state at a time; the cumulative result appears only on fragment 06.
+- Responsive behaviour: at 390 × 844, the active BOM cell, title and supporting sentence are fully readable without clipping, and the persistent presenter controls remain reachable.
+- Browser verification: the local route `/deck/tieman-tankers?challenges=story` rendered the new state, preserved the downstream Purchasing and Production states, and produced no warning or error console logs.
+
+### Result
+
+final result: passed
+
 ## Challenges story comparison — QA
 
 ### Source and implementation evidence
