@@ -504,3 +504,49 @@ The focused comparison isolates the requested header, while the full-slide captu
 ### Result
 
 final result: passed
+
+## Slide 08 source-system stagger — QA
+
+### Source and implementation evidence
+
+- User-selected source-system row: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_vbnZyh/Screenshot 2026-09-01 at 11.53.26 PM.png`
+- Pre-reveal local state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/39-source-stagger-before-local.png`
+- 180ms and 460ms stagger states: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/40-source-stagger-180ms-local.png` and `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/41-source-stagger-460ms-local.png`
+- Completed local state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/42-source-stagger-complete-local.png`
+- Four-state motion comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/43-source-stagger-sequence-comparison.png`
+- Focused static source/implementation comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/44-source-stagger-static-comparison.png`
+- Mobile completed state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/45-source-stagger-mobile-local.png`
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| User row source | 1287 × 139 | Cropped desktop source-system row | approved static row |
+| Local sequence captures | 1280 × 720 each | 1280 × 720 browser viewport; devicePixelRatio 1 | slide 08, fragment 00 → fragment 01 |
+| Motion comparison | 2560 × 360 | Four 640 × 360 equal panels | before, 180ms, 460ms, complete |
+| Focused static comparison | 2574 × 139 | Source and completed implementation row normalised to 1287 × 139 each | source → complete |
+| Mobile capture | 390 × 844 | 390 × 844 browser viewport; devicePixelRatio 1 | fragment 01 complete |
+
+The focused comparison proves the completed row preserves the selected static layout. The four-state board is the primary evidence for the requested one-at-a-time entrance.
+
+### Findings, fixes and iteration history
+
+- Pass 0 — blocked: all six source-system cells became visible as one undifferentiated group when fragment 01 was revealed.
+- [P2] Motion hierarchy. Fixed with a 380ms opacity-and-rise entrance staggered by 110ms across Epicor, SolidWorks, PDM, Word + PDF, Excel and People. The full sequence completes in under one second and does not delay later keypress-controlled layers.
+- Pass 1 — passed: the four-state comparison shows a clear left-to-right progression while the completed state remains visually identical to the supplied source row.
+
+### Fidelity and interaction verification
+
+- Fonts and typography: labels, roles, weights, line heights and wrapping are unchanged throughout the animation.
+- Spacing and layout rhythm: every cell keeps its existing grid track, border and padding; the entrance uses only opacity and a 0.5cqw vertical offset, so no reflow occurs.
+- Colours and tokens: the animation introduces no new colour or surface token; lime icons, muted roles and hairline borders remain unchanged.
+- Image quality and asset fidelity: no asset or icon changed. The existing source-system icons remain sharp and correctly aligned.
+- Copy and content: Epicor, SolidWorks, PDM, Word + PDF, Excel and People remain complete and in the approved order.
+- Interaction: one keypress still reveals the entire source layer; the cells then sequence automatically within that fragment. Subsequent context, app, assurance and summary keypresses are unchanged.
+- Motion accessibility: the existing `prefers-reduced-motion: reduce` treatment disables the stagger and shows all six cells immediately when fragment 01 is revealed.
+- Responsive behaviour: the completed 390 × 844 state preserves the two-column mobile grid without clipping or overflow.
+- Browser verification: the local story route produced no warning or error console logs.
+
+### Result
+
+final result: passed

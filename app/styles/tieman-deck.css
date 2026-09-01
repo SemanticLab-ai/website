@@ -1856,6 +1856,35 @@
   padding: 0.9cqw 0.88cqw;
 }
 
+.sales-deck__transition[data-deck-fragment-count="5"]
+  .tieman-solution-stack__source-grid article {
+  opacity: 0;
+  transform: translateY(0.5cqw);
+}
+
+.sales-deck__transition[data-deck-fragment-count="5"]:is(
+  [data-deck-fragment-step="1"],
+  [data-deck-fragment-step="2"],
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"],
+  [data-deck-fragment-step="5"]
+) .tieman-solution-stack__source-grid article {
+  animation: tiemanStackSourceReveal 380ms var(--sl-ease-standard) both;
+}
+
+.sales-deck__transition[data-deck-fragment-count="5"]
+  .tieman-solution-stack__source-grid article:nth-child(1) { animation-delay: 40ms; }
+.sales-deck__transition[data-deck-fragment-count="5"]
+  .tieman-solution-stack__source-grid article:nth-child(2) { animation-delay: 150ms; }
+.sales-deck__transition[data-deck-fragment-count="5"]
+  .tieman-solution-stack__source-grid article:nth-child(3) { animation-delay: 260ms; }
+.sales-deck__transition[data-deck-fragment-count="5"]
+  .tieman-solution-stack__source-grid article:nth-child(4) { animation-delay: 370ms; }
+.sales-deck__transition[data-deck-fragment-count="5"]
+  .tieman-solution-stack__source-grid article:nth-child(5) { animation-delay: 480ms; }
+.sales-deck__transition[data-deck-fragment-count="5"]
+  .tieman-solution-stack__source-grid article:nth-child(6) { animation-delay: 590ms; }
+
 .tieman-solution-stack__source-grid article::before {
   position: absolute;
   top: -2.75cqw;
@@ -2078,6 +2107,18 @@
   13% {
     opacity: 0.58;
     transform: translate(-50%, -0.46cqw);
+  }
+}
+
+@keyframes tiemanStackSourceReveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.5cqw);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -4187,6 +4228,18 @@
   .sales-deck__transition[data-deck-fragment-count="5"] .tieman-solution-stack__assurance,
   .sales-deck__transition[data-deck-fragment-count="5"] .tieman-solution-stack__summary {
     transition: none;
+  }
+
+  .sales-deck__transition[data-deck-fragment-count="5"]:is(
+    [data-deck-fragment-step="1"],
+    [data-deck-fragment-step="2"],
+    [data-deck-fragment-step="3"],
+    [data-deck-fragment-step="4"],
+    [data-deck-fragment-step="5"]
+  ) .tieman-solution-stack__source-grid article {
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
 
   .tieman-solution-stack__application-grid article,
