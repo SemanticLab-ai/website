@@ -122,10 +122,13 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 ### Source and implementation evidence
 
 - Selected ImageGen visual target: `/Users/raihanrazi/.codex/generated_images/01a05b75-a5e0-7190-a0b7-e2447ba74e29/exec-93efc900-33a7-496f-b0c0-967231c1a384.png`
-- Final source/implementation comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-final-comparison.png`
-- Final reveal sequence, fragments 0–4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-final-sequence.png`
-- Final desktop fragment 4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-final-state-4.png`
-- Final mobile fragment 4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-mobile-final.png`
+- User-annotated implementation before the alignment correction: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-alignment-before.png`
+- Before/source comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-alignment-comparison-before.png`
+- Final source/implementation comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-alignment-final-comparison.png`
+- Focused diagram comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-alignment-focused-comparison.png`
+- Final reveal sequence, fragments 0–4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-alignment-final-sequence.png`
+- Final desktop fragment 4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-alignment-final-1588x1260.png`
+- Final mobile fragment 4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-alignment-mobile-final.png`
 - Alternate implementation route: `/deck/tieman-tankers?vision=venn`; the existing `/deck/tieman-tankers` vision slide remains unchanged.
 
 ### Normalisation
@@ -133,33 +136,42 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 | Artifact | Pixel size | CSS viewport / rendered size | State |
 | --- | ---: | ---: | --- |
 | Selected concept | 1672 × 941 | Normalised to 1588 × 894 for direct comparison | fully revealed concept |
-| Desktop implementation | 1588 × 1260 | 1588 × 1260 browser viewport; 1588 × 894 centred 16:9 stage | fragments 0–4 |
-| Comparison board | 3200 × 894 | Source and implementation at equal 1588 × 894 size with a 24px divider | fragment 4 |
-| Mobile implementation | 390 × 844 | 390 × 844 viewport at 1× density | fragment 4 |
+| Desktop implementation | 1588 × 1260 | 1588 × 1260 CSS viewport; 1588 × 894 centred 16:9 stage; devicePixelRatio 1 | fragments 0–4 |
+| Full comparison board | 3176 × 894 | Source and implementation at equal 1588 × 894 size | fragment 4 |
+| Focused comparison board | 1900 × 800 | Matching 950 × 800 diagram regions combined side by side | fragment 4 |
+| Mobile implementation | 390 × 844 | 390 × 844 CSS viewport; devicePixelRatio 1 | fragment 4 |
 
 ### Findings, fixes and iteration history
 
-- [P1] The first implementation used equal-diameter circles but their centres did not form an equilateral triangle. The measured distances were approximately 309.68px, 309.68px and 309.66px only after the first geometry correction; the original visual spacing was substantially uneven. Fixed by deriving every circle position from shared circle-size, centre-spacing and equilateral-rise variables rather than independent offsets.
-- [P2] The first corrected triangle was mathematically even but the 19.5cqw centre spacing made the shared intersection too small. Fixed by reducing all three sides uniformly to 17cqw and recalculating the rise to 14.722cqw, enlarging the centre without distorting the Venn.
-- [P2] The shared system initially read as another label rather than the payoff. Fixed with a dedicated ImageGen intersection asset, stronger circle luminosity and a final fourth fragment that withholds the intersection until all three outcomes are present.
-- [P2] The mobile final state initially allowed the outcome copy and centre treatment to compete. Fixed by using a separate exact 140px equilateral geometry, moving the lower copy into the outer lobes and scaling the core treatment independently.
+- Pass 0 — blocked: the user-annotated state was mathematically symmetric but visibly undersized. The circles left excess canvas, the lower copy sat too low in its lobes, the headline was optically below the diagram, and the shared-centre copy was cramped inside an undersized highlight.
+- [P2] Circle scale and presentation balance. Fixed by increasing the circle box from `31.5cqw` to `35.2cqw`, using an `18.7cqw` centre distance and recalculating the exact equilateral rise to `16.195cqw`. This enlarges both the diagram and the shared overlap while preserving equal geometry.
+- [P2] Outcome-copy alignment. Fixed by replacing hand-tuned top-circle offsets with a true 50% horizontal anchor, mirroring the two lower copy centres around the diagram axis and placing both lower headings on the same vertical baseline.
+- [P2] Headline/diagram optical alignment. Fixed by moving the headline anchor from 50% to 47% of the content height and aligning the visible circle group to the top and footer rhythm of the selected concept.
+- Pass 1 — blocked: circle scale and lobe alignment were corrected, but the shared-centre asset and title remained visually weaker than the enlarged overlap.
+- [P2] Shared-centre hierarchy. Fixed by centring the core on the mathematical centroid, expanding the generated intersection asset to `22.5cqw`, increasing the operating-platform title and preserving a single compact supporting line.
+- [P2] Mobile copy collision and readability. The first 390px state allowed the top bullets and lower-lobe content to compete with the centre. Fixed by giving the top copy a 190px centred measure, giving each lower lobe a mirrored 160px measure, tightening vertical rhythm, increasing readable type and pinning the final copy bounds to exactly 0–380px inside the 380px diagram.
+- Pass 2 — passed: the full-view, focused diagram, five fragment states and mobile comparison contain no remaining actionable P0, P1 or P2 mismatch.
 - No actionable P0, P1 or P2 findings remain after the final comparison.
 
 ### Geometry and visual verification
 
-- Desktop browser-computed circle boxes are equal at 500.22 × 500.22px. Centre distances are 269.9449px, 269.9527px and 269.9531px; the maximum variance is less than 0.01px.
+- Desktop browser-computed circle boxes are equal at 558.97 × 558.97px. Centre distances are 296.9518px, 296.9596px and 296.9531px; the maximum variance is less than 0.01px.
+- The shared core is centred on the triangle centroid with a 0.01px horizontal offset and a 0.84px optical vertical offset.
+- The two lower outcome headings share the same `679.42px` top position. Their copy centres sit 242.16px to either side of the `1025.83px` diagram axis.
 - Mobile browser-computed centre distances are 139.9920px, 139.9920px and 140px; the maximum variance is less than 0.01px.
+- At 390 × 844 the left and right lower copy bounds are exactly `0–160px` and `220–380px`; `documentElement.scrollWidth` equals the 390px viewport.
 - The final source/implementation board confirms the alternate retains the selected composition: statement left, three translucent lime circles right, content in the outer lobes and a bright central system reveal.
+- The focused comparison verifies the title, indices, outcome headings, supporting statements and central operating-platform label at readable scale. No additional crop was required after this focused pass.
 - The final sequence board confirms fragments accumulate in the intended order: statement only → operational efficiency → future intelligence → risk and resilience → Tieman's intelligent operating platform.
-- Typography, canvas, lime accent, editorial microcopy, footer treatment and presenter controls use the existing SemanticLab deck system.
+- Required fidelity surfaces passed: typography uses the existing display and UI families with increased internal readability; spacing is derived from one symmetric geometry; colours remain on the existing dark-canvas/lime token system; both visible Venn assets are optimised transparent raster images with no masking halo or compression artifact; all requested outcome and operating-platform copy is present.
 - The generated circle and core visuals are real raster assets. No placeholder, inline SVG, handcrafted SVG, CSS-drawn diagram or emoji is used.
-- In-app browser console output contains no warning or error entries; only Vite development and React DevTools informational messages are present.
+- The in-app browser warning/error console is empty.
 
 ### Interaction and responsive checks
 
-- Arrow Right reveals exactly one new circle or the shared centre per keypress. Arrow Left reverses one fragment at a time.
+- Fragment visibility was measured in every state: 0 visible layers → 1 outcome → 2 outcomes → 3 outcomes → 3 outcomes plus the shared core. Arrow Right and Arrow Left change exactly one state per keypress.
 - The next control remains `Reveal next layer` until fragment 4, then advances to the problem slide.
-- Reduced-motion preference removes the circle and centre transitions while preserving the same controlled fragment sequence.
+- Reduced-motion emulation reports `0s` transition duration for every circle and the shared centre while preserving the controlled fragment sequence.
 - The alternate is isolated behind `?vision=venn`; removing the query restores the previously approved objective-rail vision slide.
 - The desktop and mobile implementations keep every outcome, the shared centre, footer and presenter controls reachable without horizontal overflow.
 

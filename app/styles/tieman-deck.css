@@ -221,7 +221,7 @@
 
 .tieman-vision-venn__heading {
   position: absolute;
-  top: 50%;
+  top: 47%;
   left: 0;
   z-index: 8;
   width: 36cqw;
@@ -241,15 +241,15 @@
 }
 
 .tieman-vision-venn__diagram {
-  --tieman-venn-circle-size: 31.5cqw;
-  --tieman-venn-centre-spacing: 17cqw;
-  --tieman-venn-triangle-rise: 14.722cqw;
-  --tieman-venn-core-top: 21.26cqw;
+  --tieman-venn-circle-size: 35.2cqw;
+  --tieman-venn-centre-spacing: 18.7cqw;
+  --tieman-venn-triangle-rise: 16.195cqw;
+  --tieman-venn-core-top: 23.45cqw;
   position: absolute;
-  top: -1.9cqw;
+  top: -3.7cqw;
   right: -0.3cqw;
   width: 64cqw;
-  height: 48.4cqw;
+  height: 52cqw;
   isolation: isolate;
 }
 
@@ -311,34 +311,36 @@
 }
 
 .tieman-vision-venn__outcome--efficiency .tieman-vision-venn__outcome-copy {
-  top: 4.15cqw;
-  left: 6.15cqw;
+  top: 6.7cqw;
+  left: 50%;
+  width: 21cqw;
+  transform: translateX(-50%);
 }
 
 .tieman-vision-venn__outcome--intelligence .tieman-vision-venn__outcome-copy,
 .tieman-vision-venn__outcome--resilience .tieman-vision-venn__outcome-copy {
-  top: 16.1cqw;
-  width: 17.2cqw;
+  top: 13.9cqw;
+  width: 18.6cqw;
 }
 
 .tieman-vision-venn__outcome--intelligence .tieman-vision-venn__outcome-copy {
-  left: 0.4cqw;
+  left: 2.4cqw;
 }
 
 .tieman-vision-venn__outcome--resilience .tieman-vision-venn__outcome-copy {
-  left: 13.9cqw;
+  left: 14.2cqw;
 }
 
 .tieman-vision-venn__outcome-copy > span {
   color: var(--sl-accent);
-  font-size: 0.55cqw;
+  font-size: 0.6cqw;
   font-weight: var(--sl-weight-semibold);
   letter-spacing: 0.17em;
 }
 
 .tieman-vision-venn__outcome-copy h3 {
-  margin-top: 0.8cqw;
-  font-size: 1.35cqw;
+  margin-top: 0.72cqw;
+  font-size: 1.48cqw;
   line-height: 1.05;
 }
 
@@ -358,15 +360,15 @@
 }
 
 .tieman-vision-venn__outcome-copy strong {
-  font-size: 0.81cqw;
+  font-size: 0.95cqw;
   font-weight: var(--sl-weight-regular);
   line-height: 1.18;
 }
 
 .tieman-vision-venn__outcome-copy small {
-  margin-top: 0.32cqw;
+  margin-top: 0.34cqw;
   color: color-mix(in srgb, var(--sl-text-primary) 56%, transparent);
-  font-size: 0.44cqw;
+  font-size: 0.51cqw;
   font-weight: var(--sl-weight-semibold);
   letter-spacing: 0.13em;
   line-height: 1.35;
@@ -379,8 +381,8 @@
   left: 50%;
   z-index: 6;
   display: flex;
-  width: 13.2cqw;
-  min-height: 8.6cqw;
+  width: 16.2cqw;
+  min-height: 10cqw;
   align-items: center;
   justify-content: center;
   visibility: hidden;
@@ -401,8 +403,8 @@
   left: 50%;
   z-index: 0;
   display: block;
-  width: 14cqw;
-  height: 14cqw;
+  width: 22.5cqw;
+  height: 22.5cqw;
   object-fit: contain;
   opacity: 0.96;
   mix-blend-mode: screen;
@@ -418,25 +420,25 @@
 
 .tieman-vision-venn__core span {
   color: color-mix(in srgb, var(--sl-text-on-light) 66%, transparent);
-  font-size: 0.46cqw;
+  font-size: 0.48cqw;
   font-weight: var(--sl-weight-semibold);
   letter-spacing: var(--sl-tracking-label);
   text-transform: uppercase;
 }
 
 .tieman-vision-venn__core strong {
-  max-width: 12.5cqw;
-  margin-top: 0.48cqw;
-  font-size: 1.13cqw;
+  max-width: 13.6cqw;
+  margin-top: 0.52cqw;
+  font-size: 1.25cqw;
   font-weight: var(--sl-weight-medium);
   line-height: 1.02;
 }
 
 .tieman-vision-venn__core small {
-  max-width: 10.8cqw;
-  margin-top: 0.55cqw;
+  max-width: 12.4cqw;
+  margin-top: 0.6cqw;
   color: color-mix(in srgb, var(--sl-text-on-light) 64%, transparent);
-  font-size: 0.45cqw;
+  font-size: 0.5cqw;
   line-height: 1.35;
 }
 
@@ -1998,75 +2000,83 @@
   }
 
   .tieman-vision-venn__outcome-copy {
-    width: 158px;
+    width: 190px;
   }
 
   .tieman-vision-venn__outcome--efficiency .tieman-vision-venn__outcome-copy {
-    top: 43px;
-    left: 50px;
+    top: 30px;
+    left: 50%;
+    width: 190px;
+    transform: translateX(-50%);
   }
 
   .tieman-vision-venn__outcome--intelligence .tieman-vision-venn__outcome-copy,
   .tieman-vision-venn__outcome--resilience .tieman-vision-venn__outcome-copy {
-    top: 150px;
-    width: 142px;
+    top: 145px;
+    width: 160px;
   }
 
   .tieman-vision-venn__outcome--intelligence .tieman-vision-venn__outcome-copy {
-    left: 18px;
+    left: 9px;
   }
 
   .tieman-vision-venn__outcome--resilience .tieman-vision-venn__outcome-copy {
-    left: 98px;
+    left: 89px;
   }
 
   .tieman-vision-venn__outcome-copy > span {
-    font-size: 0.48rem;
+    font-size: 0.42rem;
   }
 
   .tieman-vision-venn__outcome-copy h3 {
-    margin-top: 7px;
-    font-size: 0.94rem;
+    margin-top: 4px;
+    font-size: 0.88rem;
+    line-height: 1;
   }
 
   .tieman-vision-venn__outcome-copy li {
-    margin-top: 9px;
+    margin-top: 7px;
   }
 
   .tieman-vision-venn__outcome-copy strong {
-    font-size: 0.67rem;
+    font-size: 0.6rem;
+    line-height: 1.08;
   }
 
   .tieman-vision-venn__outcome-copy small {
-    margin-top: 3px;
-    font-size: 0.39rem;
+    margin-top: 2px;
+    font-size: 0.36rem;
+    letter-spacing: 0.06em;
+    line-height: 1.25;
   }
 
   .tieman-vision-venn__core {
     top: var(--tieman-venn-core-top);
-    width: 132px;
-    min-height: 96px;
+    width: 145px;
+    min-height: 94px;
   }
 
   .tieman-vision-venn__core > img {
-    width: 122px;
-    height: 122px;
+    width: 148px;
+    height: 148px;
   }
 
   .tieman-vision-venn__core span {
-    font-size: 0.42rem;
+    font-size: 0.34rem;
   }
 
   .tieman-vision-venn__core strong {
-    max-width: 136px;
-    margin-top: 6px;
-    font-size: 0.78rem;
+    max-width: 120px;
+    margin-top: 5px;
+    font-size: 0.74rem;
+    line-height: 1.03;
   }
 
   .tieman-vision-venn__core small {
-    max-width: 124px;
-    margin-top: 6px;
-    font-size: 0.48rem;
+    max-width: 110px;
+    margin-top: 5px;
+    font-size: 0.36rem;
+    line-height: 1.2;
   }
 
   .tieman-problem__body,
