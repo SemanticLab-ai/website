@@ -10,11 +10,15 @@ export function loader({ request }: Route.LoaderArgs) {
     throw new Response("Not Found", { status: 404 });
   }
 
-  const visionVariant = new URL(request.url).searchParams.get("vision") === "venn"
+  const searchParams = new URL(request.url).searchParams;
+  const challengeVariant = searchParams.get("challenges") === "story"
+    ? "story"
+    : "current";
+  const visionVariant = searchParams.get("vision") === "venn"
     ? "venn"
     : "objectives";
 
-  return { visionVariant } as const;
+  return { challengeVariant, visionVariant } as const;
 }
 
 export function meta({}: Route.MetaArgs) {
@@ -29,7 +33,12 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function TiemanDeckRoute() {
-  const { visionVariant } = useLoaderData<typeof loader>();
+  const { challengeVariant, visionVariant } = useLoaderData<typeof loader>();
 
-  return <TiemanDeck visionVariant={visionVariant} />;
+  return (
+    <TiemanDeck
+      challengeVariant={challengeVariant}
+      visionVariant={visionVariant}
+    />
+  );
 }

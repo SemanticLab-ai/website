@@ -245,6 +245,53 @@ The full-view comparison shows the complete source and implementation at equal 1
 
 final result: passed
 
+## Challenges story comparison — QA
+
+### Source and implementation evidence
+
+- Existing challenges slide: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-narrative-audit/01-current-challenges.png`
+- Existing operational-impact slide: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-narrative-audit/02-current-operational-impact.png`
+- Existing systems-landscape slide: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-narrative-audit/03-current-where-context-lives.png`
+- Final landscape, initial and revealed: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/01-landscape-state-0.png` and `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/11-landscape-state-1-fixed.jpg`
+- Final question sequence, fragments 0–3: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/03-question-state-0.png`, `04-question-state-1.jpg`, `05-question-state-2.jpg` and `06-question-state-3.jpg`
+- Final impact sequence, fragments 0, 1, 3 and 5: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/07-impact-state-0.jpg` through `10-impact-state-5.jpg`
+- Normalised source/implementation comparisons: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/compare-landscape.jpg`, `compare-question.jpg` and `compare-impact.jpg`
+- Mobile landscape, question and impact evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/14-mobile-landscape-scrolled.jpg`, `16-mobile-question-state-3-fixed.jpg`, `17-mobile-impact-state-5.jpg` and `18-mobile-impact-bottom.jpg`
+- Comparison route: `/deck/tieman-tankers?challenges=story`. The existing `/deck/tieman-tankers` route remains unchanged. The comparison also composes with the Venn alternate at `?vision=venn&challenges=story`.
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| Existing and revised desktop captures | 1588 × 1260 each | 1588 × 1260 browser viewport; centred 16:9 deck stage | slides 04–06 and every requested fragment |
+| Comparison boards | 2016 × 794 each | Source and implementation normalised to matching 1000 × 794 panels with a 16px gutter | fully revealed state |
+| Mobile captures | 390 × 844 each | 390 × 844 browser viewport | fully revealed top and scrolled lower states |
+
+The existing slides are the visual truth for typography, dark-canvas treatment, lime accent, hairline rules, system icons, topology asset, footer and presenter controls. The approved narrative brief is authoritative for the new three-step progression: data fragmentation → human reconstruction → operational consequence.
+
+### Findings, fixes and iteration history
+
+- [P1] The active sequence repeated the same fragmentation argument across three visually strong slides. Fixed by isolating a comparison variant in which each slide has one distinct job: locate the knowledge, humanise the friction with a real question, then show one gap compounding across the operating flow.
+- [P2] The first landscape pass placed the tanker-job card too close to the PDM node. Fixed by moving the card to `left: 55cqw; top: 23.6cqw`, preserving clear separation from both PDM and SolidWorks while keeping all six connector paths legible.
+- [P2] The first 390 × 844 question state allowed the longest answer labels to clip in the two-column grid. Fixed by reducing the icon track, using `minmax(0, 1fr)`, removing intrinsic minimum width and enabling safe label wrapping. The final capture contains the complete `Customer specification`, `Working assumptions` and `Decision rationale` copy.
+- Pass 2 — passed: the equal-size comparison boards, complete fragment sequence, 390 × 844 top/scrolled states, original-route check and combined-query check contain no remaining actionable P0, P1 or P2 issue.
+
+### Fidelity and interaction verification
+
+- Typography and hierarchy: all three slides reuse the deck's display/UI families, light executive headings, italic lime emphasis and small uppercase labels. Each slide reads as one presentation moment rather than a dashboard.
+- Layout and spacing: the landscape preserves the approved topology composition, the question slide centres one practical question between six answer fragments, and the impact slide uses one ruled seven-stage flow with a single moving consequence state.
+- Colours, icons and imagery: every colour comes from the existing SemanticLab token system. The existing `fragmented-topology.png` and Lucide system icons are reused; the tanker-job and missing-context markers use Lucide `Truck` and `CircleAlert` icons. No placeholder, emoji, custom SVG or CSS-drawn illustration was introduced.
+- Copy and narrative: slide 04 concludes that the systems work but context is fragmented; slide 05 states that the answer exists but must be reconstructed; slide 06 resolves the business impact as more coordination, more waiting and less throughput.
+- Presenter control: slide 04 has one fragment, slide 05 has three fragments and slide 06 has five fragments. Arrow Right, Space, Enter and the next control reveal exactly one state at a time; Arrow Left reverses exactly one state. No box or card uses autonomous animation.
+- Motion: meaning-bearing movement is limited to short fragment transitions and the impact signal travelling across the process. The existing reduced-motion media rule removes those transitions without changing content order or fragment control.
+- Responsive behaviour: the 390 × 844 captures show the complete two-column systems map and question fragments without horizontal clipping, and the single-column operating flow, final consequence, footer and presenter controls are all reachable by scrolling.
+- Preservation: the default route still reports `16` slides and reaches the existing `Critical information exists. But it is fragmented.` slide at position 04. The combined Venn/story query reaches the new landscape at position 04. Both clean local tabs have empty warning/error consoles.
+- Automated verification: `npm run check` passed source assertions, preview and production builds, flattened-artifact assertions, `wrangler versions upload --dry-run` for preview and `wrangler deploy --dry-run` for production.
+
+### Result
+
+final result: passed
+
 ## Challenges slide — QA
 
 ### Source and implementation evidence

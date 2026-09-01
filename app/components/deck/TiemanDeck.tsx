@@ -3,6 +3,7 @@ import ArrowUp from "lucide-react/dist/esm/icons/arrow-up";
 import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
 import BadgeCheck from "lucide-react/dist/esm/icons/badge-check";
 import Bot from "lucide-react/dist/esm/icons/bot";
+import CircleAlert from "lucide-react/dist/esm/icons/circle-alert";
 import ClipboardCheck from "lucide-react/dist/esm/icons/clipboard-check";
 import Cuboid from "lucide-react/dist/esm/icons/cuboid";
 import Database from "lucide-react/dist/esm/icons/database";
@@ -14,6 +15,7 @@ import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import PackageSearch from "lucide-react/dist/esm/icons/package-search";
 import Sheet from "lucide-react/dist/esm/icons/sheet";
 import ShieldCheck from "lucide-react/dist/esm/icons/shield-check";
+import Truck from "lucide-react/dist/esm/icons/truck";
 import Users from "lucide-react/dist/esm/icons/users";
 import {
   DeckPresentation,
@@ -144,6 +146,23 @@ const tiemanSystems = [
   { id: "documents", name: "Word + PDF", role: "Specifications", icon: FileText },
   { id: "excel", name: "Excel", role: "Working data", icon: Sheet },
   { id: "people", name: "People", role: "Decisions & history", icon: Users },
+] as const;
+
+const answerFragmentBySystem = {
+  epicor: "Job history",
+  solidworks: "Design",
+  pdm: "Approved revision",
+  documents: "Customer specification",
+  excel: "Working assumptions",
+  people: "Decision rationale",
+} as const;
+
+const storyImpactStates = [
+  { stage: "Sales", title: "Missing requirement", detail: "The job begins with incomplete context." },
+  { stage: "Specification", title: "Clarification", detail: "The missing detail has to be reconstructed." },
+  { stage: "Engineering", title: "Engineering rework", detail: "Design work pauses or has to be revisited." },
+  { stage: "Purchasing", title: "Long-lead surprise", detail: "Critical components are identified later." },
+  { stage: "Production", title: "Production delay", detail: "A small upstream gap becomes schedule impact." },
 ] as const;
 
 const solutionApplications = [
@@ -715,6 +734,164 @@ function RippleSlide() {
   );
 }
 
+function StoryLandscapeSlide() {
+  return (
+    <DeckSlideFrame
+      index={4}
+      total={TOTAL_SLIDES}
+      descriptor="The systems work. The context between them is fragmented."
+      className="tieman-story-landscape"
+    >
+      <img
+        className="tieman-story-landscape__backdrop"
+        src="/images/deck/tieman/fragmented-topology.png"
+        alt=""
+        width={1672}
+        height={941}
+      />
+      <div className="tieman-story-landscape__shade" aria-hidden="true" />
+
+      <div className="tieman-story-landscape__heading">
+        <p className="deck-kicker">Where the knowledge lives</p>
+        <h2 id="deck-slide-4-title">
+          The knowledge exists. It lives in <em>different places.</em>
+        </h2>
+      </div>
+
+      <div className="tieman-story-landscape__map" aria-label="One tanker job surrounded by Tieman systems and knowledge sources">
+        <div className="tieman-story-landscape__connectors" aria-hidden="true">
+          {tiemanSystems.map((system) => (
+            <span key={system.id} className={`is-${system.id}`} />
+          ))}
+        </div>
+
+        {tiemanSystems.map((system) => {
+          const SystemIcon = system.icon;
+
+          return (
+            <article
+              key={system.id}
+              className={`tieman-story-landscape__node is-${system.id}`}
+            >
+              <SystemIcon aria-hidden="true" />
+              <strong>{system.name}</strong>
+              <span>{system.role}</span>
+            </article>
+          );
+        })}
+
+        <article className="tieman-story-landscape__job">
+          <Truck aria-hidden="true" />
+          <span>One tanker job</span>
+          <strong>Every decision must travel with it.</strong>
+        </article>
+      </div>
+
+      <p className="tieman-story-landscape__consequence">
+        <span>The reality</span>
+        <strong>The systems work. The context between them is fragmented.</strong>
+      </p>
+    </DeckSlideFrame>
+  );
+}
+
+function StoryQuestionSlide() {
+  return (
+    <DeckSlideFrame
+      index={5}
+      total={TOTAL_SLIDES}
+      descriptor="The answer exists. The context has to be reconstructed."
+      className="tieman-story-question"
+    >
+      <div className="tieman-story-question__heading">
+        <p className="deck-kicker">Where the friction begins</p>
+        <h2 id="deck-slide-5-title">
+          A simple question becomes a <em>search.</em>
+        </h2>
+      </div>
+
+      <blockquote className="tieman-story-question__prompt">
+        <span>One practical question</span>
+        <p>“What did we do on the last tanker with this specification?”</p>
+      </blockquote>
+
+      <section className="tieman-story-question__fragments" aria-label="Pieces of the answer across Tieman systems">
+        {tiemanSystems.map((system) => {
+          const SystemIcon = system.icon;
+
+          return (
+            <article
+              key={system.id}
+              className={`tieman-story-question__fragment is-${system.id}`}
+            >
+              <SystemIcon aria-hidden="true" />
+              <span>{system.name}</span>
+              <strong>{answerFragmentBySystem[system.id]}</strong>
+            </article>
+          );
+        })}
+      </section>
+
+      <p className="tieman-story-question__takeaway">
+        <span>What happens today</span>
+        <strong>The answer exists. The context has to be reconstructed.</strong>
+      </p>
+    </DeckSlideFrame>
+  );
+}
+
+function StoryImpactSlide() {
+  return (
+    <DeckSlideFrame
+      index={6}
+      total={TOTAL_SLIDES}
+      descriptor="A small upstream gap compounds as the job moves downstream."
+      className="tieman-story-impact"
+    >
+      <div className="tieman-story-impact__heading">
+        <p className="deck-kicker">Why it matters</p>
+        <h2 id="deck-slide-6-title">
+          A small gap upstream becomes a <em>delay downstream.</em>
+        </h2>
+      </div>
+
+      <section className="tieman-story-impact__journey" aria-label="How one missing requirement compounds across a tanker job">
+        <ol className="tieman-story-impact__pipeline" aria-label="Tieman operating flow">
+          {rippleStages.map((stage, index) => (
+            <li key={stage.name} data-stage-index={index}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{stage.name}</strong>
+              <small>{stage.detail}</small>
+            </li>
+          ))}
+        </ol>
+
+        <div className="tieman-story-impact__track" aria-hidden="true">
+          <span className="tieman-story-impact__trail" />
+          <span className="tieman-story-impact__signal">
+            <CircleAlert />
+          </span>
+        </div>
+
+        <ol className="tieman-story-impact__states" aria-label="Compounding operational consequences">
+          {storyImpactStates.map((state, index) => (
+            <li key={state.title} data-impact-state={index + 1}>
+              <span>{state.stage}</span>
+              <strong>{state.title}</strong>
+              <small>{state.detail}</small>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <p className="tieman-story-impact__result">
+        <span>The cumulative cost</span>
+        <strong>More coordination · More waiting · Less throughput</strong>
+      </p>
+    </DeckSlideFrame>
+  );
+}
+
 function WhyUsSlide() {
   return (
     <DeckSlideFrame
@@ -1034,26 +1211,70 @@ const slides: readonly DeckSlide[] = [
   { id: "tieman-next-step", label: "The next step", content: <NextStepSlide /> },
 ];
 
-const vennSlides: readonly DeckSlide[] = slides.map((slide) =>
-  slide.id === "tieman-vision"
-    ? {
-        id: "tieman-vision-venn",
-        label: "Tieman's vision · Venn",
-        fragmentCount: 4,
-        content: <TiemanVisionVennSlide />,
-      }
-    : slide,
-);
+const storyChallengeSlides: readonly DeckSlide[] = slides.flatMap((slide) => {
+  if (slide.id === "tieman-challenges") {
+    return [
+      {
+        id: "tieman-story-landscape",
+        label: "Where knowledge lives",
+        fragmentCount: 1,
+        content: <StoryLandscapeSlide />,
+      },
+      {
+        id: "tieman-story-question",
+        label: "Where friction begins",
+        fragmentCount: 3,
+        content: <StoryQuestionSlide />,
+      },
+      {
+        id: "tieman-story-impact",
+        label: "Why it matters",
+        fragmentCount: 5,
+        content: <StoryImpactSlide />,
+      },
+    ];
+  }
+
+  if (slide.id === "tieman-ripple" || slide.id === "tieman-fragmentation") {
+    return [];
+  }
+
+  return [slide];
+});
+
+function withVisionVariant(deckSlides: readonly DeckSlide[]) {
+  return deckSlides.map((slide) =>
+    slide.id === "tieman-vision"
+      ? {
+          id: "tieman-vision-venn",
+          label: "Tieman's vision · Venn",
+          fragmentCount: 4,
+          content: <TiemanVisionVennSlide />,
+        }
+      : slide,
+  );
+}
+
+const vennSlides: readonly DeckSlide[] = withVisionVariant(slides);
+const storyChallengeVennSlides: readonly DeckSlide[] = withVisionVariant(storyChallengeSlides);
 
 type TiemanDeckProps = {
+  challengeVariant?: "current" | "story";
   visionVariant?: "objectives" | "venn";
 };
 
-export function TiemanDeck({ visionVariant = "objectives" }: TiemanDeckProps) {
+export function TiemanDeck({
+  challengeVariant = "current",
+  visionVariant = "objectives",
+}: TiemanDeckProps) {
+  const selectedSlides = challengeVariant === "story"
+    ? (visionVariant === "venn" ? storyChallengeVennSlides : storyChallengeSlides)
+    : (visionVariant === "venn" ? vennSlides : slides);
+
   return (
     <DeckPresentation
       className="sales-deck--tieman"
-      slides={visionVariant === "venn" ? vennSlides : slides}
+      slides={selectedSlides}
       testId="tieman-sales-deck"
     />
   );
