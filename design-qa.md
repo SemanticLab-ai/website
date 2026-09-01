@@ -415,3 +415,49 @@ The full-view comparison is sufficient because it shows every layout-critical el
 ### Result
 
 final result: passed
+
+## Slide 08 opportunity header — QA
+
+### Source and implementation evidence
+
+- User-selected header target: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_V2Nrd6/Screenshot 2026-09-01 at 11.23.35 PM.png`
+- Initial slide 08 implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/26-slide-08-header-initial-local.png`
+- Fully revealed pass-one implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/27-slide-08-header-full-local.png`
+- Pass-one focused comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/28-slide-08-header-comparison.png`
+- Final fully revealed desktop implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/29-slide-08-header-full-pass-2-local.png`
+- Final focused comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/30-slide-08-header-comparison-pass-2.png`
+- Mobile top and lower-state captures: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/31-slide-08-header-mobile-top.png` and `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/32-slide-08-header-mobile-lower.png`
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| User header target | 1511 × 217 | Cropped desktop slide header | approved opportunity header |
+| Final desktop | 1588 × 1260 | 1588 × 1260 browser viewport; 1588 × 893 centred slide; devicePixelRatio 1 | slide 08, fragment 04 |
+| Final focused comparison | 3038 × 217 | Source and implementation header regions at 1511 × 217 with a 16px gutter | target → slide 08 |
+| Mobile captures | 390 × 844 each | 390 × 844 browser viewport; devicePixelRatio 1 | slide 08, fragment 04, top and scrolled lower state |
+
+The focused comparison isolates the requested header, while the full-slide capture proves that its larger hierarchy does not collide with the existing layered architecture, assurance bracket or footer.
+
+### Findings, fixes and iteration history
+
+- Pass 0 — blocked: slide 08 still used `Connect what Tieman already has. Build whatever comes next.`, so the solution architecture did not carry the user's preferred opportunity framing.
+- [P1] Header message. Fixed by moving the exact kicker, headline and supporting paragraph from the selected target onto slide 08 and updating the frame descriptor to the same trusted-foundation idea.
+- Pass 1 — blocked: the correct copy inherited slide 08's smaller 3.4cqw solution heading and wrapped after `Tieman's`, which weakened the balance and emphasis of the selected header.
+- [P2] Header scale and wrapping. Fixed by matching the selected foundation-header geometry: 4.35cqw display size, 57cqw measure, 0.9 line height, 35cqw copy column and the matching supporting-copy treatment.
+- Pass 2 — passed: the focused comparison now reproduces the selected hierarchy, line break, emphasis and right-column balance, while the complete solution stack remains contained in the 16:9 slide.
+
+### Fidelity and responsive verification
+
+- Fonts and typography: the existing deck display and UI families are preserved. The lime italic emphasis remains on `data and AI`, and the desktop title wraps after `foundation` as in the target.
+- Spacing and layout rhythm: the header uses the same two-column geometry as the selected source; all four revealed architecture layers retain clear separation and footer clearance.
+- Colours and tokens: the implementation uses the existing dark canvas, lime accent and token-derived supporting-copy colour with no off-system values.
+- Image and icon fidelity: the requested change contains no image asset. Existing Lucide architecture icons remain unchanged and no placeholder or substitute art was introduced.
+- Copy and content: the kicker, headline and supporting paragraph match the selected header verbatim; slide 07 and all slide 08 architecture content remain in place.
+- Interaction: slide 08 still reveals source systems, unified context, applications and the security/governance/hosting bracket one layer per keypress; all four states were exercised in the browser.
+- Responsive behaviour: at 390 × 844 the header remains legible, the supporting copy does not clip, and the lower architecture layers remain reachable by scrolling.
+- Browser verification: the local story route rendered the revised header at slide 08 with every layer revealed and produced no warning or error console logs.
+
+### Result
+
+final result: passed

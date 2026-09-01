@@ -581,16 +581,16 @@ function SolutionStackSlide() {
     <DeckSlideFrame
       index={8}
       total={TOTAL_SLIDES}
-      descriptor="Connect what exists. Establish trusted context. Build what comes next."
+      descriptor="One trusted foundation for Tieman's data, intelligence and action."
       className="tieman-solution-stack"
     >
       <div className="tieman-solution-stack__heading">
-        <p className="deck-kicker">The solution</p>
+        <p className="deck-kicker">What Tieman is trying to achieve</p>
         <h2 id="deck-slide-8-title">
-          Connect what Tieman already has. Build <em>whatever comes next.</em>
+          Create one trusted foundation for Tieman&apos;s <em>data and AI.</em>
         </h2>
         <p>
-          One governed context layer gives every application and agent the same trusted understanding of the job.
+          Tieman has the data, systems and decades of knowledge. The opportunity is to connect and govern them so the business can use them with confidence.
         </p>
       </div>
 

@@ -1571,8 +1571,8 @@
 
 .tieman-solution-stack__heading {
   display: grid;
-  grid-template-columns: 1fr 31cqw;
-  column-gap: 5cqw;
+  grid-template-columns: 1fr 35cqw;
+  column-gap: 5.4cqw;
 }
 
 .tieman-solution-stack__heading .deck-kicker {
@@ -1580,19 +1580,19 @@
 }
 
 .tieman-solution-stack__heading h2 {
-  max-width: 61cqw;
-  margin-top: 1.05cqw;
-  font-size: 3.4cqw;
-  line-height: 0.92;
+  max-width: 57cqw;
+  margin-top: 1.25cqw;
+  font-size: 4.35cqw;
+  line-height: 0.9;
 }
 
 .tieman-solution-stack__heading > p:last-child {
   align-self: end;
-  max-width: 30cqw;
-  margin-bottom: 0.2cqw;
-  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
-  font-size: 0.78cqw;
-  line-height: 1.48;
+  max-width: 34cqw;
+  margin-bottom: 0.35cqw;
+  color: color-mix(in srgb, var(--sl-text-primary) 60%, transparent);
+  font-size: 0.88cqw;
+  line-height: 1.55;
 }
 
 .tieman-solution-stack__architecture {
