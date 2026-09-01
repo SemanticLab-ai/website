@@ -5,6 +5,7 @@
 - Source of truth: the original SemanticLab fragmented-landscape motion already present in repository history and the user's slide 4 annotation asking for that initial animation back.
 - Entrance evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-landscape-animation/01-entrance-initial-local.png`, `02-entrance-mid-local.png` and `03-entrance-final-local.png` at 1280 × 720.
 - Presenter reveal evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-landscape-animation/04-fragment-reveal-local.png`.
+- Updated-headline evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-landscape-copy/01-headline-desktop-local.png`. The exact heading is `The knowledge exists, but in different systems.` and the existing second-line emphasis is preserved.
 - Restored the established 1.35-second topology fade/scale and 680ms staggered system-node entrance with the original 220–720ms delays. No geometry, copy, colour, typography or asset changes were introduced.
 - Computed-state verification confirmed the nodes begin at staggered opacity values, all settle at opacity `1`, and the backdrop settles at its existing `0.64` opacity.
 - The initial state remains fragment `0`: the tanker-job card, connectors and consequence stay hidden until the presenter advances. Fragment `1` still reveals all three at opacity `1`.
@@ -28,7 +29,7 @@
 - Mobile evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-main-route/02-cover-clean-route-mobile.png` at 390 × 844.
 - The cover subtitle and footer descriptor now read `Tieman Tankers · Data & AI Transformation`; the title, partner lockup, imagery, composition and navigation are unchanged.
 - The clean `/deck/tieman-tankers` route now selects the story-led challenges sequence by default. The previous comparison sequence remains available only through `?challenges=current`, so no slide implementation was deleted.
-- Browser verification stepped through the definitive Venn vision reveal and confirmed that the next slide on the clean route is `The knowledge exists. It lives in different places.` with the `Where knowledge lives` control label.
+- Browser verification stepped through the definitive Venn vision reveal and confirmed that the next slide on the clean route is `The knowledge exists, but in different systems.` with the `Where knowledge lives` control label.
 - Required fidelity surfaces passed: the existing display/UI typography is unchanged; spacing and layout rhythm are unchanged; SemanticLab colours and imagery are unchanged; the new subtitle remains readable at desktop and mobile sizes; all existing copy outside the scoped subtitle is unchanged.
 - The in-app browser reported no warning or error logs at either viewport.
 - Final result: passed.
