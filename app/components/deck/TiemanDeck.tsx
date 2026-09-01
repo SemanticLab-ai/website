@@ -1161,7 +1161,7 @@ function NextStepSlide() {
       <div className="tieman-next-step__copy">
         <p className="deck-kicker">The next step</p>
         <h2 id="deck-slide-15-title">
-          Define the first proof—before committing to <em>implementation.</em>
+          Turn the opportunity into a <em>clear first move.</em>
         </h2>
         <p>
           A focused Solution Discovery validates the opportunity, data, architecture, governance and pilot definition.

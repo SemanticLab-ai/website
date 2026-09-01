@@ -1,5 +1,17 @@
 # Tieman Deck QA
 
+## Closing-slide headline refinement — QA
+
+- Source of truth: the user's final-slide annotation requesting stronger copy for `Define the first proof—before committing to implementation.`
+- Revised headline: `Turn the opportunity into a clear first move.` The existing lime italic emphasis now lands on `clear first move.`
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-next-step-copy/01-before-live.png` at 1280 × 720.
+- Final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-next-step-copy/02-after-local.png` at the same viewport and slide state.
+- The new line frames Solution Discovery as decisive forward movement and links the opportunity narrative to an actionable pilot decision without introducing new terminology.
+- Browser verification confirmed the old headline is absent, the CTA and all three discovery outputs remain present, and the new headline retains clean separation from the supporting copy, CTA and output rail.
+- Previous/next navigation returned to the revised final slide with an empty warning/error console and no framework overlay.
+- No layout, supporting copy, CTA, image treatment, output labels or footer descriptor changed.
+- Final result: passed.
+
 ## Pilot recommendation dark-mode conversion — QA
 
 - Source of truth: the user's annotation requesting dark mode for the `Pilot recommendation` slide.
