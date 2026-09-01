@@ -590,7 +590,7 @@ function SolutionStackSlide() {
           Create one trusted foundation for Tieman&apos;s <em>data and AI.</em>
         </h2>
         <p className="tieman-solution-stack__summary">
-          Tieman has the data, systems and decades of knowledge. The opportunity is to connect and govern them so the business can use them with confidence.
+          Once that foundation exists, applications and agents can operate on information that is connected, contextualised and governed.
         </p>
       </div>
 

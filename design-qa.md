@@ -198,6 +198,47 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 
 final result: passed
 
+## Slide 08 final-reveal summary copy — QA
+
+### Source and implementation evidence
+
+- Source visual truth: the user annotation on the deployed slide 08 summary, supported by the approved header capture at `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_V2Nrd6/Screenshot 2026-09-01 at 11.23.35 PM.png`
+- Final desktop implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-08-copy/01-slide-08-copy-final-local.png`
+- Final mobile implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-08-copy/02-slide-08-copy-mobile-local.png`
+- Focused source/implementation comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-08-copy/03-header-copy-comparison.png`
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| Approved header source | 1511 × 217 | Cropped desktop slide header | previous slide 08 summary |
+| Final desktop | 1280 × 720 | 1280 × 720 browser viewport; devicePixelRatio 1 | slide 08, fragment 05 |
+| Focused comparison | 1280 × 368 | Source and implementation header regions normalised to 1280 × 184 and stacked | previous → revised copy |
+| Final mobile | 390 × 844 | 390 × 844 browser viewport; devicePixelRatio 1 | slide 08, fragment 05 |
+
+The focused comparison isolates the changed copy region. The full desktop and mobile captures verify the revised sentence inside the complete responsive composition.
+
+### Findings, fixes and iteration history
+
+- Pass 0 — blocked: the supporting paragraph described connecting Tieman's existing data but did not articulate the operational value available after the foundation exists.
+- [P1] Solution payoff. Fixed by replacing only the summary with the approved sentence: `Once that foundation exists, applications and agents can operate on information that is connected, contextualised and governed.`
+- Pass 1 — passed: the revised sentence remains within the established right-hand measure at desktop, stays fully legible on mobile and preserves the intended hierarchy.
+
+### Fidelity and interaction verification
+
+- Fonts and typography: the existing family, size, weight, line height and muted hierarchy are unchanged; the new sentence wraps cleanly without truncation.
+- Spacing and layout rhythm: no component geometry changed; the desktop header balance and mobile stacking remain intact.
+- Colours and tokens: the dark canvas, lime accent and supporting-copy token remain unchanged.
+- Image quality and asset fidelity: the copy-only change introduced no new imagery or icon changes.
+- Copy and content: the requested sentence appears verbatim and the superseded sentence is absent from slide 08.
+- Interaction: the summary is absent after fragment 04 and appears only on the fifth and final keypress reveal, preserving the approved sequence.
+- Responsive behaviour: the 390 × 844 capture contains the full sentence without clipping or horizontal overflow.
+- Browser verification: the local story route produced no warning or error console logs.
+
+### Result
+
+final result: passed
+
 ## Slide 08 opportunity label and closing reveal — QA
 
 ### Source and implementation evidence
