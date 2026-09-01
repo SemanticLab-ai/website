@@ -11,6 +11,11 @@
 - Source-only state after: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-source-state-after.png`
 - Source-only before/after comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-source-state-before-after.png`
 - Context-connected state after: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-context-state-after.png`
+- Source-label position before: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-source-label-before.png`
+- Source-label position after: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-source-label-after-1280.png`
+- Source-label before/after comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-source-label-before-after.png`
+- Source-label context-connected state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-source-label-context-after.png`
+- Source-label mobile state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-source-label-mobile-after.png`
 - Mobile source reveal: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-solution-fragment-mobile-1.png`
 - Mobile final state, top/bottom: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-solution-fragment-mobile-4-top.png` and `tieman-solution-fragment-mobile-4-bottom.png`
 - Implementation route: `/deck/tieman-tankers`, slide 5 of 14.
@@ -23,6 +28,7 @@ The user annotation is authoritative for composition and interaction. The existi
 | --- | ---: | ---: | --- |
 | Desktop implementation | 1788 × 1169 | 1788 × 1169 browser viewport; centered 16:9 stage | fragments 0–4 |
 | Source-only before/after | 1588 × 1260 each | 1588 × 1260 browser viewport; centered 16:9 stage | fragment 1 |
+| Source-label comparison | 1280 × 720 each | Both 16:9 slide stages normalised to 1280 × 720 and combined side by side | fragment 1 |
 | Mobile implementation | 390 × 844 | 390 × 844 viewport; 1900px scrollable stage | fragments 1 and 4 |
 
 This is a composition and behavioural refinement rather than a pixel clone. Desktop is the primary presentation surface. Mobile was checked for content order, complete reach and horizontal overflow.
@@ -33,6 +39,7 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - [P2] The source, context and application layers read as one compressed block. Fixed with larger inter-layer gaps, longer connectors and larger cards, icons and supporting copy.
 - [P1] The automatic entrance sequence did not give the presenter control. Fixed with four fragments: data sources → unified context → apps and agents → secure-by-design bracket. Arrow Right, Space, Enter and the next button reveal one fragment; one additional action advances to slide 6. Arrow Left reverses the fragment sequence.
 - [P2] The source-only fragment showed six vertical connectors and ran card/signal loops before any destination layer existed. Fixed by removing source-card and signal animations and setting every connector to zero opacity in fragment 1. The source-to-context connectors and motion now begin only in fragment 2.
+- [P2] The `TIEMAN DATA + KNOWLEDGE` label sat above the six source cards, competing with the connector origin and reading like a separate incoming layer. Fixed by placing the label directly below the source-card grid in every reveal state, with a compact responsive margin.
 - [P2] On mobile, preserving the desktop visual order would put the first revealed fragment below invisible layers. Fixed by reordering the responsive flow to sources → context → applications → assurance.
 - No actionable P0, P1 or P2 findings remain after the fixes.
 
@@ -43,7 +50,10 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - The focused 1588 × 1260 source-only comparison shows the previous floating connector lines and active source borders removed. No typography, spacing, colour, icon, image or copy changes were introduced by this correction.
 - Browser-computed fragment-1 state: all six connector pseudo-elements report opacity `0`; all six source cards and signals report `animation-name: none`; all six signals report opacity `0`.
 - Browser-computed fragment-2 state: all six connectors report opacity `0.48`; source-card and signal animations report `running`; the unified context layer is visible.
+- Browser-computed label geometry at fragment 1 places the label below the source-card grid (`label.y > grid.y + grid.height`). The side-by-side 16:9 comparison confirms the only visible change is the label's move from above to below the six cards.
+- At fragment 1, the moved label does not change the static source state: all connector opacities remain `0` and every source animation remains `none`. At fragment 2, the label remains below the cards while the existing connector geometry continues to originate above them.
 - At 390 × 844, `documentElement.scrollWidth` equals 390px. The stage scrolls from 0 to 1056px, reaching the complete assurance panel and footer.
+- At 390 × 844 in fragment 1, the label remains below the final row of source cards and the page still has no horizontal overflow.
 - Mobile fragment 1 places the source layer at 443.3px and leaves context, applications and assurance hidden, confirming the reveal order is legible above the fold.
 - Final mobile state places the assurance panel at 437.6–667.6px after scrolling and the footer bottom at 749.6px.
 
