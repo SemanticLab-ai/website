@@ -1861,10 +1861,10 @@
 
 .tieman-solution-stack__source-grid article::before {
   position: absolute;
-  top: -2.75cqw;
+  top: -1.55cqw;
   left: 50%;
   width: 1px;
-  height: 2.75cqw;
+  height: 1.55cqw;
   background: var(--sl-accent);
   content: "";
   opacity: 0;
@@ -1883,7 +1883,7 @@
 }
 
 .tieman-solution-stack__source-grid .tieman-solution-stack__signal {
-  top: -2.55cqw;
+  top: -1.1cqw;
   animation: tiemanStackSignalUp 7.6s ease-out infinite paused;
 }
 

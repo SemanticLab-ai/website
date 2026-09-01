@@ -1,5 +1,16 @@
 # Tieman Deck QA
 
+## Context-to-source connector trim — QA
+
+- Source of truth: the user's screenshot annotation showing the lower context-layer connectors extending too far into the box.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-context-connectors/01-before-live.png` at 1280 × 720.
+- Final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-context-connectors/02-after-local.png` at the same viewport and fragment state.
+- Shortened each source connector from `2.75cqw` to `1.55cqw`, matching the rendered 19.5px gap between the context layer and source cards.
+- Repositioned the travelling signal from `-2.55cqw` to `-1.1cqw` so it remains centred on the shorter connector path.
+- Browser geometry verification reduced context-layer penetration from approximately 15.7px to 0.3px. All six connectors remain aligned to their source cards and visible from fragment 2 onward.
+- Headline, architecture content, reveal sequence, source-card geometry and context-layer styling are unchanged. Browser warning/error logs were empty.
+- Final result: passed.
+
 ## Tieman flow dark-mode conversion — QA
 
 - Source of truth: the user's annotation requesting dark mode for the `How it works for Tieman` slide.
