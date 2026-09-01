@@ -13,13 +13,8 @@ export default [
   route("work/:slug", "routes/work-case-study.tsx"),
   route("design-system", "routes/design-system.tsx"),
 
-  // Product marketing pages
-  route("products/syncd", "routes/products/syncd.tsx"),
-  route("products/image-enhancer", "routes/products/image-enhancer.tsx"),
-  route("products/image-enhancer/pricing", "routes/products/image-enhancer.pricing.tsx"),
-  route("products/smartapply", "routes/products/smartapply.tsx"),
-  route("products/visual-search", "routes/products/visual-search.tsx"),
-  route("products/visual-search/pricing", "routes/products/visual-search.pricing.tsx"),
+  // Retired product marketing URLs
+  route("products/*", "routes/redirects/products.tsx"),
 
   // App routes (with shared layout)
   layout("routes/app/_layout.tsx", [
