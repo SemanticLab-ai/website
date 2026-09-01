@@ -198,6 +198,50 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 
 final result: passed
 
+## Tieman discovery-theme Venn refinement — QA
+
+### Source and implementation evidence
+
+- User Venn reference: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_bfGs6U/Screenshot 2026-09-02 at 12.52.16 AM.png`
+- Desktop reveal sequence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-venn-refinement/01-step-1.png`, `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-venn-refinement/02-step-2.png`, `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-venn-refinement/03-step-3.png` and `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-venn-refinement/04-step-4-final.png`
+- Mobile final reveal: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-venn-refinement/05-mobile-final.png`
+- Focused source/implementation comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-venn-refinement/08-source-final-comparison.png`
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / state |
+| --- | ---: | --- |
+| User Venn reference | 921 × 805 | cropped final Venn state |
+| Desktop sequence captures | 1280 × 720 each | 1280 × 720; devicePixelRatio 1; fragments 01–04 |
+| Mobile final | 390 × 844 | 390 × 844; devicePixelRatio 1; fragment 04 |
+| Focused comparison | 1388 × 600 | source and implementation Venn regions normalised to 600px height |
+
+The focused comparison is the primary evidence for the reduced outer-circle prominence, revised theme copy and stronger TIP centre. Full-view desktop and mobile captures verify the surrounding discovery narrative and final conclusion.
+
+### Findings, fixes and iteration history
+
+- Pass 0 — blocked: the outer green rings dominated the content, the centre label read as another annotation, and the slide framed the content as predetermined strategic outcomes rather than themes heard from Tieman.
+- [P1] Discovery narrative. Fixed by changing the eyebrow to `What we heard`, the headline to `Three themes kept emerging.`, and the three themes to Operational efficiency, Future capability, and Risk & resilience.
+- [P1] Final synthesis. Fixed by making `TIP` the dominant centre acronym, adding `Tieman Intelligence Platform` beneath it, and revealing `Three themes. One connected opportunity.` with the centre on the fourth keypress.
+- [P2] Circle prominence. Fixed by reducing the approved outer-circle asset opacity from 0.68 to 0.46 and softening saturation/brightness while retaining the original geometry and raster assets.
+- [P2] Centre emphasis. Fixed with a restrained 24% accent-colour drop shadow on the existing intersection asset; no substitute gradient or CSS-drawn shape was introduced.
+- Pass 1 — passed: the comparison shows visibly quieter outer rings, a clearer centre hierarchy and no geometry drift. The mobile state retains the complete four-part narrative without horizontal overflow.
+
+### Fidelity and interaction verification
+
+- Fonts and typography: the existing display and UI families remain in use; `TIP` uses a strong 700 weight, while the platform name and final opportunity line use the established italic display treatment.
+- Spacing and layout rhythm: circle placement, overlap geometry, copy anchors and footer clearance are unchanged; the final conclusion reserves its space before reveal, preventing layout shift.
+- Colours and visual tokens: all existing dark, lime and muted-text tokens are preserved; only opacity and an accent-derived shadow were adjusted.
+- Image quality and asset fidelity: the approved circle and intersection PNG assets remain sharp and unmodified; no placeholder, generated substitute or code-drawn asset was used.
+- Copy and content: all requested discovery-theme, future-capability, risk, TIP and connected-opportunity wording is present; `intelligent operating system` is removed.
+- Interaction: Operational efficiency, Future capability and Risk & resilience appear on keypresses one through three; TIP and the connected-opportunity conclusion appear together on keypress four.
+- Responsive behaviour: the 390 × 844 final state keeps the complete acronym, platform name, three themes and conclusion visible without clipping.
+- Browser verification: every fragment state and the mobile final state rendered without warning or error console logs.
+
+### Result
+
+final result: passed
+
 ## Tieman cover positioning copy — QA
 
 ### Evidence and state

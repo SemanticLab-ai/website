@@ -61,10 +61,13 @@ const visionOutcomes = [
   {
     id: "intelligence",
     index: "02",
-    title: "Future intelligence",
+    title: "Future capability",
     points: [
-      { title: "Align every team", detail: "Sales · Engineering · Purchasing · Production" },
-      { title: "Build what comes next", detail: "Assistants · agents · decision support" },
+      {
+        title: "Connect teams around shared context",
+        detail: "Sales · Engineering · Purchasing · Production",
+      },
+      { title: "Create the foundation for AI", detail: "Assistants · agents · decision support" },
     ],
   },
   {
@@ -73,7 +76,7 @@ const visionOutcomes = [
     title: "Risk & resilience",
     points: [
       { title: "Reduce delivery risk", detail: "Specifications · long leads · revisions" },
-      { title: "Preserve + protect knowledge", detail: "Australian-hosted · governed · secure" },
+      { title: "Preserve critical knowledge", detail: "Australian-hosted · governed · secure" },
     ],
   },
 ] as const;
@@ -326,17 +329,21 @@ function TiemanVisionVennSlide() {
     <DeckSlideFrame
       index={3}
       total={TOTAL_SLIDES}
-      descriptor="Three outcomes converge in one intelligent operating platform."
+      descriptor="Three themes converge in one connected opportunity."
       className="tieman-vision-venn"
     >
       <div className="tieman-vision-venn__heading">
-        <p className="deck-kicker">Strategic vision</p>
+        <p className="deck-kicker">What we heard</p>
         <h2 id="deck-slide-3-title">
-          Three outcomes. <em>One intelligent operating system.</em>
+          Three themes kept emerging.
         </h2>
+        <p className="tieman-vision-venn__conclusion">
+          <span>Three themes.</span>
+          <strong>One connected opportunity.</strong>
+        </p>
       </div>
 
-      <div className="tieman-vision-venn__diagram" aria-label="Tieman strategic vision outcomes">
+      <div className="tieman-vision-venn__diagram" aria-label="Themes heard from Tieman">
         {visionOutcomes.map((outcome) => (
           <section
             key={outcome.id}
@@ -380,8 +387,8 @@ function TiemanVisionVennSlide() {
 
         <div className="tieman-vision-venn__core">
           <strong>
-            <span>Tieman&apos;s</span>
-            <span>intelligent platform</span>
+            <span className="tieman-vision-venn__acronym">TIP</span>
+            <span className="tieman-vision-venn__platform-name">Tieman Intelligence Platform</span>
           </strong>
         </div>
       </div>
