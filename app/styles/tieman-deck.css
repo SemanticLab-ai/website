@@ -2944,14 +2944,14 @@
   align-self: end;
   list-style: none;
   margin-top: 2cqw;
-  border-top: 1px solid var(--sl-border-on-light);
-  border-bottom: 1px solid var(--sl-border-on-light);
+  border-top: 1px solid var(--sl-border);
+  border-bottom: 1px solid var(--sl-border);
   padding: 0;
 }
 
 .tieman-flow__steps li {
   min-height: 16.3cqw;
-  border-right: 1px solid var(--sl-border-on-light);
+  border-right: 1px solid var(--sl-border);
   padding: 1.25cqw 1.5cqw;
 }
 
@@ -2960,13 +2960,13 @@
 }
 
 .tieman-flow__steps li > span {
-  color: #4b8f28;
+  color: var(--sl-accent);
 }
 
 .tieman-flow__steps small {
   display: block;
   margin-top: 3.6cqw;
-  color: #4b8f28;
+  color: var(--sl-accent);
 }
 
 .tieman-flow__steps h3 {
@@ -2979,7 +2979,7 @@
 .tieman-flow__steps p {
   max-width: 24cqw;
   margin-top: 0.75cqw;
-  color: color-mix(in srgb, var(--sl-text-on-light) 55%, transparent);
+  color: color-mix(in srgb, var(--sl-text-primary) 55%, transparent);
   font-size: 0.7cqw;
   line-height: 1.5;
 }
@@ -2996,6 +2996,10 @@
 .tieman-pilot__promise strong {
   font-size: 1.1cqw;
   font-weight: var(--sl-weight-regular);
+}
+
+.tieman-flow__outcome span {
+  color: var(--sl-accent);
 }
 
 /* Security */

@@ -1039,7 +1039,6 @@ function TiemanFlowSlide() {
       index={12}
       total={TOTAL_SLIDES}
       descriptor="One upstream flow can improve decisions across the job."
-      tone="light"
       className="tieman-flow"
     >
       <div className="tieman-flow__heading">

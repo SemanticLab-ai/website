@@ -1,5 +1,16 @@
 # Tieman Deck QA
 
+## Tieman flow dark-mode conversion — QA
+
+- Source of truth: the user's annotation requesting dark mode for the `How it works for Tieman` slide.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-flow-dark/01-before-live.png` at 1280 × 720.
+- Final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-flow-dark/02-after-local.png` at the same viewport and slide state.
+- Replaced the slide's light tone with the existing Tieman dark canvas and subtle radial lime wash; no new visual language or layout was introduced.
+- Converted the three-step rail from light-surface borders and text tokens to the standard dark-surface border, primary-text and lime-accent tokens. The outcome label now uses the same restrained lime accent as the step identifiers.
+- Headline, three step titles and descriptions, outcome statement, footer descriptor, numbering and geometry remain unchanged.
+- Browser verification confirmed meaningful content, no framework overlay, an empty warning/error console, dark-surface rules and the expected `deck-slide--dark` class. Previous/next navigation returned to the slide in the same dark state.
+- Final result: passed.
+
 ## Closing-slide headline refinement — QA
 
 - Source of truth: the user's final-slide annotation requesting stronger copy for `Define the first proof—before committing to implementation.`
