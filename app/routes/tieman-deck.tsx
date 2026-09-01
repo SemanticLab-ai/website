@@ -1,15 +1,20 @@
+import { useLoaderData } from "react-router";
 import type { Route } from "./+types/tieman-deck";
 import { TiemanDeck } from "~/components/deck/TiemanDeck";
 import { salesDeckEnabled } from "~/lib/deployment";
 import "~/styles/sales-deck.css";
 import "~/styles/tieman-deck.css";
 
-export function loader() {
+export function loader({ request }: Route.LoaderArgs) {
   if (!salesDeckEnabled) {
     throw new Response("Not Found", { status: 404 });
   }
 
-  return null;
+  const visionVariant = new URL(request.url).searchParams.get("vision") === "venn"
+    ? "venn"
+    : "objectives";
+
+  return { visionVariant } as const;
 }
 
 export function meta({}: Route.MetaArgs) {
@@ -24,5 +29,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function TiemanDeckRoute() {
-  return <TiemanDeck />;
+  const { visionVariant } = useLoaderData<typeof loader>();
+
+  return <TiemanDeck visionVariant={visionVariant} />;
 }

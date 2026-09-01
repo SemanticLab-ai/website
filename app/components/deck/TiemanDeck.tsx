@@ -48,6 +48,36 @@ const visionObjectives = [
   },
 ] as const;
 
+const visionOutcomes = [
+  {
+    id: "efficiency",
+    index: "01",
+    title: "Operational efficiency",
+    points: [
+      { title: "Increase throughput", detail: "Using existing resources" },
+      { title: "Find knowledge faster", detail: "Historical jobs · specs · decisions" },
+    ],
+  },
+  {
+    id: "intelligence",
+    index: "02",
+    title: "Future intelligence",
+    points: [
+      { title: "Align every team", detail: "Sales · Engineering · Purchasing · Production" },
+      { title: "Build what comes next", detail: "Assistants · agents · decision support" },
+    ],
+  },
+  {
+    id: "resilience",
+    index: "03",
+    title: "Risk & resilience",
+    points: [
+      { title: "Reduce delivery risk", detail: "Specifications · long leads · revisions" },
+      { title: "Preserve + protect knowledge", detail: "Australian-hosted · governed · secure" },
+    ],
+  },
+] as const;
+
 const rippleStages = [
   "Sales",
   "Specification",
@@ -274,6 +304,67 @@ function TiemanVisionSlide() {
       <div className="tieman-vision__foundation">
         <span>Built on trusted context</span>
         <strong>Connected · current · governed · Australian-hosted</strong>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function TiemanVisionVennSlide() {
+  return (
+    <DeckSlideFrame
+      index={3}
+      total={TOTAL_SLIDES}
+      descriptor="Three outcomes converge in one intelligent operating platform."
+      className="tieman-vision-venn"
+    >
+      <div className="tieman-vision-venn__heading">
+        <p className="deck-kicker">Strategic vision</p>
+        <h2 id="deck-slide-3-title">
+          Three outcomes. <em>One intelligent operating system.</em>
+        </h2>
+      </div>
+
+      <div className="tieman-vision-venn__diagram" aria-label="Tieman strategic vision outcomes">
+        {visionOutcomes.map((outcome) => (
+          <section
+            key={outcome.id}
+            className={`tieman-vision-venn__outcome tieman-vision-venn__outcome--${outcome.id}`}
+            aria-label={outcome.title}
+          >
+            <img
+              src="/images/deck/tieman/vision-venn-circle.png"
+              alt=""
+              width={1254}
+              height={1254}
+              aria-hidden="true"
+            />
+            <div className="tieman-vision-venn__outcome-copy">
+              <span>{outcome.index}</span>
+              <h3>{outcome.title}</h3>
+              <ul>
+                {outcome.points.map((point) => (
+                  <li key={point.title}>
+                    <strong>{point.title}</strong>
+                    <small>{point.detail}</small>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        ))}
+
+        <div className="tieman-vision-venn__core">
+          <img
+            src="/images/deck/tieman/vision-venn-core.png"
+            alt=""
+            width={1254}
+            height={1254}
+            aria-hidden="true"
+          />
+          <span>The shared centre</span>
+          <strong>Tieman&apos;s intelligent operating platform</strong>
+          <small>One connected, trusted system for every tanker</small>
+        </div>
       </div>
     </DeckSlideFrame>
   );
@@ -805,11 +896,26 @@ const slides: readonly DeckSlide[] = [
   { id: "tieman-next-step", label: "The next step", content: <NextStepSlide /> },
 ];
 
-export function TiemanDeck() {
+const vennSlides: readonly DeckSlide[] = slides.map((slide) =>
+  slide.id === "tieman-vision"
+    ? {
+        id: "tieman-vision-venn",
+        label: "Tieman's vision · Venn",
+        fragmentCount: 4,
+        content: <TiemanVisionVennSlide />,
+      }
+    : slide,
+);
+
+type TiemanDeckProps = {
+  visionVariant?: "objectives" | "venn";
+};
+
+export function TiemanDeck({ visionVariant = "objectives" }: TiemanDeckProps) {
   return (
     <DeckPresentation
       className="sales-deck--tieman"
-      slides={slides}
+      slides={visionVariant === "venn" ? vennSlides : slides}
       testId="tieman-sales-deck"
     />
   );

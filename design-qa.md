@@ -117,6 +117,52 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - Earlier full desktop, mobile, keyboard, controls and reduced-motion checks used the connected Chrome/local headless Chrome fallback after a previous local in-app navigation was blocked.
 - No application console error or framework overlay was present.
 
+## Venn vision alternate — QA
+
+### Source and implementation evidence
+
+- Selected ImageGen visual target: `/Users/raihanrazi/.codex/generated_images/01a05b75-a5e0-7190-a0b7-e2447ba74e29/exec-93efc900-33a7-496f-b0c0-967231c1a384.png`
+- Final source/implementation comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-final-comparison.png`
+- Final reveal sequence, fragments 0–4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-final-sequence.png`
+- Final desktop fragment 4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-final-state-4.png`
+- Final mobile fragment 4: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-venn-mobile-final.png`
+- Alternate implementation route: `/deck/tieman-tankers?vision=venn`; the existing `/deck/tieman-tankers` vision slide remains unchanged.
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| Selected concept | 1672 × 941 | Normalised to 1588 × 894 for direct comparison | fully revealed concept |
+| Desktop implementation | 1588 × 1260 | 1588 × 1260 browser viewport; 1588 × 894 centred 16:9 stage | fragments 0–4 |
+| Comparison board | 3200 × 894 | Source and implementation at equal 1588 × 894 size with a 24px divider | fragment 4 |
+| Mobile implementation | 390 × 844 | 390 × 844 viewport at 1× density | fragment 4 |
+
+### Findings, fixes and iteration history
+
+- [P1] The first implementation used equal-diameter circles but their centres did not form an equilateral triangle. The measured distances were approximately 309.68px, 309.68px and 309.66px only after the first geometry correction; the original visual spacing was substantially uneven. Fixed by deriving every circle position from shared circle-size, centre-spacing and equilateral-rise variables rather than independent offsets.
+- [P2] The first corrected triangle was mathematically even but the 19.5cqw centre spacing made the shared intersection too small. Fixed by reducing all three sides uniformly to 17cqw and recalculating the rise to 14.722cqw, enlarging the centre without distorting the Venn.
+- [P2] The shared system initially read as another label rather than the payoff. Fixed with a dedicated ImageGen intersection asset, stronger circle luminosity and a final fourth fragment that withholds the intersection until all three outcomes are present.
+- [P2] The mobile final state initially allowed the outcome copy and centre treatment to compete. Fixed by using a separate exact 140px equilateral geometry, moving the lower copy into the outer lobes and scaling the core treatment independently.
+- No actionable P0, P1 or P2 findings remain after the final comparison.
+
+### Geometry and visual verification
+
+- Desktop browser-computed circle boxes are equal at 500.22 × 500.22px. Centre distances are 269.9449px, 269.9527px and 269.9531px; the maximum variance is less than 0.01px.
+- Mobile browser-computed centre distances are 139.9920px, 139.9920px and 140px; the maximum variance is less than 0.01px.
+- The final source/implementation board confirms the alternate retains the selected composition: statement left, three translucent lime circles right, content in the outer lobes and a bright central system reveal.
+- The final sequence board confirms fragments accumulate in the intended order: statement only → operational efficiency → future intelligence → risk and resilience → Tieman's intelligent operating platform.
+- Typography, canvas, lime accent, editorial microcopy, footer treatment and presenter controls use the existing SemanticLab deck system.
+- The generated circle and core visuals are real raster assets. No placeholder, inline SVG, handcrafted SVG, CSS-drawn diagram or emoji is used.
+- In-app browser console output contains no warning or error entries; only Vite development and React DevTools informational messages are present.
+
+### Interaction and responsive checks
+
+- Arrow Right reveals exactly one new circle or the shared centre per keypress. Arrow Left reverses one fragment at a time.
+- The next control remains `Reveal next layer` until fragment 4, then advances to the problem slide.
+- Reduced-motion preference removes the circle and centre transitions while preserving the same controlled fragment sequence.
+- The alternate is isolated behind `?vision=venn`; removing the query restores the previously approved objective-rail vision slide.
+- The desktop and mobile implementations keep every outcome, the shared centre, footer and presenter controls reachable without horizontal overflow.
+
 ## Result
 
 final result: passed
