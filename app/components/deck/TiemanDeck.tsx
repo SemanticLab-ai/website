@@ -1,5 +1,6 @@
 import ArrowUp from "lucide-react/dist/esm/icons/arrow-up";
 import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
+import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
 import BadgeCheck from "lucide-react/dist/esm/icons/badge-check";
 import Bot from "lucide-react/dist/esm/icons/bot";
 import CircleAlert from "lucide-react/dist/esm/icons/circle-alert";
@@ -8,12 +9,17 @@ import Cuboid from "lucide-react/dist/esm/icons/cuboid";
 import Database from "lucide-react/dist/esm/icons/database";
 import FileSearch from "lucide-react/dist/esm/icons/file-search";
 import FileText from "lucide-react/dist/esm/icons/file-text";
+import Hammer from "lucide-react/dist/esm/icons/hammer";
 import Layers3 from "lucide-react/dist/esm/icons/layers-3";
+import Lightbulb from "lucide-react/dist/esm/icons/lightbulb";
 import LockKeyhole from "lucide-react/dist/esm/icons/lock-keyhole";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import PackageSearch from "lucide-react/dist/esm/icons/package-search";
+import RotateCcw from "lucide-react/dist/esm/icons/rotate-ccw";
+import ScanSearch from "lucide-react/dist/esm/icons/scan-search";
 import Sheet from "lucide-react/dist/esm/icons/sheet";
 import ShieldCheck from "lucide-react/dist/esm/icons/shield-check";
+import TrendingUp from "lucide-react/dist/esm/icons/trending-up";
 import Users from "lucide-react/dist/esm/icons/users";
 import {
   DeckPresentation,
@@ -209,6 +215,29 @@ const approachStages = [
     index: "04",
     title: "Expand",
     summary: "Reuse the foundation across workflows only after value and trust are established.",
+  },
+] as const;
+
+const agileLoopSteps = [
+  {
+    title: "Build",
+    detail: "Create the smallest useful increment",
+    icon: Hammer,
+  },
+  {
+    title: "Validate",
+    detail: "Test it in the real workflow",
+    icon: ScanSearch,
+  },
+  {
+    title: "Learn",
+    detail: "Capture evidence and feedback",
+    icon: Lightbulb,
+  },
+  {
+    title: "Add value",
+    detail: "Release what is proven",
+    icon: TrendingUp,
   },
 ] as const;
 
@@ -876,6 +905,35 @@ function ApproachSlide() {
           Start small. Prove value. <em>Expand safely.</em>
         </h2>
       </div>
+
+      <section className="tieman-approach__iteration" aria-label="Agile delivery loop">
+        <header>
+          <span>Agile delivery loop</span>
+          <strong>Each cycle adds usable value.</strong>
+        </header>
+
+        <ol>
+          {agileLoopSteps.map((step, index) => {
+            const Icon = step.icon;
+
+            return (
+              <li key={step.title} className={index === agileLoopSteps.length - 1 ? "is-value" : undefined}>
+                <Icon aria-hidden="true" />
+                <div>
+                  <strong>{step.title}</strong>
+                  <small>{step.detail}</small>
+                </div>
+                {index < agileLoopSteps.length - 1 ? <ArrowRight aria-hidden="true" /> : null}
+              </li>
+            );
+          })}
+        </ol>
+
+        <p>
+          <RotateCcw aria-hidden="true" />
+          <span>Learning informs the next build.</span>
+        </p>
+      </section>
 
       <ol className="tieman-approach__stages">
         {approachStages.map((stage) => (

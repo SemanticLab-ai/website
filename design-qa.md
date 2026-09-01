@@ -1,5 +1,19 @@
 # Tieman Deck QA
 
+## Agile value-loop visual — QA
+
+- Source of truth: the user's slide annotation requesting an agile-practices visual that shows where value is added and how iteration informs the next build.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agile-loop/01-before-live.png` at 1280 × 720.
+- Final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agile-loop/02-after-local.png` at the same viewport and slide state.
+- Added a distinct `Build → Validate → Learn → Add value` delivery loop in the existing empty centre of the slide. The value-producing step receives the only lime-tinted surface; every other step remains on the established dark canvas.
+- Added a restrained return rail and loop icon with the explicit conclusion `Learning informs the next build.` so the method reads as iterative rather than a one-way sequence.
+- Preserved `Understand / Shape / Prove / Expand` as the strategic engagement framework underneath, including all original copy, numbering and ordering.
+- The new visual uses the deck's existing hairline rules, small uppercase labels, Lucide iconography, restrained lime accent and square geometry. No new design language or image assets were introduced.
+- Desktop layout verification found 122.9px between the heading and loop, 99.8px between the loop and stage rail, and 25.1px between the principle and slide footer; no element clips or overlaps.
+- The responsive treatment converts the loop to a readable single-column sequence and removes the inline arrow connectors while preserving the feedback statement.
+- Browser verification confirmed slide navigation away and back, all four loop steps, all four original stages, the feedback statement and an empty warning/error console.
+- Final result: passed.
+
 ## Proof-slide attribution cleanup — QA
 
 - Source of truth: the user's slide annotation requesting removal of the labels above every project name and the bottom previous-role disclaimer.
