@@ -1,66 +1,85 @@
-# SemanticLab Founders Photo and Favicon QA
+# Tieman Fragmented Estate Slide QA
 
 ## Visual truth
 
-- Founder photo source: `/Users/raihanrazi/Downloads/unnamed.jpg`
-- Approved logo source: `public/images/brand/semanticlab-logo-dark.png`
-- Implementation route: `/founders`
-- Desktop implementation: `/tmp/semanticlab-founder-photo-build/implementation-desktop-life.png`
-- Tablet implementation: `/tmp/semanticlab-founder-photo-build/implementation-tablet-life.png`
-- Mobile image implementation: `/tmp/semanticlab-founder-photo-build/implementation-mobile-life.png`
-- Mobile copy implementation: `/tmp/semanticlab-founder-photo-build/implementation-mobile-life-copy.png`
-- Founder photo comparison: `/tmp/semanticlab-founder-photo-build/reference-vs-desktop.png`
-- Favicon comparison: `/tmp/semanticlab-founder-photo-build/favicon-source-vs-output.png`
+- Layout reference 1: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_wDFlzq/Screenshot 2026-09-01 at 4.21.21 PM.png`
+- Layout reference 2: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_BJRPIo/Screenshot 2026-09-01 at 4.22.59 PM.png`
+- Generated SemanticLab topology asset: `public/images/deck/tieman/fragmented-topology.png`
+- Implementation route: `/deck/tieman-tankers`, slide 2 of 13
+- Desktop settled implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-fragmentation-desktop-v1.png`
+- Desktop animation entry: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-fragmentation-entering-clean.png`
+- Mobile top implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-fragmentation-mobile-v1.png`
+- Mobile bottom implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-fragmentation-mobile-bottom-v1.png`
+- Following problem slide: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-problem-after-fragmentation.png`
 
-The source founder image defines the subject, colour and photographic treatment. The existing SemanticLab page defines the layout, typography, palette and spacing. The approved dark logo artwork defines the favicon mark.
+The two supplied slides are authoritative for the scattered circular-node composition and the fragmented-estate idea. SemanticLab staging is authoritative for palette, typography, particle texture and presentation voice. Tieman's identified software estate is represented with live HTML labels and Lucide icons; the generated image is deliberately text-free.
 
 ## Normalisation
 
 | Artifact | Pixel size | CSS viewport / rendered size | Density and state |
 | --- | ---: | ---: | --- |
-| Original founder photo | 2316 × 3088 | supplied portrait | source bitmap |
-| Optimised founder photo | 1200 × 1600 | intrinsic image | production JPEG |
-| Desktop implementation | 1430 × 993 | 1440 × 1000; image 318 × 397 | 1×, Life section |
-| Tablet implementation | 890 × 989 | 900 × 1000; image 441 × 551 | 1×, Life section |
-| Mobile image implementation | 380 × 822 | 390 × 844; image 344 × 430 | 1×, Life section |
-| Mobile copy implementation | 380 × 822 | 390 × 844; copy 344px wide | 1×, Life section |
-| Founder comparison | 2190 × 1000 | source and desktop implementation side by side | source scaled to 1000px high |
-| Favicon comparison | 1024 × 512 | approved mark crop and output side by side | both 512 × 512 |
+| Layout reference 1 | 1590 × 810 | supplied slide frame | source bitmap |
+| Layout reference 2 | 1599 × 834 | supplied slide frame | source bitmap, connected state |
+| Generated topology asset | 1672 × 941 | full-bleed 16:9 slide backdrop | source bitmap |
+| Desktop implementation | 1439 × 941 | 1672 × 941 configured browser viewport; centered 16:9 slide stage | 1× capture, settled after 1450ms |
+| Desktop entry implementation | 1439 × 941 | 1672 × 941 configured browser viewport; centered 16:9 slide stage | 1× capture, 300ms entry state |
+| Mobile top implementation | 390 × 844 | 390 × 844 viewport | 1× capture, settled state |
+| Mobile bottom implementation | 390 × 844 | 390 × 844 viewport, scrolled to slide footer | 1× capture, settled state |
 
-The in-app browser bitmap excludes its scrollbar gutter, explaining the ten-pixel difference between CSS viewport and saved screenshot width.
+The desktop screenshot utility excludes browser chrome and captures the visible canvas, so its pixel width differs from the configured viewport. The reference and implementation use different frame proportions and art direction; comparison used complete-slide views in a single visual pass rather than a misleading pixel overlay. The full desktop capture provides composition evidence, while the mobile top and bottom captures provide focused evidence that every live label, icon and consequence statement remains readable and reachable.
 
 ## Findings
 
 - No actionable P0, P1 or P2 findings remain.
-- Fonts and typography: the new image does not alter the established Inter hierarchy. The kicker, display headline, italic emphasis and body copy retain their approved weights, tracking and wrapping at all tested widths.
-- Spacing and layout rhythm: desktop uses a connected three-column editorial grid. Tablet promotes the heading to a full-width row with image and copy below. Mobile stacks heading, image and copy without horizontal overflow.
-- Colours and visual tokens: the photograph remains in natural colour against Warm White, providing the intended human contrast without introducing any new interface colours. Borders and text continue to use existing tokens.
-- Image quality and asset fidelity: the supplied 2316 × 3088 photo is optimised to a 1200 × 1600 JPEG and displayed at a native 4:5 crop. Both founders remain fully recognisable at desktop, tablet and mobile widths. The favicon uses a source crop from the approved production logo; it is not redrawn or approximated.
-- Copy and content: the Life Beyond the Laptop copy is unchanged. The meaningful image alternative text identifies Naila Rahman and Raihan Razi and provides the travel context.
-- Favicon delivery: the document links the 512 × 512 PNG, 48 × 48 ICO fallback and Apple touch icon. The old letter-S SVG is removed.
-- Interaction and accessibility: the page has no new interactive surface. The image is lazy-loaded, decodes asynchronously and creates no page overflow. Browser logs contain no warnings or errors.
+- Typography: the headline, kicker and explanatory copy use the existing Tieman deck hierarchy and preserve readable wraps at desktop and mobile sizes.
+- Spacing and layout rhythm: desktop keeps the reference's scattered-node rhythm with a clean headline zone; mobile intentionally changes to a two-column node grid so the content does not collide or overflow.
+- Colours and tokens: the reference's white/navy/red treatment is intentionally translated into SemanticLab near-black, off-white and electric-lime tokens. No off-brand accent colours or gradients were introduced.
+- Image quality: the 1672 × 941 generated backdrop is sharp at the slide's target aspect ratio. Its detail stays away from the headline and does not compete with live text.
+- Copy and content: the six nodes use Tieman-specific sources—Epicor, SolidWorks, PDM, Word + PDF, Excel and People—rather than the generic technology labels in the references.
+- Iconography: all app/source icons are real Lucide SVG components. App names, roles and the consequence statement remain live HTML.
+- Motion: the backdrop and nodes reveal in a short stagger, followed by the consequence rail. The 300ms and settled captures confirm the intended progression. `prefers-reduced-motion` disables the animation.
+- Interaction: Home, Arrow Left and Arrow Right were exercised through all 13 slides. Slide 2 advances to the existing problem statement as intended, and mobile vertical scrolling reaches the complete slide.
+- Runtime: all 13 slide headings rendered in sequence, all images loaded, and the app console stayed clean. Browser-extension warnings observed in connected Chrome were unrelated to the deck; the in-app browser console returned no application errors.
+
+## Intentional differences from the references
+
+- Dark SemanticLab staging art direction replaces the source slide's light canvas and red connection state.
+- The generated particle topology replaces the generic dotted-grid backdrop.
+- Six consistently sized Tieman system nodes replace the reference's generic, variably sized technology nodes.
+- The headline is left aligned to match the deck's editorial system rather than centered.
+- The animation reveals context progressively; it does not reproduce the reference's red dashed-line state.
 
 ## Comparison history
 
-### Final pass
+### Initial render
 
-- The founder source and desktop comparison confirms that the warm, candid photograph is preserved and framed cleanly within the existing editorial section.
-- Tablet and mobile captures confirm the intended responsive reflow and complete visibility of the image and accompanying copy.
-- The approved mark and favicon output comparison are visually identical after square padding and downsampling.
+- The first browser render exposed a transient Vite dependency pre-bundle overlay after introducing direct Lucide icon imports.
+- Reloading after the dependency refresh removed the development-only overlay; it did not recur in the clean post-fix captures.
+
+### Final comparison
+
+- Both source references, the settled desktop implementation and the mobile implementation were inspected together in one visual comparison pass.
+- The final implementation preserves the references' core hierarchy: statement first, distributed sources second, fragmentation consequence last.
+- Desktop, animation-entry, mobile-top and mobile-bottom evidence confirms the responsive and motion states.
 - No visual fixes were required after the final comparison.
+
+## Browser workflow
+
+- The in-app browser successfully rendered the local slide and returned a clean console, but local keyboard and click events did not reach the presentation state.
+- The connected Chrome browser was therefore used for interactive keyboard, animation and mobile-scroll QA.
 
 ## Verification
 
-- Browser-rendered at 1440 × 1000, 900 × 1000 and 390 × 844 CSS-pixel viewports.
-- Zero horizontal overflow at tablet and mobile widths.
-- Founder photo loads at 1200 × 1600 intrinsic pixels.
-- Favicon link metadata resolves to `/favicon.png` and `/favicon.ico`.
-- `git diff --check`, `npm run typecheck` and `npm run build` pass.
-- Production build emits only the existing stale Browserslist-data advisory.
+- Browser-rendered at a configured 1672 × 941 desktop viewport and a 390 × 844 mobile viewport.
+- Verified the 300ms entry state and 1450ms settled state.
+- Verified all six nodes, the consequence rail, footer and keyboard navigation.
+- Verified the following problem slide and the full 13-slide sequence.
+- Verified no broken images or application console errors.
+- `git diff --check` and the aggregate `npm run check` pass, including preview and production artifact assertions plus both Cloudflare dry runs.
 
 ## Follow-up polish
 
-- No P3 polish items are required for this change.
+- P3 option only: vary desktop node sizes slightly for a closer match to the source's orbital rhythm. The current consistent sizing is retained for SemanticLab brand restraint and label legibility.
 
 ## Result
 
