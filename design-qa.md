@@ -1,5 +1,19 @@
 # Tieman Deck QA
 
+## AI operating-layer roadmap — QA
+
+- Source of truth: the user's slide annotation requesting that the static operating-layer stack become an animated timeline or roadmap.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-operating-roadmap/01-before-live.png` at 1280 × 720.
+- Animation evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-operating-roadmap/02-roadmap-initial-local.png`, `03-roadmap-mid-local.png` and `04-roadmap-final-local.png` at the same viewport and slide state.
+- Rebuilt the right-hand stack as a left-to-right five-milestone roadmap: `Source systems → Connected data layer → Semantic layer → Business meaning → Applications & agents`.
+- Preserved every original layer title and descriptor while reversing the visual order into a chronological build sequence. Added a short roadmap label and one interpretation line without changing the slide headline or governance language.
+- The connecting rail draws once from left to right. Milestones then arrive in a 180ms stagger, with binary visibility and transform-only movement; `Applications & agents` resolves as the sole lime-filled outcome node.
+- `Governed throughout` appears last as the continuous foundation beneath the roadmap. Reduced-motion styling resolves the rail, milestones and governance state immediately.
+- The responsive treatment converts the horizontal roadmap into a vertical milestone timeline with the same content order and a top-to-bottom rail.
+- Browser timing verification at 320ms found only the first two milestones visible; at 1.57s all five milestones, the full rail and governance row were settled. Navigating away and back replayed the entrance cleanly.
+- Desktop geometry leaves 176.8px between the roadmap and governance row and 25.1px before the footer; no content clips or overlaps. Browser warning/error logs were empty.
+- Final result: passed.
+
 ## Agile value-loop visual — QA
 
 - Source of truth: the user's slide annotation requesting an agile-practices visual that shows where value is added and how iteration informs the next build.

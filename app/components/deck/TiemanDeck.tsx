@@ -3,6 +3,8 @@ import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
 import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
 import BadgeCheck from "lucide-react/dist/esm/icons/badge-check";
 import Bot from "lucide-react/dist/esm/icons/bot";
+import BrainCircuit from "lucide-react/dist/esm/icons/brain-circuit";
+import Cable from "lucide-react/dist/esm/icons/cable";
 import CircleAlert from "lucide-react/dist/esm/icons/circle-alert";
 import ClipboardCheck from "lucide-react/dist/esm/icons/clipboard-check";
 import Cuboid from "lucide-react/dist/esm/icons/cuboid";
@@ -14,6 +16,7 @@ import Layers3 from "lucide-react/dist/esm/icons/layers-3";
 import Lightbulb from "lucide-react/dist/esm/icons/lightbulb";
 import LockKeyhole from "lucide-react/dist/esm/icons/lock-keyhole";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
+import Network from "lucide-react/dist/esm/icons/network";
 import PackageSearch from "lucide-react/dist/esm/icons/package-search";
 import RotateCcw from "lucide-react/dist/esm/icons/rotate-ccw";
 import ScanSearch from "lucide-react/dist/esm/icons/scan-search";
@@ -242,11 +245,36 @@ const agileLoopSteps = [
 ] as const;
 
 const operatingLayers = [
-  { index: "05", title: "Applications & agents", detail: "Useful tools inside real work" },
-  { index: "04", title: "Business meaning", detail: "Ontology, relationships and rules" },
-  { index: "03", title: "Semantic layer", detail: "Shared context around each job" },
-  { index: "02", title: "Connected data layer", detail: "Reliable movement and usable structure" },
-  { index: "01", title: "Source systems", detail: "Epicor · SolidWorks · PDM · documents" },
+  {
+    index: "01",
+    title: "Source systems",
+    detail: "Epicor · SolidWorks · PDM · documents",
+    icon: Database,
+  },
+  {
+    index: "02",
+    title: "Connected data layer",
+    detail: "Reliable movement and usable structure",
+    icon: Cable,
+  },
+  {
+    index: "03",
+    title: "Semantic layer",
+    detail: "Shared context around each job",
+    icon: Network,
+  },
+  {
+    index: "04",
+    title: "Business meaning",
+    detail: "Ontology, relationships and rules",
+    icon: BrainCircuit,
+  },
+  {
+    index: "05",
+    title: "Applications & agents",
+    detail: "Useful tools inside real work",
+    icon: Bot,
+  },
 ] as const;
 
 const securityControls = [
@@ -967,15 +995,35 @@ function OperatingLayerSlide() {
         </h2>
       </div>
 
-      <ol className="tieman-operating-layer__stack">
-        {operatingLayers.map((layer, index) => (
-          <li key={layer.index} className={index === 0 ? "is-active" : ""}>
-            <span>{layer.index}</span>
-            <strong>{layer.title}</strong>
-            <small>{layer.detail}</small>
-          </li>
-        ))}
-      </ol>
+      <section className="tieman-operating-layer__roadmap" aria-label="AI operating layer roadmap">
+        <header>
+          <span>The roadmap</span>
+          <strong>Build from trusted foundations to useful intelligence.</strong>
+        </header>
+
+        <div className="tieman-operating-layer__roadmap-body">
+          <div className="tieman-operating-layer__roadmap-rail" aria-hidden="true">
+            <span />
+          </div>
+
+          <ol>
+            {operatingLayers.map((layer, index) => {
+              const Icon = layer.icon;
+
+              return (
+                <li key={layer.index} className={index === operatingLayers.length - 1 ? "is-outcome" : undefined}>
+                  <div className="tieman-operating-layer__roadmap-node">
+                    <Icon aria-hidden="true" />
+                  </div>
+                  <span>{layer.index}</span>
+                  <strong>{layer.title}</strong>
+                  <small>{layer.detail}</small>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
 
       <div className="tieman-operating-layer__governance">
         <span>Governed throughout</span>
