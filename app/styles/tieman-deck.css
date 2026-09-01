@@ -76,6 +76,56 @@
   line-height: 1.55;
 }
 
+/* Agenda */
+.tieman-agenda .deck-slide__content {
+  display: grid;
+  grid-template-columns: 0.72fr 1.28fr;
+  align-items: center;
+  gap: 8cqw;
+}
+
+.tieman-agenda__heading h2 {
+  margin-top: 1.3cqw;
+  font-size: 6.7cqw;
+  line-height: 0.84;
+}
+
+.tieman-agenda__heading > p:last-child {
+  max-width: 24cqw;
+  margin-top: 2cqw;
+  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
+  font-size: 0.88cqw;
+  line-height: 1.5;
+}
+
+.tieman-agenda__list {
+  align-self: center;
+  border-top: 1px solid var(--sl-border);
+  list-style: none;
+  padding: 0;
+}
+
+.tieman-agenda__list li {
+  display: grid;
+  grid-template-columns: 4.1cqw minmax(0, 1fr);
+  min-height: 6.15cqw;
+  align-items: center;
+  border-bottom: 1px solid var(--sl-border);
+}
+
+.tieman-agenda__list span {
+  color: var(--sl-accent);
+  font-size: 0.58cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: var(--sl-tracking-label);
+}
+
+.tieman-agenda__list strong {
+  font-size: 1.42cqw;
+  font-weight: var(--sl-weight-regular);
+  letter-spacing: -0.025em;
+}
+
 /* Fragmented estate */
 .tieman-fragmentation__backdrop,
 .tieman-fragmentation__shade {
@@ -1635,6 +1685,7 @@
 
   .tieman-cover__copy h1,
   .tieman-next-step__copy h2,
+  .tieman-agenda__heading h2,
   .tieman-problem__heading h2,
   .tieman-foundation__heading h2,
   .tieman-solution-stack__heading h2,
@@ -1661,6 +1712,33 @@
     max-width: 340px;
     margin-top: 26px;
     font-size: 0.9rem;
+  }
+
+  .tieman-agenda .deck-slide__content {
+    display: block;
+  }
+
+  .tieman-agenda__heading > p:last-child {
+    max-width: 300px;
+    margin-top: 22px;
+    font-size: 0.86rem;
+  }
+
+  .tieman-agenda__list {
+    margin-top: 46px;
+  }
+
+  .tieman-agenda__list li {
+    grid-template-columns: 48px minmax(0, 1fr);
+    min-height: 78px;
+  }
+
+  .tieman-agenda__list span {
+    font-size: 0.58rem;
+  }
+
+  .tieman-agenda__list strong {
+    font-size: 1.18rem;
   }
 
   .tieman-fragmentation__backdrop,

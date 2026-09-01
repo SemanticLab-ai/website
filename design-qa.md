@@ -1,4 +1,4 @@
-# Tieman Solution Slide Fragment + Spacing QA
+# Tieman Deck QA
 
 ## Visual truth
 
@@ -20,6 +20,11 @@
 - Processing treatment after: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-processing-after.png`
 - Processing before/after comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-processing-before-after.png`
 - Processing mobile state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-processing-mobile-after.png`
+- Agenda source cover: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agenda-source-cover.png`
+- Agenda source adjacent slide: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agenda-source-current-slide-2.png`
+- Agenda desktop implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agenda-local.png`
+- Agenda mobile implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agenda-mobile.png`
+- Agenda source/implementation context board: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agenda-context-board.png`
 - Mobile source reveal: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-solution-fragment-mobile-1.png`
 - Mobile final state, top/bottom: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-solution-fragment-mobile-4-top.png` and `tieman-solution-fragment-mobile-4-bottom.png`
 - Implementation route: `/deck/tieman-tankers`, slide 5 of 14.
@@ -34,7 +39,9 @@ The user annotation is authoritative for composition and interaction. The existi
 | Source-only before/after | 1588 × 1260 each | 1588 × 1260 browser viewport; centered 16:9 stage | fragment 1 |
 | Source-label comparison | 1280 × 720 each | Both 16:9 slide stages normalised to 1280 × 720 and combined side by side | fragment 1 |
 | Processing before/after | 1280 × 720 each | Equal-size 16:9 browser captures combined side by side at 1× density | fragment 2 |
+| Agenda context board | 1280 × 720 each | Cover, adjacent existing slide and new agenda combined at equal 16:9 size and 1× density | slide 2 |
 | Mobile implementation | 390 × 844 | 390 × 844 viewport; 1900px scrollable stage | fragments 1 and 4 |
+| Agenda mobile | 390 × 844 | 390 × 844 viewport at 1× density | slide 2 |
 
 This is a composition and behavioural refinement rather than a pixel clone. Desktop is the primary presentation surface. Mobile was checked for content order, complete reach and horizontal overflow.
 
@@ -46,6 +53,7 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - [P2] The source-only fragment showed six vertical connectors and ran card/signal loops before any destination layer existed. Fixed by removing source-card and signal animations and setting every connector to zero opacity in fragment 1. The source-to-context connectors and motion now begin only in fragment 2.
 - [P2] The `TIEMAN DATA + KNOWLEDGE` label sat above the six source cards, competing with the connector origin and reading like a separate incoming layer. Fixed by placing the label directly below the source-card grid in every reveal state, with a compact responsive margin.
 - [P2] Processing motion competed with the content because source cards, application cards, the context panel, the live mark and assurance items all pulsed alongside the travelling connector signals. Fixed by removing animation from every box and supporting label, retaining only the connector signals, slowing them to 7.6s, reducing their peak opacity to `0.58`, reducing their size to `0.64cqw`, and reducing connector-line opacity from `0.48` to `0.3`.
+- [P2] The deck moved directly from the transformation cover into the vision/problem narrative without orienting the audience. Fixed by inserting a dedicated agenda as slide 2 with the six requested sections and shifting every existing slide index, heading id, footer count and control label to a 15-slide sequence.
 - [P2] On mobile, preserving the desktop visual order would put the first revealed fragment below invisible layers. Fixed by reordering the responsive flow to sources → context → applications → assurance.
 - No actionable P0, P1 or P2 findings remain after the fixes.
 
@@ -65,6 +73,12 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - The 1280 × 720 before/after comparison confirms the composition, typography, copy, icons, imagery and spacing are unchanged; the only static visual difference is the intended reduction in connector prominence. Focused computed-style inspection was used for the time-based difference because a single still cannot prove the absence of pulsing.
 - Required fidelity surfaces passed: fonts and typography are unchanged; spacing and layout rhythm are unchanged; the existing SemanticLab palette is preserved with only the requested connector-opacity reduction; icon and image assets are unchanged and remain sharp; copy and content are unchanged.
 - At 390 × 844 in fragment 2, all six source cards and the context panel remain static, all six connector signals run, and `documentElement.scrollWidth` equals 390px.
+- The agenda context board shows the new slide using the same dark canvas, lime accent, display type, small uppercase kicker, hairline rules and footer/navigation treatment as the adjacent source slides. The full 1280 × 720 view keeps every label readable, so no additional desktop focused crop was needed; the separate 390 × 844 capture is the focused responsive evidence.
+- Agenda DOM verification contains exactly: Tieman's vision, Problem statement, The opportunity, Why us?, Case studies and Next steps. Its footer and presentation controls report `02 / 15` and `Agenda`.
+- Keyboard Arrow Right moves from agenda slide 2 to the existing context/vision slide at `03 / 15`; Arrow Left returns to agenda. The first cover reports `01 / 15`.
+- At 390 × 844, the complete agenda, footer and controls fit in one viewport and `documentElement.scrollWidth` equals 390px.
+- Agenda fidelity surfaces passed: typography uses the deck's existing display and UI fonts; spacing follows the established left-copy/right-content rhythm; colours and rules use existing SemanticLab tokens; no new image assets were needed; all requested copy is present and correctly capitalised.
+- Agenda browser checks passed for page identity, meaningful DOM content, framework-overlay absence, desktop and mobile screenshots, keyboard interaction and an empty warning/error console.
 - Mobile fragment 1 places the source layer at 443.3px and leaves context, applications and assurance hidden, confirming the reveal order is legible above the fold.
 - Final mobile state places the assurance panel at 437.6–667.6px after scrolling and the footer bottom at 749.6px.
 
