@@ -198,6 +198,49 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 
 final result: passed
 
+## Slide 08 opportunity label and closing reveal — QA
+
+### Source and implementation evidence
+
+- User-selected header source: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_V2Nrd6/Screenshot 2026-09-01 at 11.23.35 PM.png`
+- Initial local reveal state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/34-slide-08-opportunity-initial-local.png`
+- Final local reveal state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/35-slide-08-opportunity-final-local.png`
+- Focused source/implementation comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/36-slide-08-opportunity-header-comparison.png`
+- Final mobile capture: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-story-build/37-slide-08-opportunity-final-mobile.png`
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| User header source | 1511 × 217 | Cropped desktop slide header | selected header treatment |
+| Initial and final local captures | 1280 × 720 each | 1280 × 720 browser viewport; devicePixelRatio 1 | slide 08, fragment 00 and fragment 05 |
+| Focused comparison | 3022 × 217 | Source and implementation header regions normalised to 1511 × 217 each | source → final |
+| Mobile capture | 390 × 844 | 390 × 844 browser viewport; devicePixelRatio 1 | slide 08, fragment 05 |
+
+The focused comparison covers the exact annotated header region. The initial, final and mobile captures verify the new interaction order and that the preserved architecture remains visually contained.
+
+### Findings, fixes and iteration history
+
+- Pass 0 — blocked: slide 08 still used `What Tieman is trying to achieve`, and the supporting paragraph was visible before any architecture layer had appeared.
+- [P1] Narrative label. Fixed by replacing the slide 08 kicker with the requested `The opportunity` while leaving slide 07 unchanged.
+- [P1] Reveal order. Fixed by adding a fifth controlled fragment: sources → unified context → apps and agents → assurance bracket → supporting paragraph.
+- Pass 1 — passed: browser snapshots confirm that the paragraph is absent through fragment 04, appears only at fragment 05, and the next control advances the deck only after that final reveal.
+
+### Fidelity and interaction verification
+
+- Fonts and typography: the existing uppercase tracked kicker, display headline and muted supporting-copy styles remain unchanged; only the requested kicker copy changed.
+- Spacing and layout rhythm: the summary retains its original right-column footprint while hidden, preventing any architecture or headline reflow between fragments.
+- Colours and tokens: the dark canvas, lime accent and token-derived muted copy colour are preserved exactly.
+- Image quality and asset fidelity: no image or icon asset changed; all existing architecture icons and marks remain intact.
+- Copy and content: slide 08 now reads `The opportunity`; the supporting paragraph remains verbatim and appears only after the other four component groups.
+- Interaction: five keypresses reveal exactly one meaningful layer each. DOM checks verified source systems at step 01, context at 02, apps at 03, assurance at 04 and the paragraph at 05.
+- Responsive behaviour: the 390 × 844 final state keeps the kicker, headline and complete paragraph legible without horizontal clipping; the architecture remains reachable by scrolling.
+- Browser verification: the local story route produced no warning or error console logs.
+
+### Result
+
+final result: passed
+
 ## Operational impact slide — QA
 
 ### Source and implementation evidence

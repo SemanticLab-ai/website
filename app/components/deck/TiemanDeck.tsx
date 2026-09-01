@@ -585,11 +585,11 @@ function SolutionStackSlide() {
       className="tieman-solution-stack"
     >
       <div className="tieman-solution-stack__heading">
-        <p className="deck-kicker">What Tieman is trying to achieve</p>
+        <p className="deck-kicker">The opportunity</p>
         <h2 id="deck-slide-8-title">
           Create one trusted foundation for Tieman&apos;s <em>data and AI.</em>
         </h2>
-        <p>
+        <p className="tieman-solution-stack__summary">
           Tieman has the data, systems and decades of knowledge. The opportunity is to connect and govern them so the business can use them with confidence.
         </p>
       </div>
@@ -1199,7 +1199,7 @@ const slides: readonly DeckSlide[] = [
   {
     id: "tieman-solution-stack",
     label: "The solution",
-    fragmentCount: 4,
+    fragmentCount: 5,
     content: <SolutionStackSlide />,
   },
   { id: "tieman-why-us", label: "Why SemanticLab", content: <WhyUsSlide /> },
