@@ -1,5 +1,17 @@
 # Tieman Deck QA
 
+## Founder portrait framing — QA
+
+- Source of truth: the user-selected founder slide in the main SemanticLab deck at `/deck`, captured at `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-headshots/01-reference-founders.png`.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-headshots/03-tieman-before-1280.png` at 1280 × 720.
+- Final evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-headshots/05-tieman-final-local.png` at the same viewport and slide state.
+- The original 350 × 160px landscape slots were only 46% as tall as they were wide and enlarged the portrait assets by 150–165%, creating a visibly cut-off band.
+- Matched the main deck's portrait treatment: near-square 350 × 333px frames, `object-fit: cover`, no transform scaling, and the reference face positions (`50% 17%` for Raihan and `50% 22%` for Naila).
+- Both source assets retain their natural dimensions and now show complete heads and substantially more upper torso. The profile block ends 66px before the studio rail, with no clipping or collision.
+- Typography, copy, image assets, founder order, dark-mode palette and overall slide composition are unchanged.
+- Browser verification confirmed the intended slide identity, intrinsic image dimensions, final crop geometry and an empty warning/error console.
+- Final result: passed.
+
 ## Unified context-layer refinement — QA
 
 - Source of truth: the user's slide 07 annotations requesting a less dominant context layer, separate component entrances and removal of the duplicated `CONTEXT LIVE` label.
