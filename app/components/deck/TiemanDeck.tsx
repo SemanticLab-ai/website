@@ -335,10 +335,9 @@ function TiemanVisionVennSlide() {
       <div className="tieman-vision-venn__heading">
         <p className="deck-kicker">What we heard</p>
         <h2 id="deck-slide-3-title">
-          Three themes kept emerging.
+          Three emerging themes
         </h2>
         <p className="tieman-vision-venn__conclusion">
-          <span>Three themes.</span>
           <strong>One connected opportunity.</strong>
         </p>
       </div>

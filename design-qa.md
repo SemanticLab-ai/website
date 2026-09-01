@@ -1,5 +1,14 @@
 # Tieman Deck QA
 
+## Vision copy correction — QA
+
+- Source of visual truth: the user's slide 3 annotation requesting the exact headline `Three emerging themes` and removal of the grey `THREE THEMES.` line.
+- Desktop evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-copy/01-vision-copy-desktop-local.png` at 1280 × 720.
+- Mobile evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-copy/02-vision-copy-mobile-local.png` at 390 × 844.
+- The scoped copy change preserves the established SemanticLab composition, display type, lime accent, Venn imagery, fragment sequence and navigation without introducing new visual language.
+- DOM verification confirmed the exact new headline, absence of both old headline strings, retention of `One connected opportunity.`, zero mobile horizontal overflow and no browser warning/error logs.
+- Final result: passed.
+
 ## Clean-route story merge and cover subtitle — QA
 
 - Source of visual truth: the user's cover annotation and instruction to merge the `?challenges=story` sequence into the main deck.
