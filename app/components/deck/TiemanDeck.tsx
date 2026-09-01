@@ -28,7 +28,6 @@ const agendaItems = [
   "Challenges",
   "The opportunity",
   "Why us?",
-  "Case studies",
   "Next steps",
 ] as const;
 
