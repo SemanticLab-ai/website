@@ -735,9 +735,10 @@
   height: 2.75cqw;
   background: var(--sl-accent);
   content: "";
-  opacity: 0.48;
+  opacity: 0;
   transform: scaleY(1);
   transform-origin: top;
+  transition: opacity 280ms var(--sl-ease-standard);
 }
 
 .tieman-solution-stack__source-grid article > svg {
@@ -899,7 +900,6 @@
 }
 
 .sales-deck__transition[data-deck-fragment-count="4"]:is(
-  [data-deck-fragment-step="1"],
   [data-deck-fragment-step="2"],
   [data-deck-fragment-step="3"],
   [data-deck-fragment-step="4"]
@@ -920,6 +920,14 @@
 ) .tieman-solution-stack__applications :is(article, .tieman-solution-stack__signal),
 .sales-deck__transition[data-deck-fragment-count="4"][data-deck-fragment-step="4"] .tieman-solution-stack__assurance li {
   animation-play-state: running;
+}
+
+.sales-deck__transition[data-deck-fragment-count="4"]:is(
+  [data-deck-fragment-step="2"],
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"]
+) .tieman-solution-stack__source-grid article::before {
+  opacity: 0.48;
 }
 
 @keyframes tiemanStackSourcePulse {
