@@ -26,9 +26,12 @@
 - Agenda mobile implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agenda-mobile.png`
 - Agenda source/implementation context board: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agenda-context-board.png`
 - Vision design-language source: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agenda-source-current-slide-2.png`
-- Vision desktop implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-local-final.png`
-- Vision mobile implementation, top and scrolled: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-mobile-final.png` and `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-mobile-final-scrolled.png`
-- Vision source/implementation context board: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-context-board-final.png`
+- Rejected vision draft: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-local-final.png`
+- Interim clean-list vision: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-clean-1280.png`
+- User-selected vision layout reference: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_oJhF3q/Screenshot 2026-09-01 at 8.01.56 PM.png`
+- Vision desktop implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-objectives-final.png`
+- Vision mobile implementation, top and scrolled: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-objectives-mobile.png` and `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-objectives-mobile-scrolled.png`
+- Vision source/implementation context board: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-vision-objectives-context-board.png`
 - Mobile source reveal: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-solution-fragment-mobile-1.png`
 - Mobile final state, top/bottom: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-solution-fragment-mobile-4-top.png` and `tieman-solution-fragment-mobile-4-bottom.png`
 - Implementation route: `/deck/tieman-tankers`; vision slide 3 of 15 and solution slide 6 of 15.
@@ -44,7 +47,7 @@ The user annotation is authoritative for composition and interaction. The existi
 | Source-label comparison | 1280 × 720 each | Both 16:9 slide stages normalised to 1280 × 720 and combined side by side | fragment 1 |
 | Processing before/after | 1280 × 720 each | Equal-size 16:9 browser captures combined side by side at 1× density | fragment 2 |
 | Agenda context board | 1280 × 720 each | Cover, adjacent existing slide and new agenda combined at equal 16:9 size and 1× density | slide 2 |
-| Vision context board | 1280 × 720 each | Adjacent source slide and new vision slide combined side by side at equal 16:9 size and 1× density | slide 3 |
+| Vision context board | Source normalised from 1586 × 929 to 1280 × 720; implementation 1280 × 720 | User-selected slide reference and new vision slide combined side by side at equal 16:9 size and 1× density | slide 3 |
 | Mobile implementation | 390 × 844 | 390 × 844 viewport; 1900px scrollable stage | fragments 1 and 4 |
 | Agenda mobile | 390 × 844 | 390 × 844 viewport at 1× density | slide 2 |
 | Vision mobile | 390 × 844 | 390 × 844 viewport at 1× density; top and scrolled states | slide 3 |
@@ -60,8 +63,9 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - [P2] The `TIEMAN DATA + KNOWLEDGE` label sat above the six source cards, competing with the connector origin and reading like a separate incoming layer. Fixed by placing the label directly below the source-card grid in every reveal state, with a compact responsive margin.
 - [P2] Processing motion competed with the content because source cards, application cards, the context panel, the live mark and assurance items all pulsed alongside the travelling connector signals. Fixed by removing animation from every box and supporting label, retaining only the connector signals, slowing them to 7.6s, reducing their peak opacity to `0.58`, reducing their size to `0.64cqw`, and reducing connector-line opacity from `0.48` to `0.3`.
 - [P2] The deck moved directly from the transformation cover into the vision/problem narrative without orienting the audience. Fixed by inserting a dedicated agenda as slide 2 with the six requested sections and shifting every existing slide index, heading id, footer count and control label to a 15-slide sequence.
-- [P2] The previous slide 3 described system fragmentation instead of articulating Tieman's executive vision, and the supplied objectives were too numerous for one presentation frame. Fixed by replacing it with one north-star outcome—more production capacity without proportional administrative overhead—and four concise objective clusters: find faster, align earlier, build right and grow securely.
-- [P2] The first vision draft repeated the north-star idea in a long sentence. Fixed by tightening it to `More tankers through the same operation.` and shortening the supporting objective copy before the final capture.
+- [P2] The previous slide 3 described system fragmentation instead of articulating Tieman's executive vision. The first replacement compressed the brief into a north-star outcome and four objective cards.
+- [P1] The user found that first replacement too generic and said it did not communicate the vision. Fixed by removing the outcome-dashboard composition and rebuilding the slide around the user's preferred strategic statement and all eight operational knowledge domains in a clean, numbered two-column list.
+- [P2] The clean eight-domain list communicated scope but still diluted the primary ambition. The user selected the existing operating-layer slide as a stronger layout reference. Fixed by mirroring its left-statement/right-rail composition, highlighting the throughput objective and condensing the brief into five strategic objectives.
 - [P2] On mobile, preserving the desktop visual order would put the first revealed fragment below invisible layers. Fixed by reordering the responsive flow to sources → context → applications → assurance.
 - No actionable P0, P1 or P2 findings remain after the fixes.
 
@@ -87,10 +91,10 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 - At 390 × 844, the complete agenda, footer and controls fit in one viewport and `documentElement.scrollWidth` equals 390px.
 - Agenda fidelity surfaces passed: typography uses the deck's existing display and UI fonts; spacing follows the established left-copy/right-content rhythm; colours and rules use existing SemanticLab tokens; no new image assets were needed; all requested copy is present and correctly capitalised.
 - Agenda browser checks passed for page identity, meaningful DOM content, framework-overlay absence, desktop and mobile screenshots, keyboard interaction and an empty warning/error console.
-- The final vision context board confirms the new slide preserves the deck's black canvas, lime accent, display typography, small uppercase kicker, icon line weight, square card geometry, footer and navigation treatment while intentionally replacing the prior fragmented-system narrative with an outcome-led composition.
-- Vision fidelity surfaces passed: display and UI typography use the existing deck families and weights; the headline, north-star card and 2 × 2 objective grid create a clear spacing hierarchy; all colours use existing SemanticLab tokens; the four visible symbols come from the deck's existing icon library and remain sharp; copy is reduced to one outcome, one framing sentence and four objective clusters.
+- The final vision context board confirms the implementation closely follows the user-selected operating-layer reference: bold statement on the left, five evenly sized ruled rows on the right, first row highlighted in lime, and a supporting foundation rail beneath the objectives.
+- Vision fidelity surfaces passed: display and UI typography use the existing deck families and weights; the 0.82 / 1.18 composition and row rhythm match the chosen source; all colours and rules use existing SemanticLab tokens; no image asset was needed for this text-led slide; copy is condensed into one business ambition and five objectives without introducing technical architecture.
 - The 1280 × 720 full-view comparison keeps every important label readable, so no desktop focused crop was needed. The separate 390 × 844 top and scrolled captures provide the focused responsive evidence and confirm the north-star card, all four objectives, footer and controls are reachable without horizontal clipping.
-- Vision DOM verification contains the executive headline, concise framing sentence, north-star outcome and all four objective titles. Its footer and presentation controls report `03 / 15` and `Tieman's vision`.
+- Vision DOM verification contains the strategic statement and all five objectives: Increase throughput, Find knowledge faster, Align every team, Reduce delivery risk and Preserve + protect knowledge. Its footer and presentation controls report `03 / 15` and `Tieman's vision`.
 - Vision browser checks passed for meaningful DOM content, Arrow Right navigation, mobile scrolling, responsive footer reach and an empty warning/error console.
 - Mobile fragment 1 places the source layer at 443.3px and leaves context, applications and assurance hidden, confirming the reveal order is legible above the fold.
 - Final mobile state places the assurance panel at 437.6–667.6px after scrolling and the footer bottom at 749.6px.

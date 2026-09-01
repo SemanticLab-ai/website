@@ -33,29 +33,18 @@ const agendaItems = [
 ] as const;
 
 const visionObjectives = [
-  {
-    index: "01",
-    title: "Find faster",
-    detail: "Historical answers become searchable and reusable.",
-    icon: FileSearch,
-  },
-  {
-    index: "02",
-    title: "Align earlier",
-    detail: "Sales, Engineering and Purchasing share context.",
-    icon: Activity,
-  },
+  { index: "01", title: "Increase throughput", detail: "Using existing resources" },
+  { index: "02", title: "Find knowledge faster", detail: "Historical jobs · specs · decisions" },
   {
     index: "03",
-    title: "Build right",
-    detail: "Teams work from the latest approved revision.",
-    icon: BadgeCheck,
+    title: "Align every team",
+    detail: "Sales · Engineering · Purchasing · Production",
   },
+  { index: "04", title: "Reduce delivery risk", detail: "Specifications · long leads · revisions" },
   {
-    index: "04",
-    title: "Grow securely",
-    detail: "Australian-hosted, governed and auditable.",
-    icon: ShieldCheck,
+    index: "05",
+    title: "Preserve + protect knowledge",
+    detail: "Australian-hosted · governed · secure",
   },
 ] as const;
 
@@ -262,48 +251,29 @@ function TiemanVisionSlide() {
     <DeckSlideFrame
       index={3}
       total={TOTAL_SLIDES}
-      descriptor="Connect existing systems. Grow throughput without growing overhead."
+      descriptor="Five objectives for a connected Tieman operation."
       className="tieman-vision"
     >
       <div className="tieman-vision__heading">
-        <div>
-          <p className="deck-kicker">Tieman&apos;s vision</p>
-          <h2 id="deck-slide-3-title">
-            Grow production capacity. <em>Not administrative overhead.</em>
-          </h2>
-        </div>
-        <p>
-          Connect the systems and knowledge Tieman already has—so teams can find,
-          reuse and act on trusted information.
-        </p>
+        <p className="deck-kicker">Strategic vision</p>
+        <h2 id="deck-slide-3-title">
+          More production capacity. <em>Not more overhead.</em>
+        </h2>
       </div>
 
-      <div className="tieman-vision__visual">
-        <article className="tieman-vision__north-star">
-          <div>
-            <span>North star</span>
-            <ArrowUp aria-hidden="true" />
-          </div>
-          <strong>More tankers through the same operation.</strong>
-          <p>Existing systems stay. The context becomes connected.</p>
-        </article>
+      <ol className="tieman-vision__objectives" aria-label="Tieman strategic objectives">
+        {visionObjectives.map((objective, index) => (
+          <li key={objective.index} className={index === 0 ? "is-active" : ""}>
+            <span>{objective.index}</span>
+            <strong>{objective.title}</strong>
+            <small>{objective.detail}</small>
+          </li>
+        ))}
+      </ol>
 
-        <ol className="tieman-vision__objectives" aria-label="Tieman business objectives">
-          {visionObjectives.map((objective) => {
-            const ObjectiveIcon = objective.icon;
-
-            return (
-              <li key={objective.index}>
-                <div className="tieman-vision__objective-meta">
-                  <span>{objective.index}</span>
-                  <ObjectiveIcon aria-hidden="true" />
-                </div>
-                <strong>{objective.title}</strong>
-                <p>{objective.detail}</p>
-              </li>
-            );
-          })}
-        </ol>
+      <div className="tieman-vision__foundation">
+        <span>Built on trusted context</span>
+        <strong>Connected · current · governed · Australian-hosted</strong>
       </div>
     </DeckSlideFrame>
   );

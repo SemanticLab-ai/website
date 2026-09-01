@@ -129,134 +129,89 @@
 /* Vision */
 .tieman-vision .deck-slide__content {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  gap: 2.5cqw;
+  grid-template-columns: 0.82fr 1.18fr;
+  grid-template-rows: 1fr auto;
+  gap: 1.4cqw 5.4cqw;
 }
 
 .tieman-vision__heading {
-  display: grid;
-  grid-template-columns: 1.45fr 0.55fr;
-  align-items: end;
-  gap: 5.4cqw;
+  align-self: center;
 }
 
 .tieman-vision__heading h2 {
-  max-width: 69cqw;
-  margin-top: 1cqw;
-  font-size: 4.25cqw;
+  max-width: 42cqw;
+  margin-top: 1.35cqw;
+  font-size: 4cqw;
   line-height: 0.91;
 }
 
-.tieman-vision__heading > p {
-  max-width: 25cqw;
-  padding-bottom: 0.35cqw;
-  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
-  font-size: 0.78cqw;
-  line-height: 1.55;
+.tieman-vision__objectives {
+  align-self: center;
+  list-style: none;
+  border-top: 1px solid var(--sl-border);
+  padding: 0;
 }
 
-.tieman-vision__visual {
+.tieman-vision__objectives li {
   display: grid;
-  min-height: 0;
-  grid-template-columns: 0.82fr 1.18fr;
-  gap: 1cqw;
-}
-
-.tieman-vision__north-star {
-  display: flex;
-  min-height: 0;
-  justify-content: space-between;
-  flex-direction: column;
-  background: var(--sl-accent);
-  padding: 2.1cqw;
-  color: var(--sl-text-on-accent);
-}
-
-.tieman-vision__north-star > div {
-  display: flex;
+  grid-template-columns: 3cqw 17cqw 1fr;
+  min-height: 6.35cqw;
   align-items: center;
-  justify-content: space-between;
+  gap: 1.2cqw;
+  border-bottom: 1px solid var(--sl-border);
+  padding-inline: 1cqw;
 }
 
-.tieman-vision__north-star span {
+.tieman-vision__objectives li.is-active {
+  background: var(--sl-accent);
+  color: var(--sl-text-on-light);
+}
+
+.tieman-vision__objectives li > span {
+  color: var(--sl-accent);
+  font-size: 0.58cqw;
+  letter-spacing: 0.12em;
+}
+
+.tieman-vision__objectives li.is-active > span,
+.tieman-vision__objectives li.is-active small {
+  color: color-mix(in srgb, var(--sl-text-on-light) 58%, transparent);
+}
+
+.tieman-vision__objectives strong {
+  font-size: 1.08cqw;
+  font-weight: var(--sl-weight-regular);
+}
+
+.tieman-vision__objectives small {
+  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
+  font-size: 0.57cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: 0.19em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.tieman-vision__foundation {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: 14cqw 1fr;
+  align-items: baseline;
+  border-top: 1px solid var(--sl-border);
+  padding-top: 1.05cqw;
+}
+
+.tieman-vision__foundation span {
+  color: var(--sl-accent);
   font-size: 0.58cqw;
   font-weight: var(--sl-weight-semibold);
   letter-spacing: var(--sl-tracking-label);
   text-transform: uppercase;
 }
 
-.tieman-vision__north-star svg {
-  width: 2.2cqw;
-  height: 2.2cqw;
-  stroke-width: 1.35;
-}
-
-.tieman-vision__north-star strong {
-  max-width: 28cqw;
-  font-size: 2.65cqw;
+.tieman-vision__foundation strong {
+  font-size: 1.05cqw;
   font-weight: var(--sl-weight-regular);
-  letter-spacing: -0.055em;
-  line-height: 0.97;
-}
-
-.tieman-vision__north-star p {
-  max-width: 25cqw;
-  font-size: 0.68cqw;
-  line-height: 1.45;
-}
-
-.tieman-vision__objectives {
-  display: grid;
-  min-height: 0;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1cqw;
-  list-style: none;
-  padding: 0;
-}
-
-.tieman-vision__objectives li {
-  display: flex;
-  min-height: 0;
-  justify-content: flex-end;
-  flex-direction: column;
-  border: 1px solid var(--sl-border);
-  background: color-mix(in srgb, var(--sl-text-primary) 2.5%, transparent);
-  padding: 1.35cqw;
-}
-
-.tieman-vision__objective-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: auto;
-  color: var(--sl-accent);
-}
-
-.tieman-vision__objective-meta span {
-  font-size: 0.56cqw;
-  font-weight: var(--sl-weight-semibold);
-  letter-spacing: var(--sl-tracking-label);
-}
-
-.tieman-vision__objective-meta svg {
-  width: 1.45cqw;
-  height: 1.45cqw;
-  stroke-width: 1.45;
-}
-
-.tieman-vision__objectives strong {
-  margin-top: 1.6cqw;
-  font-size: 1.25cqw;
-  font-weight: var(--sl-weight-regular);
-  letter-spacing: -0.035em;
-}
-
-.tieman-vision__objectives p {
-  max-width: 19cqw;
-  margin-top: 0.5cqw;
-  color: color-mix(in srgb, var(--sl-text-primary) 52%, transparent);
-  font-size: 0.66cqw;
-  line-height: 1.42;
 }
 
 /* Problem */
@@ -1699,71 +1654,44 @@
     display: block;
   }
 
-  .tieman-vision__heading > p {
-    max-width: 330px;
-    margin-top: 24px;
-    padding-bottom: 0;
-    font-size: 0.86rem;
-  }
-
-  .tieman-vision__visual {
-    display: block;
+  .tieman-vision__objectives {
     margin-top: 42px;
   }
 
-  .tieman-vision__north-star {
-    min-height: 270px;
-    padding: 26px;
+  .tieman-vision__objectives li {
+    grid-template-columns: 34px minmax(0, 1fr);
+    min-height: 0;
+    gap: 10px 14px;
+    padding: 20px 14px;
   }
 
-  .tieman-vision__north-star span {
+  .tieman-vision__objectives li > span {
     font-size: 0.58rem;
   }
 
-  .tieman-vision__north-star svg {
-    width: 30px;
-    height: 30px;
-  }
-
-  .tieman-vision__north-star strong {
-    max-width: 300px;
-    font-size: 2.35rem;
-  }
-
-  .tieman-vision__north-star p {
-    max-width: 280px;
-    font-size: 0.74rem;
-  }
-
-  .tieman-vision__objectives {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-    margin-top: 12px;
-  }
-
-  .tieman-vision__objectives li {
-    min-height: 176px;
-    padding: 18px;
-  }
-
-  .tieman-vision__objective-meta span {
-    font-size: 0.56rem;
-  }
-
-  .tieman-vision__objective-meta svg {
-    width: 22px;
-    height: 22px;
-  }
-
   .tieman-vision__objectives strong {
-    margin-top: 24px;
-    font-size: 1.15rem;
+    font-size: 1.06rem;
   }
 
-  .tieman-vision__objectives p {
-    max-width: none;
-    margin-top: 8px;
-    font-size: 0.72rem;
+  .tieman-vision__objectives small {
+    grid-column: 2;
+    font-size: 0.58rem;
+  }
+
+  .tieman-vision__foundation {
+    grid-template-columns: 1fr;
+    gap: 11px;
+    margin-top: 30px;
+    padding-top: 18px;
+  }
+
+  .tieman-vision__foundation span {
+    font-size: 0.58rem;
+  }
+
+  .tieman-vision__foundation strong {
+    font-size: 1.08rem;
+    line-height: 1.4;
   }
 
   .tieman-problem__body,
