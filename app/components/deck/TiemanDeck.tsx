@@ -1,4 +1,7 @@
+import Activity from "lucide-react/dist/esm/icons/activity";
+import ArrowUp from "lucide-react/dist/esm/icons/arrow-up";
 import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
+import BadgeCheck from "lucide-react/dist/esm/icons/badge-check";
 import Bot from "lucide-react/dist/esm/icons/bot";
 import ClipboardCheck from "lucide-react/dist/esm/icons/clipboard-check";
 import Cuboid from "lucide-react/dist/esm/icons/cuboid";
@@ -6,6 +9,8 @@ import Database from "lucide-react/dist/esm/icons/database";
 import FileSearch from "lucide-react/dist/esm/icons/file-search";
 import FileText from "lucide-react/dist/esm/icons/file-text";
 import Layers3 from "lucide-react/dist/esm/icons/layers-3";
+import LockKeyhole from "lucide-react/dist/esm/icons/lock-keyhole";
+import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import PackageSearch from "lucide-react/dist/esm/icons/package-search";
 import Sheet from "lucide-react/dist/esm/icons/sheet";
 import ShieldCheck from "lucide-react/dist/esm/icons/shield-check";
@@ -59,6 +64,12 @@ const contextCapabilities = [
   "Evidence",
   "Permissions",
   "Ownership",
+] as const;
+
+const assurancePrinciples = [
+  { name: "Security", detail: "Permissions + audit", icon: LockKeyhole },
+  { name: "Governance", detail: "Rules + ownership", icon: BadgeCheck },
+  { name: "Australian data hosting", detail: "Local data residency", icon: MapPin },
 ] as const;
 
 const proofPoints = [
@@ -320,56 +331,87 @@ function SolutionStackSlide() {
         </p>
       </div>
 
-      <section className="tieman-solution-stack__diagram" aria-label="Tieman unified context architecture">
-        <div className="tieman-solution-stack__applications">
-          <span className="tieman-solution-stack__layer-label">Apps + AI agents</span>
-          <div className="tieman-solution-stack__application-grid">
-            {solutionApplications.map((application) => {
-              const ApplicationIcon = application.icon;
+      <div className="tieman-solution-stack__architecture">
+        <section className="tieman-solution-stack__diagram" aria-label="Tieman unified context architecture">
+          <div className="tieman-solution-stack__applications">
+            <span className="tieman-solution-stack__layer-label">Apps + AI agents</span>
+            <div className="tieman-solution-stack__application-grid">
+              {solutionApplications.map((application) => {
+                const ApplicationIcon = application.icon;
 
-              return (
-                <article key={application.name}>
-                  <ApplicationIcon aria-hidden="true" />
-                  <strong>{application.name}</strong>
-                  <small>{application.role}</small>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="tieman-solution-stack__context">
-          <div className="tieman-solution-stack__context-title">
-            <ShieldCheck aria-hidden="true" />
-            <div>
-              <span>Unified context layer</span>
-              <strong>A governed, shared understanding of every job.</strong>
+                return (
+                  <article key={application.name}>
+                    <ApplicationIcon aria-hidden="true" />
+                    <strong>{application.name}</strong>
+                    <small>{application.role}</small>
+                    <span className="tieman-solution-stack__signal" aria-hidden="true">
+                      <ArrowUp />
+                    </span>
+                  </article>
+                );
+              })}
             </div>
           </div>
-          <ul aria-label="Context available to applications and agents">
-            {contextCapabilities.map((capability) => (
-              <li key={capability}>{capability}</li>
-            ))}
-          </ul>
-        </div>
 
-        <div className="tieman-solution-stack__sources">
-          <span className="tieman-solution-stack__layer-label">Tieman data + knowledge</span>
-          <div className="tieman-solution-stack__source-grid">
-            {tiemanSystems.map((system) => {
-              const SystemIcon = system.icon;
+          <div className="tieman-solution-stack__context">
+            <div className="tieman-solution-stack__context-title">
+              <ShieldCheck aria-hidden="true" />
+              <div>
+                <span>Unified context layer</span>
+                <strong>A governed, shared understanding of every job.</strong>
+                <small className="tieman-solution-stack__live">
+                  <Activity aria-hidden="true" />
+                  Context live
+                </small>
+              </div>
+            </div>
+            <ul aria-label="Context available to applications and agents">
+              {contextCapabilities.map((capability) => (
+                <li key={capability}>{capability}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="tieman-solution-stack__sources">
+            <span className="tieman-solution-stack__layer-label">Tieman data + knowledge</span>
+            <div className="tieman-solution-stack__source-grid">
+              {tiemanSystems.map((system) => {
+                const SystemIcon = system.icon;
+
+                return (
+                  <article key={system.id}>
+                    <SystemIcon aria-hidden="true" />
+                    <strong>{system.name}</strong>
+                    <small>{system.role}</small>
+                    <span className="tieman-solution-stack__signal" aria-hidden="true">
+                      <ArrowUp />
+                    </span>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <aside className="tieman-solution-stack__assurance" aria-label="Architecture assurance principles">
+          <span className="tieman-solution-stack__assurance-label">Secure by design</span>
+          <ul>
+            {assurancePrinciples.map((principle) => {
+              const PrincipleIcon = principle.icon;
 
               return (
-                <article key={system.id}>
-                  <SystemIcon aria-hidden="true" />
-                  <strong>{system.name}</strong>
-                  <small>{system.role}</small>
-                </article>
+                <li key={principle.name}>
+                  <PrincipleIcon aria-hidden="true" />
+                  <span>
+                    <strong>{principle.name}</strong>
+                    <small>{principle.detail}</small>
+                  </span>
+                </li>
               );
             })}
-          </div>
-        </div>
-      </section>
+          </ul>
+        </aside>
+      </div>
     </DeckSlideFrame>
   );
 }

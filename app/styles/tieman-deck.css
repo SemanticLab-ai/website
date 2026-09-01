@@ -470,12 +470,19 @@
   line-height: 1.48;
 }
 
+.tieman-solution-stack__architecture {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 11.3cqw;
+  align-self: start;
+  gap: 1.25cqw;
+  margin-top: 1.7cqw;
+}
+
 .tieman-solution-stack__diagram {
   display: grid;
   grid-template-rows: auto auto auto;
   align-self: start;
-  gap: 1.05cqw;
-  margin-top: 2cqw;
+  gap: 0.92cqw;
 }
 
 .tieman-solution-stack__applications,
@@ -517,23 +524,25 @@
   color: var(--sl-text-on-light);
   opacity: 0;
   transform: translateY(0.8cqw);
-  animation: tiemanStackApplicationIn 520ms var(--sl-ease-standard) both;
+  animation:
+    tiemanStackApplicationIn 520ms var(--sl-ease-standard) both,
+    tiemanStackApplicationPulse 6.4s ease-in-out infinite;
 }
 
 .tieman-solution-stack__application-grid article:nth-child(1) {
-  animation-delay: 960ms;
+  animation-delay: 960ms, 3.65s;
 }
 
 .tieman-solution-stack__application-grid article:nth-child(2) {
-  animation-delay: 1040ms;
+  animation-delay: 1040ms, 3.88s;
 }
 
 .tieman-solution-stack__application-grid article:nth-child(3) {
-  animation-delay: 1120ms;
+  animation-delay: 1120ms, 4.11s;
 }
 
 .tieman-solution-stack__application-grid article:nth-child(4) {
-  animation-delay: 1200ms;
+  animation-delay: 1200ms, 4.34s;
 }
 
 .tieman-solution-stack__application-grid article::after {
@@ -550,7 +559,7 @@
   animation: tiemanStackLineIn 380ms var(--sl-ease-standard) 820ms both;
 }
 
-.tieman-solution-stack__application-grid svg {
+.tieman-solution-stack__application-grid article > svg {
   grid-row: 1 / span 2;
   width: 2.5cqw;
   height: 2.5cqw;
@@ -561,6 +570,38 @@
   color: var(--sl-text-on-light);
   stroke-width: 1.6;
 }
+
+.tieman-solution-stack__signal {
+  position: absolute;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  width: 0.78cqw;
+  height: 0.78cqw;
+  place-items: center;
+  border: 1px solid var(--sl-accent);
+  border-radius: 50%;
+  background: var(--sl-surface-dark);
+  color: var(--sl-accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tieman-solution-stack__signal svg {
+  width: 0.44cqw;
+  height: 0.44cqw;
+  stroke-width: 2;
+}
+
+.tieman-solution-stack__application-grid .tieman-solution-stack__signal {
+  bottom: -1.02cqw;
+  animation: tiemanStackSignalUp 6.4s ease-out infinite;
+}
+
+.tieman-solution-stack__application-grid article:nth-child(1) .tieman-solution-stack__signal { animation-delay: 3.65s; }
+.tieman-solution-stack__application-grid article:nth-child(2) .tieman-solution-stack__signal { animation-delay: 3.88s; }
+.tieman-solution-stack__application-grid article:nth-child(3) .tieman-solution-stack__signal { animation-delay: 4.11s; }
+.tieman-solution-stack__application-grid article:nth-child(4) .tieman-solution-stack__signal { animation-delay: 4.34s; }
 
 .tieman-solution-stack__application-grid strong {
   align-self: end;
@@ -591,7 +632,9 @@
   color: var(--sl-text-on-light);
   opacity: 0;
   transform: scaleX(0.94);
-  animation: tiemanStackContextIn 620ms var(--sl-ease-standard) 650ms both;
+  animation:
+    tiemanStackContextIn 620ms var(--sl-ease-standard) 650ms both,
+    tiemanStackContextPulse 6.4s ease-in-out 2.82s infinite;
 }
 
 .tieman-solution-stack__context-title {
@@ -600,7 +643,7 @@
   gap: 1cqw;
 }
 
-.tieman-solution-stack__context-title svg {
+.tieman-solution-stack__context-title > svg {
   width: 2.7cqw;
   height: 2.7cqw;
   flex: 0 0 auto;
@@ -622,6 +665,23 @@
   font-size: 1.08cqw;
   font-weight: var(--sl-weight-medium);
   line-height: 1.15;
+}
+
+.tieman-solution-stack__live {
+  display: flex;
+  align-items: center;
+  gap: 0.34cqw;
+  margin-top: 0.46cqw;
+  font-size: 0.47cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: var(--sl-tracking-label);
+  text-transform: uppercase;
+}
+
+.tieman-solution-stack__live svg {
+  width: 0.7cqw;
+  height: 0.7cqw;
+  animation: tiemanStackLivePulse 1.5s ease-in-out infinite;
 }
 
 .tieman-solution-stack__context ul {
@@ -661,15 +721,17 @@
   padding: 0.7cqw 0.8cqw;
   opacity: 0;
   transform: translateY(0.65cqw);
-  animation: tiemanStackSourceIn 450ms var(--sl-ease-standard) both;
+  animation:
+    tiemanStackSourceIn 450ms var(--sl-ease-standard) both,
+    tiemanStackSourcePulse 6.4s ease-in-out infinite;
 }
 
-.tieman-solution-stack__source-grid article:nth-child(1) { animation-delay: 120ms; }
-.tieman-solution-stack__source-grid article:nth-child(2) { animation-delay: 190ms; }
-.tieman-solution-stack__source-grid article:nth-child(3) { animation-delay: 260ms; }
-.tieman-solution-stack__source-grid article:nth-child(4) { animation-delay: 330ms; }
-.tieman-solution-stack__source-grid article:nth-child(5) { animation-delay: 400ms; }
-.tieman-solution-stack__source-grid article:nth-child(6) { animation-delay: 470ms; }
+.tieman-solution-stack__source-grid article:nth-child(1) { animation-delay: 120ms, 1.72s; }
+.tieman-solution-stack__source-grid article:nth-child(2) { animation-delay: 190ms, 1.94s; }
+.tieman-solution-stack__source-grid article:nth-child(3) { animation-delay: 260ms, 2.16s; }
+.tieman-solution-stack__source-grid article:nth-child(4) { animation-delay: 330ms, 2.38s; }
+.tieman-solution-stack__source-grid article:nth-child(5) { animation-delay: 400ms, 2.6s; }
+.tieman-solution-stack__source-grid article:nth-child(6) { animation-delay: 470ms, 2.82s; }
 
 .tieman-solution-stack__source-grid article::before {
   position: absolute;
@@ -685,7 +747,7 @@
   animation: tiemanStackLineIn 380ms var(--sl-ease-standard) 520ms both;
 }
 
-.tieman-solution-stack__source-grid svg {
+.tieman-solution-stack__source-grid article > svg {
   grid-row: 1 / span 2;
   width: 1.6cqw;
   height: 1.6cqw;
@@ -694,10 +756,98 @@
   stroke-width: 1.45;
 }
 
+.tieman-solution-stack__source-grid .tieman-solution-stack__signal {
+  top: -1.95cqw;
+  animation: tiemanStackSignalUp 6.4s ease-out infinite;
+}
+
+.tieman-solution-stack__source-grid article:nth-child(1) .tieman-solution-stack__signal { animation-delay: 1.72s; }
+.tieman-solution-stack__source-grid article:nth-child(2) .tieman-solution-stack__signal { animation-delay: 1.94s; }
+.tieman-solution-stack__source-grid article:nth-child(3) .tieman-solution-stack__signal { animation-delay: 2.16s; }
+.tieman-solution-stack__source-grid article:nth-child(4) .tieman-solution-stack__signal { animation-delay: 2.38s; }
+.tieman-solution-stack__source-grid article:nth-child(5) .tieman-solution-stack__signal { animation-delay: 2.6s; }
+.tieman-solution-stack__source-grid article:nth-child(6) .tieman-solution-stack__signal { animation-delay: 2.82s; }
+
 .tieman-solution-stack__source-grid strong {
   align-self: end;
   font-size: 0.73cqw;
   font-weight: var(--sl-weight-medium);
+}
+
+.tieman-solution-stack__assurance {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  align-self: stretch;
+  border-top: 1px solid color-mix(in srgb, var(--sl-accent) 54%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--sl-accent) 54%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--sl-accent) 54%, transparent);
+  padding: 0.75cqw 0.72cqw 0.75cqw 1.05cqw;
+  opacity: 0;
+  clip-path: inset(50% 0 50% 0);
+  animation: tiemanStackAssuranceIn 720ms var(--sl-ease-standard) 1.15s both;
+}
+
+.tieman-solution-stack__assurance-label {
+  color: var(--sl-accent);
+  font-size: 0.48cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: var(--sl-tracking-label);
+  text-transform: uppercase;
+}
+
+.tieman-solution-stack__assurance ul {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 0.4cqw 0 0;
+  padding: 0;
+}
+
+.tieman-solution-stack__assurance li {
+  display: grid;
+  grid-template-columns: 1.7cqw minmax(0, 1fr);
+  align-items: center;
+  gap: 0.58cqw;
+  border-top: 1px solid color-mix(in srgb, var(--sl-text-primary) 16%, transparent);
+  opacity: 0;
+  transform: translateX(0.55cqw);
+  animation:
+    tiemanStackAssuranceItemIn 420ms var(--sl-ease-standard) both,
+    tiemanStackAssurancePulse 6.4s ease-in-out infinite;
+}
+
+.tieman-solution-stack__assurance li:nth-child(1) { animation-delay: 1.38s, 4.78s; }
+.tieman-solution-stack__assurance li:nth-child(2) { animation-delay: 1.55s, 5.04s; }
+.tieman-solution-stack__assurance li:nth-child(3) { animation-delay: 1.72s, 5.3s; }
+
+.tieman-solution-stack__assurance li > svg {
+  width: 1.7cqw;
+  height: 1.7cqw;
+  border: 1px solid color-mix(in srgb, var(--sl-accent) 45%, transparent);
+  border-radius: 50%;
+  padding: 0.4cqw;
+  color: var(--sl-accent);
+  stroke-width: 1.55;
+}
+
+.tieman-solution-stack__assurance strong,
+.tieman-solution-stack__assurance small {
+  display: block;
+}
+
+.tieman-solution-stack__assurance strong {
+  max-width: 7cqw;
+  font-size: 0.66cqw;
+  font-weight: var(--sl-weight-medium);
+  line-height: 1.12;
+}
+
+.tieman-solution-stack__assurance small {
+  margin-top: 0.22cqw;
+  color: color-mix(in srgb, var(--sl-text-primary) 46%, transparent);
+  font-size: 0.43cqw;
+  line-height: 1.25;
 }
 
 @keyframes tiemanStackSourceIn {
@@ -718,6 +868,94 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes tiemanStackSourcePulse {
+  0%, 11%, 100% {
+    border-color: var(--sl-border);
+    box-shadow: none;
+  }
+
+  3%, 7% {
+    border-color: color-mix(in srgb, var(--sl-accent) 70%, var(--sl-border));
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sl-accent) 22%, transparent);
+  }
+}
+
+@keyframes tiemanStackApplicationPulse {
+  0%, 12%, 100% {
+    border-color: color-mix(in srgb, var(--sl-accent) 28%, var(--sl-border));
+    box-shadow: 0 1cqw 2.5cqw rgba(0, 0, 0, 0.22);
+    transform: translateY(0);
+  }
+
+  4%, 8% {
+    border-color: var(--sl-accent);
+    box-shadow: 0 1cqw 2.8cqw rgba(0, 0, 0, 0.28), 0 0 0 1px var(--sl-accent);
+    transform: translateY(-0.18cqw);
+  }
+}
+
+@keyframes tiemanStackContextPulse {
+  0%, 17%, 100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--sl-accent) 0%, transparent);
+  }
+
+  6%, 12% {
+    box-shadow: 0 0 0 0.42cqw color-mix(in srgb, var(--sl-accent) 12%, transparent);
+  }
+}
+
+@keyframes tiemanStackSignalUp {
+  0%, 12%, 100% {
+    opacity: 0;
+    transform: translate(-50%, 0.62cqw);
+  }
+
+  3% {
+    opacity: 1;
+  }
+
+  9% {
+    opacity: 1;
+    transform: translate(-50%, -0.62cqw);
+  }
+}
+
+@keyframes tiemanStackLivePulse {
+  0%, 100% {
+    opacity: 0.52;
+    transform: scale(0.94);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes tiemanStackAssuranceIn {
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes tiemanStackAssuranceItemIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes tiemanStackAssurancePulse {
+  0%, 14%, 100% {
+    color: var(--sl-text-primary);
+  }
+
+  4%, 9% {
+    color: var(--sl-accent);
   }
 }
 
@@ -1640,11 +1878,18 @@
     font-size: 0.86rem;
   }
 
-  .tieman-solution-stack__diagram {
+  .tieman-solution-stack__architecture {
     display: flex;
     align-items: stretch;
     gap: 24px;
     margin-top: 44px;
+    flex-direction: column;
+  }
+
+  .tieman-solution-stack__diagram {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
     flex-direction: column;
   }
 
@@ -1677,7 +1922,11 @@
     display: none;
   }
 
-  .tieman-solution-stack__application-grid svg {
+  .tieman-solution-stack__signal {
+    display: none;
+  }
+
+  .tieman-solution-stack__application-grid article > svg {
     width: 42px;
     height: 42px;
     margin-bottom: auto;
@@ -1704,7 +1953,7 @@
     gap: 16px;
   }
 
-  .tieman-solution-stack__context-title svg {
+  .tieman-solution-stack__context-title > svg {
     width: 44px;
     height: 44px;
   }
@@ -1717,6 +1966,17 @@
     max-width: none;
     margin-top: 7px;
     font-size: 1.15rem;
+  }
+
+  .tieman-solution-stack__live {
+    gap: 6px;
+    margin-top: 9px;
+    font-size: 0.58rem;
+  }
+
+  .tieman-solution-stack__live svg {
+    width: 14px;
+    height: 14px;
   }
 
   .tieman-solution-stack__context ul {
@@ -1741,13 +2001,54 @@
     padding: 16px;
   }
 
-  .tieman-solution-stack__source-grid svg {
+  .tieman-solution-stack__source-grid article > svg {
     width: 28px;
     height: 28px;
   }
 
   .tieman-solution-stack__source-grid strong {
     font-size: 0.92rem;
+  }
+
+  .tieman-solution-stack__assurance {
+    min-height: 230px;
+    border-left: 1px solid color-mix(in srgb, var(--sl-accent) 54%, transparent);
+    padding: 20px;
+  }
+
+  .tieman-solution-stack__assurance-label {
+    font-size: 0.58rem;
+  }
+
+  .tieman-solution-stack__assurance ul {
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .tieman-solution-stack__assurance li {
+    display: flex;
+    align-items: flex-start;
+    border-top: 1px solid color-mix(in srgb, var(--sl-text-primary) 16%, transparent);
+    padding-top: 16px;
+    flex-direction: column;
+  }
+
+  .tieman-solution-stack__assurance li > svg {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+  }
+
+  .tieman-solution-stack__assurance strong {
+    max-width: none;
+    font-size: 0.84rem;
+  }
+
+  .tieman-solution-stack__assurance small {
+    margin-top: 6px;
+    font-size: 0.6rem;
   }
 
   .tieman-foundation__flow,
@@ -2011,15 +2312,28 @@
   .tieman-fragmentation__consequence,
   .tieman-solution-stack__application-grid article,
   .tieman-solution-stack__context,
-  .tieman-solution-stack__source-grid article {
+  .tieman-solution-stack__source-grid article,
+  .tieman-solution-stack__assurance,
+  .tieman-solution-stack__assurance li {
     opacity: 1;
     transform: none;
+    clip-path: none;
     animation: none;
   }
 
   .tieman-solution-stack__application-grid article::after,
   .tieman-solution-stack__source-grid article::before {
     transform: scaleY(1);
+    animation: none;
+  }
+
+  .tieman-solution-stack__signal {
+    display: none;
+  }
+
+  .tieman-solution-stack__live svg {
+    opacity: 1;
+    transform: none;
     animation: none;
   }
 
