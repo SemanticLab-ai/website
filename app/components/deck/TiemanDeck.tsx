@@ -25,11 +25,26 @@ const TOTAL_SLIDES = 15;
 
 const agendaItems = [
   "Tieman's vision",
-  "Problem statement",
+  "Challenges",
   "The opportunity",
   "Why us?",
   "Case studies",
   "Next steps",
+] as const;
+
+const challengeActions = [
+  { title: "Search", detail: "Find the right information" },
+  { title: "Compare", detail: "See jobs, specs and decisions together" },
+  { title: "Govern", detail: "Know what is approved and current" },
+  { title: "Reuse", detail: "Carry knowledge into the next job" },
+] as const;
+
+const challengeImpacts = [
+  "Manual interpretation",
+  "Slow handovers",
+  "Revision risk",
+  "Duplicated work",
+  "Avoidable delays",
 ] as const;
 
 const visionObjectives = [
@@ -377,34 +392,54 @@ function TiemanVisionVennSlide() {
   );
 }
 
-function ProblemSlide() {
+function ChallengesSlide() {
   return (
     <DeckSlideFrame
       index={4}
       total={TOTAL_SLIDES}
-      descriptor="The data exists. The connection does not."
-      tone="light"
-      className="tieman-problem"
+      descriptor="Fragmentation turns every handover into interpretation."
+      className="tieman-challenges"
     >
-      <div className="tieman-problem__heading">
-        <p className="deck-kicker">The problem became clear</p>
+      <div className="tieman-challenges__heading">
+        <p className="deck-kicker">The challenges</p>
         <h2 id="deck-slide-4-title">
-          Tieman doesn&apos;t have a data problem. It has a <em>disconnected data problem.</em>
+          Critical information exists. But it is <em>fragmented.</em>
         </h2>
+        <p>
+          The information Tieman needs is already present across the business. The challenge is making it usable consistently as work moves between teams.
+        </p>
       </div>
 
-      <div className="tieman-problem__body">
-        <p className="tieman-problem__lead">
-          Tieman already has decades of valuable operational knowledge.
-        </p>
-        <p>
-          It sits across Epicor, engineering systems, documents, spreadsheets and experienced people—different systems and formats that are difficult to connect, govern and use consistently.
-        </p>
-        <div className="tieman-problem__statement">
-          <span>The missing piece</span>
-          <strong>A unified foundation that brings it together.</strong>
-        </div>
-      </div>
+      <section className="tieman-challenges__friction" aria-labelledby="tieman-challenges-friction-title">
+        <p id="tieman-challenges-friction-title">Critical information is difficult to</p>
+        <ol>
+          {challengeActions.map((action, index) => (
+            <li key={action.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{action.title}</strong>
+              <small>{action.detail}</small>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="tieman-challenges__impact" aria-labelledby="tieman-challenges-impact-title">
+        <header>
+          <span>The ripple effect</span>
+          <strong id="tieman-challenges-impact-title">
+            Fragmentation compounds as work moves downstream.
+          </strong>
+          <small>Sales · Engineering · Purchasing · Planning · Production</small>
+        </header>
+        <ul>
+          {challengeImpacts.map((impact, index) => (
+            <li key={impact}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{impact}</strong>
+            </li>
+          ))}
+        </ul>
+      </section>
     </DeckSlideFrame>
   );
 }
@@ -884,7 +919,7 @@ const slides: readonly DeckSlide[] = [
   { id: "tieman-cover", label: "Transformation brief", content: <TiemanCoverSlide /> },
   { id: "tieman-agenda", label: "Agenda", content: <TiemanAgendaSlide /> },
   { id: "tieman-vision", label: "Tieman's vision", content: <TiemanVisionSlide /> },
-  { id: "tieman-problem", label: "The problem", content: <ProblemSlide /> },
+  { id: "tieman-challenges", label: "Challenges", content: <ChallengesSlide /> },
   { id: "tieman-foundation", label: "The opportunity", content: <FoundationOpportunitySlide /> },
   {
     id: "tieman-solution-stack",

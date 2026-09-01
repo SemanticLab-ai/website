@@ -197,3 +197,44 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 ## Result
 
 final result: passed
+
+## Challenges slide — QA
+
+### Source and implementation evidence
+
+- User-provided content brief: fragmentation makes critical information difficult to search, compare, govern and reuse, creating manual interpretation, slow handovers, revision risk, duplicated work and delays across Sales, Engineering, Purchasing, Planning and Production.
+- Existing slide 04 visual source: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-04-challenges-source.png`
+- Dark-mode implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-04-challenges-desktop-pass-1.png`
+- Normalised full-slide before/after comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-04-challenges-before-after.png`
+- Focused content comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-04-challenges-focused-comparison.png`
+- Updated agenda: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-agenda-challenges-desktop.png`
+- Mobile implementation, top and ripple-effect states: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-04-challenges-mobile-top.png` and `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-04-challenges-mobile-bottom.png`
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| Existing and revised desktop captures | 1588 × 1260 each | 1588 × 1260 CSS viewport; 1588 × 894 centred 16:9 stage; devicePixelRatio 1 | slide 04 |
+| Full-slide comparison | 3200 × 894 | Both 1588 × 894 stages combined side by side with a 24px gutter | slide 04 |
+| Focused comparison | 3040 × 650 | Matching 1508 × 650 content regions combined side by side | slide 04 |
+| Mobile captures | 390 × 844 each | 390 × 844 CSS viewport; devicePixelRatio 1 | slide 04 top and scrolled impact state |
+
+### Findings and fixes
+
+- [P1] The previous light slide framed the issue as a generic disconnected-data problem and did not communicate the operational consequences in the user's new brief. Fixed by rebuilding slide 04 as a dark-mode `Challenges` slide with a clear fragmentation statement, four numbered friction points and a five-part ripple-effect rail.
+- [P2] The source slide's prose structure made search, comparison, governance, reuse and downstream impact difficult to scan during a presentation. Fixed by separating the message into executive headline → four recurring information tasks → five operational consequences.
+- [P2] The agenda still described slide 04 as `Problem statement`. Fixed by changing the single agenda item and the slide navigation label to `Challenges`.
+- Pass 1 — passed: the full-slide and focused comparisons show the requested dark-mode redesign using the established SemanticLab statement-left/ruled-rail-right composition. Desktop, mobile, agenda, navigation and console checks contain no remaining actionable P0, P1 or P2 issue.
+
+### Fidelity and responsive verification
+
+- Fonts and typography: the slide retains the deck's existing display and UI families, light display weight, italic lime emphasis, uppercase tracked labels and numbered rail hierarchy. All copy remains readable at 1588 × 1260 and 390 × 844.
+- Spacing and layout rhythm: the desktop uses the deck's established two-column statement/rail composition, with a full-width consequence band above the footer. Rules, gaps and footer clearance match adjacent dark slides. Mobile collapses to one readable column and preserves the intended narrative order.
+- Colours and tokens: the light surface was intentionally replaced with `--sl-canvas`, `--sl-text-primary`, `--sl-accent` and `--sl-border`; no off-system colours were introduced.
+- Image and icon fidelity: this is a text-led information slide and requires no illustrative asset or icon. No placeholder, custom SVG, CSS illustration, emoji or substitute graphic was introduced.
+- Copy and content: the slide explicitly contains `Search`, `Compare`, `Govern`, `Reuse`, all five requested consequences and the complete department sequence `Sales · Engineering · Purchasing · Planning · Production`. The agenda contains the one-word item `Challenges`.
+- At 390 × 844, the responsive flow has `documentElement.scrollWidth === 390`, the ripple-effect section and slide footer are reachable, and the in-app browser warning/error console is empty.
+
+### Result
+
+final result: passed

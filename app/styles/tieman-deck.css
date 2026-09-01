@@ -477,71 +477,140 @@
   transform: translate(-50%, 0);
 }
 
-/* Problem */
-.tieman-problem .deck-slide__content {
+/* Challenges */
+.tieman-challenges .deck-slide__content {
   display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
-  gap: 6.4cqw;
+  grid-template-columns: 0.88fr 1.12fr;
+  grid-template-rows: 1fr auto;
+  gap: 3.2cqw 6.2cqw;
 }
 
-.tieman-problem__heading,
-.tieman-problem__body {
-  align-self: center;
+.tieman-challenges__heading {
+  align-self: start;
+  padding-top: 1.8cqw;
 }
 
-.tieman-problem__heading h2 {
-  max-width: 43cqw;
+.tieman-challenges__heading h2 {
+  max-width: 41cqw;
   margin-top: 1.35cqw;
-  font-size: 4.15cqw;
+  font-size: 4.05cqw;
   line-height: 0.92;
 }
 
-.tieman-problem__body {
-  border-top: 1px solid var(--sl-border-on-light);
-  padding-top: 1.6cqw;
-}
-
-.tieman-problem__body > p {
-  max-width: 41cqw;
-  color: color-mix(in srgb, var(--sl-text-on-light) 58%, transparent);
+.tieman-challenges__heading > p:last-child {
+  max-width: 34cqw;
+  margin-top: 2.1cqw;
+  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
   font-size: 0.88cqw;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
-.tieman-problem__body .tieman-problem__lead {
-  margin-bottom: 1.2cqw;
-  color: var(--sl-text-on-light);
-  font-size: 1.55cqw;
-  font-weight: var(--sl-weight-light);
-  line-height: 1.35;
+.tieman-challenges__friction {
+  align-self: start;
 }
 
-.tieman-problem__statement {
-  display: grid;
-  grid-template-columns: 10cqw 1fr;
-  align-items: baseline;
-  gap: 1.4cqw;
-  margin-top: 3cqw;
-  border-top: 1px solid var(--sl-border-on-light);
-  padding-top: 1.35cqw;
-}
-
-.tieman-problem__statement span,
-.tieman-foundation__result::before,
-.tieman-why-us__studio span,
-.tieman-operating-layer__governance span,
-.tieman-flow__outcome span,
-.tieman-pilot__promise span {
-  color: #4b8f28;
+.tieman-challenges__friction > p,
+.tieman-challenges__impact header > span {
+  color: var(--sl-accent);
   font-size: 0.58cqw;
   font-weight: var(--sl-weight-semibold);
   letter-spacing: var(--sl-tracking-label);
   text-transform: uppercase;
 }
 
-.tieman-problem__statement strong {
-  font-size: 1.18cqw;
+.tieman-challenges__friction ol,
+.tieman-challenges__impact ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tieman-challenges__friction ol {
+  margin-top: 1.35cqw;
+  border-bottom: 1px solid var(--sl-border);
+}
+
+.tieman-challenges__friction li {
+  display: grid;
+  grid-template-columns: 3.2cqw 11cqw 1fr;
+  min-height: 5.05cqw;
+  align-items: center;
+  border-top: 1px solid var(--sl-border);
+}
+
+.tieman-challenges__friction li > span,
+.tieman-challenges__impact li > span {
+  color: var(--sl-accent);
+  font-size: 0.58cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: 0.15em;
+}
+
+.tieman-challenges__friction li > strong {
+  font-size: 1.45cqw;
   font-weight: var(--sl-weight-regular);
+}
+
+.tieman-challenges__friction li > small {
+  color: color-mix(in srgb, var(--sl-text-primary) 52%, transparent);
+  font-size: 0.63cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: 0.11em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.tieman-challenges__impact {
+  grid-column: 1 / -1;
+  align-self: end;
+  border-top: 1px solid var(--sl-border);
+  padding-top: 1.45cqw;
+}
+
+.tieman-challenges__impact header {
+  display: grid;
+  grid-template-columns: 11cqw 1fr auto;
+  align-items: baseline;
+  gap: 1.4cqw;
+}
+
+.tieman-challenges__impact header > strong {
+  font-size: 1.3cqw;
+  font-weight: var(--sl-weight-regular);
+}
+
+.tieman-challenges__impact header > small {
+  color: color-mix(in srgb, var(--sl-text-primary) 46%, transparent);
+  font-size: 0.55cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tieman-challenges__impact ul {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 1.45cqw;
+  border-top: 1px solid var(--sl-border);
+  border-bottom: 1px solid var(--sl-border);
+}
+
+.tieman-challenges__impact li {
+  min-height: 5.1cqw;
+  border-right: 1px solid var(--sl-border);
+  padding: 0.9cqw 1.15cqw;
+}
+
+.tieman-challenges__impact li:last-child {
+  border-right: 0;
+}
+
+.tieman-challenges__impact li > strong {
+  display: block;
+  max-width: 12cqw;
+  margin-top: 1.25cqw;
+  font-size: 0.94cqw;
+  font-weight: var(--sl-weight-regular);
+  line-height: 1.15;
 }
 
 /* Foundation */
@@ -1844,7 +1913,7 @@
   .tieman-agenda__heading h2,
   .tieman-vision__heading h2,
   .tieman-vision-venn__heading h2,
-  .tieman-problem__heading h2,
+  .tieman-challenges__heading h2,
   .tieman-foundation__heading h2,
   .tieman-solution-stack__heading h2,
   .tieman-ripple__heading h2,
@@ -1901,7 +1970,7 @@
 
   .tieman-vision .deck-slide__content,
   .tieman-vision-venn .deck-slide__content,
-  .tieman-problem .deck-slide__content,
+  .tieman-challenges .deck-slide__content,
   .tieman-foundation .deck-slide__content,
   .tieman-solution-stack .deck-slide__content,
   .tieman-ripple .deck-slide__content,
@@ -2067,7 +2136,7 @@
     line-height: 1.02;
   }
 
-  .tieman-problem__body,
+  .tieman-challenges__friction,
   .tieman-foundation__flow,
   .tieman-ripple__pipeline,
   .tieman-why-us__profiles,
@@ -2080,11 +2149,11 @@
     margin-top: 42px;
   }
 
-  .tieman-problem__body {
-    padding-top: 24px;
+  .tieman-challenges__heading {
+    padding-top: 0;
   }
 
-  .tieman-problem__body > p,
+  .tieman-challenges__heading > p:last-child,
   .tieman-foundation__heading > p:last-child,
   .tieman-pilot__heading > p:last-child {
     max-width: none;
@@ -2092,12 +2161,85 @@
     font-size: 0.86rem;
   }
 
-  .tieman-problem__body .tieman-problem__lead {
-    margin: 0 0 18px;
-    font-size: 1.35rem;
+  .tieman-challenges__friction > p,
+  .tieman-challenges__impact header > span {
+    font-size: 0.58rem;
   }
 
-  .tieman-problem__statement,
+  .tieman-challenges__friction ol {
+    margin-top: 16px;
+  }
+
+  .tieman-challenges__friction li {
+    grid-template-columns: 34px 92px minmax(0, 1fr);
+    min-height: 72px;
+  }
+
+  .tieman-challenges__friction li > span,
+  .tieman-challenges__impact li > span {
+    font-size: 0.55rem;
+  }
+
+  .tieman-challenges__friction li > strong {
+    font-size: 1.04rem;
+  }
+
+  .tieman-challenges__friction li > small {
+    font-size: 0.53rem;
+    letter-spacing: 0.08em;
+  }
+
+  .tieman-challenges__impact {
+    margin-top: 42px;
+    padding-top: 20px;
+  }
+
+  .tieman-challenges__impact header {
+    display: block;
+  }
+
+  .tieman-challenges__impact header > strong,
+  .tieman-challenges__impact header > small {
+    display: block;
+  }
+
+  .tieman-challenges__impact header > strong {
+    margin-top: 12px;
+    font-size: 1.18rem;
+    line-height: 1.25;
+  }
+
+  .tieman-challenges__impact header > small {
+    margin-top: 14px;
+    font-size: 0.52rem;
+    line-height: 1.5;
+  }
+
+  .tieman-challenges__impact ul {
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+  }
+
+  .tieman-challenges__impact li {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
+    min-height: 0;
+    align-items: center;
+    border-right: 0;
+    border-bottom: 1px solid var(--sl-border);
+    padding: 16px 14px;
+  }
+
+  .tieman-challenges__impact li:last-child {
+    border-bottom: 0;
+  }
+
+  .tieman-challenges__impact li > strong {
+    max-width: none;
+    margin-top: 0;
+    font-size: 0.96rem;
+  }
+
   .tieman-foundation__result,
   .tieman-why-us__studio,
   .tieman-operating-layer__governance,
@@ -2109,7 +2251,6 @@
     padding-top: 18px;
   }
 
-  .tieman-problem__statement span,
   .tieman-foundation__result::before,
   .tieman-why-us__studio span,
   .tieman-operating-layer__governance span,
@@ -2118,7 +2259,6 @@
     font-size: 0.58rem;
   }
 
-  .tieman-problem__statement strong,
   .tieman-why-us__studio strong,
   .tieman-operating-layer__governance strong,
   .tieman-flow__outcome strong,
