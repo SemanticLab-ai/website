@@ -198,6 +198,53 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 
 final result: passed
 
+## Operational impact slide — QA
+
+### Source and implementation evidence
+
+- User-provided slide 05 source: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_c4qGBR/Screenshot 2026-09-01 at 9.48.33 PM.png`
+- Existing live deck capture before reordering: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-05-impact-source.png`
+- Final desktop browser capture: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-05-impact-desktop-final.png`
+- Final slide-canvas capture: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-05-impact-stage-final.png`
+- Normalised source/implementation comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-05-impact-final-comparison.png`
+- Mobile pass-one evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-05-impact-mobile-top.png` and `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-05-impact-mobile-bottom.png`
+- Mobile post-fix evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-05-impact-mobile-top-pass-2.png` and `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide-05-impact-mobile-bottom-pass-2.png`
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| User source | 1589 × 896 | 16:9 source slide | original ripple-effect slide |
+| Final slide canvas | 1588 × 893 | 1588 × 893.25 CSS slide; devicePixelRatio 1 | slide 05 |
+| Full-view comparison | 3178 × 896 | Source and implementation normalised to 1589 × 896 and combined side by side | source → slide 05 |
+| Mobile captures | 390 × 844 each | 390 × 844 CSS viewport; devicePixelRatio 1 | slide 05 top and scrolled lower state |
+
+The full-view comparison shows the complete source and implementation at equal 16:9 slide dimensions. A separate focused crop was not required: the source contains no imagery or dense component detail beyond the single pipeline, and the final standalone slide-canvas capture preserves all typography and rule work at native size.
+
+### Findings, fixes and iteration history
+
+- Pass 0 — blocked: the source used a light presentation surface, occupied only the top third of the slide and disconnected its four consequence labels from the seven-stage operating flow. It also sat at slide 07, after the opportunity and solution, so it no longer functioned as the operational consequence of the challenges story.
+- [P1] Story order and theme. Fixed by moving the ripple-effect content to slide 05 directly after `Challenges`, shifting `The opportunity` and `The solution` to slides 06 and 07, and rebuilding the slide on the deck's dark canvas.
+- [P1] Operational meaning. Fixed by showing one tanker job from Sales through Production, then mapping four explicit failure modes to the handovers where fragmented context becomes clarification loops, engineering rework, long-lead surprises and revision risk.
+- [P2] Sparse composition and weak consequence hierarchy. Fixed by using the established SemanticLab executive-heading grid, a ruled seven-stage flow, four progressively emphasised impact panels and a full-width cumulative-cost statement.
+- Pass 1 — blocked on mobile only: desktop contained no actionable visual issue, but the stage and consequence indices inherited a `cqw` font size at the portrait breakpoint and rendered at 2.204px.
+- [P2] Mobile index legibility. Fixed with a breakpoint-specific selector matching the desktop specificity and setting both index systems to 0.62rem. The post-fix browser measurement is 9.92px, and the second mobile captures show every stage and impact number clearly.
+- Pass 2 — passed: desktop, mobile, slide ordering, keyboard navigation and browser-console checks contain no remaining actionable P0, P1 or P2 issue.
+
+### Fidelity and responsive verification
+
+- Fonts and typography: the existing deck display and UI families, display weights, italic lime emphasis, uppercase tracked labels and numeric hierarchy are preserved. The headline now carries the presentation moment while the process and consequence copy remains scannable.
+- Spacing and layout rhythm: the redesigned slide fills the 16:9 stage with a clear headline → process → consequence → conclusion sequence. Seven equal process cells and four equal impact panels align to the same rules and footer grid.
+- Colours and tokens: the implementation uses `--sl-canvas`, `--sl-text-primary`, `--sl-accent` and `--sl-border`, with only token-derived colour mixing for progressive impact emphasis.
+- Image and icon fidelity: this is a text-led operational diagram with no source imagery or icon requirement. No placeholder, custom SVG, CSS illustration, emoji or substitute asset was introduced.
+- Copy and content: the slide preserves the source statement `A gap upstream becomes a delay downstream`, contains all seven operating stages and explains the operational cost in Tieman-specific language.
+- Interaction: Arrow Right advances from slide 05 `Operational impact` to slide 06 `The opportunity`, then to slide 07 `The solution`; Arrow Left returns in the reverse order.
+- Responsive behaviour: the 390 × 844 layout has `documentElement.scrollWidth === 390`, a single-column job flow, readable consequence panels and a reachable footer. The in-app browser warning/error console is empty.
+
+### Result
+
+final result: passed
+
 ## Challenges slide — QA
 
 ### Source and implementation evidence

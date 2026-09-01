@@ -94,13 +94,40 @@ const visionOutcomes = [
 ] as const;
 
 const rippleStages = [
-  "Sales",
-  "Specification",
-  "Engineering",
-  "BOM",
-  "Purchasing",
-  "Planning",
-  "Production",
+  { name: "Sales", detail: "Requirements" },
+  { name: "Specification", detail: "Job definition" },
+  { name: "Engineering", detail: "Design intent" },
+  { name: "BOM", detail: "Parts + revision" },
+  { name: "Purchasing", detail: "Supply decisions" },
+  { name: "Planning", detail: "Build sequence" },
+  { name: "Production", detail: "Execution" },
+] as const;
+
+const rippleEffects = [
+  {
+    index: "01",
+    title: "Clarification loops",
+    detail: "Missing context sends questions back upstream.",
+    handoff: "Sales → Specification",
+  },
+  {
+    index: "02",
+    title: "Engineering rework",
+    detail: "Assumptions surface after design work begins.",
+    handoff: "Specification → BOM",
+  },
+  {
+    index: "03",
+    title: "Long-lead surprises",
+    detail: "Critical items are identified later than they should be.",
+    handoff: "BOM → Planning",
+  },
+  {
+    index: "04",
+    title: "Revision risk",
+    detail: "Production can act on information that is no longer current.",
+    handoff: "Planning → Production",
+  },
 ] as const;
 
 const opportunityFlow = [
@@ -447,14 +474,14 @@ function ChallengesSlide() {
 function FoundationOpportunitySlide() {
   return (
     <DeckSlideFrame
-      index={5}
+      index={6}
       total={TOTAL_SLIDES}
       descriptor="One trusted foundation for data, intelligence and action."
       className="tieman-foundation"
     >
       <div className="tieman-foundation__heading">
         <p className="deck-kicker">What Tieman is trying to achieve</p>
-        <h2 id="deck-slide-5-title">
+        <h2 id="deck-slide-6-title">
           Create one trusted foundation for Tieman&apos;s <em>data and AI.</em>
         </h2>
         <p>
@@ -481,14 +508,14 @@ function FoundationOpportunitySlide() {
 function SolutionStackSlide() {
   return (
     <DeckSlideFrame
-      index={6}
+      index={7}
       total={TOTAL_SLIDES}
       descriptor="Connect what exists. Establish trusted context. Build what comes next."
       className="tieman-solution-stack"
     >
       <div className="tieman-solution-stack__heading">
         <p className="deck-kicker">The solution</p>
-        <h2 id="deck-slide-6-title">
+        <h2 id="deck-slide-7-title">
           Connect what Tieman already has. Build <em>whatever comes next.</em>
         </h2>
         <p>
@@ -584,38 +611,55 @@ function SolutionStackSlide() {
 function RippleSlide() {
   return (
     <DeckSlideFrame
-      index={7}
+      index={5}
       total={TOTAL_SLIDES}
-      descriptor="An upstream context gap travels through the whole job."
-      tone="light"
+      descriptor="One fragmented handover multiplies across the entire job."
       className="tieman-ripple"
     >
       <div className="tieman-ripple__heading">
-        <p className="deck-kicker">The ripple effect</p>
-        <h2 id="deck-slide-7-title">
+        <p className="deck-kicker">The operational impact</p>
+        <h2 id="deck-slide-5-title">
           A gap upstream becomes a <em>delay downstream.</em>
         </h2>
+        <p>
+          When critical context is fragmented, every handover asks the next team to search, interpret and confirm it again.
+        </p>
       </div>
 
-      <ol className="tieman-ripple__pipeline" aria-label="Tieman operating flow">
+      <section className="tieman-ripple__journey" aria-labelledby="tieman-ripple-journey-title">
+        <header>
+          <span id="tieman-ripple-journey-title">One tanker job</span>
+          <strong>Context must travel with the work.</strong>
+          <small>Every handover inherits what came before</small>
+        </header>
+
+        <ol className="tieman-ripple__pipeline" aria-label="Tieman operating flow">
         {rippleStages.map((stage, index) => (
-          <li key={stage}>
+          <li key={stage.name}>
             <span>{String(index + 1).padStart(2, "0")}</span>
-            <strong>{stage}</strong>
+            <strong>{stage.name}</strong>
+            <small>{stage.detail}</small>
+          </li>
+        ))}
+        </ol>
+      </section>
+
+      <ol className="tieman-ripple__effects" aria-label="Operational effects of fragmented information">
+        {rippleEffects.map((effect) => (
+          <li key={effect.index}>
+            <span>{effect.index}</span>
+            <small>{effect.handoff}</small>
+            <strong>{effect.title}</strong>
+            <p>{effect.detail}</p>
           </li>
         ))}
       </ol>
 
-      <ul className="tieman-ripple__effects" aria-label="Potential operational effects">
-        <li>Clarification delays</li>
-        <li>Engineering rework</li>
-        <li>Missed long-lead items</li>
-        <li>Revision risk</li>
-      </ul>
-
-      <p className="tieman-ripple__pattern">
-        This is a common engineered-manufacturing pattern: systems grow department by department, while the work must move across all of them.
-      </p>
+      <div className="tieman-ripple__result">
+        <span>The cumulative cost</span>
+        <strong>More coordination. More waiting. Less throughput.</strong>
+        <small>Fragmentation compounds as the job moves downstream.</small>
+      </div>
     </DeckSlideFrame>
   );
 }
@@ -920,6 +964,7 @@ const slides: readonly DeckSlide[] = [
   { id: "tieman-agenda", label: "Agenda", content: <TiemanAgendaSlide /> },
   { id: "tieman-vision", label: "Tieman's vision", content: <TiemanVisionSlide /> },
   { id: "tieman-challenges", label: "Challenges", content: <ChallengesSlide /> },
+  { id: "tieman-ripple", label: "Operational impact", content: <RippleSlide /> },
   { id: "tieman-foundation", label: "The opportunity", content: <FoundationOpportunitySlide /> },
   {
     id: "tieman-solution-stack",
@@ -927,7 +972,6 @@ const slides: readonly DeckSlide[] = [
     fragmentCount: 4,
     content: <SolutionStackSlide />,
   },
-  { id: "tieman-ripple", label: "The ripple effect", content: <RippleSlide /> },
   { id: "tieman-why-us", label: "Why SemanticLab", content: <WhyUsSlide /> },
   { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide /> },
   { id: "tieman-approach", label: "How we work", content: <ApproachSlide /> },
