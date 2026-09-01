@@ -1230,8 +1230,7 @@
   opacity: 0;
   transition:
     visibility 0s linear 440ms,
-    opacity 360ms var(--sl-ease-standard),
-    transform 520ms var(--sl-ease-standard);
+    opacity 360ms var(--sl-ease-standard);
 }
 
 .tieman-story-question__fragment svg {
@@ -1264,42 +1263,16 @@
 .tieman-story-question__fragment.is-excel { right: 26cqw; bottom: 0; }
 .tieman-story-question__fragment.is-people { top: 13.5cqw; right: 4.8cqw; }
 
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
+.sales-deck__transition[data-deck-fragment-count="2"]:is(
   [data-deck-fragment-step="1"],
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
+  [data-deck-fragment-step="2"]
 ) .tieman-story-question__fragment {
   visibility: visible;
   opacity: 1;
   transition-delay: 0s;
 }
 
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) .tieman-story-question__fragment.is-epicor { transform: translate(6cqw, 4.2cqw); }
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) .tieman-story-question__fragment.is-solidworks { transform: translate(8.2cqw, -1.2cqw); }
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) .tieman-story-question__fragment.is-pdm { transform: translate(-6cqw, 4.2cqw); }
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) .tieman-story-question__fragment.is-documents { transform: translate(7.2cqw, -3.8cqw); }
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) .tieman-story-question__fragment.is-excel { transform: translate(0, -3.8cqw); }
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) .tieman-story-question__fragment.is-people { transform: translate(-7.2cqw, -1.2cqw); }
-
-.sales-deck__transition[data-deck-fragment-count="3"][data-deck-fragment-step="3"]
+.sales-deck__transition[data-deck-fragment-count="2"][data-deck-fragment-step="2"]
   .tieman-story-question__takeaway {
   visibility: visible;
   opacity: 1;
@@ -4100,13 +4073,6 @@
     min-width: 0;
     font-size: 0.9rem;
     overflow-wrap: anywhere;
-  }
-
-  .sales-deck__transition[data-deck-fragment-count="3"]:is(
-    [data-deck-fragment-step="2"],
-    [data-deck-fragment-step="3"]
-  ) .tieman-story-question__fragment {
-    transform: none;
   }
 
   .tieman-story-impact__journey {

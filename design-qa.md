@@ -1,5 +1,16 @@
 # Tieman Deck QA
 
+## Slide 05 reveal simplification and copy — QA
+
+- Source of truth: the user's three slide 05 annotations requesting removal of the intermediate convergence state and exact updates to the headline and takeaway.
+- Desktop evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-question-reveal/step-0-question.png`, `step-1-systems.png` and `step-2-takeaway.png` at 1280 × 720.
+- Mobile evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-question-reveal/mobile-step-2.png` at 390 × 844.
+- Headline now reads `A simple question becomes a series of searches across systems.`; takeaway and footer descriptor now read `The answer exists but the context has to be reconstructed`.
+- Slide 05 now has two fragments: the first keypress reveals the six system answer fragments in their original distributed positions; the second reveals the takeaway. The next keypress advances directly to slide 06.
+- Bounding-box verification confirmed all six system fragments keep identical x/y positions between fragments 1 and 2, removing the redundant convergence motion completely.
+- Browser verification confirmed keyboard navigation, correct fragment count and step data, zero mobile horizontal overflow and no browser warning/error logs.
+- Final result: passed.
+
 ## Redundant opportunity-summary removal — QA
 
 - Source of truth: the user's annotation identifying the standalone `WHAT TIEMAN IS TRYING TO ACHIEVE` opportunity summary as redundant.

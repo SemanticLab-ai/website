@@ -698,13 +698,13 @@ function StoryQuestionSlide() {
     <DeckSlideFrame
       index={5}
       total={TOTAL_SLIDES}
-      descriptor="The answer exists. The context has to be reconstructed."
+      descriptor="The answer exists but the context has to be reconstructed"
       className="tieman-story-question"
     >
       <div className="tieman-story-question__heading">
         <p className="deck-kicker">Where the friction begins</p>
         <h2 id="deck-slide-5-title">
-          A simple question becomes a <em>search.</em>
+          A simple question becomes a <em>series of searches across systems.</em>
         </h2>
       </div>
 
@@ -732,7 +732,7 @@ function StoryQuestionSlide() {
 
       <p className="tieman-story-question__takeaway">
         <span>What happens today</span>
-        <strong>The answer exists. The context has to be reconstructed.</strong>
+        <strong>The answer exists but the context has to be reconstructed</strong>
       </p>
     </DeckSlideFrame>
   );
@@ -1127,7 +1127,7 @@ const storyChallengeSlides: readonly DeckSlide[] = slides.flatMap((slide) => {
       {
         id: "tieman-story-question",
         label: "Where friction begins",
-        fragmentCount: 3,
+        fragmentCount: 2,
         content: <StoryQuestionSlide />,
       },
       {
