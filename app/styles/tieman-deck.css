@@ -76,6 +76,201 @@
   line-height: 1.55;
 }
 
+/* Fragmented estate */
+.tieman-fragmentation__backdrop,
+.tieman-fragmentation__shade {
+  position: absolute;
+  inset: -3.3cqw -3.7cqw -2.1cqw;
+  z-index: -3;
+  width: calc(100% + 7.4cqw);
+  height: calc(100% + 5.4cqw);
+}
+
+.tieman-fragmentation__backdrop {
+  object-fit: cover;
+  opacity: 0;
+  animation: tiemanTopologyReveal 1.35s var(--sl-ease-standard) 180ms both;
+}
+
+.tieman-fragmentation__shade {
+  z-index: -2;
+  background: rgba(11, 11, 13, 0.12);
+}
+
+.tieman-fragmentation__heading {
+  position: relative;
+  z-index: 4;
+  width: 48cqw;
+  padding-top: 0.5cqw;
+}
+
+.tieman-fragmentation__heading h2 {
+  max-width: 47cqw;
+  margin-top: 1.1cqw;
+  font-size: 3.7cqw;
+  line-height: 0.92;
+}
+
+.tieman-fragmentation__heading > p:last-child {
+  max-width: 36cqw;
+  margin-top: 1.15cqw;
+  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
+  font-size: 0.76cqw;
+  line-height: 1.52;
+}
+
+.tieman-fragmentation__map {
+  position: absolute;
+  inset: 0 0 2.8cqw;
+  z-index: 3;
+}
+
+.tieman-fragmentation__node {
+  position: absolute;
+  display: flex;
+  width: 10.4cqw;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid color-mix(in srgb, var(--sl-accent) 32%, var(--sl-border));
+  border-radius: 50%;
+  background: rgba(246, 246, 244, 0.96);
+  box-shadow: 0 1.3cqw 3.2cqw rgba(0, 0, 0, 0.32);
+  color: var(--sl-text-on-light);
+  opacity: 0;
+  text-align: center;
+  transform: translateY(1.4cqw) scale(0.76);
+  animation: tiemanFragmentNodeIn 680ms var(--sl-ease-standard) both;
+}
+
+.tieman-fragmentation__node svg {
+  width: 1.7cqw;
+  height: 1.7cqw;
+  color: #4b8f28;
+  stroke-width: 1.45;
+}
+
+.tieman-fragmentation__node strong {
+  margin-top: 0.8cqw;
+  font-size: 1.04cqw;
+  font-weight: var(--sl-weight-medium);
+}
+
+.tieman-fragmentation__node span {
+  max-width: 7.5cqw;
+  margin-top: 0.3cqw;
+  color: color-mix(in srgb, var(--sl-text-on-light) 50%, transparent);
+  font-size: 0.54cqw;
+  line-height: 1.25;
+}
+
+.tieman-fragmentation__node.is-epicor {
+  top: 1.7cqw;
+  right: 1.6cqw;
+  animation-delay: 220ms;
+}
+
+.tieman-fragmentation__node.is-solidworks {
+  top: 12.8cqw;
+  left: 48.5cqw;
+  width: 11.4cqw;
+  animation-delay: 320ms;
+}
+
+.tieman-fragmentation__node.is-pdm {
+  top: 17cqw;
+  right: 11.2cqw;
+  width: 9.6cqw;
+  animation-delay: 420ms;
+}
+
+.tieman-fragmentation__node.is-documents {
+  bottom: 3.6cqw;
+  left: 1.2cqw;
+  width: 10.8cqw;
+  animation-delay: 520ms;
+}
+
+.tieman-fragmentation__node.is-excel {
+  bottom: 2.8cqw;
+  left: 27.5cqw;
+  width: 10cqw;
+  animation-delay: 620ms;
+}
+
+.tieman-fragmentation__node.is-people {
+  right: 29.5cqw;
+  bottom: 1.8cqw;
+  width: 11.2cqw;
+  animation-delay: 720ms;
+}
+
+.tieman-fragmentation__consequence {
+  position: absolute;
+  right: 0;
+  bottom: 0.15cqw;
+  left: 0;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 10cqw 1fr;
+  align-items: baseline;
+  border-top: 1px solid var(--sl-border);
+  padding-top: 0.85cqw;
+  opacity: 0;
+  animation: tiemanFragmentConsequenceIn 520ms var(--sl-ease-standard) 960ms both;
+}
+
+.tieman-fragmentation__consequence span {
+  color: var(--sl-accent);
+  font-size: 0.58cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: var(--sl-tracking-label);
+  text-transform: uppercase;
+}
+
+.tieman-fragmentation__consequence strong {
+  font-size: 1.08cqw;
+  font-weight: var(--sl-weight-regular);
+}
+
+@keyframes tiemanTopologyReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 0.68;
+    transform: scale(1);
+  }
+}
+
+@keyframes tiemanFragmentNodeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(1.4cqw) scale(0.76);
+  }
+  72% {
+    opacity: 1;
+    transform: translateY(-0.14cqw) scale(1.025);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes tiemanFragmentConsequenceIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.7cqw);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Agenda */
 .tieman-agenda .deck-slide__content {
   display: grid;
@@ -2074,6 +2269,94 @@
     font-size: 0.9rem;
   }
 
+  .tieman-fragmentation__backdrop,
+  .tieman-fragmentation__shade {
+    inset: -54px -18px -94px;
+    width: calc(100% + 36px);
+    height: calc(100% + 148px);
+  }
+
+  .tieman-fragmentation__backdrop {
+    object-position: 58% center;
+    opacity: 0.42;
+  }
+
+  .tieman-fragmentation__heading {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .tieman-fragmentation__heading h2 {
+    max-width: none;
+    margin-top: 18px;
+    font-size: clamp(3rem, 14vw, 4.2rem);
+  }
+
+  .tieman-fragmentation__heading > p:last-child {
+    max-width: none;
+    margin-top: 22px;
+    font-size: 0.86rem;
+  }
+
+  .tieman-fragmentation__map {
+    position: relative;
+    inset: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 42px;
+  }
+
+  .tieman-fragmentation__node,
+  .tieman-fragmentation__node.is-epicor,
+  .tieman-fragmentation__node.is-solidworks,
+  .tieman-fragmentation__node.is-pdm,
+  .tieman-fragmentation__node.is-documents,
+  .tieman-fragmentation__node.is-excel,
+  .tieman-fragmentation__node.is-people {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    max-width: 158px;
+    justify-self: center;
+  }
+
+  .tieman-fragmentation__node svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .tieman-fragmentation__node strong {
+    margin-top: 11px;
+    font-size: 1rem;
+  }
+
+  .tieman-fragmentation__node span {
+    max-width: 116px;
+    margin-top: 5px;
+    font-size: 0.62rem;
+  }
+
+  .tieman-fragmentation__consequence {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 38px;
+    padding-top: 18px;
+  }
+
+  .tieman-fragmentation__consequence span {
+    font-size: 0.58rem;
+  }
+
+  .tieman-fragmentation__consequence strong {
+    font-size: 1.08rem;
+    line-height: 1.4;
+  }
+
   .tieman-agenda .deck-slide__content {
     display: block;
   }
@@ -2931,6 +3214,18 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .tieman-fragmentation__backdrop,
+  .tieman-fragmentation__node,
+  .tieman-fragmentation__consequence {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .tieman-fragmentation__backdrop {
+    opacity: 0.68;
+  }
+
   .tieman-vision-venn__outcome,
   .tieman-vision-venn__intersection,
   .tieman-vision-venn__core {

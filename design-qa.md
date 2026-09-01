@@ -285,3 +285,43 @@ final result: passed
 ### Result
 
 final result: passed
+
+## Context landscape restoration — QA
+
+### Source and implementation evidence
+
+- User-provided restoration target: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_9AhTah/Screenshot 2026-09-01 at 10.18.18 PM.png`
+- Restored desktop browser capture: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-context-landscape-restored-desktop.png`
+- Normalised source/restoration comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-context-landscape-restoration-comparison.png`
+- Responsive captures: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-context-landscape-restored-mobile-top.png` and `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-context-landscape-restored-mobile-bottom.png`
+
+### Normalisation
+
+| Artifact | Pixel size | CSS viewport / rendered size | State |
+| --- | ---: | ---: | --- |
+| User source | 1586 × 938 | Source capture contained approximately 23px of surrounding vertical canvas above and below the 16:9 slide | original `Where context lives` state |
+| Restored desktop | 1588 × 1260 | 1588 × 1260 CSS viewport; 1588 × 893 centred slide; devicePixelRatio 1 | slide 06 of 16 |
+| Full comparison | 3172 × 892 | Both slide canvases cropped to 1586 × 892 and combined side by side | source → restoration |
+| Mobile captures | 390 × 844 each | 390 × 844 CSS viewport; devicePixelRatio 1 | top and scrolled lower state |
+
+The full-view comparison is sufficient because it shows every layout-critical element at equal slide dimensions: headline, supporting copy, all six system nodes, topology backdrop, consequence statement, footer and slide number. No additional focused crop was required.
+
+### Findings and verification
+
+- [P1] The `Where context lives` slide had been removed from the active slide array during earlier story restructuring. Fixed by restoring its original component, topology asset, node layout, motion and responsive treatment as a new slide without replacing any current slide.
+- [P2] Re-inserting the slide before slide 05 would have contradicted the user's approved `Operational impact` position. Fixed by preserving slide 05 exactly and placing the restored context landscape at slide 06; the opportunity and solution move intact to slides 07 and 08.
+- Pass 1 — passed: the normalised comparison shows the restored slide reproduces the selected composition and content with no actionable P0, P1 or P2 difference.
+
+### Fidelity and responsive verification
+
+- Fonts and typography: the original deck display hierarchy, italic lime emphasis, tracked labels and centred system-node labels are restored without copy changes or clipping.
+- Spacing and layout rhythm: desktop node sizes and positions, heading measure, topology crop, consequence rail and footer alignment match the selected source. Mobile converts the six circles to a balanced two-column grid.
+- Colours and tokens: the slide uses the existing dark canvas, lime accent, light node surfaces, border and text tokens. No new palette was introduced.
+- Image and icon fidelity: the original `fragmented-topology.png` raster asset and existing Lucide system icons are reused. No placeholder or approximate replacement asset was introduced.
+- Copy and content: all source copy and all six systems—Epicor, SolidWorks, PDM, Word + PDF, Excel and People—are present verbatim.
+- Interaction and preservation: keyboard navigation verifies slide 05 remains `Operational impact`, slide 06 is `Where context lives`, slide 07 is `The opportunity` and slide 08 is `The solution`. The total deck count is 16, confirming that the restoration adds rather than replaces a slide.
+- Responsive behaviour: at 390 × 844, `documentElement.scrollWidth === 390`, the complete system grid and consequence statement are reachable, and the browser warning/error console is empty.
+
+### Result
+
+final result: passed
