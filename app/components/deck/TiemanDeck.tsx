@@ -799,7 +799,8 @@ function WhyUsSlide() {
       <div className="tieman-why-us__heading">
         <p className="deck-kicker">Why SemanticLab</p>
         <h2 id="deck-slide-8-title">
-          The people framing the problem stay close to the <em>build.</em>
+          <span>Technology is only half</span>
+          <em>the transformation</em>
         </h2>
       </div>
 
@@ -811,7 +812,7 @@ function WhyUsSlide() {
           <div className="tieman-why-us__bio">
             <span>Engineering &amp; AI delivery</span>
             <h3>Raihan Razi</h3>
-            <p>15 years across product, software delivery and technology strategy, including GameDay-scale platforms and PartsHQ.</p>
+            <p>15 years across product, software delivery and technology strategy.</p>
           </div>
         </article>
         <article>
@@ -821,7 +822,7 @@ function WhyUsSlide() {
           <div className="tieman-why-us__bio">
             <span>Product strategy &amp; experience</span>
             <h3>Naila Rahman</h3>
-            <p>Research-led product and workflow design across Podly and GameDay, connecting evidence, requirements and user decisions.</p>
+            <p>Research-led product and workflow design, connecting evidence, requirements and user decisions.</p>
           </div>
         </article>
       </div>

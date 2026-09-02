@@ -2335,8 +2335,14 @@
 .tieman-why-us__heading h2 {
   max-width: 39cqw;
   margin-top: 1.35cqw;
-  font-size: 4cqw;
+  font-size: 3.55cqw;
   line-height: 0.91;
+}
+
+.tieman-why-us__heading h2 > span,
+.tieman-why-us__heading h2 > em {
+  display: block;
+  white-space: nowrap;
 }
 
 .tieman-why-us__profiles {
