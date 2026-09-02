@@ -1107,7 +1107,6 @@
 }
 
 .tieman-story-landscape__consequence,
-.tieman-story-question__takeaway,
 .tieman-story-impact__result {
   position: absolute;
   right: 0;
@@ -1129,7 +1128,6 @@
 }
 
 .tieman-story-landscape__consequence span,
-.tieman-story-question__takeaway span,
 .tieman-story-impact__result span {
   color: var(--sl-accent);
   font-size: 0.56cqw;
@@ -1139,7 +1137,6 @@
 }
 
 .tieman-story-landscape__consequence strong,
-.tieman-story-question__takeaway strong,
 .tieman-story-impact__result strong {
   font-size: 1.08cqw;
   font-weight: var(--sl-weight-regular);
@@ -1255,20 +1252,10 @@
 .tieman-story-question__fragment.is-excel { right: 26cqw; bottom: 0; }
 .tieman-story-question__fragment.is-people { top: 13.5cqw; right: 4.8cqw; }
 
-.sales-deck__transition[data-deck-fragment-count="2"]:is(
-  [data-deck-fragment-step="1"],
-  [data-deck-fragment-step="2"]
-) .tieman-story-question__fragment {
+.sales-deck__transition[data-deck-fragment-count="1"][data-deck-fragment-step="1"]
+  .tieman-story-question__fragment {
   visibility: visible;
   opacity: 1;
-  transition-delay: 0s;
-}
-
-.sales-deck__transition[data-deck-fragment-count="2"][data-deck-fragment-step="2"]
-  .tieman-story-question__takeaway {
-  visibility: visible;
-  opacity: 1;
-  transform: none;
   transition-delay: 0s;
 }
 
@@ -4401,7 +4388,6 @@
 
   .tieman-story-landscape__job span,
   .tieman-story-landscape__consequence span,
-  .tieman-story-question__takeaway span,
   .tieman-story-impact__result span {
     font-size: 0.58rem;
   }
@@ -4412,7 +4398,6 @@
   }
 
   .tieman-story-landscape__consequence,
-  .tieman-story-question__takeaway,
   .tieman-story-impact__result {
     position: relative;
     right: auto;
@@ -4425,7 +4410,6 @@
   }
 
   .tieman-story-landscape__consequence strong,
-  .tieman-story-question__takeaway strong,
   .tieman-story-impact__result strong {
     font-size: 1.08rem;
     line-height: 1.35;
@@ -4582,7 +4566,6 @@
   .tieman-story-landscape__connectors span,
   .tieman-story-landscape__consequence,
   .tieman-story-question__fragment,
-  .tieman-story-question__takeaway,
   .tieman-story-impact__pipeline li,
   .tieman-story-impact__trail,
   .tieman-story-impact__signal,

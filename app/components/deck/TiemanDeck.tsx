@@ -782,11 +782,6 @@ function StoryQuestionSlide() {
           );
         })}
       </section>
-
-      <p className="tieman-story-question__takeaway">
-        <span>What happens today</span>
-        <strong>The answer exists but the context has to be reconstructed</strong>
-      </p>
     </DeckSlideFrame>
   );
 }
@@ -1222,7 +1217,7 @@ const storyChallengeSlides: readonly DeckSlide[] = slides.flatMap((slide) => {
       {
         id: "tieman-story-question",
         label: "Where friction begins",
-        fragmentCount: 2,
+        fragmentCount: 1,
         content: <StoryQuestionSlide />,
       },
       {

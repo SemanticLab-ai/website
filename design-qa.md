@@ -1,5 +1,16 @@
 # Tieman Deck QA
 
+## Slide 5 takeaway-strip removal — QA
+
+- Source of truth: the user's screenshot annotation requesting removal of the `WHAT HAPPENS TODAY` takeaway strip from slide 5.
+- Removed the full strip, including its label, sentence, divider and all dedicated desktop, responsive and reduced-motion styling.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-slide5-takeaway/01-before-live.png` at 1280 × 720.
+- Final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-slide5-takeaway/02-after-local.png` at the same viewport and systems-revealed state.
+- Reduced the slide from two presenter fragments to one, eliminating the now-empty keypress that previously revealed the removed strip.
+- Browser interaction verification confirmed all six system references remain hidden initially, appear on the single reveal, and the following keypress advances directly to the operational-impact slide.
+- DOM verification found no takeaway element, label or full-size sentence inside the slide content. Browser warning/error logs were empty and no framework overlay was present.
+- Final result: passed.
+
 ## Venn intersection platform-name refinement — QA
 
 - Source of truth: the user's screenshot annotation requesting removal of `TIP` and a large, bold full platform name with one word per line.
