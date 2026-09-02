@@ -286,7 +286,7 @@ function TiemanCoverSlide() {
     >
       <img
         className="tieman-cover__image"
-        src="/images/deck/tieman/food-grade.jpg"
+        src="/images/deck/tieman/food-grade.webp"
         alt=""
         width={1024}
         height={576}
@@ -819,7 +819,13 @@ function WhyUsSlide() {
       <div className="tieman-why-us__profiles">
         <article>
           <div className="tieman-why-us__portrait">
-            <img src="/images/founders/raihan-portrait-v4.png" alt="Raihan Razi" width={898} height={1122} />
+            <img
+              src="/images/deck/tieman/raihan-razi.webp"
+              alt="Raihan Razi"
+              width={898}
+              height={1122}
+              decoding="async"
+            />
           </div>
           <div className="tieman-why-us__bio">
             <span>Engineering &amp; AI delivery</span>
@@ -829,7 +835,13 @@ function WhyUsSlide() {
         </article>
         <article>
           <div className="tieman-why-us__portrait">
-            <img src="/images/founders/naila.jpg" alt="Naila Rahman" width={1413} height={1853} />
+            <img
+              src="/images/deck/tieman/naila-rahman.webp"
+              alt="Naila Rahman"
+              width={900}
+              height={1181}
+              decoding="async"
+            />
           </div>
           <div className="tieman-why-us__bio">
             <span>Product strategy &amp; experience</span>
@@ -1131,7 +1143,7 @@ function NextStepSlide() {
     >
       <img
         className="tieman-next-step__image"
-        src="/images/deck/tieman/chemical.jpg"
+        src="/images/deck/tieman/chemical.webp"
         alt=""
         width={1024}
         height={683}

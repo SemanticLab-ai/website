@@ -5,6 +5,21 @@ import { salesDeckEnabled } from "~/lib/deployment";
 import "~/styles/sales-deck.css";
 import "~/styles/tieman-deck.css";
 
+const tiemanDeferredImages = [
+  "/images/deck/tieman/raihan-razi.webp",
+  "/images/deck/tieman/naila-rahman.webp",
+  "/images/deck/tieman/chemical.webp",
+] as const;
+
+export const links: Route.LinksFunction = () => [
+  ...tiemanDeferredImages.map((href) => ({
+    rel: "prefetch" as const,
+    as: "image" as const,
+    href,
+    type: "image/webp",
+  })),
+];
+
 export function loader({ request }: Route.LoaderArgs) {
   if (!salesDeckEnabled) {
     throw new Response("Not Found", { status: 404 });
