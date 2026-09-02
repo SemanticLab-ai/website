@@ -2385,6 +2385,7 @@
 }
 
 .tieman-why-us__profiles span,
+.tieman-proof__measure small,
 .tieman-flow__steps small,
 .tieman-next-step__outputs li {
   color: var(--sl-text-secondary);
@@ -2405,6 +2406,77 @@
   color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
   font-size: 0.69cqw;
   line-height: 1.5;
+}
+
+/* Proof */
+.tieman-proof .deck-slide__content {
+  display: grid;
+  grid-template-columns: 0.67fr 1.33fr;
+  grid-template-rows: 1fr;
+  column-gap: 5cqw;
+}
+
+.tieman-proof__heading {
+  align-self: center;
+}
+
+.tieman-proof__heading h2 {
+  max-width: 35cqw;
+  margin-top: 1.35cqw;
+  font-size: 3.8cqw;
+  line-height: 0.92;
+}
+
+.tieman-proof__rail {
+  align-self: center;
+  list-style: none;
+  border-top: 1px solid var(--sl-border);
+  padding: 0;
+}
+
+.tieman-proof__rail > li {
+  display: grid;
+  grid-template-columns: 2.7cqw 8.8cqw 10.2cqw 1fr;
+  min-height: 10.2cqw;
+  align-items: center;
+  gap: 1.2cqw;
+  border-bottom: 1px solid var(--sl-border);
+}
+
+.tieman-proof__rail > li > span {
+  color: var(--sl-accent);
+  font-size: 0.6cqw;
+  letter-spacing: 0.12em;
+}
+
+.tieman-proof__identity h3 {
+  margin-top: 0;
+  font-size: 1.28cqw;
+}
+
+.tieman-proof__measure small {
+  color: color-mix(in srgb, var(--sl-text-primary) 45%, transparent);
+}
+
+.tieman-proof__measure strong {
+  display: block;
+  color: var(--sl-accent);
+  font-size: 1.6cqw;
+  font-weight: var(--sl-weight-light);
+}
+
+.tieman-proof__measure small {
+  display: block;
+  max-width: 9cqw;
+  margin-top: 0.3cqw;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.tieman-proof__rail p {
+  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
+  font-size: 0.67cqw;
+  line-height: 1.52;
 }
 
 /* Double diamond */
@@ -3372,6 +3444,7 @@
   .tieman-solution-stack__heading h2,
   .tieman-ripple__heading h2,
   .tieman-why-us__heading h2,
+  .tieman-proof__heading h2,
   .tieman-double-diamond__heading h2,
   .tieman-approach__heading h2,
   .tieman-operating-layer__heading h2,
@@ -3516,6 +3589,7 @@
   .tieman-solution-stack .deck-slide__content,
   .tieman-ripple .deck-slide__content,
   .tieman-why-us .deck-slide__content,
+  .tieman-proof .deck-slide__content,
   .tieman-double-diamond .deck-slide__content,
   .tieman-approach .deck-slide__content,
   .tieman-operating-layer .deck-slide__content,
@@ -3694,6 +3768,7 @@
   .tieman-challenges__friction,
   .tieman-ripple__pipeline,
   .tieman-why-us__profiles,
+  .tieman-proof__rail,
   .tieman-double-diamond__process,
   .tieman-approach__stages,
   .tieman-operating-layer__roadmap,
@@ -4206,6 +4281,7 @@
   }
 
   .tieman-why-us__profiles span,
+  .tieman-proof__measure small,
   .tieman-flow__steps small,
   .tieman-next-step__outputs li {
     font-size: 0.56rem;
@@ -4219,6 +4295,38 @@
   .tieman-why-us__profiles p {
     margin-top: 12px;
     font-size: 0.8rem;
+  }
+
+  .tieman-proof__rail > li {
+    grid-template-columns: 34px 1fr;
+    min-height: 0;
+    gap: 12px 16px;
+    padding: 24px 0;
+  }
+
+  .tieman-proof__rail > li > span {
+    grid-row: 1 / span 3;
+    align-self: start;
+    padding-top: 4px;
+    font-size: 0.62rem;
+  }
+
+  .tieman-proof__identity h3 {
+    margin-top: 0;
+    font-size: 1.35rem;
+  }
+
+  .tieman-proof__measure strong {
+    font-size: 1.6rem;
+  }
+
+  .tieman-proof__measure small {
+    max-width: none;
+    margin-top: 6px;
+  }
+
+  .tieman-proof__rail p {
+    font-size: 0.78rem;
   }
 
   .tieman-double-diamond__process {

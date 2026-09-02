@@ -30,7 +30,7 @@ import {
   type DeckSlide,
 } from "~/components/deck/DeckPresentation";
 
-const TOTAL_SLIDES = 15;
+const TOTAL_SLIDES = 16;
 
 const agendaItems = [
   "Tieman's vision",
@@ -172,6 +172,30 @@ const assurancePrinciples = [
   { name: "Security", detail: "Permissions + audit", icon: LockKeyhole },
   { name: "Governance", detail: "Rules + ownership", icon: BadgeCheck },
   { name: "Compliance", detail: "Local data residency", icon: MapPin },
+] as const;
+
+const proofPoints = [
+  {
+    index: "01",
+    name: "GameDay",
+    headline: "$250M+",
+    measure: "annual payment volume supported",
+    detail: "Large-scale operational data, payment orchestration and platform modernisation with 95%+ Stripe adoption.",
+  },
+  {
+    index: "02",
+    name: "PartsHQ",
+    headline: "100K+",
+    measure: "parts across a distributed platform",
+    detail: "Disconnected catalogue, supplier and commerce systems shaped into reliable workflow automation for six active clients.",
+  },
+  {
+    index: "03",
+    name: "Podly",
+    headline: "Evidence",
+    measure: "made usable inside the workflow",
+    detail: "Product workflows that connect requirements, evidence, ownership and decision clarity.",
+  },
 ] as const;
 
 const approachStages = [
@@ -855,17 +879,51 @@ function WhyUsSlide() {
   );
 }
 
-function DoubleDiamondSlide() {
+function ProofSlide() {
   return (
     <DeckSlideFrame
       index={9}
+      total={TOTAL_SLIDES}
+      descriptor="Relevant proof across data, platforms and workflow design."
+      className="tieman-proof"
+    >
+      <div className="tieman-proof__heading">
+        <p className="deck-kicker">Proof of relevant work</p>
+        <h2 id="deck-slide-9-title">
+          Experience that maps to the <em>operating problem.</em>
+        </h2>
+      </div>
+
+      <ol className="tieman-proof__rail">
+        {proofPoints.map((proof) => (
+          <li key={proof.name}>
+            <span>{proof.index}</span>
+            <div className="tieman-proof__identity">
+              <h3>{proof.name}</h3>
+            </div>
+            <div className="tieman-proof__measure">
+              <strong>{proof.headline}</strong>
+              <small>{proof.measure}</small>
+            </div>
+            <p>{proof.detail}</p>
+          </li>
+        ))}
+      </ol>
+    </DeckSlideFrame>
+  );
+}
+
+function DoubleDiamondSlide() {
+  return (
+    <DeckSlideFrame
+      index={10}
       total={TOTAL_SLIDES}
       descriptor="Diverge to learn. Converge to decide. Repeat with evidence."
       className="tieman-double-diamond"
     >
       <div className="tieman-double-diamond__heading">
         <p className="deck-kicker">How we turn uncertainty into progress</p>
-        <h2 id="deck-slide-9-title">
+        <h2 id="deck-slide-10-title">
           Find the right problem. Then build the <em>right solution.</em>
         </h2>
       </div>
@@ -942,14 +1000,14 @@ function DoubleDiamondSlide() {
 function ApproachSlide() {
   return (
     <DeckSlideFrame
-      index={10}
+      index={11}
       total={TOTAL_SLIDES}
       descriptor="Start small. Prove value. Expand safely."
       className="tieman-approach"
     >
       <div className="tieman-approach__heading">
         <p className="deck-kicker">How we work</p>
-        <h2 id="deck-slide-10-title">
+        <h2 id="deck-slide-11-title">
           Start small. Prove value. <em>Expand safely.</em>
         </h2>
       </div>
@@ -1003,14 +1061,14 @@ function ApproachSlide() {
 function OperatingLayerSlide() {
   return (
     <DeckSlideFrame
-      index={11}
+      index={12}
       total={TOTAL_SLIDES}
       descriptor="Business meaning sits between source systems and applications."
       className="tieman-operating-layer"
     >
       <div className="tieman-operating-layer__heading">
         <p className="deck-kicker">A modern AI operating layer</p>
-        <h2 id="deck-slide-11-title">
+        <h2 id="deck-slide-12-title">
           Intelligence becomes useful when it understands the <em>business.</em>
         </h2>
       </div>
@@ -1056,14 +1114,14 @@ function OperatingLayerSlide() {
 function TiemanFlowSlide() {
   return (
     <DeckSlideFrame
-      index={12}
+      index={13}
       total={TOTAL_SLIDES}
       descriptor="One upstream flow can improve decisions across the job."
       className="tieman-flow"
     >
       <div className="tieman-flow__heading">
         <p className="deck-kicker">How it works for Tieman</p>
-        <h2 id="deck-slide-12-title">
+        <h2 id="deck-slide-13-title">
           Move an accepted request into Engineering with <em>trusted context.</em>
         </h2>
       </div>
@@ -1100,14 +1158,14 @@ function TiemanFlowSlide() {
 function SecuritySlide() {
   return (
     <DeckSlideFrame
-      index={13}
+      index={14}
       total={TOTAL_SLIDES}
       descriptor="Secure, governed and accountable by design."
       className="tieman-security"
     >
       <div className="tieman-security__heading">
         <p className="deck-kicker">Secure by design</p>
-        <h2 id="deck-slide-13-title">
+        <h2 id="deck-slide-14-title">
           Trust is built into <em>every layer.</em>
         </h2>
       </div>
@@ -1128,14 +1186,14 @@ function SecuritySlide() {
 function PilotSlide() {
   return (
     <DeckSlideFrame
-      index={14}
+      index={15}
       total={TOTAL_SLIDES}
       descriptor="Start upstream because every downstream team inherits the handoff."
       className="tieman-pilot"
     >
       <div className="tieman-pilot__heading">
         <p className="deck-kicker">Pilot recommendation</p>
-        <h2 id="deck-slide-14-title">
+        <h2 id="deck-slide-15-title">
           Start with the Sales-to-Engineering <em>handoff.</em>
         </h2>
         <p>
@@ -1164,7 +1222,7 @@ function PilotSlide() {
 function NextStepSlide() {
   return (
     <DeckSlideFrame
-      index={15}
+      index={16}
       total={TOTAL_SLIDES}
       descriptor="Discovery replaces assumptions with a clear pilot decision."
       className="tieman-next-step"
@@ -1179,7 +1237,7 @@ function NextStepSlide() {
       <div className="tieman-next-step__shade" aria-hidden="true" />
       <div className="tieman-next-step__copy">
         <p className="deck-kicker">The next step</p>
-        <h2 id="deck-slide-15-title">
+        <h2 id="deck-slide-16-title">
           Turn the opportunity into a <em>clear first move.</em>
         </h2>
         <p>
@@ -1218,6 +1276,7 @@ const slides: readonly DeckSlide[] = [
     content: <SolutionStackSlide />,
   },
   { id: "tieman-why-us", label: "Why SemanticLab", content: <WhyUsSlide /> },
+  { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide /> },
   {
     id: "tieman-double-diamond",
     label: "Design process",
