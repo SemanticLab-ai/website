@@ -3,8 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
+    "build": "node scripts/build-cloudflare.mjs",
+    "build:app": "react-router build",
+    "check": "node scripts/check.mjs",
     "dev": "react-router dev",
+    "dev:preview": "VITE_SL_DEPLOY_ENV=preview VITE_SL_ANALYTICS_ENABLED=false VITE_SL_INDEXING_ALLOWED=false VITE_SL_FEATURE_SALES_DECK=true react-router dev",
     "preview": "npm run build && vite preview",
     "deploy": "npm run build && wrangler deploy",
     "cf-typegen": "wrangler types && react-router typegen",

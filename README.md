@@ -2,6 +2,26 @@
 
 > Marketing website for SemanticLab — an AI product studio building tools that work as hard as you do.
 
+## Deployment environments
+
+Cloudflare uses one Worker and two build modes. The shared `npm run build`
+command reads `WORKERS_CI_BRANCH`: `main` builds production, every other named
+branch builds a non-promoted preview version, and ambiguous local builds default
+to production. The source contract lives in
+`config/deployment-contract.json`; each build emits matching flattened client
+and server artifacts for verification.
+
+Preview builds disable indexing and production analytics. The private `/deck`
+sales presentation and `/deck/tieman-tankers` opportunity variant are enabled
+only in preview builds. Production retains the approved canonical origin and
+analytics configuration and returns 404 for both routes until the feature is
+explicitly authorised.
+
+Run `npm run check` before opening or updating a pull request. It typechecks,
+builds and asserts both environments, then runs
+`wrangler versions upload --dry-run` for preview and
+`wrangler deploy --dry-run` for production.
+
 ## What is SemanticLab?
 
 SemanticLab is a founder-led AI product studio based in Melbourne, Australia. We build focused AI products across multiple verticals:

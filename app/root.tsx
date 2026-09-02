@@ -13,6 +13,11 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { Navigation } from "~/components/Navigation";
 import { Footer } from "~/components/Footer";
+import {
+  analyticsEnabled,
+  googleTagManagerId,
+  indexingAllowed,
+} from "~/lib/deployment";
 
 declare global {
   interface Window {
@@ -20,10 +25,8 @@ declare global {
   }
 }
 
-const GTM_ID = "GTM-XXXXXXX";
-
 export function meta() {
-  return [
+  const tags = [
     { title: "SemanticLab - Designing Intelligent Businesses" },
     {
       name: "description",
@@ -31,6 +34,12 @@ export function meta() {
         "SemanticLab is a product innovation partner helping businesses identify and build intelligent products, systems and experiences.",
     },
   ];
+
+  if (!indexingAllowed) {
+    tags.push({ name: "robots", content: "noindex, nofollow, noarchive" });
+  }
+
+  return tags;
 }
 
 export const links: Route.LinksFunction = () => [
@@ -58,13 +67,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
     const location = useLocation();
     pathname = location.pathname;
     isAppRoute = pathname.startsWith("/app");
-    usesOwnChrome = isAppRoute || pathname === "/design-system";
+    usesOwnChrome =
+      isAppRoute || pathname === "/design-system" || pathname === "/deck";
   } catch {
     // Fallback: show marketing chrome (nav/footer) if location is unavailable
   }
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.dataLayer) {
+    if (analyticsEnabled && typeof window !== "undefined" && window.dataLayer) {
       window.dataLayer.push({
         event: "virtualPageview",
         pagePath: pathname,
@@ -78,35 +88,38 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* dataLayer initialisation */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];`,
-          }}
-        />
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        {analyticsEnabled && googleTagManagerId ? (
+          <>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || [];`,
+              }}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');`,
-          }}
-        />
+})(window,document,'script','dataLayer','${googleTagManagerId}');`,
+              }}
+            />
+          </>
+        ) : null}
         <Meta />
         <Links />
       </head>
-      <body>
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
+      <body suppressHydrationWarning>
+        {analyticsEnabled && googleTagManagerId ? (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${googleTagManagerId}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        ) : null}
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
