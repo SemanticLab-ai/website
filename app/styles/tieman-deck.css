@@ -2324,7 +2324,7 @@
 .tieman-why-us .deck-slide__content {
   display: grid;
   grid-template-columns: 0.74fr 1.26fr;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 1fr;
   gap: 2cqw 5.4cqw;
 }
 
@@ -2407,24 +2407,6 @@
   color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
   font-size: 0.69cqw;
   line-height: 1.5;
-}
-
-.tieman-why-us__studio {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 13cqw 1fr;
-  align-items: baseline;
-  border-top: 1px solid var(--sl-border);
-  padding-top: 1.1cqw;
-}
-
-.tieman-why-us__studio span {
-  color: var(--sl-accent);
-}
-
-.tieman-why-us__studio strong {
-  font-size: 1.18cqw;
-  font-weight: var(--sl-weight-regular);
 }
 
 /* Proof */
@@ -3645,7 +3627,6 @@
     font-size: 0.96rem;
   }
 
-  .tieman-why-us__studio,
   .tieman-operating-layer__governance,
   .tieman-flow__outcome,
   .tieman-pilot__promise {
@@ -3655,14 +3636,12 @@
     padding-top: 18px;
   }
 
-  .tieman-why-us__studio span,
   .tieman-operating-layer__governance span,
   .tieman-flow__outcome span,
   .tieman-pilot__promise span {
     font-size: 0.58rem;
   }
 
-  .tieman-why-us__studio strong,
   .tieman-operating-layer__governance strong,
   .tieman-flow__outcome strong,
   .tieman-pilot__promise strong {

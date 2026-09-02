@@ -1,5 +1,16 @@
 # Tieman Deck QA
 
+## Slide 8 partnership-strip removal — QA
+
+- Source of truth: the user's screenshot annotation requesting removal of the full-width `SemanticLab / AI + cloud + operational workflow design in one founder-led partnership.` strip from slide 8.
+- Removed the strip, its divider and all dedicated desktop and responsive styling.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-slide8-studio-strip/01-before-live.png` at 1280 × 720.
+- Final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-slide8-studio-strip/02-after-local.png` at the same viewport and slide state.
+- Collapsed the slide content grid from an occupied content row plus a 39.7px strip row to one 604.8px row, eliminating the empty bottom track and inherited row gap.
+- Browser geometry verification confirmed both founder profiles remain equal at 351.6 × 456.6px with 98.2px clearance before the slide footer.
+- The founder headline, portraits, bios, slide descriptor and navigation remain unchanged. Browser warning/error logs were empty, no framework overlay was present, and the next control advanced to the proof slide.
+- Final result: passed.
+
 ## Slide 5 takeaway-strip removal — QA
 
 - Source of truth: the user's screenshot annotation requesting removal of the `WHAT HAPPENS TODAY` takeaway strip from slide 5.

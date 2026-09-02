@@ -875,11 +875,6 @@ function WhyUsSlide() {
           </div>
         </article>
       </div>
-
-      <div className="tieman-why-us__studio">
-        <span>SemanticLab</span>
-        <strong>AI + cloud + operational workflow design in one founder-led partnership.</strong>
-      </div>
     </DeckSlideFrame>
   );
 }
