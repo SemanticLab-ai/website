@@ -1,5 +1,15 @@
 # Tieman Deck QA
 
+## Redundant how-we-work slide removal — QA
+
+- Source of truth: the user's browser annotation requesting removal of the complete `HOW WE WORK / Start small. Prove value. Expand safely.` slide.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-approach-removal/01-before-live.png`.
+- Removed the slide component, its two data collections, four now-unused icon imports and all dedicated desktop and responsive styling.
+- Final transition evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-approach-removal/02-diamond-final-local.png` advances directly to `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-approach-removal/04-operating-layer-final-local.png`.
+- Renumbered the operating-layer, flow, security, pilot and next-step slides and restored the main deck total to 15. The evidence slide remains slide 9 and the double-diamond remains slide 10.
+- Browser validation confirmed all five operating-layer milestones settle after the direct transition, the removed headline is absent, all counters show `/ 15`, and warning/error logs are empty.
+- Final result: passed.
+
 ## Slide 10 double-diamond process with evidence preservation — QA
 
 - Source visual truth: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_ZDZNNw/Screenshot 2026-09-02 at 10.07.40 AM.png` (1270 × 867px). The reference establishes the two-diamond `Discover → Define → Design → Deliver` structure, divergence/convergence labels, a central problem-definition decision and a left-to-right challenge-to-solution flow.

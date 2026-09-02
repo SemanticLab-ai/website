@@ -9,19 +9,15 @@ import CircleAlert from "lucide-react/dist/esm/icons/circle-alert";
 import Cuboid from "lucide-react/dist/esm/icons/cuboid";
 import Database from "lucide-react/dist/esm/icons/database";
 import FileText from "lucide-react/dist/esm/icons/file-text";
-import Hammer from "lucide-react/dist/esm/icons/hammer";
 import Layers3 from "lucide-react/dist/esm/icons/layers-3";
 import LayoutDashboard from "lucide-react/dist/esm/icons/layout-dashboard";
-import Lightbulb from "lucide-react/dist/esm/icons/lightbulb";
 import LockKeyhole from "lucide-react/dist/esm/icons/lock-keyhole";
 import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import Network from "lucide-react/dist/esm/icons/network";
 import PanelsTopLeft from "lucide-react/dist/esm/icons/panels-top-left";
 import RotateCcw from "lucide-react/dist/esm/icons/rotate-ccw";
-import ScanSearch from "lucide-react/dist/esm/icons/scan-search";
 import Sheet from "lucide-react/dist/esm/icons/sheet";
 import ShieldCheck from "lucide-react/dist/esm/icons/shield-check";
-import TrendingUp from "lucide-react/dist/esm/icons/trending-up";
 import Users from "lucide-react/dist/esm/icons/users";
 import Workflow from "lucide-react/dist/esm/icons/workflow";
 import {
@@ -30,7 +26,7 @@ import {
   type DeckSlide,
 } from "~/components/deck/DeckPresentation";
 
-const TOTAL_SLIDES = 16;
+const TOTAL_SLIDES = 15;
 
 const agendaItems = [
   "Tieman's vision",
@@ -195,52 +191,6 @@ const proofPoints = [
     headline: "Evidence",
     measure: "made usable inside the workflow",
     detail: "Product workflows that connect requirements, evidence, ownership and decision clarity.",
-  },
-] as const;
-
-const approachStages = [
-  {
-    index: "01",
-    title: "Understand",
-    summary: "Frame the business problem, workflow and decision before selecting technology.",
-  },
-  {
-    index: "02",
-    title: "Shape",
-    summary: "Validate the data, architecture, governance and narrowest valuable use case.",
-  },
-  {
-    index: "03",
-    title: "Prove",
-    summary: "Run one controlled pilot with human approvals and measurable outcomes.",
-  },
-  {
-    index: "04",
-    title: "Expand",
-    summary: "Reuse the foundation across workflows only after value and trust are established.",
-  },
-] as const;
-
-const agileLoopSteps = [
-  {
-    title: "Build",
-    detail: "Create the smallest useful increment",
-    icon: Hammer,
-  },
-  {
-    title: "Validate",
-    detail: "Test it in the real workflow",
-    icon: ScanSearch,
-  },
-  {
-    title: "Learn",
-    detail: "Capture evidence and feedback",
-    icon: Lightbulb,
-  },
-  {
-    title: "Add value",
-    detail: "Release what is proven",
-    icon: TrendingUp,
   },
 ] as const;
 
@@ -997,78 +947,17 @@ function DoubleDiamondSlide() {
   );
 }
 
-function ApproachSlide() {
-  return (
-    <DeckSlideFrame
-      index={11}
-      total={TOTAL_SLIDES}
-      descriptor="Start small. Prove value. Expand safely."
-      className="tieman-approach"
-    >
-      <div className="tieman-approach__heading">
-        <p className="deck-kicker">How we work</p>
-        <h2 id="deck-slide-11-title">
-          Start small. Prove value. <em>Expand safely.</em>
-        </h2>
-      </div>
-
-      <section className="tieman-approach__iteration" aria-label="Agile delivery loop">
-        <header>
-          <span>Agile delivery loop</span>
-          <strong>Each cycle adds usable value.</strong>
-        </header>
-
-        <ol>
-          {agileLoopSteps.map((step, index) => {
-            const Icon = step.icon;
-
-            return (
-              <li key={step.title} className={index === agileLoopSteps.length - 1 ? "is-value" : undefined}>
-                <Icon aria-hidden="true" />
-                <div>
-                  <strong>{step.title}</strong>
-                  <small>{step.detail}</small>
-                </div>
-                {index < agileLoopSteps.length - 1 ? <ArrowRight aria-hidden="true" /> : null}
-              </li>
-            );
-          })}
-        </ol>
-
-        <p>
-          <RotateCcw aria-hidden="true" />
-          <span>Learning informs the next build.</span>
-        </p>
-      </section>
-
-      <ol className="tieman-approach__stages">
-        {approachStages.map((stage) => (
-          <li key={stage.index}>
-            <span>{stage.index}</span>
-            <h3>{stage.title}</h3>
-            <p>{stage.summary}</p>
-          </li>
-        ))}
-      </ol>
-
-      <p className="tieman-approach__principle">
-        Every stage produces a decision—not a technology commitment.
-      </p>
-    </DeckSlideFrame>
-  );
-}
-
 function OperatingLayerSlide() {
   return (
     <DeckSlideFrame
-      index={12}
+      index={11}
       total={TOTAL_SLIDES}
       descriptor="Business meaning sits between source systems and applications."
       className="tieman-operating-layer"
     >
       <div className="tieman-operating-layer__heading">
         <p className="deck-kicker">A modern AI operating layer</p>
-        <h2 id="deck-slide-12-title">
+        <h2 id="deck-slide-11-title">
           Intelligence becomes useful when it understands the <em>business.</em>
         </h2>
       </div>
@@ -1114,14 +1003,14 @@ function OperatingLayerSlide() {
 function TiemanFlowSlide() {
   return (
     <DeckSlideFrame
-      index={13}
+      index={12}
       total={TOTAL_SLIDES}
       descriptor="One upstream flow can improve decisions across the job."
       className="tieman-flow"
     >
       <div className="tieman-flow__heading">
         <p className="deck-kicker">How it works for Tieman</p>
-        <h2 id="deck-slide-13-title">
+        <h2 id="deck-slide-12-title">
           Move an accepted request into Engineering with <em>trusted context.</em>
         </h2>
       </div>
@@ -1158,14 +1047,14 @@ function TiemanFlowSlide() {
 function SecuritySlide() {
   return (
     <DeckSlideFrame
-      index={14}
+      index={13}
       total={TOTAL_SLIDES}
       descriptor="Secure, governed and accountable by design."
       className="tieman-security"
     >
       <div className="tieman-security__heading">
         <p className="deck-kicker">Secure by design</p>
-        <h2 id="deck-slide-14-title">
+        <h2 id="deck-slide-13-title">
           Trust is built into <em>every layer.</em>
         </h2>
       </div>
@@ -1186,14 +1075,14 @@ function SecuritySlide() {
 function PilotSlide() {
   return (
     <DeckSlideFrame
-      index={15}
+      index={14}
       total={TOTAL_SLIDES}
       descriptor="Start upstream because every downstream team inherits the handoff."
       className="tieman-pilot"
     >
       <div className="tieman-pilot__heading">
         <p className="deck-kicker">Pilot recommendation</p>
-        <h2 id="deck-slide-15-title">
+        <h2 id="deck-slide-14-title">
           Start with the Sales-to-Engineering <em>handoff.</em>
         </h2>
         <p>
@@ -1222,7 +1111,7 @@ function PilotSlide() {
 function NextStepSlide() {
   return (
     <DeckSlideFrame
-      index={16}
+      index={15}
       total={TOTAL_SLIDES}
       descriptor="Discovery replaces assumptions with a clear pilot decision."
       className="tieman-next-step"
@@ -1237,7 +1126,7 @@ function NextStepSlide() {
       <div className="tieman-next-step__shade" aria-hidden="true" />
       <div className="tieman-next-step__copy">
         <p className="deck-kicker">The next step</p>
-        <h2 id="deck-slide-16-title">
+        <h2 id="deck-slide-15-title">
           Turn the opportunity into a <em>clear first move.</em>
         </h2>
         <p>
@@ -1283,7 +1172,6 @@ const slides: readonly DeckSlide[] = [
     fragmentCount: 4,
     content: <DoubleDiamondSlide />,
   },
-  { id: "tieman-approach", label: "How we work", content: <ApproachSlide /> },
   { id: "tieman-operating-layer", label: "AI operating layer", content: <OperatingLayerSlide /> },
   { id: "tieman-flow", label: "How it works", content: <TiemanFlowSlide /> },
   { id: "tieman-security", label: "Secure by design", content: <SecuritySlide /> },
