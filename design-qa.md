@@ -1,5 +1,13 @@
 # Tieman Deck QA
 
+## Review branch lock and TBD cover — QA
+
+- Source of truth: the user approved slides 1–10 for review and requested that slides 11–15 remain visibly on hold until the next stakeholder discussion.
+- Locked review branch: `tieman-review`. The first ten slide definitions, content, animation counts and ordering remain unchanged from commit `0190ff8`.
+- Slides 11–15 retain their underlying draft content but are visually obscured by a shared translucent glass cover labelled `TBD / To be refined after stakeholder review.`
+- The cover is presentation-only and does not intercept pointer events, so previous/next and fullscreen controls remain usable throughout the held section.
+- Preview and production isolation remains enforced: the review branch uploads a non-indexable preview version and does not promote or enable the private deck in production.
+
 ## Redundant how-we-work slide removal — QA
 
 - Source of truth: the user's browser annotation requesting removal of the complete `HOW WE WORK / Start small. Prove value. Expand safely.` slide.

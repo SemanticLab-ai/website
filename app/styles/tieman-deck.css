@@ -3233,7 +3233,102 @@
   border-right: 0;
 }
 
+/* Review hold */
+.sales-deck--tieman .sales-deck__transition {
+  position: relative;
+}
+
+.tieman-tbd-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  padding: 3.7cqw;
+  background: rgba(5, 7, 6, 0.5);
+  -webkit-backdrop-filter: blur(18px) saturate(0.72);
+  backdrop-filter: blur(18px) saturate(0.72);
+  pointer-events: none;
+}
+
+.tieman-tbd-cover::before {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 42%, rgba(132, 255, 74, 0.13), transparent 34%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.035), transparent 58%);
+  content: "";
+}
+
+.tieman-tbd-cover__panel {
+  position: relative;
+  display: grid;
+  width: min(54cqw, calc(100% - 5cqw));
+  grid-template-columns: 18cqw minmax(0, 1fr);
+  align-items: end;
+  gap: 1.2cqw 2.5cqw;
+  border: 1px solid color-mix(in srgb, var(--sl-accent) 34%, rgba(255, 255, 255, 0.18));
+  padding: 2.3cqw 2.7cqw 2.6cqw;
+  background: rgba(13, 17, 14, 0.68);
+  box-shadow: 0 2.4cqw 6cqw rgba(0, 0, 0, 0.38);
+  -webkit-backdrop-filter: blur(22px) saturate(0.88);
+  backdrop-filter: blur(22px) saturate(0.88);
+}
+
+.tieman-tbd-cover__panel > span {
+  grid-column: 1 / -1;
+  color: var(--sl-accent);
+  font-size: 0.62cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: var(--sl-tracking-label);
+  text-transform: uppercase;
+}
+
+.tieman-tbd-cover__panel > strong {
+  color: var(--sl-text-primary);
+  font-size: 7.2cqw;
+  font-weight: var(--sl-weight-light);
+  letter-spacing: -0.07em;
+  line-height: 0.78;
+}
+
+.tieman-tbd-cover__panel > p {
+  max-width: 24cqw;
+  padding-bottom: 0.35cqw;
+  color: color-mix(in srgb, var(--sl-text-primary) 76%, transparent);
+  font-size: 1.05cqw;
+  line-height: 1.45;
+}
+
 @media (max-width: 760px), (orientation: portrait) {
+  .tieman-tbd-cover {
+    position: fixed;
+    z-index: 70;
+    padding: 24px;
+  }
+
+  .tieman-tbd-cover__panel {
+    width: min(100%, 420px);
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 28px;
+  }
+
+  .tieman-tbd-cover__panel > span {
+    font-size: 0.58rem;
+  }
+
+  .tieman-tbd-cover__panel > strong {
+    font-size: clamp(5rem, 28vw, 8rem);
+  }
+
+  .tieman-tbd-cover__panel > p {
+    max-width: 260px;
+    padding-bottom: 0;
+    font-size: 0.92rem;
+  }
+
   .sales-deck--tieman .deck-slide__footer {
     grid-template-columns: 104px 1fr auto;
   }

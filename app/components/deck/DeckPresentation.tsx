@@ -15,6 +15,7 @@ export type DeckSlide = {
   label: string;
   content: ReactNode;
   fragmentCount?: number;
+  overlay?: ReactNode;
 };
 
 type DeckPresentationProps = {
@@ -166,6 +167,7 @@ export function DeckPresentation({
           data-deck-fragment-count={fragmentCount}
         >
           {slide.content}
+          {slide.overlay}
         </div>
       </div>
 

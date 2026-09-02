@@ -264,6 +264,18 @@ function TiemanPartnerLockup() {
   );
 }
 
+function TbdReviewOverlay() {
+  return (
+    <aside className="tieman-tbd-cover" aria-label="Next steps are to be determined">
+      <div className="tieman-tbd-cover__panel">
+        <span>Next steps</span>
+        <strong>TBD</strong>
+        <p>To be refined after stakeholder review.</p>
+      </div>
+    </aside>
+  );
+}
+
 function TiemanCoverSlide() {
   return (
     <DeckSlideFrame
@@ -1173,11 +1185,36 @@ const slides: readonly DeckSlide[] = [
     content: <DoubleDiamondSlide />,
   },
   { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide /> },
-  { id: "tieman-operating-layer", label: "AI operating layer", content: <OperatingLayerSlide /> },
-  { id: "tieman-flow", label: "How it works", content: <TiemanFlowSlide /> },
-  { id: "tieman-security", label: "Secure by design", content: <SecuritySlide /> },
-  { id: "tieman-pilot", label: "Pilot recommendation", content: <PilotSlide /> },
-  { id: "tieman-next-step", label: "The next step", content: <NextStepSlide /> },
+  {
+    id: "tieman-operating-layer",
+    label: "AI operating layer",
+    content: <OperatingLayerSlide />,
+    overlay: <TbdReviewOverlay />,
+  },
+  {
+    id: "tieman-flow",
+    label: "How it works",
+    content: <TiemanFlowSlide />,
+    overlay: <TbdReviewOverlay />,
+  },
+  {
+    id: "tieman-security",
+    label: "Secure by design",
+    content: <SecuritySlide />,
+    overlay: <TbdReviewOverlay />,
+  },
+  {
+    id: "tieman-pilot",
+    label: "Pilot recommendation",
+    content: <PilotSlide />,
+    overlay: <TbdReviewOverlay />,
+  },
+  {
+    id: "tieman-next-step",
+    label: "The next step",
+    content: <NextStepSlide />,
+    overlay: <TbdReviewOverlay />,
+  },
 ];
 
 const storyChallengeSlides: readonly DeckSlide[] = slides.flatMap((slide) => {
