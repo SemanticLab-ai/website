@@ -833,14 +833,14 @@ function WhyUsSlide() {
 function ProofSlide() {
   return (
     <DeckSlideFrame
-      index={9}
+      index={10}
       total={TOTAL_SLIDES}
       descriptor="Relevant proof across data, platforms and workflow design."
       className="tieman-proof"
     >
       <div className="tieman-proof__heading">
         <p className="deck-kicker">Proof of relevant work</p>
-        <h2 id="deck-slide-9-title">
+        <h2 id="deck-slide-10-title">
           Experience that maps to the <em>operating problem.</em>
         </h2>
       </div>
@@ -867,14 +867,14 @@ function ProofSlide() {
 function DoubleDiamondSlide() {
   return (
     <DeckSlideFrame
-      index={10}
+      index={9}
       total={TOTAL_SLIDES}
       descriptor="Diverge to learn. Converge to decide. Repeat with evidence."
       className="tieman-double-diamond"
     >
       <div className="tieman-double-diamond__heading">
         <p className="deck-kicker">How we turn uncertainty into progress</p>
-        <h2 id="deck-slide-10-title">
+        <h2 id="deck-slide-9-title">
           Find the right problem. Then build the <em>right solution.</em>
         </h2>
       </div>
@@ -1166,13 +1166,13 @@ const slides: readonly DeckSlide[] = [
     content: <SolutionStackSlide />,
   },
   { id: "tieman-why-us", label: "Why SemanticLab", content: <WhyUsSlide /> },
-  { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide /> },
   {
     id: "tieman-double-diamond",
     label: "Design process",
     fragmentCount: 4,
     content: <DoubleDiamondSlide />,
   },
+  { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide /> },
   { id: "tieman-operating-layer", label: "AI operating layer", content: <OperatingLayerSlide /> },
   { id: "tieman-flow", label: "How it works", content: <TiemanFlowSlide /> },
   { id: "tieman-security", label: "Secure by design", content: <SecuritySlide /> },

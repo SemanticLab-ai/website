@@ -6,16 +6,16 @@
 - Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-approach-removal/01-before-live.png`.
 - Removed the slide component, its two data collections, four now-unused icon imports and all dedicated desktop and responsive styling.
 - Final transition evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-approach-removal/02-diamond-final-local.png` advances directly to `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-approach-removal/04-operating-layer-final-local.png`.
-- Renumbered the operating-layer, flow, security, pilot and next-step slides and restored the main deck total to 15. The evidence slide remains slide 9 and the double-diamond remains slide 10.
+- Renumbered the operating-layer, flow, security, pilot and next-step slides and restored the main deck total to 15. The double-diamond is slide 9 and the evidence slide is slide 10.
 - Browser validation confirmed all five operating-layer milestones settle after the direct transition, the removed headline is absent, all counters show `/ 15`, and warning/error logs are empty.
 - Final result: passed.
 
-## Slide 10 double-diamond process with evidence preservation — QA
+## Slide 9 double-diamond process with evidence preservation — QA
 
 - Source visual truth: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_ZDZNNw/Screenshot 2026-09-02 at 10.07.40 AM.png` (1270 × 867px). The reference establishes the two-diamond `Discover → Define → Design → Deliver` structure, divergence/convergence labels, a central problem-definition decision and a left-to-right challenge-to-solution flow.
 - Previous live evidence slide: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-slide9-double-diamond/01-before-live.png`.
-- Restored evidence-slide proof: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-slide9-double-diamond/06-evidence-restored-local.png`. GameDay, PartsHQ and Podly remain together as slide 9, with all three metrics and descriptions unchanged.
-- Final double-diamond implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-slide9-double-diamond/08-diamond-final-local.png` (browser-surface capture; 1280 × 720 CSS viewport; devicePixelRatio 1), slide 10 at final fragment 4.
+- Restored evidence-slide proof: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-slide9-double-diamond/06-evidence-restored-local.png`. GameDay, PartsHQ and Podly remain together as slide 10, with all three metrics and descriptions unchanged.
+- Final double-diamond implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-slide9-double-diamond/08-diamond-final-local.png` (browser-surface capture; 1280 × 720 CSS viewport; devicePixelRatio 1), now slide 9 at final fragment 4.
 - Reveal evidence: `07-diamond-initial-local.png`, `03-step1-local.png`, `04-step2-local.png` and `08-diamond-final-local.png` in the same folder. The four presenter-controlled steps reveal `Challenge + Discover`, `Define + Clear problem`, `Design`, then `Deliver + Validated solution + Learn, then repeat`.
 - Full-view comparison: the implementation preserves the reference's paired-diamond hierarchy, central decision gate, left-to-right endpoints and diverge/converge terminology. The white, blue and teal source palette was intentionally translated to the existing Tieman dark canvas, SemanticLab lime accent, hairline borders and restrained elevated surfaces.
 - Focused comparison was not required: the reference contains no photographic or detailed raster assets, and every diagram label, endpoint and transition is legible in the full-view capture. Standard Lucide arrows and loop iconography are used for directional affordances.
@@ -23,9 +23,9 @@
 - Spacing and layout rhythm: the diagram is centred beneath the headline with equal diamond proportions, balanced endpoints and a separate concluding principle rail. No overlap or footer collision is visible.
 - Colors and visual tokens: only existing deck tokens are used (`--sl-canvas`, `--sl-surface-1`, `--sl-text-primary`, `--sl-border`, `--sl-accent`), so the visual is recognisably part of the same deck rather than imported reference styling.
 - Image quality and asset fidelity: the reference is a geometric process model rather than a bitmap asset. It was rebuilt as semantic slide content so labels remain sharp and individually revealable at presentation scale; no raster placeholders or generated image assets were needed.
-- Copy and content: slide 10 says `Find the right problem. Then build the right solution.` and cleanly separates problem framing from slide 11's delivery-loop story. The deck now totals 16 slides so the evidence slide is retained rather than replaced.
+- Copy and content: slide 9 says `Find the right problem. Then build the right solution.` and cleanly separates problem framing from the evidence presented on slide 10. The deck totals 15 slides and retains both slides.
 - Comparison history: the first local pass used 17.7cqw diamonds and 1.22cqw stage labels, which read too small against the reference at presentation scale (P2). The final pass increased the diamonds to 19.6cqw, stage labels to 1.35cqw and the central gate to 8.8cqw; the post-fix evidence is `08-diamond-final-local.png`.
-- Browser validation: page identity and meaningful content passed; no framework overlay appeared; warning/error logs were empty. Slide 9 contains all three case studies, its next control opens the double-diamond, and the control after final fragment 4 advances to slide 11, where `Start small. Prove value. Expand safely.` renders.
+- Browser validation: page identity and meaningful content passed; no framework overlay appeared; warning/error logs were empty. Slide 8 opens the double-diamond, the control after final fragment 4 advances to slide 10 with all three case studies, and the next control opens the operating-layer roadmap on slide 11.
 - Residual gap: the mobile/portrait stacking rules were code-reviewed but the deck is a fixed 16:9 presentation surface, so this QA pass prioritised the presenter viewport rather than a separate mobile capture.
 - Final result: passed.
 
