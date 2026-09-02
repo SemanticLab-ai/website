@@ -174,30 +174,6 @@ const assurancePrinciples = [
   { name: "Compliance", detail: "Local data residency", icon: MapPin },
 ] as const;
 
-const proofPoints = [
-  {
-    index: "01",
-    name: "GameDay",
-    headline: "$250M+",
-    measure: "annual payment volume supported",
-    detail: "Large-scale operational data, payment orchestration and platform modernisation with 95%+ Stripe adoption.",
-  },
-  {
-    index: "02",
-    name: "PartsHQ",
-    headline: "100K+",
-    measure: "parts across a distributed platform",
-    detail: "Disconnected catalogue, supplier and commerce systems shaped into reliable workflow automation for six active clients.",
-  },
-  {
-    index: "03",
-    name: "Podly",
-    headline: "Evidence",
-    measure: "made usable inside the workflow",
-    detail: "Product workflows that connect requirements, evidence, ownership and decision clarity.",
-  },
-] as const;
-
 const approachStages = [
   {
     index: "01",
@@ -879,36 +855,86 @@ function WhyUsSlide() {
   );
 }
 
-function ProofSlide() {
+function DoubleDiamondSlide() {
   return (
     <DeckSlideFrame
       index={9}
       total={TOTAL_SLIDES}
-      descriptor="Relevant proof across data, platforms and workflow design."
-      className="tieman-proof"
+      descriptor="Diverge to learn. Converge to decide. Repeat with evidence."
+      className="tieman-double-diamond"
     >
-      <div className="tieman-proof__heading">
-        <p className="deck-kicker">Proof of relevant work</p>
+      <div className="tieman-double-diamond__heading">
+        <p className="deck-kicker">How we turn uncertainty into progress</p>
         <h2 id="deck-slide-9-title">
-          Experience that maps to the <em>operating problem.</em>
+          Find the right problem. Then build the <em>right solution.</em>
         </h2>
       </div>
 
-      <ol className="tieman-proof__rail">
-        {proofPoints.map((proof) => (
-          <li key={proof.name}>
-            <span>{proof.index}</span>
-            <div className="tieman-proof__identity">
-              <h3>{proof.name}</h3>
+      <div
+        className="tieman-double-diamond__process"
+        aria-label="Double diamond process from challenge to validated solution"
+      >
+        <div className="tieman-double-diamond__endpoint tieman-double-diamond__endpoint--challenge" data-process-fragment="1">
+          <small>Start here</small>
+          <strong>Challenge</strong>
+          <ArrowRight aria-hidden="true" />
+        </div>
+
+        <article className="tieman-double-diamond__diamond tieman-double-diamond__diamond--problem" data-process-fragment="1">
+          <header>
+            <span>01 · Understand</span>
+            <strong>Design the right thing</strong>
+          </header>
+          <div className="tieman-double-diamond__shape">
+            <div className="tieman-double-diamond__stage tieman-double-diamond__stage--discover">
+              <small>Diverge</small>
+              <strong>Discover</strong>
             </div>
-            <div className="tieman-proof__measure">
-              <strong>{proof.headline}</strong>
-              <small>{proof.measure}</small>
+            <div className="tieman-double-diamond__stage tieman-double-diamond__stage--define" data-process-fragment="2">
+              <small>Converge</small>
+              <strong>Define</strong>
             </div>
-            <p>{proof.detail}</p>
-          </li>
-        ))}
-      </ol>
+          </div>
+        </article>
+
+        <div className="tieman-double-diamond__gate" data-process-fragment="2">
+          <RotateCcw aria-hidden="true" />
+          <small>Shared decision</small>
+          <strong>Clear problem</strong>
+          <span>definition</span>
+        </div>
+
+        <article className="tieman-double-diamond__diamond tieman-double-diamond__diamond--solution" data-process-fragment="3">
+          <header>
+            <span>02 · Create</span>
+            <strong>Design the thing right</strong>
+          </header>
+          <div className="tieman-double-diamond__shape">
+            <div className="tieman-double-diamond__stage tieman-double-diamond__stage--design">
+              <small>Diverge</small>
+              <strong>Design</strong>
+            </div>
+            <div className="tieman-double-diamond__stage tieman-double-diamond__stage--deliver" data-process-fragment="4">
+              <small>Converge</small>
+              <strong>Deliver</strong>
+            </div>
+          </div>
+        </article>
+
+        <div className="tieman-double-diamond__endpoint tieman-double-diamond__endpoint--solution" data-process-fragment="4">
+          <ArrowRight aria-hidden="true" />
+          <small>Outcome</small>
+          <strong>Validated<br />solution</strong>
+        </div>
+      </div>
+
+      <div className="tieman-double-diamond__principle" data-process-fragment="4">
+        <span>Open up the options</span>
+        <ArrowRight aria-hidden="true" />
+        <span>Narrow to a decision</span>
+        <ArrowRight aria-hidden="true" />
+        <strong>Learn, then repeat</strong>
+      </div>
     </DeckSlideFrame>
   );
 }
@@ -1192,7 +1218,12 @@ const slides: readonly DeckSlide[] = [
     content: <SolutionStackSlide />,
   },
   { id: "tieman-why-us", label: "Why SemanticLab", content: <WhyUsSlide /> },
-  { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide /> },
+  {
+    id: "tieman-double-diamond",
+    label: "Design process",
+    fragmentCount: 4,
+    content: <DoubleDiamondSlide />,
+  },
   { id: "tieman-approach", label: "How we work", content: <ApproachSlide /> },
   { id: "tieman-operating-layer", label: "AI operating layer", content: <OperatingLayerSlide /> },
   { id: "tieman-flow", label: "How it works", content: <TiemanFlowSlide /> },

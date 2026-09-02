@@ -1,5 +1,23 @@
 # Tieman Deck QA
 
+## Slide 9 double-diamond process — QA
+
+- Source visual truth: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_ZDZNNw/Screenshot 2026-09-02 at 10.07.40 AM.png` (1270 × 867px). The reference establishes the two-diamond `Discover → Define → Design → Deliver` structure, divergence/convergence labels, a central problem-definition decision and a left-to-right challenge-to-solution flow.
+- Previous live slide evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-slide9-double-diamond/01-before-live.png`.
+- Final implementation evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-slide9-double-diamond/05-final-local.png` (3440 × 1440px browser-surface capture; 1280 × 720 CSS viewport; devicePixelRatio 1), final fragment 4.
+- Reveal evidence: `02-initial-local.png`, `03-step1-local.png`, `04-step2-local.png` and `05-final-local.png` in the same folder. The four presenter-controlled steps reveal `Challenge + Discover`, `Define + Clear problem`, `Design`, then `Deliver + Validated solution + Learn, then repeat`.
+- Full-view comparison: the implementation preserves the reference's paired-diamond hierarchy, central decision gate, left-to-right endpoints and diverge/converge terminology. The white, blue and teal source palette was intentionally translated to the existing Tieman dark canvas, SemanticLab lime accent, hairline borders and restrained elevated surfaces.
+- Focused comparison was not required: the reference contains no photographic or detailed raster assets, and every diagram label, endpoint and transition is legible in the full-view capture. Standard Lucide arrows and loop iconography are used for directional affordances.
+- Fonts and typography: the existing deck display and label styles are preserved. The headline remains the dominant reading layer; phase headings, diamond labels and endpoint copy remain legible without clipping or unintended wrapping.
+- Spacing and layout rhythm: the diagram is centred beneath the headline with equal diamond proportions, balanced endpoints and a separate concluding principle rail. No overlap or footer collision is visible.
+- Colors and visual tokens: only existing deck tokens are used (`--sl-canvas`, `--sl-surface-1`, `--sl-text-primary`, `--sl-border`, `--sl-accent`), so the visual is recognisably part of the same deck rather than imported reference styling.
+- Image quality and asset fidelity: the reference is a geometric process model rather than a bitmap asset. It was rebuilt as semantic slide content so labels remain sharp and individually revealable at presentation scale; no raster placeholders or generated image assets were needed.
+- Copy and content: slide 9 now says `Find the right problem. Then build the right solution.` and cleanly separates problem framing from slide 10's delivery-loop story.
+- Comparison history: the first local pass used 17.7cqw diamonds and 1.22cqw stage labels, which read too small against the reference at presentation scale (P2). The final pass increased the diamonds to 19.6cqw, stage labels to 1.35cqw and the central gate to 8.8cqw; the post-fix evidence is `05-final-local.png`.
+- Browser validation: page identity and meaningful content passed; no framework overlay appeared; warning/error logs were empty. The next control advances from final fragment 4 to slide 10, where `Start small. Prove value. Expand safely.` renders.
+- Residual gap: the mobile/portrait stacking rules were code-reviewed but the deck is a fixed 16:9 presentation surface, so this QA pass prioritised the presenter viewport rather than a separate mobile capture.
+- Final result: passed.
+
 ## Assurance-label and Venn-spacing refinements — QA
 
 - Source of truth: the user's two screenshot annotations requesting `Australian data hosting` become `Compliance` and more line height for the three-line platform name.

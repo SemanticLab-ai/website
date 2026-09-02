@@ -2385,8 +2385,6 @@
 }
 
 .tieman-why-us__profiles span,
-.tieman-proof__identity small,
-.tieman-proof__measure small,
 .tieman-flow__steps small,
 .tieman-next-step__outputs li {
   color: var(--sl-text-secondary);
@@ -2409,75 +2407,243 @@
   line-height: 1.5;
 }
 
-/* Proof */
-.tieman-proof .deck-slide__content {
+/* Double diamond */
+.tieman-double-diamond .deck-slide__content {
   display: grid;
-  grid-template-columns: 0.67fr 1.33fr;
-  grid-template-rows: 1fr;
-  column-gap: 5cqw;
+  grid-template-rows: auto minmax(0, 1fr) auto;
 }
 
-.tieman-proof__heading {
-  align-self: center;
+.tieman-double-diamond__heading h2 {
+  max-width: 76cqw;
+  margin-top: 1.05cqw;
+  font-size: 3.55cqw;
+  line-height: 0.94;
 }
 
-.tieman-proof__heading h2 {
-  max-width: 35cqw;
-  margin-top: 1.35cqw;
-  font-size: 3.8cqw;
-  line-height: 0.92;
-}
-
-.tieman-proof__rail {
-  align-self: center;
-  list-style: none;
-  border-top: 1px solid var(--sl-border);
-  padding: 0;
-}
-
-.tieman-proof__rail > li {
+.tieman-double-diamond__process {
   display: grid;
-  grid-template-columns: 2.7cqw 8.8cqw 10.2cqw 1fr;
-  min-height: 10.2cqw;
+  grid-template-columns: 7.4cqw 20.5cqw 10cqw 20.5cqw 8.4cqw;
+  min-height: 28.2cqw;
+  align-self: center;
   align-items: center;
-  gap: 1.2cqw;
-  border-bottom: 1px solid var(--sl-border);
+  justify-content: center;
+  gap: 1cqw;
+  margin-top: 0.2cqw;
 }
 
-.tieman-proof__rail > li > span {
+.tieman-double-diamond__endpoint {
+  display: flex;
+  align-items: center;
+  gap: 0.55cqw;
+  color: color-mix(in srgb, var(--sl-text-primary) 72%, transparent);
+}
+
+.tieman-double-diamond__endpoint small,
+.tieman-double-diamond__diamond header span,
+.tieman-double-diamond__stage small,
+.tieman-double-diamond__gate small,
+.tieman-double-diamond__gate span {
   color: var(--sl-accent);
-  font-size: 0.6cqw;
-  letter-spacing: 0.12em;
+  font-size: 0.52cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: var(--sl-tracking-label);
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
-.tieman-proof__identity h3 {
-  margin-top: 0;
-  font-size: 1.28cqw;
+.tieman-double-diamond__endpoint strong {
+  font-size: 0.82cqw;
+  font-weight: var(--sl-weight-medium);
+  line-height: 1.18;
 }
 
-.tieman-proof__measure small {
-  color: color-mix(in srgb, var(--sl-text-primary) 45%, transparent);
-}
-
-.tieman-proof__measure strong {
-  display: block;
+.tieman-double-diamond__endpoint svg {
+  width: 1.2cqw;
+  height: 1.2cqw;
+  flex: 0 0 auto;
   color: var(--sl-accent);
-  font-size: 1.6cqw;
-  font-weight: var(--sl-weight-light);
+  stroke-width: 1.4;
 }
 
-.tieman-proof__measure small {
-  display: block;
-  max-width: 9cqw;
-  margin-top: 0.3cqw;
-  letter-spacing: 0;
-  text-transform: none;
+.tieman-double-diamond__endpoint--challenge {
+  display: grid;
+  grid-template-columns: 1fr auto;
 }
 
-.tieman-proof__rail p {
-  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
-  font-size: 0.67cqw;
-  line-height: 1.52;
+.tieman-double-diamond__endpoint--challenge small,
+.tieman-double-diamond__endpoint--challenge strong {
+  grid-column: 1;
+}
+
+.tieman-double-diamond__endpoint--challenge svg {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.tieman-double-diamond__endpoint--solution {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.tieman-double-diamond__endpoint--solution svg {
+  grid-row: 1 / span 2;
+}
+
+.tieman-double-diamond__endpoint--solution small,
+.tieman-double-diamond__endpoint--solution strong {
+  grid-column: 2;
+}
+
+.tieman-double-diamond__diamond {
+  text-align: center;
+}
+
+.tieman-double-diamond__diamond header {
+  display: grid;
+  justify-items: center;
+  gap: 0.32cqw;
+  margin-bottom: 0.85cqw;
+}
+
+.tieman-double-diamond__diamond header strong {
+  font-size: 1.22cqw;
+  font-weight: var(--sl-weight-medium);
+}
+
+.tieman-double-diamond__shape {
+  display: grid;
+  width: 19.6cqw;
+  height: 19.6cqw;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0 auto;
+  overflow: hidden;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  background: color-mix(in srgb, var(--sl-accent) 6%, var(--sl-surface-1));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sl-accent) 40%, transparent);
+}
+
+.tieman-double-diamond__stage {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8cqw;
+  flex-direction: column;
+}
+
+.tieman-double-diamond__stage:first-child {
+  background: color-mix(in srgb, var(--sl-accent) 10%, var(--sl-surface-1));
+}
+
+.tieman-double-diamond__stage:last-child {
+  background: color-mix(in srgb, var(--sl-accent) 18%, var(--sl-surface-1));
+}
+
+.tieman-double-diamond__diamond--solution .tieman-double-diamond__stage:first-child {
+  background: color-mix(in srgb, var(--sl-accent) 14%, var(--sl-surface-1));
+}
+
+.tieman-double-diamond__diamond--solution .tieman-double-diamond__stage:last-child {
+  background: color-mix(in srgb, var(--sl-accent) 26%, var(--sl-surface-1));
+}
+
+.tieman-double-diamond__stage small {
+  margin-bottom: 0.45cqw;
+  color: color-mix(in srgb, var(--sl-accent) 72%, var(--sl-text-primary));
+}
+
+.tieman-double-diamond__stage strong {
+  font-size: 1.35cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: -0.025em;
+}
+
+.tieman-double-diamond__gate {
+  display: grid;
+  width: 8.8cqw;
+  min-height: 8.8cqw;
+  place-items: center;
+  align-content: center;
+  justify-self: center;
+  border: 1px solid color-mix(in srgb, var(--sl-accent) 42%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--sl-accent) 5%, var(--sl-surface-1));
+  text-align: center;
+}
+
+.tieman-double-diamond__gate svg {
+  width: 1.15cqw;
+  height: 1.15cqw;
+  margin-bottom: 0.5cqw;
+  color: var(--sl-accent);
+  stroke-width: 1.4;
+}
+
+.tieman-double-diamond__gate strong {
+  margin-top: 0.45cqw;
+  font-size: 0.88cqw;
+  font-weight: var(--sl-weight-medium);
+}
+
+.tieman-double-diamond__gate span {
+  margin-top: 0.16cqw;
+  color: color-mix(in srgb, var(--sl-text-primary) 48%, transparent);
+  letter-spacing: 0.08em;
+}
+
+.tieman-double-diamond__principle {
+  display: flex;
+  min-height: 3.55cqw;
+  align-items: center;
+  gap: 1.05cqw;
+  border-top: 1px solid var(--sl-border);
+  color: color-mix(in srgb, var(--sl-text-primary) 60%, transparent);
+  font-size: 0.75cqw;
+}
+
+.tieman-double-diamond__principle svg {
+  width: 0.9cqw;
+  height: 0.9cqw;
+  color: color-mix(in srgb, var(--sl-accent) 55%, transparent);
+  stroke-width: 1.4;
+}
+
+.tieman-double-diamond__principle strong {
+  color: var(--sl-accent);
+  font-weight: var(--sl-weight-medium);
+}
+
+.sales-deck__transition[data-deck-fragment-count="4"] .tieman-double-diamond [data-process-fragment] {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(0.8cqw) scale(0.97);
+  transition:
+    visibility 0s linear 440ms,
+    opacity 360ms var(--sl-ease-standard),
+    transform 440ms var(--sl-ease-standard);
+}
+
+.sales-deck__transition[data-deck-fragment-count="4"]:is(
+  [data-deck-fragment-step="1"],
+  [data-deck-fragment-step="2"],
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"]
+) .tieman-double-diamond [data-process-fragment="1"],
+.sales-deck__transition[data-deck-fragment-count="4"]:is(
+  [data-deck-fragment-step="2"],
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"]
+) .tieman-double-diamond [data-process-fragment="2"],
+.sales-deck__transition[data-deck-fragment-count="4"]:is(
+  [data-deck-fragment-step="3"],
+  [data-deck-fragment-step="4"]
+) .tieman-double-diamond [data-process-fragment="3"],
+.sales-deck__transition[data-deck-fragment-count="4"][data-deck-fragment-step="4"]
+  .tieman-double-diamond [data-process-fragment="4"] {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
 }
 
 /* Approach */
@@ -3206,7 +3372,7 @@
   .tieman-solution-stack__heading h2,
   .tieman-ripple__heading h2,
   .tieman-why-us__heading h2,
-  .tieman-proof__heading h2,
+  .tieman-double-diamond__heading h2,
   .tieman-approach__heading h2,
   .tieman-operating-layer__heading h2,
   .tieman-flow__heading h2,
@@ -3350,7 +3516,7 @@
   .tieman-solution-stack .deck-slide__content,
   .tieman-ripple .deck-slide__content,
   .tieman-why-us .deck-slide__content,
-  .tieman-proof .deck-slide__content,
+  .tieman-double-diamond .deck-slide__content,
   .tieman-approach .deck-slide__content,
   .tieman-operating-layer .deck-slide__content,
   .tieman-flow .deck-slide__content,
@@ -3528,7 +3694,7 @@
   .tieman-challenges__friction,
   .tieman-ripple__pipeline,
   .tieman-why-us__profiles,
-  .tieman-proof__rail,
+  .tieman-double-diamond__process,
   .tieman-approach__stages,
   .tieman-operating-layer__roadmap,
   .tieman-flow__steps,
@@ -4040,7 +4206,6 @@
   }
 
   .tieman-why-us__profiles span,
-  .tieman-proof__measure small,
   .tieman-flow__steps small,
   .tieman-next-step__outputs li {
     font-size: 0.56rem;
@@ -4056,36 +4221,73 @@
     font-size: 0.8rem;
   }
 
-  .tieman-proof__rail > li {
-    grid-template-columns: 34px 1fr;
+  .tieman-double-diamond__process {
+    grid-template-columns: 1fr;
     min-height: 0;
-    gap: 12px 16px;
-    padding: 24px 0;
+    justify-items: center;
+    gap: 22px;
   }
 
-  .tieman-proof__rail > li > span {
-    grid-row: 1 / span 3;
-    align-self: start;
-    padding-top: 4px;
-    font-size: 0.62rem;
+  .tieman-double-diamond__diamond header {
+    gap: 6px;
+    margin-bottom: 14px;
   }
 
-  .tieman-proof__identity h3 {
-    margin-top: 0;
-    font-size: 1.35rem;
+  .tieman-double-diamond__diamond header span,
+  .tieman-double-diamond__endpoint small,
+  .tieman-double-diamond__stage small,
+  .tieman-double-diamond__gate small,
+  .tieman-double-diamond__gate span {
+    font-size: 0.54rem;
   }
 
-  .tieman-proof__measure strong {
-    font-size: 1.6rem;
+  .tieman-double-diamond__diamond header strong {
+    font-size: 1.12rem;
   }
 
-  .tieman-proof__measure small {
-    max-width: none;
-    margin-top: 6px;
+  .tieman-double-diamond__shape {
+    width: 220px;
+    height: 220px;
   }
 
-  .tieman-proof__rail p {
-    font-size: 0.78rem;
+  .tieman-double-diamond__stage strong {
+    font-size: 1.06rem;
+  }
+
+  .tieman-double-diamond__gate {
+    width: 126px;
+    min-height: 126px;
+  }
+
+  .tieman-double-diamond__gate strong {
+    font-size: 0.86rem;
+  }
+
+  .tieman-double-diamond__endpoint {
+    justify-self: center;
+  }
+
+  .tieman-double-diamond__endpoint strong {
+    font-size: 0.9rem;
+  }
+
+  .tieman-double-diamond__endpoint svg,
+  .tieman-double-diamond__gate svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .tieman-double-diamond__principle {
+    min-height: 70px;
+    justify-content: center;
+    margin-top: 38px;
+    font-size: 0.72rem;
+    text-align: center;
+  }
+
+  .tieman-double-diamond__principle svg {
+    width: 14px;
+    height: 14px;
   }
 
   .tieman-approach__stages li,
@@ -4604,6 +4806,11 @@
     opacity: 1;
     transform: none;
     animation: none;
+  }
+
+  .sales-deck__transition[data-deck-fragment-count="4"]
+    .tieman-double-diamond [data-process-fragment] {
+    transition: none;
   }
 
 }
