@@ -1,5 +1,16 @@
 # Tieman Deck QA
 
+## Assurance-label and Venn-spacing refinements — QA
+
+- Source of truth: the user's two screenshot annotations requesting `Australian data hosting` become `Compliance` and more line height for the three-line platform name.
+- Updated the assurance title to `Compliance` while retaining its existing map-pin icon and `Local data residency` supporting line.
+- Compliance before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-compliance-spacing/01-compliance-before-live.png`; final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-compliance-spacing/03-compliance-after-local.png` at 1280 × 720 with the complete solution architecture revealed.
+- Increased `Tieman / Intelligence / Platform` line height from `0.92` (16.7px rendered) to `1.08` (19.6px rendered) without changing its 18.2px size, 750 weight, centring or reveal timing.
+- Venn before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-venn-platform-name/03-after-live.png`; final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-compliance-spacing/02-venn-after-local.png` at the same viewport and final fragment.
+- Browser geometry verification confirmed all three platform-name lines remain inside the centre region. The final Venn reveal still hides and shows correctly, `Compliance` is visible in the assurance rail, and the old title is absent.
+- Browser warning/error logs were empty and no framework overlay was present.
+- Final result: passed.
+
 ## Slide 8 partnership-strip removal — QA
 
 - Source of truth: the user's screenshot annotation requesting removal of the full-width `SemanticLab / AI + cloud + operational workflow design in one founder-led partnership.` strip from slide 8.

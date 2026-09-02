@@ -667,7 +667,7 @@
   font-size: 1.42cqw;
   font-weight: 750;
   letter-spacing: -0.035em;
-  line-height: 0.92;
+  line-height: 1.08;
 }
 
 .sales-deck__transition[data-deck-fragment-count="4"]:is(

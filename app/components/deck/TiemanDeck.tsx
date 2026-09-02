@@ -171,7 +171,7 @@ const contextCapabilities = [
 const assurancePrinciples = [
   { name: "Security", detail: "Permissions + audit", icon: LockKeyhole },
   { name: "Governance", detail: "Rules + ownership", icon: BadgeCheck },
-  { name: "Australian data hosting", detail: "Local data residency", icon: MapPin },
+  { name: "Compliance", detail: "Local data residency", icon: MapPin },
 ] as const;
 
 const proofPoints = [
