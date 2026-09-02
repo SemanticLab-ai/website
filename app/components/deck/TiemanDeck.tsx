@@ -429,9 +429,13 @@ function TiemanVisionVennSlide() {
         </picture>
 
         <div className="tieman-vision-venn__core">
-          <strong>
-            <span className="tieman-vision-venn__acronym">TIP</span>
-            <span className="tieman-vision-venn__platform-name">Tieman Intelligence Platform</span>
+          <strong
+            className="tieman-vision-venn__platform-name"
+            aria-label="Tieman Intelligence Platform"
+          >
+            <span>Tieman</span>
+            <span>Intelligence</span>
+            <span>Platform</span>
           </strong>
         </div>
       </div>

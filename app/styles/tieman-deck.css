@@ -662,20 +662,12 @@
   white-space: nowrap;
 }
 
-.tieman-vision-venn__acronym {
-  font-size: 2.15cqw;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 0.92;
-}
-
 .tieman-vision-venn__platform-name {
-  margin-top: 0.62cqw;
   font-family: var(--sl-font-display);
-  font-size: 0.72cqw;
-  font-style: italic;
-  font-weight: var(--sl-weight-semibold);
-  line-height: 1;
+  font-size: 1.42cqw;
+  font-weight: 750;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
 }
 
 .sales-deck__transition[data-deck-fragment-count="4"]:is(
@@ -3560,13 +3552,8 @@
     min-height: 94px;
   }
 
-  .tieman-vision-venn__acronym {
-    font-size: 1.15rem;
-  }
-
   .tieman-vision-venn__platform-name {
-    margin-top: 5px;
-    font-size: 0.43rem;
+    font-size: 0.84rem;
   }
 
   .tieman-challenges__friction,

@@ -1,5 +1,16 @@
 # Tieman Deck QA
 
+## Venn intersection platform-name refinement — QA
+
+- Source of truth: the user's screenshot annotation requesting removal of `TIP` and a large, bold full platform name with one word per line.
+- Removed the acronym completely and replaced the single italic line with `Tieman / Intelligence / Platform` across three centred lines.
+- Before evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-venn-platform-name/01-before-live.png` at 1280 × 720.
+- Final local evidence: `/Users/raihanrazi/.codex/visualizations/2026/09/02/tieman-venn-platform-name/02-after-local.png` at the same viewport and final Venn fragment.
+- Increased the full name from 9.2px italic supporting copy to 18.2px upright display type at weight 750. The existing intersection artwork, subtle glow and fragment-4 reveal remain unchanged.
+- Browser geometry verification confirmed all three lines remain inside the 207.4 × 128px centre region, each word stays on one line, and no `TIP` text or acronym element remains.
+- Hiding and revealing the final fragment correctly toggled the centre from hidden to visible. Browser warning/error logs were empty and no framework overlay was present.
+- Final result: passed.
+
 ## Solution application-card refinement — QA
 
 - Source of truth: the user's screenshot annotation requesting four revised application categories and a less white visual treatment.
