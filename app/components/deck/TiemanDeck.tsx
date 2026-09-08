@@ -1,7 +1,6 @@
 import ArrowUp from "lucide-react/dist/esm/icons/arrow-up";
 import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
 import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
-import BadgeCheck from "lucide-react/dist/esm/icons/badge-check";
 import Bot from "lucide-react/dist/esm/icons/bot";
 import BrainCircuit from "lucide-react/dist/esm/icons/brain-circuit";
 import Cable from "lucide-react/dist/esm/icons/cable";
@@ -11,8 +10,6 @@ import Database from "lucide-react/dist/esm/icons/database";
 import FileText from "lucide-react/dist/esm/icons/file-text";
 import Layers3 from "lucide-react/dist/esm/icons/layers-3";
 import LayoutDashboard from "lucide-react/dist/esm/icons/layout-dashboard";
-import LockKeyhole from "lucide-react/dist/esm/icons/lock-keyhole";
-import MapPin from "lucide-react/dist/esm/icons/map-pin";
 import Network from "lucide-react/dist/esm/icons/network";
 import PanelsTopLeft from "lucide-react/dist/esm/icons/panels-top-left";
 import RotateCcw from "lucide-react/dist/esm/icons/rotate-ccw";
@@ -155,21 +152,6 @@ const solutionApplications = [
   { name: "Custom Portals", role: "Give each team a focused workspace", icon: PanelsTopLeft },
 ] as const;
 
-const contextCapabilities = [
-  "Job context",
-  "BOM + parts",
-  "Revisions",
-  "Evidence",
-  "Permissions",
-  "Ownership",
-] as const;
-
-const assurancePrinciples = [
-  { name: "Security", detail: "Permissions + audit", icon: LockKeyhole },
-  { name: "Governance", detail: "Rules + ownership", icon: BadgeCheck },
-  { name: "Compliance", detail: "Local data residency", icon: MapPin },
-] as const;
-
 const proofPoints = [
   {
     index: "01",
@@ -191,6 +173,56 @@ const proofPoints = [
     headline: "Evidence",
     measure: "made usable inside the workflow",
     detail: "Product workflows that connect requirements, evidence, ownership and decision clarity.",
+  },
+] as const;
+
+const outcomeProofTiles = [
+  "Payments at scale",
+  "Products kept current",
+  "Core tasks completed",
+  "Compliance made usable",
+  "Settlement automated",
+  "Adoption increased",
+  "Multi-market delivery",
+  "Zero-downtime change",
+  "Data loss prevented",
+  "Setup in minutes",
+  "Automatic updates",
+  "Partners connected",
+  "Fewer delivery failures",
+  "Teams scaled",
+  "Onboarding clarified",
+  "MVP validated",
+] as const;
+
+const outcomeProofSpotlights = [
+  {
+    tileIndex: 1,
+    headline: "Complex operations,",
+    emphasis: "easier to run.",
+    lead: "100K+ products stayed current.",
+    detail: "Inventory changes were synchronised automatically across source systems and online stores every four hours.",
+  },
+  {
+    tileIndex: 0,
+    headline: "Payments at scale,",
+    emphasis: "without the drag.",
+    lead: "$250M+ in annual payments supported.",
+    detail: "Split payments and settlement ran across thousands of organisations, currencies and markets.",
+  },
+  {
+    tileIndex: 2,
+    headline: "Core workflows,",
+    emphasis: "finished with clarity.",
+    lead: "Every core setup task was completed.",
+    detail: "Guided steps, visible progress and clearer recovery states removed the common points of confusion.",
+  },
+  {
+    tileIndex: 3,
+    headline: "Compliance,",
+    emphasis: "built into the work.",
+    lead: "Compliance moved into the workflow.",
+    detail: "Requirements, evidence and ownership were brought together where teams already worked.",
   },
 ] as const;
 
@@ -522,9 +554,6 @@ function SolutionStackSlide() {
         <h2 id="deck-slide-7-title">
           One trusted foundation for Tieman&apos;s <em>data and AI.</em>
         </h2>
-        <p className="tieman-solution-stack__summary">
-          Once that foundation exists, applications and agents can operate on information that is connected, contextualised and governed.
-        </p>
       </div>
 
       <div className="tieman-solution-stack__architecture">
@@ -553,19 +582,14 @@ function SolutionStackSlide() {
             <div className="tieman-solution-stack__context-title">
               <ShieldCheck aria-hidden="true" />
               <div>
-                <span>Unified context layer</span>
+                <span>Tieman Intelligence Platform</span>
                 <strong>A governed, shared understanding of every job.</strong>
               </div>
             </div>
-            <ul aria-label="Context available to applications and agents">
-              {contextCapabilities.map((capability) => (
-                <li key={capability}>{capability}</li>
-              ))}
-            </ul>
           </div>
 
           <div className="tieman-solution-stack__sources">
-            <span className="tieman-solution-stack__layer-label">Tieman data + knowledge</span>
+            <span className="tieman-solution-stack__layer-label">Tieman&apos;s data processing system</span>
             <div className="tieman-solution-stack__source-grid">
               {tiemanSystems.map((system) => {
                 const SystemIcon = system.icon;
@@ -584,25 +608,6 @@ function SolutionStackSlide() {
             </div>
           </div>
         </section>
-
-        <aside className="tieman-solution-stack__assurance" aria-label="Architecture assurance principles">
-          <span className="tieman-solution-stack__assurance-label">Secure by design</span>
-          <ul>
-            {assurancePrinciples.map((principle) => {
-              const PrincipleIcon = principle.icon;
-
-              return (
-                <li key={principle.name}>
-                  <PrincipleIcon aria-hidden="true" />
-                  <span>
-                    <strong>{principle.name}</strong>
-                    <small>{principle.detail}</small>
-                  </span>
-                </li>
-              );
-            })}
-          </ul>
-        </aside>
       </div>
     </DeckSlideFrame>
   );
@@ -881,6 +886,55 @@ function ProofSlide() {
               <small>{proof.measure}</small>
             </div>
             <p>{proof.detail}</p>
+          </li>
+        ))}
+      </ol>
+    </DeckSlideFrame>
+  );
+}
+
+function OutcomeProofSlide() {
+  return (
+    <DeckSlideFrame
+      index={10}
+      total={TOTAL_SLIDES}
+      descriptor="Selected outcomes from complex operational work."
+      className="tieman-proof-outcomes"
+    >
+      <div className="tieman-proof-outcomes__copy">
+        <p className="deck-kicker">Proof in practice</p>
+
+        <h2 id="deck-slide-10-title" className="tieman-proof-outcomes__headline">
+          {outcomeProofSpotlights.map((spotlight, index) => (
+            <span key={spotlight.lead} data-proof-story={index}>
+              {spotlight.headline}
+              <br />
+              {index === 0 ? "made " : null}
+              <em>{spotlight.emphasis}</em>
+            </span>
+          ))}
+        </h2>
+
+        <div className="tieman-proof-outcomes__stories" aria-live="polite">
+          {outcomeProofSpotlights.map((spotlight, index) => (
+            <div key={spotlight.detail} data-proof-story={index}>
+              <strong>{spotlight.lead}</strong>
+              <p>{spotlight.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <ol className="tieman-proof-outcomes__grid" aria-label="Selected outcomes delivered">
+        {outcomeProofTiles.map((outcome, tileIndex) => (
+          <li
+            key={outcome}
+            data-proof-tile={tileIndex}
+            className={outcomeProofSpotlights.some((spotlight) => spotlight.tileIndex === tileIndex)
+              ? "is-spotlight"
+              : undefined}
+          >
+            <span>{outcome}</span>
           </li>
         ))}
       </ol>
@@ -1186,7 +1240,7 @@ const slides: readonly DeckSlide[] = [
   {
     id: "tieman-solution-stack",
     label: "The solution",
-    fragmentCount: 5,
+    fragmentCount: 3,
     content: <SolutionStackSlide />,
   },
   { id: "tieman-why-us", label: "Why SemanticLab", content: <WhyUsSlide /> },
@@ -1229,46 +1283,70 @@ const slides: readonly DeckSlide[] = [
   },
 ];
 
-const storyChallengeSlides: readonly DeckSlide[] = slides.flatMap((slide) => {
-  if (slide.id === "tieman-challenges") {
-    return [
-      {
-        id: "tieman-story-landscape",
-        label: "Where knowledge lives",
-        content: <StoryLandscapeSlide />,
-      },
-      {
-        id: "tieman-story-question",
-        label: "Where friction begins",
-        fragmentCount: 1,
-        content: <StoryQuestionSlide />,
-      },
-      {
-        id: "tieman-story-impact",
-        label: "Why it matters",
-        fragmentCount: 6,
-        content: <StoryImpactSlide />,
-      },
-    ];
+const outcomeSlides: readonly DeckSlide[] = slides.map((slide) => {
+  if (slide.id !== "tieman-proof") {
+    return slide;
   }
 
-  if (slide.id === "tieman-ripple" || slide.id === "tieman-fragmentation") {
-    return [];
-  }
-
-  return [slide];
+  return {
+    ...slide,
+    label: "Proof in practice",
+    fragmentCount: 3,
+    content: <OutcomeProofSlide />,
+  };
 });
+
+function withStoryChallengeSlides(baseSlides: readonly DeckSlide[]): readonly DeckSlide[] {
+  return baseSlides.flatMap((slide) => {
+    if (slide.id === "tieman-challenges") {
+      return [
+        {
+          id: "tieman-story-landscape",
+          label: "Where knowledge lives",
+          content: <StoryLandscapeSlide />,
+        },
+        {
+          id: "tieman-story-question",
+          label: "Where friction begins",
+          fragmentCount: 1,
+          content: <StoryQuestionSlide />,
+        },
+        {
+          id: "tieman-story-impact",
+          label: "Why it matters",
+          fragmentCount: 6,
+          content: <StoryImpactSlide />,
+        },
+      ];
+    }
+
+    if (slide.id === "tieman-ripple" || slide.id === "tieman-fragmentation") {
+      return [];
+    }
+
+    return [slide];
+  });
+}
+
+const storyChallengeSlides = withStoryChallengeSlides(slides);
+const storyChallengeOutcomeSlides = withStoryChallengeSlides(outcomeSlides);
 
 type TiemanDeckProps = {
   challengeVariant?: "current" | "story";
+  proofVariant?: "current" | "outcomes";
 };
 
 export function TiemanDeck({
   challengeVariant = "story",
+  proofVariant = "current",
 }: TiemanDeckProps) {
-  const selectedSlides = challengeVariant === "story"
-    ? storyChallengeSlides
-    : slides;
+  const selectedSlides = proofVariant === "outcomes"
+    ? challengeVariant === "story"
+      ? storyChallengeOutcomeSlides
+      : outcomeSlides
+    : challengeVariant === "story"
+      ? storyChallengeSlides
+      : slides;
 
   return (
     <DeckPresentation

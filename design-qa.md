@@ -467,6 +467,59 @@ This is a composition and behavioural refinement rather than a pixel clone. Desk
 
 final result: passed
 
+## Slide 07 architecture simplification — QA
+
+**Comparison Target**
+
+- Source visual truth: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_RVjwqJ/Screenshot 2026-09-08 at 9.33.52 PM.png`
+- Implementation route: `http://localhost:4173/deck/tieman-tankers?proof=outcomes`, slide 07, fragment step 3
+- Implementation screenshot: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide7-platform/tieman-slide7-implementation.png`
+- Full-view comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-slide7-platform/tieman-slide7-comparison.png`
+- Viewport: 1604 × 932 CSS pixels at device pixel ratio 1
+- Source pixels: 1604 × 932
+- Implementation pixels: 1604 × 932
+- Density normalization: none required; the source and implementation are 1:1
+- State: all three architecture fragments revealed
+
+**Findings**
+
+- No actionable P0, P1 or P2 findings remain.
+- Fonts and typography: the existing deck type family, weights, headline wrapping and scale are unchanged. The renamed platform and source-system labels keep the established uppercase label treatment and remain legible.
+- Spacing and layout rhythm: removing the assurance rail lets the architecture use the full content width. The platform icon and two-line text group are centred as one unit, with balanced space on both sides and no collision with the connectors.
+- Colors and tokens: the platform retains the existing dark surface, lime accent and border treatment. The source-system layer transitions to 26% opacity with reduced saturation when the platform appears, creating the requested hierarchy without introducing new colours.
+- Image quality and assets: this slide contains no raster imagery. Existing application, platform and source-system icons remain unchanged; no placeholders or custom replacement art were introduced.
+- Copy and content: the top-right foundation paragraph, capability pills and secure-by-design rail are absent. `Unified context layer` is now `Tieman Intelligence Platform`, and `Tieman data + knowledge` is now `Tieman's data processing system`.
+- Interaction: fragment 01 shows the source systems at full strength; fragment 02 reveals the platform and mutes the source systems; fragment 03 reveals the applications while preserving the muted lower layer. All three states were exercised with the presentation controls.
+- Responsive behaviour: at 768 × 1024, the mobile stacking order remains source systems → platform → applications with no horizontal document overflow.
+- Browser console: the only recorded console entry was a transient Vite websocket error at 11:46:10Z while the local preview server was intentionally restarting. No application runtime errors or warnings appeared after the stable reload and interaction pass.
+
+**Comparison History**
+
+- Iteration 1 — passed: the matched full-view comparison confirms that the requested removals and renames are complete, the middle-layer content is centred, and the source layer visibly recedes once the platform is revealed.
+
+**Focused Region Comparison**
+
+- Not required. At the matched 1604 × 932 size, the complete architecture, labels, connectors and hierarchy are readable in the full-view comparison.
+
+**Open Questions**
+
+- None blocking.
+
+**Implementation Checklist**
+
+- [x] Remove the secure-by-design rail.
+- [x] Remove the top-right foundation copy and platform capability pills.
+- [x] Centre the Tieman Intelligence Platform content.
+- [x] Rename both architecture layers.
+- [x] Mute the source-system layer when the platform appears.
+- [x] Verify the three reveal states, responsive stacking and browser console.
+
+**Follow-up Polish**
+
+- P3: none required before review.
+
+final result: passed
+
 ## Tieman discovery-theme Venn refinement — QA
 
 ### Source and implementation evidence
@@ -1102,5 +1155,58 @@ The focused comparison proves the completed row preserves the selected static la
 - Browser verification: the local story route produced no warning or error console logs.
 
 ### Result
+
+final result: passed
+
+## Outcome-grid slide-10 variation — QA
+
+**Comparison Target**
+
+- Source visual truth: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/codex-clipboard-1d8d7540-d06c-4d60-ac16-cf8a570f93e7.png`
+- Implementation route: `http://localhost:4173/deck/tieman-tankers?proof=outcomes`, slide 10, fragment step 0
+- Implementation screenshot: `/tmp/tieman-proof-outcomes-qa-final.png`
+- Full-view comparison: `/tmp/tieman-proof-comparison-qa-final.png`
+- Focused typography comparison: `/tmp/tieman-proof-copy-comparison-qa-final.png`
+- Animated-state comparison: `/tmp/tieman-proof-states-qa-final.png`
+- Responsive captures: `/tmp/tieman-proof-mobile-top.png` and `/tmp/tieman-proof-mobile-bottom.png`
+- Viewport: 1672 × 941 CSS pixels at device pixel ratio 1
+- Source pixels: 1672 × 941
+- Implementation pixels: 1672 × 941
+- Density normalization: none required; source pixels, CSS viewport and implementation pixels are 1:1
+- Mobile viewport: 390 × 844 CSS pixels; slide width 380px, slide height 1474px, no horizontal overflow
+
+**Findings**
+
+- No actionable P0, P1 or P2 findings remain.
+- Fonts and typography: the implementation uses the deck's existing Inter system. Display scale, italic lime emphasis, kicker, lead and body hierarchy closely match the reference. Copy stays readable in all four spotlight states without clipping or collision.
+- Spacing and layout rhythm: the left narrative and 4 × 4 outcome grid match the source proportions and vertical alignment. Tile sizes, gaps and active-state placement are consistent. Mobile uses the existing deck's vertical-scroll pattern and a two-column grid without horizontal overflow.
+- Colors and tokens: the implementation uses the SemanticLab obsidian, warm-white, lime and sage tokens, with a muted petrol mix for inactive tiles. The active tile preserves the reference's warm-white state and restrained lime marker.
+- Image quality and assets: the target contains no photography, illustrations, logos or non-standard icon assets. No image substitutions are present.
+- Copy and content: the primary state matches the selected mock. Three additional outcome stories use concise, evidence-led copy and remain within the same visual rhythm.
+- Interaction and accessibility: right-arrow/deck-next advances through Products kept current, Payments at scale, Core tasks completed and Compliance made usable. Reduced-motion rules remove the transitions. The active story is exposed through the existing semantic heading and an aria-live narrative region.
+- Existing-deck regression: the default route still renders slide 10 as `Relevant proof` with the original `Experience that maps to the operating problem.` content. The new slide appears only with `proof=outcomes`.
+- Browser console: no errors or warnings were recorded in the verified variation.
+
+**Comparison History**
+
+- Iteration 1 — P2 layout and color drift: the first render placed the outcome grid roughly 48px too high, inset the left copy too far, and left inactive labels white because of an invalid token reference. Fixed the grid offset, copy inset and muted text token. Post-fix evidence: `/tmp/tieman-proof-comparison-qa-final.png`.
+- Iteration 2 — P2 state overflow: the Core workflows headline extended into the grid and the Compliance narrative ran too low. Shortened both lines and tightened their supporting copy. Post-fix evidence: `/tmp/tieman-proof-states-qa-final.png`.
+- Iteration 3 — P2 typography rhythm: the lead and body copy were smaller than the source and sat too far below the headline. Adjusted variant-only type sizes, story spacing and line height. Post-fix focused evidence: `/tmp/tieman-proof-copy-comparison-qa-final.png`.
+
+**Open Questions**
+
+- None blocking. The existing deck footer and presentation controls remain visible even though the standalone source mock omits them; this is intentional because the requested variation must not redesign the deck shell.
+
+**Implementation Checklist**
+
+- [x] Match the selected 16:9 source composition.
+- [x] Preserve the current slide and default route.
+- [x] Add four stepped, outcome-led highlight states.
+- [x] Verify desktop, mobile, reduced motion and console output.
+- [x] Run typecheck, production build and aggregate preview/production checks.
+
+**Follow-up Polish**
+
+- P3: none required before review.
 
 final result: passed

@@ -29,8 +29,11 @@ export function loader({ request }: Route.LoaderArgs) {
   const challengeVariant = searchParams.get("challenges") === "current"
     ? "current"
     : "story";
+  const proofVariant = searchParams.get("proof") === "outcomes"
+    ? "outcomes"
+    : "current";
 
-  return { challengeVariant } as const;
+  return { challengeVariant, proofVariant } as const;
 }
 
 export function meta({}: Route.MetaArgs) {
@@ -45,11 +48,12 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function TiemanDeckRoute() {
-  const { challengeVariant } = useLoaderData<typeof loader>();
+  const { challengeVariant, proofVariant } = useLoaderData<typeof loader>();
 
   return (
     <TiemanDeck
       challengeVariant={challengeVariant}
+      proofVariant={proofVariant}
     />
   );
 }
