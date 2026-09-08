@@ -2194,6 +2194,14 @@
   white-space: nowrap;
 }
 
+.tieman-why-us__promise {
+  max-width: 29cqw;
+  margin-top: 1.7cqw;
+  color: color-mix(in srgb, var(--sl-text-primary) 66%, transparent);
+  font-size: 0.9cqw;
+  line-height: 1.5;
+}
+
 .tieman-why-us__profiles {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4094,6 +4102,12 @@
     grid-template-rows: 250px auto;
     border-right: 0;
     border-bottom: 1px solid var(--sl-border);
+  }
+
+  .tieman-why-us__promise {
+    max-width: 340px;
+    margin-top: 24px;
+    font-size: 0.86rem;
   }
 
   .tieman-why-us__portrait {

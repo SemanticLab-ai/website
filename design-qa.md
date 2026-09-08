@@ -520,6 +520,45 @@ final result: passed
 
 final result: passed
 
+## Founder-led slide-08 message — QA
+
+### Source and implementation evidence
+
+- Source visual truth: `/var/folders/p0/k97nw9bj41bb7ms006s3bmth0000gn/T/TemporaryItems/NSIRD_screencaptureui_rhZaL7/Screenshot 2026-09-08 at 9.39.51 PM.png`
+- Implementation route: `http://localhost:4173/deck/tieman-tankers?proof=outcomes`, slide 08
+- Implementation screenshot: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-founder-slide-human-implementation.png`
+- Full-view comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-founder-slide-human-comparison.png`
+- Viewport and density: 1588 × 905 CSS pixels at device pixel ratio 1
+- Source pixels: 1588 × 905
+- Implementation pixels: 1588 × 905
+- Density normalization: none; source and implementation are compared at the same dimensions
+- State: dark theme, slide 08, founder profiles visible
+
+### Findings and comparison history
+
+- Pass 0 — passed: the revised copy creates a clear founder-led reason to choose SemanticLab while preserving the approved portrait grid and slide composition. No P0, P1 or P2 differences require correction.
+- Fonts and typography: the existing display face, light weight, italic lime emphasis, uppercase profile labels and profile type hierarchy remain unchanged. The new headline fits its column without clipping or an awkward orphan.
+- Spacing and layout rhythm: the portrait frames, profile cards, divider lines, footer and two-column grid are unchanged. The short founder promise sits beneath the headline with enough separation to read as supporting evidence.
+- Colors and visual tokens: the existing obsidian canvas, warm-white type, muted secondary text and lime accent are preserved. The new supporting line uses the established secondary-text treatment.
+- Image quality and asset fidelity: both black-and-white portraits retain the approved source assets, crops, scale, positioning, contrast and frame dimensions. No image styling or portrait alignment changed.
+- Copy and content: the headline now communicates that clients work with the people who deliver. Naila's role is `Product design, strategy and UX`, and her bio uses the exact requested wording.
+- Interaction and accessibility: next-slide navigation reached slide 08 successfully; the semantic heading, founder articles and portrait alt text remain intact.
+- Browser verification: the local route rendered the complete slide at the source viewport. Console inspection found only Vite connection and hot-update messages, with no warning or error entries.
+- Focused comparison: not required because the headline, supporting promise, profile labels, biographies and portrait framing are all readable in the 3176 × 905 full-view comparison.
+
+### Implementation checklist
+
+- [x] Strengthen the founder-led reason to choose SemanticLab.
+- [x] Apply Naila's exact role and biography copy.
+- [x] Preserve portrait crops, scale, styling and the existing slide layout.
+- [x] Verify the source viewport, semantic content, navigation and console output.
+
+### Follow-up polish
+
+- P3: none required before review.
+
+final result: passed
+
 ## Tieman discovery-theme Venn refinement — QA
 
 ### Source and implementation evidence

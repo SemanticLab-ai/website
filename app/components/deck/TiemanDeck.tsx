@@ -810,15 +810,18 @@ function WhyUsSlide() {
     <DeckSlideFrame
       index={8}
       total={TOTAL_SLIDES}
-      descriptor="Product thinking, experience and engineering stay connected."
+      descriptor="Founder-led from strategy through delivery."
       className="tieman-why-us"
     >
       <div className="tieman-why-us__heading">
         <p className="deck-kicker">Why SemanticLab</p>
         <h2 id="deck-slide-8-title">
-          <span>Technology is only half</span>
-          <em>the transformation</em>
+          <span>The people you meet</span>
+          <em>are the people who deliver.</em>
         </h2>
+        <p className="tieman-why-us__promise">
+          Work directly with both founders from the first conversation to delivery.
+        </p>
       </div>
 
       <div className="tieman-why-us__profiles">
@@ -849,9 +852,9 @@ function WhyUsSlide() {
             />
           </div>
           <div className="tieman-why-us__bio">
-            <span>Product strategy &amp; experience</span>
+            <span>Product design, strategy and UX</span>
             <h3>Naila Rahman</h3>
-            <p>Research-led product and workflow design, connecting evidence, requirements and user decisions.</p>
+            <p>10+ years of design experience, with a strong focus in product strategy and user experience.</p>
           </div>
         </article>
       </div>
