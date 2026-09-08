@@ -20,8 +20,10 @@ export type DeckSlide = {
 
 type DeckPresentationProps = {
   className?: string;
+  slideNumberOffset?: number;
   slides: readonly DeckSlide[];
   testId?: string;
+  totalSlides?: number;
 };
 
 type DeckSlideFrameProps = {
@@ -69,8 +71,10 @@ export function DeckSlideFrame({
 
 export function DeckPresentation({
   className = "",
+  slideNumberOffset = 0,
   slides,
   testId = "sales-deck",
+  totalSlides = slides.length,
 }: DeckPresentationProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentFragment, setCurrentFragment] = useState(0);
@@ -78,6 +82,7 @@ export function DeckPresentation({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const slide = slides[currentSlide];
   const fragmentCount = slide.fragmentCount ?? 0;
+  const displaySlideNumber = slideNumberOffset + currentSlide + 1;
 
   const previousSlide = useCallback(() => {
     if (currentFragment > 0) {
@@ -172,7 +177,7 @@ export function DeckPresentation({
       </div>
 
       <div className="sales-deck__progress" aria-hidden="true">
-        <span style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }} />
+        <span style={{ width: `${(displaySlideNumber / totalSlides) * 100}%` }} />
       </div>
 
       <nav
@@ -191,7 +196,7 @@ export function DeckPresentation({
           <ChevronLeft aria-hidden="true" />
         </button>
         <p>
-          <span>{String(currentSlide + 1).padStart(2, "0")}</span>
+          <span>{String(displaySlideNumber).padStart(2, "0")}</span>
           <small>{slide.label}</small>
         </p>
         <button

@@ -1249,3 +1249,43 @@ final result: passed
 - P3: none required before review.
 
 final result: passed
+
+## Client presentation and discovery-session split — QA
+
+### Source and implementation evidence
+
+- Source visual truth: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-founder-slide-human-implementation.png`
+- Client-presentation implementation: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-eight-slide-closing.png`
+- Discovery-session starting state: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-discovery-session-start.png`
+- Full-view closing-slide comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-eight-slide-closing-comparison.png`
+- Presentation/discovery split overview: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-presentation-discovery-split.png`
+- Focused navigation comparison: `/Users/raihanrazi/.codex/visualizations/2026/09/01/01a05b75-a5e0-7190-a0b7-e2447ba74e29/tieman-eight-slide-controls-comparison.png`
+- Viewport: 1588 × 905 CSS pixels at device pixel ratio 1
+- Source and implementation pixels: 1588 × 905 for each full-view capture
+- Density normalization: none required
+- States: client presentation at slide 08; discovery-session view at slide 09, fragment step 0
+
+### Findings and comparison history
+
+- Pass 0 — passed: the client presentation now ends on the founder slide at `08 / 08`, with forward navigation disabled. The optional discovery-session view begins independently at slide 09 and preserves the original slides through 15.
+- Fonts and typography: no display, profile, label or footer typography changed. The focused comparison confirms that the closing-slide hierarchy remains intact.
+- Spacing and layout rhythm: the founder portrait grid, copy column, footer and presentation controls retain their approved geometry. The discovery-session slides keep their existing layouts.
+- Colors and visual tokens: no palette, surface, opacity or contrast values changed.
+- Image quality and asset fidelity: all portrait, illustration and background assets remain untouched; crops, scale and image treatment are identical to the source capture.
+- Copy and content: slides 1–8 are unchanged. Slides 9–15 remain complete and available only through the discovery-session route.
+- Interaction and accessibility: the client presentation advances through all fragments to slide 08, where `Next slide` is disabled. The discovery view opens at slide 09 with `Previous slide` disabled, retains its fragment reveals, and reaches slide 15 with `End`.
+- Browser verification: both local routes rendered successfully. Console inspection found only Vite connection and React development messages, with no warnings or errors.
+
+### Implementation checklist
+
+- [x] Make slide 08 the client-facing close.
+- [x] Show `08 / 08` in the slide footer and controls.
+- [x] Disable forward navigation at the close.
+- [x] Preserve slides 09–15 in an opt-in discovery-session view.
+- [x] Preserve original visuals, assets, copy and interactions.
+
+### Follow-up polish
+
+- P3: none required before review.
+
+final result: passed

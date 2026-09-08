@@ -23,7 +23,8 @@ import {
   type DeckSlide,
 } from "~/components/deck/DeckPresentation";
 
-const TOTAL_SLIDES = 15;
+const PRESENTATION_TOTAL_SLIDES = 8;
+const DISCOVERY_TOTAL_SLIDES = 15;
 
 const agendaItems = [
   "Tieman's vision",
@@ -312,7 +313,7 @@ function TiemanCoverSlide() {
   return (
     <DeckSlideFrame
       index={1}
-      total={TOTAL_SLIDES}
+      total={PRESENTATION_TOTAL_SLIDES}
       descriptor="Tieman Tankers · Data & AI Transformation."
       className="tieman-cover"
     >
@@ -340,7 +341,7 @@ function TiemanAgendaSlide() {
   return (
     <DeckSlideFrame
       index={2}
-      total={TOTAL_SLIDES}
+      total={PRESENTATION_TOTAL_SLIDES}
       descriptor="From Tieman's vision to a practical next step."
       className="tieman-agenda"
     >
@@ -366,7 +367,7 @@ function TiemanVisionVennSlide() {
   return (
     <DeckSlideFrame
       index={3}
-      total={TOTAL_SLIDES}
+      total={PRESENTATION_TOTAL_SLIDES}
       descriptor="Three themes converge in one connected opportunity."
       className="tieman-vision-venn"
     >
@@ -441,7 +442,7 @@ function ChallengesSlide() {
   return (
     <DeckSlideFrame
       index={4}
-      total={TOTAL_SLIDES}
+      total={PRESENTATION_TOTAL_SLIDES}
       descriptor="Fragmentation turns every handover into interpretation."
       className="tieman-challenges"
     >
@@ -493,7 +494,7 @@ function FragmentedEstateSlide() {
   return (
     <DeckSlideFrame
       index={6}
-      total={TOTAL_SLIDES}
+      total={PRESENTATION_TOTAL_SLIDES}
       descriptor="The systems are useful. The context between them is fragmented."
       className="tieman-fragmentation"
     >
@@ -545,7 +546,7 @@ function SolutionStackSlide() {
   return (
     <DeckSlideFrame
       index={7}
-      total={TOTAL_SLIDES}
+      total={PRESENTATION_TOTAL_SLIDES}
       descriptor="One trusted foundation for Tieman's data, intelligence and action."
       className="tieman-solution-stack"
     >
@@ -617,7 +618,7 @@ function RippleSlide() {
   return (
     <DeckSlideFrame
       index={5}
-      total={TOTAL_SLIDES}
+      total={PRESENTATION_TOTAL_SLIDES}
       descriptor="One fragmented handover multiplies across the entire job."
       className="tieman-ripple"
     >
@@ -673,7 +674,7 @@ function StoryLandscapeSlide() {
   return (
     <DeckSlideFrame
       index={4}
-      total={TOTAL_SLIDES}
+      total={PRESENTATION_TOTAL_SLIDES}
       descriptor="The systems work. The context between them is fragmented."
       className="tieman-story-landscape"
     >
@@ -717,7 +718,7 @@ function StoryQuestionSlide() {
   return (
     <DeckSlideFrame
       index={5}
-      total={TOTAL_SLIDES}
+      total={PRESENTATION_TOTAL_SLIDES}
       descriptor="The answer exists but the context has to be reconstructed"
       className="tieman-story-question"
     >
@@ -757,7 +758,7 @@ function StoryImpactSlide() {
   return (
     <DeckSlideFrame
       index={6}
-      total={TOTAL_SLIDES}
+      total={PRESENTATION_TOTAL_SLIDES}
       descriptor="A small upstream gap compounds as the job moves downstream."
       className="tieman-story-impact"
     >
@@ -809,7 +810,7 @@ function WhyUsSlide() {
   return (
     <DeckSlideFrame
       index={8}
-      total={TOTAL_SLIDES}
+      total={PRESENTATION_TOTAL_SLIDES}
       descriptor="Founder-led from strategy through delivery."
       className="tieman-why-us"
     >
@@ -866,7 +867,7 @@ function ProofSlide() {
   return (
     <DeckSlideFrame
       index={10}
-      total={TOTAL_SLIDES}
+      total={DISCOVERY_TOTAL_SLIDES}
       descriptor="Relevant proof across data, platforms and workflow design."
       className="tieman-proof"
     >
@@ -900,7 +901,7 @@ function OutcomeProofSlide() {
   return (
     <DeckSlideFrame
       index={10}
-      total={TOTAL_SLIDES}
+      total={DISCOVERY_TOTAL_SLIDES}
       descriptor="Selected outcomes from complex operational work."
       className="tieman-proof-outcomes"
     >
@@ -949,7 +950,7 @@ function DoubleDiamondSlide() {
   return (
     <DeckSlideFrame
       index={9}
-      total={TOTAL_SLIDES}
+      total={DISCOVERY_TOTAL_SLIDES}
       descriptor="Diverge to learn. Converge to decide. Repeat with evidence."
       className="tieman-double-diamond"
     >
@@ -1033,7 +1034,7 @@ function OperatingLayerSlide() {
   return (
     <DeckSlideFrame
       index={11}
-      total={TOTAL_SLIDES}
+      total={DISCOVERY_TOTAL_SLIDES}
       descriptor="Business meaning sits between source systems and applications."
       className="tieman-operating-layer"
     >
@@ -1086,7 +1087,7 @@ function TiemanFlowSlide() {
   return (
     <DeckSlideFrame
       index={12}
-      total={TOTAL_SLIDES}
+      total={DISCOVERY_TOTAL_SLIDES}
       descriptor="One upstream flow can improve decisions across the job."
       className="tieman-flow"
     >
@@ -1130,7 +1131,7 @@ function SecuritySlide() {
   return (
     <DeckSlideFrame
       index={13}
-      total={TOTAL_SLIDES}
+      total={DISCOVERY_TOTAL_SLIDES}
       descriptor="Secure, governed and accountable by design."
       className="tieman-security"
     >
@@ -1158,7 +1159,7 @@ function PilotSlide() {
   return (
     <DeckSlideFrame
       index={14}
-      total={TOTAL_SLIDES}
+      total={DISCOVERY_TOTAL_SLIDES}
       descriptor="Start upstream because every downstream team inherits the handoff."
       className="tieman-pilot"
     >
@@ -1194,7 +1195,7 @@ function NextStepSlide() {
   return (
     <DeckSlideFrame
       index={15}
-      total={TOTAL_SLIDES}
+      total={DISCOVERY_TOTAL_SLIDES}
       descriptor="Discovery replaces assumptions with a clear pilot decision."
       className="tieman-next-step"
     >
@@ -1337,25 +1338,36 @@ const storyChallengeOutcomeSlides = withStoryChallengeSlides(outcomeSlides);
 type TiemanDeckProps = {
   challengeVariant?: "current" | "story";
   proofVariant?: "current" | "outcomes";
+  sessionVariant?: "presentation" | "discovery";
 };
 
 export function TiemanDeck({
   challengeVariant = "story",
   proofVariant = "current",
+  sessionVariant = "presentation",
 }: TiemanDeckProps) {
-  const selectedSlides = proofVariant === "outcomes"
+  const completeSlides = proofVariant === "outcomes"
     ? challengeVariant === "story"
       ? storyChallengeOutcomeSlides
       : outcomeSlides
     : challengeVariant === "story"
       ? storyChallengeSlides
       : slides;
+  const closingSlideIndex = completeSlides.findIndex((slide) => slide.id === "tieman-why-us");
+  const selectedSlides = sessionVariant === "discovery"
+    ? completeSlides.slice(closingSlideIndex + 1)
+    : completeSlides.slice(0, closingSlideIndex + 1);
 
   return (
     <DeckPresentation
       className="sales-deck--tieman"
+      key={sessionVariant}
+      slideNumberOffset={sessionVariant === "discovery" ? PRESENTATION_TOTAL_SLIDES : 0}
       slides={selectedSlides}
       testId="tieman-sales-deck"
+      totalSlides={sessionVariant === "discovery"
+        ? DISCOVERY_TOTAL_SLIDES
+        : PRESENTATION_TOTAL_SLIDES}
     />
   );
 }
