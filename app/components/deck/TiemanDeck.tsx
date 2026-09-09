@@ -584,7 +584,10 @@ function SolutionStackSlide() {
               <ShieldCheck aria-hidden="true" />
               <div>
                 <span>Tieman Intelligence Platform</span>
-                <strong>A governed, shared understanding of every job.</strong>
+                <strong>One system that understands how Tieman works.</strong>
+                <p>
+                  Tieman&apos;s terminology, business rules, products, specifications, jobs and the relationships between them.
+                </p>
               </div>
             </div>
           </div>

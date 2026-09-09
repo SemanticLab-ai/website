@@ -1709,10 +1709,20 @@
   line-height: 1.15;
 }
 
+.tieman-solution-stack__context-title p {
+  max-width: 56cqw;
+  margin: 0.48cqw auto 0;
+  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
+  font-size: 0.66cqw;
+  font-weight: var(--sl-weight-light);
+  line-height: 1.35;
+}
+
 .sales-deck__transition[data-deck-fragment-count="3"] :is(
   .tieman-solution-stack__context-title > svg,
   .tieman-solution-stack__context-title span,
-  .tieman-solution-stack__context-title strong
+  .tieman-solution-stack__context-title strong,
+  .tieman-solution-stack__context-title p
 ) {
   opacity: 0;
   transform: translateY(0.48cqw) scale(0.97);
@@ -1724,7 +1734,8 @@
 ) :is(
   .tieman-solution-stack__context-title > svg,
   .tieman-solution-stack__context-title span,
-  .tieman-solution-stack__context-title strong
+  .tieman-solution-stack__context-title strong,
+  .tieman-solution-stack__context-title p
 ) {
   animation: tiemanStackContextPop 440ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -1732,6 +1743,7 @@
 .sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__context-title > svg { animation-delay: 100ms; }
 .sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__context-title span { animation-delay: 170ms; }
 .sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__context-title strong { animation-delay: 240ms; }
+.sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__context-title p { animation-delay: 310ms; }
 
 .tieman-solution-stack__source-grid {
   display: grid;
@@ -3957,6 +3969,12 @@
     font-size: 1.15rem;
   }
 
+  .tieman-solution-stack__context-title p {
+    max-width: 520px;
+    margin-top: 9px;
+    font-size: 0.72rem;
+  }
+
   .tieman-solution-stack__source-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4714,6 +4732,7 @@
   .tieman-solution-stack__context-title > svg,
   .tieman-solution-stack__context-title span,
   .tieman-solution-stack__context-title strong,
+  .tieman-solution-stack__context-title p,
   .tieman-solution-stack__context,
   .tieman-solution-stack__source-grid article {
     opacity: 1;
