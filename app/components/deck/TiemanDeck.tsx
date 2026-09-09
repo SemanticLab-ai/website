@@ -31,7 +31,7 @@ const agendaItems = [
   "Challenges",
   "The opportunity",
   "Why us",
-  "Next steps",
+  "Discussion",
 ] as const;
 
 const challengeActions = [
@@ -55,7 +55,7 @@ const visionOutcomes = [
     index: "01",
     title: "Operational efficiency",
     points: [
-      { title: "Increase throughput", detail: "Using existing resources" },
+      { title: "Analyse more information, faster", detail: "Spreadsheets · calculations · procedures · standards" },
       { title: "Find knowledge faster", detail: "Historical jobs · specs · decisions" },
     ],
   },
@@ -68,7 +68,7 @@ const visionOutcomes = [
         title: "Connect teams around shared context",
         detail: "Sales · Engineering · Purchasing · Production",
       },
-      { title: "Create the foundation for AI", detail: "Assistants · agents · decision support" },
+      { title: "AI that understands Tieman's language", detail: "Assistants · workflows · decision support" },
     ],
   },
   {
@@ -76,7 +76,7 @@ const visionOutcomes = [
     index: "03",
     title: "Risk & resilience",
     points: [
-      { title: "Reduce delivery risk", detail: "Specifications · long leads · revisions" },
+      { title: "Reduce delivery risk", detail: "Spec errors · long-lead surprises · revision confusion" },
       { title: "Preserve critical knowledge", detail: "Australian-hosted · governed · secure" },
     ],
   },
@@ -133,7 +133,7 @@ const answerFragmentBySystem = {
   solidworks: "Design",
   pdm: "Approved revision",
   documents: "Customer specification",
-  excel: "Working assumptions",
+  excel: "Spreadsheets",
   people: "Decision rationale",
 } as const;
 
@@ -148,10 +148,16 @@ const storyImpactStates = [
 ] as const;
 
 const solutionApplications = [
-  { name: "AI Agents", role: "Assist people with contextual decisions", icon: Bot },
-  { name: "Automated Workflows", role: "Move governed work between teams", icon: Workflow },
-  { name: "Dashboards", role: "Make operational signals visible", icon: LayoutDashboard },
-  { name: "Custom Portals", role: "Give each team a focused workspace", icon: PanelsTopLeft },
+  { name: "AI assistants", role: "Answer questions using Tieman's information", icon: Bot },
+  { name: "Automated workflows", role: "Route information and tasks to the right people", icon: Workflow },
+  { name: "Dashboards", role: "Show each department what needs attention", icon: LayoutDashboard },
+  { name: "Team workspaces", role: "Give people the tools and information for their role", icon: PanelsTopLeft },
+] as const;
+
+const practicalQuestions = [
+  { topic: "Explore design options", question: "How much more volume would we get if we changed the tank section from A to B?" },
+  { topic: "Support engineering calculations", question: "For a 32,000-litre tanker with a 5-metre wheelbase, what would the axle loads be?" },
+  { topic: "Find previous work", question: "When did we last build a tanker for this customer?" },
 ] as const;
 
 const proofPoints = [
@@ -343,13 +349,13 @@ function TiemanAgendaSlide() {
     <DeckSlideFrame
       index={2}
       total={PRESENTATION_TOTAL_SLIDES}
-      descriptor="From Tieman's vision to a practical next step."
+      descriptor="A short overview, followed by discussion."
       className="tieman-agenda"
     >
       <div className="tieman-agenda__heading">
         <p className="deck-kicker">Today&apos;s conversation</p>
         <h2 id="deck-slide-2-title">Agenda<em>.</em></h2>
-        <p>From Tieman&apos;s vision to a practical next step.</p>
+        <p>A 10–15 minute overview, followed by discussion.</p>
       </div>
 
       <ol className="tieman-agenda__list" aria-label="Presentation agenda">
@@ -373,10 +379,11 @@ function TiemanVisionVennSlide() {
       className="tieman-vision-venn"
     >
       <div className="tieman-vision-venn__heading">
-        <p className="deck-kicker">What we heard</p>
+        <p className="deck-kicker">Tieman&apos;s priorities</p>
         <h2 id="deck-slide-3-title">
-          Three emerging themes
+          What Tieman wants to achieve
         </h2>
+        <p className="tieman-vision-venn__intro">Three priorities from our initial conversation.</p>
         <p className="tieman-vision-venn__conclusion">
           <strong>One connected platform.</strong>
         </p>
@@ -559,9 +566,9 @@ function SolutionStackSlide() {
       </div>
 
       <div className="tieman-solution-stack__architecture">
-        <section className="tieman-solution-stack__diagram" aria-label="Tieman unified context architecture">
+        <section className="tieman-solution-stack__diagram" aria-label="Tieman platform and potential applications">
           <div className="tieman-solution-stack__applications">
-            <span className="tieman-solution-stack__layer-label">Apps + AI agents</span>
+            <span className="tieman-solution-stack__layer-label">What this could enable</span>
             <div className="tieman-solution-stack__application-grid">
               {solutionApplications.map((application) => {
                 const ApplicationIcon = application.icon;
@@ -585,31 +592,12 @@ function SolutionStackSlide() {
               <ShieldCheck aria-hidden="true" />
               <div>
                 <span>Tieman Intelligence Platform</span>
-                <strong>One system that understands how Tieman works.</strong>
-                <p>
-                  Tieman&apos;s terminology, business rules, products, specifications, jobs and the relationships between them.
-                </p>
+                <strong>Understands Tieman&apos;s language, rules and information.</strong>
               </div>
             </div>
-          </div>
-
-          <div className="tieman-solution-stack__sources">
-            <span className="tieman-solution-stack__layer-label">Tieman&apos;s data processing system</span>
-            <div className="tieman-solution-stack__source-grid">
-              {tiemanSystems.map((system) => {
-                const SystemIcon = system.icon;
-
-                return (
-                  <article key={system.id}>
-                    <SystemIcon aria-hidden="true" />
-                    <strong>{system.name}</strong>
-                    <small>{system.role}</small>
-                    <span className="tieman-solution-stack__signal" aria-hidden="true">
-                      <ArrowUp />
-                    </span>
-                  </article>
-                );
-              })}
+            <div className="tieman-solution-stack__trust" aria-label="Platform design requirements">
+              <span>Design requirements</span>
+              <strong>Security · Governance · Compliance</strong>
             </div>
           </div>
         </section>
@@ -723,19 +711,23 @@ function StoryQuestionSlide() {
     <DeckSlideFrame
       index={5}
       total={PRESENTATION_TOTAL_SLIDES}
-      descriptor="The answer exists but the context has to be reconstructed"
+      descriptor="Questions to explore using Tieman's information and approved calculation methods."
       className="tieman-story-question"
     >
       <div className="tieman-story-question__heading">
         <p className="deck-kicker">Where the friction begins</p>
         <h2 id="deck-slide-5-title">
-          A simple question becomes a <em>series of searches across systems.</em>
+          Practical questions need <em>information from across Tieman.</em>
         </h2>
       </div>
 
       <blockquote className="tieman-story-question__prompt">
-        <span>One practical question</span>
-        <p>“What did we do on the last tanker with this specification?”</p>
+        {practicalQuestions.map((item, index) => (
+          <div key={item.topic} data-practical-question={index}>
+            <span>{String(index + 1).padStart(2, "0")} / 03 · {item.topic}</span>
+            <p>“{item.question}”</p>
+          </div>
+        ))}
       </blockquote>
 
       <section className="tieman-story-question__fragments" aria-label="Pieces of the answer across Tieman systems">
@@ -821,11 +813,11 @@ function WhyUsSlide() {
       <div className="tieman-why-us__heading">
         <p className="deck-kicker">Why SemanticLab</p>
         <h2 id="deck-slide-8-title">
-          <span>The people you meet</span>
-          <em>are the people who deliver.</em>
+          <span>Founder-led</span>
+          <em>from strategy to delivery.</em>
         </h2>
         <p className="tieman-why-us__promise">
-          Work directly with both founders from the first conversation to delivery.
+          Work directly with both founders, with specialist support brought in as needed.
         </p>
       </div>
 
@@ -841,7 +833,7 @@ function WhyUsSlide() {
             />
           </div>
           <div className="tieman-why-us__bio">
-            <span>Engineering &amp; AI delivery</span>
+            <span>Engineering &amp; AI Delivery Lead</span>
             <h3>Raihan Razi</h3>
             <p>15 years across product, software delivery and technology strategy.</p>
           </div>
@@ -857,7 +849,7 @@ function WhyUsSlide() {
             />
           </div>
           <div className="tieman-why-us__bio">
-            <span>Product design, strategy and UX</span>
+            <span>Product Design &amp; User Experience Lead</span>
             <h3>Naila Rahman</h3>
             <p>10+ years of design experience, with a strong focus in product strategy and user experience.</p>
           </div>
@@ -1248,7 +1240,7 @@ const slides: readonly DeckSlide[] = [
   {
     id: "tieman-solution-stack",
     label: "The solution",
-    fragmentCount: 3,
+    fragmentCount: 2,
     content: <SolutionStackSlide />,
   },
   { id: "tieman-why-us", label: "Why SemanticLab", content: <WhyUsSlide /> },
@@ -1316,7 +1308,7 @@ function withStoryChallengeSlides(baseSlides: readonly DeckSlide[]): readonly De
         {
           id: "tieman-story-question",
           label: "Where friction begins",
-          fragmentCount: 1,
+          fragmentCount: 3,
           content: <StoryQuestionSlide />,
         },
         {

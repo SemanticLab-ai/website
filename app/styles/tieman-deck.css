@@ -435,6 +435,14 @@
   margin-top: 0.5cqw;
 }
 
+.tieman-vision-venn__intro {
+  max-width: 29cqw;
+  margin-top: 1.4cqw;
+  color: var(--sl-text-secondary);
+  font-size: 0.9cqw;
+  line-height: 1.5;
+}
+
 .tieman-vision-venn__conclusion {
   display: flex;
   margin-top: 3.2cqw;
@@ -1196,6 +1204,16 @@
   line-height: 1.2;
 }
 
+/* The question changes while the same source context stays visible. */
+.tieman-story-question__prompt [data-practical-question] { display: none; }
+.tieman-story-question__prompt [data-practical-question="0"] { display: block; }
+.sales-deck__transition:is([data-deck-fragment-step="2"], [data-deck-fragment-step="3"])
+  .tieman-story-question__prompt [data-practical-question="0"] { display: none; }
+.sales-deck__transition[data-deck-fragment-step="2"]
+  .tieman-story-question__prompt [data-practical-question="1"],
+.sales-deck__transition[data-deck-fragment-step="3"]
+  .tieman-story-question__prompt [data-practical-question="2"] { display: block; }
+
 .tieman-story-question__fragments {
   position: absolute;
   inset: 11.2cqw 0 4.3cqw;
@@ -1252,8 +1270,11 @@
 .tieman-story-question__fragment.is-excel { right: 26cqw; bottom: 0; }
 .tieman-story-question__fragment.is-people { top: 13.5cqw; right: 4.8cqw; }
 
-.sales-deck__transition[data-deck-fragment-count="1"][data-deck-fragment-step="1"]
-  .tieman-story-question__fragment {
+.sales-deck__transition[data-deck-fragment-count="3"]:is(
+  [data-deck-fragment-step="1"],
+  [data-deck-fragment-step="2"],
+  [data-deck-fragment-step="3"]
+) .tieman-story-question__fragment {
   visibility: visible;
   opacity: 1;
   transition-delay: 0s;
@@ -1495,113 +1516,74 @@
   transition-delay: 0s;
 }
 
-/* Solution stack */
+/* Solution: a shared foundation, then useful applications. */
 .tieman-solution-stack .deck-slide__content {
   display: grid;
   grid-template-rows: auto 1fr;
 }
 
-.tieman-solution-stack__heading {
-  display: grid;
-  grid-template-columns: 1fr 35cqw;
-  column-gap: 5.4cqw;
-}
-
-.tieman-solution-stack__heading .deck-kicker {
-  grid-column: 1 / -1;
-}
-
 .tieman-solution-stack__heading h2 {
-  max-width: 57cqw;
+  max-width: 65cqw;
   margin-top: 1.25cqw;
   font-size: 4.35cqw;
-  line-height: 0.9;
+  line-height: 0.95;
 }
 
 .tieman-solution-stack__architecture {
-  display: block;
+  display: flex;
+  align-items: center;
   min-height: 0;
-  align-self: stretch;
-  margin-top: 1.55cqw;
+  margin-top: 2.4cqw;
 }
 
 .tieman-solution-stack__diagram {
   display: grid;
-  grid-template-rows: minmax(0, 1.08fr) minmax(0, 0.96fr) minmax(0, 0.82fr);
-  min-height: 0;
-  align-self: stretch;
-  gap: 1.45cqw;
+  grid-template-rows: auto auto;
+  width: 100%;
+  gap: 2.5cqw;
 }
 
-.tieman-solution-stack__applications,
-.tieman-solution-stack__sources {
+.tieman-solution-stack__applications {
   position: relative;
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-  min-height: 0;
-}
-
-.tieman-solution-stack__sources {
-  grid-template-rows: minmax(0, 1fr) auto;
-}
-
-.tieman-solution-stack__sources > .tieman-solution-stack__layer-label {
-  grid-row: 2;
-  margin: 0.48cqw 0 0;
-}
-
-.tieman-solution-stack__sources > .tieman-solution-stack__source-grid {
-  grid-row: 1;
 }
 
 .tieman-solution-stack__layer-label {
-  position: relative;
   display: block;
-  margin-bottom: 0.48cqw;
+  margin-bottom: 0.75cqw;
   color: var(--sl-accent);
-  font-size: 0.5cqw;
+  font-size: 0.65cqw;
   font-weight: var(--sl-weight-semibold);
   letter-spacing: var(--sl-tracking-label);
   text-transform: uppercase;
-  white-space: nowrap;
 }
 
 .tieman-solution-stack__application-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  min-height: 0;
   gap: 0.9cqw;
 }
 
 .tieman-solution-stack__application-grid article {
   position: relative;
   display: grid;
-  grid-template-columns: 2.85cqw 1fr;
+  grid-template-columns: 2.85cqw minmax(0, 1fr);
   grid-template-rows: auto auto;
-  min-height: 0;
   align-content: center;
-  column-gap: 1cqw;
-  border: 1px solid color-mix(in srgb, var(--sl-accent) 24%, var(--sl-border));
-  border-radius: 0.28cqw;
-  padding: 1.15cqw 1.1cqw;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--sl-accent) 7%, transparent), transparent 58%),
-    var(--sl-surface-2);
-  box-shadow: 0 1cqw 2.5cqw rgba(0, 0, 0, 0.18);
-  color: var(--sl-text-primary);
+  min-height: 7.5cqw;
+  gap: 0.4cqw 0.9cqw;
+  padding: 1.2cqw;
+  border: 1px solid var(--sl-border);
+  background: var(--sl-surface-1);
 }
 
 .tieman-solution-stack__application-grid article::after {
   position: absolute;
-  bottom: -1.48cqw;
+  bottom: -2.5cqw;
   left: 50%;
   width: 1px;
-  height: 1.48cqw;
-  background: var(--sl-accent);
+  height: 2.5cqw;
+  background: color-mix(in srgb, var(--sl-accent) 30%, transparent);
   content: "";
-  opacity: 0.3;
-  transform: scaleY(1);
-  transform-origin: bottom;
 }
 
 .tieman-solution-stack__application-grid article > svg {
@@ -1609,83 +1591,54 @@
   width: 2.85cqw;
   height: 2.85cqw;
   align-self: center;
+  padding: 0.7cqw;
   border: 1px solid color-mix(in srgb, var(--sl-accent) 42%, transparent);
   border-radius: 50%;
-  padding: 0.7cqw;
   background: color-mix(in srgb, var(--sl-accent) 10%, var(--sl-surface-1));
   color: var(--sl-accent);
   stroke-width: 1.6;
 }
 
-.tieman-solution-stack__signal {
-  position: absolute;
-  left: 50%;
-  z-index: 2;
-  display: grid;
-  width: 0.64cqw;
-  height: 0.64cqw;
-  place-items: center;
-  border: 1px solid color-mix(in srgb, var(--sl-accent) 58%, transparent);
-  border-radius: 50%;
-  background: var(--sl-surface-1);
-  color: color-mix(in srgb, var(--sl-accent) 72%, transparent);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.tieman-solution-stack__signal svg {
-  width: 0.36cqw;
-  height: 0.36cqw;
-  stroke-width: 1.8;
-}
-
-.tieman-solution-stack__application-grid .tieman-solution-stack__signal {
-  bottom: -1.4cqw;
-  animation: tiemanStackSignalUp 7.6s ease-out infinite paused;
-}
-
-.tieman-solution-stack__application-grid article:nth-child(1) .tieman-solution-stack__signal { animation-delay: 0ms; }
-.tieman-solution-stack__application-grid article:nth-child(2) .tieman-solution-stack__signal { animation-delay: 200ms; }
-.tieman-solution-stack__application-grid article:nth-child(3) .tieman-solution-stack__signal { animation-delay: 400ms; }
-.tieman-solution-stack__application-grid article:nth-child(4) .tieman-solution-stack__signal { animation-delay: 600ms; }
-
 .tieman-solution-stack__application-grid strong {
   align-self: end;
-  font-size: 0.96cqw;
+  font-size: 1.05cqw;
   font-weight: var(--sl-weight-medium);
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
-.tieman-solution-stack__application-grid small,
-.tieman-solution-stack__source-grid small {
-  align-self: start;
-  margin-top: 0.26cqw;
-  color: color-mix(in srgb, currentColor 48%, transparent);
-  font-size: 0.54cqw;
-  line-height: 1.3;
+.tieman-solution-stack__application-grid small {
+  color: var(--sl-text-secondary);
+  font-size: 0.78cqw;
+  line-height: 1.4;
 }
+
+.tieman-solution-stack__signal {
+  position: absolute;
+  bottom: -1.65cqw;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 0.85cqw;
+  height: 0.85cqw;
+  transform: translateX(-50%);
+  background: var(--sl-surface-dark);
+  color: var(--sl-accent);
+}
+
+.tieman-solution-stack__signal svg { width: 100%; height: 100%; }
 
 .tieman-solution-stack__context {
-  display: grid;
-  min-height: 0;
-  place-items: center;
+  padding: 2cqw 2.5cqw 1.35cqw;
   border: 1px solid color-mix(in srgb, var(--sl-accent) 38%, var(--sl-border));
-  border-radius: 0.28cqw;
-  padding: 1.25cqw 2cqw;
-  background:
-    linear-gradient(108deg, color-mix(in srgb, var(--sl-accent) 9%, transparent), transparent 30%),
-    var(--sl-surface-2);
-  box-shadow:
-    inset 0.2cqw 0 0 var(--sl-accent),
-    0 1.2cqw 3.2cqw rgba(0, 0, 0, 0.24);
-  color: var(--sl-text-primary);
+  border-left: 0.25cqw solid var(--sl-accent);
+  background: var(--sl-surface-2);
 }
 
 .tieman-solution-stack__context-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1cqw;
+  gap: 1.2cqw;
   text-align: center;
 }
 
@@ -1700,7 +1653,7 @@
 .tieman-solution-stack__context-title span {
   display: block;
   color: var(--sl-accent);
-  font-size: 0.58cqw;
+  font-size: 0.75cqw;
   font-weight: var(--sl-weight-semibold);
   letter-spacing: var(--sl-tracking-label);
   text-transform: uppercase;
@@ -1708,258 +1661,48 @@
 
 .tieman-solution-stack__context-title strong {
   display: block;
-  max-width: 34cqw;
-  margin-top: 0.35cqw;
-  font-size: 1.18cqw;
+  margin-top: 0.6cqw;
+  font-size: 1.6cqw;
   font-weight: var(--sl-weight-medium);
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
-.tieman-solution-stack__context-title p {
-  max-width: 56cqw;
-  margin: 0.48cqw auto 0;
-  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
-  font-size: 0.66cqw;
-  font-weight: var(--sl-weight-light);
-  line-height: 1.35;
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"] :is(
-  .tieman-solution-stack__context-title > svg,
-  .tieman-solution-stack__context-title span,
-  .tieman-solution-stack__context-title strong,
-  .tieman-solution-stack__context-title p
-) {
-  opacity: 0;
-  transform: translateY(0.48cqw) scale(0.97);
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) :is(
-  .tieman-solution-stack__context-title > svg,
-  .tieman-solution-stack__context-title span,
-  .tieman-solution-stack__context-title strong,
-  .tieman-solution-stack__context-title p
-) {
-  animation: tiemanStackContextPop 440ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__context-title > svg { animation-delay: 100ms; }
-.sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__context-title span { animation-delay: 170ms; }
-.sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__context-title strong { animation-delay: 240ms; }
-.sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__context-title p { animation-delay: 310ms; }
-
-.tieman-solution-stack__source-grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  min-height: 0;
+.tieman-solution-stack__trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1cqw;
+  margin-top: 1.4cqw;
+  padding-top: 1.1cqw;
   border-top: 1px solid var(--sl-border);
-  border-left: 1px solid var(--sl-border);
 }
 
-.tieman-solution-stack__source-grid article {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1.85cqw 1fr;
-  grid-template-rows: auto auto;
-  min-height: 0;
-  align-content: center;
-  column-gap: 0.82cqw;
-  border-right: 1px solid var(--sl-border);
-  border-bottom: 1px solid var(--sl-border);
-  padding: 0.9cqw 0.88cqw;
+.tieman-solution-stack__trust span {
+  color: var(--sl-text-secondary);
+  font-size: 0.65cqw;
 }
 
-.sales-deck__transition[data-deck-fragment-count="3"]
-  .tieman-solution-stack__source-grid article {
-  opacity: 0;
-  transform: translateY(0.5cqw);
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="1"],
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) .tieman-solution-stack__source-grid article {
-  animation: tiemanStackSourceReveal 380ms var(--sl-ease-standard) both;
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"]
-  .tieman-solution-stack__source-grid article:nth-child(1) { animation-delay: 40ms; }
-.sales-deck__transition[data-deck-fragment-count="3"]
-  .tieman-solution-stack__source-grid article:nth-child(2) { animation-delay: 150ms; }
-.sales-deck__transition[data-deck-fragment-count="3"]
-  .tieman-solution-stack__source-grid article:nth-child(3) { animation-delay: 260ms; }
-.sales-deck__transition[data-deck-fragment-count="3"]
-  .tieman-solution-stack__source-grid article:nth-child(4) { animation-delay: 370ms; }
-.sales-deck__transition[data-deck-fragment-count="3"]
-  .tieman-solution-stack__source-grid article:nth-child(5) { animation-delay: 480ms; }
-.sales-deck__transition[data-deck-fragment-count="3"]
-  .tieman-solution-stack__source-grid article:nth-child(6) { animation-delay: 590ms; }
-
-.tieman-solution-stack__source-grid article::before {
-  position: absolute;
-  top: -1.55cqw;
-  left: 50%;
-  width: 1px;
-  height: 1.55cqw;
-  background: var(--sl-accent);
-  content: "";
-  opacity: 0;
-  transform: scaleY(1);
-  transform-origin: top;
-  transition: opacity 280ms var(--sl-ease-standard);
-}
-
-.tieman-solution-stack__source-grid article > svg {
-  grid-row: 1 / span 2;
-  width: 1.85cqw;
-  height: 1.85cqw;
-  align-self: center;
-  color: var(--sl-accent);
-  stroke-width: 1.45;
-}
-
-.tieman-solution-stack__source-grid .tieman-solution-stack__signal {
-  top: -1.1cqw;
-  animation: tiemanStackSignalUp 7.6s ease-out infinite paused;
-}
-
-.tieman-solution-stack__source-grid article:nth-child(1) .tieman-solution-stack__signal { animation-delay: 0ms; }
-.tieman-solution-stack__source-grid article:nth-child(2) .tieman-solution-stack__signal { animation-delay: 160ms; }
-.tieman-solution-stack__source-grid article:nth-child(3) .tieman-solution-stack__signal { animation-delay: 320ms; }
-.tieman-solution-stack__source-grid article:nth-child(4) .tieman-solution-stack__signal { animation-delay: 480ms; }
-.tieman-solution-stack__source-grid article:nth-child(5) .tieman-solution-stack__signal { animation-delay: 640ms; }
-.tieman-solution-stack__source-grid article:nth-child(6) .tieman-solution-stack__signal { animation-delay: 800ms; }
-
-.tieman-solution-stack__source-grid strong {
-  align-self: end;
-  font-size: 0.8cqw;
+.tieman-solution-stack__trust strong {
+  font-size: 0.78cqw;
   font-weight: var(--sl-weight-medium);
 }
 
-.sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__applications,
-.sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__context,
-.sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__sources {
+.sales-deck__transition[data-deck-fragment-count="2"] :is(
+  .tieman-solution-stack__context,
+  .tieman-solution-stack__applications
+) {
   visibility: hidden;
   opacity: 0;
-  pointer-events: none;
-  transition:
-    visibility 0s linear 560ms,
-    opacity 440ms var(--sl-ease-standard),
-    transform 560ms var(--sl-ease-standard),
-    filter 440ms var(--sl-ease-standard);
+  transition: opacity 320ms var(--sl-ease-standard);
 }
 
-.sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__applications {
-  transform: translateY(-0.85cqw);
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__context {
-  transform: scaleX(0.96);
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__sources {
-  transform: translateY(0.85cqw);
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="1"],
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) .tieman-solution-stack__sources,
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
+.sales-deck__transition[data-deck-fragment-count="2"]:is(
+  [data-deck-fragment-step="1"], [data-deck-fragment-step="2"]
 ) .tieman-solution-stack__context,
-.sales-deck__transition[data-deck-fragment-count="3"][data-deck-fragment-step="3"]
+.sales-deck__transition[data-deck-fragment-count="2"][data-deck-fragment-step="2"]
   .tieman-solution-stack__applications {
   visibility: visible;
   opacity: 1;
-  pointer-events: auto;
-  transform: none;
-  transition-delay: 0s;
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) .tieman-solution-stack__sources {
-  opacity: 0.26;
-  filter: saturate(0.18);
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"][data-deck-fragment-step="1"]
-  .tieman-solution-stack__source-grid .tieman-solution-stack__signal {
-  animation: none;
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"][data-deck-fragment-step="1"]
-  .tieman-solution-stack__source-grid .tieman-solution-stack__signal {
-  opacity: 0;
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) .tieman-solution-stack__sources .tieman-solution-stack__signal,
-.sales-deck__transition[data-deck-fragment-count="3"][data-deck-fragment-step="3"]
-  .tieman-solution-stack__applications .tieman-solution-stack__signal {
-  animation-play-state: running;
-}
-
-.sales-deck__transition[data-deck-fragment-count="3"]:is(
-  [data-deck-fragment-step="2"],
-  [data-deck-fragment-step="3"]
-) .tieman-solution-stack__source-grid article::before {
-  opacity: 0.3;
-}
-
-@keyframes tiemanStackSignalUp {
-  0%, 18%, 100% {
-    opacity: 0;
-    transform: translate(-50%, 0.46cqw);
-  }
-
-  5% {
-    opacity: 0.58;
-  }
-
-  13% {
-    opacity: 0.58;
-    transform: translate(-50%, -0.46cqw);
-  }
-}
-
-@keyframes tiemanStackSourceReveal {
-  from {
-    opacity: 0;
-    transform: translateY(0.5cqw);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes tiemanStackContextPop {
-  0% {
-    opacity: 0;
-    transform: translateY(0.48cqw) scale(0.97);
-  }
-
-  72% {
-    opacity: 1;
-    transform: translateY(-0.04cqw) scale(1.01);
-  }
-
-  100% {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 /* Ripple */
@@ -3863,6 +3606,23 @@
     line-height: 1.4;
   }
 
+  .tieman-vision-venn__intro {
+    max-width: 28rem;
+    margin-top: 18px;
+    font-size: 0.95rem;
+  }
+
+  .tieman-solution-stack__trust {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 16px;
+    text-align: center;
+  }
+
+  .tieman-solution-stack__trust span { font-size: 0.7rem; }
+  .tieman-solution-stack__trust strong { font-size: 0.8rem; }
+
   .tieman-solution-stack__heading {
     display: block;
   }
@@ -4718,8 +4478,8 @@
     transition: none;
   }
 
-  .sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__applications,
-  .sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__context,
+  .sales-deck__transition[data-deck-fragment-count="2"] .tieman-solution-stack__applications,
+  .sales-deck__transition[data-deck-fragment-count="2"] .tieman-solution-stack__context,
   .sales-deck__transition[data-deck-fragment-count="3"] .tieman-solution-stack__sources {
     transition: none;
   }
