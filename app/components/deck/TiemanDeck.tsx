@@ -817,7 +817,7 @@ function WhyUsSlide() {
           <em>from strategy to delivery.</em>
         </h2>
         <p className="tieman-why-us__promise">
-          Work directly with both founders, with specialist support brought in as needed.
+          With specialist support brought in as needed.
         </p>
       </div>
 
