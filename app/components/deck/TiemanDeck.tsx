@@ -148,7 +148,7 @@ const storyImpactStates = [
 ] as const;
 
 const solutionApplications = [
-  { name: "AI assistants", role: "Answer questions using Tieman's information", icon: Bot },
+  { name: "AI assistants", role: "Answer questions using Tieman's information and context", icon: Bot },
   { name: "Automated workflows", role: "Route information and tasks to the right people", icon: Workflow },
   { name: "Dashboards", role: "Show each department what needs attention", icon: LayoutDashboard },
   { name: "Team workspaces", role: "Give people the tools and information for their role", icon: PanelsTopLeft },
