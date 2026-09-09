@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import ArrowUp from "lucide-react/dist/esm/icons/arrow-up";
 import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
 import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
@@ -316,6 +317,50 @@ function TbdReviewOverlay() {
   );
 }
 
+function TiemanFactoryFootage() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    const sync = () => {
+      if (motion.matches || document.hidden || !visible) {
+        video.pause();
+        return;
+      }
+      if (!video.getAttribute("src")) {
+        video.src = "/videos/deck/tieman/factory-slow.mp4";
+      }
+      if (!video.ended) void video.play().catch(() => {});
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      sync();
+    });
+    observer.observe(video);
+    motion.addEventListener("change", sync);
+    document.addEventListener("visibilitychange", sync);
+    return () => {
+      observer.disconnect();
+      motion.removeEventListener("change", sync);
+      document.removeEventListener("visibilitychange", sync);
+      video.pause();
+    };
+  }, []);
+
+  return (
+    <>
+      <img className="tieman-cover__image" src="/images/deck/tieman/factory-slow.webp"
+        alt="" width={1920} height={1080} fetchPriority="high" />
+      <video ref={videoRef} className="tieman-cover__image tieman-cover__footage"
+        poster="/images/deck/tieman/factory-slow.webp" muted playsInline
+        preload="none" aria-hidden="true" />
+    </>
+  );
+}
+
 function TiemanCoverSlide() {
   return (
     <DeckSlideFrame
@@ -324,14 +369,7 @@ function TiemanCoverSlide() {
       descriptor="Tieman Tankers · Data & AI Transformation."
       className="tieman-cover"
     >
-      <img
-        className="tieman-cover__image"
-        src="/images/deck/tieman/food-grade.webp"
-        alt=""
-        width={1024}
-        height={576}
-        fetchPriority="high"
-      />
+      <TiemanFactoryFootage />
       <div className="tieman-cover__shade" aria-hidden="true" />
       <div className="tieman-cover__copy">
         <TiemanPartnerLockup />

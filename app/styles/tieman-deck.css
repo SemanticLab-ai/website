@@ -4629,3 +4629,8 @@
   font-size: clamp(3rem, 9cqw, 10rem);
   line-height: 1;
 }
+
+/* The opening footage plays once; reduced-motion and print retain the still. */
+@media (prefers-reduced-motion: reduce), print {
+  .tieman-cover__footage { display: none; }
+}
