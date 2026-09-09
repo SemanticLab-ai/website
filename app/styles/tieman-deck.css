@@ -67,7 +67,7 @@
   line-height: 0.88;
 }
 
-.tieman-cover__copy > p {
+.deck-slide .tieman-cover__copy > p {
   max-width: 40cqw;
   margin-top: 2.15cqw;
   color: color-mix(in srgb, var(--sl-text-primary) 68%, transparent);
@@ -3179,7 +3179,7 @@
     font-size: clamp(3.4rem, 15.5vw, 4.8rem);
   }
 
-  .tieman-cover__copy > p,
+  .deck-slide .tieman-cover__copy > p,
   .tieman-next-step__copy > p:not(.deck-kicker) {
     max-width: 340px;
     margin-top: 26px;
