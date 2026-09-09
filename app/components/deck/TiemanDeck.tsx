@@ -803,7 +803,7 @@ function StoryImpactSlide() {
 
       <p className="tieman-story-impact__result">
         <span>The cumulative cost</span>
-        <strong>More coordination · More waiting · Less throughput</strong>
+        <strong>More coordination · More waiting · Slower delivery</strong>
       </p>
     </DeckSlideFrame>
   );
