@@ -368,7 +368,7 @@ function TiemanVisionVennSlide() {
     <DeckSlideFrame
       index={3}
       total={PRESENTATION_TOTAL_SLIDES}
-      descriptor="Three themes converge in one connected opportunity."
+      descriptor="Three themes converge in one connected platform."
       className="tieman-vision-venn"
     >
       <div className="tieman-vision-venn__heading">
@@ -377,7 +377,7 @@ function TiemanVisionVennSlide() {
           Three emerging themes
         </h2>
         <p className="tieman-vision-venn__conclusion">
-          <strong>One connected opportunity.</strong>
+          <strong>One connected platform.</strong>
         </p>
       </div>
 
