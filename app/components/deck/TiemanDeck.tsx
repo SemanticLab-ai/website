@@ -381,7 +381,7 @@ function TiemanVisionVennSlide() {
       <div className="tieman-vision-venn__heading">
         <p className="deck-kicker">Tieman&apos;s priorities</p>
         <h2 id="deck-slide-3-title">
-          What Tieman wants to achieve
+          Tieman&apos;s vision
         </h2>
         <p className="tieman-vision-venn__intro">Three priorities from our initial conversation.</p>
         <p className="tieman-vision-venn__conclusion">
