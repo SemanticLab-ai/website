@@ -4618,3 +4618,14 @@
     transition: none;
   }
 }
+
+/* Simple presentation close */
+.tieman-questions .deck-slide__content {
+  display: grid;
+  place-items: center;
+}
+
+.tieman-questions h2 {
+  font-size: clamp(3rem, 9cqw, 10rem);
+  line-height: 1;
+}

@@ -23,7 +23,7 @@ import {
   type DeckSlide,
 } from "~/components/deck/DeckPresentation";
 
-const PRESENTATION_TOTAL_SLIDES = 8;
+const PRESENTATION_TOTAL_SLIDES = 9;
 const DISCOVERY_TOTAL_SLIDES = 15;
 
 const agendaItems = [
@@ -859,6 +859,19 @@ function WhyUsSlide() {
   );
 }
 
+function QuestionsSlide() {
+  return (
+    <DeckSlideFrame
+      index={9}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor=""
+      className="tieman-questions"
+    >
+      <h2 id="deck-slide-9-title">Questions?</h2>
+    </DeckSlideFrame>
+  );
+}
+
 function ProofSlide() {
   return (
     <DeckSlideFrame
@@ -1352,13 +1365,16 @@ export function TiemanDeck({
   const closingSlideIndex = completeSlides.findIndex((slide) => slide.id === "tieman-why-us");
   const selectedSlides = sessionVariant === "discovery"
     ? completeSlides.slice(closingSlideIndex + 1)
-    : completeSlides.slice(0, closingSlideIndex + 1);
+    : [
+        ...completeSlides.slice(0, closingSlideIndex + 1),
+        { id: "tieman-questions", label: "Questions?", content: <QuestionsSlide /> },
+      ];
 
   return (
     <DeckPresentation
       className="sales-deck--tieman"
       key={sessionVariant}
-      slideNumberOffset={sessionVariant === "discovery" ? PRESENTATION_TOTAL_SLIDES : 0}
+      slideNumberOffset={sessionVariant === "discovery" ? closingSlideIndex + 1 : 0}
       slides={selectedSlides}
       testId="tieman-sales-deck"
       totalSlides={sessionVariant === "discovery"
