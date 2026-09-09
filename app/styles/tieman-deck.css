@@ -3176,7 +3176,7 @@
 
   .tieman-cover__copy h1 {
     margin-top: 24px;
-    font-size: clamp(3.4rem, 15.5vw, 4.8rem);
+    font-size: clamp(2.65rem, 14vw, 4.8rem);
   }
 
   .deck-slide .tieman-cover__copy > p,

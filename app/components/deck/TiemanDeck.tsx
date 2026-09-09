@@ -336,7 +336,7 @@ function TiemanCoverSlide() {
       <div className="tieman-cover__copy">
         <TiemanPartnerLockup />
         <h1 id="deck-slide-1-title">
-          Tieman&apos;s data processing system, <em>ready for AI.</em>
+          Tieman&apos;s data &amp; <em>AI Transformation</em>
         </h1>
         <p>Analyse more information, find answers faster and make better decisions.</p>
       </div>
