@@ -56,7 +56,7 @@ const visionOutcomes = [
     title: "Operational efficiency",
     points: [
       { title: "Analyse more information, faster", detail: "Spreadsheets · calculations · procedures · standards" },
-      { title: "Find knowledge faster", detail: "Historical jobs · specs · decisions" },
+      { title: "Find knowledge quicker", detail: "Historical jobs · specs · decisions" },
     ],
   },
   {
