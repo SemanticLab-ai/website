@@ -4632,5 +4632,38 @@
 
 /* The opening footage plays once; reduced-motion and print retain the still. */
 @media (prefers-reduced-motion: reduce), print {
-  .tieman-cover__footage { display: none; }
+  .tieman-slide-footage, .tieman-footage-toggle { display: none; }
 }
+
+.tieman-questions__image,
+.tieman-questions__shade {
+  position: absolute;
+  inset: -3.3cqw -3.7cqw -2.1cqw;
+  width: calc(100% + 7.4cqw);
+  height: calc(100% + 5.4cqw);
+  pointer-events: none;
+}
+.tieman-questions__image {
+  z-index: -3;
+  object-fit: cover;
+  object-position: center;
+}
+.tieman-questions__shade {
+  z-index: -2;
+  background: linear-gradient(0deg, var(--sl-canvas), transparent 40%), rgba(11, 11, 13, 0.62);
+}
+
+.tieman-footage-toggle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: var(--sl-text-primary);
+  background: rgba(11, 11, 13, 0.65);
+  border: 1px solid var(--sl-color-graphite);
+  border-radius: 3px;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.tieman-footage-toggle:focus-visible { outline: 2px solid var(--sl-accent); outline-offset: 3px; }

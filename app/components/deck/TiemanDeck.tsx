@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ArrowUp from "lucide-react/dist/esm/icons/arrow-up";
 import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
 import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
@@ -317,8 +317,14 @@ function TbdReviewOverlay() {
   );
 }
 
-function TiemanFactoryFootage() {
+function TiemanSlideFootage({ name, className, priority = false, loop = false }: {
+  name: "factory-slow" | "welding-slow";
+  className: string;
+  priority?: boolean;
+  loop?: boolean;
+}) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -326,12 +332,12 @@ function TiemanFactoryFootage() {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let visible = false;
     const sync = () => {
-      if (motion.matches || document.hidden || !visible) {
+      if (paused || motion.matches || document.hidden || !visible) {
         video.pause();
         return;
       }
       if (!video.getAttribute("src")) {
-        video.src = "/videos/deck/tieman/factory-slow.mp4";
+        video.src = `/videos/deck/tieman/${name}.mp4`;
       }
       if (!video.ended) void video.play().catch(() => {});
     };
@@ -348,15 +354,19 @@ function TiemanFactoryFootage() {
       document.removeEventListener("visibilitychange", sync);
       video.pause();
     };
-  }, []);
+  }, [name, paused]);
 
   return (
     <>
-      <img className="tieman-cover__image" src="/images/deck/tieman/factory-slow.webp"
-        alt="" width={1920} height={1080} fetchPriority="high" />
-      <video ref={videoRef} className="tieman-cover__image tieman-cover__footage"
-        poster="/images/deck/tieman/factory-slow.webp" muted playsInline
+      <img className={className} src={`/images/deck/tieman/${name}.webp`}
+        alt="" width={1920} height={1080} fetchPriority={priority ? "high" : "auto"} />
+      <video ref={videoRef} className={`${className} tieman-slide-footage`}
+        poster={`/images/deck/tieman/${name}.webp`} muted playsInline loop={loop}
         preload="none" aria-hidden="true" />
+      {loop && <button className="tieman-footage-toggle" type="button"
+        onClick={() => setPaused(value => !value)}>
+        {paused ? "Play background" : "Pause background"}
+      </button>}
     </>
   );
 }
@@ -369,7 +379,7 @@ function TiemanCoverSlide() {
       descriptor="Tieman Tankers · Data & AI Transformation."
       className="tieman-cover"
     >
-      <TiemanFactoryFootage />
+      <TiemanSlideFootage name="factory-slow" className="tieman-cover__image" priority />
       <div className="tieman-cover__shade" aria-hidden="true" />
       <div className="tieman-cover__copy">
         <TiemanPartnerLockup />
@@ -905,6 +915,8 @@ function QuestionsSlide() {
       descriptor=""
       className="tieman-questions"
     >
+      <TiemanSlideFootage name="welding-slow" className="tieman-questions__image" loop />
+      <div className="tieman-questions__shade" aria-hidden="true" />
       <h2 id="deck-slide-9-title">Questions?</h2>
     </DeckSlideFrame>
   );
