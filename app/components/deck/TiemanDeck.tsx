@@ -915,7 +915,7 @@ function QuestionsSlide() {
       descriptor=""
       className="tieman-questions"
     >
-      <TiemanSlideFootage name="welding-slow" className="tieman-questions__image" loop />
+      <TiemanSlideFootage name="welding-slow" className="tieman-questions__image" />
       <div className="tieman-questions__shade" aria-hidden="true" />
       <h2 id="deck-slide-9-title">Questions?</h2>
     </DeckSlideFrame>

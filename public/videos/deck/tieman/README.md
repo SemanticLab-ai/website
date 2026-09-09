@@ -11,4 +11,4 @@ Limit output to five seconds, libx264 CRF 20, yuv420p, faststart.
 
 ## Closing sparks
 
-Welding clip seconds 0.8–1.8 (original 14.08–15.08), slowed to 20% using the same interpolation filter. Five-second silent loop on Questions, with pause/play control and reduced-motion still fallback.
+Welding clip seconds 0.8–1.8 (original 14.08–15.08), slowed to 20% using the same interpolation filter. Five-second silent playback on Questions, then hold the final frame, with reduced-motion still fallback.
