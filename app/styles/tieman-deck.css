@@ -1942,11 +1942,11 @@
   align-self: center;
 }
 
-.tieman-why-us__heading h2 {
+.deck-slide .tieman-why-us__heading h2 {
   max-width: 39cqw;
   margin-top: 1.35cqw;
   font-size: 3.55cqw;
-  line-height: 0.91;
+  line-height: 1.04;
 }
 
 .tieman-why-us__heading h2 > span,
@@ -1955,7 +1955,7 @@
   white-space: nowrap;
 }
 
-.tieman-why-us__promise {
+.deck-slide .tieman-why-us__promise {
   max-width: 29cqw;
   margin-top: 1.7cqw;
   color: color-mix(in srgb, var(--sl-text-primary) 66%, transparent);
@@ -3162,7 +3162,7 @@
   .tieman-challenges__heading h2,
   .tieman-solution-stack__heading h2,
   .tieman-ripple__heading h2,
-  .tieman-why-us__heading h2,
+  .deck-slide .tieman-why-us__heading h2,
   .tieman-proof__heading h2,
   .tieman-double-diamond__heading h2,
   .tieman-operating-layer__heading h2,
@@ -3888,7 +3888,7 @@
     border-bottom: 1px solid var(--sl-border);
   }
 
-  .tieman-why-us__promise {
+  .deck-slide .tieman-why-us__promise {
     max-width: 340px;
     margin-top: 24px;
     font-size: 0.86rem;
