@@ -143,6 +143,7 @@ const storyImpactStates = [
   { stage: "Engineering", title: "Engineering rework", detail: "Design work pauses or has to be revisited." },
   { stage: "BOM", title: "Cross-team query", detail: "Spec-to-design gaps send teams chasing answers." },
   { stage: "Purchasing", title: "Long-lead surprise", detail: "Critical components are identified later." },
+  { stage: "Planning", title: "Missing job orders", detail: "Planning cannot sequence the build without complete job orders." },
   { stage: "Production", title: "Production delay", detail: "A small upstream gap becomes schedule impact." },
 ] as const;
 
@@ -1321,7 +1322,7 @@ function withStoryChallengeSlides(baseSlides: readonly DeckSlide[]): readonly De
         {
           id: "tieman-story-impact",
           label: "Why it matters",
-          fragmentCount: 6,
+          fragmentCount: 7,
           content: <StoryImpactSlide />,
         },
       ];
