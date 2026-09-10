@@ -24,7 +24,7 @@ import {
   type DeckSlide,
 } from "~/components/deck/DeckPresentation";
 
-const PRESENTATION_TOTAL_SLIDES = 9;
+const PRESENTATION_TOTAL_SLIDES = 10;
 const DISCOVERY_TOTAL_SLIDES = 15;
 
 const agendaItems = [
@@ -910,29 +910,29 @@ function WhyUsSlide() {
 function QuestionsSlide() {
   return (
     <DeckSlideFrame
-      index={9}
+      index={10}
       total={PRESENTATION_TOTAL_SLIDES}
       descriptor=""
       className="tieman-questions"
     >
       <TiemanSlideFootage name="welding-slow" className="tieman-questions__image" />
       <div className="tieman-questions__shade" aria-hidden="true" />
-      <h2 id="deck-slide-9-title">Questions?</h2>
+      <h2 id="deck-slide-10-title">Questions?</h2>
     </DeckSlideFrame>
   );
 }
 
-function ProofSlide() {
+function ProofSlide({ index = 10, total = DISCOVERY_TOTAL_SLIDES }: { index?: number; total?: number }) {
   return (
     <DeckSlideFrame
-      index={10}
-      total={DISCOVERY_TOTAL_SLIDES}
+      index={index}
+      total={total}
       descriptor="Relevant proof across data, platforms and workflow design."
       className="tieman-proof"
     >
       <div className="tieman-proof__heading">
         <p className="deck-kicker">Proof of relevant work</p>
-        <h2 id="deck-slide-10-title">
+        <h2 id={`deck-slide-${index}-title`}>
           Experience that maps to the <em>operating problem.</em>
         </h2>
       </div>
@@ -1417,6 +1417,7 @@ export function TiemanDeck({
     ? completeSlides.slice(closingSlideIndex + 1)
     : [
         ...completeSlides.slice(0, closingSlideIndex + 1),
+        { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide index={9} total={PRESENTATION_TOTAL_SLIDES} /> },
         { id: "tieman-questions", label: "Questions?", content: <QuestionsSlide /> },
       ];
 
