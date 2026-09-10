@@ -87,6 +87,7 @@
 }
 
 .tieman-fragmentation__backdrop {
+  max-width: none;
   object-fit: cover;
   opacity: 0;
   animation: tiemanTopologyReveal 1.35s var(--sl-ease-standard) 180ms both;
@@ -872,6 +873,7 @@
 }
 
 .tieman-story-landscape__backdrop {
+  max-width: none;
   object-fit: cover;
   opacity: 0;
   animation: tiemanStoryTopologyReveal 1.35s var(--sl-ease-standard) 180ms both;
