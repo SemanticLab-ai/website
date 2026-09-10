@@ -1,0 +1,1436 @@
+import { useEffect, useRef, useState } from "react";
+import ArrowUp from "lucide-react/dist/esm/icons/arrow-up";
+import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
+import ArrowRight from "lucide-react/dist/esm/icons/arrow-right";
+import Bot from "lucide-react/dist/esm/icons/bot";
+import BrainCircuit from "lucide-react/dist/esm/icons/brain-circuit";
+import Cable from "lucide-react/dist/esm/icons/cable";
+import CircleAlert from "lucide-react/dist/esm/icons/circle-alert";
+import Cuboid from "lucide-react/dist/esm/icons/cuboid";
+import Database from "lucide-react/dist/esm/icons/database";
+import FileText from "lucide-react/dist/esm/icons/file-text";
+import Layers3 from "lucide-react/dist/esm/icons/layers-3";
+import LayoutDashboard from "lucide-react/dist/esm/icons/layout-dashboard";
+import Network from "lucide-react/dist/esm/icons/network";
+import PanelsTopLeft from "lucide-react/dist/esm/icons/panels-top-left";
+import RotateCcw from "lucide-react/dist/esm/icons/rotate-ccw";
+import Sheet from "lucide-react/dist/esm/icons/sheet";
+import ShieldCheck from "lucide-react/dist/esm/icons/shield-check";
+import Users from "lucide-react/dist/esm/icons/users";
+import Workflow from "lucide-react/dist/esm/icons/workflow";
+import {
+  DeckPresentation,
+  DeckSlideFrame,
+  type DeckSlide,
+} from "~/components/deck/DeckPresentation";
+
+const PRESENTATION_TOTAL_SLIDES = 10;
+const DISCOVERY_TOTAL_SLIDES = 15;
+
+const agendaItems = [
+  "Tieman's vision",
+  "Challenges",
+  "The opportunity",
+  "Why us",
+  "Discussion",
+] as const;
+
+const challengeActions = [
+  { title: "Search", detail: "Find the right information" },
+  { title: "Compare", detail: "See jobs, specs and decisions together" },
+  { title: "Govern", detail: "Know what is approved and current" },
+  { title: "Reuse", detail: "Carry knowledge into the next job" },
+] as const;
+
+const challengeImpacts = [
+  "Manual interpretation",
+  "Slow handovers",
+  "Revision risk",
+  "Duplicated work",
+  "Avoidable delays",
+] as const;
+
+const visionOutcomes = [
+  {
+    id: "efficiency",
+    index: "01",
+    title: "Operational efficiency",
+    points: [
+      { title: "Analyse more information, faster", detail: "Spreadsheets · calculations · procedures · standards" },
+      { title: "Find knowledge quicker", detail: "Historical jobs · specs · decisions" },
+    ],
+  },
+  {
+    id: "intelligence",
+    index: "02",
+    title: "Future capability",
+    points: [
+      {
+        title: "Connect teams around shared context",
+        detail: "Sales · Engineering · Purchasing · Production",
+      },
+      { title: "AI that understands Tieman's language", detail: "Assistants · workflows · decision support" },
+    ],
+  },
+  {
+    id: "resilience",
+    index: "03",
+    title: "Risk & resilience",
+    points: [
+      { title: "Reduce delivery risk", detail: "Spec errors · long-lead surprises · revision confusion" },
+      { title: "Preserve critical knowledge", detail: "Australian-hosted · governed · secure" },
+    ],
+  },
+] as const;
+
+const rippleStages = [
+  { name: "Sales", detail: "Requirements" },
+  { name: "Specification", detail: "Job definition" },
+  { name: "Engineering", detail: "Design intent" },
+  { name: "BOM", detail: "Parts + revision" },
+  { name: "Purchasing", detail: "Supply decisions" },
+  { name: "Planning", detail: "Build sequence" },
+  { name: "Production", detail: "Execution" },
+] as const;
+
+const rippleEffects = [
+  {
+    index: "01",
+    title: "Clarification loops",
+    detail: "Missing context sends questions back upstream.",
+    handoff: "Sales → Specification",
+  },
+  {
+    index: "02",
+    title: "Engineering rework",
+    detail: "Assumptions surface after design work begins.",
+    handoff: "Specification → BOM",
+  },
+  {
+    index: "03",
+    title: "Long-lead surprises",
+    detail: "Critical items are identified later than they should be.",
+    handoff: "BOM → Planning",
+  },
+  {
+    index: "04",
+    title: "Revision risk",
+    detail: "Production can act on information that is no longer current.",
+    handoff: "Planning → Production",
+  },
+] as const;
+
+const tiemanSystems = [
+  { id: "epicor", name: "Epicor", role: "ERP & operations", icon: Database },
+  { id: "solidworks", name: "SolidWorks", role: "Engineering design", icon: Cuboid },
+  { id: "pdm", name: "PDM", role: "Product data", icon: Layers3 },
+  { id: "documents", name: "Word + PDF", role: "Specifications", icon: FileText },
+  { id: "excel", name: "Excel", role: "Working data", icon: Sheet },
+  { id: "people", name: "People", role: "Decisions & history", icon: Users },
+] as const;
+
+const answerFragmentBySystem = {
+  epicor: "Job history",
+  solidworks: "Design",
+  pdm: "Approved revision",
+  documents: "Customer specification",
+  excel: "Spreadsheets",
+  people: "Decision rationale",
+} as const;
+
+const storyImpactStates = [
+  { stage: "Sales", title: "Missing requirement", detail: "The job begins with incomplete context." },
+  { stage: "Specification", title: "Clarification", detail: "The missing detail has to be reconstructed." },
+  { stage: "Engineering", title: "Engineering rework", detail: "Design work pauses or has to be revisited." },
+  { stage: "BOM", title: "Cross-team query", detail: "Spec-to-design gaps send teams chasing answers." },
+  { stage: "Purchasing", title: "Long-lead surprise", detail: "Critical components are identified later." },
+  { stage: "Planning", title: "Missing job orders", detail: "Planning cannot sequence the build without complete job orders." },
+  { stage: "Production", title: "Production delay", detail: "A small upstream gap becomes schedule impact." },
+] as const;
+
+const solutionApplications = [
+  { name: "AI assistants", role: "Answer questions using Tieman's information and context", icon: Bot },
+  { name: "Automated workflows", role: "Route information and tasks to the right people", icon: Workflow },
+  { name: "Dashboards", role: "Show each department what needs attention", icon: LayoutDashboard },
+  { name: "Team workspaces", role: "Give people the tools and information for their role", icon: PanelsTopLeft },
+] as const;
+
+const practicalQuestions = [
+  { topic: "Explore design options", question: "How much more volume would we get if we changed the tank section from A to B?" },
+  { topic: "Support engineering calculations", question: "For a 32,000-litre tanker with a 5-metre wheelbase, what would the axle loads be?" },
+  { topic: "Find previous work", question: "When did we last build a tanker for this customer?" },
+] as const;
+
+const proofPoints = [
+  {
+    index: "01",
+    name: "GameDay",
+    headline: "$250M+",
+    measure: "annual payment volume supported",
+    detail: "Large-scale operational data, payment orchestration and platform modernisation with 95%+ Stripe adoption.",
+  },
+  {
+    index: "02",
+    name: "PartsHQ",
+    headline: "100K+",
+    measure: "parts across a distributed platform",
+    detail: "Disconnected catalogue, supplier and commerce systems shaped into reliable workflow automation for six active clients.",
+  },
+  {
+    index: "03",
+    name: "Podly",
+    headline: "Evidence",
+    measure: "made usable inside the workflow",
+    detail: "Product workflows that connect requirements, evidence, ownership and decision clarity.",
+  },
+] as const;
+
+const outcomeProofTiles = [
+  "Payments at scale",
+  "Products kept current",
+  "Core tasks completed",
+  "Compliance made usable",
+  "Settlement automated",
+  "Adoption increased",
+  "Multi-market delivery",
+  "Zero-downtime change",
+  "Data loss prevented",
+  "Setup in minutes",
+  "Automatic updates",
+  "Partners connected",
+  "Fewer delivery failures",
+  "Teams scaled",
+  "Onboarding clarified",
+  "MVP validated",
+] as const;
+
+const outcomeProofSpotlights = [
+  {
+    tileIndex: 1,
+    headline: "Complex operations,",
+    emphasis: "easier to run.",
+    lead: "100K+ products stayed current.",
+    detail: "Inventory changes were synchronised automatically across source systems and online stores every four hours.",
+  },
+  {
+    tileIndex: 0,
+    headline: "Payments at scale,",
+    emphasis: "without the drag.",
+    lead: "$250M+ in annual payments supported.",
+    detail: "Split payments and settlement ran across thousands of organisations, currencies and markets.",
+  },
+  {
+    tileIndex: 2,
+    headline: "Core workflows,",
+    emphasis: "finished with clarity.",
+    lead: "Every core setup task was completed.",
+    detail: "Guided steps, visible progress and clearer recovery states removed the common points of confusion.",
+  },
+  {
+    tileIndex: 3,
+    headline: "Compliance,",
+    emphasis: "built into the work.",
+    lead: "Compliance moved into the workflow.",
+    detail: "Requirements, evidence and ownership were brought together where teams already worked.",
+  },
+] as const;
+
+const operatingLayers = [
+  {
+    index: "01",
+    title: "Source systems",
+    detail: "Epicor · SolidWorks · PDM · documents",
+    icon: Database,
+  },
+  {
+    index: "02",
+    title: "Connected data layer",
+    detail: "Reliable movement and usable structure",
+    icon: Cable,
+  },
+  {
+    index: "03",
+    title: "Semantic layer",
+    detail: "Shared context around each job",
+    icon: Network,
+  },
+  {
+    index: "04",
+    title: "Business meaning",
+    detail: "Ontology, relationships and rules",
+    icon: BrainCircuit,
+  },
+  {
+    index: "05",
+    title: "Applications & agents",
+    detail: "Useful tools inside real work",
+    icon: Bot,
+  },
+] as const;
+
+const securityControls = [
+  { index: "01", title: "Governance", detail: "Clear ownership and rules for how operational data is used." },
+  { index: "02", title: "Access control", detail: "People and agents see only the information their role permits." },
+  { index: "03", title: "Australian hosting", detail: "Supported where required; the final pattern is confirmed in discovery." },
+  { index: "04", title: "Audit trail", detail: "Sources, actions and decisions remain traceable." },
+  { index: "05", title: "Human approval", detail: "People approve decisions before operational records change." },
+  { index: "06", title: "Revision control", detail: "Answers identify the current source and revision behind them." },
+] as const;
+
+const pilotCapabilities = [
+  {
+    index: "01",
+    title: "Historical job context",
+    detail: "Find relevant previous work and show why it is useful.",
+  },
+  {
+    index: "02",
+    title: "Specification readiness",
+    detail: "Surface missing, inconsistent or unresolved inputs earlier.",
+  },
+  {
+    index: "03",
+    title: "Long-lead visibility",
+    detail: "Flag candidate purchasing risks for Engineering review.",
+  },
+] as const;
+
+function TiemanPartnerLockup() {
+  return (
+    <div className="tieman-partner-lockup" aria-label="SemanticLab and Tieman Tankers">
+      <span>SemanticLab</span>
+      <i>×</i>
+      <img src="/images/deck/tieman/logo.png" alt="Tieman Tankers" width={426} height={78} />
+    </div>
+  );
+}
+
+function TbdReviewOverlay() {
+  return (
+    <aside className="tieman-tbd-cover" aria-label="Next steps are to be determined">
+      <div className="tieman-tbd-cover__panel">
+        <span>Next steps</span>
+        <strong>TBD</strong>
+        <p>To be refined after stakeholder review.</p>
+      </div>
+    </aside>
+  );
+}
+
+function TiemanSlideFootage({ name, className, priority = false, loop = false }: {
+  name: "factory-slow" | "welding-slow";
+  className: string;
+  priority?: boolean;
+  loop?: boolean;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let visible = false;
+    const sync = () => {
+      if (paused || motion.matches || document.hidden || !visible) {
+        video.pause();
+        return;
+      }
+      if (!video.getAttribute("src")) {
+        video.src = `/videos/deck/tieman/${name}.mp4`;
+      }
+      if (!video.ended) void video.play().catch(() => {});
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      sync();
+    });
+    observer.observe(video);
+    motion.addEventListener("change", sync);
+    document.addEventListener("visibilitychange", sync);
+    return () => {
+      observer.disconnect();
+      motion.removeEventListener("change", sync);
+      document.removeEventListener("visibilitychange", sync);
+      video.pause();
+    };
+  }, [name, paused]);
+
+  return (
+    <>
+      <img className={className} src={`/images/deck/tieman/${name}.webp`}
+        alt="" width={1920} height={1080} fetchPriority={priority ? "high" : "auto"} />
+      <video ref={videoRef} className={`${className} tieman-slide-footage`}
+        poster={`/images/deck/tieman/${name}.webp`} muted playsInline loop={loop}
+        preload="none" aria-hidden="true" />
+      {loop && <button className="tieman-footage-toggle" type="button"
+        onClick={() => setPaused(value => !value)}>
+        {paused ? "Play background" : "Pause background"}
+      </button>}
+    </>
+  );
+}
+
+function TiemanCoverSlide() {
+  return (
+    <DeckSlideFrame
+      index={1}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="Tieman Tankers · Data & AI Transformation."
+      className="tieman-cover"
+    >
+      <TiemanSlideFootage name="factory-slow" className="tieman-cover__image" priority />
+      <div className="tieman-cover__shade" aria-hidden="true" />
+      <div className="tieman-cover__copy">
+        <TiemanPartnerLockup />
+        <h1 id="deck-slide-1-title">
+          Tieman&apos;s data &amp; <em>AI Transformation</em>
+        </h1>
+        <p>Analyse more information, find answers faster and make better decisions.</p>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function TiemanAgendaSlide() {
+  return (
+    <DeckSlideFrame
+      index={2}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="A short overview, followed by discussion."
+      className="tieman-agenda"
+    >
+      <div className="tieman-agenda__heading">
+        <p className="deck-kicker">Today&apos;s conversation</p>
+        <h2 id="deck-slide-2-title">Agenda<em>.</em></h2>
+        <p>A 10–15 minute overview, followed by discussion.</p>
+      </div>
+
+      <ol className="tieman-agenda__list" aria-label="Presentation agenda">
+        {agendaItems.map((item, index) => (
+          <li key={item}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{item}</strong>
+          </li>
+        ))}
+      </ol>
+    </DeckSlideFrame>
+  );
+}
+
+function TiemanVisionVennSlide() {
+  return (
+    <DeckSlideFrame
+      index={3}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="Three themes converge in one connected platform."
+      className="tieman-vision-venn"
+    >
+      <div className="tieman-vision-venn__heading">
+        <p className="deck-kicker">Tieman&apos;s vision</p>
+        <h2 id="deck-slide-3-title">
+          What Tieman wants to achieve
+        </h2>
+        <p className="tieman-vision-venn__intro">Three priorities from our initial conversation.</p>
+        <p className="tieman-vision-venn__conclusion">
+          <strong>One connected platform.</strong>
+        </p>
+      </div>
+
+      <div className="tieman-vision-venn__diagram" aria-label="Themes heard from Tieman">
+        {visionOutcomes.map((outcome) => (
+          <section
+            key={outcome.id}
+            className={`tieman-vision-venn__outcome tieman-vision-venn__outcome--${outcome.id}`}
+            aria-label={outcome.title}
+          >
+            <img
+              src="/images/deck/tieman/vision-venn-circle.png"
+              alt=""
+              width={1254}
+              height={1254}
+              aria-hidden="true"
+            />
+            <div className="tieman-vision-venn__outcome-copy">
+              <span>{outcome.index}</span>
+              <h3>{outcome.title}</h3>
+              <ul>
+                {outcome.points.map((point) => (
+                  <li key={point.title}>
+                    <strong>{point.title}</strong>
+                    <small>{point.detail}</small>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        ))}
+
+        <picture className="tieman-vision-venn__intersection" aria-hidden="true">
+          <source
+            media="(max-width: 760px), (orientation: portrait)"
+            srcSet="/images/deck/tieman/vision-venn-intersection-mobile.png"
+          />
+          <img
+            src="/images/deck/tieman/vision-venn-intersection-desktop.png"
+            alt=""
+            width={2560}
+            height={2080}
+          />
+        </picture>
+
+        <div className="tieman-vision-venn__core">
+          <strong
+            className="tieman-vision-venn__platform-name"
+            aria-label="Tieman Intelligence Platform"
+          >
+            <span>Tieman</span>
+            <span>Intelligence</span>
+            <span>Platform</span>
+          </strong>
+        </div>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function ChallengesSlide() {
+  return (
+    <DeckSlideFrame
+      index={4}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="Fragmentation turns every handover into interpretation."
+      className="tieman-challenges"
+    >
+      <div className="tieman-challenges__heading">
+        <p className="deck-kicker">The challenges</p>
+        <h2 id="deck-slide-4-title">
+          Critical information exists. But it is <em>fragmented.</em>
+        </h2>
+        <p>
+          The information Tieman needs is already present across the business. The challenge is making it usable consistently as work moves between teams.
+        </p>
+      </div>
+
+      <section className="tieman-challenges__friction" aria-labelledby="tieman-challenges-friction-title">
+        <p id="tieman-challenges-friction-title">Critical information is difficult to</p>
+        <ol>
+          {challengeActions.map((action, index) => (
+            <li key={action.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{action.title}</strong>
+              <small>{action.detail}</small>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="tieman-challenges__impact" aria-labelledby="tieman-challenges-impact-title">
+        <header>
+          <span>The ripple effect</span>
+          <strong id="tieman-challenges-impact-title">
+            Fragmentation compounds as work moves downstream.
+          </strong>
+          <small>Sales · Engineering · Purchasing · Planning · Production</small>
+        </header>
+        <ul>
+          {challengeImpacts.map((impact, index) => (
+            <li key={impact}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{impact}</strong>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </DeckSlideFrame>
+  );
+}
+
+function FragmentedEstateSlide() {
+  return (
+    <DeckSlideFrame
+      index={6}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="The systems are useful. The context between them is fragmented."
+      className="tieman-fragmentation"
+    >
+      <img
+        className="tieman-fragmentation__backdrop"
+        src="/images/deck/tieman/fragmented-topology.png"
+        alt=""
+        width={1672}
+        height={941}
+      />
+      <div className="tieman-fragmentation__shade" aria-hidden="true" />
+
+      <div className="tieman-fragmentation__heading">
+        <p className="deck-kicker">Where the context lives</p>
+        <h2 id="deck-slide-6-title">
+          The knowledge exists. It lives in <em>different places.</em>
+        </h2>
+        <p>
+          Each system solves a real need. The friction appears when one job has to move across all of them.
+        </p>
+      </div>
+
+      <div className="tieman-fragmentation__map" aria-label="Tieman systems and knowledge sources">
+        {tiemanSystems.map((system) => {
+          const SystemIcon = system.icon;
+
+          return (
+            <article
+              key={system.id}
+              className={`tieman-fragmentation__node is-${system.id}`}
+            >
+              <SystemIcon aria-hidden="true" />
+              <strong>{system.name}</strong>
+              <span>{system.role}</span>
+            </article>
+          );
+        })}
+      </div>
+
+      <p className="tieman-fragmentation__consequence">
+        <span>One job</span>
+        <strong>The work crosses every source. Its context does not travel with it.</strong>
+      </p>
+    </DeckSlideFrame>
+  );
+}
+
+function SolutionStackSlide() {
+  return (
+    <DeckSlideFrame
+      index={7}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="One trusted foundation for Tieman's data, intelligence and action."
+      className="tieman-solution-stack"
+    >
+      <div className="tieman-solution-stack__heading">
+        <p className="deck-kicker">The opportunity</p>
+        <h2 id="deck-slide-7-title">
+          One trusted foundation for Tieman&apos;s <em>data and AI.</em>
+        </h2>
+      </div>
+
+      <div className="tieman-solution-stack__architecture">
+        <section className="tieman-solution-stack__diagram" aria-label="Tieman platform and potential applications">
+          <div className="tieman-solution-stack__applications">
+            <span className="tieman-solution-stack__layer-label">What this could enable</span>
+            <div className="tieman-solution-stack__application-grid">
+              {solutionApplications.map((application) => {
+                const ApplicationIcon = application.icon;
+
+                return (
+                  <article key={application.name}>
+                    <ApplicationIcon aria-hidden="true" />
+                    <strong>{application.name}</strong>
+                    <small>{application.role}</small>
+                    <span className="tieman-solution-stack__signal" aria-hidden="true">
+                      <ArrowUp />
+                    </span>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="tieman-solution-stack__context">
+            <div className="tieman-solution-stack__context-title">
+              <ShieldCheck aria-hidden="true" />
+              <div>
+                <span>Tieman Intelligence Platform</span>
+                <strong>Understands Tieman&apos;s language, rules and information.</strong>
+              </div>
+            </div>
+            <div className="tieman-solution-stack__trust" aria-label="Platform design requirements">
+              <span>Design requirements</span>
+              <strong>Security · Governance · Compliance</strong>
+            </div>
+          </div>
+        </section>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function RippleSlide() {
+  return (
+    <DeckSlideFrame
+      index={5}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="One fragmented handover multiplies across the entire job."
+      className="tieman-ripple"
+    >
+      <div className="tieman-ripple__heading">
+        <p className="deck-kicker">The operational impact</p>
+        <h2 id="deck-slide-5-title">
+          A gap upstream becomes a <em>delay downstream.</em>
+        </h2>
+        <p>
+          When critical context is fragmented, every handover asks the next team to search, interpret and confirm it again.
+        </p>
+      </div>
+
+      <section className="tieman-ripple__journey" aria-labelledby="tieman-ripple-journey-title">
+        <header>
+          <span id="tieman-ripple-journey-title">One tanker job</span>
+          <strong>Context must travel with the work.</strong>
+          <small>Every handover inherits what came before</small>
+        </header>
+
+        <ol className="tieman-ripple__pipeline" aria-label="Tieman operating flow">
+        {rippleStages.map((stage, index) => (
+          <li key={stage.name}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <strong>{stage.name}</strong>
+            <small>{stage.detail}</small>
+          </li>
+        ))}
+        </ol>
+      </section>
+
+      <ol className="tieman-ripple__effects" aria-label="Operational effects of fragmented information">
+        {rippleEffects.map((effect) => (
+          <li key={effect.index}>
+            <span>{effect.index}</span>
+            <small>{effect.handoff}</small>
+            <strong>{effect.title}</strong>
+            <p>{effect.detail}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div className="tieman-ripple__result">
+        <span>The cumulative cost</span>
+        <strong>More coordination. More waiting. Less throughput.</strong>
+        <small>Fragmentation compounds as the job moves downstream.</small>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function StoryLandscapeSlide() {
+  return (
+    <DeckSlideFrame
+      index={4}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="The systems work. The context between them is fragmented."
+      className="tieman-story-landscape"
+    >
+      <img
+        className="tieman-story-landscape__backdrop"
+        src="/images/deck/tieman/fragmented-topology.png"
+        alt=""
+        width={1672}
+        height={941}
+      />
+      <div className="tieman-story-landscape__shade" aria-hidden="true" />
+
+      <div className="tieman-story-landscape__heading">
+        <p className="deck-kicker">Where the knowledge lives</p>
+        <h2 id="deck-slide-4-title">
+          The knowledge exists, but in <em>different systems.</em>
+        </h2>
+      </div>
+
+      <div className="tieman-story-landscape__map" aria-label="Tieman systems and knowledge sources">
+        {tiemanSystems.map((system) => {
+          const SystemIcon = system.icon;
+
+          return (
+            <article
+              key={system.id}
+              className={`tieman-story-landscape__node is-${system.id}`}
+            >
+              <SystemIcon aria-hidden="true" />
+              <strong>{system.name}</strong>
+              <span>{system.role}</span>
+            </article>
+          );
+        })}
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function StoryQuestionSlide() {
+  return (
+    <DeckSlideFrame
+      index={5}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="Questions to explore using Tieman's information and approved calculation methods."
+      className="tieman-story-question"
+    >
+      <div className="tieman-story-question__heading">
+        <p className="deck-kicker">Where the friction begins</p>
+        <h2 id="deck-slide-5-title">
+          Practical questions need <em>information from across Tieman.</em>
+        </h2>
+      </div>
+
+      <blockquote className="tieman-story-question__prompt">
+        {practicalQuestions.map((item, index) => (
+          <div key={item.topic} data-practical-question={index}>
+            <span>{String(index + 1).padStart(2, "0")} / 03 · {item.topic}</span>
+            <p>“{item.question}”</p>
+          </div>
+        ))}
+      </blockquote>
+
+      <section className="tieman-story-question__fragments" aria-label="Pieces of the answer across Tieman systems">
+        {tiemanSystems.map((system) => {
+          const SystemIcon = system.icon;
+
+          return (
+            <article
+              key={system.id}
+              className={`tieman-story-question__fragment is-${system.id}`}
+            >
+              <SystemIcon aria-hidden="true" />
+              <span>{system.name}</span>
+              <strong>{answerFragmentBySystem[system.id]}</strong>
+            </article>
+          );
+        })}
+      </section>
+    </DeckSlideFrame>
+  );
+}
+
+function StoryImpactSlide() {
+  return (
+    <DeckSlideFrame
+      index={6}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="A small upstream gap compounds as the job moves downstream."
+      className="tieman-story-impact"
+    >
+      <div className="tieman-story-impact__heading">
+        <p className="deck-kicker">Why it matters</p>
+        <h2 id="deck-slide-6-title">
+          A small gap upstream becomes a <em>delay downstream.</em>
+        </h2>
+      </div>
+
+      <section className="tieman-story-impact__journey" aria-label="How one missing requirement compounds across a tanker job">
+        <ol className="tieman-story-impact__pipeline" aria-label="Tieman operating flow">
+          {rippleStages.map((stage, index) => (
+            <li key={stage.name} data-stage-index={index}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{stage.name}</strong>
+              <small>{stage.detail}</small>
+            </li>
+          ))}
+        </ol>
+
+        <div className="tieman-story-impact__track" aria-hidden="true">
+          <span className="tieman-story-impact__trail" />
+          <span className="tieman-story-impact__signal">
+            <CircleAlert />
+          </span>
+        </div>
+
+        <ol className="tieman-story-impact__states" aria-label="Compounding operational consequences">
+          {storyImpactStates.map((state, index) => (
+            <li key={state.title} data-impact-state={index + 1}>
+              <span>{state.stage}</span>
+              <strong>{state.title}</strong>
+              <small>{state.detail}</small>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <p className="tieman-story-impact__result">
+        <span>The cumulative cost</span>
+        <strong>More coordination · More waiting · Slower delivery</strong>
+      </p>
+    </DeckSlideFrame>
+  );
+}
+
+function WhyUsSlide() {
+  return (
+    <DeckSlideFrame
+      index={8}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="Founder-led from strategy through delivery."
+      className="tieman-why-us"
+    >
+      <div className="tieman-why-us__heading">
+        <p className="deck-kicker">Why SemanticLab</p>
+        <h2 id="deck-slide-8-title">
+          <span>Founder-led</span>
+          <em>from strategy to delivery.</em>
+        </h2>
+        <p className="tieman-why-us__promise">
+          With specialist support brought in as needed.
+        </p>
+      </div>
+
+      <div className="tieman-why-us__profiles">
+        <article>
+          <div className="tieman-why-us__portrait">
+            <img
+              src="/images/deck/tieman/raihan-razi.webp"
+              alt="Raihan Razi"
+              width={898}
+              height={1122}
+              decoding="async"
+            />
+          </div>
+          <div className="tieman-why-us__bio">
+            <span>Engineering &amp; AI Delivery Lead</span>
+            <h3>Raihan Razi</h3>
+            <p>15 years across product, software delivery and technology strategy.</p>
+          </div>
+        </article>
+        <article>
+          <div className="tieman-why-us__portrait">
+            <img
+              src="/images/deck/tieman/naila-rahman.webp"
+              alt="Naila Rahman"
+              width={900}
+              height={1181}
+              decoding="async"
+            />
+          </div>
+          <div className="tieman-why-us__bio">
+            <span>Product Design &amp; User Experience Lead</span>
+            <h3>Naila Rahman</h3>
+            <p>10+ years of design experience, with a strong focus in product strategy and user experience.</p>
+          </div>
+        </article>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function QuestionsSlide() {
+  return (
+    <DeckSlideFrame
+      index={10}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor=""
+      className="tieman-questions"
+    >
+      <TiemanSlideFootage name="welding-slow" className="tieman-questions__image" />
+      <div className="tieman-questions__shade" aria-hidden="true" />
+      <h2 id="deck-slide-10-title">Questions?</h2>
+    </DeckSlideFrame>
+  );
+}
+
+function ProofSlide({ index = 10, total = DISCOVERY_TOTAL_SLIDES }: { index?: number; total?: number }) {
+  return (
+    <DeckSlideFrame
+      index={index}
+      total={total}
+      descriptor="Relevant proof across data, platforms and workflow design."
+      className="tieman-proof"
+    >
+      <div className="tieman-proof__heading">
+        <p className="deck-kicker">Proof of relevant work</p>
+        <h2 id={`deck-slide-${index}-title`}>
+          Experience that maps to the <em>operating problem.</em>
+        </h2>
+      </div>
+
+      <ol className="tieman-proof__rail">
+        {proofPoints.map((proof) => (
+          <li key={proof.name}>
+            <span>{proof.index}</span>
+            <div className="tieman-proof__identity">
+              <h3>{proof.name}</h3>
+            </div>
+            <div className="tieman-proof__measure">
+              <strong>{proof.headline}</strong>
+              <small>{proof.measure}</small>
+            </div>
+            <p>{proof.detail}</p>
+          </li>
+        ))}
+      </ol>
+    </DeckSlideFrame>
+  );
+}
+
+function OutcomeProofSlide() {
+  return (
+    <DeckSlideFrame
+      index={10}
+      total={DISCOVERY_TOTAL_SLIDES}
+      descriptor="Selected outcomes from complex operational work."
+      className="tieman-proof-outcomes"
+    >
+      <div className="tieman-proof-outcomes__copy">
+        <p className="deck-kicker">Proof in practice</p>
+
+        <h2 id="deck-slide-10-title" className="tieman-proof-outcomes__headline">
+          {outcomeProofSpotlights.map((spotlight, index) => (
+            <span key={spotlight.lead} data-proof-story={index}>
+              {spotlight.headline}
+              <br />
+              {index === 0 ? "made " : null}
+              <em>{spotlight.emphasis}</em>
+            </span>
+          ))}
+        </h2>
+
+        <div className="tieman-proof-outcomes__stories" aria-live="polite">
+          {outcomeProofSpotlights.map((spotlight, index) => (
+            <div key={spotlight.detail} data-proof-story={index}>
+              <strong>{spotlight.lead}</strong>
+              <p>{spotlight.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <ol className="tieman-proof-outcomes__grid" aria-label="Selected outcomes delivered">
+        {outcomeProofTiles.map((outcome, tileIndex) => (
+          <li
+            key={outcome}
+            data-proof-tile={tileIndex}
+            className={outcomeProofSpotlights.some((spotlight) => spotlight.tileIndex === tileIndex)
+              ? "is-spotlight"
+              : undefined}
+          >
+            <span>{outcome}</span>
+          </li>
+        ))}
+      </ol>
+    </DeckSlideFrame>
+  );
+}
+
+function DoubleDiamondSlide() {
+  return (
+    <DeckSlideFrame
+      index={9}
+      total={DISCOVERY_TOTAL_SLIDES}
+      descriptor="Diverge to learn. Converge to decide. Repeat with evidence."
+      className="tieman-double-diamond"
+    >
+      <div className="tieman-double-diamond__heading">
+        <p className="deck-kicker">How we turn uncertainty into progress</p>
+        <h2 id="deck-slide-9-title">
+          Find the right problem. Then build the <em>right solution.</em>
+        </h2>
+      </div>
+
+      <div
+        className="tieman-double-diamond__process"
+        aria-label="Double diamond process from challenge to validated solution"
+      >
+        <div className="tieman-double-diamond__endpoint tieman-double-diamond__endpoint--challenge" data-process-fragment="1">
+          <small>Start here</small>
+          <strong>Challenge</strong>
+          <ArrowRight aria-hidden="true" />
+        </div>
+
+        <article className="tieman-double-diamond__diamond tieman-double-diamond__diamond--problem" data-process-fragment="1">
+          <header>
+            <span>01 · Understand</span>
+            <strong>Design the right thing</strong>
+          </header>
+          <div className="tieman-double-diamond__shape">
+            <div className="tieman-double-diamond__stage tieman-double-diamond__stage--discover">
+              <small>Diverge</small>
+              <strong>Discover</strong>
+            </div>
+            <div className="tieman-double-diamond__stage tieman-double-diamond__stage--define" data-process-fragment="2">
+              <small>Converge</small>
+              <strong>Define</strong>
+            </div>
+          </div>
+        </article>
+
+        <div className="tieman-double-diamond__gate" data-process-fragment="2">
+          <RotateCcw aria-hidden="true" />
+          <small>Shared decision</small>
+          <strong>Clear problem</strong>
+          <span>definition</span>
+        </div>
+
+        <article className="tieman-double-diamond__diamond tieman-double-diamond__diamond--solution" data-process-fragment="3">
+          <header>
+            <span>02 · Create</span>
+            <strong>Design the thing right</strong>
+          </header>
+          <div className="tieman-double-diamond__shape">
+            <div className="tieman-double-diamond__stage tieman-double-diamond__stage--design">
+              <small>Diverge</small>
+              <strong>Design</strong>
+            </div>
+            <div className="tieman-double-diamond__stage tieman-double-diamond__stage--deliver" data-process-fragment="4">
+              <small>Converge</small>
+              <strong>Deliver</strong>
+            </div>
+          </div>
+        </article>
+
+        <div className="tieman-double-diamond__endpoint tieman-double-diamond__endpoint--solution" data-process-fragment="4">
+          <ArrowRight aria-hidden="true" />
+          <small>Outcome</small>
+          <strong>Validated<br />solution</strong>
+        </div>
+      </div>
+
+      <div className="tieman-double-diamond__principle" data-process-fragment="4">
+        <span>Open up the options</span>
+        <ArrowRight aria-hidden="true" />
+        <span>Narrow to a decision</span>
+        <ArrowRight aria-hidden="true" />
+        <strong>Learn, then repeat</strong>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function OperatingLayerSlide() {
+  return (
+    <DeckSlideFrame
+      index={11}
+      total={DISCOVERY_TOTAL_SLIDES}
+      descriptor="Business meaning sits between source systems and applications."
+      className="tieman-operating-layer"
+    >
+      <div className="tieman-operating-layer__heading">
+        <p className="deck-kicker">A modern AI operating layer</p>
+        <h2 id="deck-slide-11-title">
+          Intelligence becomes useful when it understands the <em>business.</em>
+        </h2>
+      </div>
+
+      <section className="tieman-operating-layer__roadmap" aria-label="AI operating layer roadmap">
+        <header>
+          <span>The roadmap</span>
+          <strong>Build from trusted foundations to useful intelligence.</strong>
+        </header>
+
+        <div className="tieman-operating-layer__roadmap-body">
+          <div className="tieman-operating-layer__roadmap-rail" aria-hidden="true">
+            <span />
+          </div>
+
+          <ol>
+            {operatingLayers.map((layer, index) => {
+              const Icon = layer.icon;
+
+              return (
+                <li key={layer.index} className={index === operatingLayers.length - 1 ? "is-outcome" : undefined}>
+                  <div className="tieman-operating-layer__roadmap-node">
+                    <Icon aria-hidden="true" />
+                  </div>
+                  <span>{layer.index}</span>
+                  <strong>{layer.title}</strong>
+                  <small>{layer.detail}</small>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
+      <div className="tieman-operating-layer__governance">
+        <span>Governed throughout</span>
+        <strong>Access · evidence · approvals · audit</strong>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function TiemanFlowSlide() {
+  return (
+    <DeckSlideFrame
+      index={12}
+      total={DISCOVERY_TOTAL_SLIDES}
+      descriptor="One upstream flow can improve decisions across the job."
+      className="tieman-flow"
+    >
+      <div className="tieman-flow__heading">
+        <p className="deck-kicker">How it works for Tieman</p>
+        <h2 id="deck-slide-12-title">
+          Move an accepted request into Engineering with <em>trusted context.</em>
+        </h2>
+      </div>
+
+      <ol className="tieman-flow__steps">
+        <li>
+          <span>01</span>
+          <small>Specification</small>
+          <h3>Capture the complete customer request.</h3>
+          <p>Connect requirements to the current source and revision.</p>
+        </li>
+        <li>
+          <span>02</span>
+          <small>Engineering readiness</small>
+          <h3>Resolve gaps before the handoff.</h3>
+          <p>Show missing information, comparable jobs and open decisions.</p>
+        </li>
+        <li>
+          <span>03</span>
+          <small>Long-lead purchasing</small>
+          <h3>Bring likely risk forward.</h3>
+          <p>Flag candidate items for human review while there is time to act.</p>
+        </li>
+      </ol>
+
+      <div className="tieman-flow__outcome">
+        <span>Outcome</span>
+        <strong>One controlled, evidence-backed job package.</strong>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function SecuritySlide() {
+  return (
+    <DeckSlideFrame
+      index={13}
+      total={DISCOVERY_TOTAL_SLIDES}
+      descriptor="Secure, governed and accountable by design."
+      className="tieman-security"
+    >
+      <div className="tieman-security__heading">
+        <p className="deck-kicker">Secure by design</p>
+        <h2 id="deck-slide-13-title">
+          Trust is built into <em>every layer.</em>
+        </h2>
+      </div>
+
+      <ol className="tieman-security__controls">
+        {securityControls.map((control) => (
+          <li key={control.index}>
+            <span>{control.index}</span>
+            <h3>{control.title}</h3>
+            <p>{control.detail}</p>
+          </li>
+        ))}
+      </ol>
+    </DeckSlideFrame>
+  );
+}
+
+function PilotSlide() {
+  return (
+    <DeckSlideFrame
+      index={14}
+      total={DISCOVERY_TOTAL_SLIDES}
+      descriptor="Start upstream because every downstream team inherits the handoff."
+      className="tieman-pilot"
+    >
+      <div className="tieman-pilot__heading">
+        <p className="deck-kicker">Pilot recommendation</p>
+        <h2 id="deck-slide-14-title">
+          Start with the Sales-to-Engineering <em>handoff.</em>
+        </h2>
+        <p>
+          It is upstream, frequent enough to learn from and creates context that every later phase can reuse.
+        </p>
+      </div>
+
+      <ol className="tieman-pilot__capabilities">
+        {pilotCapabilities.map((capability) => (
+          <li key={capability.index}>
+            <span>{capability.index}</span>
+            <h3>{capability.title}</h3>
+            <p>{capability.detail}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div className="tieman-pilot__promise">
+        <span>Phase 1 promise</span>
+        <strong>Prepare the next job, catch missing information and identify likely long-lead risk earlier.</strong>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function NextStepSlide() {
+  return (
+    <DeckSlideFrame
+      index={15}
+      total={DISCOVERY_TOTAL_SLIDES}
+      descriptor="Discovery replaces assumptions with a clear pilot decision."
+      className="tieman-next-step"
+    >
+      <img
+        className="tieman-next-step__image"
+        src="/images/deck/tieman/chemical.webp"
+        alt=""
+        width={1024}
+        height={683}
+      />
+      <div className="tieman-next-step__shade" aria-hidden="true" />
+      <div className="tieman-next-step__copy">
+        <p className="deck-kicker">The next step</p>
+        <h2 id="deck-slide-15-title">
+          Turn the opportunity into a <em>clear first move.</em>
+        </h2>
+        <p>
+          A focused Solution Discovery validates the opportunity, data, architecture, governance and pilot definition.
+        </p>
+        <a href="mailto:hello@semanticlab.ai">
+          Start the discovery <ArrowUpRight aria-hidden="true" />
+        </a>
+      </div>
+
+      <ol className="tieman-next-step__outputs" aria-label="Discovery outputs">
+        <li>Workflow + system map</li>
+        <li>Reference architecture</li>
+        <li>Pilot scope + cost view</li>
+      </ol>
+    </DeckSlideFrame>
+  );
+}
+
+const slides: readonly DeckSlide[] = [
+  { id: "tieman-cover", label: "Transformation brief", content: <TiemanCoverSlide /> },
+  { id: "tieman-agenda", label: "Agenda", content: <TiemanAgendaSlide /> },
+  {
+    id: "tieman-vision",
+    label: "Tieman's vision",
+    fragmentCount: 4,
+    content: <TiemanVisionVennSlide />,
+  },
+  { id: "tieman-challenges", label: "Challenges", content: <ChallengesSlide /> },
+  { id: "tieman-ripple", label: "Operational impact", content: <RippleSlide /> },
+  { id: "tieman-fragmentation", label: "Where context lives", content: <FragmentedEstateSlide /> },
+  {
+    id: "tieman-solution-stack",
+    label: "The solution",
+    fragmentCount: 2,
+    content: <SolutionStackSlide />,
+  },
+  { id: "tieman-why-us", label: "Why SemanticLab", content: <WhyUsSlide /> },
+  {
+    id: "tieman-double-diamond",
+    label: "Design process",
+    fragmentCount: 4,
+    content: <DoubleDiamondSlide />,
+  },
+  { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide /> },
+  {
+    id: "tieman-operating-layer",
+    label: "AI operating layer",
+    content: <OperatingLayerSlide />,
+    overlay: <TbdReviewOverlay />,
+  },
+  {
+    id: "tieman-flow",
+    label: "How it works",
+    content: <TiemanFlowSlide />,
+    overlay: <TbdReviewOverlay />,
+  },
+  {
+    id: "tieman-security",
+    label: "Secure by design",
+    content: <SecuritySlide />,
+    overlay: <TbdReviewOverlay />,
+  },
+  {
+    id: "tieman-pilot",
+    label: "Pilot recommendation",
+    content: <PilotSlide />,
+    overlay: <TbdReviewOverlay />,
+  },
+  {
+    id: "tieman-next-step",
+    label: "The next step",
+    content: <NextStepSlide />,
+    overlay: <TbdReviewOverlay />,
+  },
+];
+
+const outcomeSlides: readonly DeckSlide[] = slides.map((slide) => {
+  if (slide.id !== "tieman-proof") {
+    return slide;
+  }
+
+  return {
+    ...slide,
+    label: "Proof in practice",
+    fragmentCount: 3,
+    content: <OutcomeProofSlide />,
+  };
+});
+
+function withStoryChallengeSlides(baseSlides: readonly DeckSlide[]): readonly DeckSlide[] {
+  return baseSlides.flatMap((slide) => {
+    if (slide.id === "tieman-challenges") {
+      return [
+        {
+          id: "tieman-story-landscape",
+          label: "Where knowledge lives",
+          content: <StoryLandscapeSlide />,
+        },
+        {
+          id: "tieman-story-question",
+          label: "Where friction begins",
+          fragmentCount: 3,
+          content: <StoryQuestionSlide />,
+        },
+        {
+          id: "tieman-story-impact",
+          label: "Why it matters",
+          fragmentCount: 7,
+          content: <StoryImpactSlide />,
+        },
+      ];
+    }
+
+    if (slide.id === "tieman-ripple" || slide.id === "tieman-fragmentation") {
+      return [];
+    }
+
+    return [slide];
+  });
+}
+
+const storyChallengeSlides = withStoryChallengeSlides(slides);
+const storyChallengeOutcomeSlides = withStoryChallengeSlides(outcomeSlides);
+
+type TiemanDeckProps = {
+  challengeVariant?: "current" | "story";
+  proofVariant?: "current" | "outcomes";
+  sessionVariant?: "presentation" | "discovery";
+};
+
+export function TiemanDeck({
+  challengeVariant = "story",
+  proofVariant = "current",
+  sessionVariant = "presentation",
+}: TiemanDeckProps) {
+  const completeSlides = proofVariant === "outcomes"
+    ? challengeVariant === "story"
+      ? storyChallengeOutcomeSlides
+      : outcomeSlides
+    : challengeVariant === "story"
+      ? storyChallengeSlides
+      : slides;
+  const closingSlideIndex = completeSlides.findIndex((slide) => slide.id === "tieman-why-us");
+  const selectedSlides = sessionVariant === "discovery"
+    ? completeSlides.slice(closingSlideIndex + 1)
+    : [
+        ...completeSlides.slice(0, closingSlideIndex + 1),
+        { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide index={9} total={PRESENTATION_TOTAL_SLIDES} /> },
+        { id: "tieman-questions", label: "Questions?", content: <QuestionsSlide /> },
+      ];
+
+  return (
+    <DeckPresentation
+      className="sales-deck--tieman"
+      key={sessionVariant}
+      slideNumberOffset={sessionVariant === "discovery" ? closingSlideIndex + 1 : 0}
+      slides={selectedSlides}
+      testId="tieman-sales-deck"
+      totalSlides={sessionVariant === "discovery"
+        ? DISCOVERY_TOTAL_SLIDES
+        : PRESENTATION_TOTAL_SLIDES}
+    />
+  );
+}

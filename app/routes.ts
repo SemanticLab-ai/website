@@ -11,6 +11,8 @@ export default [
   route("services", "routes/services.tsx"),
   route("work", "routes/work.tsx"),
   route("work/:slug", "routes/work-case-study.tsx"),
+  route("deck", "routes/sales-deck.tsx"),
+  route("deck/tieman-tankers", "routes/tieman-deck.tsx"),
   route("design-system", "routes/design-system.tsx"),
 
   // Product marketing pages
