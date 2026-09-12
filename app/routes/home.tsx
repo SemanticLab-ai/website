@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import { galaxyMotionEnabled } from "~/lib/deployment";
 import { IntelligentHome } from "~/components/marketing/home/IntelligentHome";
 
 export function meta({}: Route.MetaArgs) {
@@ -24,6 +25,10 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  return <IntelligentHome />;
+export function loader({ context }: Route.LoaderArgs) {
+  return { galaxyMotion: galaxyMotionEnabled && context.cloudflare.env.SL_DEPLOY_ENV === "preview" && context.cloudflare.env.SL_FEATURE_GALAXY_MOTION === "true" };
+}
+
+export default function Home({ loaderData }: Route.ComponentProps) {
+  return <IntelligentHome galaxyMotion={loaderData.galaxyMotion} />;
 }
