@@ -4,8 +4,8 @@ The homepage replaces its image landscape with a procedural WebGL star field whe
 
 ## Motion contract
 
-- One 3,400-point field forms a tilted three-arm galaxy in SemanticLab colours.
-- Slow orbital motion and individual twinkle continue while visible.
+- A 22,000-point field and procedural diffuse-light layer form a tilted two-arm galaxy. A warm nucleus, cooler irregular arms, exponential stellar disk and dark dust lanes draw on the Hubble NGC 1300 reference (https://esahubble.org/images/opo0501a/). Natural astronomical colours belong to the illustration; branded UI colours remain unchanged.
+- Slow coherent rotation continues while visible. Only the rare bright stars shimmer subtly; the diffuse disk rotates with the stars and fades during the scroll transition.
 - Scroll progress relative to viewport height compresses the formation, then moves its particles along staggered curved paths into the margins. A critically damped spring smooths scroll input; easing and slight overshoot settle the particles.
 - Continued scrolling moves particles at depth-dependent speeds, wrapping outside the viewport. A soft margin mask keeps the centre clear.
 - Mouse/pen proximity pushes nearby stars outward within 90–150 pixels, with smooth falloff and pointer lag. Touch and interactive controls do not activate this effect.
