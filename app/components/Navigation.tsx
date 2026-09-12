@@ -64,7 +64,7 @@ export function Navigation() {
         </nav>
 
         <a className="strategy-button strategy-button--compact" href={strategyHref}>
-          Request a Strategy Engagement
+          Find your AI opportunity
           <ArrowUpRight aria-hidden="true" />
         </a>
 
@@ -106,7 +106,7 @@ export function Navigation() {
           href={strategyHref}
           onClick={() => setMobileMenuOpen(false)}
         >
-          Request a Strategy Engagement
+          Find your AI opportunity
           <ArrowUpRight aria-hidden="true" />
         </a>
       </div>
