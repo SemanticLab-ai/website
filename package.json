@@ -3,12 +3,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
+    "build": "node scripts/build-cloudflare.mjs",
     "dev": "react-router dev",
     "preview": "npm run build && vite preview",
     "deploy": "npm run build && wrangler deploy",
-    "cf-typegen": "wrangler types && react-router typegen",
-    "typecheck": "react-router typegen && tsc"
+    "cf-typegen": "wrangler types --include-runtime=false --strict-vars=false && react-router typegen",
+    "typecheck": "react-router typegen && tsc",
+    "build:app": "react-router build",
+    "check": "node scripts/check.mjs",
+    "dev:preview": "VITE_SL_DEPLOY_ENV=preview VITE_SL_ANALYTICS_ENABLED=false VITE_SL_INDEXING_ALLOWED=false VITE_SL_FEATURE_GALAXY_MOTION=true react-router dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

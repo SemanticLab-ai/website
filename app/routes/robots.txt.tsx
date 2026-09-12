@@ -1,10 +1,15 @@
+import { indexingAllowed } from "~/lib/deployment";
+
 export function loader() {
-  const robotsTxt = `User-agent: *
+  const robotsTxt = indexingAllowed
+    ? `User-agent: *
 Allow: /
 Disallow: /app/
 Disallow: /design-system
 
-Sitemap: https://semanticlab.ai/sitemap.xml`;
+Sitemap: https://semanticlab.ai/sitemap.xml`
+    : `User-agent: *
+Disallow: /`;
 
   return new Response(robotsTxt, {
     status: 200,

@@ -8,6 +8,7 @@ import {
   PenTool,
   Rocket,
 } from "lucide-react";
+import { GalaxyMotion } from "~/components/marketing/shared/GalaxyMotion";
 import { Link } from "react-router";
 import { AnimatedDataLandscape } from "~/components/marketing/shared/AnimatedDataLandscape";
 import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
@@ -97,14 +98,15 @@ const capabilities = [
   },
 ];
 
-export function IntelligentHome() {
+export function IntelligentHome({ galaxyMotion = false }: { galaxyMotion?: boolean }) {
   return (
-    <div className="semantic-home">
+    <div className={`semantic-home${galaxyMotion ? " semantic-home--galaxy" : ""}`}>
+      {galaxyMotion && <GalaxyMotion />}
       <section className="semantic-hero" aria-labelledby="hero-title">
-        <AnimatedDataLandscape
+        {!galaxyMotion && <AnimatedDataLandscape
           className="semantic-hero__landscape"
           alt="Abstract field of connected data points forming an intelligent landscape"
-        />
+        />}
         <div className="semantic-hero__shade" />
         <div className="semantic-shell semantic-hero__inner">
           <div className="semantic-hero__copy">

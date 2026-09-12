@@ -1,3 +1,4 @@
+import { isPreviewBuild } from "../app/lib/deployment";
 import { createRequestHandler } from "react-router";
 
 declare module "react-router" {
@@ -8,11 +9,21 @@ declare module "react-router" {
 
 const requestHandler = createRequestHandler(
   () => import("virtual:react-router/server-build"),
-  import.meta.env.MODE
+  import.meta.env.MODE,
 );
 
 export default {
-  fetch(request, env, ctx) {
-    return requestHandler(request, { cloudflare: { env, ctx } });
+  async fetch(request, env, ctx) {
+    const response = await requestHandler(request, {
+      cloudflare: { env, ctx },
+    });
+    if (!isPreviewBuild) return response;
+    const headers = new Headers(response.headers);
+    headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
   },
 } satisfies ExportedHandler<Env>;
