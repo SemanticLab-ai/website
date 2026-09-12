@@ -5,6 +5,8 @@ export default [
   route("robots.txt", "routes/robots.txt.tsx"),
   route("sitemap.xml", "routes/sitemap.xml.tsx"),
 
+  route("design-system/emerald", "routes/emerald-style.tsx"),
+
   // Marketing routes
   index("routes/home.tsx"),
   route("founders", "routes/founders.tsx"),

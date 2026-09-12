@@ -1,0 +1,167 @@
+{
+  "provenance": {
+    "image": {
+      "model": "gpt_image_2",
+      "aspect_ratio": "16:9",
+      "resolution": "2k",
+      "quality": "high",
+      "count": 1,
+      "prompt": "Photorealistic editorial 3D studio photograph for a premium design research website. A deep emerald transparent solid glass orb intersected by three tall thin translucent glass planes, crisp architectural geometry and immaculate polished edges, dark forest green internal reflections and soft realistic refraction. A small satellite emerald glass sphere rests nearby. Pearl white seamless studio floor and background, warm-white soft light, quiet subtle contact shadow. Restrained sculptural composition, museum design object, sophisticated material realism, no text no logos no UI no people. Main sculptural group centered slightly to the right at 62 percent across the frame; generous pearl white negative space left. Keep entire tall sculpture comfortably inside frame. Portrait-friendly compact vertical arrangement while overall image is cinematic landscape 16:9. Eye-level three-quarter camera, moderate focal length, impeccably clean visual, deep emerald rather than neon green."
+    },
+    "imageSubmission": {
+      "results": [
+        {
+          "id": "e7b38d57-4c1b-4f77-8a26-f7946876cb27",
+          "type": "image",
+          "status": "pending",
+          "model": "gpt_image_2",
+          "params": {
+            "prompt": "Photorealistic editorial 3D studio photograph for a premium design research website. A deep emerald transparent solid glass orb intersected by three tall thin translucent glass planes, crisp architectural geometry and immaculate polished edges, dark forest green internal reflections and soft realistic refraction. A small satellite emerald glass sphere rests nearby. Pearl white seamless studio floor and background, warm-white soft light, quiet subtle contact shadow. Restrained sculptural composition, museum design object, sophisticated material realism, no text no logos no UI no people. Main sculptural group centered slightly to the right at 62 percent across the frame; generous pearl white negative space left. Keep entire tall sculpture comfortably inside frame. Portrait-friendly compact vertical arrangement while overall image is cinematic landscape 16:9. Eye-level three-quarter camera, moderate focal length, impeccably clean visual, deep emerald rather than neon green.",
+            "aspect_ratio": "16:9",
+            "resolution": "2k",
+            "quality": "high"
+          }
+        }
+      ]
+    }
+  },
+  "video-provenance": {
+    "video": {
+      "model": "seedance_2_5",
+      "duration": 7,
+      "resolution": "720p",
+      "aspect_ratio": "16:9",
+      "generate_audio": false,
+      "count": 1,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "e7b38d57-4c1b-4f77-8a26-f7946876cb27"
+        }
+      ],
+      "prompt": "Use the supplied still as the exact first frame. One continuous premium photorealistic studio shot of this precise deep emerald glass sphere, three tall translucent glass planes and small satellite sphere on the pearl white background. Camera makes an extremely subtle slow 8-degree arc around the sculpture without zooming or changing framing. From second 1 to second 5 the rigid glass planes glide gently outward by a very small distance, revealing more of the intact central sphere; keep all geometry rigid and identical, sphere perfectly round, satellite stays still, all elements remain fully visible. Last 2 seconds motion softly eases to a stable final resting composition. Continuous physically believable lighting and refraction. Quiet architectural product-film movement, suitable for frame-by-frame scroll scrubbing. Keep generous left negative space and subject on right. No cuts, no transitions, no morphing, no melting, no extra objects, no text or logo. Preserve proportions, palette, studio and materials exactly.",
+      "mode": "omni_reference"
+    },
+    "videoSubmission": {
+      "results": [
+        {
+          "id": "c03b62ea-9688-429a-9693-8f851f47fc5e",
+          "type": "video",
+          "status": "pending",
+          "model": "seedance_2_5",
+          "params": {
+            "prompt": "Use the supplied still as the exact first frame. One continuous premium photorealistic studio shot of this precise deep emerald glass sphere, three tall translucent glass planes and small satellite sphere on the pearl white background. Camera makes an extremely subtle slow 8-degree arc around the sculpture without zooming or changing framing. From second 1 to second 5 the rigid glass planes glide gently outward by a very small distance, revealing more of the intact central sphere; keep all geometry rigid and identical, sphere perfectly round, satellite stays still, all elements remain fully visible. Last 2 seconds motion softly eases to a stable final resting composition. Continuous physically believable lighting and refraction. Quiet architectural product-film movement, suitable for frame-by-frame scroll scrubbing. Keep generous left negative space and subject on right. No cuts, no transitions, no morphing, no melting, no extra objects, no text or logo. Preserve proportions, palette, studio and materials exactly.",
+            "aspect_ratio": "16:9",
+            "duration": 7,
+            "reference_images": [
+              "e7b38d57-4c1b-4f77-8a26-f7946876cb27"
+            ],
+            "resolution": "720p",
+            "generate_audio": false,
+            "mode": "omni_reference"
+          }
+        }
+      ]
+    },
+    "imageResult": {
+      "jobs": [
+        {
+          "index": 0,
+          "job_id": "e7b38d57-4c1b-4f77-8a26-f7946876cb27",
+          "status": "completed",
+          "type": "image",
+          "model": "gpt_image_2"
+        }
+      ],
+      "summary": {
+        "total": 1,
+        "completed": 1,
+        "failed": 0,
+        "active": 0,
+        "errors": 0
+      },
+      "all_terminal": true
+    }
+  },
+  "mobile-provenance": {
+    "image": {
+      "model": "gpt_image_2",
+      "aspect_ratio": "9:16",
+      "resolution": "1k",
+      "quality": "high",
+      "count": 1,
+      "medias": [
+        {
+          "role": "image",
+          "value": "e7b38d57-4c1b-4f77-8a26-f7946876cb27"
+        }
+      ],
+      "prompt": "Recompose this exact sculptural still as a portrait 9:16 studio photograph. Preserve precisely the deep emerald round glass orb, tall clear intersecting glass planes, small satellite glass sphere, pearl-white studio, polished edges and quiet lighting. Center the complete sculpture horizontally, with comfortable white breathing room on all four sides, entirely visible in a vertical crop. Same eye-level three-quarter perspective and restrained materials. No new elements, no text, no logos."
+    },
+    "imageSubmission": {
+      "results": [
+        {
+          "id": "d6c8bd3e-2712-4103-8459-0acf3fcdbe17",
+          "type": "image",
+          "status": "pending",
+          "model": "gpt_image_2",
+          "params": {
+            "prompt": "Recompose this exact sculptural still as a portrait 9:16 studio photograph. Preserve precisely the deep emerald round glass orb, tall clear intersecting glass planes, small satellite glass sphere, pearl-white studio, polished edges and quiet lighting. Center the complete sculpture horizontally, with comfortable white breathing room on all four sides, entirely visible in a vertical crop. Same eye-level three-quarter perspective and restrained materials. No new elements, no text, no logos.",
+            "aspect_ratio": "9:16",
+            "reference_images": [
+              "e7b38d57-4c1b-4f77-8a26-f7946876cb27"
+            ],
+            "resolution": "1k",
+            "quality": "high",
+            "medias": [
+              {
+                "role": "image",
+                "data": {
+                  "id": "e7b38d57-4c1b-4f77-8a26-f7946876cb27",
+                  "type": "image_job"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "video": {
+      "model": "seedance_2_5",
+      "duration": 7,
+      "resolution": "720p",
+      "aspect_ratio": "9:16",
+      "generate_audio": false,
+      "count": 1,
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "d6c8bd3e-2712-4103-8459-0acf3fcdbe17"
+        }
+      ],
+      "prompt": "Use this supplied portrait still as exact first frame. One continuous quiet photorealistic studio shot of this precise emerald glass sphere, clear intersecting planes and small satellite sphere. Preserve centered sculpture, all proportions, pearl white background and generous vertical breathing room. Camera makes extremely subtle 5-degree slow arc, no zoom. Seconds 1-5: the rigid glass planes glide a tiny distance outward revealing more of the perfectly round intact sphere. All geometry stays rigid, satellite stays still. Last 2 seconds ease to a resting composition. Preserve entire sculpture comfortably in portrait frame. No cuts, no morphing, no extra objects, no text, no logo. Smooth consistent material and lighting, designed for scroll-controlled frame sequence.",
+      "mode": "omni_reference"
+    },
+    "videoSubmission": {
+      "results": [
+        {
+          "id": "d590374b-804f-4256-89ab-df56cd6bef71",
+          "type": "video",
+          "status": "pending",
+          "model": "seedance_2_5",
+          "params": {
+            "prompt": "Use this supplied portrait still as exact first frame. One continuous quiet photorealistic studio shot of this precise emerald glass sphere, clear intersecting planes and small satellite sphere. Preserve centered sculpture, all proportions, pearl white background and generous vertical breathing room. Camera makes extremely subtle 5-degree slow arc, no zoom. Seconds 1-5: the rigid glass planes glide a tiny distance outward revealing more of the perfectly round intact sphere. All geometry stays rigid, satellite stays still. Last 2 seconds ease to a resting composition. Preserve entire sculpture comfortably in portrait frame. No cuts, no morphing, no extra objects, no text, no logo. Smooth consistent material and lighting, designed for scroll-controlled frame sequence.",
+            "aspect_ratio": "9:16",
+            "duration": 7,
+            "reference_images": [
+              "d6c8bd3e-2712-4103-8459-0acf3fcdbe17"
+            ],
+            "resolution": "720p",
+            "generate_audio": false,
+            "mode": "omni_reference"
+          }
+        }
+      ]
+    }
+  }
+}
