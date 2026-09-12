@@ -5493,3 +5493,17 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+.semantic-hero__opportunity-title > span { display: block; }
+
+/* The longer opportunity proposition keeps the galaxy visible beside the copy. */
+.semantic-hero h1.semantic-hero__opportunity-title {
+  font-size: clamp(3.5rem, 5.5vw, 5.2rem);
+  line-height: .98;
+}
+@media (max-width: 759px) {
+  .semantic-hero h1.semantic-hero__opportunity-title {
+    font-size: clamp(2.7rem, 12vw, 4rem);
+    line-height: 1;
+  }
+}

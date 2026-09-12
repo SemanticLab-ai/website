@@ -111,21 +111,22 @@ export function IntelligentHome({ galaxyMotion = false }: { galaxyMotion?: boole
         <div className="semantic-shell semantic-hero__inner">
           <div className="semantic-hero__copy">
             <p className="semantic-kicker">Product innovation partner</p>
-            <h1 id="hero-title">
-              We design <em>intelligent</em> businesses.
+            <h1 id="hero-title" className="semantic-hero__opportunity-title">
+              <span>We find where</span>{" "}
+              <span>AI can create an</span>{" "}
+              <em>advantage —</em> then build it.
             </h1>
             <p className="semantic-hero__intro">
-              We help founders and business leaders discover where intelligence
-              creates real advantage, then carry that opportunity through
-              strategy, experience, engineering and launch.
+              We connect strategy, product design and engineering to turn complex
+              business problems into intelligent products, workflows and systems.
             </p>
             <div className="semantic-actions">
               <a className="strategy-button" href={strategyHref}>
-                Request a Strategy Engagement
+                Find your AI opportunity
                 <ArrowUpRight aria-hidden="true" />
               </a>
-              <a className="semantic-text-link" href="#framework">
-                Explore our approach
+              <a className="semantic-text-link" href="#work">
+                See our work
                 <ArrowDownRight aria-hidden="true" />
               </a>
             </div>
@@ -320,7 +321,7 @@ export function IntelligentHome({ galaxyMotion = false }: { galaxyMotion?: boole
             product package.
           </p>
           <a className="strategy-button" href={strategyHref}>
-            Request a Strategy Engagement
+            Find your AI opportunity
             <ArrowUpRight aria-hidden="true" />
           </a>
         </div>

@@ -49,7 +49,7 @@ export function Footer() {
       <div className="site-footer__bottom">
         <p>© {new Date().getFullYear()} SemanticLab. Melbourne, Australia.</p>
         <a href={strategyHref}>
-          Request a Strategy Engagement <ArrowUpRight aria-hidden="true" />
+          Find your AI opportunity <ArrowUpRight aria-hidden="true" />
         </a>
       </div>
     </footer>
