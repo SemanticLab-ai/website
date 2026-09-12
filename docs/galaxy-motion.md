@@ -4,8 +4,8 @@ The homepage replaces its image landscape with a procedural WebGL star field whe
 
 ## Motion contract
 
-- A 22,000-point field and procedural diffuse-light layer form a tilted two-arm galaxy. A warm nucleus, cooler irregular arms, exponential stellar disk and dark dust lanes draw on the Hubble NGC 1300 reference (https://esahubble.org/images/opo0501a/). Natural astronomical colours belong to the illustration; branded UI colours remain unchanged.
-- Slow coherent rotation continues while visible. Only the rare bright stars shimmer subtly; the diffuse disk rotates with the stars and fades during the scroll transition.
+- A 4,200-point field retains the original lime, sage and white particle aesthetic. Two irregular logarithmic arms, a compact resolved-star bulge, sparse inter-arm stars and a thin inclined disk improve the galaxy's structure without photographic clouds or new colours.
+- Continuous orbital rotation replaces the earlier rocking motion. Inner stars turn slightly faster; twinkling is subtle. Hubble's NGC 1300 (https://esahubble.org/images/opo0501a/) informs structure only, not the visual treatment.
 - Scroll progress relative to viewport height compresses the formation, then moves its particles along staggered curved paths into the margins. A critically damped spring smooths scroll input; easing and slight overshoot settle the particles.
 - Continued scrolling moves particles at depth-dependent speeds, wrapping outside the viewport. A soft margin mask keeps the centre clear.
 - Mouse/pen proximity pushes nearby stars outward within 90–150 pixels, with smooth falloff and pointer lag. Touch and interactive controls do not activate this effect.
