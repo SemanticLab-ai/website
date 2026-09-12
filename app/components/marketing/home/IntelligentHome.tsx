@@ -305,17 +305,26 @@ export function IntelligentHome({ galaxyMotion = false }: { galaxyMotion?: boole
 
       <section id="strategy-engagement" className="engagement-section">
         <div className="semantic-shell engagement-section__inner">
-          <p className="semantic-kicker">Start with the right question</p>
-          <h2>Where could intelligence create meaningful advantage in your business?</h2>
-          <p>
-            A Strategy Engagement begins with the business, the opportunity and
-            the people it needs to serve, not a predetermined technology or
-            product package.
-          </p>
-          <a className="strategy-button" href={strategyHref}>
-            Find your AI opportunity
-            <ArrowUpRight aria-hidden="true" />
-          </a>
+          <div className="engagement-section__copy">
+            <p className="semantic-kicker">Your next opportunity</p>
+            <h2>Where could AI create value in your business?</h2>
+            <p className="engagement-section__intro">
+              Start with the right question.<br />
+              Together, we’ll find a useful way forward.
+            </p>
+            <a className="strategy-button" href={strategyHref}>
+              Find your AI opportunity
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+          </div>
+          <ul className="engagement-section__outcomes" aria-label="Opportunities to explore">
+            <li>Grow revenue</li>
+            <li>Reduce operational workload</li>
+            <li>Improve customer experience</li>
+            <li>Automate repetitive work</li>
+            <li>Build a new product</li>
+            <li>Understand your data</li>
+          </ul>
         </div>
       </section>
     </div>
