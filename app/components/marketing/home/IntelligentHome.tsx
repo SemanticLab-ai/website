@@ -16,8 +16,6 @@ import { recentProductWork } from "~/data/work";
 
 const strategyHref = "/services#strategy-engagement";
 
-const disciplines = ["Strategy", "Experience", "Intelligence", "Engineering"];
-
 const framework = [
   {
     name: "Discover",
@@ -114,7 +112,7 @@ export function IntelligentHome({ galaxyMotion = false }: { galaxyMotion?: boole
             <h1 id="hero-title" className="semantic-hero__opportunity-title">
               <span>We find where</span>{" "}
               <span>AI can create an</span>{" "}
-              <em>advantage —</em> then build it.
+              <em>advantage</em> then build it.
             </h1>
             <p className="semantic-hero__intro">
               We connect strategy, product design and engineering to turn complex
@@ -132,14 +130,7 @@ export function IntelligentHome({ galaxyMotion = false }: { galaxyMotion?: boole
             </div>
           </div>
 
-          <div className="semantic-hero__disciplines" aria-label="Our disciplines">
-            {disciplines.map((discipline, index) => (
-              <div key={discipline}>
-                <span>0{index + 1}</span>
-                <p>{discipline}</p>
-              </div>
-            ))}
-          </div>
+
         </div>
       </section>
 
