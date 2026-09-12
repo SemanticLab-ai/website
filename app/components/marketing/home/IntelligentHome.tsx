@@ -8,6 +8,7 @@ import {
   PenTool,
   Rocket,
 } from "lucide-react";
+import { SolutionsSection } from "./SolutionsSection";
 import { GalaxyMotion } from "~/components/marketing/shared/GalaxyMotion";
 import { Link } from "react-router";
 import { AnimatedDataLandscape } from "~/components/marketing/shared/AnimatedDataLandscape";
@@ -129,10 +130,10 @@ export function IntelligentHome({ galaxyMotion = false }: { galaxyMotion?: boole
               </a>
             </div>
           </div>
-
-
         </div>
       </section>
+
+      <SolutionsSection />
 
       <section id="vision" className="vision-section">
         <div className="semantic-shell vision-section__inner">

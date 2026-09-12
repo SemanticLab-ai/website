@@ -1,0 +1,41 @@
+.solutions-section {
+  position: relative;
+  z-index: 2;
+  padding: 64px 0;
+  background: var(--sl-color-white);
+  color: var(--sl-color-black);
+  scroll-margin-top: 90px;
+}
+.solutions-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 36px; margin-bottom: 30px; }
+.solutions-kicker { color: var(--sl-color-graphite); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 20px; }
+.solutions-heading h2 { font-size: clamp(32px, 3.4vw, 45px); line-height: 1.07; letter-spacing: -.052em; font-weight: 450; margin: 0 0 22px; }
+.solutions-heading p:not(.solutions-kicker) { font-size: 16px; line-height: 1.6; color: var(--sl-color-graphite); max-width: 485px; margin: 0; }
+.solutions-link { display: inline-flex; align-items: center; gap: 14px; flex-shrink: 0; font-size: 14px; font-weight: 550; padding: 8px 0; }
+.solutions-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+.solution-card { background: #ffffff99; border: 1px solid color-mix(in srgb, var(--sl-color-graphite) 14%, transparent); padding: 24px 20px; display: flex; flex-direction: column; min-height: 282px; transition: transform 160ms ease, background 160ms ease; }
+.solution-card:hover { transform: translateY(-4px); background: #fff; }
+.solution-card > svg { margin-bottom: 23px; flex-shrink: 0; }
+.solution-card h3 { font-size: 17px; line-height: 1.4; letter-spacing: -.03em; font-weight: 550; margin: 0 0 10px; }
+.solution-card p { font-size: 14px; line-height: 1.6; color: var(--sl-color-graphite); margin: 0 0 20px; }
+.solution-card > span { margin-top: auto; display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 550; }
+.solutions-section a:focus-visible { outline: 2px solid var(--sl-color-graphite); outline-offset: 5px; }
+@media (max-width: 1050px) {
+  .solutions-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 759px) {
+  .solutions-section { padding: 44px 0; }
+  .solutions-heading { display: block; margin-bottom: 25px; }
+  .solutions-link { margin-top: 16px; }
+  .solutions-desktop { display: none; }
+  .solutions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .solution-card { padding: 20px 15px; }
+  .solution-card:last-child { grid-column: 1 / -1; min-height: 210px; }
+}
+@media (max-width: 420px) {
+  .solutions-grid { grid-template-columns: 1fr; }
+  .solution-card { min-height: 240px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .solution-card { transition: none; }
+  .solution-card:hover { transform: none; }
+}
