@@ -1,0 +1,20 @@
+{
+  "preview": {
+    "analyticsEnabled": false,
+    "indexingAllowed": false,
+    "features": {
+      "emeraldVariation": true
+    },
+    "cloudflareCommand": "wrangler versions upload"
+  },
+  "production": {
+    "analyticsEnabled": true,
+    "indexingAllowed": true,
+    "features": {
+      "emeraldVariation": false
+    },
+    "cloudflareCommand": "wrangler deploy",
+    "canonicalOrigin": "https://semanticlab.ai",
+    "googleTagManagerId": "GTM-XXXXXXX"
+  }
+}

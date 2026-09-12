@@ -1,3 +1,4 @@
+import { isPreviewBuild } from "~/lib/deployment";
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Check, Mail } from "lucide-react";
 
@@ -51,7 +52,7 @@ export function StrategyEngagement() {
     const mailto = `mailto:hello@semanticlab.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     setPreparedEmail(mailto);
-    window.location.href = mailto;
+    if (!isPreviewBuild) window.location.href = mailto;
   }
 
   return (
@@ -159,8 +160,7 @@ export function StrategyEngagement() {
 
           <div className="strategy-form__footer">
             <p>
-              Preparing the request opens an email in your mail app. Nothing is
-              sent until you choose send.
+              {isPreviewBuild ? "Preview: you can prepare a request here, but no email will be opened or sent." : "Preparing the request opens an email in your mail app. Nothing is sent until you choose send."}
             </p>
             <button className="strategy-button" type="submit">
               Prepare my request
@@ -170,8 +170,7 @@ export function StrategyEngagement() {
 
           {preparedEmail ? (
             <p className="strategy-form__status" role="status">
-              Your request is prepared. If your mail app did not open,{" "}
-              <a href={preparedEmail}>open the email again</a>.
+              {isPreviewBuild ? "Your request is ready. This preview does not send enquiries." : <>Your request is prepared. If your mail app did not open, <a href={preparedEmail}>open the email again</a>.</>}
             </p>
           ) : null}
         </form>

@@ -1,0 +1,9 @@
+{
+  "frameCount": 127,
+  "width": 1280,
+  "height": 720,
+  "pattern": "frames/frame-%04d.webp",
+  "fps": 18,
+  "duration": 7.041667,
+  "totalBytes": 1712210
+}
