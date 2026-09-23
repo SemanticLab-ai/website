@@ -45,13 +45,7 @@ export function Navigation() {
     >
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="w-10 h-10 bg-lime rounded-xl flex items-center justify-center text-dark-bg font-display font-bold text-lg shadow-lg shadow-lime/20 group-hover:shadow-lime/40 transition-shadow duration-300">
-                S
-              </div>
-            </div>
+          <Link to="/" className="group" aria-label="SemanticLab home">
             <span className="text-xl font-display font-bold text-white tracking-tight">
               SemanticLab
             </span>
@@ -76,15 +70,9 @@ export function Navigation() {
                   {products.map((product) => {
                     const Icon = productIcons[product.icon] || Sparkles;
                     const isComingSoon = product.status === "coming-soon";
-                    const Wrapper = isComingSoon ? "div" : Link;
-                    const wrapperProps = isComingSoon
-                      ? { key: product.slug }
-                      : { key: product.slug, to: product.href, onClick: () => setProductsOpen(false) };
-                    return (
-                      <Wrapper
-                        {...wrapperProps as any}
-                        className={`flex items-center gap-4 p-3 rounded-xl transition-colors ${isComingSoon ? "opacity-50 cursor-default" : "hover:bg-white/5 group"}`}
-                      >
+                    const className = `flex items-center gap-4 p-3 rounded-xl transition-colors ${isComingSoon ? "opacity-50 cursor-default" : "hover:bg-white/5 group"}`;
+                    const content = (
+                      <>
                         <div className={`w-10 h-10 rounded-xl bg-lime/10 flex items-center justify-center`}>
                           <Icon className="w-5 h-5 text-lime" />
                         </div>
@@ -109,7 +97,22 @@ export function Navigation() {
                           </div>
                           <p className="text-xs text-white/40 mt-0.5">{product.tagline}</p>
                         </div>
-                      </Wrapper>
+                      </>
+                    );
+
+                    return isComingSoon ? (
+                      <div key={product.slug} className={className}>
+                        {content}
+                      </div>
+                    ) : (
+                      <Link
+                        key={product.slug}
+                        to={product.href}
+                        onClick={() => setProductsOpen(false)}
+                        className={className}
+                      >
+                        {content}
+                      </Link>
                     );
                   })}
                 </div>
