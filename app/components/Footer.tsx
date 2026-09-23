@@ -44,10 +44,7 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
             {/* Brand Column */}
             <div className="col-span-2 lg:col-span-1">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-lime rounded-xl flex items-center justify-center text-dark-bg font-display font-bold text-lg shadow-lg">
-                  S
-                </div>
+              <div className="mb-6">
                 <span className="text-xl font-display font-bold text-white">
                   SemanticLab
                 </span>

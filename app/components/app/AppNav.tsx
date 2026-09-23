@@ -14,12 +14,8 @@ export function AppNav() {
 
   return (
     <aside className="hidden md:flex w-64 flex-col bg-charcoal text-white flex-shrink-0">
-      {/* Logo */}
       <div className="p-6 border-b border-white/10">
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 bg-gradient-to-br from-vector-rose to-vector-rose-dark rounded-xl flex items-center justify-center text-white font-display font-bold text-sm shadow-lg">
-            S
-          </div>
+        <Link to="/" className="group" aria-label="SemanticLab home">
           <span className="text-lg font-display font-bold text-white">
             SemanticLab
           </span>
