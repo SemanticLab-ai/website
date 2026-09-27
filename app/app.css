@@ -2585,6 +2585,9 @@ body {
 
 .strategy-form__footer .strategy-button {
   flex: 0 0 auto;
+  border-color: var(--semantic-ink);
+  background: var(--semantic-ink);
+  color: var(--semantic-white);
   cursor: pointer;
 }
 
