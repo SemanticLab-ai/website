@@ -53,6 +53,7 @@ export function WorkEvidenceList({ items, tone }: WorkEvidenceListProps) {
             </ul>
             <span className="work-evidence-row__signal" aria-hidden="true">
               <Icon strokeWidth={1.35} />
+              <span>View project</span>
               <ArrowUpRight strokeWidth={1.35} />
             </span>
           </a>
