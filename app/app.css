@@ -77,10 +77,11 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Text selection — lime */
+/* Text selection — translucent lime adapts softly to dark and light surfaces. */
 ::selection {
-  background-color: var(--sl-accent);
-  color: var(--sl-text-on-light);
+  background-color: var(--sl-selection);
+  color: inherit;
+  text-shadow: none;
 }
 
 /* Display font for headings */
