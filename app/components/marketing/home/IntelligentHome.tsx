@@ -249,14 +249,6 @@ export function IntelligentHome({ galaxyMotion = false }: { galaxyMotion?: boole
               </div>
             </article>
           </div>
-
-          <p className="founders-section__statement">
-            We don’t just design. We don’t just develop. <em>We design
-            intelligent businesses.</em>
-          </p>
-          <Link className="semantic-text-link founders-section__link" to="/founders">
-            Meet the founders <ArrowUpRight aria-hidden="true" />
-          </Link>
         </div>
       </section>
 
