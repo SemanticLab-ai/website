@@ -855,61 +855,11 @@ body {
   line-height: 1;
 }
 
-.vision-section,
 .framework-section,
 .founders-section,
 .work-section,
 .engagement-section {
   scroll-margin-top: 82px;
-}
-
-.vision-section {
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid var(--semantic-line);
-  background:
-    radial-gradient(circle at 82% 120%, rgba(139, 255, 77, 0.18), transparent 47%),
-    linear-gradient(105deg, #0a0d0b 6%, #111b13 100%);
-}
-
-.vision-section::after {
-  position: absolute;
-  right: -9%;
-  bottom: -64%;
-  width: 62%;
-  height: 125%;
-  border: 1px solid rgba(139, 255, 77, 0.2);
-  border-radius: 50%;
-  content: "";
-  transform: rotate(-20deg);
-}
-
-.vision-section__inner {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
-  gap: clamp(80px, 11vw, 180px);
-  align-items: end;
-  min-height: 560px;
-  padding-block: 120px;
-}
-
-.vision-section h2 {
-  max-width: 900px;
-  margin-top: 25px;
-  font-size: clamp(3.2rem, 5.6vw, 6.2rem);
-  line-height: 0.95;
-}
-
-.vision-section__copy {
-  display: grid;
-  gap: 28px;
-  padding-bottom: 8px;
-  color: rgba(246, 246, 244, 0.66);
-  font-size: 0.96rem;
-  font-weight: 350;
-  line-height: 1.65;
 }
 
 .framework-section,
@@ -1833,20 +1783,10 @@ body {
     max-width: 600px;
   }
 
-  .vision-section__inner,
   .semantic-section-heading,
   .site-footer__inner {
     grid-template-columns: 1fr;
     gap: 46px;
-  }
-
-  .vision-section__inner {
-    min-height: auto;
-    padding-block: 100px;
-  }
-
-  .vision-section__copy {
-    max-width: 540px;
   }
 
   .founder-grid {
@@ -1994,12 +1934,10 @@ body {
     font-size: 1.08rem;
   }
 
-  .vision-section h2,
   .semantic-section-heading h2 {
     font-size: clamp(2.9rem, 14vw, 4rem);
   }
 
-  .vision-section__inner,
   .framework-section,
   .capabilities-section,
   .founders-section,
