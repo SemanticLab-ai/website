@@ -1110,19 +1110,6 @@ body {
   line-height: 1.66;
 }
 
-.founders-section__statement {
-  max-width: 850px;
-  margin: 96px auto 0;
-  padding-top: 58px;
-  border-top: 1px solid var(--semantic-line);
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-weight: 450;
-  font-size: clamp(2.1rem, 3.6vw, 3.8rem);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  text-align: center;
-}
-
 .work-section {
   background: var(--semantic-paper);
   color: var(--semantic-ink);
@@ -2008,11 +1995,6 @@ body {
   .founder-grid span {
     margin-top: 15px;
     font-size: 0.72rem;
-  }
-
-  .founders-section__statement {
-    margin-top: 64px;
-    padding-top: 40px;
   }
 
   .work-evidence-list {
@@ -4059,10 +4041,6 @@ body {
 
 .founders-cta .strategy-button {
   min-width: 290px;
-}
-
-.founders-section__link {
-  margin: 34px auto 0;
 }
 
 .founder-profile__link:hover,
