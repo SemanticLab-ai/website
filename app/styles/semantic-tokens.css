@@ -17,6 +17,11 @@
   --sl-text-secondary: var(--sl-color-sage);
   --sl-text-on-light: var(--sl-color-black);
   --sl-accent: var(--sl-color-lime);
+  --sl-selection: color-mix(
+    in srgb,
+    var(--sl-color-lime) 22%,
+    transparent
+  );
   --sl-accent-pressed: color-mix(
     in srgb,
     var(--sl-color-lime) 84%,
