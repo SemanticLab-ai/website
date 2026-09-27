@@ -135,29 +135,6 @@ export function IntelligentHome({ galaxyMotion = false }: { galaxyMotion?: boole
 
       <SolutionsSection />
 
-      <section id="vision" className="vision-section">
-        <div className="semantic-shell vision-section__inner">
-          <div>
-            <p className="semantic-kicker">The shift happening now</p>
-            <h2>
-              AI is changing every industry. The winners won’t just use it.
-              They’ll be <em>designed around it.</em>
-            </h2>
-          </div>
-          <div className="vision-section__copy">
-            <p>
-              Most transformation efforts do not stall because of technology.
-              They stall when teams automate the wrong things or build without
-              a clear model of value.
-            </p>
-            <p>
-              We help identify what matters, what to build, and how to make the
-              change useful in the real world.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section id="framework" className="framework-section">
         <div className="semantic-shell">
           <div className="semantic-section-heading">
