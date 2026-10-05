@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Player, type PlayerRef } from "@remotion/player";
 import { NetworkComposition } from "./NetworkComposition";
-import { DURATION, FPS, HEIGHT, WIDTH } from "./network";
+import { DURATION, FPS, HEIGHT, nodes, WIDTH } from "./network";
 
 type Mode = "network" | "hero";
 
@@ -9,11 +9,16 @@ export const MotionLab = () => {
   const [mode, setMode] = useState<Mode>("network");
   const [manualPause, setManualPause] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [focusedNodeId, setFocusedNodeId] = useState<number | null>(null);
   const [reducedMotion, setReducedMotion] = useState(
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
   const player = useRef<PlayerRef>(null);
   const stage = useRef<HTMLDivElement>(null);
+  const onNodeFocus = useCallback((id: number | null) => setFocusedNodeId(id), []);
+  const namedNodes = nodes.filter((node) => node.label);
+  const focusedNode = focusedNodeId === null ? null : nodes[focusedNodeId];
+  const focusedIndex = focusedNodeId === null ? -1 : namedNodes.findIndex((node) => node === focusedNode);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -58,8 +63,8 @@ export const MotionLab = () => {
         <h1 id="study-title">Connections<br /><em>in motion.</em></h1>
       </div>
       <p className="intro-copy">
-        An interactive network for the SemanticLab hero. Move your pointer through
-        the field, drag a node, or select one of the named points to trace its links.
+        An interactive network for the SemanticLab hero. Move near a ringed dot
+        to catch it, then read how it connects to our work.
       </p>
     </section>
 
@@ -94,7 +99,7 @@ export const MotionLab = () => {
           compositionHeight={HEIGHT}
           durationInFrames={DURATION}
           fps={FPS}
-          inputProps={{ reducedMotion }}
+          inputProps={{ reducedMotion, onNodeFocus }}
           autoPlay={!reducedMotion}
           initiallyMuted
           loop
@@ -103,7 +108,14 @@ export const MotionLab = () => {
           style={{ width: "100%", aspectRatio: `${WIDTH} / ${HEIGHT}` }}
         />
       </div>
-      {mode === "network" && <p className="stage-hint">Hover to trace · Drag to reshape · Tap a node to focus</p>}
+      <aside className="node-detail" aria-live="polite" aria-atomic="true">
+        <span className="node-detail__index">
+          {focusedIndex < 0 ? "Explore the network" : `${String(focusedIndex + 1).padStart(2, "0")} / ${String(namedNodes.length).padStart(2, "0")}`}
+        </span>
+        <h3>{focusedNode?.label ?? "Follow a connection"}</h3>
+        <p>{focusedNode?.description ?? "Move near a ringed dot, tap one, or use Tab to explore the five key stages."}</p>
+      </aside>
+      {mode === "network" && <p className="stage-hint">Move near a ringed dot · Drag to reshape · Tap to focus</p>}
     </div>
 
     <footer className="lab-footer">

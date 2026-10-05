@@ -5,7 +5,7 @@ import { DURATION, edges, HEIGHT, nodes, type Node, WIDTH } from "./network";
 type Point = { x: number; y: number };
 type Drag = Point & { id: number; grabX: number; grabY: number };
 type Release = Point & { id: number; frame: number };
-type Props = { reducedMotion?: boolean };
+type Props = { reducedMotion?: boolean; onNodeFocus?: (id: number | null) => void };
 
 const TAU = Math.PI * 2;
 const colors = { white: "#F6F6F4", sage: "#A8AF94", lime: "#8BFF4D" };
@@ -30,22 +30,42 @@ function svgPoint(event: PointerEvent<SVGSVGElement | SVGCircleElement>): Point 
   return { x: point.x, y: point.y };
 }
 
-export const NetworkComposition = ({ reducedMotion = false }: Props) => {
+export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props) => {
   const frame = useCurrentFrame();
   const [pointer, setPointer] = useState<Point | null>(null);
-  const [hovered, setHovered] = useState<number | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
+  const [magnetId, setMagnetId] = useState<number | null>(null);
+  const [pulseFrame, setPulseFrame] = useState<number | null>(null);
   const [drag, setDrag] = useState<Drag | null>(null);
   const [release, setRelease] = useState<Release | null>(null);
   const releaseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const active = drag?.id ?? hovered ?? selected;
+  const pulseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const magnetRadius = useRef(55);
+  const active = drag?.id ?? selected;
+
+  const triggerPulse = () => {
+    setPulseFrame(frame);
+    if (pulseTimer.current) clearTimeout(pulseTimer.current);
+    pulseTimer.current = setTimeout(() => setPulseFrame(null), 900);
+  };
+
+  const focusNode = (id: number | null) => {
+    if (id !== selected && id !== null && !reducedMotion) triggerPulse();
+    setSelected(id);
+    onNodeFocus?.(id);
+  };
 
   useEffect(() => () => {
     if (releaseTimer.current) clearTimeout(releaseTimer.current);
+    if (pulseTimer.current) clearTimeout(pulseTimer.current);
   }, []);
 
+  const basePoints = nodes.map((node, id) => position(node, id, frame, reducedMotion));
+  const pulseAge = pulseFrame === null ? 1000 : (frame - pulseFrame + DURATION) % DURATION;
+  const buzz = reducedMotion ? 0 : Math.exp(-pulseAge / 7) * Math.abs(Math.sin(pulseAge * 1.6));
+
   const points = nodes.map((node, id) => {
-    const base = position(node, id, frame, reducedMotion);
+    const base = basePoints[id];
     if (drag?.id === id) return { x: drag.x, y: drag.y };
 
     let x = base.x;
@@ -56,7 +76,19 @@ export const NetworkComposition = ({ reducedMotion = false }: Props) => {
       x += release.x * spring;
       y += release.y * spring;
     }
-    if (pointer && !reducedMotion) {
+    if (pointer && magnetId === id && node.label && !reducedMotion) {
+      const dx = pointer.x - x;
+      const dy = pointer.y - y;
+      const distance = Math.hypot(dx, dy);
+      if (distance > 0 && distance < magnetRadius.current * 1.25) {
+        const settle = 1 - Math.exp(-pulseAge / 2.8);
+        const shift = Math.min(distance * 0.82 * settle, 42);
+        x += (dx / distance) * shift + Math.sin(pulseAge * 2.2) * buzz * 2;
+        y += (dy / distance) * shift + Math.cos(pulseAge * 2.4) * buzz * 2;
+      }
+    }
+    // Other nodes retain the original pointer displacement.
+    if (pointer && !reducedMotion && !node.label) {
       const dx = x - pointer.x;
       const dy = y - pointer.y;
       const distance = Math.hypot(dx, dy);
@@ -77,6 +109,21 @@ export const NetworkComposition = ({ reducedMotion = false }: Props) => {
       setDrag({ ...drag, x: point.x + drag.grabX, y: point.y + drag.grabY });
     } else {
       setPointer(point);
+      const scaleMatrix = event.currentTarget.getScreenCTM();
+      const scale = scaleMatrix ? Math.hypot(scaleMatrix.a, scaleMatrix.b) : 1;
+      const captureRadius = 42 / scale;
+      magnetRadius.current = captureRadius;
+      const nearest = nodes.reduce(
+        (result, node, id) => {
+          if (!node.label) return result;
+          const distance = Math.hypot(basePoints[id].x - point.x, basePoints[id].y - point.y);
+          return distance < result.distance ? { id, distance } : result;
+        },
+        { id: -1, distance: captureRadius },
+      );
+      if (nearest.id >= 0 && magnetId !== nearest.id && nearest.id === selected && !reducedMotion) triggerPulse();
+      setMagnetId(nearest.id >= 0 ? nearest.id : null);
+      if (nearest.id >= 0 && nearest.id !== selected) focusNode(nearest.id);
     }
   };
 
@@ -86,21 +133,23 @@ export const NetworkComposition = ({ reducedMotion = false }: Props) => {
     if (!point) return;
     const nearest = points.reduce(
       (result, node, id) => {
+        if (!nodes[id].label) return result;
         const distance = Math.hypot(node.x - point.x, node.y - point.y);
         return distance < result.distance ? { id, distance } : result;
       },
-      { id: -1, distance: 58 },
+      { id: -1, distance: 90 },
     );
-    if (nearest.id >= 0) setSelected(nearest.id);
+    if (nearest.id >= 0) focusNode(nearest.id);
   };
 
   const onDown = (event: PointerEvent<SVGCircleElement>, id: number) => {
-    setSelected(id);
+    if (nodes[id].label) focusNode(id);
     if (event.pointerType === "touch" || reducedMotion) return;
     const point = svgPoint(event);
     if (!point) return;
     event.currentTarget.setPointerCapture(event.pointerId);
     setPointer(null);
+    setMagnetId(null);
     setRelease(null);
     if (releaseTimer.current) clearTimeout(releaseTimer.current);
     setDrag({
@@ -123,10 +172,9 @@ export const NetworkComposition = ({ reducedMotion = false }: Props) => {
   const onKey = (event: KeyboardEvent<SVGCircleElement>, id: number) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      setSelected(id);
+      focusNode(id);
     } else if (event.key === "Escape") {
-      setSelected(null);
-      setHovered(null);
+      focusNode(null);
     }
   };
 
@@ -139,8 +187,8 @@ export const NetworkComposition = ({ reducedMotion = false }: Props) => {
       width="100%" height="100%"
       onPointerMove={onMove}
       onPointerDown={onCanvasDown}
-      onPointerLeave={() => { setPointer(null); setHovered(null); }}
-      onClick={(event) => { if (event.target === event.currentTarget) setSelected(null); }}
+      onPointerLeave={() => { setPointer(null); setMagnetId(null); }}
+      onClick={(event) => { if (event.target === event.currentTarget) focusNode(null); }}
       style={{ display: "block", overflow: "visible", touchAction: "pan-y" }}
       aria-label="Interactive SemanticLab network. Hover or select a node to trace its connections."
     >
@@ -165,7 +213,13 @@ export const NetworkComposition = ({ reducedMotion = false }: Props) => {
             (from === active && to === id) || (to === active && from === id));
           const quiet = active !== null && !isActive && !connected;
           const point = points[id];
+          const hitPoint = node.label ? basePoints[id] : point;
           return <g key={id}>
+            {node.label && !isActive && <circle
+              cx={point.x} cy={point.y} r={node.radius + 10}
+              fill="none" stroke={colors.sage} strokeWidth={1.1}
+              opacity={0.72} pointerEvents="none"
+            />}
             {(isActive || (node.tone === "lime" && active === null)) && <circle
               cx={point.x} cy={point.y}
               r={isActive ? node.radius + 13 : node.radius + 7}
@@ -173,17 +227,15 @@ export const NetworkComposition = ({ reducedMotion = false }: Props) => {
               pointerEvents="none"
             />}
             <circle
-              cx={point.x} cy={point.y} r={node.radius + 12}
+              cx={hitPoint.x} cy={hitPoint.y} r={node.label ? 42 : node.radius + 12}
               fill="transparent"
               tabIndex={node.label ? 0 : undefined}
               role={node.label ? "button" : undefined}
               aria-label={node.label ? `Explore ${node.label} connections` : undefined}
               aria-hidden={node.label ? undefined : true}
-              onPointerEnter={() => setHovered(id)}
-              onPointerLeave={() => setHovered(null)}
               onPointerDown={(event) => onDown(event, id)}
               onPointerUp={onUp} onPointerCancel={onUp}
-              onFocus={() => setHovered(id)} onBlur={() => setHovered(null)}
+              onFocus={() => focusNode(id)}
               onKeyDown={(event) => onKey(event, id)}
               style={{ cursor: drag?.id === id ? "grabbing" : "grab", touchAction: "pan-y", outline: "none" }}
             />
@@ -195,9 +247,14 @@ export const NetworkComposition = ({ reducedMotion = false }: Props) => {
               pointerEvents="none"
             />
             {isActive && <circle
-              cx={point.x} cy={point.y} r={node.radius + 9}
+              cx={point.x} cy={point.y} r={node.radius + 9 + buzz * 5}
               fill="none" stroke={colors.lime} strokeWidth={1.2}
-              opacity={0.75} pointerEvents="none"
+              opacity={0.6 + buzz * 0.35} pointerEvents="none"
+            />}
+            {isActive && node.label && pulseAge < 22 && <circle
+              cx={point.x} cy={point.y} r={node.radius + 13 + pulseAge * 0.7}
+              fill="none" stroke={colors.lime} strokeWidth={0.9}
+              opacity={0.34 * (1 - pulseAge / 22)} pointerEvents="none"
             />}
           </g>;
         })}

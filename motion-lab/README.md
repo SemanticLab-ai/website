@@ -14,7 +14,8 @@ Open the Vite URL printed by the command. Use **Network study** to inspect the v
 ## Interaction
 
 - The 14-second loop moves 24 hand-positioned nodes and 50 links with deterministic frame-based motion.
-- Hovering a node traces its immediate connections. Pointer proximity gently displaces nearby points.
+- Moving near a ringed key node magnetically draws it toward the pointer with a short visual buzz. Its connections brighten, and its description stays in a fixed card for reading.
+- Pointer proximity gently displaces the other points.
 - Mouse or pen drag moves a node and its links. It springs back after release.
 - Touch taps focus the nearest node without taking over vertical scrolling.
 - Five named nodes can be selected with Tab and Enter or Space; Escape clears selection.
