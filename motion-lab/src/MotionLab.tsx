@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Player, type PlayerRef } from "@remotion/player";
-import { NetworkComposition } from "./NetworkComposition";
-import { DURATION, FPS, HEIGHT, nodes, WIDTH } from "./network";
+import { NetworkComposition } from "../../app/components/marketing/shared/network-motion/NetworkComposition";
+import { DURATION, FPS, HEIGHT, nodes, WIDTH } from "../../app/components/marketing/shared/network-motion/network";
 
 type Mode = "network" | "hero";
 

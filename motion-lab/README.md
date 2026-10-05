@@ -21,8 +21,8 @@ Open the Vite URL printed by the command. Use **Network study** to inspect the v
 - Five named nodes can be selected with Tab and Enter or Space; Escape clears selection.
 - The pause button, `prefers-reduced-motion`, hidden-tab handling, and off-screen observation stop playback.
 
-`src/NetworkComposition.tsx` is the reusable scene. `src/network.ts` holds the topology and composition dimensions. `src/MotionLab.tsx` is a review surface; its hero mockup and grid-backed card are not part of the composition. The composition has a transparent background and can be placed directly in the website hero when approved.
+`../app/components/marketing/shared/network-motion/NetworkComposition.tsx` is the shared scene used by the site and this motion study. Its neighboring `network.ts` holds the topology and composition dimensions. `src/MotionLab.tsx` is a review surface; its hero mockup and grid-backed card are not part of the composition.
 
-## Staging integration later
+## Site integration
 
-Move the composition and topology into the website app, add matching `remotion` and `@remotion/player` versions to the website package, and mount the Player only for the approved preview runtime flag. Keep the production flag disabled until separately authorized. The website's normal branch, artifact, Cloudflare build, and URL verification gates apply at that point.
+The website mounts this composition in its homepage hero only when the preview runtime flag is enabled. Production keeps the existing static hero until separately authorized. The website's branch, artifact, Cloudflare build, and URL verification gates apply to deployment.

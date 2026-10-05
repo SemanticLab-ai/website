@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { SolutionsSection } from "./SolutionsSection";
 import { Link } from "react-router";
+import { NetworkHeroMotion } from "~/components/marketing/shared/network-motion/NetworkHeroMotion";
 import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
 import { recentProductWork } from "~/data/work";
 
@@ -95,10 +96,10 @@ const capabilities = [
   },
 ];
 
-export function IntelligentHome() {
+export function IntelligentHome({ networkMotion = false }: { networkMotion?: boolean }) {
   return (
     <div className="semantic-home">
-      <section className="semantic-hero" aria-labelledby="hero-title">
+      <section className={`semantic-hero${networkMotion ? " semantic-hero--network" : ""}`} aria-labelledby="hero-title">
         <div className="semantic-shell semantic-hero__inner">
           <div className="semantic-hero__copy">
             <p className="semantic-kicker">Product innovation partner</p>
@@ -123,6 +124,7 @@ export function IntelligentHome() {
             </div>
           </div>
         </div>
+        {networkMotion && <NetworkHeroMotion />}
       </section>
 
       <SolutionsSection />

@@ -13,6 +13,10 @@ export const indexingAllowed =
   deploymentEnvironment === "production" &&
   import.meta.env.VITE_SL_INDEXING_ALLOWED !== "false";
 
+export const networkMotionEnabled =
+  deploymentEnvironment === "preview" &&
+  import.meta.env.VITE_SL_FEATURE_NETWORK_MOTION === "true";
+
 export const googleTagManagerId = analyticsEnabled
   ? import.meta.env.VITE_SL_GTM_ID || "GTM-XXXXXXX"
   : null;

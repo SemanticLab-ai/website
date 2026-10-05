@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router";
 import { BrandLockup } from "~/components/BrandLockup";
+import { networkMotionEnabled } from "~/lib/deployment";
 import { AnimatedDataLandscape } from "~/components/marketing/shared/AnimatedDataLandscape";
 import {
   brandColours,
@@ -409,6 +410,10 @@ export function DesignSystemPage() {
                 <span>Reduced-motion preferences always take priority.</span>
               </div>
             </div>
+
+            {networkMotionEnabled && <p className="ds-eyebrow">
+              <Link to="/">Preview interactive network hero →</Link> · Key nodes respond to pointer, touch and keyboard focus, with a persistent description panel and reduced-motion support.
+            </p>}
 
             <div className="ds-motion-grid">
               {motionTokens.map((motion) => (
