@@ -82,7 +82,6 @@ export function ServicesCapabilities() {
       <div className="semantic-shell">
         <div className="services-heading services-heading--dark">
           <div>
-            <p className="semantic-kicker">How transformation happens</p>
             <h2>End to end. Integrated. Built around value.</h2>
           </div>
           <p>

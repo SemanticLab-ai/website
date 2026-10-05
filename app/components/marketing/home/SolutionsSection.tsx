@@ -36,7 +36,6 @@ export function SolutionsSection() {
         <div className="semantic-shell">
         <div className="solutions-heading">
           <div>
-            <p className="solutions-kicker">What we solve</p>
             <h2 id="solutions-title">
               Different challenges.
               <br />A clear path forward.

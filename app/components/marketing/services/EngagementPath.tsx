@@ -36,7 +36,6 @@ export function EngagementPath() {
       <div className="semantic-shell">
         <div className="services-heading">
           <div>
-            <p className="semantic-kicker">One connected engagement</p>
             <h2>Shaped around the opportunity, not a preset package.</h2>
           </div>
           <p>

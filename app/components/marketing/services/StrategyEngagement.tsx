@@ -58,7 +58,6 @@ export function StrategyEngagement() {
     <section id="strategy-engagement" className="strategy-engagement">
       <div className="semantic-shell strategy-engagement__layout">
         <div className="strategy-engagement__intro">
-          <p className="semantic-kicker">Start with the right question</p>
           <h2>Where could intelligence create meaningful advantage?</h2>
           <p>
             Share enough context for us to understand the opportunity, its

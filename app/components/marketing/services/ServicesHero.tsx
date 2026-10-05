@@ -14,7 +14,6 @@ export function ServicesHero() {
 
       <div className="semantic-shell services-hero__inner">
         <div className="services-hero__copy">
-          <p className="semantic-kicker">Services</p>
           <h1 id="services-hero-title">
             Transformation, not just <em>delivery.</em>
           </h1>

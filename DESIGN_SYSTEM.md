@@ -82,10 +82,10 @@ Prefer connected grids over collections of floating cards. Avoid glassmorphism, 
 - Secondary action: transparent surface, Graphite border, explicit directional icon.
 - Text link: short label, visible direction, strong hover/focus state.
 - Fields: square or lightly rounded, always labelled, with supporting copy kept visible.
-- Kicker: Signal Lime, uppercase, letter-spaced label.
+- Section headings: lead with the headline itself. Do not add repetitive uppercase eyebrow labels above marketing sections.
 - Surfaces: Obsidian default; Warm White for deliberate editorial contrast.
 
-Use the existing `strategy-button`, `semantic-text-link`, `semantic-kicker`, `semantic-shell` and surface classes before creating another primitive.
+Use the existing `strategy-button`, `semantic-text-link`, `semantic-shell` and surface classes before creating another primitive.
 
 ## Motion
 

@@ -102,7 +102,6 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
       <section className={`semantic-hero${networkMotion ? " semantic-hero--network" : ""}`} aria-labelledby="hero-title">
         <div className="semantic-shell semantic-hero__inner">
           <div className="semantic-hero__copy">
-            <p className="semantic-kicker">Product innovation partner</p>
             <h1 id="hero-title" className="semantic-hero__opportunity-title">
               <span>We find where</span>{" "}
               <span>AI can create an</span>{" "}
@@ -133,7 +132,6 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
         <div className="semantic-shell">
           <div className="semantic-section-heading">
             <div>
-              <p className="semantic-kicker">How transformation happens</p>
               <h2>From vision to advantage. A connected journey.</h2>
             </div>
             <p>
@@ -164,7 +162,6 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
         <div className="semantic-shell">
           <div className="semantic-section-heading semantic-section-heading--wide">
             <div>
-              <p className="semantic-kicker">One connected capability</p>
               <h2 id="capabilities-title">Strategy through to systems.</h2>
             </div>
             <p>
@@ -197,7 +194,6 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
         <div className="semantic-shell">
           <div className="semantic-section-heading">
             <div>
-              <p className="semantic-kicker">Two disciplines. One mission.</p>
               <h2>We bridge the gap most partners can’t.</h2>
             </div>
             <p>
@@ -250,7 +246,6 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
         <div className="semantic-shell">
           <div className="semantic-section-heading">
             <div>
-              <p className="semantic-kicker">Recent product work</p>
               <h2>Built to work in the real world.</h2>
             </div>
             <p>
@@ -269,7 +264,6 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
       <section id="strategy-engagement" className="engagement-section">
         <div className="semantic-shell engagement-section__inner">
           <div className="engagement-section__copy">
-            <p className="semantic-kicker">Your next opportunity</p>
             <h2>Where could AI create value in your business?</h2>
             <p className="engagement-section__intro">
               Start with the right question.<br />

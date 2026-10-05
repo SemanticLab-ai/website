@@ -56,7 +56,6 @@ export default function Founders() {
       <section className="founders-hero" aria-labelledby="founders-hero-title">
         <div className="semantic-shell founders-hero__inner">
           <div className="founders-hero__copy">
-            <p className="semantic-kicker">Two disciplines. One mission.</p>
             <h1 id="founders-hero-title">
               One designs for <em>people.</em> One engineers for <em>scale.</em>
             </h1>
@@ -87,7 +86,6 @@ export default function Founders() {
       <section className="founders-story" aria-labelledby="founders-story-title">
         <div className="semantic-shell founders-story__inner">
           <div className="founders-story__heading">
-            <p className="semantic-kicker">Our story</p>
             <h2 id="founders-story-title">
               Where curiosity becomes <em>products.</em>
             </h2>
@@ -120,7 +118,6 @@ export default function Founders() {
 
       <section className="founders-profiles" aria-labelledby="founders-profiles-title">
         <div className="semantic-shell">
-          <p className="semantic-kicker">The partnership</p>
           <h2 id="founders-profiles-title">
             One perspective shapes how people <em>experience</em> complexity.
             The other shapes how technology can <em>carry it.</em>
@@ -201,7 +198,6 @@ export default function Founders() {
         <div className="semantic-shell">
           <div className="founders-connection__heading">
             <div>
-              <p className="semantic-kicker">Where the disciplines meet</p>
               <h2 id="founders-connection-title">
                 The thinking stays connected all the way through.
               </h2>
@@ -278,7 +274,6 @@ export default function Founders() {
       <section className="founders-life" aria-labelledby="founders-life-title">
         <div className="semantic-shell founders-life__inner">
           <div className="founders-life__heading">
-            <p className="semantic-kicker">Life beyond the laptop</p>
             <h2 id="founders-life-title">
               We’re partners in business <em>and in life.</em>
             </h2>
