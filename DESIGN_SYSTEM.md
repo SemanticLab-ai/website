@@ -51,9 +51,9 @@ Opacity and colour mixing may create functional borders, pressed states and over
 - Display and titles: weight `450`, tracking `-0.055em` to `-0.04em`.
 - Body: weight `350` to `450`, line-height around `1.65`.
 - Labels: weight `600` to `650`, uppercase, tracking `0.19em`.
-- Emphasis: Inter italic in Signal Lime.
+- Display emphasis: Inter italic in the heading's text colour, with a restrained Signal Lime underline. On dark surfaces the text stays Warm White; on light surfaces it stays Obsidian.
 
-Do not add a second display family. Hierarchy comes from scale, weight, space and deliberate italic emphasis.
+Do not add a second display family. Hierarchy comes from scale, weight, space and deliberate italic emphasis. Keep lime in headline decoration rather than filling the words.
 
 ## Logo
 
