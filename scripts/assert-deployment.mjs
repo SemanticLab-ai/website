@@ -52,19 +52,17 @@ assert(
 assert(
   contract.preview.analyticsEnabled === false &&
     contract.preview.indexingAllowed === false &&
-    contract.preview.features.galaxyMotion === true &&
     contract.preview.cloudflareCommand === "wrangler versions upload",
-  "The preview source contract must disable analytics/indexing, enable the variation and upload a version.",
+  "The preview source contract must disable analytics/indexing and upload a version.",
 );
 
 assert(
   contract.production.analyticsEnabled === true &&
     contract.production.indexingAllowed === true &&
-    contract.production.features.galaxyMotion === false &&
     contract.production.cloudflareCommand === "wrangler deploy" &&
     contract.production.canonicalOrigin === "https://semanticlab.ai" &&
     typeof contract.production.googleTagManagerId === "string",
-  "The production source contract must retain analytics, indexing, canonical origin and disable the unreleased variation.",
+  "The production source contract must retain analytics, indexing and canonical origin.",
 );
 
 for (const [name, artifact] of [
@@ -85,11 +83,6 @@ for (const [name, artifact] of [
     `${name} artifact indexing flag does not match the source contract.`,
   );
   assert(
-    artifact.features.galaxyMotion ===
-      contract[expectedEnvironment].features.galaxyMotion,
-    `${name} artifact galaxy-motion flag does not match the source contract.`,
-  );
-  assert(
     artifact.cloudflareCommand ===
       contract[expectedEnvironment].cloudflareCommand,
     `${name} artifact Cloudflare command does not match the source contract.`,
@@ -107,11 +100,10 @@ if (expectedEnvironment === "preview") {
   assert(
     clientArtifact.analyticsEnabled === true &&
       clientArtifact.indexingAllowed === true &&
-      clientArtifact.features.galaxyMotion === false &&
       clientArtifact.canonicalOrigin === "https://semanticlab.ai" &&
       clientArtifact.googleTagManagerId ===
         contract.production.googleTagManagerId,
-    "Production artifacts must preserve approved SEO/analytics and keep the variation disabled.",
+    "Production artifacts must preserve approved SEO/analytics.",
   );
 }
 
@@ -126,14 +118,16 @@ const flattened = JSON.parse(
   ),
 );
 assert(
-  wrangler.vars.SL_DEPLOY_ENV === "production" &&
-    wrangler.vars.SL_FEATURE_GALAXY_MOTION === "false",
+  wrangler.vars.SL_DEPLOY_ENV === "production",
   "Ambiguous source configuration must be production-safe.",
+);
+assert(
+  !("SL_FEATURE_GALAXY_MOTION" in wrangler.vars),
+  "Retired galaxy flag must not remain in source bindings.",
 );
 const expected = contract[expectedEnvironment];
 for (const [key, value] of Object.entries({
   SL_DEPLOY_ENV: expectedEnvironment,
-  SL_FEATURE_GALAXY_MOTION: String(expected.features.galaxyMotion),
   SL_INDEXING_ALLOWED: String(expected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(expected.analyticsEnabled),
 })) {
@@ -145,6 +139,10 @@ for (const [key, value] of Object.entries({
 assert(
   flattened.name === wrangler.name && flattened.preview_urls === true,
   "Flattened artifact must retain shared Worker and preview URLs.",
+);
+assert(
+  !("SL_FEATURE_GALAXY_MOTION" in flattened.vars),
+  "Retired galaxy flag must not remain in flattened bindings.",
 );
 const { readdir } = await import("node:fs/promises");
 async function scriptsUnder(path) {

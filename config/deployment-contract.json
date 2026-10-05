@@ -2,17 +2,11 @@
   "preview": {
     "analyticsEnabled": false,
     "indexingAllowed": false,
-    "features": {
-      "galaxyMotion": true
-    },
     "cloudflareCommand": "wrangler versions upload"
   },
   "production": {
     "analyticsEnabled": true,
     "indexingAllowed": true,
-    "features": {
-      "galaxyMotion": false
-    },
     "cloudflareCommand": "wrangler deploy",
     "canonicalOrigin": "https://semanticlab.ai",
     "googleTagManagerId": "GTM-XXXXXXX"
