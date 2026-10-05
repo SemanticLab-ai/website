@@ -23,7 +23,6 @@ export function CaseStudyPage({
           </Link>
 
           <div className="case-study-hero__copy">
-            <p className="semantic-kicker">{caseStudy.category}</p>
             <h1 id="case-study-title">{caseStudy.name}</h1>
             <p className="case-study-hero__proposition">
               {caseStudy.proposition}
@@ -76,7 +75,6 @@ export function CaseStudyPage({
           </figure>
 
           <div className="case-study-opportunity__copy">
-            <p className="semantic-kicker">The opportunity</p>
             <h2 id="case-study-opportunity-title">
               {caseStudy.opportunityHeading}
             </h2>
@@ -92,7 +90,6 @@ export function CaseStudyPage({
         aria-labelledby="case-study-system-title"
       >
         <div className="semantic-shell">
-          <p className="semantic-kicker">The system</p>
           <h2 id="case-study-system-title">{caseStudy.systemHeading}</h2>
 
           <ol className="case-study-workflow">
@@ -112,7 +109,6 @@ export function CaseStudyPage({
         aria-labelledby="case-study-build-title"
       >
         <div className="semantic-shell">
-          <p className="semantic-kicker">What was designed and built</p>
           <h2 id="case-study-build-title">{caseStudy.buildHeading}</h2>
 
           <dl className="case-study-disciplines">
@@ -138,7 +134,6 @@ export function CaseStudyPage({
         aria-labelledby="case-study-demonstrates-title"
       >
         <div className="semantic-shell case-study-demonstrates__inner">
-          <p className="semantic-kicker">What this work demonstrates</p>
           <h2 id="case-study-demonstrates-title">
             {caseStudy.demonstratesHeading}
           </h2>
@@ -154,7 +149,6 @@ export function CaseStudyPage({
       <section className="case-study-next" aria-label="Continue exploring">
         <div className="semantic-shell case-study-next__inner">
           <div className="case-study-next__work">
-            <p className="semantic-kicker">Next case study</p>
             <h2>{nextCaseStudy.name}</h2>
             <Link
               className="case-study-live-link"
@@ -165,7 +159,6 @@ export function CaseStudyPage({
           </div>
 
           <div className="case-study-next__engagement">
-            <p className="semantic-kicker">Have a real opportunity?</p>
             <h2>Where could intelligence create meaningful advantage?</h2>
             <p>
               Share the context. We’ll help frame the opportunity before

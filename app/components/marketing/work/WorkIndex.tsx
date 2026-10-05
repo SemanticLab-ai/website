@@ -16,7 +16,6 @@ export function WorkIndex() {
         <div className="work-hero__shade" />
         <div className="semantic-shell work-hero__inner">
           <div className="work-hero__copy">
-            <p className="semantic-kicker">Selected work</p>
             <h1 id="work-hero-title">
               Work that <em>carries strategy</em> into operation.
             </h1>
@@ -50,7 +49,6 @@ export function WorkIndex() {
         <div className="semantic-shell">
           <div className="semantic-section-heading">
             <div>
-              <p className="semantic-kicker">Recent product work</p>
               <h2 id="recent-work-title">Products built around real operations.</h2>
             </div>
             <p>
@@ -70,7 +68,6 @@ export function WorkIndex() {
         <div className="semantic-shell">
           <div className="semantic-section-heading">
             <div>
-              <p className="semantic-kicker">Selected founder experience</p>
               <h2 id="founder-work-title">Experience behind the studio.</h2>
             </div>
             <p>
@@ -85,7 +82,6 @@ export function WorkIndex() {
 
       <section className="engagement-section work-page-engagement">
         <div className="semantic-shell engagement-section__inner">
-          <p className="semantic-kicker">Start with the right question</p>
           <h2>Where could intelligence create meaningful advantage in your business?</h2>
           <p>
             A Strategy Engagement begins with the business, the opportunity and

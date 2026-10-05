@@ -107,7 +107,6 @@ export function DesignSystemPage() {
 
         <main className="ds-main">
           <section className="ds-hero" aria-labelledby="ds-title">
-            <p className="ds-eyebrow">Designing intelligent businesses</p>
             <h1 id="ds-title">
               One system.<br />
               <em>Clear intent.</em>
@@ -128,7 +127,6 @@ export function DesignSystemPage() {
 
           <section id="principles" className="ds-section">
             <div className="ds-section__intro">
-              <p className="ds-eyebrow">01 / Brand logic</p>
               <h2>From raw potential to meaningful impact.</h2>
               <p>
                 The system should make complexity feel focused. Every visual
@@ -170,7 +168,6 @@ export function DesignSystemPage() {
 
           <section id="identity" className="ds-section ds-section--light">
             <div className="ds-section__intro">
-              <p className="ds-eyebrow">02 / Identity</p>
               <h2>Recognisable at every scale.</h2>
               <p>
                 The data field signals potential becoming impact. The website
@@ -211,7 +208,6 @@ export function DesignSystemPage() {
 
           <section id="colour" className="ds-section">
             <div className="ds-section__intro">
-              <p className="ds-eyebrow">03 / Colour</p>
               <h2>Five colours. One clear hierarchy.</h2>
               <p>
                 Lime carries intent and action. White carries meaning. Sage and
@@ -250,7 +246,6 @@ export function DesignSystemPage() {
 
           <section id="typography" className="ds-section ds-section--light">
             <div className="ds-section__intro">
-              <p className="ds-eyebrow">04 / Typography</p>
               <h2>Inter, engineered for clarity.</h2>
               <p>
                 One family carries every layer of the experience. Scale, weight
@@ -285,7 +280,6 @@ export function DesignSystemPage() {
 
           <section id="layout" className="ds-section">
             <div className="ds-section__intro">
-              <p className="ds-eyebrow">05 / Layout</p>
               <h2>Structure creates confidence.</h2>
               <p>
                 Use generous negative space, restrained one-pixel dividers and
@@ -329,7 +323,6 @@ export function DesignSystemPage() {
 
           <section id="interface" className="ds-section ds-section--light">
             <div className="ds-section__intro">
-              <p className="ds-eyebrow">06 / Interface</p>
               <h2>Actions should feel decisive.</h2>
               <p>
                 Primary actions use lime sparingly. Secondary actions hold their
@@ -389,7 +382,6 @@ export function DesignSystemPage() {
 
           <section id="motion" className="ds-section">
             <div className="ds-section__intro">
-              <p className="ds-eyebrow">07 / Motion</p>
               <h2>Movement should reveal intelligence.</h2>
               <p>
                 Motion connects data, focus and impact. It should feel calm,
@@ -424,7 +416,6 @@ export function DesignSystemPage() {
 
           <section id="language" className="ds-section ds-section--language">
             <div className="ds-section__intro">
-              <p className="ds-eyebrow">08 / Language</p>
               <h2>Clear, specific and evidence-led.</h2>
               <p>
                 Speak as a product innovation partner. Lead with the business
