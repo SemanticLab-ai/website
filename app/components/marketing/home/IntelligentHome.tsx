@@ -9,9 +9,7 @@ import {
   Rocket,
 } from "lucide-react";
 import { SolutionsSection } from "./SolutionsSection";
-import { GalaxyMotion } from "~/components/marketing/shared/GalaxyMotion";
 import { Link } from "react-router";
-import { AnimatedDataLandscape } from "~/components/marketing/shared/AnimatedDataLandscape";
 import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
 import { recentProductWork } from "~/data/work";
 
@@ -97,16 +95,10 @@ const capabilities = [
   },
 ];
 
-export function IntelligentHome({ galaxyMotion = false }: { galaxyMotion?: boolean }) {
+export function IntelligentHome() {
   return (
-    <div className={`semantic-home${galaxyMotion ? " semantic-home--galaxy" : ""}`}>
-      {galaxyMotion && <GalaxyMotion />}
+    <div className="semantic-home">
       <section className="semantic-hero" aria-labelledby="hero-title">
-        {!galaxyMotion && <AnimatedDataLandscape
-          className="semantic-hero__landscape"
-          alt="Abstract field of connected data points forming an intelligent landscape"
-        />}
-        <div className="semantic-hero__shade" />
         <div className="semantic-shell semantic-hero__inner">
           <div className="semantic-hero__copy">
             <p className="semantic-kicker">Product innovation partner</p>

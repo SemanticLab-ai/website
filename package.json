@@ -11,7 +11,7 @@
     "typecheck": "react-router typegen && tsc",
     "build:app": "react-router build",
     "check": "node scripts/check.mjs",
-    "dev:preview": "VITE_SL_DEPLOY_ENV=preview VITE_SL_ANALYTICS_ENABLED=false VITE_SL_INDEXING_ALLOWED=false VITE_SL_FEATURE_GALAXY_MOTION=true react-router dev"
+    "dev:preview": "VITE_SL_DEPLOY_ENV=preview VITE_SL_ANALYTICS_ENABLED=false VITE_SL_INDEXING_ALLOWED=false react-router dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

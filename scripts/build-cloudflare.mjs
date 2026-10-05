@@ -63,7 +63,6 @@ const buildEnvironment = {
   VITE_SL_DEPLOY_ENV: deploymentEnvironment,
   VITE_SL_ANALYTICS_ENABLED: String(selected.analyticsEnabled),
   VITE_SL_INDEXING_ALLOWED: String(selected.indexingAllowed),
-  VITE_SL_FEATURE_GALAXY_MOTION: String(selected.features.galaxyMotion),
   VITE_SL_GTM_ID:
     deploymentEnvironment === "production" ? selected.googleTagManagerId : "",
 };
@@ -79,7 +78,6 @@ const artifact = {
   commit: process.env.WORKERS_CI_COMMIT_SHA || "local",
   analyticsEnabled: selected.analyticsEnabled,
   indexingAllowed: selected.indexingAllowed,
-  features: selected.features,
   cloudflareCommand: selected.cloudflareCommand,
   canonicalOrigin: selected.canonicalOrigin || null,
   googleTagManagerId: selected.googleTagManagerId || null,
@@ -100,7 +98,6 @@ const flattened = JSON.parse(await readFile(flattenedPath, "utf8"));
 flattened.vars = {
   ...flattened.vars,
   SL_DEPLOY_ENV: deploymentEnvironment,
-  SL_FEATURE_GALAXY_MOTION: String(selected.features.galaxyMotion),
   SL_INDEXING_ALLOWED: String(selected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(selected.analyticsEnabled),
 };
