@@ -254,8 +254,8 @@ export function DesignSystemPage() {
               <h2>Inter, engineered for clarity.</h2>
               <p>
                 One family carries every layer of the experience. Scale, weight
-                and spacing create hierarchy; lime italics provide deliberate
-                emphasis without introducing a second voice.
+                and spacing create hierarchy; italic words keep the heading
+                colour while a lime underline adds deliberate emphasis.
               </p>
             </div>
 

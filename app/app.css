@@ -492,9 +492,13 @@ body {
   letter-spacing: -0.055em;
 }
 
-.semantic-home em {
-  color: var(--semantic-lime);
+:is(.semantic-home, .semantic-work-page, .semantic-services, .semantic-founders, .ds-hero) :is(h1, h2) em {
+  color: inherit;
   font-weight: 400;
+  text-decoration-line: underline;
+  text-decoration-color: var(--sl-accent);
+  text-decoration-thickness: max(2px, 0.04em);
+  text-underline-offset: 0.08em;
 }
 
 .semantic-kicker {
@@ -1343,11 +1347,6 @@ body {
   letter-spacing: -0.055em;
 }
 
-.semantic-work-page em {
-  color: var(--semantic-lime);
-  font-weight: 400;
-}
-
 .work-hero {
   position: relative;
   display: flex;
@@ -2159,11 +2158,6 @@ body {
   font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   font-weight: 450;
   letter-spacing: -0.055em;
-}
-
-.semantic-services em {
-  color: var(--semantic-lime);
-  font-weight: 400;
 }
 
 .services-hero {
@@ -3503,11 +3497,6 @@ body {
   letter-spacing: -0.055em;
 }
 
-.semantic-founders em {
-  color: var(--semantic-lime);
-  font-weight: 400;
-}
-
 .founders-hero {
   min-height: 930px;
   overflow: hidden;
@@ -3710,10 +3699,6 @@ body {
   margin-top: 24px;
   font-size: clamp(3.7rem, 6vw, 6.5rem);
   line-height: 0.89;
-}
-
-.founders-profiles h2 em {
-  color: #62b934;
 }
 
 .founders-profiles__grid {
@@ -4000,10 +3985,6 @@ body {
   margin-top: 24px;
   font-size: clamp(3.8rem, 5.8vw, 6.35rem);
   line-height: 0.89;
-}
-
-.founders-life h2 em {
-  color: var(--sl-color-graphite);
 }
 
 .founders-life__portrait {
@@ -4487,11 +4468,6 @@ body {
   margin-top: var(--sl-space-5);
   font-size: var(--sl-type-display-xl);
   line-height: var(--sl-leading-display);
-}
-
-.ds-hero h1 em {
-  color: var(--sl-accent);
-  font-weight: var(--sl-weight-regular);
 }
 
 .ds-hero__footer {
