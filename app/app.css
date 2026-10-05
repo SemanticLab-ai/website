@@ -675,17 +675,6 @@ body {
   border-bottom: 1px solid var(--semantic-line);
 }
 
-.semantic-hero__landscape {
-  --landscape-stage-opacity: 0.96;
-  position: absolute;
-  inset: 64px -3% -12% auto;
-  width: min(78vw, 1220px);
-  aspect-ratio: 3 / 2;
-  max-width: none;
-  opacity: var(--landscape-stage-opacity);
-  animation: landscapeReveal 900ms ease-out both;
-}
-
 .data-landscape {
   isolation: isolate;
   pointer-events: none;
@@ -741,14 +730,6 @@ body {
     transparent 100%
   );
   animation: dataLandscapeUndertow 15s 350ms ease-in-out infinite;
-}
-
-.semantic-hero__shade {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, var(--semantic-ink) 0%, rgba(11, 11, 13, 0.98) 27%, rgba(11, 11, 13, 0.5) 50%, transparent 72%),
-    linear-gradient(0deg, var(--semantic-ink) 0%, transparent 31%);
 }
 
 .semantic-hero__inner {
@@ -1691,11 +1672,6 @@ body {
     text-align: center;
   }
 
-  .semantic-hero__landscape {
-    right: -18%;
-    width: 92vw;
-  }
-
   .framework-steps {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     row-gap: 70px;
@@ -1811,18 +1787,6 @@ body {
 
   .semantic-hero__inner {
     padding-top: 154px;
-  }
-
-  .semantic-hero__landscape {
-    --landscape-stage-opacity: 0.72;
-    inset: auto -28% 0 auto;
-    width: 120vw;
-  }
-
-  .semantic-hero__shade {
-    background:
-      linear-gradient(180deg, var(--semantic-ink) 0%, rgba(11, 11, 13, 0.9) 45%, rgba(11, 11, 13, 0.1) 75%),
-      linear-gradient(0deg, var(--semantic-ink) 0%, transparent 24%);
   }
 
   .semantic-hero__copy {
@@ -2157,7 +2121,6 @@ body {
     scroll-behavior: auto;
   }
 
-  .semantic-hero__landscape,
   .semantic-hero__copy,
   .work-hero__landscape,
   .work-hero__copy,
@@ -5473,7 +5436,7 @@ body {
 
 .semantic-hero__opportunity-title > span { display: block; }
 
-/* The longer opportunity proposition keeps the galaxy visible beside the copy. */
+/* Keep the opportunity proposition readable across desktop and mobile widths. */
 .semantic-hero h1.semantic-hero__opportunity-title {
   font-size: clamp(3.5rem, 5.5vw, 5.2rem);
   line-height: .98;

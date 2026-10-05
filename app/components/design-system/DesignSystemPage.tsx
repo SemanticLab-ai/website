@@ -12,7 +12,6 @@ import {
   UserRound,
 } from "lucide-react";
 import { Link } from "react-router";
-import { galaxyMotionEnabled } from "~/lib/deployment";
 import { BrandLockup } from "~/components/BrandLockup";
 import { AnimatedDataLandscape } from "~/components/marketing/shared/AnimatedDataLandscape";
 import {
@@ -389,7 +388,6 @@ export function DesignSystemPage() {
           </section>
 
           <section id="motion" className="ds-section">
-            {galaxyMotionEnabled && <p className="ds-eyebrow"><Link to="/">Preview galaxy motion →</Link> · Procedural star field, curved scroll dispersal, cursor displacement and depth parallax. Pause control and reduced-motion support are available on the homepage.</p>}
             <div className="ds-section__intro">
               <p className="ds-eyebrow">07 / Motion</p>
               <h2>Movement should reveal intelligence.</h2>
