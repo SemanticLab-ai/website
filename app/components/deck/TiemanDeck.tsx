@@ -384,7 +384,8 @@ function TiemanCoverSlide() {
       <div className="tieman-cover__copy">
         <TiemanPartnerLockup />
         <h1 id="deck-slide-1-title">
-          Tieman&apos;s data &amp; <em>AI Transformation</em>
+          <span className="tieman-cover__title-line">Tieman&apos;s data</span>
+          <span className="tieman-cover__title-line">&amp; <em>AI Transformation</em></span>
         </h1>
         <p>Analyse more information, find answers faster and make better decisions.</p>
       </div>
