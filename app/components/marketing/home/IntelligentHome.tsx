@@ -41,7 +41,7 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
 
       <SolutionsSection />
 
-      <ServicesCapabilities engagementHref="/services#engagement-path" />
+      <ServicesCapabilities engagementHref="/services#engagement-path" splitHeading />
 
       <section id="about" className="founders-section">
         <div className="semantic-shell">
