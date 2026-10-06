@@ -3,11 +3,12 @@ import { useCurrentFrame } from "remotion";
 import { DURATION, edges, HEIGHT, nodes, type Node, WIDTH } from "./network";
 
 type Point = { x: number; y: number };
-type Drag = Point & { id: number; grabX: number; grabY: number };
+type Drag = Point & { id: number; pointerId: number; grabX: number; grabY: number };
 type Release = Point & { id: number; frame: number };
 type Props = { reducedMotion?: boolean; onNodeFocus?: (id: number | null) => void };
 
 const TAU = Math.PI * 2;
+const MAX_RELEASE_OFFSET = 65;
 const colors = { white: "#F6F6F4", sage: "#A8AF94", lime: "#8BFF4D" };
 
 function position(node: Node, id: number, frame: number, reduced: boolean): Point {
@@ -38,6 +39,8 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   const [pulseFrame, setPulseFrame] = useState<number | null>(null);
   const [drag, setDrag] = useState<Drag | null>(null);
   const [release, setRelease] = useState<Release | null>(null);
+  const dragRef = useRef<Drag | null>(null);
+  const suppressCanvasClick = useRef(false);
   const releaseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pulseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const magnetRadius = useRef(55);
@@ -58,6 +61,29 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   useEffect(() => () => {
     if (releaseTimer.current) clearTimeout(releaseTimer.current);
     if (pulseTimer.current) clearTimeout(pulseTimer.current);
+  }, []);
+
+  useEffect(() => {
+    const cancelDrag = () => {
+      dragRef.current = null;
+      setDrag(null);
+      setRelease(null);
+      setPointer(null);
+      setMagnetId(null);
+    };
+    const cancelPointerDrag = (event: globalThis.PointerEvent) => {
+      if (dragRef.current?.pointerId === event.pointerId) cancelDrag();
+    };
+    window.addEventListener("pointerup", cancelPointerDrag);
+    window.addEventListener("pointercancel", cancelPointerDrag);
+    window.addEventListener("blur", cancelDrag);
+    document.addEventListener("visibilitychange", cancelDrag);
+    return () => {
+      window.removeEventListener("pointerup", cancelPointerDrag);
+      window.removeEventListener("pointercancel", cancelPointerDrag);
+      window.removeEventListener("blur", cancelDrag);
+      document.removeEventListener("visibilitychange", cancelDrag);
+    };
   }, []);
 
   const basePoints = nodes.map((node, id) => position(node, id, frame, reducedMotion));
@@ -105,9 +131,16 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
     if (event.pointerType === "touch") return;
     const point = svgPoint(event);
     if (!point) return;
-    if (drag) {
-      setDrag({ ...drag, x: point.x + drag.grabX, y: point.y + drag.grabY });
-    } else {
+    const currentDrag = dragRef.current;
+    if (currentDrag?.pointerId === event.pointerId) {
+      if (event.buttons === 0) {
+        finishDrag(event.pointerId);
+        return;
+      }
+      const nextDrag = { ...currentDrag, x: point.x + currentDrag.grabX, y: point.y + currentDrag.grabY };
+      dragRef.current = nextDrag;
+      setDrag(nextDrag);
+    } else if (!currentDrag) {
       setPointer(point);
       const scaleMatrix = event.currentTarget.getScreenCTM();
       const scale = scaleMatrix ? Math.hypot(scaleMatrix.a, scaleMatrix.b) : 1;
@@ -128,6 +161,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   };
 
   const onCanvasDown = (event: PointerEvent<SVGSVGElement>) => {
+    if (event.target === event.currentTarget) suppressCanvasClick.current = false;
     if (event.pointerType !== "touch" || event.target !== event.currentTarget) return;
     const point = svgPoint(event);
     if (!point) return;
@@ -144,29 +178,43 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
 
   const onDown = (event: PointerEvent<SVGCircleElement>, id: number) => {
     if (nodes[id].label) focusNode(id);
-    if (event.pointerType === "touch" || reducedMotion) return;
+    if (event.pointerType === "touch" || event.button !== 0 || reducedMotion || dragRef.current) return;
     const point = svgPoint(event);
     if (!point) return;
+    suppressCanvasClick.current = true;
     event.currentTarget.setPointerCapture(event.pointerId);
     setPointer(null);
     setMagnetId(null);
     setRelease(null);
     if (releaseTimer.current) clearTimeout(releaseTimer.current);
-    setDrag({
-      id, x: points[id].x, y: points[id].y,
+    const nextDrag = {
+      id, pointerId: event.pointerId, x: points[id].x, y: points[id].y,
       grabX: points[id].x - point.x, grabY: points[id].y - point.y,
-    });
+    };
+    dragRef.current = nextDrag;
+    setDrag(nextDrag);
   };
 
-  const onUp = (event: PointerEvent<SVGCircleElement>) => {
-    if (!drag) return;
-    const base = position(nodes[drag.id], drag.id, frame, reducedMotion);
-    setRelease({ id: drag.id, x: drag.x - base.x, y: drag.y - base.y, frame });
+  const finishDrag = (pointerId: number) => {
+    const currentDrag = dragRef.current;
+    if (!currentDrag || currentDrag.pointerId !== pointerId) return;
+    dragRef.current = null;
     setDrag(null);
+    const base = position(nodes[currentDrag.id], currentDrag.id, frame, reducedMotion);
+    const dx = currentDrag.x - base.x;
+    const dy = currentDrag.y - base.y;
+    const distance = Math.hypot(dx, dy);
+    const scale = distance > MAX_RELEASE_OFFSET ? MAX_RELEASE_OFFSET / distance : 1;
+    setRelease({ id: currentDrag.id, x: dx * scale, y: dy * scale, frame });
+    if (releaseTimer.current) clearTimeout(releaseTimer.current);
+    releaseTimer.current = setTimeout(() => setRelease(null), 500);
+  };
+
+  const onUp = (event: PointerEvent<SVGSVGElement | SVGCircleElement>) => {
+    finishDrag(event.pointerId);
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId);
     }
-    releaseTimer.current = setTimeout(() => setRelease(null), 900);
   };
 
   const onKey = (event: KeyboardEvent<SVGCircleElement>, id: number) => {
@@ -187,8 +235,17 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
       width="100%" height="100%"
       onPointerMove={onMove}
       onPointerDown={onCanvasDown}
+      onPointerUp={onUp}
+      onPointerCancel={onUp}
       onPointerLeave={() => { setPointer(null); setMagnetId(null); }}
-      onClick={(event) => { if (event.target === event.currentTarget) focusNode(null); }}
+      onClick={(event) => {
+        if (event.target !== event.currentTarget) return;
+        if (suppressCanvasClick.current) {
+          suppressCanvasClick.current = false;
+          return;
+        }
+        focusNode(null);
+      }}
       style={{ display: "block", overflow: "visible", touchAction: "pan-y" }}
       aria-label="Interactive SemanticLab network. Hover or select a node to trace its connections."
     >
@@ -235,6 +292,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
               aria-hidden={node.label ? undefined : true}
               onPointerDown={(event) => onDown(event, id)}
               onPointerUp={onUp} onPointerCancel={onUp}
+              onLostPointerCapture={onUp}
               onFocus={() => focusNode(id)}
               onKeyDown={(event) => onKey(event, id)}
               style={{ cursor: drag?.id === id ? "grabbing" : "grab", touchAction: "pan-y", outline: "none" }}

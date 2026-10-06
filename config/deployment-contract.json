@@ -3,7 +3,8 @@
     "analyticsEnabled": false,
     "indexingAllowed": false,
     "features": {
-      "networkMotion": true
+      "networkMotion": true,
+      "workHeroVideo": true
     },
     "cloudflareCommand": "wrangler versions upload"
   },
@@ -11,7 +12,8 @@
     "analyticsEnabled": true,
     "indexingAllowed": true,
     "features": {
-      "networkMotion": false
+      "networkMotion": false,
+      "workHeroVideo": false
     },
     "cloudflareCommand": "wrangler deploy",
     "canonicalOrigin": "https://semanticlab.ai",
