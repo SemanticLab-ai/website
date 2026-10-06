@@ -29,17 +29,6 @@ export function WorkIndex({ heroVideo = false }: { heroVideo?: boolean }) {
               Explore the work <ArrowDownRight aria-hidden="true" />
             </a>
           </div>
-
-          <div className="work-hero__register" aria-label="Work represented on this page">
-            <div>
-              <span>01</span>
-              <p>Recent products</p>
-            </div>
-            <div>
-              <span>02</span>
-              <p>Previous engagements</p>
-            </div>
-          </div>
         </div>
       </section>
 
