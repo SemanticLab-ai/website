@@ -108,8 +108,8 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
             </p>
           </div>
 
-          <WorkEvidenceList items={recentProductWork} tone="light" />
-          <Link className="semantic-text-link semantic-text-link--dark" to="/work">
+          <WorkEvidenceList items={recentProductWork} tone="dark" />
+          <Link className="semantic-text-link" to="/work">
             Explore selected work <ArrowUpRight aria-hidden="true" />
           </Link>
         </div>

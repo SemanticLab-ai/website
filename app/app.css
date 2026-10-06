@@ -886,11 +886,11 @@ body {
 }
 
 .work-section .semantic-section-heading h2 {
-  color: var(--semantic-ink);
+  color: var(--semantic-white);
 }
 
 .work-section .semantic-section-heading > p {
-  color: rgba(8, 11, 9, 0.62);
+  color: var(--sl-color-sage);
 }
 
 /* Keep the homepage editorial headings aligned with the solutions section. */
@@ -986,8 +986,8 @@ body {
 }
 
 .work-section {
-  background: var(--semantic-paper);
-  color: var(--semantic-ink);
+  background: var(--semantic-ink);
+  color: var(--semantic-white);
 }
 
 .work-evidence-list {
@@ -1218,7 +1218,7 @@ body {
   transform: translate(3px, -3px);
 }
 
-.work-section .semantic-text-link--dark {
+.work-section .semantic-text-link {
   margin-top: 42px;
 }
 
