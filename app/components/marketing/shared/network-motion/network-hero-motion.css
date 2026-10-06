@@ -75,6 +75,10 @@
 .semantic-network-toggle:hover { border-color: var(--sl-color-sage); color: var(--sl-color-white); }
 .semantic-network-toggle:focus-visible { outline: 2px solid var(--sl-color-lime); outline-offset: 3px; }
 
+@media (min-width: 900px) {
+  .semantic-network { top: calc(14% - 80px); }
+}
+
 @media (max-width: 759px) {
   .semantic-hero--network { display: block; min-height: 0; }
   .semantic-hero--network .semantic-hero__inner { min-height: 0; padding-bottom: 0; pointer-events: auto; }
