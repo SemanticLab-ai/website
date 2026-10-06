@@ -40,6 +40,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   const [drag, setDrag] = useState<Drag | null>(null);
   const [release, setRelease] = useState<Release | null>(null);
   const dragRef = useRef<Drag | null>(null);
+  const suppressCanvasClick = useRef(false);
   const releaseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pulseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const magnetRadius = useRef(55);
@@ -160,6 +161,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   };
 
   const onCanvasDown = (event: PointerEvent<SVGSVGElement>) => {
+    if (event.target === event.currentTarget) suppressCanvasClick.current = false;
     if (event.pointerType !== "touch" || event.target !== event.currentTarget) return;
     const point = svgPoint(event);
     if (!point) return;
@@ -179,6 +181,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
     if (event.pointerType === "touch" || event.button !== 0 || reducedMotion || dragRef.current) return;
     const point = svgPoint(event);
     if (!point) return;
+    suppressCanvasClick.current = true;
     event.currentTarget.setPointerCapture(event.pointerId);
     setPointer(null);
     setMagnetId(null);
@@ -235,7 +238,14 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
       onPointerUp={onUp}
       onPointerCancel={onUp}
       onPointerLeave={() => { setPointer(null); setMagnetId(null); }}
-      onClick={(event) => { if (event.target === event.currentTarget) focusNode(null); }}
+      onClick={(event) => {
+        if (event.target !== event.currentTarget) return;
+        if (suppressCanvasClick.current) {
+          suppressCanvasClick.current = false;
+          return;
+        }
+        focusNode(null);
+      }}
       style={{ display: "block", overflow: "visible", touchAction: "pan-y" }}
       aria-label="Interactive SemanticLab network. Hover or select a node to trace its connections."
     >
