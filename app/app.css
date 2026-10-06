@@ -1645,6 +1645,233 @@ body {
     var(--semantic-surface);
 }
 
+.founder-experience-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 72px;
+  border-block: 1px solid var(--semantic-line);
+}
+
+.founder-experience {
+  display: flex;
+  min-width: 0;
+  min-height: 550px;
+  flex-direction: column;
+  padding: 31px clamp(22px, 2.4vw, 38px) 34px;
+  border-right: 1px solid var(--semantic-line);
+  color: var(--semantic-white);
+  transition: background-color 220ms ease;
+}
+
+.founder-experience:first-child {
+  padding-left: 0;
+}
+
+.founder-experience:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.founder-experience:hover,
+.founder-experience:focus-visible {
+  background: rgba(139, 255, 77, 0.035);
+}
+
+.founder-experience:focus-visible {
+  outline: 2px solid var(--semantic-lime);
+  outline-offset: -2px;
+}
+
+.founder-experience__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: var(--semantic-lime);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+.founder-experience__top svg {
+  width: 38px;
+  height: 38px;
+}
+
+.founder-experience__story {
+  margin-top: 72px;
+}
+
+.founder-experience h3 {
+  max-width: 12ch;
+  font-size: clamp(2.35rem, 3vw, 3.2rem);
+  line-height: 1.01;
+  text-wrap: balance;
+}
+
+.founder-experience__provenance {
+  max-width: 35ch;
+  margin-top: 20px;
+  color: var(--semantic-lime);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.founder-experience__summary {
+  max-width: 36ch;
+  margin-top: 28px;
+  color: rgba(246, 246, 244, 0.7);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+.founder-experience ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 34px;
+  list-style: none;
+}
+
+.founder-experience li {
+  display: flex;
+  align-items: baseline;
+  gap: 11px;
+  color: rgba(246, 246, 244, 0.62);
+  font-size: 0.79rem;
+  line-height: 1.45;
+}
+
+.founder-experience li::before {
+  width: 4px;
+  height: 4px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--semantic-lime);
+  content: "";
+}
+
+.founder-experience__link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 9px;
+  margin-top: 31px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid currentColor;
+  color: var(--semantic-white);
+  font-size: 0.79rem;
+  font-weight: 600;
+}
+
+.founder-experience__link svg {
+  width: 17px;
+  height: 17px;
+  transition: transform 200ms ease;
+}
+
+.founder-experience:hover .founder-experience__link,
+.founder-experience:focus-visible .founder-experience__link {
+  color: var(--semantic-lime);
+}
+
+.founder-experience:hover .founder-experience__link svg,
+.founder-experience:focus-visible .founder-experience__link svg {
+  transform: translate(3px, -3px);
+}
+
+@media (max-width: 1100px) {
+  .founder-experience-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-experience,
+  .founder-experience:first-child,
+  .founder-experience:last-child {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    min-height: 0;
+    gap: 18px 38px;
+    padding: 31px 0 36px;
+    border-right: 0;
+    border-bottom: 1px solid var(--semantic-line);
+  }
+
+  .founder-experience:last-child {
+    border-bottom: 0;
+  }
+
+  .founder-experience__top {
+    grid-column: 1 / -1;
+  }
+
+  .founder-experience__story {
+    grid-row: 2 / 4;
+    margin-top: 0;
+  }
+
+  .founder-experience ul {
+    align-self: start;
+    margin-top: 0;
+    padding-top: 8px;
+  }
+
+  .founder-experience__link {
+    justify-self: start;
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .founder-experience-showcase {
+    margin-top: 52px;
+  }
+
+  .founder-experience,
+  .founder-experience:first-child,
+  .founder-experience:last-child {
+    display: flex;
+    gap: 0;
+    padding-block: 27px 36px;
+  }
+
+  .founder-experience__top svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .founder-experience__story {
+    margin-top: 44px;
+  }
+
+  .founder-experience h3 {
+    font-size: clamp(2.45rem, 11vw, 3.15rem);
+  }
+
+  .founder-experience__summary {
+    margin-top: 23px;
+  }
+
+  .founder-experience ul {
+    margin-top: 31px;
+    padding-top: 0;
+  }
+
+  .founder-experience__link {
+    margin-top: 31px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .founder-experience,
+  .founder-experience__link svg {
+    transition: none;
+  }
+}
+
 .work-page-engagement {
   border-bottom: 1px solid var(--semantic-line);
 }

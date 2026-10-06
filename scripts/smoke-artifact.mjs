@@ -8,6 +8,7 @@ async function smoke(disableFeature = false) {
  if(disableFeature) args.push('--var','SL_FEATURE_NETWORK_MOTION:false');
  if(disableFeature) args.push('--var','SL_FEATURE_WORK_HERO_VIDEO:false');
  if(disableFeature) args.push('--var','SL_FEATURE_WORK_PRODUCTS_GALLERY:false');
+ if(disableFeature) args.push('--var','SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY:false');
  const child = spawn('node_modules/.bin/wrangler', args, { stdio: ['ignore','pipe','pipe'] });
  let log = ''; child.stdout.on('data', d=>log+=d); child.stderr.on('data',d=>log+=d);
  try {
@@ -32,6 +33,8 @@ async function smoke(disableFeature = false) {
   assert.equal(workHtml.includes('data-work-hero-video="true"'),preview&&!disableFeature,'Work video must require BOTH preview build and runtime flag');
   assert.equal(workHtml.includes('data-work-product-gallery="true"'),preview&&!disableFeature,'Work product gallery must require BOTH preview build and runtime flag');
   assert.equal(workHtml.includes('work-evidence-list--light'),!preview||disableFeature,'Original product rows must remain when the gallery is disabled');
+  assert.equal(workHtml.includes('data-founder-experience-gallery="true"'),preview&&!disableFeature,'Founder experience gallery must require BOTH preview build and runtime flag');
+  assert.equal(workHtml.includes('work-evidence-list--dark'),!preview||disableFeature,'Original founder rows must remain when the gallery is disabled');
   console.log(`${environment}: network flag ${disableFeature?'disabled':'default'}, homepage, analytics, robots, canonical and supporting routes passed.`);
  } finally {
   child.kill('SIGTERM');

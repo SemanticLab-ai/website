@@ -1,6 +1,10 @@
 import type { Route } from "./+types/work";
 import { WorkIndex } from "~/components/marketing/work/WorkIndex";
-import { productGalleryEnabled, workHeroVideoEnabled } from "~/lib/deployment";
+import {
+  founderExperienceGalleryEnabled,
+  productGalleryEnabled,
+  workHeroVideoEnabled,
+} from "~/lib/deployment";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Selected Work | SemanticLab";
@@ -35,6 +39,10 @@ export function loader({ context }: Route.LoaderArgs) {
       productGalleryEnabled &&
       context.cloudflare.env.SL_DEPLOY_ENV === "preview" &&
       context.cloudflare.env.SL_FEATURE_WORK_PRODUCTS_GALLERY === "true",
+    founderGallery:
+      founderExperienceGalleryEnabled &&
+      context.cloudflare.env.SL_DEPLOY_ENV === "preview" &&
+      context.cloudflare.env.SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "true",
   };
 }
 
@@ -43,6 +51,7 @@ export default function Work({ loaderData }: Route.ComponentProps) {
     <WorkIndex
       heroVideo={loaderData.heroVideo}
       productGallery={loaderData.productGallery}
+      founderGallery={loaderData.founderGallery}
     />
   );
 }

@@ -54,7 +54,12 @@ export const recentProductWork: readonly ProductWorkEvidence[] = [
   },
 ];
 
-export const previousFounderWork: readonly WorkEvidence[] = [
+export type FounderWorkEvidence = WorkEvidence & {
+  motif: "payments" | "api" | "identity";
+  provenance: string;
+};
+
+export const previousFounderWork: readonly FounderWorkEvidence[] = [
   {
     name: "Payment systems ecosystem",
     summary: "Multi-market payment architecture and automated settlement.",
