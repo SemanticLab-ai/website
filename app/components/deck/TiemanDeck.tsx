@@ -818,7 +818,8 @@ function StoryImpactSlide() {
       <div className="tieman-story-impact__heading">
         <p className="deck-kicker">Why it matters</p>
         <h2 id="deck-slide-6-title">
-          A small gap upstream becomes a <em>delay downstream.</em>
+          A small gap upstream<br />
+          <span>becomes a <em>delay downstream.</em></span>
         </h2>
       </div>
 

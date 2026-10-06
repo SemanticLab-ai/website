@@ -1300,6 +1300,10 @@
   max-width: 68cqw;
 }
 
+.tieman-story-impact__heading h2 > span {
+  white-space: nowrap;
+}
+
 .tieman-story-impact__journey {
   margin-top: 2.6cqw;
 }
@@ -4250,6 +4254,10 @@
   }
 
   .tieman-story-question__heading h2 {
+    font-size: clamp(1.35rem, 6.7vw, 3.5rem);
+  }
+
+  .tieman-story-impact__heading h2 {
     font-size: clamp(1.35rem, 6.7vw, 3.5rem);
   }
 
