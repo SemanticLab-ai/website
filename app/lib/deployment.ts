@@ -17,6 +17,10 @@ export const networkMotionEnabled =
   deploymentEnvironment === "preview" &&
   import.meta.env.VITE_SL_FEATURE_NETWORK_MOTION === "true";
 
+export const workHeroVideoEnabled =
+  deploymentEnvironment === "preview" &&
+  import.meta.env.VITE_SL_FEATURE_WORK_HERO_VIDEO === "true";
+
 export const googleTagManagerId = analyticsEnabled
   ? import.meta.env.VITE_SL_GTM_ID || "GTM-XXXXXXX"
   : null;

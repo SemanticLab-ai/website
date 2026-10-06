@@ -53,6 +53,7 @@ assert(
   contract.preview.analyticsEnabled === false &&
     contract.preview.indexingAllowed === false &&
     contract.preview.features.networkMotion === true &&
+    contract.preview.features.workHeroVideo === true &&
     contract.preview.cloudflareCommand === "wrangler versions upload",
   "The preview source contract must enable network motion, disable analytics/indexing and upload a version.",
 );
@@ -61,6 +62,7 @@ assert(
   contract.production.analyticsEnabled === true &&
     contract.production.indexingAllowed === true &&
     contract.production.features.networkMotion === false &&
+    contract.production.features.workHeroVideo === false &&
     contract.production.cloudflareCommand === "wrangler deploy" &&
     contract.production.canonicalOrigin === "https://semanticlab.ai" &&
     typeof contract.production.googleTagManagerId === "string",
@@ -89,6 +91,10 @@ for (const [name, artifact] of [
     `${name} artifact network-motion flag does not match the source contract.`,
   );
   assert(
+    artifact.features.workHeroVideo === contract[expectedEnvironment].features.workHeroVideo,
+    `${name} artifact work-hero-video flag does not match the source contract.`,
+  );
+  assert(
     artifact.cloudflareCommand ===
       contract[expectedEnvironment].cloudflareCommand,
     `${name} artifact Cloudflare command does not match the source contract.`,
@@ -107,6 +113,7 @@ if (expectedEnvironment === "preview") {
     clientArtifact.analyticsEnabled === true &&
       clientArtifact.indexingAllowed === true &&
       clientArtifact.features.networkMotion === false &&
+      clientArtifact.features.workHeroVideo === false &&
       clientArtifact.canonicalOrigin === "https://semanticlab.ai" &&
       clientArtifact.googleTagManagerId ===
         contract.production.googleTagManagerId,
@@ -126,7 +133,8 @@ const flattened = JSON.parse(
 );
 assert(
   wrangler.vars.SL_DEPLOY_ENV === "production" &&
-    wrangler.vars.SL_FEATURE_NETWORK_MOTION === "false",
+    wrangler.vars.SL_FEATURE_NETWORK_MOTION === "false" &&
+    wrangler.vars.SL_FEATURE_WORK_HERO_VIDEO === "false",
   "Ambiguous source configuration must be production-safe.",
 );
 assert(
@@ -137,6 +145,7 @@ const expected = contract[expectedEnvironment];
 for (const [key, value] of Object.entries({
   SL_DEPLOY_ENV: expectedEnvironment,
   SL_FEATURE_NETWORK_MOTION: String(expected.features.networkMotion),
+  SL_FEATURE_WORK_HERO_VIDEO: String(expected.features.workHeroVideo),
   SL_INDEXING_ALLOWED: String(expected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(expected.analyticsEnabled),
 })) {
