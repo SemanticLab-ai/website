@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
-import { useCurrentFrame } from "remotion";
+import { Easing, interpolate, useCurrentFrame } from "remotion";
 import { DURATION, edges, HEIGHT, nodes, type Node, WIDTH } from "./network";
 
 type Point = { x: number; y: number };
-type Drag = Point & { id: number; pointerId: number; grabX: number; grabY: number };
+type Drag = Point & { id: number; pointerId: number; grabX: number; grabY: number; downX: number; downY: number; moved: boolean };
 type Release = Point & { id: number; frame: number };
+type Ripple = { id: number; frame: number };
 type Props = { reducedMotion?: boolean; onNodeFocus?: (id: number | null) => void };
 
 const TAU = Math.PI * 2;
 const MAX_RELEASE_OFFSET = 65;
+const RIPPLE_FRAMES = 30;
 const colors = { white: "#F6F6F4", sage: "#A8AF94", lime: "#8BFF4D" };
 
 function position(node: Node, id: number, frame: number, reduced: boolean): Point {
@@ -36,31 +38,31 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   const [pointer, setPointer] = useState<Point | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
   const [magnetId, setMagnetId] = useState<number | null>(null);
-  const [pulseFrame, setPulseFrame] = useState<number | null>(null);
+  const [ripple, setRipple] = useState<Ripple | null>(null);
   const [drag, setDrag] = useState<Drag | null>(null);
   const [release, setRelease] = useState<Release | null>(null);
   const dragRef = useRef<Drag | null>(null);
   const suppressCanvasClick = useRef(false);
   const releaseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const pulseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const rippleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const magnetRadius = useRef(55);
   const active = drag?.id ?? selected;
 
-  const triggerPulse = () => {
-    setPulseFrame(frame);
-    if (pulseTimer.current) clearTimeout(pulseTimer.current);
-    pulseTimer.current = setTimeout(() => setPulseFrame(null), 900);
+  const triggerRipple = (id: number) => {
+    if (reducedMotion) return;
+    setRipple({ id, frame });
+    if (rippleTimer.current) clearTimeout(rippleTimer.current);
+    rippleTimer.current = setTimeout(() => setRipple(null), 1050);
   };
 
   const focusNode = (id: number | null) => {
-    if (id !== selected && id !== null && !reducedMotion) triggerPulse();
     setSelected(id);
     onNodeFocus?.(id);
   };
 
   useEffect(() => () => {
     if (releaseTimer.current) clearTimeout(releaseTimer.current);
-    if (pulseTimer.current) clearTimeout(pulseTimer.current);
+    if (rippleTimer.current) clearTimeout(rippleTimer.current);
   }, []);
 
   useEffect(() => {
@@ -87,8 +89,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   }, []);
 
   const basePoints = nodes.map((node, id) => position(node, id, frame, reducedMotion));
-  const pulseAge = pulseFrame === null ? 1000 : (frame - pulseFrame + DURATION) % DURATION;
-  const buzz = reducedMotion ? 0 : Math.exp(-pulseAge / 7) * Math.abs(Math.sin(pulseAge * 1.6));
+  const rippleAge = ripple === null ? RIPPLE_FRAMES : (frame - ripple.frame + DURATION) % DURATION;
 
   const points = nodes.map((node, id) => {
     const base = basePoints[id];
@@ -107,10 +108,9 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
       const dy = pointer.y - y;
       const distance = Math.hypot(dx, dy);
       if (distance > 0 && distance < magnetRadius.current * 1.25) {
-        const settle = 1 - Math.exp(-pulseAge / 2.8);
-        const shift = Math.min(distance * 0.82 * settle, 42);
-        x += (dx / distance) * shift + Math.sin(pulseAge * 2.2) * buzz * 2;
-        y += (dy / distance) * shift + Math.cos(pulseAge * 2.4) * buzz * 2;
+        const shift = Math.min(distance * 0.82, 42);
+        x += (dx / distance) * shift;
+        y += (dy / distance) * shift;
       }
     }
     // Other nodes retain the original pointer displacement.
@@ -137,7 +137,12 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
         finishDrag(event.pointerId);
         return;
       }
-      const nextDrag = { ...currentDrag, x: point.x + currentDrag.grabX, y: point.y + currentDrag.grabY };
+      const nextDrag = {
+        ...currentDrag,
+        x: point.x + currentDrag.grabX,
+        y: point.y + currentDrag.grabY,
+        moved: currentDrag.moved || Math.hypot(point.x - currentDrag.downX, point.y - currentDrag.downY) > 5,
+      };
       dragRef.current = nextDrag;
       setDrag(nextDrag);
     } else if (!currentDrag) {
@@ -154,7 +159,6 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
         },
         { id: -1, distance: captureRadius },
       );
-      if (nearest.id >= 0 && magnetId !== nearest.id && nearest.id === selected && !reducedMotion) triggerPulse();
       setMagnetId(nearest.id >= 0 ? nearest.id : null);
       if (nearest.id >= 0 && nearest.id !== selected) focusNode(nearest.id);
     }
@@ -173,11 +177,17 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
       },
       { id: -1, distance: 90 },
     );
-    if (nearest.id >= 0) focusNode(nearest.id);
+    if (nearest.id >= 0) {
+      focusNode(nearest.id);
+      triggerRipple(nearest.id);
+    }
   };
 
   const onDown = (event: PointerEvent<SVGCircleElement>, id: number) => {
-    if (nodes[id].label) focusNode(id);
+    if (nodes[id].label && (event.pointerType === "touch" || event.button === 0)) {
+      focusNode(id);
+      triggerRipple(id);
+    }
     if (event.pointerType === "touch" || event.button !== 0 || reducedMotion || dragRef.current) return;
     const point = svgPoint(event);
     if (!point) return;
@@ -190,6 +200,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
     const nextDrag = {
       id, pointerId: event.pointerId, x: points[id].x, y: points[id].y,
       grabX: points[id].x - point.x, grabY: points[id].y - point.y,
+      downX: point.x, downY: point.y, moved: false,
     };
     dragRef.current = nextDrag;
     setDrag(nextDrag);
@@ -200,6 +211,10 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
     if (!currentDrag || currentDrag.pointerId !== pointerId) return;
     dragRef.current = null;
     setDrag(null);
+    if (!currentDrag.moved) {
+      setRelease(null);
+      return;
+    }
     const base = position(nodes[currentDrag.id], currentDrag.id, frame, reducedMotion);
     const dx = currentDrag.x - base.x;
     const dy = currentDrag.y - base.y;
@@ -221,6 +236,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       focusNode(id);
+      triggerRipple(id);
     } else if (event.key === "Escape") {
       focusNode(null);
     }
@@ -305,14 +321,21 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
               pointerEvents="none"
             />
             {isActive && <circle
-              cx={point.x} cy={point.y} r={node.radius + 9 + buzz * 5}
+              cx={point.x} cy={point.y} r={node.radius + 9}
               fill="none" stroke={colors.lime} strokeWidth={1.2}
-              opacity={0.6 + buzz * 0.35} pointerEvents="none"
+              opacity={0.6} pointerEvents="none"
             />}
-            {isActive && node.label && pulseAge < 22 && <circle
-              cx={point.x} cy={point.y} r={node.radius + 13 + pulseAge * 0.7}
-              fill="none" stroke={colors.lime} strokeWidth={0.9}
-              opacity={0.34 * (1 - pulseAge / 22)} pointerEvents="none"
+            {ripple?.id === id && rippleAge < RIPPLE_FRAMES && <circle
+              data-network-ripple="true"
+              cx={point.x} cy={point.y}
+              r={interpolate(rippleAge, [0, RIPPLE_FRAMES], [node.radius + 10, node.radius + 42], {
+                easing: Easing.bezier(0.2, 0.7, 0.2, 1), extrapolateLeft: "clamp", extrapolateRight: "clamp",
+              })}
+              fill="none" stroke={colors.lime} strokeWidth={1.1}
+              opacity={interpolate(rippleAge, [0, RIPPLE_FRAMES], [0.48, 0], {
+                easing: Easing.bezier(0.2, 0.7, 0.2, 1), extrapolateLeft: "clamp", extrapolateRight: "clamp",
+              })}
+              pointerEvents="none"
             />}
           </g>;
         })}
