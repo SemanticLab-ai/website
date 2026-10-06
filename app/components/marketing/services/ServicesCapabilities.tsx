@@ -76,7 +76,7 @@ const capabilities = [
   },
 ];
 
-export function ServicesCapabilities() {
+export function ServicesCapabilities({ engagementHref = "#engagement-path" }: { engagementHref?: string }) {
   return (
     <section id="capabilities" className="services-capabilities">
       <div className="semantic-shell">
@@ -108,7 +108,7 @@ export function ServicesCapabilities() {
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-                <a href="#engagement-path">See how it connects</a>
+                <a href={engagementHref}>See how it connects</a>
               </article>
             );
           })}
