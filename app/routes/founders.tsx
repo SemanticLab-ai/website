@@ -3,29 +3,6 @@ import { Link } from "react-router";
 
 const strategyHref = "/services#strategy-engagement";
 
-const disciplines = [
-  {
-    index: "01",
-    name: "Strategy",
-    summary: "Start with the business decision, not a predetermined solution.",
-  },
-  {
-    index: "02",
-    name: "Experience",
-    summary: "Make complexity understandable to the people living with it.",
-  },
-  {
-    index: "03",
-    name: "Intelligence",
-    summary: "Apply AI where it improves a real decision or workflow.",
-  },
-  {
-    index: "04",
-    name: "Engineering",
-    summary: "Carry the idea into systems that can operate and evolve.",
-  },
-] as const;
-
 export function meta() {
   const title = "Founders | SemanticLab";
   const description =
@@ -139,32 +116,6 @@ export default function Founders() {
               That’s why we build technology that feels a little more human.
             </p>
           </div>
-        </div>
-      </section>
-
-      <section className="founders-connection" aria-labelledby="founders-connection-title">
-        <div className="semantic-shell">
-          <div className="founders-connection__heading">
-            <div>
-              <h2 id="founders-connection-title">
-                The thinking stays connected all the way through.
-              </h2>
-            </div>
-            <p>
-              Founder-led means the people shaping the opportunity remain close
-              to the design and engineering decisions that make it real.
-            </p>
-          </div>
-
-          <ol className="founders-disciplines">
-            {disciplines.map((discipline) => (
-              <li key={discipline.name}>
-                <span>{discipline.index}</span>
-                <h3>{discipline.name}</h3>
-                <p>{discipline.summary}</p>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 
