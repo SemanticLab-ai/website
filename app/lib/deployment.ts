@@ -25,6 +25,10 @@ export const productGalleryEnabled =
   deploymentEnvironment === "preview" &&
   import.meta.env.VITE_SL_FEATURE_WORK_PRODUCTS_GALLERY === "true";
 
+export const founderExperienceGalleryEnabled =
+  deploymentEnvironment === "preview" &&
+  import.meta.env.VITE_SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "true";
+
 export const googleTagManagerId = analyticsEnabled
   ? import.meta.env.VITE_SL_GTM_ID || "GTM-XXXXXXX"
   : null;

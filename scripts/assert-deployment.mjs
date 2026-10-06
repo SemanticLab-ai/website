@@ -55,6 +55,7 @@ assert(
     contract.preview.features.networkMotion === true &&
     contract.preview.features.workHeroVideo === true &&
     contract.preview.features.workProductsGallery === true &&
+    contract.preview.features.founderExperienceGallery === true &&
     contract.preview.cloudflareCommand === "wrangler versions upload",
   "The preview source contract must enable network motion, disable analytics/indexing and upload a version.",
 );
@@ -65,6 +66,7 @@ assert(
     contract.production.features.networkMotion === false &&
     contract.production.features.workHeroVideo === false &&
     contract.production.features.workProductsGallery === false &&
+    contract.production.features.founderExperienceGallery === false &&
     contract.production.cloudflareCommand === "wrangler deploy" &&
     contract.production.canonicalOrigin === "https://semanticlab.ai" &&
     typeof contract.production.googleTagManagerId === "string",
@@ -102,6 +104,11 @@ for (const [name, artifact] of [
     `${name} artifact work-products-gallery flag does not match the source contract.`,
   );
   assert(
+    artifact.features.founderExperienceGallery ===
+      contract[expectedEnvironment].features.founderExperienceGallery,
+    `${name} artifact founder-experience-gallery flag does not match the source contract.`,
+  );
+  assert(
     artifact.cloudflareCommand ===
       contract[expectedEnvironment].cloudflareCommand,
     `${name} artifact Cloudflare command does not match the source contract.`,
@@ -122,6 +129,7 @@ if (expectedEnvironment === "preview") {
       clientArtifact.features.networkMotion === false &&
       clientArtifact.features.workHeroVideo === false &&
       clientArtifact.features.workProductsGallery === false &&
+      clientArtifact.features.founderExperienceGallery === false &&
       clientArtifact.canonicalOrigin === "https://semanticlab.ai" &&
       clientArtifact.googleTagManagerId ===
         contract.production.googleTagManagerId,
@@ -143,7 +151,8 @@ assert(
   wrangler.vars.SL_DEPLOY_ENV === "production" &&
     wrangler.vars.SL_FEATURE_NETWORK_MOTION === "false" &&
     wrangler.vars.SL_FEATURE_WORK_HERO_VIDEO === "false" &&
-    wrangler.vars.SL_FEATURE_WORK_PRODUCTS_GALLERY === "false",
+    wrangler.vars.SL_FEATURE_WORK_PRODUCTS_GALLERY === "false" &&
+    wrangler.vars.SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "false",
   "Ambiguous source configuration must be production-safe.",
 );
 assert(
@@ -156,6 +165,7 @@ for (const [key, value] of Object.entries({
   SL_FEATURE_NETWORK_MOTION: String(expected.features.networkMotion),
   SL_FEATURE_WORK_HERO_VIDEO: String(expected.features.workHeroVideo),
   SL_FEATURE_WORK_PRODUCTS_GALLERY: String(expected.features.workProductsGallery),
+  SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY: String(expected.features.founderExperienceGallery),
   SL_INDEXING_ALLOWED: String(expected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(expected.analyticsEnabled),
 })) {

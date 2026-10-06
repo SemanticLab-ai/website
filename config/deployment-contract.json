@@ -5,7 +5,8 @@
     "features": {
       "networkMotion": true,
       "workHeroVideo": true,
-      "workProductsGallery": true
+      "workProductsGallery": true,
+      "founderExperienceGallery": true
     },
     "cloudflareCommand": "wrangler versions upload"
   },
@@ -15,7 +16,8 @@
     "features": {
       "networkMotion": false,
       "workHeroVideo": false,
-      "workProductsGallery": false
+      "workProductsGallery": false,
+      "founderExperienceGallery": false
     },
     "cloudflareCommand": "wrangler deploy",
     "canonicalOrigin": "https://semanticlab.ai",
