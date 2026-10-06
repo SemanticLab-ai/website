@@ -617,7 +617,8 @@ function SolutionStackSlide() {
       <div className="tieman-solution-stack__heading">
         <p className="deck-kicker">The opportunity</p>
         <h2 id="deck-slide-7-title">
-          One trusted foundation for Tieman&apos;s <em>data and AI.</em>
+          <span>One trusted foundation</span><br />
+          <span>for Tieman&apos;s <em>data and AI.</em></span>
         </h2>
       </div>
 
