@@ -4119,107 +4119,6 @@ body {
   line-height: 1.62;
 }
 
-.founders-evidence {
-  padding-block: 126px 112px;
-  background: var(--semantic-ink);
-}
-
-.founders-evidence__heading {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.6fr);
-  gap: clamp(60px, 10vw, 170px);
-  align-items: end;
-}
-
-.founders-evidence h2 {
-  max-width: 800px;
-  font-size: clamp(3.8rem, 5.7vw, 6.25rem);
-  line-height: 0.9;
-}
-
-.founders-evidence__heading > p {
-  max-width: 430px;
-  padding-bottom: 8px;
-  color: rgba(246, 246, 244, 0.57);
-  font-size: 0.94rem;
-  font-weight: 350;
-  line-height: 1.7;
-}
-
-.founders-evidence__rails {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 82px;
-  border-top: 1px solid var(--semantic-line);
-}
-
-.founders-evidence__rails > div {
-  padding: 30px 5vw 0 0;
-}
-
-.founders-evidence__rails > div + div {
-  border-left: 1px solid var(--semantic-line);
-  padding-right: 0;
-  padding-left: 5vw;
-}
-
-.founders-evidence__label {
-  min-height: 34px;
-  color: var(--semantic-lime);
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  line-height: 1.45;
-  text-transform: uppercase;
-}
-
-.founders-evidence ul {
-  margin-top: 20px;
-  list-style: none;
-}
-
-.founders-evidence li {
-  border-bottom: 1px solid var(--semantic-line);
-}
-
-.founders-evidence li a {
-  display: flex;
-  min-height: 92px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  color: var(--semantic-white);
-  transition: color 160ms ease, padding-left 160ms ease;
-}
-
-.founders-evidence li a:hover {
-  padding-left: 9px;
-  color: var(--semantic-lime);
-}
-
-.founders-evidence li span {
-  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  font-size: clamp(2rem, 2.8vw, 2.9rem);
-  font-weight: 450;
-  letter-spacing: -0.035em;
-  line-height: 1;
-}
-
-.founders-evidence li svg {
-  width: 19px;
-  height: 19px;
-  flex: 0 0 auto;
-  color: var(--semantic-lime);
-}
-
-.founders-evidence__note {
-  max-width: 610px;
-  margin-top: 38px;
-  color: rgba(246, 246, 244, 0.38);
-  font-size: 0.65rem;
-  line-height: 1.6;
-}
-
 .founders-life {
   padding-block: 126px;
   border-bottom: 1px solid var(--semantic-line-dark);
@@ -4309,7 +4208,6 @@ body {
   color: #4b8f28;
 }
 
-.founders-evidence a:focus-visible,
 .founder-profile__link:focus-visible {
   outline: 2px solid var(--semantic-lime);
   outline-offset: 5px;
@@ -4366,10 +4264,6 @@ body {
   .founder-profile__link {
     margin-top: 12px;
   }
-
-  .founders-evidence li span {
-    font-size: clamp(1.75rem, 3.3vw, 2.5rem);
-  }
 }
 
 @media (max-width: 760px) {
@@ -4395,7 +4289,6 @@ body {
 
   .founders-profiles,
   .founders-connection,
-  .founders-evidence,
   .founders-life {
     padding-block: 86px;
   }
@@ -4432,8 +4325,6 @@ body {
 
   .founders-profiles__grid,
   .founders-connection__heading,
-  .founders-evidence__heading,
-  .founders-evidence__rails,
   .founders-cta__inner {
     grid-template-columns: 1fr;
   }
@@ -4442,28 +4333,12 @@ body {
     margin-top: 24px;
   }
 
-  .founders-connection__heading,
-  .founders-evidence__heading {
+  .founders-connection__heading {
     gap: 28px;
   }
 
   .founders-disciplines {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .founders-evidence__rails > div {
-    padding-right: 0;
-  }
-
-  .founders-evidence__rails > div + div {
-    margin-top: 56px;
-    border-top: 1px solid var(--semantic-line);
-    border-left: 0;
-    padding-left: 0;
-  }
-
-  .founders-evidence__label {
-    min-height: auto;
   }
 
   .founders-cta__inner {
@@ -4493,7 +4368,6 @@ body {
 
   .founders-profiles,
   .founders-connection,
-  .founders-evidence,
   .founders-life {
     padding-block: 72px;
   }
@@ -4510,7 +4384,6 @@ body {
 
   .founders-profiles h2,
   .founders-connection h2,
-  .founders-evidence h2,
   .founders-cta h2 {
     font-size: clamp(3rem, 14vw, 4rem);
   }
@@ -4532,18 +4405,6 @@ body {
 
   .founders-disciplines li {
     min-height: 210px;
-  }
-
-  .founders-evidence__rails {
-    margin-top: 56px;
-  }
-
-  .founders-evidence li a {
-    min-height: 78px;
-  }
-
-  .founders-evidence li span {
-    font-size: 1.82rem;
   }
 
   .founders-cta {
