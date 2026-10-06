@@ -64,6 +64,7 @@ const buildEnvironment = {
   VITE_SL_ANALYTICS_ENABLED: String(selected.analyticsEnabled),
   VITE_SL_INDEXING_ALLOWED: String(selected.indexingAllowed),
   VITE_SL_FEATURE_NETWORK_MOTION: String(selected.features.networkMotion),
+  VITE_SL_FEATURE_WORK_HERO_VIDEO: String(selected.features.workHeroVideo),
   VITE_SL_GTM_ID:
     deploymentEnvironment === "production" ? selected.googleTagManagerId : "",
 };
@@ -101,6 +102,7 @@ flattened.vars = {
   ...flattened.vars,
   SL_DEPLOY_ENV: deploymentEnvironment,
   SL_FEATURE_NETWORK_MOTION: String(selected.features.networkMotion),
+  SL_FEATURE_WORK_HERO_VIDEO: String(selected.features.workHeroVideo),
   SL_INDEXING_ALLOWED: String(selected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(selected.analyticsEnabled),
 };

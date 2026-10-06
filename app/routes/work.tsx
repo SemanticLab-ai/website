@@ -1,5 +1,6 @@
 import type { Route } from "./+types/work";
 import { WorkIndex } from "~/components/marketing/work/WorkIndex";
+import { workHeroVideoEnabled } from "~/lib/deployment";
 
 export function meta({}: Route.MetaArgs) {
   const title = "Selected Work | SemanticLab";
@@ -24,6 +25,15 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Work() {
-  return <WorkIndex />;
+export function loader({ context }: Route.LoaderArgs) {
+  return {
+    heroVideo:
+      workHeroVideoEnabled &&
+      context.cloudflare.env.SL_DEPLOY_ENV === "preview" &&
+      context.cloudflare.env.SL_FEATURE_WORK_HERO_VIDEO === "true",
+  };
+}
+
+export default function Work({ loaderData }: Route.ComponentProps) {
+  return <WorkIndex heroVideo={loaderData.heroVideo} />;
 }
