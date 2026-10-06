@@ -1,12 +1,6 @@
 import {
   ArrowDownRight,
   ArrowUpRight,
-  Blocks,
-  ChartNoAxesCombined,
-  Compass,
-  Eye,
-  PenTool,
-  Rocket,
 } from "lucide-react";
 import { SolutionsSection } from "./SolutionsSection";
 import { Link } from "react-router";
@@ -14,42 +8,10 @@ import { NetworkHeroMotion } from "~/components/marketing/shared/network-motion/
 import { FeaturedWorkAccordion } from "~/components/marketing/home/FeaturedWorkAccordion";
 import { FoundersSpotlight } from "~/components/marketing/home/FoundersSpotlight";
 import { CapabilityExplorer } from "~/components/marketing/home/CapabilityExplorer";
+import { FrameworkJourney } from "~/components/marketing/home/FrameworkJourney";
 import { recentProductWork } from "~/data/work";
 
 const strategyHref = "/services#strategy-engagement";
-
-const framework = [
-  {
-    name: "Discover",
-    description: "Understand the business, its market and the people it serves.",
-    icon: Compass,
-  },
-  {
-    name: "Envision",
-    description: "Find where intelligence can create meaningful advantage.",
-    icon: Eye,
-  },
-  {
-    name: "Design",
-    description: "Shape the product, experience and operating model.",
-    icon: PenTool,
-  },
-  {
-    name: "Engineer",
-    description: "Build secure, scalable systems for real workflows.",
-    icon: Blocks,
-  },
-  {
-    name: "Launch",
-    description: "Validate, deploy and enable the team around the change.",
-    icon: Rocket,
-  },
-  {
-    name: "Evolve",
-    description: "Learn, optimise and compound the advantage over time.",
-    icon: ChartNoAxesCombined,
-  },
-];
 
 export function IntelligentHome({ networkMotion = false }: { networkMotion?: boolean }) {
   return (
@@ -83,35 +45,7 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
 
       <SolutionsSection />
 
-      <section id="framework" className="framework-section">
-        <div className="semantic-shell">
-          <div className="semantic-section-heading">
-            <div>
-              <h2>From vision to advantage. A connected journey.</h2>
-            </div>
-            <p>
-              One integrated process moves an opportunity from strategic intent
-              to a working system and continuous learning.
-            </p>
-          </div>
-
-          <ol className="framework-steps">
-            {framework.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <li key={step.name}>
-                  <div className="framework-steps__icon">
-                    <Icon aria-hidden="true" strokeWidth={1.45} />
-                    <span>0{index + 1}</span>
-                  </div>
-                  <h3>{step.name}</h3>
-                  <p>{step.description}</p>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-      </section>
+      <FrameworkJourney />
 
       <CapabilityExplorer />
 
