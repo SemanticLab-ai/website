@@ -68,8 +68,9 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
                 <p>Product strategy &amp; experience design</p>
                 <h3>Naila Rahman</h3>
                 <span>
-                  Architecture-trained and research-led product thinking that
-                  makes complex systems clear.
+                  Architecture-trained and research-led, she makes complex
+                  systems clear. She connects strategy and design to how people
+                  understand and act.
                 </span>
               </div>
             </article>
@@ -85,8 +86,9 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
                 <p>Engineering &amp; AI delivery</p>
                 <h3>Raihan Razi</h3>
                 <span>
-                  Product engineering, cloud systems and AI delivery designed
-                  for dependable real-world use.
+                  He connects product thinking with cloud, platform and AI
+                  delivery for real-world use. His work turns engineering
+                  decisions into dependable systems.
                 </span>
               </div>
             </article>
