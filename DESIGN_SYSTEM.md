@@ -10,6 +10,7 @@ This is the implementation source of truth for SemanticLab's visual identity and
 - Approved dark logo artwork: `public/images/brand/semanticlab-logo-dark.png`
 - Shared logo rendering: `app/components/BrandLockup.tsx`
 - Shared ambient data motion: `app/components/marketing/shared/AnimatedDataLandscape.tsx`
+- Interactive preview hero motion: `app/components/marketing/shared/network-motion/NetworkHeroMotion.tsx`
 
 The supplied brand guideline is the visual authority. When the implementation and this document differ, resolve the implementation against the guideline before adding a new rule.
 

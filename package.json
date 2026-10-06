@@ -11,7 +11,7 @@
     "typecheck": "react-router typegen && tsc",
     "build:app": "react-router build",
     "check": "node scripts/check.mjs",
-    "dev:preview": "VITE_SL_DEPLOY_ENV=preview VITE_SL_ANALYTICS_ENABLED=false VITE_SL_INDEXING_ALLOWED=false react-router dev"
+    "dev:preview": "WORKERS_CI_BRANCH=local-preview SEMANTICLAB_BUILD_ENV=preview npm run build && wrangler dev --config build/server/wrangler.json"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -26,6 +26,7 @@
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@remotion/player": "4.0.533",
     "@tailwindcss/postcss": "^4.1.18",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -35,6 +36,7 @@
     "react-dom": "^19.2.3",
     "react-hook-form": "^7.70.0",
     "react-router": "7.10.1",
+    "remotion": "4.0.533",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^4.3.5"

@@ -52,17 +52,19 @@ assert(
 assert(
   contract.preview.analyticsEnabled === false &&
     contract.preview.indexingAllowed === false &&
+    contract.preview.features.networkMotion === true &&
     contract.preview.cloudflareCommand === "wrangler versions upload",
-  "The preview source contract must disable analytics/indexing and upload a version.",
+  "The preview source contract must enable network motion, disable analytics/indexing and upload a version.",
 );
 
 assert(
   contract.production.analyticsEnabled === true &&
     contract.production.indexingAllowed === true &&
+    contract.production.features.networkMotion === false &&
     contract.production.cloudflareCommand === "wrangler deploy" &&
     contract.production.canonicalOrigin === "https://semanticlab.ai" &&
     typeof contract.production.googleTagManagerId === "string",
-  "The production source contract must retain analytics, indexing and canonical origin.",
+  "The production source contract must retain analytics, indexing and canonical origin with network motion disabled.",
 );
 
 for (const [name, artifact] of [
@@ -83,6 +85,10 @@ for (const [name, artifact] of [
     `${name} artifact indexing flag does not match the source contract.`,
   );
   assert(
+    artifact.features.networkMotion === contract[expectedEnvironment].features.networkMotion,
+    `${name} artifact network-motion flag does not match the source contract.`,
+  );
+  assert(
     artifact.cloudflareCommand ===
       contract[expectedEnvironment].cloudflareCommand,
     `${name} artifact Cloudflare command does not match the source contract.`,
@@ -100,10 +106,11 @@ if (expectedEnvironment === "preview") {
   assert(
     clientArtifact.analyticsEnabled === true &&
       clientArtifact.indexingAllowed === true &&
+      clientArtifact.features.networkMotion === false &&
       clientArtifact.canonicalOrigin === "https://semanticlab.ai" &&
       clientArtifact.googleTagManagerId ===
         contract.production.googleTagManagerId,
-    "Production artifacts must preserve approved SEO/analytics.",
+    "Production artifacts must preserve approved SEO/analytics and disable network motion.",
   );
 }
 
@@ -118,7 +125,8 @@ const flattened = JSON.parse(
   ),
 );
 assert(
-  wrangler.vars.SL_DEPLOY_ENV === "production",
+  wrangler.vars.SL_DEPLOY_ENV === "production" &&
+    wrangler.vars.SL_FEATURE_NETWORK_MOTION === "false",
   "Ambiguous source configuration must be production-safe.",
 );
 assert(
@@ -128,6 +136,7 @@ assert(
 const expected = contract[expectedEnvironment];
 for (const [key, value] of Object.entries({
   SL_DEPLOY_ENV: expectedEnvironment,
+  SL_FEATURE_NETWORK_MOTION: String(expected.features.networkMotion),
   SL_INDEXING_ALLOWED: String(expected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(expected.analyticsEnabled),
 })) {
