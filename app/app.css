@@ -925,7 +925,17 @@ body {
 }
 
 .founders-section {
-  background: #090c0a;
+  border-bottom-color: var(--semantic-line-dark);
+  background: var(--semantic-paper);
+  color: var(--semantic-ink);
+}
+
+.founders-section .semantic-section-heading h2 {
+  color: var(--semantic-ink);
+}
+
+.founders-section .semantic-section-heading > p {
+  color: var(--sl-color-graphite);
 }
 
 .founder-grid {
@@ -945,13 +955,13 @@ body {
 .founder-grid img {
   width: 100%;
   aspect-ratio: 4 / 5;
-  border: 1px solid var(--semantic-line);
+  border: 1px solid var(--semantic-line-dark);
   border-radius: 1px;
   object-fit: cover;
 }
 
 .founder-grid article > div > p {
-  color: var(--semantic-lime);
+  color: var(--sl-color-graphite);
   font-size: 0.67rem;
   font-weight: 550;
   letter-spacing: 0.09em;
@@ -961,6 +971,7 @@ body {
 
 .founder-grid h3 {
   margin-top: 17px;
+  color: var(--semantic-ink);
   font-size: 2.65rem;
   line-height: 1;
 }
@@ -968,7 +979,7 @@ body {
 .founder-grid span {
   display: block;
   margin-top: 23px;
-  color: rgba(246, 246, 244, 0.56);
+  color: var(--sl-color-graphite);
   font-size: 0.8rem;
   font-weight: 350;
   line-height: 1.66;
