@@ -427,7 +427,6 @@ function TiemanVisionVennSlide() {
       className="tieman-vision-venn"
     >
       <div className="tieman-vision-venn__heading">
-        <p className="deck-kicker">Scope</p>
         <h2 id="deck-slide-3-title">
           Tieman&apos;s Vision
         </h2>
