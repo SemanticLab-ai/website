@@ -9,6 +9,7 @@ async function smoke(disableFeature = false) {
  if(disableFeature) args.push('--var','SL_FEATURE_WORK_HERO_VIDEO:false');
  if(disableFeature) args.push('--var','SL_FEATURE_WORK_PRODUCTS_GALLERY:false');
  if(disableFeature) args.push('--var','SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY:false');
+ if(disableFeature) args.push('--var','SL_FEATURE_HOME_INTERACTIONS:false');
  const child = spawn('node_modules/.bin/wrangler', args, { stdio: ['ignore','pipe','pipe'] });
  let log = ''; child.stdout.on('data', d=>log+=d); child.stderr.on('data',d=>log+=d);
  try {
@@ -21,6 +22,9 @@ async function smoke(disableFeature = false) {
   assert(ready,log);
   const response=await fetch('http://127.0.0.1:8788/'); const html=await response.text();
   assert.equal(html.includes('data-network-motion="true"'),preview&&!disableFeature,'Network motion must require BOTH preview build and runtime flag');
+  assert.equal(html.includes('data-home-interactions="true"'),preview&&!disableFeature,'Homepage interactions must require BOTH preview build and runtime flag');
+  assert.equal(html.includes('data-home-work-showcase="true"'),preview&&!disableFeature,'Homepage work showcase must require BOTH preview build and runtime flag');
+  assert.equal(html.includes('work-evidence-list--light'),!preview||disableFeature,'Original homepage product rows must remain when interactions are disabled');
   assert(!html.includes('data-galaxy-motion'), 'Homepage must not render the galaxy canvas');
   assert(!html.includes('semantic-hero__landscape'), 'Homepage must not render the dot landscape');
   assert.equal(html.includes('googletagmanager.com'),!preview,'Analytics isolation');

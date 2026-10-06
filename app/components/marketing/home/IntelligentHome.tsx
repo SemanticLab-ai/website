@@ -13,6 +13,9 @@ import { Link } from "react-router";
 import { NetworkHeroMotion } from "~/components/marketing/shared/network-motion/NetworkHeroMotion";
 import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
 import { recentProductWork } from "~/data/work";
+import { FrameworkJourney } from "./FrameworkJourney";
+import { HomeWorkShowcase } from "./HomeWorkShowcase";
+import "./home-interactions.css";
 
 const strategyHref = "/services#strategy-engagement";
 
@@ -96,9 +99,9 @@ const capabilities = [
   },
 ];
 
-export function IntelligentHome({ networkMotion = false }: { networkMotion?: boolean }) {
+export function IntelligentHome({ networkMotion = false, homeInteractions = false }: { networkMotion?: boolean; homeInteractions?: boolean }) {
   return (
-    <div className="semantic-home">
+    <div className="semantic-home" data-home-interactions={homeInteractions ? "true" : undefined}>
       <section className={`semantic-hero${networkMotion ? " semantic-hero--network" : ""}`} aria-labelledby="hero-title">
         <div className="semantic-shell semantic-hero__inner">
           <div className="semantic-hero__copy">
@@ -126,7 +129,7 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
         {networkMotion && <NetworkHeroMotion />}
       </section>
 
-      <SolutionsSection />
+      <SolutionsSection enhanced={homeInteractions} />
 
       <section id="framework" className="framework-section">
         <div className="semantic-shell">
@@ -140,7 +143,7 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
             </p>
           </div>
 
-          <ol className="framework-steps">
+          {homeInteractions ? <FrameworkJourney steps={framework} /> : <ol className="framework-steps">
             {framework.map((step, index) => {
               const Icon = step.icon;
               return (
@@ -154,7 +157,7 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
                 </li>
               );
             })}
-          </ol>
+          </ol>}
         </div>
       </section>
 
@@ -254,14 +257,15 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
             </p>
           </div>
 
-          <WorkEvidenceList items={recentProductWork} tone="light" />
+          {homeInteractions ? <HomeWorkShowcase items={recentProductWork} /> : <WorkEvidenceList items={recentProductWork} tone="light" />}
           <Link className="semantic-text-link semantic-text-link--dark" to="/work">
             Explore selected work <ArrowUpRight aria-hidden="true" />
           </Link>
         </div>
       </section>
 
-      <section id="strategy-engagement" className="engagement-section">
+      <section id="strategy-engagement" className={`engagement-section${homeInteractions ? " engagement-section--enhanced" : ""}`}>
+        {homeInteractions && <img className="engagement-section__landscape" src="/images/brand/semantic-data-landscape.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width={1536} height={1024} />}
         <div className="semantic-shell engagement-section__inner">
           <div className="engagement-section__copy">
             <h2>Where could AI create value in your business?</h2>
