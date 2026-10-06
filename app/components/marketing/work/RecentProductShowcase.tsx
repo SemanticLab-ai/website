@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import type { ProductWorkEvidence } from "~/data/work";
 
@@ -6,8 +7,38 @@ type RecentProductShowcaseProps = {
 };
 
 export function RecentProductShowcase({ items }: RecentProductShowcaseProps) {
+  const showcaseRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const showcase = showcaseRef.current;
+    if (
+      !showcase ||
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    showcase.classList.add("work-product-showcase--will-reveal");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        showcase.classList.add("work-product-showcase--in-view");
+        observer.disconnect();
+      },
+      { threshold: 0.12 },
+    );
+
+    observer.observe(showcase);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="work-product-showcase" data-work-product-gallery="true">
+    <div
+      className="work-product-showcase"
+      data-work-product-gallery="true"
+      ref={showcaseRef}
+    >
       {items.map((item, index) => (
         <a
           className="work-product"
