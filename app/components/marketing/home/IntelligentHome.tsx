@@ -47,7 +47,9 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
         <div className="semantic-shell">
           <div className="semantic-section-heading">
             <div>
-              <h2>We bridge the gap most partners can’t.</h2>
+              <h2>
+                We bridge the gap <br />most partners can’t.
+              </h2>
             </div>
             <p>
               One perspective shapes how people experience complexity. The
