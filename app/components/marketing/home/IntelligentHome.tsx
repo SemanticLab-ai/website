@@ -262,6 +262,32 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
       </section>
 
       <section id="strategy-engagement" className="engagement-section">
+        <svg
+          className="engagement-section__connectors"
+          viewBox="0 0 760 450"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path className="engagement-section__connector-trunk" d="M-24 264 C82 264 118 238 230 238" />
+          <g className="engagement-section__connector-branches">
+            <path d="M230 238 C336 238 345 115 452 115 S630 115 784 115" />
+            <path d="M230 238 C338 238 358 156 452 156 S630 156 784 156" />
+            <path d="M230 238 C342 238 372 197 452 197 S630 197 784 197" />
+            <path d="M230 238 C346 238 373 238 452 238 S630 238 784 238" />
+            <path d="M230 238 C342 238 372 279 452 279 S630 279 784 279" />
+            <path d="M230 238 C338 238 358 320 452 320 S630 320 784 320" />
+          </g>
+          <circle className="engagement-section__connector-hub" cx="230" cy="238" r="5" />
+          <g className="engagement-section__connector-nodes">
+            <circle cx="452" cy="115" r="2" />
+            <circle cx="452" cy="156" r="2" />
+            <circle cx="452" cy="197" r="2" />
+            <circle cx="452" cy="238" r="2" />
+            <circle cx="452" cy="279" r="2" />
+            <circle cx="452" cy="320" r="2" />
+          </g>
+        </svg>
         <div className="semantic-shell engagement-section__inner">
           <div className="engagement-section__copy">
             <h2>Where could AI create value in your business?</h2>
