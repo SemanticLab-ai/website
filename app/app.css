@@ -893,6 +893,37 @@ body {
   color: rgba(8, 11, 9, 0.62);
 }
 
+/* Keep the homepage editorial headings aligned with the solutions section. */
+.semantic-home .semantic-section-heading,
+.semantic-home .services-capabilities .services-heading {
+  display: block;
+}
+
+.semantic-home :is(
+  .solutions-heading h2,
+  .semantic-section-heading h2,
+  .services-capabilities .services-heading h2
+) {
+  max-width: 620px;
+  margin: 0 0 22px;
+  font-size: clamp(32px, 3.4vw, 45px);
+  font-weight: 450;
+  letter-spacing: -0.052em;
+  line-height: 1.07;
+}
+
+.semantic-home :is(
+  .solutions-heading > div > p,
+  .semantic-section-heading > p,
+  .services-capabilities .services-heading > p
+) {
+  max-width: 485px;
+  margin: 0;
+  padding-bottom: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
 .founders-section {
   background: #090c0a;
 }
