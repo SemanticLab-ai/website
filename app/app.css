@@ -2475,7 +2475,7 @@ body {
 }
 
 .services-hero__copy {
-  width: min(100%, 610px);
+  width: min(100%, 650px);
   animation: copyReveal 700ms 120ms ease-out both;
 }
 
@@ -3090,7 +3090,7 @@ body {
   }
 
   .services-hero h1 {
-    font-size: clamp(3.3rem, 15vw, 4.3rem);
+    font-size: clamp(2.7rem, 13.5vw, 4.3rem);
   }
 
   .services-hero__copy > p {
