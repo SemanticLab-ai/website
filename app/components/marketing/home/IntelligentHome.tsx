@@ -12,6 +12,7 @@ import { SolutionsSection } from "./SolutionsSection";
 import { Link } from "react-router";
 import { NetworkHeroMotion } from "~/components/marketing/shared/network-motion/NetworkHeroMotion";
 import { FeaturedWorkAccordion } from "~/components/marketing/home/FeaturedWorkAccordion";
+import { FoundersSpotlight } from "~/components/marketing/home/FoundersSpotlight";
 import { recentProductWork } from "~/data/work";
 
 const strategyHref = "/services#strategy-engagement";
@@ -190,57 +191,7 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
         </div>
       </section>
 
-      <section id="about" className="founders-section">
-        <div className="semantic-shell">
-          <div className="semantic-section-heading">
-            <div>
-              <h2>We bridge the gap most partners can’t.</h2>
-            </div>
-            <p>
-              One perspective shapes how people experience complexity. The
-              other shapes how technology can carry it. Together, we turn
-              intent into something a business can use.
-            </p>
-          </div>
-
-          <div className="founder-grid">
-            <article>
-              <img
-                src="/images/founders/naila.jpg"
-                alt="Naila Rahman"
-                width={800}
-                height={1000}
-                decoding="async"
-              />
-              <div>
-                <p>Product strategy &amp; experience design</p>
-                <h3>Naila Rahman</h3>
-                <span>
-                  Architecture-trained and research-led product thinking that
-                  makes complex systems clear.
-                </span>
-              </div>
-            </article>
-            <article>
-              <img
-                src="/images/founders/raihan-portrait-v4.png"
-                alt="Raihan Razi"
-                width={800}
-                height={1000}
-                decoding="async"
-              />
-              <div>
-                <p>Engineering &amp; AI delivery</p>
-                <h3>Raihan Razi</h3>
-                <span>
-                  Product engineering, cloud systems and AI delivery designed
-                  for dependable real-world use.
-                </span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+      <FoundersSpotlight />
 
       <section id="work" className="work-section">
         <div className="semantic-shell">
