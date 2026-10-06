@@ -6,14 +6,13 @@ import { BrandLogo } from "~/components/BrandLogo";
 const navigation = [
   { label: "Our Services", href: "/services" },
   { label: "Work", href: "/work" },
-  { label: "Our story", href: "/#about" },
+  { label: "Our story", href: "/founders" },
 ];
 
 const strategyHref = "/services#strategy-engagement";
 
 function isNavigationActive(href: string, pathname: string) {
   if (href === "/work") return pathname.startsWith("/work");
-  if (href === "/#about") return pathname === "/founders";
   return href === pathname;
 }
 
