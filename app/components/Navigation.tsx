@@ -4,9 +4,9 @@ import { Link, useLocation } from "react-router";
 import { BrandLogo } from "~/components/BrandLogo";
 
 const navigation = [
-  { label: "Services", href: "/services" },
+  { label: "Our Services", href: "/services" },
   { label: "Work", href: "/work" },
-  { label: "About", href: "/#about" },
+  { label: "Our story", href: "/#about" },
 ];
 
 const strategyHref = "/services#strategy-engagement";
