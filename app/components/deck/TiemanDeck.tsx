@@ -401,7 +401,6 @@ function TiemanAgendaSlide() {
       className="tieman-agenda"
     >
       <div className="tieman-agenda__heading">
-        <p className="deck-kicker">Today&apos;s conversation</p>
         <h2 id="deck-slide-2-title">Agenda<em>.</em></h2>
         <p>A 10–15 minute overview, followed by discussion.</p>
       </div>
