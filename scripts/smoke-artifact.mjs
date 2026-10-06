@@ -7,6 +7,7 @@ async function smoke(disableFeature = false) {
  const args = ['dev','--config','build/server/wrangler.json','--port','8788'];
  if(disableFeature) args.push('--var','SL_FEATURE_NETWORK_MOTION:false');
  if(disableFeature) args.push('--var','SL_FEATURE_WORK_HERO_VIDEO:false');
+ if(disableFeature) args.push('--var','SL_FEATURE_WORK_PRODUCTS_GALLERY:false');
  const child = spawn('node_modules/.bin/wrangler', args, { stdio: ['ignore','pipe','pipe'] });
  let log = ''; child.stdout.on('data', d=>log+=d); child.stderr.on('data',d=>log+=d);
  try {
@@ -29,6 +30,8 @@ async function smoke(disableFeature = false) {
   for(const path of ['/services','/founders','/work','/design-system']) assert.equal((await fetch(`http://127.0.0.1:8788${path}`)).status,200,path);
   const workHtml=await (await fetch('http://127.0.0.1:8788/work')).text();
   assert.equal(workHtml.includes('data-work-hero-video="true"'),preview&&!disableFeature,'Work video must require BOTH preview build and runtime flag');
+  assert.equal(workHtml.includes('data-work-product-gallery="true"'),preview&&!disableFeature,'Work product gallery must require BOTH preview build and runtime flag');
+  assert.equal(workHtml.includes('work-evidence-list--light'),!preview||disableFeature,'Original product rows must remain when the gallery is disabled');
   console.log(`${environment}: network flag ${disableFeature?'disabled':'default'}, homepage, analytics, robots, canonical and supporting routes passed.`);
  } finally {
   child.kill('SIGTERM');

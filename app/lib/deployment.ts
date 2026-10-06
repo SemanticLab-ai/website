@@ -21,6 +21,10 @@ export const workHeroVideoEnabled =
   deploymentEnvironment === "preview" &&
   import.meta.env.VITE_SL_FEATURE_WORK_HERO_VIDEO === "true";
 
+export const productGalleryEnabled =
+  deploymentEnvironment === "preview" &&
+  import.meta.env.VITE_SL_FEATURE_WORK_PRODUCTS_GALLERY === "true";
+
 export const googleTagManagerId = analyticsEnabled
   ? import.meta.env.VITE_SL_GTM_ID || "GTM-XXXXXXX"
   : null;

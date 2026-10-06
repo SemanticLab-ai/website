@@ -7,9 +7,16 @@ export type WorkEvidence = {
   provenance?: string;
 };
 
-export const recentProductWork: readonly WorkEvidence[] = [
+export type ProductWorkEvidence = WorkEvidence & {
+  category: string;
+  image: string;
+};
+
+export const recentProductWork: readonly ProductWorkEvidence[] = [
   {
     name: "PartsHQ",
+    category: "Commerce operations",
+    image: "/images/work/partshq/product-hero.jpg",
     summary: "AI-guided catalog operations for Shopify and WooCommerce.",
     capabilities: [
       "Commerce systems",
@@ -21,6 +28,8 @@ export const recentProductWork: readonly WorkEvidence[] = [
   },
   {
     name: "SponsoredFeeds",
+    category: "Grassroots sport",
+    image: "/images/work/sponsoredfeeds/product-hero.jpg",
     summary: "Automated sponsorship activation for grassroots sport.",
     capabilities: [
       "Sports data",
@@ -32,6 +41,8 @@ export const recentProductWork: readonly WorkEvidence[] = [
   },
   {
     name: "Instadash",
+    category: "Agent infrastructure",
+    image: "/images/work/instadash/product-hero.jpg",
     summary: "A persistent data surface for AI agents.",
     capabilities: [
       "MCP infrastructure",

@@ -1,12 +1,19 @@
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { AnimatedDataLandscape } from "~/components/marketing/shared/AnimatedDataLandscape";
+import { RecentProductShowcase } from "~/components/marketing/work/RecentProductShowcase";
 import { WorkHeroVideo } from "~/components/marketing/work/WorkHeroVideo";
 import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
 import { previousFounderWork, recentProductWork } from "~/data/work";
 
 const strategyHref = "/services#strategy-engagement";
 
-export function WorkIndex({ heroVideo = false }: { heroVideo?: boolean }) {
+export function WorkIndex({
+  heroVideo = false,
+  productGallery = false,
+}: {
+  heroVideo?: boolean;
+  productGallery?: boolean;
+}) {
   return (
     <div className="semantic-work-page">
       <section className="work-hero" aria-labelledby="work-hero-title">
@@ -48,7 +55,11 @@ export function WorkIndex({ heroVideo = false }: { heroVideo?: boolean }) {
             </p>
           </div>
 
-          <WorkEvidenceList items={recentProductWork} tone="light" />
+          {productGallery ? (
+            <RecentProductShowcase items={recentProductWork} />
+          ) : (
+            <WorkEvidenceList items={recentProductWork} tone="light" />
+          )}
         </div>
       </section>
 
