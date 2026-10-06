@@ -63,7 +63,7 @@ export default function Founders() {
         <div className="semantic-shell founders-story__inner">
           <div className="founders-story__heading">
             <h2 id="founders-story-title">
-              We love building products that <em>genuinely help people.</em>
+              We love building products that genuinely help people.
             </h2>
           </div>
 
