@@ -3944,7 +3944,18 @@ body {
 }
 
 .founders-story__body {
+  position: relative;
   max-width: 680px;
+}
+
+.founders-story__body::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(0px - clamp(28px, 3.5vw, 56px));
+  width: 1px;
+  background: var(--semantic-line);
+  content: "";
 }
 
 .founders-story__body p {
@@ -4057,6 +4068,12 @@ body {
 
   .founders-story__body {
     max-width: 760px;
+    padding-block-start: 24px;
+    border-block-start: 1px solid var(--semantic-line);
+  }
+
+  .founders-story__body::before {
+    display: none;
   }
 
   .founders-life__inner {
