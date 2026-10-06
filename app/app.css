@@ -815,8 +815,7 @@ body {
 }
 
 .semantic-hero__disciplines span,
-.framework-steps__icon span,
-.capability-grid__index {
+.framework-steps__icon span {
   color: rgba(246, 246, 244, 0.42);
   font-size: 0.61rem;
   letter-spacing: 0.15em;
@@ -972,62 +971,253 @@ body {
   color: rgba(8, 11, 9, 0.62);
 }
 
-.capability-grid {
+.capability-explorer {
+  margin-top: 76px;
+}
+
+.capability-explorer__tabs {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 76px;
   border-top: 1px solid var(--semantic-line-dark);
   border-left: 1px solid var(--semantic-line-dark);
 }
 
-.capability-grid article {
-  min-height: 420px;
+.capability-explorer__tab {
+  display: flex;
+  min-width: 0;
+  min-height: 188px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
   border-right: 1px solid var(--semantic-line-dark);
-  border-bottom: 1px solid var(--semantic-line-dark);
-  padding: 34px 30px;
-}
-
-.capability-grid__index {
-  color: rgba(8, 11, 9, 0.42);
-}
-
-.capability-grid h3 {
-  margin-top: 54px;
+  border-bottom: 0;
+  padding: 24px clamp(18px, 2.15vw, 32px) 30px;
+  background: transparent;
   color: var(--semantic-ink);
-  font-size: 2.7rem;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.capability-explorer__tab[aria-selected="true"] {
+  border-color: var(--sl-color-black);
+  background: var(--sl-color-black);
+  color: var(--sl-color-white);
+}
+
+.capability-explorer__tab:focus-visible {
+  position: relative;
+  z-index: 2;
+  outline: 2px solid var(--sl-color-lime);
+  outline-offset: -4px;
+}
+
+.capability-explorer__tab-top {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(8, 11, 9, 0.68);
+  font-size: 0.64rem;
+  font-weight: 550;
+  letter-spacing: 0.15em;
+}
+
+.capability-explorer__tab[aria-selected="true"] .capability-explorer__tab-top {
+  color: var(--sl-color-lime);
+}
+
+.capability-explorer__tab-signal {
+  width: 7px;
+  height: 7px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.capability-explorer__tab[aria-selected="true"] .capability-explorer__tab-signal {
+  background: var(--sl-color-lime);
+  transform: scale(1.25);
+}
+
+.capability-explorer__tab-title {
+  margin-top: auto;
+  font-size: clamp(1.65rem, 2.35vw, 2.6rem);
+  font-weight: 450;
+  letter-spacing: -0.055em;
   line-height: 1;
 }
 
-.capability-grid article > p {
-  min-height: 78px;
-  margin-top: 22px;
-  color: rgba(8, 11, 9, 0.62);
-  font-size: 0.84rem;
-  line-height: 1.6;
+.capability-explorer__tab-question {
+  color: rgba(8, 11, 9, 0.68);
+  font-size: 0.76rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
-.capability-grid ul {
+.capability-explorer__tab[aria-selected="true"] .capability-explorer__tab-question {
+  color: var(--sl-color-sage);
+}
+
+.capability-explorer__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--sl-color-lime);
+  pointer-events: none;
+  transition: width 320ms var(--sl-ease-standard);
+}
+
+.capability-explorer__panel {
+  position: relative;
+  overflow: hidden;
+  min-height: 390px;
+  background: var(--sl-color-black);
+  color: var(--sl-color-white);
+}
+
+.capability-explorer__panel::before {
+  position: absolute;
+  inset: 0;
+  background: url("/images/brand/services-data-convergence.png") right center / cover no-repeat;
+  content: "";
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.capability-explorer__panel::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--sl-color-black) 14%, transparent 100%);
+  content: "";
+  pointer-events: none;
+}
+
+.capability-explorer__panel:focus-visible {
+  outline: 2px solid var(--sl-color-lime);
+  outline-offset: -4px;
+}
+
+.capability-explorer__panel-inner {
+  position: relative;
+  z-index: 1;
   display: grid;
-  gap: 10px;
-  margin-top: 32px;
+  min-height: 390px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(52px, 8vw, 132px);
+  padding: clamp(36px, 4.5vw, 66px);
+  animation: capability-panel-enter 320ms var(--sl-ease-standard) both;
+}
+
+.capability-explorer__lead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.capability-explorer__selected,
+.capability-explorer__detail-label {
+  color: var(--sl-color-lime);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.capability-explorer__selected span {
+  padding-inline: 7px;
+  color: var(--sl-color-sage);
+}
+
+.capability-explorer__lead h3 {
+  max-width: 590px;
+  margin-top: 24px;
+  font-size: clamp(2.8rem, 4.25vw, 4.8rem);
+  font-weight: 450;
+  letter-spacing: -0.055em;
+  line-height: 0.96;
+}
+
+.capability-explorer__lead > p {
+  max-width: 440px;
+  margin-top: 22px;
+  color: var(--sl-color-sage);
+  font-size: 0.95rem;
+  font-weight: 350;
+  line-height: 1.65;
+}
+
+.capability-explorer__lead .strategy-button {
+  margin-top: auto;
+}
+
+.capability-explorer__detail {
+  align-self: center;
+}
+
+.capability-explorer__detail-label {
+  color: var(--sl-color-sage);
+}
+
+.capability-explorer__detail ol {
+  margin-top: 20px;
   list-style: none;
 }
 
-.capability-grid li {
+.capability-explorer__detail li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: rgba(8, 11, 9, 0.72);
-  font-size: 0.73rem;
+  gap: 28px;
+  min-height: 53px;
+  border-top: 1px solid rgba(246, 246, 244, 0.2);
+  color: var(--sl-color-white);
+  font-size: 0.88rem;
+  font-weight: 400;
 }
 
-.capability-grid li::before {
-  width: 4px;
-  height: 4px;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: #4b8f28;
-  content: "";
+.capability-explorer__detail li:last-child {
+  border-bottom: 1px solid rgba(246, 246, 244, 0.2);
+}
+
+.capability-explorer__detail li span:first-child {
+  color: var(--sl-color-lime);
+  font-size: 0.63rem;
+  letter-spacing: 0.13em;
+}
+
+@keyframes capability-panel-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .capability-explorer__tab:not([aria-selected="true"]):hover {
+    background: color-mix(in srgb, var(--sl-color-graphite) 8%, var(--sl-color-white));
+  }
+
+  .capability-explorer__tab:not([aria-selected="true"]):hover .capability-explorer__tab-signal {
+    background: var(--sl-color-graphite);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .capability-explorer__tab,
+  .capability-explorer__tab-signal,
+  .capability-explorer__progress {
+    transition: none;
+  }
+
+  .capability-explorer__tab[aria-selected="true"] .capability-explorer__tab-signal {
+    transform: none;
+  }
+
+  .capability-explorer__panel-inner {
+    animation: none;
+  }
 }
 
 .founders-section {
@@ -2300,8 +2490,17 @@ body {
     display: none;
   }
 
-  .capability-grid {
+  .capability-explorer__tabs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .capability-explorer__tab {
+    min-height: 154px;
+    border-bottom: 1px solid var(--semantic-line-dark);
+  }
+
+  .capability-explorer__progress {
+    display: none;
   }
 
   .founder-card__link {
@@ -2605,22 +2804,44 @@ body {
     font-size: 0.7rem;
   }
 
-  .capability-grid {
-    grid-template-columns: 1fr;
+  .capability-explorer {
     margin-top: 54px;
   }
 
-  .capability-grid article {
-    min-height: auto;
-    padding: 28px 24px 34px;
+  .capability-explorer__tab {
+    min-height: 142px;
+    padding: 18px 17px 20px;
   }
 
-  .capability-grid h3 {
-    margin-top: 34px;
+  .capability-explorer__tab-title {
+    font-size: clamp(1.5rem, 6vw, 2.1rem);
   }
 
-  .capability-grid article > p {
-    min-height: auto;
+  .capability-explorer__tab-question {
+    font-size: 0.68rem;
+  }
+
+  .capability-explorer__panel,
+  .capability-explorer__panel-inner {
+    min-height: 0;
+  }
+
+  .capability-explorer__panel-inner {
+    grid-template-columns: 1fr;
+    gap: 42px;
+    padding: 36px 24px 40px;
+  }
+
+  .capability-explorer__panel::before {
+    opacity: 0.08;
+  }
+
+  .capability-explorer__lead h3 {
+    font-size: clamp(2.7rem, 11vw, 4rem);
+  }
+
+  .capability-explorer__lead .strategy-button {
+    margin-top: 32px;
   }
 
   .founder-grid {
