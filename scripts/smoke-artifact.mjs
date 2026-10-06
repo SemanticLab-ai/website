@@ -21,6 +21,7 @@ async function smoke(disableFeature = false) {
   assert(ready,log);
   const response=await fetch('http://127.0.0.1:8788/'); const html=await response.text();
   assert.equal(html.includes('data-network-motion="true"'),preview&&!disableFeature,'Network motion must require BOTH preview build and runtime flag');
+  assert.equal(html.includes('data-cta-network="true"'),preview&&!disableFeature,'CTA network must require BOTH preview build and runtime flag');
   assert(!html.includes('data-galaxy-motion'), 'Homepage must not render the galaxy canvas');
   assert(!html.includes('semantic-hero__landscape'), 'Homepage must not render the dot landscape');
   assert.equal(html.includes('googletagmanager.com'),!preview,'Analytics isolation');
