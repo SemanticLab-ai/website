@@ -739,7 +739,8 @@ function StoryLandscapeSlide() {
       <div className="tieman-story-landscape__heading">
         <p className="deck-kicker">Where the knowledge lives</p>
         <h2 id="deck-slide-4-title">
-          The knowledge exists, but in <em>different systems.</em>
+          <span>The knowledge exists, but</span><br />
+          <span>in <em>different systems.</em></span>
         </h2>
       </div>
 

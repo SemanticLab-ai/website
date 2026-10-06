@@ -908,6 +908,10 @@
   max-width: 48cqw;
 }
 
+.tieman-story-landscape__heading h2 > span {
+  white-space: nowrap;
+}
+
 .tieman-story-landscape__map {
   position: absolute;
   inset: 0 0 3cqw;
@@ -4263,6 +4267,10 @@
 
   .tieman-story-question__heading h2 {
     font-size: clamp(1.35rem, 6.7vw, 3.5rem);
+  }
+
+  .tieman-story-landscape__heading h2 {
+    font-size: clamp(1.4rem, 8vw, 3.5rem);
   }
 
   .tieman-story-impact__heading h2 {
