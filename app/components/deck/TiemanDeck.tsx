@@ -156,9 +156,18 @@ const solutionApplications = [
 ] as const;
 
 const practicalQuestions = [
-  { topic: "Explore design options", question: "How much more volume would we get if we changed the tank section from A to B?" },
-  { topic: "Support engineering calculations", question: "For a 32,000-litre tanker with a 5-metre wheelbase, what would the axle loads be?" },
-  { topic: "Find previous work", question: "When did we last build a tanker for this customer?" },
+  {
+    topic: "Find comparable builds",
+    question: "Give me a list of all the 30 metres A-double Tankers we built to operate in NSW in the last 2 years, including the total manufacturing cost, suspension brand.",
+  },
+  {
+    topic: "Prepare a quotation",
+    question: "I need to prepare a quotation for a 30 m A-double tanker combination. Can you review five similar Tieman jobs from each of the past five years, compare their historical costs, and update the analysis using current-year supplier pricing?",
+  },
+  {
+    topic: "Specify procurement",
+    question: "I need to order a suspension for job TAXX. Can you read the spec and tell me which suspension model and ride height we used for this configuration before?",
+  },
 ] as const;
 
 const proofPoints = [
