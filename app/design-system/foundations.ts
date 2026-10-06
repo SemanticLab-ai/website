@@ -3,7 +3,7 @@ export const brandColours = [
     name: "Signal Lime",
     token: "--sl-color-lime",
     hex: "#8BFF4D",
-    role: "Intelligence, momentum and primary action",
+    role: "Intelligence, momentum and directional action accents",
   },
   {
     name: "Warm White",

@@ -72,13 +72,14 @@ Do not add a second display family. Hierarchy comes from scale, weight, space an
 - Spacing base: `4px`, exposed as `--sl-space-1` through `--sl-space-10`.
 - Section rhythm: `80px` to `128px`, reduced on mobile.
 - Borders: one-pixel structural dividers.
-- Radius: low by default; pills are reserved for decisive primary actions.
+- Radius: low by default; primary actions use an 8px radius.
 
 Prefer connected grids over collections of floating cards. Avoid glassmorphism, soft decorative shadows and rounded containers that do not express a functional grouping.
 
 ## Interface primitives
 
-- Primary action: Signal Lime fill, Obsidian text, pill shape.
+- Primary action on dark surfaces: transparent Obsidian fill, fine Graphite border, Warm White text, and a Signal Lime directional arrow. Hover adds a restrained Graphite fill and brightens the border while moving the arrow up and right.
+- Primary action on light surfaces: Obsidian fill, Warm White text, and a Signal Lime directional arrow.
 - Secondary action: transparent surface, Graphite border, explicit directional icon.
 - Text link: short label, visible direction, strong hover/focus state.
 - Fields: square or lightly rounded, always labelled, with supporting copy kept visible.
