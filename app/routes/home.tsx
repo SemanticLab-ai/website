@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-import { networkMotionEnabled } from "~/lib/deployment";
+import { homeInteractionsEnabled, networkMotionEnabled } from "~/lib/deployment";
 import { IntelligentHome } from "~/components/marketing/home/IntelligentHome";
 
 export function meta({}: Route.MetaArgs) {
@@ -26,9 +26,13 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export function loader({ context }: Route.LoaderArgs) {
-  return { networkMotion: networkMotionEnabled && context.cloudflare.env.SL_DEPLOY_ENV === "preview" && context.cloudflare.env.SL_FEATURE_NETWORK_MOTION === "true" };
+  const isPreview = context.cloudflare.env.SL_DEPLOY_ENV === "preview";
+  return {
+    networkMotion: networkMotionEnabled && isPreview && context.cloudflare.env.SL_FEATURE_NETWORK_MOTION === "true",
+    homeInteractions: homeInteractionsEnabled && isPreview && context.cloudflare.env.SL_FEATURE_HOME_INTERACTIONS === "true",
+  };
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-  return <IntelligentHome networkMotion={loaderData.networkMotion} />;
+  return <IntelligentHome networkMotion={loaderData.networkMotion} homeInteractions={loaderData.homeInteractions} />;
 }
