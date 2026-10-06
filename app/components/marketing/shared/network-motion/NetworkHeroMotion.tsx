@@ -1,5 +1,4 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
-import { Pause, Play } from "lucide-react";
 import { edges, HEIGHT, nodes, WIDTH } from "./network";
 import "./network-hero-motion.css";
 
@@ -24,7 +23,6 @@ function NetworkFallback() {
 
 export function NetworkHeroMotion() {
   const [focusedId, setFocusedId] = useState<number | null>(null);
-  const [paused, setPaused] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [visible, setVisible] = useState(true);
   const [documentVisible, setDocumentVisible] = useState(true);
@@ -59,7 +57,7 @@ export function NetworkHeroMotion() {
 
   const focusedNode = focusedId === null ? null : nodes[focusedId];
   const focusedIndex = namedNodes.findIndex((node) => node === focusedNode);
-  const playing = !paused && !reducedMotion && visible && documentVisible;
+  const playing = !reducedMotion && visible && documentVisible;
 
   return <>
     <div className="semantic-network" data-network-motion="true" ref={stage}>
@@ -76,14 +74,5 @@ export function NetworkHeroMotion() {
         <p>{focusedNode.description}</p>
       </aside>
     )}
-    {!reducedMotion && <button
-      className="semantic-network-toggle" type="button"
-      onClick={() => setPaused((value) => !value)}
-      aria-label={paused ? "Play network motion" : "Pause network motion"}
-      aria-pressed={paused}
-    >
-      {paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
-      <span>{paused ? "Play motion" : "Pause motion"}</span>
-    </button>}
   </>;
 }
