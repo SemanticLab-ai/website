@@ -2579,6 +2579,66 @@ body {
   text-underline-offset: 5px;
 }
 
+/* The homepage uses a dark capability chapter; the Services page stays editorial light. */
+.semantic-home .services-capabilities {
+  border-bottom: 1px solid var(--sl-border);
+  background: var(--sl-color-black);
+  color: var(--sl-color-white);
+}
+
+.semantic-home .services-capabilities .services-heading--dark h2,
+.semantic-home .services-capability-grid h3 {
+  color: var(--sl-color-white);
+}
+
+.semantic-home .services-capabilities .services-heading--dark > p,
+.semantic-home .services-capability-grid article > p {
+  color: var(--sl-color-sage);
+}
+
+.semantic-home .services-capability-grid {
+  border-color: var(--sl-border);
+}
+
+.semantic-home .services-capability-grid article {
+  border-color: var(--sl-border);
+  transition: background-color 200ms ease;
+}
+
+.semantic-home .services-capability-grid article:is(:hover, :focus-within) {
+  background: var(--sl-surface-1);
+}
+
+.semantic-home .services-capability-grid__topline svg {
+  color: var(--sl-color-lime);
+}
+
+.semantic-home .services-capability-grid__topline span {
+  color: var(--sl-color-sage);
+}
+
+.semantic-home .services-capability-grid li {
+  color: color-mix(in srgb, var(--sl-color-white) 76%, transparent);
+}
+
+.semantic-home .services-capability-grid article > a {
+  color: var(--sl-color-white);
+  text-decoration-color: var(--sl-color-lime);
+}
+
+.semantic-home .services-capability-grid article > a:hover {
+  color: var(--sl-color-lime);
+}
+
+.semantic-home .services-capability-grid article > a:focus-visible {
+  outline: 2px solid var(--sl-color-lime);
+  outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .semantic-home .services-capability-grid article { transition: none; }
+}
+
 .engagement-path {
   scroll-margin-top: 80px;
   padding-block: 120px;
