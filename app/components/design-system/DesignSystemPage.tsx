@@ -303,7 +303,7 @@ export function DesignSystemPage() {
               <article>
                 <p>Shape</p>
                 <h3>0–24px radius</h3>
-                <span>Pills reserved for primary actions</span>
+                <span>Primary actions use a restrained 8px radius</span>
               </article>
             </div>
 
@@ -333,7 +333,7 @@ export function DesignSystemPage() {
             </div>
 
             <div className="ds-component-grid">
-              <article>
+              <article className="ds-component-grid__primary">
                 <p>Primary action</p>
                 <SectionAnchor className="strategy-button" sectionId="language">
                   Request a Strategy Engagement

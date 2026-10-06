@@ -621,23 +621,34 @@ body {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  border: 1px solid var(--semantic-lime);
-  border-radius: 999px;
-  background: var(--semantic-lime);
-  color: var(--semantic-ink);
+  border: 1px solid var(--sl-border-strong);
+  border-radius: var(--sl-radius-sm);
+  background: transparent;
+  color: var(--semantic-white);
   font-size: 0.76rem;
   font-weight: 650;
-  line-height: 1;
-  padding: 0 24px;
-  transition: background-color 160ms ease, color 160ms ease,
-    transform 160ms ease;
+  line-height: 1.25;
+  padding: 12px 24px;
+  text-align: center;
+  transition: background-color var(--sl-duration-fast) ease,
+    border-color var(--sl-duration-fast) ease,
+    transform var(--sl-duration-fast) ease;
 }
 
-.strategy-button:hover {
-  background: var(--semantic-white);
-  border-color: var(--semantic-white);
-  color: var(--semantic-ink);
+.strategy-button:hover,
+.strategy-button:focus-visible {
+  background: color-mix(in srgb, var(--sl-color-graphite) 60%, var(--sl-color-black));
+  border-color: color-mix(in srgb, var(--sl-color-sage) 65%, var(--sl-color-black));
   transform: translateY(-2px);
+}
+
+.strategy-button:focus-visible {
+  outline: 2px solid var(--semantic-white);
+  outline-offset: 4px;
+}
+
+.strategy-button:active {
+  transform: translateY(0);
 }
 
 .strategy-button svg,
@@ -646,6 +657,16 @@ body {
   width: 16px;
   height: 16px;
   flex: 0 0 auto;
+}
+
+.strategy-button svg {
+  color: var(--semantic-lime);
+  transition: transform var(--sl-duration-fast) ease;
+}
+
+.strategy-button:hover svg,
+.strategy-button:focus-visible svg {
+  transform: translate(3px, -3px);
 }
 
 .strategy-button--compact {
@@ -2446,6 +2467,7 @@ body {
   }
 
   .strategy-button,
+  .strategy-button svg,
   .site-nav a,
   .semantic-text-link,
   .work-evidence-row,
@@ -2924,14 +2946,14 @@ body {
 }
 
 .strategy-form__footer .strategy-button:hover {
-  border-color: var(--semantic-ink);
-  background: var(--semantic-ink);
+  border-color: var(--sl-color-graphite);
+  background: var(--sl-color-graphite);
   color: var(--semantic-white);
 }
 
 .strategy-form__footer .strategy-button:focus-visible {
-  border-color: var(--semantic-ink);
-  background: var(--semantic-ink);
+  border-color: var(--sl-color-graphite);
+  background: var(--sl-color-graphite);
   color: var(--semantic-white);
   outline: 3px solid var(--semantic-ink);
   outline-offset: 4px;
@@ -5245,6 +5267,14 @@ body {
   font-weight: var(--sl-weight-medium);
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.ds-component-grid .ds-component-grid__primary {
+  background: var(--sl-color-black);
+}
+
+.ds-component-grid .ds-component-grid__primary > p {
+  color: var(--sl-color-sage);
 }
 
 .ds-button {
