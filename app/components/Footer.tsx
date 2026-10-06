@@ -19,12 +19,12 @@ export function Footer() {
         <div className="site-footer__links">
           <div>
             <p className="site-footer__label">Explore</p>
-            <Link to="/services">Services</Link>
+            <Link to="/services">Our Services</Link>
             <Link to="/work">Work</Link>
           </div>
           <div>
             <p className="site-footer__label">Company</p>
-            <Link to="/#about">About</Link>
+            <Link to="/#about">Our story</Link>
             <Link to="/founders">Founders</Link>
             <a href="mailto:hello@semanticlab.ai">Contact</a>
           </div>
