@@ -47,10 +47,10 @@ export default function Founders() {
           <figure className="founders-hero__portrait">
             <span aria-hidden="true" className="founders-hero__marker founders-hero__marker--top" />
             <img
-              src="/images/founders/founders.jpg"
+              src="/images/founders/founders-hero-portrait.jpg"
               alt="SemanticLab founders Raihan Razi and Naila Rahman"
-              width={1200}
-              height={900}
+              width={1350}
+              height={1800}
               fetchPriority="high"
             />
             <figcaption>Founder-led from Melbourne, Australia</figcaption>
