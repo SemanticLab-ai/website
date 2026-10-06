@@ -3936,8 +3936,11 @@ body {
 
 .founders-story h2 {
   max-width: 640px;
-  font-size: clamp(3.2rem, 4.4vw, 5rem);
-  line-height: 0.95;
+  color: var(--sl-color-white);
+  font-size: clamp(2rem, 2.8vw, 2.75rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
 }
 
 .founders-story__body {
@@ -4156,7 +4159,6 @@ body {
     padding-block: 72px;
   }
 
-  .founders-story h2,
   .founders-life h2 {
     font-size: clamp(3rem, 14vw, 4rem);
   }
