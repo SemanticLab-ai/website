@@ -76,13 +76,28 @@ const capabilities = [
   },
 ];
 
-export function ServicesCapabilities({ engagementHref = "#engagement-path" }: { engagementHref?: string }) {
+export function ServicesCapabilities({
+  engagementHref = "#engagement-path",
+  splitHeading = false,
+}: {
+  engagementHref?: string;
+  splitHeading?: boolean;
+}) {
   return (
     <section id="capabilities" className="services-capabilities">
       <div className="semantic-shell">
         <div className="services-heading services-heading--dark">
           <div>
-            <h2>End to end. Integrated. Built around value.</h2>
+            <h2>
+              {splitHeading ? (
+                <>
+                  <span className="services-heading__line">End to end. Integrated. </span>
+                  <span className="services-heading__line">Built around value.</span>
+                </>
+              ) : (
+                "End to end. Integrated. Built around value."
+              )}
+            </h2>
           </div>
           <p>
             Each capability connects to the next. Strategic decisions carry

@@ -924,6 +924,10 @@ body {
   line-height: 1.6;
 }
 
+.semantic-home .services-capabilities .services-heading__line {
+  display: block;
+}
+
 .founders-section {
   border-bottom-color: var(--semantic-line-dark);
   background: var(--semantic-paper);
