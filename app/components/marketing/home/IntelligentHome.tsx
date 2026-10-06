@@ -11,7 +11,7 @@ import {
 import { SolutionsSection } from "./SolutionsSection";
 import { Link } from "react-router";
 import { NetworkHeroMotion } from "~/components/marketing/shared/network-motion/NetworkHeroMotion";
-import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
+import { FeaturedWorkAccordion } from "~/components/marketing/home/FeaturedWorkAccordion";
 import { recentProductWork } from "~/data/work";
 
 const strategyHref = "/services#strategy-engagement";
@@ -254,8 +254,8 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
             </p>
           </div>
 
-          <WorkEvidenceList items={recentProductWork} tone="light" />
-          <Link className="semantic-text-link semantic-text-link--dark" to="/work">
+          <FeaturedWorkAccordion items={recentProductWork} />
+          <Link className="semantic-text-link" to="/work">
             Explore selected work <ArrowUpRight aria-hidden="true" />
           </Link>
         </div>
