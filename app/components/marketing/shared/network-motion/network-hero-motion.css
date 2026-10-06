@@ -52,29 +52,6 @@
   line-height: 1.5;
 }
 
-.semantic-network-toggle {
-  position: absolute;
-  z-index: 4;
-  top: 110px;
-  right: var(--sl-shell-gutter);
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  padding: 9px 14px;
-  border: 1px solid var(--sl-color-graphite);
-  border-radius: 999px;
-  background: var(--sl-color-black);
-  color: var(--sl-color-sage);
-  font: inherit;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.semantic-network-toggle:hover { border-color: var(--sl-color-sage); color: var(--sl-color-white); }
-.semantic-network-toggle:focus-visible { outline: 2px solid var(--sl-color-lime); outline-offset: 3px; }
-
 @media (min-width: 900px) {
   .semantic-network { top: calc(14% - 80px); }
 }
@@ -86,6 +63,4 @@
   .semantic-hero--network .semantic-hero__opportunity-title { width: auto; }
   .semantic-network { position: relative; top: auto; right: auto; width: 130%; height: auto; margin: 14px 0 0 -13%; }
   .semantic-network-detail { position: relative; right: auto; bottom: auto; width: calc(100% - 36px); min-height: 0; margin: 0 auto 34px; }
-  .semantic-network-toggle { top: 89px; right: 18px; width: 44px; padding: 9px; }
-  .semantic-network-toggle span { display: none; }
 }
