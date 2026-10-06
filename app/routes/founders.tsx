@@ -124,7 +124,7 @@ export default function Founders() {
           </h2>
 
           <div className="founders-profiles__grid">
-            <article className="founder-profile" id="naila">
+            <article className="founder-profile">
               <img
                 src="/images/founders/naila.jpg"
                 alt="Naila Rahman"
@@ -158,7 +158,7 @@ export default function Founders() {
               </div>
             </article>
 
-            <article className="founder-profile" id="raihan">
+            <article className="founder-profile">
               <img
                 src="/images/founders/raihan-portrait-v4.png"
                 alt="Raihan Razi"
