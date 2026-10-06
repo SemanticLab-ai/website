@@ -19,7 +19,6 @@ export function Footer() {
         <div className="site-footer__links">
           <div>
             <p className="site-footer__label">Explore</p>
-            <Link to="/#framework">Framework</Link>
             <Link to="/services">Services</Link>
             <Link to="/work">Work</Link>
           </div>

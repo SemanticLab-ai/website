@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router";
 import { BrandLogo } from "~/components/BrandLogo";
 
 const navigation = [
-  { label: "Framework", href: "/#framework" },
   { label: "Services", href: "/services" },
   { label: "Work", href: "/work" },
   { label: "About", href: "/#about" },
