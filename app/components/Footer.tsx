@@ -24,8 +24,7 @@ export function Footer() {
           </div>
           <div>
             <p className="site-footer__label">Company</p>
-            <Link to="/#about">Our story</Link>
-            <Link to="/founders">Founders</Link>
+            <Link to="/founders">Our story</Link>
             <a href="mailto:hello@semanticlab.ai">Contact</a>
           </div>
           <div>
