@@ -815,8 +815,7 @@ body {
 }
 
 .semantic-hero__disciplines span,
-.framework-steps__icon span,
-.capability-grid__index {
+.framework-steps__icon span {
   color: rgba(246, 246, 244, 0.42);
   font-size: 0.61rem;
   letter-spacing: 0.15em;
@@ -956,78 +955,12 @@ body {
   line-height: 1.55;
 }
 
-.capabilities-section {
-  padding-block: 120px;
-  background: var(--semantic-paper);
-  color: var(--semantic-ink);
-}
-
-.capabilities-section .semantic-section-heading h2,
 .work-section .semantic-section-heading h2 {
   color: var(--semantic-ink);
 }
 
-.capabilities-section .semantic-section-heading > p,
 .work-section .semantic-section-heading > p {
   color: rgba(8, 11, 9, 0.62);
-}
-
-.capability-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 76px;
-  border-top: 1px solid var(--semantic-line-dark);
-  border-left: 1px solid var(--semantic-line-dark);
-}
-
-.capability-grid article {
-  min-height: 420px;
-  border-right: 1px solid var(--semantic-line-dark);
-  border-bottom: 1px solid var(--semantic-line-dark);
-  padding: 34px 30px;
-}
-
-.capability-grid__index {
-  color: rgba(8, 11, 9, 0.42);
-}
-
-.capability-grid h3 {
-  margin-top: 54px;
-  color: var(--semantic-ink);
-  font-size: 2.7rem;
-  line-height: 1;
-}
-
-.capability-grid article > p {
-  min-height: 78px;
-  margin-top: 22px;
-  color: rgba(8, 11, 9, 0.62);
-  font-size: 0.84rem;
-  line-height: 1.6;
-}
-
-.capability-grid ul {
-  display: grid;
-  gap: 10px;
-  margin-top: 32px;
-  list-style: none;
-}
-
-.capability-grid li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: rgba(8, 11, 9, 0.72);
-  font-size: 0.73rem;
-}
-
-.capability-grid li::before {
-  width: 4px;
-  height: 4px;
-  flex: 0 0 auto;
-  border-radius: 50%;
-  background: #4b8f28;
-  content: "";
 }
 
 .founders-section {
@@ -2098,10 +2031,6 @@ body {
     display: none;
   }
 
-  .capability-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .founder-grid article {
     grid-template-columns: 0.9fr 1.1fr;
   }
@@ -2365,7 +2294,6 @@ body {
   }
 
   .framework-section,
-  .capabilities-section,
   .founders-section,
   .work-section {
     padding-block: 84px;
@@ -2397,24 +2325,6 @@ body {
 
   .framework-steps li > p {
     font-size: 0.7rem;
-  }
-
-  .capability-grid {
-    grid-template-columns: 1fr;
-    margin-top: 54px;
-  }
-
-  .capability-grid article {
-    min-height: auto;
-    padding: 28px 24px 34px;
-  }
-
-  .capability-grid h3 {
-    margin-top: 34px;
-  }
-
-  .capability-grid article > p {
-    min-height: auto;
   }
 
   .founder-grid {

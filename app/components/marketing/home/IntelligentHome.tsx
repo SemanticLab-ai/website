@@ -9,6 +9,7 @@ import {
   Rocket,
 } from "lucide-react";
 import { SolutionsSection } from "./SolutionsSection";
+import { ServicesCapabilities } from "~/components/marketing/services/ServicesCapabilities";
 import { Link } from "react-router";
 import { NetworkHeroMotion } from "~/components/marketing/shared/network-motion/NetworkHeroMotion";
 import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
@@ -46,53 +47,6 @@ const framework = [
     name: "Evolve",
     description: "Learn, optimise and compound the advantage over time.",
     icon: ChartNoAxesCombined,
-  },
-];
-
-const capabilities = [
-  {
-    index: "01",
-    title: "Strategy",
-    summary: "Decide what is worth changing before deciding what to build.",
-    items: [
-      "Business and product vision",
-      "Opportunity mapping",
-      "AI strategy",
-      "Roadmaps and success measures",
-    ],
-  },
-  {
-    index: "02",
-    title: "Experience",
-    summary: "Make complex technology feel clear, useful and human.",
-    items: [
-      "Research and service design",
-      "Product experience",
-      "Prototyping",
-      "Design systems",
-    ],
-  },
-  {
-    index: "03",
-    title: "Intelligence",
-    summary: "Put AI to work where it strengthens a real decision or workflow.",
-    items: [
-      "AI opportunity design",
-      "Workflow automation",
-      "Knowledge systems",
-      "Responsible AI patterns",
-    ],
-  },
-  {
-    index: "04",
-    title: "Engineering",
-    summary: "Turn the strategy into systems that can operate and scale.",
-    items: [
-      "Cloud architecture",
-      "AI integrations",
-      "Product engineering",
-      "Deployment and operations",
-    ],
   },
 ];
 
@@ -158,37 +112,7 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
         </div>
       </section>
 
-      <section className="capabilities-section" aria-labelledby="capabilities-title">
-        <div className="semantic-shell">
-          <div className="semantic-section-heading semantic-section-heading--wide">
-            <div>
-              <h2 id="capabilities-title">Strategy through to systems.</h2>
-            </div>
-            <p>
-              The disciplines stay connected so decisions made early survive
-              contact with design, delivery and the realities of operation.
-            </p>
-          </div>
-
-          <div className="capability-grid">
-            {capabilities.map((capability) => (
-              <article key={capability.title}>
-                <span className="capability-grid__index">{capability.index}</span>
-                <h3>{capability.title}</h3>
-                <p>{capability.summary}</p>
-                <ul>
-                  {capability.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-          <Link className="semantic-text-link semantic-text-link--dark" to="/services">
-            Explore our services <ArrowUpRight aria-hidden="true" />
-          </Link>
-        </div>
-      </section>
+      <ServicesCapabilities engagementHref="/services#engagement-path" />
 
       <section id="about" className="founders-section">
         <div className="semantic-shell">
