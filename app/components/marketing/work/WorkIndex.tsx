@@ -1,5 +1,6 @@
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { AnimatedDataLandscape } from "~/components/marketing/shared/AnimatedDataLandscape";
+import { RecentProductShowcase } from "~/components/marketing/work/RecentProductShowcase";
 import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
 import { previousFounderWork, recentProductWork } from "~/data/work";
 
@@ -46,7 +47,7 @@ export function WorkIndex() {
             </p>
           </div>
 
-          <WorkEvidenceList items={recentProductWork} tone="light" />
+          <RecentProductShowcase items={recentProductWork} />
         </div>
       </section>
 
