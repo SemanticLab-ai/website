@@ -15,7 +15,7 @@ export function ServicesHero() {
       <div className="semantic-shell services-hero__inner">
         <div className="services-hero__copy">
           <h1 id="services-hero-title">
-            Transformation, not just <em>delivery.</em>
+            <em>Transformation</em>,<br /> not just delivery.
           </h1>
           <p>
             We help founders and business leaders turn a valuable opportunity
