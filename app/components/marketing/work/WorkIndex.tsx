@@ -7,7 +7,13 @@ import { previousFounderWork, recentProductWork } from "~/data/work";
 
 const strategyHref = "/services#strategy-engagement";
 
-export function WorkIndex({ heroVideo = false }: { heroVideo?: boolean }) {
+export function WorkIndex({
+  heroVideo = false,
+  productGallery = false,
+}: {
+  heroVideo?: boolean;
+  productGallery?: boolean;
+}) {
   return (
     <div className="semantic-work-page">
       <section className="work-hero" aria-labelledby="work-hero-title">
@@ -49,7 +55,11 @@ export function WorkIndex({ heroVideo = false }: { heroVideo?: boolean }) {
             </p>
           </div>
 
-          <RecentProductShowcase items={recentProductWork} />
+          {productGallery ? (
+            <RecentProductShowcase items={recentProductWork} />
+          ) : (
+            <WorkEvidenceList items={recentProductWork} tone="light" />
+          )}
         </div>
       </section>
 

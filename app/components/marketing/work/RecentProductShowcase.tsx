@@ -7,7 +7,7 @@ type RecentProductShowcaseProps = {
 
 export function RecentProductShowcase({ items }: RecentProductShowcaseProps) {
   return (
-    <div className="work-product-showcase">
+    <div className="work-product-showcase" data-work-product-gallery="true">
       {items.map((item, index) => (
         <a
           className="work-product"
