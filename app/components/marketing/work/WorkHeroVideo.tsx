@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-const poster = "/images/brand/semantic-data-landscape-video-poster.webp";
-const video = "/videos/semantic-data-landscape-loop.mp4";
+const poster = "/images/brand/semantic-data-landscape-ripple-poster.webp";
+const video = "/videos/semantic-data-landscape-ripple.mp4";
 
 export function WorkHeroVideo() {
   const [canAnimate, setCanAnimate] = useState(false);
@@ -40,8 +40,8 @@ export function WorkHeroVideo() {
         className="work-hero__media"
         src={poster}
         alt=""
-        width={1632}
-        height={1216}
+        width={1280}
+        height={954}
         fetchPriority="high"
         decoding="async"
       />
