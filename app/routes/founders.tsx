@@ -87,30 +87,20 @@ export default function Founders() {
         <div className="semantic-shell founders-story__inner">
           <div className="founders-story__heading">
             <h2 id="founders-story-title">
-              Where curiosity becomes <em>products.</em>
+              We love building products that <em>genuinely help people.</em>
             </h2>
           </div>
 
           <div className="founders-story__body">
-            <p className="founders-story__lead">
-              SemanticLab started with a simple belief: technology should make
-              life easier.
-            </p>
             <p>
               Long before there was a company, there were countless late nights
               building ideas, testing products, and solving problems simply
               because we couldn’t ignore them. Every experiment taught us
               something. Some failed, some succeeded, but all of them reinforced
-              one thing.
-            </p>
-            <p className="founders-story__belief">
-              We love building things that genuinely help people.
-            </p>
-            <p className="founders-story__closing">
-              Eventually, we realised we were already doing this professionally
-              every day. So we combined our experience in design, engineering,
-              cloud and AI to create SemanticLab, a place where curiosity becomes
-              products, and good ideas become real solutions.
+              one thing. Eventually, we realised we were already doing this
+              professionally every day. So we combined our experience in design,
+              engineering, cloud and AI to create SemanticLab, a place where
+              curiosity becomes products, and good ideas become real solutions.
             </p>
           </div>
         </div>
