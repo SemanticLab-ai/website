@@ -1093,6 +1093,11 @@ body {
   color: var(--semantic-white);
 }
 
+.work-evidence-list--featured .work-evidence-row h3 {
+  font-size: var(--sl-type-title-lg);
+  line-height: 1.04;
+}
+
 .work-evidence-row__title > p {
   max-width: 240px;
   margin-top: 14px;
@@ -1117,6 +1122,13 @@ body {
 
 .work-evidence-list--dark .work-evidence-row__summary {
   color: rgba(246, 246, 244, 0.6);
+}
+
+.work-evidence-list--featured .work-evidence-row__summary,
+.work-evidence-list--featured .work-evidence-row__capabilities li,
+.work-evidence-list--featured .work-evidence-row__signal span {
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .work-evidence-row__capabilities {

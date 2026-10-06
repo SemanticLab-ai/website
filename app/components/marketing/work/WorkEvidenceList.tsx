@@ -22,11 +22,12 @@ const motifIcons: Record<WorkEvidence["motif"], LucideIcon> = {
 type WorkEvidenceListProps = {
   items: readonly WorkEvidence[];
   tone: "light" | "dark";
+  featured?: boolean;
 };
 
-export function WorkEvidenceList({ items, tone }: WorkEvidenceListProps) {
+export function WorkEvidenceList({ items, tone, featured = false }: WorkEvidenceListProps) {
   return (
-    <div className={`work-evidence-list work-evidence-list--${tone}`}>
+    <div className={`work-evidence-list work-evidence-list--${tone}${featured ? " work-evidence-list--featured" : ""}`}>
       {items.map((item, index) => {
         const Icon = motifIcons[item.motif];
         const isExternal = item.href.startsWith("http");

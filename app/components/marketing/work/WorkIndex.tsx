@@ -61,7 +61,7 @@ export function WorkIndex({
           {productGallery ? (
             <RecentProductShowcase items={recentProductWork} />
           ) : (
-            <WorkEvidenceList items={recentProductWork} tone="light" />
+            <WorkEvidenceList items={recentProductWork} tone="light" featured />
           )}
         </div>
       </section>
