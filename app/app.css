@@ -5275,7 +5275,7 @@ body {
   gap: 80px;
   min-height: 450px;
   text-align: left;
-  padding-block: 80px;
+  padding-block: 120px;
 }
 .engagement-section h2 {
   max-width: 680px;
@@ -5288,5 +5288,5 @@ body {
 .engagement-section__outcomes li { display: flex; align-items: center; gap: 20px; font-size: .95rem; line-height: 1.6; padding-block: 8px; }
 .engagement-section__outcomes li::before { content: ""; width: 6px; height: 6px; margin-inline: 6px; border-radius: 50%; background: var(--sl-color-sage); flex-shrink: 0; }
 @media (max-width: 759px) {
-  .engagement-section__inner { grid-template-columns: 1fr; gap: 36px; padding-block: 60px; }
+  .engagement-section__inner { grid-template-columns: 1fr; gap: 36px; padding-block: 100px; }
 }
