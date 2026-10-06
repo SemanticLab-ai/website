@@ -1,6 +1,5 @@
 import { ArrowUpRight, Linkedin } from "lucide-react";
 import { Link } from "react-router";
-import { previousFounderWork, recentProductWork } from "~/data/work";
 
 const strategyHref = "/services#strategy-engagement";
 
@@ -166,8 +165,7 @@ export default function Founders() {
                 </p>
                 <p>
                   His previous roles span product management, platform
-                  leadership and enterprise system delivery. Selected systems
-                  are attributed below.
+                  leadership and enterprise system delivery.
                 </p>
                 <a
                   className="founder-profile__link"
@@ -207,57 +205,6 @@ export default function Founders() {
               </li>
             ))}
           </ol>
-        </div>
-      </section>
-
-      <section className="founders-evidence" aria-labelledby="founders-evidence-title">
-        <div className="semantic-shell">
-          <div className="founders-evidence__heading">
-            <h2 id="founders-evidence-title">
-              Experience that <em>carries</em> into the work.
-            </h2>
-            <p>
-              Current product work sits beside selected systems led in previous
-              roles. The attribution stays explicit.
-            </p>
-          </div>
-
-          <div className="founders-evidence__rails">
-            <div>
-              <p className="founders-evidence__label">Current product work</p>
-              <ul>
-                {recentProductWork.map((item) => (
-                  <li key={item.name}>
-                    <Link to={item.href}>
-                      <span>{item.name}</span>
-                      <ArrowUpRight aria-hidden="true" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <p className="founders-evidence__label">
-                Selected previous-role work · Raihan Razi
-              </p>
-              <ul>
-                {previousFounderWork.map((item) => (
-                  <li key={item.name}>
-                    <a href={item.href} target="_blank" rel="noreferrer">
-                      <span>{item.name}</span>
-                      <ArrowUpRight aria-hidden="true" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <p className="founders-evidence__note">
-            Previous-role examples are provided for founder experience and are
-            not represented as SemanticLab client engagements.
-          </p>
         </div>
       </section>
 
