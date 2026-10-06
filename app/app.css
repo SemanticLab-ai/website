@@ -1815,6 +1815,8 @@ body {
 }
 
 .engagement-section__inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   min-height: 640px;
   flex-direction: column;

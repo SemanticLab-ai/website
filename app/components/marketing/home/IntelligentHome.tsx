@@ -3,6 +3,7 @@ import { SolutionsSection } from "./SolutionsSection";
 import { ServicesCapabilities } from "~/components/marketing/services/ServicesCapabilities";
 import { Link } from "react-router";
 import { NetworkHeroMotion } from "~/components/marketing/shared/network-motion/NetworkHeroMotion";
+import { EngagementNetworkBackdrop } from "./EngagementNetworkBackdrop";
 import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
 import { recentProductWork } from "~/data/work";
 
@@ -116,6 +117,7 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
       </section>
 
       <section id="strategy-engagement" className="engagement-section">
+        {networkMotion && <EngagementNetworkBackdrop />}
         <div className="semantic-shell engagement-section__inner">
           <div className="engagement-section__copy">
             <h2>Where could AI create value in your business?</h2>
