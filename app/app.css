@@ -3951,107 +3951,6 @@ body {
   line-height: 1.7;
 }
 
-.founders-profiles {
-  padding-block: 126px 136px;
-  background: var(--semantic-paper);
-  color: var(--semantic-ink);
-}
-
-.founders-profiles h2 {
-  max-width: 1180px;
-  font-size: clamp(3.7rem, 6vw, 6.5rem);
-  line-height: 0.89;
-}
-
-.founders-profiles__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(52px, 6vw, 96px);
-  margin-top: 94px;
-}
-
-.founder-profile {
-  display: grid;
-  grid-template-columns: minmax(190px, 0.78fr) minmax(250px, 1.22fr);
-  gap: clamp(30px, 3vw, 48px);
-  align-items: stretch;
-  padding-top: 30px;
-  border-top: 1px solid var(--semantic-line-dark);
-}
-
-.founder-profile + .founder-profile {
-  padding-left: clamp(28px, 3vw, 48px);
-  border-left: 1px solid var(--semantic-line-dark);
-}
-
-.founder-profile > img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  align-self: start;
-  filter: grayscale(1) contrast(1.05);
-  object-fit: cover;
-  object-position: top center;
-}
-
-.founder-profile:nth-child(2) > img {
-  background: #eceae4;
-  object-position: center;
-}
-
-.founder-profile__copy {
-  display: flex;
-  min-height: 100%;
-  flex-direction: column;
-}
-
-.founder-profile__role {
-  max-width: 260px;
-  color: #4b8f28;
-  font-size: 0.66rem;
-  font-weight: 650;
-  letter-spacing: 0.13em;
-  line-height: 1.55;
-  text-transform: uppercase;
-}
-
-.founder-profile h3 {
-  margin-top: 28px;
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--semantic-line-dark);
-  font-size: clamp(2.65rem, 3.2vw, 3.8rem);
-  line-height: 0.94;
-}
-
-.founder-profile__copy > p:not(.founder-profile__role) {
-  margin-top: 24px;
-  color: rgba(8, 11, 9, 0.67);
-  font-size: 0.79rem;
-  line-height: 1.72;
-}
-
-.founder-profile__link {
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  gap: 8px;
-  margin-top: auto;
-  padding-top: 32px;
-  border-bottom: 1px solid #62b934;
-  color: var(--semantic-ink);
-  font-size: 0.72rem;
-  font-weight: 550;
-}
-
-.founder-profile__link svg {
-  width: 14px;
-  height: 14px;
-}
-
-.founder-profile__link svg:last-child {
-  margin-left: 3px;
-}
-
 .founders-connection {
   padding-block: 120px;
   border-bottom: 1px solid var(--semantic-line);
@@ -4203,16 +4102,6 @@ body {
   min-width: 290px;
 }
 
-.founder-profile__link:hover,
-.founder-profile__link:focus-visible {
-  color: #4b8f28;
-}
-
-.founder-profile__link:focus-visible {
-  outline: 2px solid var(--semantic-lime);
-  outline-offset: 5px;
-}
-
 @media (max-width: 1100px) {
   .founders-hero__inner {
     grid-template-columns: minmax(0, 0.95fr) minmax(390px, 0.85fr);
@@ -4221,10 +4110,6 @@ body {
 
   .founders-hero h1 {
     font-size: clamp(4rem, 7vw, 5.4rem);
-  }
-
-  .founders-profiles__grid {
-    gap: 48px;
   }
 
   .founders-story__inner {
@@ -4249,21 +4134,6 @@ body {
   .founders-life__portrait {
     margin-top: 0;
   }
-
-  .founder-profile,
-  .founder-profile + .founder-profile {
-    grid-template-columns: 1fr;
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .founder-profile > img {
-    width: min(100%, 340px);
-  }
-
-  .founder-profile__link {
-    margin-top: 12px;
-  }
 }
 
 @media (max-width: 760px) {
@@ -4287,7 +4157,6 @@ body {
     justify-self: center;
   }
 
-  .founders-profiles,
   .founders-connection,
   .founders-life {
     padding-block: 86px;
@@ -4319,18 +4188,9 @@ body {
     border-left: 0;
   }
 
-  .founders-profiles h2 {
-    font-size: clamp(3.3rem, 11vw, 5rem);
-  }
-
-  .founders-profiles__grid,
   .founders-connection__heading,
   .founders-cta__inner {
     grid-template-columns: 1fr;
-  }
-
-  .founder-profile + .founder-profile {
-    margin-top: 24px;
   }
 
   .founders-connection__heading {
@@ -4366,7 +4226,6 @@ body {
     padding: 18px 18px 0;
   }
 
-  .founders-profiles,
   .founders-connection,
   .founders-life {
     padding-block: 72px;
@@ -4382,20 +4241,9 @@ body {
     font-size: clamp(3rem, 14vw, 4rem);
   }
 
-  .founders-profiles h2,
   .founders-connection h2,
   .founders-cta h2 {
     font-size: clamp(3rem, 14vw, 4rem);
-  }
-
-  .founders-profiles__grid {
-    grid-template-columns: 1fr;
-    gap: 46px;
-    margin-top: 62px;
-  }
-
-  .founder-profile > img {
-    width: min(100%, 280px);
   }
 
   .founders-disciplines {

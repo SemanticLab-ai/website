@@ -1,4 +1,4 @@
-import { ArrowUpRight, Linkedin } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 
 const strategyHref = "/services#strategy-engagement";
@@ -105,109 +105,6 @@ export default function Founders() {
         </div>
       </section>
 
-      <section className="founders-profiles" aria-labelledby="founders-profiles-title">
-        <div className="semantic-shell">
-          <h2 id="founders-profiles-title">
-            One perspective shapes how people <em>experience</em> complexity.
-            The other shapes how technology can <em>carry it.</em>
-          </h2>
-
-          <div className="founders-profiles__grid">
-            <article className="founder-profile">
-              <img
-                src="/images/founders/naila.jpg"
-                alt="Naila Rahman"
-                width={1413}
-                height={1853}
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="founder-profile__copy">
-                <p className="founder-profile__role">
-                  Product strategy &amp; experience design
-                </p>
-                <h3>Naila Rahman</h3>
-                <p>
-                  Architecture-trained and research-led, Naila shapes products
-                  and services around how people understand, decide and act.
-                </p>
-                <p>
-                  Her work connects discovery, product strategy, service design
-                  and interface decisions into a coherent experience.
-                </p>
-                <a
-                  className="founder-profile__link"
-                  href="https://www.linkedin.com/in/nailarahmanrazi/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Linkedin aria-hidden="true" /> LinkedIn
-                  <ArrowUpRight aria-hidden="true" />
-                </a>
-              </div>
-            </article>
-
-            <article className="founder-profile">
-              <img
-                src="/images/founders/raihan-portrait-v4.png"
-                alt="Raihan Razi"
-                width={898}
-                height={1122}
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="founder-profile__copy">
-                <p className="founder-profile__role">Engineering &amp; AI delivery</p>
-                <h3>Raihan Razi</h3>
-                <p>
-                  Raihan connects product thinking with cloud, platform and AI
-                  delivery so complex systems remain useful in the real world.
-                </p>
-                <p>
-                  His previous roles span product management, platform
-                  leadership and enterprise system delivery.
-                </p>
-                <a
-                  className="founder-profile__link"
-                  href="https://linkedin.com/in/raihanrazi"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <Linkedin aria-hidden="true" /> LinkedIn
-                  <ArrowUpRight aria-hidden="true" />
-                </a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="founders-connection" aria-labelledby="founders-connection-title">
-        <div className="semantic-shell">
-          <div className="founders-connection__heading">
-            <div>
-              <h2 id="founders-connection-title">
-                The thinking stays connected all the way through.
-              </h2>
-            </div>
-            <p>
-              Founder-led means the people shaping the opportunity remain close
-              to the design and engineering decisions that make it real.
-            </p>
-          </div>
-
-          <ol className="founders-disciplines">
-            {disciplines.map((discipline) => (
-              <li key={discipline.name}>
-                <span>{discipline.index}</span>
-                <h3>{discipline.name}</h3>
-                <p>{discipline.summary}</p>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
       <section className="founders-life" aria-labelledby="founders-life-title">
         <div className="semantic-shell founders-life__inner">
           <div className="founders-life__heading">
@@ -242,6 +139,32 @@ export default function Founders() {
               That’s why we build technology that feels a little more human.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="founders-connection" aria-labelledby="founders-connection-title">
+        <div className="semantic-shell">
+          <div className="founders-connection__heading">
+            <div>
+              <h2 id="founders-connection-title">
+                The thinking stays connected all the way through.
+              </h2>
+            </div>
+            <p>
+              Founder-led means the people shaping the opportunity remain close
+              to the design and engineering decisions that make it real.
+            </p>
+          </div>
+
+          <ol className="founders-disciplines">
+            {disciplines.map((discipline) => (
+              <li key={discipline.name}>
+                <span>{discipline.index}</span>
+                <h3>{discipline.name}</h3>
+                <p>{discipline.summary}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
