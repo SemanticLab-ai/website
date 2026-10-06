@@ -1,17 +1,100 @@
 import {
   ArrowDownRight,
   ArrowUpRight,
+  Blocks,
+  ChartNoAxesCombined,
+  Compass,
+  Eye,
+  PenTool,
+  Rocket,
 } from "lucide-react";
 import { SolutionsSection } from "./SolutionsSection";
 import { Link } from "react-router";
 import { NetworkHeroMotion } from "~/components/marketing/shared/network-motion/NetworkHeroMotion";
-import { FeaturedWorkAccordion } from "~/components/marketing/home/FeaturedWorkAccordion";
-import { FoundersSpotlight } from "~/components/marketing/home/FoundersSpotlight";
-import { CapabilityExplorer } from "~/components/marketing/home/CapabilityExplorer";
-import { FrameworkJourney } from "~/components/marketing/home/FrameworkJourney";
+import { WorkEvidenceList } from "~/components/marketing/work/WorkEvidenceList";
 import { recentProductWork } from "~/data/work";
 
 const strategyHref = "/services#strategy-engagement";
+
+const framework = [
+  {
+    name: "Discover",
+    description: "Understand the business, its market and the people it serves.",
+    icon: Compass,
+  },
+  {
+    name: "Envision",
+    description: "Find where intelligence can create meaningful advantage.",
+    icon: Eye,
+  },
+  {
+    name: "Design",
+    description: "Shape the product, experience and operating model.",
+    icon: PenTool,
+  },
+  {
+    name: "Engineer",
+    description: "Build secure, scalable systems for real workflows.",
+    icon: Blocks,
+  },
+  {
+    name: "Launch",
+    description: "Validate, deploy and enable the team around the change.",
+    icon: Rocket,
+  },
+  {
+    name: "Evolve",
+    description: "Learn, optimise and compound the advantage over time.",
+    icon: ChartNoAxesCombined,
+  },
+];
+
+const capabilities = [
+  {
+    index: "01",
+    title: "Strategy",
+    summary: "Decide what is worth changing before deciding what to build.",
+    items: [
+      "Business and product vision",
+      "Opportunity mapping",
+      "AI strategy",
+      "Roadmaps and success measures",
+    ],
+  },
+  {
+    index: "02",
+    title: "Experience",
+    summary: "Make complex technology feel clear, useful and human.",
+    items: [
+      "Research and service design",
+      "Product experience",
+      "Prototyping",
+      "Design systems",
+    ],
+  },
+  {
+    index: "03",
+    title: "Intelligence",
+    summary: "Put AI to work where it strengthens a real decision or workflow.",
+    items: [
+      "AI opportunity design",
+      "Workflow automation",
+      "Knowledge systems",
+      "Responsible AI patterns",
+    ],
+  },
+  {
+    index: "04",
+    title: "Engineering",
+    summary: "Turn the strategy into systems that can operate and scale.",
+    items: [
+      "Cloud architecture",
+      "AI integrations",
+      "Product engineering",
+      "Deployment and operations",
+    ],
+  },
+];
 
 export function IntelligentHome({ networkMotion = false }: { networkMotion?: boolean }) {
   return (
@@ -45,11 +128,119 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
 
       <SolutionsSection />
 
-      <FrameworkJourney />
+      <section id="framework" className="framework-section">
+        <div className="semantic-shell">
+          <div className="semantic-section-heading">
+            <div>
+              <h2>From vision to advantage. A connected journey.</h2>
+            </div>
+            <p>
+              One integrated process moves an opportunity from strategic intent
+              to a working system and continuous learning.
+            </p>
+          </div>
 
-      <CapabilityExplorer />
+          <ol className="framework-steps">
+            {framework.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <li key={step.name}>
+                  <div className="framework-steps__icon">
+                    <Icon aria-hidden="true" strokeWidth={1.45} />
+                    <span>0{index + 1}</span>
+                  </div>
+                  <h3>{step.name}</h3>
+                  <p>{step.description}</p>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
 
-      <FoundersSpotlight />
+      <section className="capabilities-section" aria-labelledby="capabilities-title">
+        <div className="semantic-shell">
+          <div className="semantic-section-heading semantic-section-heading--wide">
+            <div>
+              <h2 id="capabilities-title">Strategy through to systems.</h2>
+            </div>
+            <p>
+              The disciplines stay connected so decisions made early survive
+              contact with design, delivery and the realities of operation.
+            </p>
+          </div>
+
+          <div className="capability-grid">
+            {capabilities.map((capability) => (
+              <article key={capability.title}>
+                <span className="capability-grid__index">{capability.index}</span>
+                <h3>{capability.title}</h3>
+                <p>{capability.summary}</p>
+                <ul>
+                  {capability.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+          <Link className="semantic-text-link semantic-text-link--dark" to="/services">
+            Explore our services <ArrowUpRight aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      <section id="about" className="founders-section">
+        <div className="semantic-shell">
+          <div className="semantic-section-heading">
+            <div>
+              <h2>We bridge the gap most partners can’t.</h2>
+            </div>
+            <p>
+              One perspective shapes how people experience complexity. The
+              other shapes how technology can carry it. Together, we turn
+              intent into something a business can use.
+            </p>
+          </div>
+
+          <div className="founder-grid">
+            <article>
+              <img
+                src="/images/founders/naila.jpg"
+                alt="Naila Rahman"
+                width={800}
+                height={1000}
+                decoding="async"
+              />
+              <div>
+                <p>Product strategy &amp; experience design</p>
+                <h3>Naila Rahman</h3>
+                <span>
+                  Architecture-trained and research-led product thinking that
+                  makes complex systems clear.
+                </span>
+              </div>
+            </article>
+            <article>
+              <img
+                src="/images/founders/raihan-portrait-v4.png"
+                alt="Raihan Razi"
+                width={800}
+                height={1000}
+                decoding="async"
+              />
+              <div>
+                <p>Engineering &amp; AI delivery</p>
+                <h3>Raihan Razi</h3>
+                <span>
+                  Product engineering, cloud systems and AI delivery designed
+                  for dependable real-world use.
+                </span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
       <section id="work" className="work-section">
         <div className="semantic-shell">
@@ -63,40 +254,14 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
             </p>
           </div>
 
-          <FeaturedWorkAccordion items={recentProductWork} />
-          <Link className="semantic-text-link" to="/work">
+          <WorkEvidenceList items={recentProductWork} tone="light" />
+          <Link className="semantic-text-link semantic-text-link--dark" to="/work">
             Explore selected work <ArrowUpRight aria-hidden="true" />
           </Link>
         </div>
       </section>
 
       <section id="strategy-engagement" className="engagement-section">
-        <svg
-          className="engagement-section__connectors"
-          viewBox="0 0 760 450"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path className="engagement-section__connector-trunk" d="M-24 264 C82 264 118 238 230 238" />
-          <g className="engagement-section__connector-branches">
-            <path d="M230 238 C336 238 345 115 452 115 S630 115 784 115" />
-            <path d="M230 238 C338 238 358 156 452 156 S630 156 784 156" />
-            <path d="M230 238 C342 238 372 197 452 197 S630 197 784 197" />
-            <path d="M230 238 C346 238 373 238 452 238 S630 238 784 238" />
-            <path d="M230 238 C342 238 372 279 452 279 S630 279 784 279" />
-            <path d="M230 238 C338 238 358 320 452 320 S630 320 784 320" />
-          </g>
-          <circle className="engagement-section__connector-hub" cx="230" cy="238" r="5" />
-          <g className="engagement-section__connector-nodes">
-            <circle cx="452" cy="115" r="2" />
-            <circle cx="452" cy="156" r="2" />
-            <circle cx="452" cy="197" r="2" />
-            <circle cx="452" cy="238" r="2" />
-            <circle cx="452" cy="279" r="2" />
-            <circle cx="452" cy="320" r="2" />
-          </g>
-        </svg>
         <div className="semantic-shell engagement-section__inner">
           <div className="engagement-section__copy">
             <h2>Where could AI create value in your business?</h2>
