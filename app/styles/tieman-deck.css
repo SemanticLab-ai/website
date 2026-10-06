@@ -1172,12 +1172,16 @@
 .tieman-story-question__heading {
   position: relative;
   z-index: 6;
-  width: 58cqw;
+  width: 70cqw;
   padding-top: 0.5cqw;
 }
 
 .tieman-story-question__heading h2 {
-  max-width: 57cqw;
+  max-width: 70cqw;
+}
+
+.tieman-story-question__heading h2 em {
+  white-space: nowrap;
 }
 
 .tieman-story-question__prompt {
@@ -4243,6 +4247,10 @@
     max-width: none;
     margin-top: 18px;
     font-size: clamp(3rem, 14vw, 4.2rem);
+  }
+
+  .tieman-story-question__heading h2 {
+    font-size: clamp(1.35rem, 6.7vw, 3.5rem);
   }
 
   .tieman-story-landscape__map,

@@ -773,7 +773,8 @@ function StoryQuestionSlide() {
       <div className="tieman-story-question__heading">
         <p className="deck-kicker">Where the friction begins</p>
         <h2 id="deck-slide-5-title">
-          Practical questions need <em>information from across Tieman.</em>
+          Practical questions need<br />
+          <em>information from across Tieman.</em>
         </h2>
       </div>
 
