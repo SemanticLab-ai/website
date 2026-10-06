@@ -67,13 +67,15 @@ export function NetworkHeroMotion() {
         <NetworkPlayer playing={playing} reducedMotion={reducedMotion} onNodeFocus={onNodeFocus} />
       </Suspense>
     </div>
-    <aside className="semantic-network-detail" aria-live="polite" aria-atomic="true">
-      <span className="semantic-network-detail__index">
-        {focusedIndex < 0 ? "Explore the network" : `${String(focusedIndex + 1).padStart(2, "0")} / ${String(namedNodes.length).padStart(2, "0")}`}
-      </span>
-      <h2>{focusedNode?.label ?? "Follow a connection"}</h2>
-      <p>{focusedNode?.description ?? "Move near a ringed dot, tap one, or use Tab to explore the key stages."}</p>
-    </aside>
+    {focusedNode?.label && (
+      <aside className="semantic-network-detail" aria-live="polite" aria-atomic="true">
+        <span className="semantic-network-detail__index">
+          {`${String(focusedIndex + 1).padStart(2, "0")} / ${String(namedNodes.length).padStart(2, "0")}`}
+        </span>
+        <h2>{focusedNode.label}</h2>
+        <p>{focusedNode.description}</p>
+      </aside>
+    )}
     {!reducedMotion && <button
       className="semantic-network-toggle" type="button"
       onClick={() => setPaused((value) => !value)}
