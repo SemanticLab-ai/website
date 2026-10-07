@@ -27,6 +27,7 @@ const wranglerCommand =
     : "node_modules/.bin/wrangler";
 
 await run(npmCommand, ["run", "typecheck"]);
+await run("node", ["--experimental-strip-types", "--test", "tests/read-limited-request-body.test.mjs"]);
 
 
 await run("node", ["scripts/build-cloudflare.mjs"], {

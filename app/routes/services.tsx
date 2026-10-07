@@ -6,6 +6,7 @@ import {
   strategyEngagementSchema,
   type StrategyActionData,
 } from "~/lib/strategy-engagement";
+import { readLimitedRequestBody } from "~/lib/read-limited-request-body";
 import { ServicesHero } from "~/components/marketing/services/ServicesHero";
 import { ServicesCapabilities } from "~/components/marketing/services/ServicesCapabilities";
 import { EngagementPath } from "~/components/marketing/services/EngagementPath";
@@ -32,8 +33,8 @@ export async function action({ request, context }: Route.ActionArgs) {
     return actionResult({ status: "error", message: "The request could not be processed." }, 413);
   }
 
-  const body = await request.text();
-  if (body.length > 16_384) {
+  const body = await readLimitedRequestBody(request, 16_384);
+  if (body === null) {
     return actionResult({ status: "error", message: "The request is too large." }, 413);
   }
   const formData = new URLSearchParams(body);

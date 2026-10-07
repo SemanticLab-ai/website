@@ -54,6 +54,20 @@ async function smoke(disableFeature = false) {
   });
   assert.equal(leadResponse.status, preview ? 200 : 403, 'Server form origin gate');
   assert.equal((await leadResponse.text()).includes('No email was sent.'), preview, 'Preview delivery gate');
+  const oversizedBody=new ReadableStream({
+   start(controller) {
+    controller.enqueue(new Uint8Array(16_385));
+    controller.close();
+   },
+  });
+  const oversizedResponse=await fetch('http://127.0.0.1:8788/services',{
+   method:'POST',
+   headers:{ Origin:'http://127.0.0.1:8788', 'Content-Type':'application/x-www-form-urlencoded' },
+   body:oversizedBody,
+   duplex:'half',
+   signal:AbortSignal.timeout(10_000),
+  });
+  assert.equal(oversizedResponse.status,413,'Headerless oversized form body');
   const workHtml=await (await fetch('http://127.0.0.1:8788/work')).text();
   assert.equal(workHtml.includes('data-work-hero-video="true"'),featuresEnabled&&!disableFeature,'Work video must require both build and runtime flags');
   assert.equal(workHtml.includes('data-work-product-gallery="true"'),featuresEnabled&&!disableFeature,'Work product gallery must require both build and runtime flags');
