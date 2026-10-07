@@ -94,7 +94,11 @@ async function smoke(disableFeature = false) {
    duplex:'half',
    signal:AbortSignal.timeout(10_000),
   });
-  assert.equal(oversizedResponse.status,413,'Headerless oversized form body');
+  assert.equal(
+   oversizedResponse.status,
+   413,
+   `Headerless oversized form body: ${await oversizedResponse.text()}\nWorker log: ${log.slice(-1500)}`,
+  );
   const workHtml=pageHtmlByPath.get('/work');
   assert.equal(workHtml.includes('data-work-hero-video="true"'),featuresEnabled&&!disableFeature,'Work video must require both build and runtime flags');
   assert.equal(workHtml.includes('data-work-product-gallery="true"'),featuresEnabled&&!disableFeature,'Work product gallery must require both build and runtime flags');

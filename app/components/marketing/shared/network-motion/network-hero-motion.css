@@ -16,6 +16,8 @@
 .semantic-network > svg,
 .semantic-network > div { display: block; width: 100%; height: 100%; }
 
+.semantic-network-touch-hint { display: none; }
+
 .semantic-network-detail {
   position: absolute;
   z-index: 3;
@@ -69,5 +71,6 @@
   .semantic-hero--network .semantic-hero__copy { pointer-events: auto; }
   .semantic-hero--network .semantic-hero__opportunity-title { width: auto; }
   .semantic-network { position: relative; top: auto; right: auto; width: 130%; height: auto; margin: 14px 0 0 -13%; }
+  .semantic-network-touch-hint { position: relative; z-index: 3; display: block; margin: 0 18px 18px; color: var(--sl-color-sage); font-size: 12px; line-height: 1.4; text-align: center; }
   .semantic-network-detail { position: relative; right: auto; bottom: auto; width: calc(100% - 36px); min-height: 0; margin: 0 auto 34px; }
 }
