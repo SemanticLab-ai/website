@@ -5,39 +5,77 @@ const video = "/videos/semantic-data-landscape-ripple.mp4";
 
 export function WorkHeroVideo() {
   const [canAnimate, setCanAnimate] = useState(false);
-  const [videoReady, setVideoReady] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const videoSlotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
     const connection = navigator as Navigator & {
       connection?: { saveData?: boolean };
     };
-    const update = () =>
-      setCanAnimate(!motionPreference.matches && !connection.connection?.saveData);
+    const update = () => {
+      const allowed = !motionPreference.matches && !connection.connection?.saveData;
+      setCanAnimate(allowed);
+      if (!allowed) setVideoPlaying(false);
+    };
     update();
     motionPreference.addEventListener("change", update);
     return () => motionPreference.removeEventListener("change", update);
   }, []);
 
   useEffect(() => {
-    if (!canAnimate || !videoRef.current || !("IntersectionObserver" in window)) return;
-    const player = videoRef.current;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        void player.play().catch(() => {});
-      } else {
-        player.pause();
-      }
-    });
-    observer.observe(player);
-    return () => observer.disconnect();
+    if (!canAnimate || !videoSlotRef.current) return;
+    // WebKit checks the muted attribute when the video enters the document.
+    const player = document.createElement("video");
+    player.className = "work-hero__media work-hero__video";
+    player.autoplay = true;
+    player.loop = true;
+    player.defaultMuted = true;
+    player.muted = true;
+    player.playsInline = true;
+    player.preload = "metadata";
+    player.src = video;
+    let hasPlayed = false;
+    const showVideo = () => {
+      hasPlayed = true;
+      setVideoPlaying(true);
+    };
+    const showPoster = () => setVideoPlaying(false);
+    player.addEventListener("playing", showVideo);
+    player.addEventListener("pause", showPoster);
+    player.addEventListener("error", showPoster);
+    videoSlotRef.current.append(player);
+
+    const play = () => {
+      void player.play().catch(showPoster);
+    };
+    const observer = "IntersectionObserver" in window
+      ? new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) {
+            if (hasPlayed && player.paused) {
+              play();
+            }
+          } else {
+            player.pause();
+            showPoster();
+          }
+        })
+      : null;
+    observer?.observe(player);
+    return () => {
+      observer?.disconnect();
+      player.removeEventListener("playing", showVideo);
+      player.removeEventListener("pause", showPoster);
+      player.removeEventListener("error", showPoster);
+      player.pause();
+      player.remove();
+    };
   }, [canAnimate]);
 
   return (
     <div className="work-hero__landscape work-hero__video-stage" aria-hidden="true" data-work-hero-video="true">
       <img
-        className="work-hero__media"
+        className={`work-hero__media work-hero__poster${videoPlaying ? " work-hero__poster--hidden" : ""}`}
         src={poster}
         alt=""
         width={1280}
@@ -45,21 +83,7 @@ export function WorkHeroVideo() {
         fetchPriority="high"
         decoding="async"
       />
-      {canAnimate && (
-        <video
-          ref={videoRef}
-          className={`work-hero__media work-hero__video${videoReady ? " work-hero__video--ready" : ""}`}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          poster={poster}
-          onCanPlay={() => setVideoReady(true)}
-        >
-          <source src={video} type="video/mp4" />
-        </video>
-      )}
+      <div ref={videoSlotRef} className="work-hero__video-slot" />
     </div>
   );
 }
