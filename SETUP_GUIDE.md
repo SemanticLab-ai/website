@@ -28,6 +28,9 @@ SemanticLab uses one Cloudflare Worker and promotes code through Git branches:
 feature branch -> staging -> Cloudflare Preview URL -> main -> semanticlab.ai
 ```
 
+The zone's dashboard-managed WAF controls are recorded in
+[Cloudflare security controls](./CLOUDFLARE_SECURITY.md).
+
 - Create feature branches from `origin/staging`.
 - Open feature pull requests against `staging`.
 - Cloudflare Workers Builds is connected directly to this GitHub repository.
