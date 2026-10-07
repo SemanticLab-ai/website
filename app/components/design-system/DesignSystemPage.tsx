@@ -326,7 +326,7 @@ export function DesignSystemPage() {
             <div className="ds-section__intro">
               <h2>Actions should feel decisive.</h2>
               <p>
-                Primary actions use lime sparingly. Secondary actions hold their
+                Primary actions use Signal Lime fill. Secondary actions hold their
                 shape with a fine border. Text links remain directional and
                 explicit.
               </p>

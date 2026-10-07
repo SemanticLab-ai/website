@@ -621,10 +621,10 @@ body {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  border: 1px solid var(--sl-border-strong);
+  border: 1px solid var(--sl-color-lime);
   border-radius: var(--sl-radius-sm);
-  background: transparent;
-  color: var(--semantic-white);
+  background: var(--sl-color-lime);
+  color: var(--sl-color-black);
   font-size: 0.76rem;
   font-weight: 650;
   line-height: 1.25;
@@ -637,8 +637,8 @@ body {
 
 .strategy-button:hover,
 .strategy-button:focus-visible {
-  background: color-mix(in srgb, var(--sl-color-graphite) 60%, var(--sl-color-black));
-  border-color: color-mix(in srgb, var(--sl-color-sage) 65%, var(--sl-color-black));
+  background: var(--sl-accent-pressed);
+  border-color: var(--sl-accent-pressed);
   transform: translateY(-2px);
 }
 
@@ -660,7 +660,7 @@ body {
 }
 
 .strategy-button svg {
-  color: var(--semantic-lime);
+  color: currentColor;
   transition: transform var(--sl-duration-fast) ease;
 }
 

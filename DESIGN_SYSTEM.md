@@ -78,7 +78,7 @@ Prefer connected grids over collections of floating cards. Avoid glassmorphism, 
 
 ## Interface primitives
 
-- Primary action on dark surfaces: transparent Obsidian fill, fine Graphite border, Warm White text, and a Signal Lime directional arrow. Hover adds a restrained Graphite fill and brightens the border while moving the arrow up and right.
+- Primary action on dark surfaces: Signal Lime fill and border with Obsidian text and directional arrow. Hover darkens the Lime fill and moves the arrow up and right.
 - Primary action on light surfaces: Obsidian fill, Warm White text, and a Signal Lime directional arrow.
 - Secondary action: transparent surface, Graphite border, explicit directional icon.
 - Text link: short label, visible direction, strong hover/focus state.
