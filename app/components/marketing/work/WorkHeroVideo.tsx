@@ -28,7 +28,6 @@ export function WorkHeroVideo() {
     // WebKit checks the muted attribute when the video enters the document.
     const player = document.createElement("video");
     player.className = "work-hero__media work-hero__video";
-    player.autoplay = true;
     player.loop = true;
     player.defaultMuted = true;
     player.muted = true;
@@ -36,8 +35,15 @@ export function WorkHeroVideo() {
     player.preload = "metadata";
     player.src = video;
     let hasPlayed = false;
+    let visible = true;
+    let blocked = false;
+    let observer: IntersectionObserver | null = null;
     const showVideo = () => {
       hasPlayed = true;
+      if (!visible) {
+        player.pause();
+        return;
+      }
       setVideoPlaying(true);
     };
     const showPoster = () => setVideoPlaying(false);
@@ -47,21 +53,30 @@ export function WorkHeroVideo() {
     videoSlotRef.current.append(player);
 
     const play = () => {
-      void player.play().catch(showPoster);
+      if (blocked || !player.isConnected) return;
+      void player.play().catch(() => {
+        if (!player.isConnected) return;
+        blocked = true;
+        observer?.disconnect();
+        player.remove();
+        showPoster();
+      });
     };
-    const observer = "IntersectionObserver" in window
+    observer = "IntersectionObserver" in window
       ? new IntersectionObserver(([entry]) => {
+          visible = entry.isIntersecting;
           if (entry.isIntersecting) {
             if (hasPlayed && player.paused) {
               play();
             }
-          } else {
+          } else if (hasPlayed) {
             player.pause();
             showPoster();
           }
         })
       : null;
     observer?.observe(player);
+    play();
     return () => {
       observer?.disconnect();
       player.removeEventListener("playing", showVideo);
