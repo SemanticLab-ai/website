@@ -1,6 +1,5 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { SolutionsSection } from "./SolutionsSection";
-import { ServicesCapabilities } from "~/components/marketing/services/ServicesCapabilities";
 import { Link } from "react-router";
 import { NetworkHeroMotion } from "~/components/marketing/shared/network-motion/NetworkHeroMotion";
 import { EngagementNetworkBackdrop } from "./EngagementNetworkBackdrop";
@@ -16,13 +15,13 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
         <div className="semantic-shell semantic-hero__inner">
           <div className="semantic-hero__copy">
             <h1 id="hero-title" className="semantic-hero__opportunity-title">
-              <span>We turn AI into your</span>{" "}
-              <em>competitive advantage.</em>
+              <span>AI systems that do</span>{" "}
+              <em>the actual work.</em>
             </h1>
             <p className="semantic-hero__intro">
-              We’re a Melbourne-based AI studio building custom AI solutions,
-              business automation and digital products that save time, improve
-              operations and support growth.
+              SemanticLab is a founder-led AI studio. We design, build and deploy
+              custom AI systems that remove busywork, unlock revenue and compound
+              every month they run.
             </p>
             <div className="semantic-actions">
               <a className="strategy-button" href={strategyHref}>
@@ -40,8 +39,6 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
       </section>
 
       <SolutionsSection />
-
-      <ServicesCapabilities engagementHref="/services#engagement-path" splitHeading />
 
       <section id="about" className="founders-section">
         <div className="semantic-shell">

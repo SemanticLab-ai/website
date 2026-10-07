@@ -1,68 +1,59 @@
-import { ArrowRight, Scan, Orbit, Workflow, Shapes, Box } from "lucide-react";
-import { Link } from "react-router";
+import { Bot, ChartNoAxesCombined, Database, Workflow } from "lucide-react";
 import "./solutions-section.css";
 
 const services = [
   {
-    icon: Scan,
-    title: "AI & business transformation",
-    copy: "Find the opportunities where intelligence can make a meaningful difference.",
-  },
-  {
-    icon: Orbit,
-    title: "New digital products",
-    copy: "Turn ideas and emerging opportunities into useful, scalable products.",
+    icon: Bot,
+    title: "AI Agents",
+    copy: "Autonomous agents that qualify leads, answer customers and handle ops tasks around the clock.",
   },
   {
     icon: Workflow,
-    title: "Intelligent workflows",
-    copy: "Connect the moving parts. Create simpler, smarter ways of working.",
+    title: "Workflow Automation",
+    copy: "We map your manual processes and rebuild them as reliable, AI-powered pipelines.",
   },
   {
-    icon: Shapes,
-    title: "Product & experience design",
-    copy: "Design experiences that people understand, trust and want to use.",
+    icon: Database,
+    title: "Knowledge Systems",
+    copy: "Turn scattered docs, CRMs and inboxes into a single source of truth your team can query.",
   },
   {
-    icon: Box,
-    title: "Data & intelligent systems",
-    copy: "Bring your data together and turn it into decisions you can act on.",
+    icon: ChartNoAxesCombined,
+    title: "AI Strategy",
+    copy: "A focused audit that pinpoints where AI will move the needle — and where it will not.",
   },
 ];
 
 export function SolutionsSection() {
   return (
-      <section id="solutions" className="solutions-section" aria-labelledby="solutions-title">
-        <div className="semantic-shell">
+    <section id="solutions" className="solutions-section" aria-labelledby="solutions-title">
+      <div className="semantic-shell">
         <div className="solutions-heading">
-          <div>
-            <h2 id="solutions-title">
-              Different challenges.
-              <br />A clear path forward.
-            </h2>
-            <p>
-              We help you identify, design and build intelligent
-              <br className="solutions-desktop" /> solutions where they create real
-              value.
-            </p>
-          </div>
-          <Link to="/services" className="solutions-link">
-            Explore all solutions <ArrowRight size={18} aria-hidden="true" />
-          </Link>
+          <p className="solutions-eyebrow">What we build</p>
+          <h2 id="solutions-title">
+            Practical AI, engineered
+            <br className="solutions-desktop" /> around your business.
+          </h2>
+          <p className="solutions-intro">
+            No slide decks, no science projects. We ship production systems your
+            team uses on day one.
+          </p>
         </div>
         <div className="solutions-grid">
-          {services.map(({ icon: Icon, title, copy }) => (
-            <Link className="solution-card" to="/services" key={title}>
-              <Icon size={38} strokeWidth={1.1} aria-hidden="true" />
+          {services.map(({ icon: Icon, title, copy }, index) => (
+            <article className="solution-card" key={title}>
+              <div className="solution-card__topline">
+                <span className="solution-card__icon">
+                  <Icon size={20} strokeWidth={1.7} aria-hidden="true" />
+                </span>
+                <span className="solution-card__number">0{index + 1}</span>
+              </div>
               <h3>{title}</h3>
               <p>{copy}</p>
-              <span>
-                Learn more <ArrowRight size={17} aria-hidden="true" />
-              </span>
-            </Link>
+            </article>
           ))}
         </div>
-        </div>
-      </section>
+      </div>
+    </section>
   );
 }
