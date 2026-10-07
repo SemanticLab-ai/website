@@ -39,6 +39,15 @@ export function Navigation() {
     };
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileMenuOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [mobileMenuOpen]);
+
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <div className="site-header__inner">
