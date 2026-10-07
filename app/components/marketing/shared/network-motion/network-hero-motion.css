@@ -56,6 +56,12 @@
   .semantic-network { top: calc(14% - 80px); }
 }
 
+@media (min-width: 760px) and (max-width: 1199px) {
+  .semantic-hero--network .semantic-hero__copy {
+    background: linear-gradient(90deg, var(--semantic-ink) 72%, transparent);
+  }
+}
+
 @media (max-width: 759px) {
   .semantic-hero--network { display: block; min-height: 0; }
   .semantic-hero--network .semantic-hero__inner { min-height: 0; padding-bottom: 0; pointer-events: auto; }

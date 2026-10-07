@@ -1,4 +1,4 @@
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { SolutionsSection } from "./SolutionsSection";
 import { ServicesCapabilities } from "~/components/marketing/services/ServicesCapabilities";
 import { Link } from "react-router";
@@ -16,22 +16,22 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
         <div className="semantic-shell semantic-hero__inner">
           <div className="semantic-hero__copy">
             <h1 id="hero-title" className="semantic-hero__opportunity-title">
-              <span>We find where</span>{" "}
-              <span>AI can create an</span>{" "}
-              <em>advantage</em> then build it.
+              <span>We turn AI into your</span>{" "}
+              <em>competitive advantage.</em>
             </h1>
             <p className="semantic-hero__intro">
-              We connect strategy, product design and engineering to turn complex
-              business problems into intelligent products, workflows and systems.
+              We’re a Melbourne-based AI studio building custom AI solutions,
+              business automation and digital products that save time, improve
+              operations and support growth.
             </p>
             <div className="semantic-actions">
               <a className="strategy-button" href={strategyHref}>
                 Find your AI opportunity
-                <ArrowUpRight aria-hidden="true" />
+                <ArrowRight aria-hidden="true" />
               </a>
               <a className="semantic-text-link" href="#work">
                 See our work
-                <ArrowDownRight aria-hidden="true" />
+                <ArrowRight aria-hidden="true" />
               </a>
             </div>
           </div>
