@@ -174,6 +174,24 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   };
 
   const onMove = (event: PointerEvent<SVGSVGElement>) => {
+    const currentDrag = dragRef.current;
+    if (currentDrag?.pointerId === event.pointerId) {
+      if (event.buttons === 0) {
+        finishDrag(event.pointerId);
+        return;
+      }
+      const point = svgPoint(event);
+      if (!point) return;
+      const nextDrag = {
+        ...currentDrag,
+        x: point.x + currentDrag.grabX,
+        y: point.y + currentDrag.grabY,
+        moved: currentDrag.moved || Math.hypot(point.x - currentDrag.downX, point.y - currentDrag.downY) > 5,
+      };
+      dragRef.current = nextDrag;
+      setDrag(nextDrag);
+      return;
+    }
     if (event.pointerType === "touch") {
       const gesture = touchRef.current;
       if (!gesture || gesture.pointerId !== event.pointerId) return;
@@ -187,21 +205,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
     }
     const point = svgPoint(event);
     if (!point) return;
-    const currentDrag = dragRef.current;
-    if (currentDrag?.pointerId === event.pointerId) {
-      if (event.buttons === 0) {
-        finishDrag(event.pointerId);
-        return;
-      }
-      const nextDrag = {
-        ...currentDrag,
-        x: point.x + currentDrag.grabX,
-        y: point.y + currentDrag.grabY,
-        moved: currentDrag.moved || Math.hypot(point.x - currentDrag.downX, point.y - currentDrag.downY) > 5,
-      };
-      dragRef.current = nextDrag;
-      setDrag(nextDrag);
-    } else if (!currentDrag) {
+    if (!currentDrag) {
       setPointer(point);
       const scaleMatrix = event.currentTarget.getScreenCTM();
       const scale = scaleMatrix ? Math.hypot(scaleMatrix.a, scaleMatrix.b) : 1;
@@ -226,6 +230,8 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
       return;
     }
     if (!event.isPrimary) return;
+    // A node's pointer-down starts direct manipulation before this bubbling handler runs.
+    if (dragRef.current?.pointerId === event.pointerId) return;
     // A touch can land on any SVG child; the subsequent synthetic click must not clear its selection.
     suppressCanvasClick.current = true;
     touchRef.current = {
@@ -236,12 +242,12 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   };
 
   const onDown = (event: PointerEvent<SVGCircleElement>, id: number) => {
-    if (event.pointerType === "touch") return;
     if (nodes[id].label && event.button === 0) {
       focusNode(id);
       triggerRipple(id);
+      if (event.pointerType === "touch") touchHaptic();
     }
-    if (event.button !== 0 || reducedMotion || dragRef.current) return;
+    if (event.button !== 0 || dragRef.current) return;
     const point = svgPoint(event);
     if (!point) return;
     suppressCanvasClick.current = true;
@@ -265,6 +271,10 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
     dragRef.current = null;
     setDrag(null);
     if (!currentDrag.moved) {
+      setRelease(null);
+      return;
+    }
+    if (reducedMotion) {
       setRelease(null);
       return;
     }
@@ -354,7 +364,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
               pointerEvents="none"
             />}
             <circle
-              cx={hitPoint.x} cy={hitPoint.y} r={node.label ? 42 : node.radius + 12}
+              cx={hitPoint.x} cy={hitPoint.y} r={node.label ? 58 : node.radius + 12}
               fill="transparent"
               tabIndex={node.label ? 0 : undefined}
               role={node.label ? "button" : undefined}
@@ -365,7 +375,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
               onLostPointerCapture={onUp}
               onFocus={() => focusNode(id)}
               onKeyDown={(event) => onKey(event, id)}
-              style={{ cursor: drag?.id === id ? "grabbing" : "grab", touchAction: "pan-y", outline: "none" }}
+              style={{ cursor: drag?.id === id ? "grabbing" : "grab", touchAction: "none", outline: "none" }}
             />
             <circle
               cx={point.x} cy={point.y}
