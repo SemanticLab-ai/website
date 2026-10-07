@@ -129,7 +129,15 @@ export function DeckPresentation({
     }
 
     function handleKeyDown(event: KeyboardEvent) {
-      if (isTextInput(event.target)) {
+      if (isTextInput(event.target) || document.querySelector("dialog[open]")) {
+        return;
+      }
+
+      if (
+        ["Enter", " "].includes(event.key) &&
+        event.target instanceof HTMLElement &&
+        event.target.closest("button, a, video, [role='button']")
+      ) {
         return;
       }
 

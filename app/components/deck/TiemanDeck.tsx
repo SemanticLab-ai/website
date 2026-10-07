@@ -13,11 +13,13 @@ import Layers3 from "lucide-react/dist/esm/icons/layers-3";
 import LayoutDashboard from "lucide-react/dist/esm/icons/layout-dashboard";
 import Network from "lucide-react/dist/esm/icons/network";
 import PanelsTopLeft from "lucide-react/dist/esm/icons/panels-top-left";
+import Play from "lucide-react/dist/esm/icons/play";
 import RotateCcw from "lucide-react/dist/esm/icons/rotate-ccw";
 import Sheet from "lucide-react/dist/esm/icons/sheet";
 import ShieldCheck from "lucide-react/dist/esm/icons/shield-check";
 import Users from "lucide-react/dist/esm/icons/users";
 import Workflow from "lucide-react/dist/esm/icons/workflow";
+import X from "lucide-react/dist/esm/icons/x";
 import {
   DeckPresentation,
   DeckSlideFrame,
@@ -583,6 +585,19 @@ function FragmentedEstateSlide() {
 }
 
 function SolutionStackSlide() {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const filmRef = useRef<HTMLVideoElement>(null);
+
+  function openFilm() {
+    dialogRef.current?.showModal();
+    void filmRef.current?.play().catch(() => {});
+  }
+
+  function closeFilm() {
+    filmRef.current?.pause();
+    dialogRef.current?.close();
+  }
+
   return (
     <DeckSlideFrame
       index={7}
@@ -596,6 +611,10 @@ function SolutionStackSlide() {
           <span>One trusted foundation</span><br />
           <span>for Tieman&apos;s <em>data and AI.</em></span>
         </h2>
+        <button className="tieman-solution-stack__film-button" type="button" onClick={openFilm}>
+          <Play aria-hidden="true" />
+          Watch the concept film <span>00:41</span>
+        </button>
       </div>
 
       <div className="tieman-solution-stack__architecture">
@@ -635,6 +654,28 @@ function SolutionStackSlide() {
           </div>
         </section>
       </div>
+      <dialog
+        aria-label="One trusted foundation for Tieman concept film"
+        className="tieman-solution-stack__film-dialog"
+        ref={dialogRef}
+        onClose={() => filmRef.current?.pause()}
+      >
+        <div className="tieman-solution-stack__film-header">
+          <span>One trusted foundation for Tieman</span>
+          <button type="button" onClick={closeFilm} aria-label="Close film">
+            <X aria-hidden="true" />
+          </button>
+        </div>
+        <video
+          ref={filmRef}
+          controls
+          playsInline
+          preload="none"
+          poster="/images/deck/tieman/foundation-poster.png"
+          src="/videos/deck/tieman/foundation.mp4"
+          aria-label="Animated concept of a unified Tieman data and AI foundation"
+        />
+      </dialog>
     </DeckSlideFrame>
   );
 }

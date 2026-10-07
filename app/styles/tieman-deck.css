@@ -1552,6 +1552,98 @@
   white-space: nowrap;
 }
 
+.tieman-solution-stack__heading {
+  position: relative;
+}
+
+.tieman-solution-stack__film-button {
+  position: absolute;
+  right: 0;
+  bottom: 0.25cqw;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65cqw;
+  padding: 0.75cqw 0.9cqw;
+  border: 1px solid var(--sl-border);
+  background: var(--sl-surface-1);
+  color: var(--sl-text-primary);
+  font: inherit;
+  font-size: 0.72cqw;
+  cursor: pointer;
+}
+
+.tieman-solution-stack__film-button:hover,
+.tieman-solution-stack__film-button:focus-visible {
+  border-color: var(--sl-accent);
+}
+
+.tieman-solution-stack__film-button:focus-visible,
+.tieman-solution-stack__film-header button:focus-visible {
+  outline: 2px solid var(--sl-accent);
+  outline-offset: 3px;
+}
+
+.tieman-solution-stack__film-button svg {
+  width: 1cqw;
+  height: 1cqw;
+  fill: currentColor;
+}
+
+.tieman-solution-stack__film-button span {
+  color: var(--sl-text-secondary);
+}
+
+.tieman-solution-stack__film-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(96vw, 1440px);
+  max-width: none;
+  max-height: 96dvh;
+  height: fit-content;
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--sl-color-graphite);
+  background: var(--sl-color-black);
+  color: var(--sl-color-white);
+}
+
+.tieman-solution-stack__film-dialog::backdrop {
+  background: rgb(0 0 0 / 88%);
+}
+
+.tieman-solution-stack__film-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+}
+
+.tieman-solution-stack__film-header button {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid var(--sl-color-graphite);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.tieman-solution-stack__film-header button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.tieman-solution-stack__film-dialog video {
+  display: block;
+  width: 100%;
+  max-height: calc(96dvh - 3.5rem);
+  aspect-ratio: 16 / 9;
+  background: var(--sl-color-black);
+}
+
 .tieman-solution-stack__architecture {
   display: flex;
   align-items: center;
@@ -3666,6 +3758,19 @@
 
   .tieman-solution-stack__heading {
     display: block;
+  }
+
+  .tieman-solution-stack__film-button {
+    position: static;
+    gap: 10px;
+    margin-top: 24px;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  .tieman-solution-stack__film-button svg {
+    width: 16px;
+    height: 16px;
   }
 
   .tieman-solution-stack__architecture {

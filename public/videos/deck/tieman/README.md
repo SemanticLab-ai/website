@@ -12,3 +12,10 @@ Limit output to five seconds, libx264 CRF 20, yuv420p, faststart.
 ## Closing sparks
 
 Welding clip seconds 0.8–1.8 (original 14.08–15.08), slowed to 20% using the same interpolation filter. Five-second silent playback on Questions, then hold the final frame, with reduced-motion still fallback.
+
+## Foundation concept film
+
+`foundation.mp4` is the 41.48-second, silent Remotion render from
+`../../../../../remotion-tieman/out/semanticlab-tieman-foundation.mp4`.
+`/deck/tieman-tankers` opens it from slide 7 on demand. Its poster is
+`public/images/deck/tieman/foundation-poster.png`.
