@@ -1,7 +1,9 @@
 import { useLoaderData } from "react-router";
 import type { Route } from "./+types/work-case-study";
 import { CaseStudyPage } from "~/components/marketing/work/CaseStudyPage";
+import { SponsoredFeedsArticle, sponsoredFeedsSeo } from "~/components/marketing/work/SponsoredFeedsArticle";
 import { getCaseStudy, getNextCaseStudy } from "~/data/case-studies";
+import { indexingAllowed } from "~/lib/deployment";
 
 export function loader({ params }: Route.LoaderArgs) {
   const caseStudy = getCaseStudy(params.slug);
@@ -22,14 +24,22 @@ export function meta({ data }: Route.MetaArgs) {
   }
 
   const { caseStudy } = data;
-  const title = `${caseStudy.name} Case Study | SemanticLab`;
-  const description = caseStudy.summary;
+  const isSponsoredFeeds = caseStudy.slug === "sponsoredfeeds";
+  const title = isSponsoredFeeds
+    ? sponsoredFeedsSeo.title
+    : `${caseStudy.name} Case Study | SemanticLab`;
+  const description = isSponsoredFeeds
+    ? sponsoredFeedsSeo.description
+    : caseStudy.summary;
   const image = `https://semanticlab.ai${caseStudy.image}`;
   const url = `https://semanticlab.ai/work/${caseStudy.slug}`;
 
   return [
     { title },
     { name: "description", content: description },
+    ...(!indexingAllowed
+      ? [{ name: "robots", content: "noindex, nofollow, noarchive" }]
+      : []),
     { property: "og:title", content: title },
     { property: "og:description", content: description },
     { property: "og:image", content: image },
@@ -45,6 +55,10 @@ export function meta({ data }: Route.MetaArgs) {
 
 export default function WorkCaseStudyRoute() {
   const { caseStudy, nextCaseStudy } = useLoaderData<typeof loader>();
+
+  if (caseStudy.slug === "sponsoredfeeds") {
+    return <SponsoredFeedsArticle nextCaseStudy={nextCaseStudy} />;
+  }
 
   return (
     <CaseStudyPage
