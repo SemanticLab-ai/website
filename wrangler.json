@@ -11,8 +11,31 @@
     "enabled": true
   },
   "upload_source_maps": true,
+  "send_email": [
+    {
+      "name": "LEAD_EMAIL",
+      "destination_address": "hello@semanticlab.ai",
+      "allowed_sender_addresses": ["forms@semanticlab.ai"]
+    }
+  ],
+  "secrets_store_secrets": [
+    {
+      "binding": "TURNSTILE_SECRET",
+      "store_id": "725326749fcd41b5b4d752f88c911231",
+      "secret_name": "SEMANTICLAB_STRATEGY_TURNSTILE_SECRET"
+    }
+  ],
+  "ratelimits": [
+    {
+      "name": "LEAD_RATE_LIMIT",
+      "namespace_id": "291327",
+      "simple": { "limit": 3, "period": 60 }
+    }
+  ],
   "vars": {
     "SL_DEPLOY_ENV": "production",
+    "SL_FEATURE_DIRECT_FORM": "false",
+    "SL_LEAD_EMAIL_ENABLED": "false",
     "SL_FEATURE_NETWORK_MOTION": "true",
     "SL_FEATURE_WORK_HERO_VIDEO": "true",
     "SL_FEATURE_WORK_PRODUCTS_GALLERY": "true",

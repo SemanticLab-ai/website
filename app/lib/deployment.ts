@@ -5,6 +5,12 @@ export const deploymentEnvironment: DeploymentEnvironment =
 
 export const isPreviewBuild = deploymentEnvironment === "preview";
 
+export const directFormEnabled =
+  import.meta.env.VITE_SL_FEATURE_DIRECT_FORM === "true";
+
+export const turnstileSiteKey =
+  import.meta.env.VITE_SL_TURNSTILE_SITE_KEY || null;
+
 export const analyticsEnabled =
   deploymentEnvironment === "production" &&
   import.meta.env.VITE_SL_ANALYTICS_ENABLED !== "false";

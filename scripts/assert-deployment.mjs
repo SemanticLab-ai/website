@@ -52,6 +52,9 @@ assert(
 assert(
   contract.preview.analyticsEnabled === false &&
     contract.preview.indexingAllowed === false &&
+    contract.preview.features.directForm === true &&
+    contract.preview.leadEmailEnabled === false &&
+    contract.preview.turnstileSiteKey === null &&
     contract.preview.features.networkMotion === true &&
     contract.preview.features.workHeroVideo === true &&
     contract.preview.features.workProductsGallery === true &&
@@ -63,6 +66,9 @@ assert(
 assert(
   contract.production.analyticsEnabled === true &&
     contract.production.indexingAllowed === true &&
+    contract.production.features.directForm === false &&
+    contract.production.leadEmailEnabled === false &&
+    typeof contract.production.turnstileSiteKey === "string" &&
     contract.production.features.networkMotion === true &&
     contract.production.features.workHeroVideo === true &&
     contract.production.features.workProductsGallery === true &&
@@ -80,6 +86,12 @@ for (const [name, artifact] of [
   assert(
     artifact.environment === expectedEnvironment,
     `${name} artifact is ${artifact.environment}, expected ${expectedEnvironment}.`,
+  );
+  assert(
+    artifact.features.directForm === contract[expectedEnvironment].features.directForm &&
+      artifact.leadEmailEnabled === contract[expectedEnvironment].leadEmailEnabled &&
+      artifact.turnstileSiteKey === contract[expectedEnvironment].turnstileSiteKey,
+    `${name} form delivery contract does not match the source contract.`,
   );
   assert(
     artifact.analyticsEnabled ===
@@ -149,6 +161,8 @@ const flattened = JSON.parse(
 );
 assert(
   wrangler.vars.SL_DEPLOY_ENV === "production" &&
+    wrangler.vars.SL_FEATURE_DIRECT_FORM === "false" &&
+    wrangler.vars.SL_LEAD_EMAIL_ENABLED === "false" &&
     wrangler.vars.SL_FEATURE_NETWORK_MOTION === "true" &&
     wrangler.vars.SL_FEATURE_WORK_HERO_VIDEO === "true" &&
     wrangler.vars.SL_FEATURE_WORK_PRODUCTS_GALLERY === "true" &&
@@ -158,12 +172,28 @@ assert(
   "Source bindings must match the approved production defaults.",
 );
 assert(
+  wrangler.send_email?.length === 1 &&
+    wrangler.send_email[0].name === "LEAD_EMAIL" &&
+    wrangler.send_email[0].destination_address === "hello@semanticlab.ai" &&
+    JSON.stringify(wrangler.send_email[0].allowed_sender_addresses) ===
+      JSON.stringify(["forms@semanticlab.ai"]) &&
+    wrangler.ratelimits?.length === 1 &&
+    wrangler.ratelimits[0].name === "LEAD_RATE_LIMIT" &&
+    wrangler.secrets_store_secrets?.length === 1 &&
+    wrangler.secrets_store_secrets[0].binding === "TURNSTILE_SECRET" &&
+    wrangler.secrets_store_secrets[0].store_id === "725326749fcd41b5b4d752f88c911231" &&
+    wrangler.secrets_store_secrets[0].secret_name === "SEMANTICLAB_STRATEGY_TURNSTILE_SECRET",
+  "Source bindings must restrict lead mail to the SemanticLab inbox.",
+);
+assert(
   !("SL_FEATURE_GALAXY_MOTION" in wrangler.vars),
   "Retired galaxy flag must not remain in source bindings.",
 );
 const expected = contract[expectedEnvironment];
 for (const [key, value] of Object.entries({
   SL_DEPLOY_ENV: expectedEnvironment,
+  SL_FEATURE_DIRECT_FORM: String(expected.features.directForm),
+  SL_LEAD_EMAIL_ENABLED: String(expected.leadEmailEnabled),
   SL_FEATURE_NETWORK_MOTION: String(expected.features.networkMotion),
   SL_FEATURE_WORK_HERO_VIDEO: String(expected.features.workHeroVideo),
   SL_FEATURE_WORK_PRODUCTS_GALLERY: String(expected.features.workProductsGallery),
@@ -180,6 +210,20 @@ assert(
   flattened.name === wrangler.name && flattened.preview_urls === true,
   "Flattened artifact must retain shared Worker and preview URLs.",
 );
+if (expectedEnvironment === "preview") {
+  assert(
+    !flattened.send_email?.length && !flattened.ratelimits?.length &&
+      !flattened.secrets_store_secrets?.length,
+    "Preview artifact must have no email, rate-limit, or secret binding.",
+  );
+} else {
+  assert(
+    JSON.stringify(flattened.send_email) === JSON.stringify(wrangler.send_email) &&
+      JSON.stringify(flattened.ratelimits) === JSON.stringify(wrangler.ratelimits) &&
+      JSON.stringify(flattened.secrets_store_secrets) === JSON.stringify(wrangler.secrets_store_secrets),
+    "Production artifact must retain restricted lead bindings.",
+  );
+}
 assert(
   !("SL_FEATURE_GALAXY_MOTION" in flattened.vars),
   "Retired galaxy flag must not remain in flattened bindings.",

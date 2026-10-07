@@ -3,23 +3,29 @@
     "analyticsEnabled": false,
     "indexingAllowed": false,
     "features": {
+      "directForm": true,
       "networkMotion": true,
       "workHeroVideo": true,
       "workProductsGallery": true,
       "founderExperienceGallery": true
     },
-    "cloudflareCommand": "wrangler versions upload"
+    "cloudflareCommand": "wrangler versions upload",
+    "leadEmailEnabled": false,
+    "turnstileSiteKey": null
   },
   "production": {
     "analyticsEnabled": true,
     "indexingAllowed": true,
     "features": {
+      "directForm": false,
       "networkMotion": true,
       "workHeroVideo": true,
       "workProductsGallery": true,
       "founderExperienceGallery": true
     },
     "cloudflareCommand": "wrangler deploy",
+    "leadEmailEnabled": false,
+    "turnstileSiteKey": "0x4AAAAAAFQJq0KBSROttM6B",
     "canonicalOrigin": "https://semanticlab.ai",
     "googleTagManagerId": "GTM-XXXXXXX"
   }
