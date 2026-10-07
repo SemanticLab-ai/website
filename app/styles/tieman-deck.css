@@ -2037,7 +2037,6 @@
 }
 
 .tieman-why-us__profiles span,
-.tieman-proof__measure small,
 .tieman-flow__steps small,
 .tieman-next-step__outputs li {
   color: var(--sl-text-secondary);
@@ -2060,75 +2059,128 @@
   line-height: 1.5;
 }
 
-/* Proof */
-.tieman-proof .deck-slide__content {
+/* Founder experience */
+.tieman-founder-experience .deck-slide__content {
   display: grid;
-  grid-template-columns: 0.67fr 1.33fr;
-  grid-template-rows: 1fr;
-  column-gap: 5cqw;
+  align-content: center;
+  gap: 2.3cqw;
 }
 
-.tieman-proof__heading {
-  align-self: center;
+.tieman-founder-experience__heading h2 {
+  max-width: 88cqw;
+  margin-top: 1cqw;
+  font-size: 4.6cqw;
+  line-height: 0.96;
 }
 
-.tieman-proof__heading h2 {
-  max-width: 35cqw;
-  margin-top: 1.35cqw;
-  font-size: 3.8cqw;
-  line-height: 0.92;
+.tieman-founder-experience__heading h2 em {
+  color: var(--sl-accent);
 }
 
-.tieman-proof__rail {
-  align-self: center;
-  list-style: none;
+.tieman-founder-experience__gameday {
+  border: 1px solid var(--sl-border);
+  padding: 1.5cqw 2cqw 1.7cqw;
+  background: radial-gradient(circle at 10% 0%, rgba(139, 255, 77, 0.075), transparent 45%);
+}
+
+.tieman-founder-experience__gameday h3,
+.tieman-founder-experience__stories h3 {
+  font-size: 0.82cqw;
+  font-weight: var(--sl-weight-semibold);
+  letter-spacing: var(--sl-tracking-label);
+  text-transform: uppercase;
+}
+
+.tieman-founder-experience__gameday h3 span {
+  margin-left: 1.15cqw;
+  color: var(--sl-text-secondary);
+  font-size: 0.62cqw;
+}
+
+.tieman-founder-experience__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.3cqw;
+}
+
+.tieman-founder-experience__metrics > div + div {
+  border-left: 1px solid var(--sl-border);
+  padding-left: 2cqw;
+}
+
+.tieman-founder-experience__metrics dt {
+  color: var(--sl-accent);
+  font-size: 4.25cqw;
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.tieman-founder-experience__metrics dd {
+  max-width: 17cqw;
+  margin-top: 0.65cqw;
+  color: var(--sl-text-secondary);
+  font-size: 0.93cqw;
+  line-height: 1.35;
+}
+
+.tieman-founder-experience__stories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4cqw;
+}
+
+.tieman-founder-experience__stories section {
   border-top: 1px solid var(--sl-border);
-  padding: 0;
+  padding-top: 1.2cqw;
 }
 
-.tieman-proof__rail > li {
-  display: grid;
-  grid-template-columns: 2.7cqw 8.8cqw 10.2cqw 1fr;
-  min-height: 10.2cqw;
+.tieman-founder-experience__stories section:last-child {
+  border-top-color: var(--sl-accent);
+}
+
+.tieman-founder-experience__stories p {
+  max-width: 40cqw;
+  margin-top: 0.8cqw;
+  color: color-mix(in srgb, var(--sl-text-primary) 78%, transparent);
+  font-size: 1.17cqw;
+  line-height: 1.46;
+}
+
+/* Brand promise between the founder story and the close. */
+.sales-deck--tieman .tieman-brand-promise {
+  background:
+    radial-gradient(circle at 86% 74%, rgba(139, 255, 77, 0.12), transparent 35%),
+    var(--sl-canvas);
+}
+
+.tieman-brand-promise .deck-slide__content {
+  display: flex;
   align-items: center;
-  gap: 1.2cqw;
-  border-bottom: 1px solid var(--sl-border);
 }
 
-.tieman-proof__rail > li > span {
-  color: var(--sl-accent);
-  font-size: 0.6cqw;
-  letter-spacing: 0.12em;
+.tieman-brand-promise__copy {
+  max-width: 80cqw;
 }
 
-.tieman-proof__identity h3 {
-  margin-top: 0;
-  font-size: 1.28cqw;
+.tieman-brand-promise__copy h2 {
+  margin-top: 1.8cqw;
+  font-size: 6.4cqw;
+  line-height: 0.93;
+  letter-spacing: -0.06em;
 }
 
-.tieman-proof__measure small {
-  color: color-mix(in srgb, var(--sl-text-primary) 45%, transparent);
+.tieman-brand-promise__copy h2 em {
+  display: inline-block;
+  border-bottom: 0.22cqw solid var(--sl-accent);
+  padding-bottom: 0.12cqw;
 }
 
-.tieman-proof__measure strong {
-  display: block;
-  color: var(--sl-accent);
-  font-size: 1.6cqw;
-  font-weight: var(--sl-weight-light);
-}
-
-.tieman-proof__measure small {
-  display: block;
-  max-width: 9cqw;
-  margin-top: 0.3cqw;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-.tieman-proof__rail p {
-  color: color-mix(in srgb, var(--sl-text-primary) 58%, transparent);
-  font-size: 0.67cqw;
-  line-height: 1.52;
+.tieman-brand-promise__copy > p:last-child {
+  max-width: 50cqw;
+  margin-top: 2.6cqw;
+  color: color-mix(in srgb, var(--sl-text-primary) 68%, transparent);
+  font-size: 1.3cqw;
+  line-height: 1.55;
 }
 
 /* Proof in practice variation */
@@ -3186,7 +3238,7 @@
   .tieman-solution-stack__heading h2,
   .tieman-ripple__heading h2,
   .deck-slide .tieman-why-us__heading h2,
-  .tieman-proof__heading h2,
+  .tieman-founder-experience__heading h2,
   .tieman-double-diamond__heading h2,
   .tieman-operating-layer__heading h2,
   .tieman-flow__heading h2,
@@ -3334,7 +3386,7 @@
   .tieman-solution-stack .deck-slide__content,
   .tieman-ripple .deck-slide__content,
   .tieman-why-us .deck-slide__content,
-  .tieman-proof .deck-slide__content,
+  .tieman-founder-experience .deck-slide__content,
   .tieman-double-diamond .deck-slide__content,
   .tieman-operating-layer .deck-slide__content,
   .tieman-flow .deck-slide__content,
@@ -3512,7 +3564,6 @@
   .tieman-challenges__friction,
   .tieman-ripple__pipeline,
   .tieman-why-us__profiles,
-  .tieman-proof__rail,
   .tieman-double-diamond__process,
   .tieman-operating-layer__roadmap,
   .tieman-flow__steps,
@@ -3942,7 +3993,6 @@
   }
 
   .tieman-why-us__profiles span,
-  .tieman-proof__measure small,
   .tieman-flow__steps small,
   .tieman-next-step__outputs li {
     font-size: 0.56rem;
@@ -3958,36 +4008,86 @@
     font-size: 0.8rem;
   }
 
-  .tieman-proof__rail > li {
-    grid-template-columns: 34px 1fr;
-    min-height: 0;
-    gap: 12px 16px;
-    padding: 24px 0;
+  .tieman-founder-experience__heading h2 {
+    font-size: clamp(2.3rem, 10vw, 4rem);
+    line-height: 0.98;
   }
 
-  .tieman-proof__rail > li > span {
-    grid-row: 1 / span 3;
-    align-self: start;
-    padding-top: 4px;
-    font-size: 0.62rem;
+  .tieman-founder-experience__gameday {
+    margin-top: 32px;
+    padding: 20px 16px 24px;
   }
 
-  .tieman-proof__identity h3 {
-    margin-top: 0;
-    font-size: 1.35rem;
+  .tieman-founder-experience__gameday h3,
+  .tieman-founder-experience__stories h3 {
+    font-size: 0.65rem;
   }
 
-  .tieman-proof__measure strong {
-    font-size: 1.6rem;
+  .tieman-founder-experience__gameday h3 span {
+    margin-left: 10px;
+    font-size: 0.55rem;
   }
 
-  .tieman-proof__measure small {
-    max-width: none;
-    margin-top: 6px;
+  .tieman-founder-experience__metrics {
+    grid-template-columns: 1.18fr 0.78fr 1fr;
+    margin-top: 26px;
   }
 
-  .tieman-proof__rail p {
-    font-size: 0.78rem;
+  .tieman-founder-experience__metrics > div + div {
+    padding-left: 12px;
+  }
+
+  .tieman-founder-experience__metrics dt {
+    font-size: clamp(1.8rem, 8vw, 3.2rem);
+  }
+
+  .tieman-founder-experience__metrics dd {
+    max-width: 100%;
+    margin-top: 10px;
+    font-size: 0.64rem;
+  }
+
+  .tieman-founder-experience__stories {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 30px;
+  }
+
+  .tieman-founder-experience__stories section {
+    padding-top: 14px;
+  }
+
+  .tieman-founder-experience__stories p {
+    max-width: 35rem;
+    margin-top: 12px;
+    font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+    line-height: 1.5;
+  }
+
+  .tieman-brand-promise .deck-slide__content {
+    display: flex;
+    min-height: calc(100svh - 190px);
+  }
+
+  .tieman-brand-promise__copy {
+    max-width: 100%;
+  }
+
+  .tieman-brand-promise__copy h2 {
+    margin-top: 22px;
+    font-size: clamp(3.1rem, 12vw, 5.5rem);
+    line-height: 0.96;
+  }
+
+  .tieman-brand-promise__copy h2 em {
+    border-bottom-width: 2px;
+    padding-bottom: 2px;
+  }
+
+  .tieman-brand-promise__copy > p:last-child {
+    max-width: 35rem;
+    margin-top: 34px;
+    font-size: clamp(1rem, 2.8vw, 1.25rem);
   }
 
   .tieman-double-diamond__process {

@@ -24,7 +24,7 @@ import {
   type DeckSlide,
 } from "~/components/deck/DeckPresentation";
 
-const PRESENTATION_TOTAL_SLIDES = 10;
+const PRESENTATION_TOTAL_SLIDES = 11;
 const DISCOVERY_TOTAL_SLIDES = 15;
 
 const agendaItems = [
@@ -167,30 +167,6 @@ const practicalQuestions = [
   {
     topic: "Specify procurement",
     question: "I need to order a suspension for job TAXX. Can you read the spec and tell me which suspension model and ride height we used for this configuration before?",
-  },
-] as const;
-
-const proofPoints = [
-  {
-    index: "01",
-    name: "GameDay",
-    headline: "$250M+",
-    measure: "annual payment volume supported",
-    detail: "Large-scale operational data, payment orchestration and platform modernisation with 95%+ Stripe adoption.",
-  },
-  {
-    index: "02",
-    name: "PartsHQ",
-    headline: "100K+",
-    measure: "parts across a distributed platform",
-    detail: "Disconnected catalogue, supplier and commerce systems shaped into reliable workflow automation for six active clients.",
-  },
-  {
-    index: "03",
-    name: "Podly",
-    headline: "Evidence",
-    measure: "made usable inside the workflow",
-    detail: "Product workflows that connect requirements, evidence, ownership and decision clarity.",
   },
 ] as const;
 
@@ -922,48 +898,78 @@ function WhyUsSlide() {
 function QuestionsSlide() {
   return (
     <DeckSlideFrame
-      index={10}
+      index={11}
       total={PRESENTATION_TOTAL_SLIDES}
       descriptor=""
       className="tieman-questions"
     >
       <TiemanSlideFootage name="welding-slow" className="tieman-questions__image" />
       <div className="tieman-questions__shade" aria-hidden="true" />
-      <h2 id="deck-slide-10-title">Questions?</h2>
+      <h2 id="deck-slide-11-title">Questions?</h2>
     </DeckSlideFrame>
   );
 }
 
-function ProofSlide({ index = 10, total = DISCOVERY_TOTAL_SLIDES }: { index?: number; total?: number }) {
+function BrandPromiseSlide() {
+  return (
+    <DeckSlideFrame
+      index={10}
+      total={PRESENTATION_TOTAL_SLIDES}
+      descriptor="AI systems that do the actual work."
+      className="tieman-brand-promise"
+    >
+      <div className="tieman-brand-promise__copy">
+        <p className="deck-kicker">What SemanticLab builds</p>
+        <h2 id="deck-slide-10-title">
+          AI systems that do<br />
+          <em>the actual work.</em>
+        </h2>
+        <p>
+          SemanticLab is a founder-led AI studio. We design, build and deploy custom AI systems that remove busywork, unlock revenue and compound every month they run.
+        </p>
+      </div>
+    </DeckSlideFrame>
+  );
+}
+
+function FounderExperienceSlide({ index = 10, total = DISCOVERY_TOTAL_SLIDES }: { index?: number; total?: number }) {
   return (
     <DeckSlideFrame
       index={index}
       total={total}
-      descriptor="Relevant proof across data, platforms and workflow design."
-      className="tieman-proof"
+      descriptor="Raihan's product and technology experience at GameDay."
+      className="tieman-founder-experience"
     >
-      <div className="tieman-proof__heading">
-        <p className="deck-kicker">Proof of relevant work</p>
+      <header className="tieman-founder-experience__heading">
+        <p className="deck-kicker">Founder experience</p>
         <h2 id={`deck-slide-${index}-title`}>
-          Experience that maps to the <em>operating problem.</em>
+          <em>15 years</em> in product &amp; technology.
         </h2>
-      </div>
+      </header>
 
-      <ol className="tieman-proof__rail">
-        {proofPoints.map((proof) => (
-          <li key={proof.name}>
-            <span>{proof.index}</span>
-            <div className="tieman-proof__identity">
-              <h3>{proof.name}</h3>
-            </div>
-            <div className="tieman-proof__measure">
-              <strong>{proof.headline}</strong>
-              <small>{proof.measure}</small>
-            </div>
-            <p>{proof.detail}</p>
-          </li>
-        ))}
-      </ol>
+      <section className="tieman-founder-experience__gameday" aria-labelledby="tieman-gameday-title">
+        <h3 id="tieman-gameday-title">GameDay <span>Director of Technology · 7 years</span></h3>
+        <dl className="tieman-founder-experience__metrics">
+          <div><dt>$250M+</dt><dd>Annual payment volume supported</dd></div>
+          <div><dt>35</dt><dd>People led</dd></div>
+          <div><dt>$6M</dt><dd>Annual transformation budget</dd></div>
+        </dl>
+      </section>
+
+      <div className="tieman-founder-experience__stories">
+        <section aria-labelledby="tieman-scale-title">
+          <h3 id="tieman-scale-title">Operating at scale</h3>
+          <p>
+            I kept GameDay's distributed platform running while leading modernisation, data strategy and AI adoption—overcoming early resistance internally and bringing AI into the product.
+          </p>
+        </section>
+        <section aria-labelledby="tieman-origin-title">
+          <h3 id="tieman-origin-title">Why I started SemanticLab</h3>
+          <p>
+            AI is ready to do useful work in everyday operations. I started SemanticLab to bring that opportunity to other organisations with the same focus on reliability and delivery.
+          </p>
+        </section>
+      </div>
     </DeckSlideFrame>
   );
 }
@@ -1325,7 +1331,7 @@ const slides: readonly DeckSlide[] = [
     fragmentCount: 4,
     content: <DoubleDiamondSlide />,
   },
-  { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide /> },
+  { id: "tieman-proof", label: "Founder experience", content: <FounderExperienceSlide /> },
   {
     id: "tieman-operating-layer",
     label: "AI operating layer",
@@ -1429,7 +1435,8 @@ export function TiemanDeck({
     ? completeSlides.slice(closingSlideIndex + 1)
     : [
         ...completeSlides.slice(0, closingSlideIndex + 1),
-        { id: "tieman-proof", label: "Relevant proof", content: <ProofSlide index={9} total={PRESENTATION_TOTAL_SLIDES} /> },
+        { id: "tieman-proof", label: "Founder experience", content: <FounderExperienceSlide index={9} total={PRESENTATION_TOTAL_SLIDES} /> },
+        { id: "tieman-brand-promise", label: "What we build", content: <BrandPromiseSlide /> },
         { id: "tieman-questions", label: "Questions?", content: <QuestionsSlide /> },
       ];
 
