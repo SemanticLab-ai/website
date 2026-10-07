@@ -35,8 +35,8 @@
   ],
   "vars": {
     "SL_DEPLOY_ENV": "production",
-    "SL_FEATURE_DIRECT_FORM": "false",
-    "SL_LEAD_EMAIL_ENABLED": "false",
+    "SL_FEATURE_DIRECT_FORM": "true",
+    "SL_LEAD_EMAIL_ENABLED": "true",
     "SL_FEATURE_NETWORK_MOTION": "true",
     "SL_FEATURE_WORK_HERO_VIDEO": "true",
     "SL_FEATURE_WORK_PRODUCTS_GALLERY": "true",
