@@ -3,9 +3,9 @@ import { networkMotionEnabled } from "~/lib/deployment";
 import { IntelligentHome } from "~/components/marketing/home/IntelligentHome";
 
 export function meta({}: Route.MetaArgs) {
-  const title = "SemanticLab - Designing Intelligent Businesses";
+  const title = "SemanticLab - AI systems that do the actual work";
   const description =
-    "SemanticLab is a product innovation partner helping founders and business leaders move from strategic opportunity to intelligent products and systems.";
+    "SemanticLab is a founder-led AI studio. We design, build and deploy custom AI systems that remove busywork, unlock revenue and compound every month they run.";
   const ogImage = "/images/og-default.jpg";
   const url = "https://semanticlab.ai/";
 
