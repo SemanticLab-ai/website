@@ -98,7 +98,13 @@ async function smoke(disableFeature = false) {
     signal:AbortSignal.timeout(10_000),
    });
    oversizedResponseBody=await oversizedResponse.text();
-   if(oversizedResponse.status!==503 || !oversizedResponseBody.includes('Your worker restarted mid-request.')) break;
+   const workerRestarted=oversizedResponse.status===503 &&
+    oversizedResponseBody.includes('Your worker restarted mid-request.');
+   const miniflareConnectionLost=oversizedResponse.status===500 &&
+    oversizedResponseBody.includes('Error: Network connection lost.');
+   // Miniflare can lose the local connection when the Worker cancels this streamed body.
+   // Retry only its transport errors; the final response must still return 413.
+   if(!workerRestarted && !miniflareConnectionLost) break;
    await new Promise(resolve=>setTimeout(resolve,250));
   }
   assert.equal(
