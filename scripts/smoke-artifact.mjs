@@ -40,7 +40,7 @@ async function smoke(disableFeature = false) {
   for(const path of ['/services','/founders','/work','/design-system']) assert.equal((await fetch(`http://127.0.0.1:8788${path}`)).status,200,path);
   const servicesHtml=await (await fetch('http://127.0.0.1:8788/services')).text();
   assert.equal(servicesHtml.includes('Preview mode: your details are checked but no email is sent.'), preview, 'Direct form preview copy');
-  assert.equal(servicesHtml.includes('Preparing the request opens an email in your mail app.'), !preview, 'Production mailto fallback');
+  assert.equal(servicesHtml.includes('Your request is sent securely to SemanticLab.'), !preview, 'Production direct form copy');
   const leadForm=new URLSearchParams({
    name:'Preview Test', email:'preview@example.com', organisation:'Test Organisation', role:'',
    stage:'Exploring where to focus', horizon:'Timing is still open',
@@ -48,11 +48,11 @@ async function smoke(disableFeature = false) {
   });
   const leadResponse=await fetch('http://127.0.0.1:8788/services',{
    method:'POST',
-   headers:{ Origin:'http://127.0.0.1:8788', 'Content-Type':'application/x-www-form-urlencoded' },
+   headers:{ Origin:preview?'http://127.0.0.1:8788':'https://invalid.example', 'Content-Type':'application/x-www-form-urlencoded' },
    body:leadForm,
    signal:AbortSignal.timeout(10_000),
   });
-  assert.equal(leadResponse.status, preview ? 200 : 404, 'Server form gate');
+  assert.equal(leadResponse.status, preview ? 200 : 403, 'Server form origin gate');
   assert.equal((await leadResponse.text()).includes('No email was sent.'), preview, 'Preview delivery gate');
   const workHtml=await (await fetch('http://127.0.0.1:8788/work')).text();
   assert.equal(workHtml.includes('data-work-hero-video="true"'),featuresEnabled&&!disableFeature,'Work video must require both build and runtime flags');

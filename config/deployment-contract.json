@@ -17,14 +17,14 @@
     "analyticsEnabled": true,
     "indexingAllowed": true,
     "features": {
-      "directForm": false,
+      "directForm": true,
       "networkMotion": true,
       "workHeroVideo": true,
       "workProductsGallery": true,
       "founderExperienceGallery": true
     },
     "cloudflareCommand": "wrangler deploy",
-    "leadEmailEnabled": false,
+    "leadEmailEnabled": true,
     "turnstileSiteKey": "0x4AAAAAAFQJq0KBSROttM6B",
     "canonicalOrigin": "https://semanticlab.ai",
     "googleTagManagerId": "GTM-XXXXXXX"
