@@ -3,33 +3,33 @@ import { Link } from "react-router";
 import type { CaseStudy } from "~/data/case-studies";
 
 export const sponsoredFeedsSeo = {
-  title: "SponsoredFeeds: Grassroots Sponsorship Automation | SemanticLab",
+  title: "SponsoredFeeds: Sports Sponsorship Content Automation | SemanticLab",
   description:
-    "See how SemanticLab connected match data, sponsor-branded content, publishing and exposure reporting in SponsoredFeeds, a product for grassroots sport.",
+    "How SponsoredFeeds turns grassroots match results into sponsor-branded posts, with approval, publishing and exposure reporting in one workflow.",
   headline:
-    "SponsoredFeeds: from match results to sponsor-ready stories",
+    "SponsoredFeeds: from match results to sponsor-branded posts",
 };
 
 const workflow = [
   {
     number: "01",
-    title: "Bring the match into the system",
-    body: "Fixtures and results can arrive from supported league platforms such as PlayHQ, Dribl, GameDay, SportsEngine and LeagueApps, or a club can enter a score manually. The result becomes structured information instead of another message someone has to copy into a design tool.",
+    title: "Get the result",
+    body: "Fixtures and scores can come from supported league platforms such as PlayHQ, Dribl, GameDay, SportsEngine and LeagueApps. Clubs can also enter a result manually. Either way, the score enters the content workflow once.",
   },
   {
     number: "02",
-    title: "Match the moment to a sponsor",
-    body: "The content workflow selects the relevant sponsor treatment and applies club colours, crests and approved assets to a verified template. Scores and names remain data fields, so the final tile follows a consistent layout.",
+    title: "Build the sponsor tile",
+    body: "SponsoredFeeds pairs the match update with a sponsor and fills a verified template with team names, scores, club colours, crests and approved logos. The graphic is rendered from those fields rather than remade for every game.",
   },
   {
     number: "03",
-    title: "Give the club control of publishing",
-    body: "A finished asset can move to an approval step or an automated publishing path for Facebook and Instagram. Clubs can choose the level of review that fits their communications process.",
+    title: "Approve or publish",
+    body: "The club can review the finished post or use automated publishing to Facebook and Instagram. The approval path leaves a person in control when a match update needs a final check.",
   },
   {
     number: "04",
-    title: "Keep the evidence",
-    body: "The sponsor appearance is logged with its club, match, channel and time. Where channel data is available, reach and engagement can be brought into a report that helps the club show what was delivered.",
+    title: "Record the appearance",
+    body: "Each sponsor appearance is logged with its club, match, channel and time. Where the social platform provides data, reach and engagement can be added to the sponsor report.",
   },
 ] as const;
 
@@ -77,12 +77,13 @@ export function SponsoredFeedsArticle({
           <div className="sf-hero__main">
             <p className="sf-kicker">Built product / Grassroots sport</p>
             <h1 id="sf-title">
-              SponsoredFeeds: <em>from match results to sponsor-ready stories.</em>
+              SponsoredFeeds: <em>from match results to sponsor-branded posts.</em>
             </h1>
             <p className="sf-hero__intro">
-              A local match creates a moment worth sharing. SponsoredFeeds turns
-              that moment into club-branded content, gives sponsors a place in
-              the story, and records the exposure behind every appearance.
+              After the final whistle, someone still has to collect the score,
+              update a graphic, add the right sponsor and publish it.
+              SponsoredFeeds connects those steps and records each sponsor
+              appearance as the content goes out.
             </p>
             <div className="sf-hero__actions">
               <a
@@ -101,11 +102,11 @@ export function SponsoredFeedsArticle({
           <dl className="sf-hero__facts">
             <div>
               <dt>The challenge</dt>
-              <dd>Manual content and scattered sponsor obligations</dd>
+              <dd>Scores, logos and social posts in separate places</dd>
             </div>
             <div>
               <dt>The product</dt>
-              <dd>Match data to branded media and reporting</dd>
+              <dd>Sponsor-branded posts with an exposure record</dd>
             </div>
             <div>
               <dt>Current stage</dt>
@@ -128,8 +129,7 @@ export function SponsoredFeedsArticle({
               />
             </div>
             <figcaption>
-              The SponsoredFeeds product site, with a match result tile as the
-              visible output of the workflow.
+              A full-time result tile on the SponsoredFeeds product site.
             </figcaption>
           </figure>
         </div>
@@ -138,38 +138,36 @@ export function SponsoredFeedsArticle({
       <nav className="sf-contents" aria-label="In this article">
         <div className="semantic-shell sf-contents__inner">
           <span>In this story</span>
-          <a href="#the-challenge">The challenge</a>
-          <a href="#how-it-works">How it works</a>
-          <a href="#product-decisions">Product decisions</a>
-          <a href="#what-it-shows">What it shows</a>
+          <a href="#the-challenge">The problem</a>
+          <a href="#how-it-works">The workflow</a>
+          <a href="#product-decisions">Design choices</a>
+          <a href="#sponsor-proof">Sponsor reporting</a>
         </div>
       </nav>
 
       <section className="sf-section sf-section--paper" id="the-challenge" aria-labelledby="sf-challenge-title">
         <div className="semantic-shell sf-editorial-grid">
-          <div className="sf-section__label">The challenge</div>
+          <div className="sf-section__label">The problem</div>
           <div className="sf-prose">
             <h2 id="sf-challenge-title">
-              Grassroots sponsorship has a follow-through problem.
+              The match ends. The content work starts.
             </h2>
             <p className="sf-prose__lead">
-              The final whistle is only the beginning of a club&apos;s content
-              job. Someone still has to find the score, choose the right
-              sponsor, make a graphic, publish it, and remember what the sponsor
-              received.
+              A full-time result should be an easy post. For a local club, it
+              can mean checking the league score, finding the current sponsor
+              logo, editing a template, publishing from a phone and remembering
+              where the sponsor appeared.
             </p>
             <p>
-              In grassroots sport, those steps often live in different places:
-              a league platform for fixtures, a folder for logos, a design
-              template on someone&apos;s laptop, and a social account managed by a
-              volunteer or small team. The work is repetitive, but every post
-              still needs the right teams, score, branding and sponsor.
+              Those details sit across league platforms, design files and
+              social accounts. The person running club communications may be a
+              volunteer working after the game, but the post still needs the
+              correct teams, score, crest and sponsor branding.
             </p>
             <p>
-              SponsoredFeeds was shaped around that whole chain. The aim is to
-              make a match result useful beyond the scoreboard: as a timely
-              club update, a consistent sponsor appearance and a record that
-              can support a later sponsorship conversation.
+              SponsoredFeeds was built to carry the result through to a
+              finished post. It also keeps an appearance record, so a club can
+              show a sponsor where its brand was featured during the season.
             </p>
           </div>
         </div>
@@ -181,11 +179,12 @@ export function SponsoredFeedsArticle({
             <div className="sf-section__label">The workflow</div>
             <div className="sf-prose">
               <h2 id="sf-workflow-title">
-                How a match becomes a sponsor moment.
+                From final score to a logged sponsor post.
               </h2>
               <p className="sf-prose__lead">
-                SponsoredFeeds connects sports data, content generation,
-                publishing and exposure records in one repeatable flow.
+                The score enters once. SponsoredFeeds uses it to make the
+                graphic, move it through publishing and record the sponsor
+                appearance.
               </p>
             </div>
           </div>
@@ -203,53 +202,51 @@ export function SponsoredFeedsArticle({
 
       <section className="sf-section sf-section--paper" id="product-decisions" aria-labelledby="sf-decisions-title">
         <div className="semantic-shell sf-editorial-grid">
-          <div className="sf-section__label">Product decisions</div>
+          <div className="sf-section__label">Design choices</div>
           <div className="sf-prose">
             <h2 id="sf-decisions-title">
-              Automation works when the club can trust the output.
+              A wrong score is not an acceptable shortcut.
             </h2>
             <p className="sf-prose__lead">
-              The product separates decisions about what to create from the
-              rendering of the final asset. Intelligent orchestration can
-              guide the content moment; verified templates keep the score,
-              names, logos and layout in defined places.
+              AI helps decide which sponsor fits a match update. A verified
+              template renders the actual graphic, with defined fields for
+              team names, scores, club colours and sponsor assets.
             </p>
             <p>
-              That distinction matters in a live sports setting. A result tile
-              needs to be recognisably the club&apos;s, clear at social-media
-              size, and accurate enough to publish without rebuilding it by
-              hand. Managed template setup gives clubs a practical starting
-              point, while an approval path leaves room for human judgement.
+              This matters when a result goes out under a club&apos;s name. The
+              tile has to look like the club, read clearly on a phone and show
+              the correct score and sponsor. Managed template setup makes the
+              layout reusable; an approval step lets someone check it before
+              publication.
             </p>
             <p>
-              The same thinking extends to sponsors. A logo on a graphic is
-              one appearance; a logged appearance with match and channel
-              context is something a club can report on. SponsoredFeeds brings
-              those two sides of sponsorship activation into the same product.
+              Clubs that are comfortable with the setup can use auto-posting.
+              Clubs that want a final check can approve the same generated
+              asset. Both paths keep the match data, graphic and sponsor
+              appearance tied together.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="sf-section sf-section--sage" id="what-it-shows" aria-labelledby="sf-shows-title">
+      <section className="sf-section sf-section--sage" id="sponsor-proof" aria-labelledby="sf-shows-title">
         <div className="semantic-shell sf-editorial-grid">
-          <div className="sf-section__label">What it shows</div>
+          <div className="sf-section__label">Sponsor reporting</div>
           <div className="sf-prose">
             <h2 id="sf-shows-title">
-              A useful product connects the work behind the post.
+              The post goes live. The sponsor appearance is logged.
             </h2>
             <p className="sf-prose__lead">
-              SponsoredFeeds is a pilot-stage product built around a specific
-              operational need in grassroots sport. Its value is in the
-              connection between match data, club communications, sponsor
-              commitments and the evidence of delivery.
+              Each record includes the match, club, channel and time. Clubs can
+              build sponsor reports from that history and add reach or
+              engagement where the social platform provides it.
             </p>
             <p>
-              For SemanticLab, the work illustrates a product approach that
-              starts with the real workflow, designs for the people doing it,
-              and carries the idea through to the systems that make it run.
-              The public product site shows the current offer and pilot
-              availability.
+              A club gets a result tile ready to share. A sponsor can see which
+              posts carried its brand. SemanticLab designed and built the steps
+              between those two outcomes: sports data ingestion, sponsor
+              selection, template rendering, publishing and reporting.
+              SponsoredFeeds is currently taking pilot clubs.
             </p>
             <a
               className="sf-link sf-link--dark"
@@ -274,7 +271,7 @@ export function SponsoredFeedsArticle({
           </div>
           <div>
             <p className="sf-kicker">Work with SemanticLab</p>
-            <h2>What could a connected product make possible for your business?</h2>
+            <h2>Which manual job does your team repeat every week?</h2>
             <a className="strategy-button" href="/services#strategy-engagement">
               Request a Strategy Engagement <ArrowUpRight aria-hidden="true" />
             </a>
