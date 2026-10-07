@@ -5,7 +5,12 @@ const environment = process.argv[2];
 assert(['preview','production'].includes(environment));
 const preview = environment === 'preview';
 const contract = JSON.parse(await readFile(new URL('../config/deployment-contract.json', import.meta.url), 'utf8'));
-const featuresEnabled = Object.values(contract[environment].features).every(Boolean);
+const featuresEnabled = [
+ 'networkMotion',
+ 'workHeroVideo',
+ 'workProductsGallery',
+ 'founderExperienceGallery',
+].every(name => contract[environment].features[name]);
 async function smoke(disableFeature = false) {
  const args = ['dev','--config','build/server/wrangler.json','--port','8788'];
  if(disableFeature) args.push('--var','SL_FEATURE_NETWORK_MOTION:false');
@@ -33,6 +38,22 @@ async function smoke(disableFeature = false) {
   const robots=await (await fetch('http://127.0.0.1:8788/robots.txt')).text();
   assert.equal(/Disallow: \/(?:\n|$)/.test(robots),preview);
   for(const path of ['/services','/founders','/work','/design-system']) assert.equal((await fetch(`http://127.0.0.1:8788${path}`)).status,200,path);
+  const servicesHtml=await (await fetch('http://127.0.0.1:8788/services')).text();
+  assert.equal(servicesHtml.includes('Preview mode: your details are checked but no email is sent.'), preview, 'Direct form preview copy');
+  assert.equal(servicesHtml.includes('Preparing the request opens an email in your mail app.'), !preview, 'Production mailto fallback');
+  const leadForm=new URLSearchParams({
+   name:'Preview Test', email:'preview@example.com', organisation:'Test Organisation', role:'',
+   stage:'Exploring where to focus', horizon:'Timing is still open',
+   opportunity:'A meaningful test opportunity', outcome:'A useful test outcome', context:'', company_website:'',
+  });
+  const leadResponse=await fetch('http://127.0.0.1:8788/services',{
+   method:'POST',
+   headers:{ Origin:'http://127.0.0.1:8788', 'Content-Type':'application/x-www-form-urlencoded' },
+   body:leadForm,
+   signal:AbortSignal.timeout(10_000),
+  });
+  assert.equal(leadResponse.status, preview ? 200 : 404, 'Server form gate');
+  assert.equal((await leadResponse.text()).includes('No email was sent.'), preview, 'Preview delivery gate');
   const workHtml=await (await fetch('http://127.0.0.1:8788/work')).text();
   assert.equal(workHtml.includes('data-work-hero-video="true"'),featuresEnabled&&!disableFeature,'Work video must require both build and runtime flags');
   assert.equal(workHtml.includes('data-work-product-gallery="true"'),featuresEnabled&&!disableFeature,'Work product gallery must require both build and runtime flags');

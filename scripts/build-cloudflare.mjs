@@ -61,6 +61,8 @@ const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
 const buildEnvironment = {
   ...process.env,
   VITE_SL_DEPLOY_ENV: deploymentEnvironment,
+  VITE_SL_FEATURE_DIRECT_FORM: String(selected.features.directForm),
+  VITE_SL_TURNSTILE_SITE_KEY: selected.turnstileSiteKey || "",
   VITE_SL_ANALYTICS_ENABLED: String(selected.analyticsEnabled),
   VITE_SL_INDEXING_ALLOWED: String(selected.indexingAllowed),
   VITE_SL_FEATURE_NETWORK_MOTION: String(selected.features.networkMotion),
@@ -83,6 +85,8 @@ const artifact = {
   analyticsEnabled: selected.analyticsEnabled,
   indexingAllowed: selected.indexingAllowed,
   features: selected.features,
+  leadEmailEnabled: selected.leadEmailEnabled,
+  turnstileSiteKey: selected.turnstileSiteKey,
   cloudflareCommand: selected.cloudflareCommand,
   canonicalOrigin: selected.canonicalOrigin || null,
   googleTagManagerId: selected.googleTagManagerId || null,
@@ -103,6 +107,8 @@ const flattened = JSON.parse(await readFile(flattenedPath, "utf8"));
 flattened.vars = {
   ...flattened.vars,
   SL_DEPLOY_ENV: deploymentEnvironment,
+  SL_FEATURE_DIRECT_FORM: String(selected.features.directForm),
+  SL_LEAD_EMAIL_ENABLED: String(selected.leadEmailEnabled),
   SL_FEATURE_NETWORK_MOTION: String(selected.features.networkMotion),
   SL_FEATURE_WORK_HERO_VIDEO: String(selected.features.workHeroVideo),
   SL_FEATURE_WORK_PRODUCTS_GALLERY: String(selected.features.workProductsGallery),
@@ -110,6 +116,12 @@ flattened.vars = {
   SL_INDEXING_ALLOWED: String(selected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(selected.analyticsEnabled),
 };
+if (deploymentEnvironment === "preview") {
+  // Preview submissions exercise validation without access to mail or quotas.
+  flattened.send_email = [];
+  flattened.ratelimits = [];
+  flattened.secrets_store_secrets = [];
+}
 await writeFile(flattenedPath, JSON.stringify(flattened, null, 2) + "\n");
 
 // Local development values must never accompany an upload artifact.
