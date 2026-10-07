@@ -2475,12 +2475,12 @@ body {
 }
 
 .services-hero__copy {
-  width: min(100%, 650px);
+  width: min(100%, 740px);
   animation: copyReveal 700ms 120ms ease-out both;
 }
 
 .services-hero h1 {
-  max-width: 650px;
+  max-width: 740px;
   color: var(--semantic-white);
   font-size: clamp(4.7rem, 7vw, 7.2rem);
   line-height: 0.84;
