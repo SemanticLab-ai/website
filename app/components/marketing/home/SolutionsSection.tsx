@@ -20,7 +20,7 @@ const services = [
   {
     icon: ChartNoAxesCombined,
     title: "AI Strategy",
-    copy: "A focused audit that pinpoints where AI will move the needle — and where it will not.",
+    copy: "A focused audit that pinpoints where AI will move the needle and where it will not.",
   },
 ];
 
