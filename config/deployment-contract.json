@@ -1,0 +1,26 @@
+{
+  "preview": {
+    "analyticsEnabled": false,
+    "indexingAllowed": false,
+    "features": {
+      "networkMotion": true,
+      "workHeroVideo": true,
+      "workProductsGallery": true,
+      "founderExperienceGallery": true
+    },
+    "cloudflareCommand": "wrangler versions upload"
+  },
+  "production": {
+    "analyticsEnabled": true,
+    "indexingAllowed": true,
+    "features": {
+      "networkMotion": true,
+      "workHeroVideo": true,
+      "workProductsGallery": true,
+      "founderExperienceGallery": true
+    },
+    "cloudflareCommand": "wrangler deploy",
+    "canonicalOrigin": "https://semanticlab.ai",
+    "googleTagManagerId": "GTM-XXXXXXX"
+  }
+}

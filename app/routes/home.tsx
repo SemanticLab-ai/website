@@ -1,17 +1,11 @@
 import type { Route } from "./+types/home";
-import { StudioHero } from "~/components/marketing/home/StudioHero";
-import { OurStory } from "~/components/marketing/home/OurStory";
-import { WhatWeDo } from "~/components/marketing/home/WhatWeDo";
-import { HowWereDifferent } from "~/components/marketing/home/HowWereDifferent";
-import { PlatformsBuilt } from "~/components/marketing/home/PlatformsBuilt";
-import { WhoWeWorkWith } from "~/components/marketing/home/WhoWeWorkWith";
-import { OurProcess } from "~/components/marketing/home/OurProcess";
-import { StudioCTA } from "~/components/marketing/home/StudioCTA";
+import { networkMotionEnabled } from "~/lib/deployment";
+import { IntelligentHome } from "~/components/marketing/home/IntelligentHome";
 
 export function meta({}: Route.MetaArgs) {
-  const title = "SemanticLab - Founder-Led AI Product Studio";
+  const title = "SemanticLab - AI systems that do the actual work";
   const description =
-    "SemanticLab is a founder-led product studio helping ambitious individuals turn validated ideas into AI-ready digital platforms - from strategy to launch.";
+    "SemanticLab is a founder-led AI studio. We design, build and deploy custom AI systems that remove busywork, unlock revenue and compound every month they run.";
   const ogImage = "/images/og-default.jpg";
   const url = "https://semanticlab.ai/";
 
@@ -31,17 +25,14 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  return (
-    <>
-      <StudioHero />
-      <WhatWeDo />
-      <PlatformsBuilt />
-      <HowWereDifferent />
-      <WhoWeWorkWith />
-      <OurProcess />
-      <OurStory />
-      <StudioCTA />
-    </>
-  );
+export function loader({ context }: Route.LoaderArgs) {
+  return {
+    networkMotion:
+      networkMotionEnabled &&
+      context.cloudflare.env.SL_FEATURE_NETWORK_MOTION === "true",
+  };
+}
+
+export default function Home({ loaderData }: Route.ComponentProps) {
+  return <IntelligentHome networkMotion={loaderData.networkMotion} />;
 }

@@ -3,7 +3,21 @@
   "name": "semanticlab-website",
   "main": "./workers/app.ts",
   "compatibility_date": "2025-10-08",
-  "compatibility_flags": ["nodejs_compat"],
-  "observability": { "enabled": true },
-  "upload_source_maps": true
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "preview_urls": true,
+  "observability": {
+    "enabled": true
+  },
+  "upload_source_maps": true,
+  "vars": {
+    "SL_DEPLOY_ENV": "production",
+    "SL_FEATURE_NETWORK_MOTION": "true",
+    "SL_FEATURE_WORK_HERO_VIDEO": "true",
+    "SL_FEATURE_WORK_PRODUCTS_GALLERY": "true",
+    "SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY": "true",
+    "SL_INDEXING_ALLOWED": "true",
+    "SL_ANALYTICS_ENABLED": "true"
+  }
 }

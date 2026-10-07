@@ -1,13 +1,13 @@
 import type { Route } from "./+types/services";
 import { ServicesHero } from "~/components/marketing/services/ServicesHero";
-import { ServicesTiers } from "~/components/marketing/services/ServicesTiers";
-import { WhySemanticLab } from "~/components/marketing/services/WhySemanticLab";
-import { ServicesCTA } from "~/components/marketing/services/ServicesCTA";
+import { ServicesCapabilities } from "~/components/marketing/services/ServicesCapabilities";
+import { EngagementPath } from "~/components/marketing/services/EngagementPath";
+import { StrategyEngagement } from "~/components/marketing/services/StrategyEngagement";
 
 export function meta({}: Route.MetaArgs) {
-  const title = "Services - SemanticLab | From Idea to Launched Product";
+  const title = "Services | SemanticLab Product Innovation Partner";
   const description =
-    "We partner with founders, creators, and growing teams to validate, design, build and ship AI-ready digital platforms - from foundation to growth and scale.";
+    "Strategy, experience, intelligence and engineering connected around the business opportunity, from first question through launch and evolution.";
   const ogImage = "/images/og-default.jpg";
   const url = "https://semanticlab.ai/services";
 
@@ -29,11 +29,11 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Services() {
   return (
-    <>
+    <div className="semantic-services">
       <ServicesHero />
-      <ServicesTiers />
-      <WhySemanticLab />
-      <ServicesCTA />
-    </>
+      <ServicesCapabilities />
+      <EngagementPath />
+      <StrategyEngagement />
+    </div>
   );
 }

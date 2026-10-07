@@ -1,0 +1,32 @@
+{
+  "name": "motion-lab",
+  "version": "1.0.0",
+  "description": "Interactive SemanticLab network motion study",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@remotion/cli": "4.0.533",
+    "@remotion/player": "4.0.533",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.533"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@types/web": "0.0.166",
+    "@vitejs/plugin-react": "^5.2.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3",
+    "vite": "^7.3.6"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "studio": "remotion studio --no-open",
+    "build": "vite build && remotion bundle",
+    "preview": "vite preview --host 127.0.0.1",
+    "upgrade": "remotion upgrade",
+    "typecheck": "tsc --noEmit"
+  }
+}

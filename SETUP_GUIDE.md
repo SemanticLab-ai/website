@@ -15,9 +15,29 @@ npm run dev          # http://localhost:5173
 ```bash
 npm run dev          # Start dev server with HMR
 npm run build        # Production build
-npm run start        # Preview production build
 npm run typecheck    # TypeScript type checking
+npm run preview      # Build and preview locally
+npm run deploy       # Manual production deployment; CI/CD uses Cloudflare Builds
 ```
+
+## Delivery Pipeline
+
+SemanticLab uses one Cloudflare Worker and promotes code through Git branches:
+
+```text
+feature branch -> staging -> Cloudflare Preview URL -> main -> semanticlab.ai
+```
+
+- Create feature branches from `origin/staging`.
+- Open feature pull requests against `staging`.
+- Cloudflare Workers Builds is connected directly to this GitHub repository.
+- Every non-production branch push runs `npm run build` followed by `npx wrangler versions upload` and receives a Cloudflare Preview URL.
+- The Preview URL generated from `staging` is the approval surface for the redesigned site.
+- After review on the Preview URL, open a pull request from `staging` to `main`.
+- Every push to `main` runs `npm run build` followed by `npx wrangler deploy` and deploys the production Worker.
+- Do not create a second Worker or a Wrangler staging environment.
+
+Cloudflare manages deployment authentication through its Git integration. Do not add Cloudflare API tokens, account IDs, or deployment jobs to GitHub Actions. GitHub Actions is reserved for pull-request validation.
 
 ## Adding shadcn/ui Components
 
