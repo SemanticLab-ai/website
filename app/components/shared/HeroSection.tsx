@@ -63,7 +63,7 @@ export function HeroSection({
   children,
 }: HeroSectionProps) {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden mesh-gradient-hero noise-overlay">
+    <section className="product-hero relative min-h-screen flex items-center overflow-hidden mesh-gradient-hero noise-overlay">
       {/* Decorative blobs */}
       <div className="absolute top-20 right-[10%] w-[500px] h-[500px] bg-lime/5 blob blob-animated blur-3xl" />
       <div
@@ -74,8 +74,8 @@ export function HeroSection({
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 dot-pattern opacity-50" />
 
-      <div className="container mx-auto px-6 lg:px-8 relative z-10 pt-32 pb-20 md:pt-40 md:pb-32">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="product-hero__inner container mx-auto px-6 lg:px-8 relative z-10 pt-32 pb-20 md:pt-40 md:pb-32">
+        <div className="product-hero__copy max-w-4xl mx-auto text-center">
           {/* Badge */}
           {badge ??
             (BadgeIcon && badgeText && (
@@ -88,22 +88,22 @@ export function HeroSection({
             ))}
 
           {/* Headline */}
-          <h1 className="font-display text-5xl md:text-6xl lg:text-display font-bold text-white mb-8">
+          <h1 className="product-hero__title font-display text-5xl md:text-6xl lg:text-display font-bold text-white mb-8">
             {title}
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-white/50 leading-relaxed mb-10 max-w-2xl mx-auto">
+          <p className="product-hero__intro text-xl md:text-2xl text-white/50 leading-relaxed mb-10 max-w-2xl mx-auto">
             {subtitle}
           </p>
 
           {/* CTA Buttons */}
           {(primaryCTA || secondaryCTA) && (
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="product-hero__actions flex flex-col sm:flex-row gap-4 justify-center mb-12">
               {primaryCTA && (
                 <HeroCTALink
                   cta={primaryCTA}
-                  className="inline-flex items-center justify-center gap-3 h-14 px-8 text-lg rounded-full bg-lime hover:bg-lime-dark text-dark-bg font-semibold shadow-xl shadow-lime/20 transition-all duration-300 hover:scale-105 group"
+                  className="product-hero__action inline-flex items-center justify-center gap-3 h-14 px-8 text-lg rounded-full bg-lime hover:bg-lime-dark text-dark-bg font-semibold shadow-xl shadow-lime/20 transition-all duration-300 hover:scale-105 group"
                 >
                   {primaryCTA.label}
                   {primaryCTA.icon && (
@@ -114,7 +114,7 @@ export function HeroSection({
               {secondaryCTA && (
                 <HeroCTALink
                   cta={secondaryCTA}
-                  className="inline-flex items-center justify-center gap-3 h-14 px-8 text-lg rounded-full border-2 border-white/20 text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300"
+                  className="product-hero__action inline-flex items-center justify-center gap-3 h-14 px-8 text-lg rounded-full border-2 border-white/20 text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300"
                 >
                   {secondaryCTA.label}
                 </HeroCTALink>
@@ -127,7 +127,7 @@ export function HeroSection({
 
           {/* Founder badge */}
           {showFounders && (
-            <div className="flex items-center justify-center gap-4">
+            <div className="product-hero__founders flex items-center justify-center gap-4">
               <div className="flex -space-x-3">
                 {[
                   { src: "/images/founders/raihan-avatar.jpg", alt: "Raihan" },

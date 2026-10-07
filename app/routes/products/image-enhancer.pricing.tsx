@@ -56,14 +56,14 @@ export default function ImageEnhancerPricing() {
   return (
     <div className="relative overflow-hidden">
       {/* Hero */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="product-pricing-hero relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-dark-bg" />
         <div className="absolute inset-0 dot-pattern opacity-30" />
         <div className="absolute top-20 right-[10%] w-[500px] h-[500px] bg-lime/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-[5%] w-[400px] h-[400px] bg-teal/5 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-6 lg:px-8 relative">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="product-pricing-hero__copy max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-lime/10 backdrop-blur rounded-full border border-lime/20 mb-8">
               <DollarSign className="w-4 h-4 text-lime" />
               <span className="text-sm font-semibold text-lime uppercase tracking-wider">Image Enhancer Pricing</span>
