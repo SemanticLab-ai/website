@@ -309,11 +309,11 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
       onPointerCancel={onUp}
       onPointerLeave={() => { setPointer(null); setMagnetId(null); }}
       onClick={(event) => {
-        if (event.target !== event.currentTarget) return;
         if (suppressCanvasClick.current) {
           suppressCanvasClick.current = false;
           return;
         }
+        if (event.target !== event.currentTarget) return;
         focusNode(null);
       }}
       style={{ display: "block", overflow: "visible", touchAction: "pan-y" }}
