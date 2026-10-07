@@ -7,7 +7,8 @@
   position: absolute;
   z-index: 1;
   top: 14%;
-  right: -6%;
+  /* Keep the illustration beside the copy when the viewport outgrows the shell. */
+  right: max(-6vw, calc((100vw - var(--sl-shell-max)) / 2 - 80px));
   width: min(75vw, 1030px);
   aspect-ratio: 1000 / 620;
 }
@@ -18,7 +19,7 @@
 .semantic-network-detail {
   position: absolute;
   z-index: 3;
-  right: var(--sl-shell-gutter);
+  right: max(var(--sl-shell-gutter), calc((100vw - var(--sl-shell-max)) / 2));
   bottom: 200px;
   width: min(320px, calc(100% - 36px));
   min-height: 148px;
