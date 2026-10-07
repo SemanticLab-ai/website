@@ -104,6 +104,8 @@ for (const directory of ["../build/client", "../build/server"]) {
 // The uploaded flattened configuration carries the same explicit runtime contract.
 const flattenedPath = new URL("../build/server/wrangler.json", import.meta.url);
 const flattened = JSON.parse(await readFile(flattenedPath, "utf8"));
+// The pinned Vite plugin emits this legacy setting; modern Wrangler rejects it.
+delete flattened.legacy_env;
 flattened.vars = {
   ...flattened.vars,
   SL_DEPLOY_ENV: deploymentEnvironment,
@@ -115,6 +117,10 @@ flattened.vars = {
   SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY: String(selected.features.founderExperienceGallery),
   SL_INDEXING_ALLOWED: String(selected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(selected.analyticsEnabled),
+};
+flattened.observability = {
+  ...flattened.observability,
+  issues: { enabled: selected.issuesEnabled },
 };
 if (deploymentEnvironment === "preview") {
   // Preview submissions exercise validation without access to mail or quotas.

@@ -1,6 +1,7 @@
 {
   "preview": {
     "analyticsEnabled": false,
+    "issuesEnabled": false,
     "indexingAllowed": false,
     "features": {
       "directForm": true,
@@ -15,6 +16,7 @@
   },
   "production": {
     "analyticsEnabled": true,
+    "issuesEnabled": true,
     "indexingAllowed": true,
     "features": {
       "directForm": true,
