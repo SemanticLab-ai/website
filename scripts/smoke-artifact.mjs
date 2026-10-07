@@ -37,18 +37,22 @@ async function smoke(disableFeature = false) {
   assert(html.includes('https://semanticlab.ai/'),'Canonical unchanged');
   const robots=await (await fetch('http://127.0.0.1:8788/robots.txt')).text();
   assert.equal(/Disallow: \/(?:\n|$)/.test(robots),preview);
+  const pageHtmlByPath=new Map([['/',html]]);
   for(const path of [
-   '/', '/services', '/founders', '/work', '/design-system',
+   '/services', '/founders', '/work', '/design-system',
    '/products/syncd', '/products/image-enhancer', '/products/image-enhancer/pricing',
    '/products/smartapply', '/products/visual-search', '/products/visual-search/pricing',
   ]) {
    const page=await fetch(`http://127.0.0.1:8788${path}`);
    assert.equal(page.status,200,path);
    const pageHtml=await page.text();
+   pageHtmlByPath.set(path,pageHtml);
    assert(!pageHtml.includes('mailto:'),`${path} must not expose email links`);
    assert(!pageHtml.includes('hello@semanticlab.ai'),`${path} must not expose the recipient address`);
   }
-  const servicesHtml=await (await fetch('http://127.0.0.1:8788/services')).text();
+  assert(!html.includes('mailto:'),'Homepage must not expose email links');
+  assert(!html.includes('hello@semanticlab.ai'),'Homepage must not expose the recipient address');
+  const servicesHtml=pageHtmlByPath.get('/services');
   assert.equal(servicesHtml.includes('Preview mode: your details are checked but no email is sent.'), preview, 'Direct form preview copy');
   assert.equal(servicesHtml.includes('Your request is sent securely to SemanticLab.'), !preview, 'Production direct form copy');
   const leadForm=new URLSearchParams({
@@ -64,7 +68,7 @@ async function smoke(disableFeature = false) {
   });
   assert.equal(leadResponse.status, preview ? 200 : 403, 'Server form origin gate');
   assert.equal((await leadResponse.text()).includes('No email was sent.'), preview, 'Preview delivery gate');
-  const workHtml=await (await fetch('http://127.0.0.1:8788/work')).text();
+  const workHtml=pageHtmlByPath.get('/work');
   assert.equal(workHtml.includes('data-work-hero-video="true"'),featuresEnabled&&!disableFeature,'Work video must require both build and runtime flags');
   assert.equal(workHtml.includes('data-work-product-gallery="true"'),featuresEnabled&&!disableFeature,'Work product gallery must require both build and runtime flags');
   assert.equal(workHtml.includes('work-evidence-list--light'),!featuresEnabled||disableFeature,'Original product rows must remain when the gallery is disabled');
