@@ -87,7 +87,7 @@ export async function action({ request, context }: Route.ActionArgs) {
   const secret = await env.TURNSTILE_SECRET.get().catch(() => null);
   if (!secret) {
     console.error("Strategy form Turnstile secret is missing");
-    return actionResult({ status: "error", message: "We could not send your request. Please email us directly." }, 503);
+    return actionResult({ status: "error", message: "We could not send your request. Please try again later." }, 503);
   }
 
   const challenge = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
@@ -129,7 +129,7 @@ export async function action({ request, context }: Route.ActionArgs) {
     });
     return actionResult({
       status: "error",
-      message: "We could not send your request. Please email us directly.",
+      message: "We could not send your request. Please try again later.",
     }, 503);
   }
 }

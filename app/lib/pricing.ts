@@ -76,7 +76,7 @@ export const imageEnhancerPricing: PricingTier[] = [
     ],
     popular: false,
     cta: "Contact Sales",
-    ctaHref: "mailto:hello@semanticlab.ai?subject=Image Enhancer Enterprise",
+    ctaHref: "/services#strategy-engagement",
   },
 ];
 
@@ -95,8 +95,8 @@ export const visualSearchPricing: PricingTier[] = [
       "Email support",
     ],
     popular: false,
-    cta: "Get Notified",
-    ctaHref: "mailto:hello@semanticlab.ai?subject=Visual Search Early Access",
+    cta: "Ask About Access",
+    ctaHref: "/services#strategy-engagement",
   },
   {
     name: "Growth",
@@ -112,8 +112,8 @@ export const visualSearchPricing: PricingTier[] = [
       "Custom widget placement",
     ],
     popular: true,
-    cta: "Get Notified",
-    ctaHref: "mailto:hello@semanticlab.ai?subject=Visual Search Early Access",
+    cta: "Ask About Access",
+    ctaHref: "/services#strategy-engagement",
   },
   {
     name: "Scale",
@@ -129,7 +129,7 @@ export const visualSearchPricing: PricingTier[] = [
       "Custom integrations",
     ],
     popular: false,
-    cta: "Get Notified",
-    ctaHref: "mailto:hello@semanticlab.ai?subject=Visual Search Early Access",
+    cta: "Ask About Access",
+    ctaHref: "/services#strategy-engagement",
   },
 ];

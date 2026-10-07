@@ -1,4 +1,4 @@
-import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Linkedin } from "lucide-react";
 import { Link } from "react-router";
 import { BrandLogo } from "~/components/BrandLogo";
 
@@ -25,7 +25,7 @@ export function Footer() {
           <div>
             <p className="site-footer__label">Company</p>
             <Link to="/founders">Our story</Link>
-            <a href="mailto:hello@semanticlab.ai">Contact</a>
+            <Link to={strategyHref}>Contact</Link>
           </div>
           <div>
             <p className="site-footer__label">Connect</p>
@@ -35,9 +35,6 @@ export function Footer() {
               rel="noreferrer"
             >
               <Linkedin aria-hidden="true" /> LinkedIn
-            </a>
-            <a href="mailto:hello@semanticlab.ai">
-              <Mail aria-hidden="true" /> Email
             </a>
           </div>
         </div>
