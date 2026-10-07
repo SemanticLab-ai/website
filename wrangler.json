@@ -13,10 +13,10 @@
   "upload_source_maps": true,
   "vars": {
     "SL_DEPLOY_ENV": "production",
-    "SL_FEATURE_NETWORK_MOTION": "false",
-    "SL_FEATURE_WORK_HERO_VIDEO": "false",
-    "SL_FEATURE_WORK_PRODUCTS_GALLERY": "false",
-    "SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY": "false",
+    "SL_FEATURE_NETWORK_MOTION": "true",
+    "SL_FEATURE_WORK_HERO_VIDEO": "true",
+    "SL_FEATURE_WORK_PRODUCTS_GALLERY": "true",
+    "SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY": "true",
     "SL_INDEXING_ALLOWED": "true",
     "SL_ANALYTICS_ENABLED": "true"
   }

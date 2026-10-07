@@ -33,15 +33,12 @@ export function loader({ context }: Route.LoaderArgs) {
   return {
     heroVideo:
       workHeroVideoEnabled &&
-      context.cloudflare.env.SL_DEPLOY_ENV === "preview" &&
       context.cloudflare.env.SL_FEATURE_WORK_HERO_VIDEO === "true",
     productGallery:
       productGalleryEnabled &&
-      context.cloudflare.env.SL_DEPLOY_ENV === "preview" &&
       context.cloudflare.env.SL_FEATURE_WORK_PRODUCTS_GALLERY === "true",
     founderGallery:
       founderExperienceGalleryEnabled &&
-      context.cloudflare.env.SL_DEPLOY_ENV === "preview" &&
       context.cloudflare.env.SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "true",
   };
 }

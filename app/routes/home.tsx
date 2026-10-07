@@ -26,7 +26,11 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export function loader({ context }: Route.LoaderArgs) {
-  return { networkMotion: networkMotionEnabled && context.cloudflare.env.SL_DEPLOY_ENV === "preview" && context.cloudflare.env.SL_FEATURE_NETWORK_MOTION === "true" };
+  return {
+    networkMotion:
+      networkMotionEnabled &&
+      context.cloudflare.env.SL_FEATURE_NETWORK_MOTION === "true",
+  };
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
