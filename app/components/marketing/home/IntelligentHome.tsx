@@ -26,7 +26,7 @@ export function IntelligentHome({ networkMotion = false }: { networkMotion?: boo
             <div className="semantic-actions">
               <a className="strategy-button" href={strategyHref}>
                 Find your AI opportunity
-                <ArrowRight aria-hidden="true" />
+                <ArrowUpRight aria-hidden="true" />
               </a>
               <a className="semantic-text-link" href="#work">
                 See our work
