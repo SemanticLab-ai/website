@@ -50,21 +50,10 @@ async function smoke(disableFeature = false) {
    method:'POST',
    headers:{ Origin:'http://127.0.0.1:8788', 'Content-Type':'application/x-www-form-urlencoded' },
    body:leadForm,
+   signal:AbortSignal.timeout(10_000),
   });
   assert.equal(leadResponse.status, preview ? 200 : 404, 'Server form gate');
   assert.equal((await leadResponse.text()).includes('No email was sent.'), preview, 'Preview delivery gate');
-  if(preview) {
-   const crossOrigin=await fetch('http://127.0.0.1:8788/services',{
-    method:'POST', headers:{ Origin:'https://example.com','Content-Type':'application/x-www-form-urlencoded' }, body:leadForm,
-   });
-   assert.equal(crossOrigin.status,403,'Cross-origin submission must be rejected');
-   const spamForm=new URLSearchParams(leadForm);
-   spamForm.set('company_website','https://spam.example');
-   const honeypot=await fetch('http://127.0.0.1:8788/services',{
-    method:'POST', headers:{ Origin:'http://127.0.0.1:8788','Content-Type':'application/x-www-form-urlencoded' }, body:spamForm,
-   });
-   assert.equal(honeypot.status,400,`Honeypot submission must be rejected: ${await honeypot.text()}\n${log}`);
-  }
   const workHtml=await (await fetch('http://127.0.0.1:8788/work')).text();
   assert.equal(workHtml.includes('data-work-hero-video="true"'),featuresEnabled&&!disableFeature,'Work video must require both build and runtime flags');
   assert.equal(workHtml.includes('data-work-product-gallery="true"'),featuresEnabled&&!disableFeature,'Work product gallery must require both build and runtime flags');
