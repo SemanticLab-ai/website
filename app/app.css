@@ -5277,7 +5277,7 @@ body {
 
 /* Keep the opportunity proposition readable across desktop and mobile widths. */
 .semantic-hero h1.semantic-hero__opportunity-title {
-  font-size: clamp(3.5rem, 5.5vw, 5.2rem);
+  font-size: clamp(3.5rem, 4.8vw, 4.3rem);
   line-height: .98;
 }
 @media (max-width: 759px) {
