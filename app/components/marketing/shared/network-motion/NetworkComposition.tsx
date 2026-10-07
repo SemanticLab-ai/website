@@ -6,11 +6,14 @@ type Point = { x: number; y: number };
 type Drag = Point & { id: number; pointerId: number; grabX: number; grabY: number; downX: number; downY: number; moved: boolean };
 type Release = Point & { id: number; frame: number };
 type Ripple = { id: number; frame: number };
+type TouchGesture = { pointerId: number; startX: number; startY: number; lastId: number | null; scrolling: boolean };
 type Props = { reducedMotion?: boolean; onNodeFocus?: (id: number | null) => void };
 
 const TAU = Math.PI * 2;
 const MAX_RELEASE_OFFSET = 65;
 const RIPPLE_FRAMES = 30;
+const TOUCH_CAPTURE_RADIUS = 58;
+const HAPTIC_INTERVAL_MS = 150;
 const colors = { white: "#F6F6F4", sage: "#A8AF94", lime: "#8BFF4D" };
 
 function position(node: Node, id: number, frame: number, reduced: boolean): Point {
@@ -42,6 +45,8 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   const [drag, setDrag] = useState<Drag | null>(null);
   const [release, setRelease] = useState<Release | null>(null);
   const dragRef = useRef<Drag | null>(null);
+  const touchRef = useRef<TouchGesture | null>(null);
+  const lastHapticAt = useRef(-Infinity);
   const suppressCanvasClick = useRef(false);
   const releaseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const rippleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -60,6 +65,17 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
     onNodeFocus?.(id);
   };
 
+  const touchHaptic = () => {
+    const now = performance.now();
+    if (now - lastHapticAt.current < HAPTIC_INTERVAL_MS) return;
+    lastHapticAt.current = now;
+    try {
+      navigator.vibrate?.(20);
+    } catch {
+      // The visual selection remains available when vibration is blocked.
+    }
+  };
+
   useEffect(() => () => {
     if (releaseTimer.current) clearTimeout(releaseTimer.current);
     if (rippleTimer.current) clearTimeout(rippleTimer.current);
@@ -68,12 +84,14 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   useEffect(() => {
     const cancelDrag = () => {
       dragRef.current = null;
+      touchRef.current = null;
       setDrag(null);
       setRelease(null);
       setPointer(null);
       setMagnetId(null);
     };
     const cancelPointerDrag = (event: globalThis.PointerEvent) => {
+      if (touchRef.current?.pointerId === event.pointerId) touchRef.current = null;
       if (dragRef.current?.pointerId === event.pointerId) cancelDrag();
     };
     window.addEventListener("pointerup", cancelPointerDrag);
@@ -127,8 +145,46 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
     return { x, y };
   });
 
+  const nearestTouchNode = (event: PointerEvent<SVGSVGElement>): number | null => {
+    const matrix = event.currentTarget.getScreenCTM();
+    if (!matrix) return null;
+    let nearest: number | null = null;
+    let nearestDistance = TOUCH_CAPTURE_RADIUS;
+    nodes.forEach((node, id) => {
+      if (!node.label) return;
+      const center = new DOMPoint(points[id].x, points[id].y).matrixTransform(matrix);
+      const distance = Math.hypot(center.x - event.clientX, center.y - event.clientY);
+      if (distance < nearestDistance) {
+        nearest = id;
+        nearestDistance = distance;
+      }
+    });
+    return nearest;
+  };
+
+  const focusTouchedNode = (event: PointerEvent<SVGSVGElement>) => {
+    const gesture = touchRef.current;
+    if (!gesture || gesture.pointerId !== event.pointerId || gesture.scrolling) return;
+    const id = nearestTouchNode(event);
+    if (id === null || id === gesture.lastId) return;
+    gesture.lastId = id;
+    focusNode(id);
+    triggerRipple(id);
+    touchHaptic();
+  };
+
   const onMove = (event: PointerEvent<SVGSVGElement>) => {
-    if (event.pointerType === "touch") return;
+    if (event.pointerType === "touch") {
+      const gesture = touchRef.current;
+      if (!gesture || gesture.pointerId !== event.pointerId) return;
+      const dx = event.clientX - gesture.startX;
+      const dy = event.clientY - gesture.startY;
+      if (Math.abs(dy) > 14 && Math.abs(dy) > Math.abs(dx) * 1.2) {
+        gesture.scrolling = true;
+      }
+      focusTouchedNode(event);
+      return;
+    }
     const point = svgPoint(event);
     if (!point) return;
     const currentDrag = dragRef.current;
@@ -165,30 +221,27 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   };
 
   const onCanvasDown = (event: PointerEvent<SVGSVGElement>) => {
-    if (event.target === event.currentTarget) suppressCanvasClick.current = false;
-    if (event.pointerType !== "touch" || event.target !== event.currentTarget) return;
-    const point = svgPoint(event);
-    if (!point) return;
-    const nearest = points.reduce(
-      (result, node, id) => {
-        if (!nodes[id].label) return result;
-        const distance = Math.hypot(node.x - point.x, node.y - point.y);
-        return distance < result.distance ? { id, distance } : result;
-      },
-      { id: -1, distance: 90 },
-    );
-    if (nearest.id >= 0) {
-      focusNode(nearest.id);
-      triggerRipple(nearest.id);
+    if (event.pointerType !== "touch") {
+      if (event.target === event.currentTarget) suppressCanvasClick.current = false;
+      return;
     }
+    if (!event.isPrimary) return;
+    // A touch can land on any SVG child; the subsequent synthetic click must not clear its selection.
+    suppressCanvasClick.current = true;
+    touchRef.current = {
+      pointerId: event.pointerId, startX: event.clientX, startY: event.clientY,
+      lastId: null, scrolling: false,
+    };
+    focusTouchedNode(event);
   };
 
   const onDown = (event: PointerEvent<SVGCircleElement>, id: number) => {
-    if (nodes[id].label && (event.pointerType === "touch" || event.button === 0)) {
+    if (event.pointerType === "touch") return;
+    if (nodes[id].label && event.button === 0) {
       focusNode(id);
       triggerRipple(id);
     }
-    if (event.pointerType === "touch" || event.button !== 0 || reducedMotion || dragRef.current) return;
+    if (event.button !== 0 || reducedMotion || dragRef.current) return;
     const point = svgPoint(event);
     if (!point) return;
     suppressCanvasClick.current = true;
@@ -226,6 +279,7 @@ export const NetworkComposition = ({ reducedMotion = false, onNodeFocus }: Props
   };
 
   const onUp = (event: PointerEvent<SVGSVGElement | SVGCircleElement>) => {
+    if (touchRef.current?.pointerId === event.pointerId) touchRef.current = null;
     finishDrag(event.pointerId);
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId);
