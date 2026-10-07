@@ -2146,43 +2146,6 @@
   line-height: 1.46;
 }
 
-/* Brand promise between the founder story and the close. */
-.sales-deck--tieman .tieman-brand-promise {
-  background:
-    radial-gradient(circle at 86% 74%, rgba(139, 255, 77, 0.12), transparent 35%),
-    var(--sl-canvas);
-}
-
-.tieman-brand-promise .deck-slide__content {
-  display: flex;
-  align-items: center;
-}
-
-.tieman-brand-promise__copy {
-  max-width: 80cqw;
-}
-
-.tieman-brand-promise__copy h2 {
-  margin-top: 1.8cqw;
-  font-size: 6.4cqw;
-  line-height: 0.93;
-  letter-spacing: -0.06em;
-}
-
-.tieman-brand-promise__copy h2 em {
-  display: inline-block;
-  border-bottom: 0.22cqw solid var(--sl-accent);
-  padding-bottom: 0.12cqw;
-}
-
-.tieman-brand-promise__copy > p:last-child {
-  max-width: 50cqw;
-  margin-top: 2.6cqw;
-  color: color-mix(in srgb, var(--sl-text-primary) 68%, transparent);
-  font-size: 1.3cqw;
-  line-height: 1.55;
-}
-
 /* Proof in practice variation */
 .sales-deck--tieman .tieman-proof-outcomes {
   background:
@@ -4062,32 +4025,6 @@
     margin-top: 12px;
     font-size: clamp(0.95rem, 2.8vw, 1.1rem);
     line-height: 1.5;
-  }
-
-  .tieman-brand-promise .deck-slide__content {
-    display: flex;
-    min-height: calc(100svh - 190px);
-  }
-
-  .tieman-brand-promise__copy {
-    max-width: 100%;
-  }
-
-  .tieman-brand-promise__copy h2 {
-    margin-top: 22px;
-    font-size: clamp(3.1rem, 12vw, 5.5rem);
-    line-height: 0.96;
-  }
-
-  .tieman-brand-promise__copy h2 em {
-    border-bottom-width: 2px;
-    padding-bottom: 2px;
-  }
-
-  .tieman-brand-promise__copy > p:last-child {
-    max-width: 35rem;
-    margin-top: 34px;
-    font-size: clamp(1rem, 2.8vw, 1.25rem);
   }
 
   .tieman-double-diamond__process {

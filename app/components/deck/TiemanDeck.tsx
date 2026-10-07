@@ -24,7 +24,7 @@ import {
   type DeckSlide,
 } from "~/components/deck/DeckPresentation";
 
-const PRESENTATION_TOTAL_SLIDES = 11;
+const PRESENTATION_TOTAL_SLIDES = 10;
 const DISCOVERY_TOTAL_SLIDES = 15;
 
 const agendaItems = [
@@ -898,36 +898,14 @@ function WhyUsSlide() {
 function QuestionsSlide() {
   return (
     <DeckSlideFrame
-      index={11}
+      index={10}
       total={PRESENTATION_TOTAL_SLIDES}
       descriptor=""
       className="tieman-questions"
     >
       <TiemanSlideFootage name="welding-slow" className="tieman-questions__image" />
       <div className="tieman-questions__shade" aria-hidden="true" />
-      <h2 id="deck-slide-11-title">Questions?</h2>
-    </DeckSlideFrame>
-  );
-}
-
-function BrandPromiseSlide() {
-  return (
-    <DeckSlideFrame
-      index={10}
-      total={PRESENTATION_TOTAL_SLIDES}
-      descriptor="AI systems that do the actual work."
-      className="tieman-brand-promise"
-    >
-      <div className="tieman-brand-promise__copy">
-        <p className="deck-kicker">What SemanticLab builds</p>
-        <h2 id="deck-slide-10-title">
-          AI systems that do<br />
-          <em>the actual work.</em>
-        </h2>
-        <p>
-          SemanticLab is a founder-led AI studio. We design, build and deploy custom AI systems that remove busywork, unlock revenue and compound every month they run.
-        </p>
-      </div>
+      <h2 id="deck-slide-10-title">Questions?</h2>
     </DeckSlideFrame>
   );
 }
@@ -1436,7 +1414,6 @@ export function TiemanDeck({
     : [
         ...completeSlides.slice(0, closingSlideIndex + 1),
         { id: "tieman-proof", label: "Founder experience", content: <FounderExperienceSlide index={9} total={PRESENTATION_TOTAL_SLIDES} /> },
-        { id: "tieman-brand-promise", label: "What we build", content: <BrandPromiseSlide /> },
         { id: "tieman-questions", label: "Questions?", content: <QuestionsSlide /> },
       ];
 
