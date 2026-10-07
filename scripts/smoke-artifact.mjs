@@ -67,7 +67,7 @@ async function smoke(disableFeature = false) {
   assert(!html.includes('hello@semanticlab.ai'),'Homepage must not expose the recipient address');
   const servicesHtml=pageHtmlByPath.get('/services');
   assert.equal(servicesHtml.includes('Preview mode: your details are checked but no email is sent.'), preview, 'Direct form preview copy');
-  assert.equal(servicesHtml.includes('Your request is sent securely to SemanticLab.'), !preview, 'Production direct form copy');
+  assert.equal(servicesHtml.includes('Your request goes directly to SemanticLab.'), !preview, 'Production direct form copy');
   const leadForm=new URLSearchParams({
    name:'Preview Test', email:'preview@example.com', organisation:'Test Organisation', role:'',
    stage:'Exploring where to focus', horizon:'Timing is still open',

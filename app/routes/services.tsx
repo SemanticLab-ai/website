@@ -120,7 +120,7 @@ export async function action({ request, context }: Route.ActionArgs) {
     console.log("Strategy request accepted", { reference, messageId: result.messageId });
     return actionResult({
       status: "sent",
-      message: "Your Strategy Engagement request has been sent. We'll reply by email.",
+      message: "Your Strategy Engagement request has been sent.",
     });
   } catch (error) {
     console.error("Strategy email send failed", {
