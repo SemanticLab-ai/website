@@ -52,9 +52,15 @@ assert(
   packageJson.scripts.build === "node scripts/build-cloudflare.mjs",
   "The shared build command must use the branch-aware selector.",
 );
+assert(
+  wrangler.observability?.enabled === true &&
+    wrangler.observability.issues === undefined,
+  "Source Wrangler config must preserve Workers Logs; Issues is selected by the branch-aware build.",
+);
 
 assert(
   contract.preview.analyticsEnabled === false &&
+    contract.preview.issuesEnabled === false &&
     contract.preview.indexingAllowed === false &&
     contract.preview.features.directForm === true &&
     contract.preview.leadEmailEnabled === false &&
@@ -69,6 +75,7 @@ assert(
 
 assert(
   contract.production.analyticsEnabled === true &&
+    contract.production.issuesEnabled === true &&
     contract.production.indexingAllowed === true &&
     contract.production.features.directForm === true &&
     contract.production.leadEmailEnabled === true &&
@@ -213,8 +220,14 @@ for (const [key, value] of Object.entries({
 assert(
   flattened.name === wrangler.name &&
     flattened.preview_urls === true &&
-    flattened.workers_dev === false,
+    flattened.workers_dev === false &&
+    flattened.legacy_env === undefined,
   "Flattened artifact must retain the shared Worker and previews while disabling the production workers.dev route.",
+);
+assert(
+  flattened.observability?.enabled === true &&
+    flattened.observability.issues?.enabled === expected.issuesEnabled,
+  `Flattened ${expectedEnvironment} Issues setting must match the environment contract.`,
 );
 if (expectedEnvironment === "preview") {
   assert(
