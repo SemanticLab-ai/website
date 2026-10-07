@@ -2029,6 +2029,12 @@ body {
     height: 78px;
   }
 
+  .site-header.is-menu-open {
+    border-color: var(--semantic-line);
+    background: var(--semantic-ink);
+    backdrop-filter: none;
+  }
+
   .site-header__inner {
     display: flex;
     justify-content: space-between;
@@ -2056,30 +2062,33 @@ body {
 
   .mobile-navigation {
     position: fixed;
-    inset: 78px 0 0;
+    inset: 78px 0 auto;
+    z-index: 69;
     display: flex;
+    height: calc(100vh - 78px);
+    height: calc(100dvh - 78px);
     visibility: hidden;
     flex-direction: column;
     justify-content: space-between;
-    padding: 44px 22px 34px;
+    gap: 24px;
+    padding: 44px 22px max(34px, calc(env(safe-area-inset-bottom) + 18px));
     overflow-y: auto;
     overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     background: var(--semantic-ink);
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-12px);
-    transition: opacity 180ms ease, transform 180ms ease,
-      visibility 180ms ease;
+    transition: opacity 180ms ease;
   }
 
   .mobile-navigation.is-open {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0);
   }
 
   .mobile-navigation nav {
+    flex: 0 0 auto;
     border-top: 1px solid var(--semantic-line);
   }
 
@@ -2110,6 +2119,7 @@ body {
   }
 
   .mobile-navigation .strategy-button {
+    flex: 0 0 auto;
     width: 100%;
     justify-content: space-between;
     padding-inline: 18px;
@@ -2251,6 +2261,34 @@ body {
     flex-direction: column;
     gap: 22px;
     margin-top: 31px;
+  }
+
+  .semantic-hero .semantic-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    max-width: 430px;
+  }
+
+  .semantic-hero .semantic-actions .strategy-button,
+  .semantic-hero .semantic-actions .semantic-text-link {
+    min-width: 0;
+    min-height: 50px;
+    font-size: 0.72rem;
+  }
+
+  .semantic-hero .semantic-actions .strategy-button {
+    width: 100%;
+    justify-content: space-between;
+    gap: 6px;
+    padding-inline: 12px;
+  }
+
+  .semantic-hero .semantic-actions .semantic-text-link {
+    justify-content: center;
+    gap: 6px;
   }
 
   .strategy-button {
@@ -2416,6 +2454,7 @@ body {
   .strategy-button,
   .strategy-button svg,
   .site-nav a,
+  .mobile-navigation,
   .semantic-text-link,
   .work-evidence-row,
   .work-evidence-row::after,
@@ -5531,5 +5570,11 @@ body {
     color: var(--sl-color-white);
     font-size: 0.875rem;
     line-height: 1.5;
+  }
+}
+
+@media (max-width: 360px) {
+  .semantic-hero .semantic-actions .strategy-button {
+    padding-inline: 8px;
   }
 }
