@@ -158,7 +158,7 @@ const solutionApplications = [
 const practicalQuestions = [
   {
     topic: "Find comparable builds",
-    question: "Give me a list of all the 30 metres A-double Tankers we built to operate in NSW in the last 2 years, including the total manufacturing cost, suspension brand.",
+    question: "Give me a list of all 30-metre A-double tankers we built to operate in NSW over the past two years, including the manufacturing cost and suspension brand for each.",
   },
   {
     topic: "Prepare a quotation",
