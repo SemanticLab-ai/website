@@ -65,7 +65,7 @@ export function NetworkHeroMotion() {
         <NetworkPlayer playing={playing} reducedMotion={reducedMotion} onNodeFocus={onNodeFocus} />
       </Suspense>
     </div>
-    <p className="semantic-network-touch-hint">Tap or glide across the ringed dots to explore.</p>
+    <p className="semantic-network-touch-hint">Tap a ringed dot to explore. Press and drag it to move the network.</p>
     {focusedNode?.label && (
       <aside className="semantic-network-detail" aria-live="polite" aria-atomic="true">
         <span className="semantic-network-detail__index">
