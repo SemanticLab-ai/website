@@ -613,7 +613,7 @@ function SolutionStackSlide() {
         </h2>
         <button className="tieman-solution-stack__film-button" type="button" onClick={openFilm}>
           <Play aria-hidden="true" />
-          Watch the concept film <span>00:41</span>
+          Watch the concept in motion <span>00:41</span>
         </button>
       </div>
 
