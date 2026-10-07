@@ -32,6 +32,7 @@ Do not commit or push directly to `staging` or `main`. Do not cherry-pick featur
 - Staging is a Git branch and a Preview URL for a version of that same Worker.
 - Do not create a separate staging Worker, Wrangler environment, or staging custom domain.
 - `preview_urls` must remain enabled in `wrangler.json`.
+- `workers_dev` must remain `false` in `wrangler.json` to close the public production Worker URL without disabling Preview URLs. Protect Preview URLs with Cloudflare Access before sharing them; scope Access to previews so it does not gate `semanticlab.ai`.
 - Cloudflare Workers Builds is connected directly to the GitHub repository and is the sole deployment executor.
 - Cloudflare builds non-production branches with `npm run build` followed by `npx wrangler versions upload`, producing Preview URLs without promoting them to production traffic.
 - The `staging` branch Preview URL is the approval surface for the redesigned site. Feature-branch previews may be used for earlier review but do not replace staging acceptance.
