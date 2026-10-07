@@ -45,6 +45,10 @@ assert(
   "Cloudflare preview URLs must remain enabled.",
 );
 assert(
+  wrangler.workers_dev === false,
+  "The production workers.dev route must stay disabled in Wrangler.",
+);
+assert(
   packageJson.scripts.build === "node scripts/build-cloudflare.mjs",
   "The shared build command must use the branch-aware selector.",
 );
@@ -177,8 +181,10 @@ for (const [key, value] of Object.entries({
   );
 }
 assert(
-  flattened.name === wrangler.name && flattened.preview_urls === true,
-  "Flattened artifact must retain shared Worker and preview URLs.",
+  flattened.name === wrangler.name &&
+    flattened.preview_urls === true &&
+    flattened.workers_dev === false,
+  "Flattened artifact must retain the shared Worker and previews while disabling the production workers.dev route.",
 );
 assert(
   !("SL_FEATURE_GALAXY_MOTION" in flattened.vars),

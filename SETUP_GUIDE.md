@@ -36,6 +36,7 @@ feature branch -> staging -> Cloudflare Preview URL -> main -> semanticlab.ai
 - After review on the Preview URL, open a pull request from `staging` to `main`.
 - Every push to `main` runs `npm run build` followed by `npx wrangler deploy` and deploys the production Worker.
 - Do not create a second Worker or a Wrangler staging environment.
+- The production `workers.dev` URL is disabled in `wrangler.json`; Preview URLs stay enabled for branch review. In Workers & Pages > `semanticlab-website` > Access, protect **Previews only** for the review team before sharing a Preview URL. Verify an unauthenticated preview request is challenged while `https://semanticlab.ai/` remains public.
 
 Cloudflare manages deployment authentication through its Git integration. Do not add Cloudflare API tokens, account IDs, or deployment jobs to GitHub Actions. GitHub Actions is reserved for pull-request validation.
 
