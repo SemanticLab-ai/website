@@ -70,8 +70,8 @@ assert(
 assert(
   contract.production.analyticsEnabled === true &&
     contract.production.indexingAllowed === true &&
-    contract.production.features.directForm === false &&
-    contract.production.leadEmailEnabled === false &&
+    contract.production.features.directForm === true &&
+    contract.production.leadEmailEnabled === true &&
     typeof contract.production.turnstileSiteKey === "string" &&
     contract.production.features.networkMotion === true &&
     contract.production.features.workHeroVideo === true &&
@@ -165,8 +165,8 @@ const flattened = JSON.parse(
 );
 assert(
   wrangler.vars.SL_DEPLOY_ENV === "production" &&
-    wrangler.vars.SL_FEATURE_DIRECT_FORM === "false" &&
-    wrangler.vars.SL_LEAD_EMAIL_ENABLED === "false" &&
+    wrangler.vars.SL_FEATURE_DIRECT_FORM === "true" &&
+    wrangler.vars.SL_LEAD_EMAIL_ENABLED === "true" &&
     wrangler.vars.SL_FEATURE_NETWORK_MOTION === "true" &&
     wrangler.vars.SL_FEATURE_WORK_HERO_VIDEO === "true" &&
     wrangler.vars.SL_FEATURE_WORK_PRODUCTS_GALLERY === "true" &&
