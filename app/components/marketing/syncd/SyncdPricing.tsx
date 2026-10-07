@@ -140,8 +140,7 @@ export function SyncdPricing() {
             </p>
             <CTAButton
               variant="secondary"
-              href="mailto:hello@semanticlab.ai"
-              external
+              href="/services#strategy-engagement"
             >
               Contact Us
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

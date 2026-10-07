@@ -1,4 +1,4 @@
-import { ArrowRight, Mail, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 
 import { SectionWrapper } from "~/components/shared/SectionWrapper";
 import { CTAButton } from "~/components/shared/CTAButton";
@@ -75,11 +75,10 @@ export function UmbrellaCTA() {
             <span className="text-white/80">Questions?</span>
           </div>
           <a
-            href="mailto:hello@semanticlab.ai"
+            href="/services#strategy-engagement"
             className="flex items-center gap-2 text-lg font-semibold text-white hover:text-lime transition-colors group"
           >
-            <Mail className="w-5 h-5" />
-            hello@semanticlab.ai
+            Use the contact form
           </a>
           <p className="text-sm text-white/50">
             We'll reply within 4 hours. (Really.)

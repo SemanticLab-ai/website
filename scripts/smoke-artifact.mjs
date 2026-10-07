@@ -37,7 +37,17 @@ async function smoke(disableFeature = false) {
   assert(html.includes('https://semanticlab.ai/'),'Canonical unchanged');
   const robots=await (await fetch('http://127.0.0.1:8788/robots.txt')).text();
   assert.equal(/Disallow: \/(?:\n|$)/.test(robots),preview);
-  for(const path of ['/services','/founders','/work','/design-system']) assert.equal((await fetch(`http://127.0.0.1:8788${path}`)).status,200,path);
+  for(const path of [
+   '/', '/services', '/founders', '/work', '/design-system',
+   '/products/syncd', '/products/image-enhancer', '/products/image-enhancer/pricing',
+   '/products/smartapply', '/products/visual-search', '/products/visual-search/pricing',
+  ]) {
+   const page=await fetch(`http://127.0.0.1:8788${path}`);
+   assert.equal(page.status,200,path);
+   const pageHtml=await page.text();
+   assert(!pageHtml.includes('mailto:'),`${path} must not expose email links`);
+   assert(!pageHtml.includes('hello@semanticlab.ai'),`${path} must not expose the recipient address`);
+  }
   const servicesHtml=await (await fetch('http://127.0.0.1:8788/services')).text();
   assert.equal(servicesHtml.includes('Preview mode: your details are checked but no email is sent.'), preview, 'Direct form preview copy');
   assert.equal(servicesHtml.includes('Your request is sent securely to SemanticLab.'), !preview, 'Production direct form copy');

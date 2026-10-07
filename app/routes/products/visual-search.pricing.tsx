@@ -1,5 +1,6 @@
 import { Button } from "~/components/ui/button";
-import { Check, Sparkles, Mail, Building, HelpCircle, Bell, DollarSign } from "lucide-react";
+import { Check, Sparkles, Building, HelpCircle, Bell, DollarSign } from "lucide-react";
+import { Link } from "react-router";
 import { visualSearchPricing } from "~/lib/pricing";
 import { PricingCard } from "~/components/shared/PricingCard";
 import { FAQAccordion } from "~/components/shared/FAQAccordion";
@@ -172,10 +173,9 @@ export default function VisualSearchPricing() {
                   className="h-12 px-8 rounded-full bg-lime hover:bg-lime-dark text-dark-bg font-semibold shadow-lg shadow-lime/20"
                   asChild
                 >
-                  <a href="mailto:hello@semanticlab.ai?subject=Visual Search Enterprise" className="flex items-center gap-3">
-                    <Mail className="w-5 h-5" />
+                  <Link to="/services#strategy-engagement" className="flex items-center gap-3">
                     Contact Sales
-                  </a>
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -216,14 +216,17 @@ export default function VisualSearchPricing() {
                 Be the First to <span className="gradient-text-lime">Know</span>
               </h2>
               <p className="text-lg text-white/50 mb-8">
-                Visual Search is coming soon. Get notified when we launch.
+                Visual Search is coming soon. Tell us what you are looking for.
               </p>
               <Button
                 size="lg"
                 className="h-14 px-8 text-lg rounded-full bg-lime hover:bg-lime-dark text-dark-bg font-semibold shadow-2xl shadow-lime/30 transition-all duration-300 hover:scale-105"
+                asChild
               >
-                <Bell className="w-5 h-5 mr-2" />
-                Get Notified
+                <Link to="/services#strategy-engagement">
+                  <Bell className="w-5 h-5 mr-2" />
+                  Ask About Visual Search
+                </Link>
               </Button>
             </div>
           </div>

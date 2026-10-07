@@ -37,7 +37,7 @@ export function StudioHero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <CTAButton href="mailto:hello@semanticlab.ai?subject=I%20have%20an%20idea">
+              <CTAButton href="/services#strategy-engagement">
                 Start Your Idea
                 <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </CTAButton>

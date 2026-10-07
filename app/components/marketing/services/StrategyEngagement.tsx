@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef } from "react";
 import { Form, useActionData, useNavigation } from "react-router";
-import { ArrowUpRight, Check, Mail } from "lucide-react";
-import { directFormEnabled, isPreviewBuild, turnstileSiteKey } from "~/lib/deployment";
-import { formString, horizons, stages, type StrategyActionData } from "~/lib/strategy-engagement";
+import { ArrowUpRight, Check } from "lucide-react";
+import { isPreviewBuild, turnstileSiteKey } from "~/lib/deployment";
+import { horizons, stages, type StrategyActionData } from "~/lib/strategy-engagement";
 
 type TurnstileClient = {
   render: (element: HTMLElement, options: { sitekey: string; action: string; theme: string }) => string;
@@ -17,7 +17,6 @@ declare global {
 }
 
 export function StrategyEngagement() {
-  const [preparedEmail, setPreparedEmail] = useState<string | null>(null);
   const actionData = useActionData() as StrategyActionData | undefined;
   const navigation = useNavigation();
   const formRef = useRef<HTMLFormElement>(null);
@@ -25,10 +24,8 @@ export function StrategyEngagement() {
   const widgetId = useRef<string | null>(null);
   const fieldErrors = actionData?.status === "error" ? actionData.fieldErrors ?? {} : {};
   const submitting = navigation.state === "submitting";
-  const FormElement = directFormEnabled ? Form : "form";
-
   useEffect(() => {
-    if (!directFormEnabled || !turnstileSiteKey) return;
+    if (!turnstileSiteKey) return;
 
     let cancelled = false;
     const render = () => {
@@ -66,38 +63,6 @@ export function StrategyEngagement() {
     if (actionData.status === "sent") formRef.current?.reset();
   }, [actionData]);
 
-  function handleMailtoSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-    const name = formString(formData, "name");
-    const organisation = formString(formData, "organisation");
-    const body = [
-      "Strategy Engagement request",
-      "",
-      `Name: ${name}`,
-      `Work email: ${formString(formData, "email")}`,
-      `Organisation: ${organisation}`,
-      `Role: ${formString(formData, "role") || "Not provided"}`,
-      `Current stage: ${formString(formData, "stage")}`,
-      `Decision horizon: ${formString(formData, "horizon")}`,
-      "",
-      "Opportunity or challenge:",
-      formString(formData, "opportunity"),
-      "",
-      "What would a useful outcome look like?",
-      formString(formData, "outcome"),
-      "",
-      "Additional context:",
-      formString(formData, "context") || "Not provided",
-    ].join("\n");
-    const subject = `Strategy Engagement request - ${organisation || name}`;
-    const mailto = `mailto:hello@semanticlab.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    setPreparedEmail(mailto);
-    window.location.href = mailto;
-  }
-
   const errorFor = (field: string) => fieldErrors[field]
     ? <small className="strategy-form__error">{fieldErrors[field]}</small>
     : null;
@@ -128,19 +93,12 @@ export function StrategyEngagement() {
             </div>
           </div>
 
-          <p className="strategy-engagement__email">
-            <span>Prefer to write directly?</span>
-            <a href="mailto:hello@semanticlab.ai">
-              <Mail aria-hidden="true" /> hello@semanticlab.ai
-            </a>
-          </p>
         </div>
 
-        <FormElement
+        <Form
           ref={formRef}
           className="strategy-form"
           method="post"
-          onSubmit={directFormEnabled ? undefined : handleMailtoSubmit}
         >
           <div className="strategy-form__grid">
             <label>
@@ -222,41 +180,27 @@ export function StrategyEngagement() {
             {errorFor("context")}
           </label>
 
-          {directFormEnabled ? (
-            <>
-              <div className="strategy-form__honeypot" aria-hidden="true">
-                <label>Company website <input name="company_website" tabIndex={-1} autoComplete="off" /></label>
-              </div>
-              {turnstileSiteKey ? <div ref={turnstileContainer} className="strategy-form__turnstile" /> : null}
-            </>
-          ) : null}
+          <div className="strategy-form__honeypot" aria-hidden="true">
+            <label>Company website <input name="company_website" tabIndex={-1} autoComplete="off" /></label>
+          </div>
+          {turnstileSiteKey ? <div ref={turnstileContainer} className="strategy-form__turnstile" /> : null}
 
           <div className="strategy-form__footer">
-            <p>{directFormEnabled
-              ? isPreviewBuild
-                ? "Preview mode: your details are checked but no email is sent."
-                : "Your request is sent securely to SemanticLab."
-              : "Preparing the request opens an email in your mail app. Nothing is sent until you choose send."}</p>
+            <p>{isPreviewBuild
+              ? "Preview mode: your details are checked but no email is sent."
+              : "Your request is sent securely to SemanticLab."}</p>
             <button className="strategy-button" type="submit" disabled={submitting}>
-              {submitting ? "Sending..." : directFormEnabled
-                ? isPreviewBuild ? "Check my request" : "Send my request"
-                : "Prepare my request"}
+              {submitting ? "Sending..." : isPreviewBuild ? "Check my request" : "Send my request"}
               <ArrowUpRight aria-hidden="true" />
             </button>
           </div>
 
-          {directFormEnabled && actionData ? (
+          {actionData ? (
             <p className="strategy-form__status" role={actionData.status === "error" ? "alert" : "status"}>
-              {actionData.message}{actionData.status === "error" ? <>{" "}<a href="mailto:hello@semanticlab.ai">Email us directly.</a></> : null}
+              {actionData.message}
             </p>
           ) : null}
-          {!directFormEnabled && preparedEmail ? (
-            <p className="strategy-form__status" role="status">
-              Your request is prepared. If your mail app did not open,{" "}
-              <a href={preparedEmail}>open the email again</a>.
-            </p>
-          ) : null}
-        </FormElement>
+        </Form>
       </div>
     </section>
   );
