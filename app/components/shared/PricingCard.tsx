@@ -4,8 +4,6 @@ import { Link } from "react-router";
 import type { PricingTier } from "~/lib/pricing";
 
 export function PricingCard({ tier }: { tier: PricingTier }) {
-  const isExternal = tier.ctaHref.startsWith("mailto:");
-
   return (
     <div
       className={`relative rounded-3xl p-8 transition-all duration-300 hover:-translate-y-2 ${
@@ -70,11 +68,7 @@ export function PricingCard({ tier }: { tier: PricingTier }) {
         }`}
         asChild
       >
-        {isExternal ? (
-          <a href={tier.ctaHref}>{tier.cta}</a>
-        ) : (
-          <Link to={tier.ctaHref}>{tier.cta}</Link>
-        )}
+        <Link to={tier.ctaHref}>{tier.cta}</Link>
       </Button>
     </div>
   );

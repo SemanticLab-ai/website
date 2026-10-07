@@ -115,7 +115,7 @@ export const MotionLab = () => {
         <h3>{focusedNode?.label ?? "Follow a connection"}</h3>
         <p>{focusedNode?.description ?? "Move near a ringed dot, tap one, or use Tab to explore the five key stages."}</p>
       </aside>
-      {mode === "network" && <p className="stage-hint">Move near a ringed dot · Drag to reshape · Tap to focus</p>}
+      {mode === "network" && <p className="stage-hint">Move near a ringed dot · Drag to reshape · Tap or glide to explore</p>}
     </div>
 
     <footer className="lab-footer">

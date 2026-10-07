@@ -621,10 +621,10 @@ body {
   align-items: center;
   justify-content: center;
   gap: 14px;
-  border: 1px solid var(--sl-border-strong);
+  border: 1px solid var(--sl-color-lime);
   border-radius: var(--sl-radius-sm);
-  background: transparent;
-  color: var(--semantic-white);
+  background: var(--sl-color-lime);
+  color: var(--sl-color-black);
   font-size: 0.76rem;
   font-weight: 650;
   line-height: 1.25;
@@ -637,8 +637,8 @@ body {
 
 .strategy-button:hover,
 .strategy-button:focus-visible {
-  background: color-mix(in srgb, var(--sl-color-graphite) 60%, var(--sl-color-black));
-  border-color: color-mix(in srgb, var(--sl-color-sage) 65%, var(--sl-color-black));
+  background: var(--sl-accent-pressed);
+  border-color: var(--sl-accent-pressed);
   transform: translateY(-2px);
 }
 
@@ -660,7 +660,7 @@ body {
 }
 
 .strategy-button svg {
-  color: var(--semantic-lime);
+  color: currentColor;
   transition: transform var(--sl-duration-fast) ease;
 }
 
@@ -2997,7 +2997,37 @@ body {
   overflow: hidden;
 }
 
+.strategy-form__verification {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 1.12fr);
+  gap: 28px;
+  align-items: center;
+  border-top: 1px solid var(--semantic-line-dark);
+  padding-top: 27px;
+}
+
+.strategy-form__verification-copy > span,
+.strategy-form__footer-copy > span,
+.strategy-form__confirmation-top > span:first-child,
+.strategy-form__confirmation-next > span {
+  color: rgba(8, 11, 9, 0.58);
+  font-size: 0.64rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.strategy-form__verification-copy > p {
+  max-width: 240px;
+  margin-top: 9px;
+  color: var(--semantic-ink);
+  font-size: 0.89rem;
+  line-height: 1.5;
+}
+
 .strategy-form__turnstile {
+  min-width: 0;
   min-height: 65px;
 }
 
@@ -3006,14 +3036,16 @@ body {
   gap: 28px;
   align-items: center;
   justify-content: space-between;
-  padding-top: 8px;
+  border-top: 1px solid var(--semantic-line-dark);
+  padding-top: 27px;
 }
 
-.strategy-form__footer > p {
-  max-width: 310px;
-  color: rgba(8, 11, 9, 0.48);
-  font-size: 0.64rem;
-  line-height: 1.55;
+.strategy-form__footer-copy > p {
+  max-width: 330px;
+  margin-top: 9px;
+  color: rgba(8, 11, 9, 0.72);
+  font-size: 0.78rem;
+  line-height: 1.6;
 }
 
 .strategy-form__footer .strategy-button {
@@ -3060,6 +3092,95 @@ body {
   font-weight: 650;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.strategy-form--confirmation {
+  gap: 0;
+  background: var(--semantic-white);
+}
+
+.strategy-form--confirmation:focus-visible {
+  outline: 2px solid var(--semantic-ink);
+  outline-offset: 4px;
+}
+
+.strategy-form__confirmation-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--semantic-line-dark);
+  padding-bottom: 25px;
+}
+
+.strategy-form__confirmation-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  background: var(--semantic-ink);
+  color: var(--semantic-lime);
+}
+
+.strategy-form__confirmation-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.2;
+}
+
+.strategy-form__confirmation-message {
+  padding-block: clamp(48px, 5vw, 80px) clamp(44px, 4vw, 68px);
+}
+
+.strategy-form__confirmation-message h3 {
+  max-width: 620px;
+  color: var(--semantic-ink);
+  font-size: clamp(2.65rem, 4.2vw, 4.5rem);
+  font-weight: 450;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+
+.strategy-form__confirmation-message > p {
+  max-width: 490px;
+  margin-top: 23px;
+  color: rgba(8, 11, 9, 0.68);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.strategy-form__confirmation-next {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 24px;
+  border-top: 1px solid var(--semantic-line-dark);
+  padding-top: 24px;
+}
+
+.strategy-form__confirmation-next > p {
+  max-width: 410px;
+  color: rgba(8, 11, 9, 0.76);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.strategy-form__confirmation-next a {
+  color: var(--semantic-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.strategy-form__confirmation-link {
+  width: fit-content;
+  margin-top: 44px;
+  color: var(--semantic-ink);
+}
+
+.strategy-form__confirmation-link:hover,
+.strategy-form__confirmation-link:focus-visible {
+  color: var(--sl-color-graphite);
 }
 
 @keyframes servicesVisualReveal {
@@ -3262,6 +3383,36 @@ body {
 
   .strategy-form__footer .strategy-button {
     width: 100%;
+  }
+
+  .strategy-form__confirmation-message {
+    padding-block: 52px;
+  }
+
+  .strategy-form__confirmation-next {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .strategy-form__confirmation-link {
+    margin-top: 36px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1199px) {
+  .strategy-form__verification {
+    grid-template-columns: 1fr;
+  }
+
+  .strategy-form__verification-copy > p {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .strategy-form__verification {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 }
 
@@ -5469,7 +5620,7 @@ body {
   }
 
   .strategy-form label small,
-  .strategy-form__footer > p {
+  .strategy-form__footer-copy > p {
     font-size: 0.75rem;
   }
 

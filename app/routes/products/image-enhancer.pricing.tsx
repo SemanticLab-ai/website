@@ -1,5 +1,5 @@
 import { Button } from "~/components/ui/button";
-import { DollarSign, Check, Sparkles, Mail, Building, HelpCircle, ArrowRight } from "lucide-react";
+import { DollarSign, Check, Sparkles, Building, HelpCircle, ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { imageEnhancerPricing } from "~/lib/pricing";
 import { PricingCard } from "~/components/shared/PricingCard";
@@ -168,10 +168,9 @@ export default function ImageEnhancerPricing() {
                   className="h-12 px-8 rounded-full bg-lime hover:bg-lime-dark text-dark-bg font-semibold shadow-lg shadow-lime/20"
                   asChild
                 >
-                  <a href="mailto:hello@semanticlab.ai?subject=Image Enhancer Enterprise" className="flex items-center gap-3">
-                    <Mail className="w-5 h-5" />
+                  <Link to="/services#strategy-engagement" className="flex items-center gap-3">
                     Contact Sales
-                  </a>
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -230,9 +229,9 @@ export default function ImageEnhancerPricing() {
 
               <p className="text-sm text-white/40 mt-6">
                 Questions?{" "}
-                <a href="mailto:hello@semanticlab.ai" className="text-lime hover:underline font-semibold">
-                  hello@semanticlab.ai
-                </a>
+                <Link to="/services#strategy-engagement" className="text-lime hover:underline font-semibold">
+                  Use the contact form
+                </Link>
               </p>
             </div>
           </div>

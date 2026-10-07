@@ -6,6 +6,7 @@ import {
   strategyEngagementSchema,
   type StrategyActionData,
 } from "~/lib/strategy-engagement";
+import { readLimitedRequestBody } from "~/lib/read-limited-request-body";
 import { ServicesHero } from "~/components/marketing/services/ServicesHero";
 import { ServicesCapabilities } from "~/components/marketing/services/ServicesCapabilities";
 import { EngagementPath } from "~/components/marketing/services/EngagementPath";
@@ -32,8 +33,8 @@ export async function action({ request, context }: Route.ActionArgs) {
     return actionResult({ status: "error", message: "The request could not be processed." }, 413);
   }
 
-  const body = await request.text();
-  if (body.length > 16_384) {
+  const body = await readLimitedRequestBody(request, 16_384);
+  if (body === null) {
     return actionResult({ status: "error", message: "The request is too large." }, 413);
   }
   const formData = new URLSearchParams(body);
@@ -86,7 +87,7 @@ export async function action({ request, context }: Route.ActionArgs) {
   const secret = await env.TURNSTILE_SECRET.get().catch(() => null);
   if (!secret) {
     console.error("Strategy form Turnstile secret is missing");
-    return actionResult({ status: "error", message: "We could not send your request. Please email us directly." }, 503);
+    return actionResult({ status: "error", message: "We could not send your request. Please try again later." }, 503);
   }
 
   const challenge = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
@@ -119,7 +120,7 @@ export async function action({ request, context }: Route.ActionArgs) {
     console.log("Strategy request accepted", { reference, messageId: result.messageId });
     return actionResult({
       status: "sent",
-      message: "Your Strategy Engagement request has been sent. We'll reply by email.",
+      message: "Your Strategy Engagement request has been sent.",
     });
   } catch (error) {
     console.error("Strategy email send failed", {
@@ -128,7 +129,7 @@ export async function action({ request, context }: Route.ActionArgs) {
     });
     return actionResult({
       status: "error",
-      message: "We could not send your request. Please email us directly.",
+      message: "We could not send your request. Please try again later.",
     }, 503);
   }
 }

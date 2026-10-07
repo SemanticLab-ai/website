@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, MessageCircle, Sparkles, Calendar } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Sparkles, Calendar } from "lucide-react";
 import { SectionWrapper } from "~/components/shared/SectionWrapper";
 import { SectionHeader } from "~/components/shared/SectionHeader";
 import { CTAButton } from "~/components/shared/CTAButton";
@@ -34,7 +34,7 @@ export function StudioCTA() {
           <CTAButton
             variant="primary"
             size="large"
-            href="mailto:hello@semanticlab.ai?subject=I%20have%20an%20idea"
+            href="/services#strategy-engagement"
           >
             Start Your Idea
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -43,10 +43,10 @@ export function StudioCTA() {
           <CTAButton
             variant="secondary"
             size="large"
-            href="mailto:hello@semanticlab.ai?subject=Discovery%20Call%20Request"
+            href="/services#strategy-engagement"
           >
             <Calendar className="w-5 h-5" />
-            Book a Discovery Call
+            Request a Conversation
           </CTAButton>
         </div>
 
@@ -70,11 +70,10 @@ export function StudioCTA() {
             <span className="text-white/60">Questions?</span>
           </div>
           <a
-            href="mailto:hello@semanticlab.ai"
+            href="/services#strategy-engagement"
             className="flex items-center gap-2 text-lg font-semibold text-white hover:text-lime transition-colors group"
           >
-            <Mail className="w-5 h-5" />
-            hello@semanticlab.ai
+            Use the contact form
           </a>
           <p className="text-sm text-white/40">
             We'll reply within 4 hours. (Really.)
