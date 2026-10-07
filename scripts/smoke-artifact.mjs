@@ -63,7 +63,7 @@ async function smoke(disableFeature = false) {
    const honeypot=await fetch('http://127.0.0.1:8788/services',{
     method:'POST', headers:{ Origin:'http://127.0.0.1:8788','Content-Type':'application/x-www-form-urlencoded' }, body:spamForm,
    });
-   assert.equal(honeypot.status,400,'Honeypot submission must be rejected');
+   assert.equal(honeypot.status,400,`Honeypot submission must be rejected: ${await honeypot.text()}\n${log}`);
   }
   const workHtml=await (await fetch('http://127.0.0.1:8788/work')).text();
   assert.equal(workHtml.includes('data-work-hero-video="true"'),featuresEnabled&&!disableFeature,'Work video must require both build and runtime flags');
