@@ -11,7 +11,7 @@ export function meta() {
   const title = "Syncd - Pinnacle to Shopify Product Sync | SemanticLab";
   const description =
     "Automatically sync your Pinnacle auto parts inventory to Shopify. Smart field mapping, SEO templates, tiered markup pricing, and optional AI-powered add-ons.";
-  const ogImage = "/images/og-default.jpg";
+  const ogImage = "https://semanticlab.ai/images/brand/services-data-convergence.png";
   const url = "https://semanticlab.ai/products/syncd";
 
   return [

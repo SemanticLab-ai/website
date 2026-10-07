@@ -8,7 +8,7 @@ export function meta() {
     "SmartApply - AI Resume Tailoring for Job Seekers | SemanticLab";
   const description =
     "Tailored resumes in minutes, not hours. Upload your work artifacts, paste a job description, and let AI generate a role-specific resume that gets interviews.";
-  const ogImage = "/images/og-default.jpg";
+  const ogImage = "https://semanticlab.ai/images/brand/services-data-convergence.png";
   const url = "https://semanticlab.ai/products/smartapply";
 
   return [

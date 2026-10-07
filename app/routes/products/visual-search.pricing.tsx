@@ -11,7 +11,7 @@ export function meta() {
     "Visual Search Pricing - Shopify Store Plans | SemanticLab";
   const description =
     "Visual Search pricing for Shopify stores. Plans from $99/month with a 14-day free trial, no credit card required. Scale from starter to enterprise. Coming soon.";
-  const ogImage = "/images/og-default.jpg";
+  const ogImage = "https://semanticlab.ai/images/brand/services-data-convergence.png";
   const url = "https://semanticlab.ai/products/visual-search/pricing";
 
   return [

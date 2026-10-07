@@ -6,7 +6,7 @@ export function meta({}: Route.MetaArgs) {
   const title = "SemanticLab - AI systems that do the actual work";
   const description =
     "SemanticLab is a founder-led AI studio. We design, build and deploy custom AI systems that remove busywork, unlock revenue and compound every month they run.";
-  const ogImage = "/images/og-default.jpg";
+  const ogImage = "https://semanticlab.ai/images/brand/services-data-convergence.png";
   const url = "https://semanticlab.ai/";
 
   return [
