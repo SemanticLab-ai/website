@@ -4083,29 +4083,6 @@ body {
   line-height: 1.42 !important;
 }
 
-.founders-cta {
-  padding-block: 92px;
-  background: var(--semantic-paper);
-  color: var(--semantic-ink);
-}
-
-.founders-cta__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) auto;
-  gap: 70px;
-  align-items: center;
-}
-
-.founders-cta h2 {
-  max-width: 960px;
-  font-size: clamp(3.3rem, 5vw, 5.4rem);
-  line-height: 0.92;
-}
-
-.founders-cta .strategy-button {
-  min-width: 290px;
-}
-
 @media (max-width: 1100px) {
   .founders-hero__inner {
     grid-template-columns: 1fr;
@@ -4197,11 +4174,6 @@ body {
     border-top: 1px solid var(--semantic-line-dark);
     border-left: 0;
   }
-
-  .founders-cta__inner {
-    grid-template-columns: 1fr;
-    gap: 42px;
-  }
 }
 
 @media (max-width: 520px) {
@@ -4235,19 +4207,6 @@ body {
 
   .founders-life h2 {
     font-size: clamp(3rem, 14vw, 4rem);
-  }
-
-  .founders-cta h2 {
-    font-size: clamp(3rem, 14vw, 4rem);
-  }
-
-  .founders-cta {
-    padding-block: 72px;
-  }
-
-  .founders-cta .strategy-button {
-    width: 100%;
-    min-width: 0;
   }
 }
 
@@ -5353,7 +5312,8 @@ body {
   text-align: left;
   padding-block: 120px;
 }
-.engagement-section h2 {
+.engagement-section h2,
+.semantic-founders .engagement-section h2 {
   max-width: 680px;
   font-size: clamp(2.5rem, 4vw, 4rem);
   line-height: 1.08;

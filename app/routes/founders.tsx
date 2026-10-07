@@ -1,7 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
-
-const strategyHref = "/services#strategy-engagement";
+import type { Route } from "./+types/founders";
+import { EngagementSection } from "~/components/marketing/home/EngagementSection";
+import { networkMotionEnabled } from "~/lib/deployment";
 
 export function meta() {
   const title = "Founders | SemanticLab";
@@ -26,7 +27,15 @@ export function meta() {
   ];
 }
 
-export default function Founders() {
+export function loader({ context }: Route.LoaderArgs) {
+  return {
+    networkMotion:
+      networkMotionEnabled &&
+      context.cloudflare.env.SL_FEATURE_NETWORK_MOTION === "true",
+  };
+}
+
+export default function Founders({ loaderData }: Route.ComponentProps) {
   return (
     <div className="semantic-founders">
       <section className="founders-hero" aria-labelledby="founders-hero-title">
@@ -119,17 +128,7 @@ export default function Founders() {
         </div>
       </section>
 
-      <section className="founders-cta" aria-labelledby="founders-cta-title">
-        <div className="semantic-shell founders-cta__inner">
-          <h2 id="founders-cta-title">
-            Where could this combination create meaningful advantage?
-          </h2>
-          <a className="strategy-button" href={strategyHref}>
-            Request a Strategy Engagement
-            <ArrowUpRight aria-hidden="true" />
-          </a>
-        </div>
-      </section>
+      <EngagementSection networkMotion={loaderData.networkMotion} />
     </div>
   );
 }
