@@ -14,19 +14,15 @@ export const indexingAllowed =
   import.meta.env.VITE_SL_INDEXING_ALLOWED !== "false";
 
 export const networkMotionEnabled =
-  deploymentEnvironment === "preview" &&
   import.meta.env.VITE_SL_FEATURE_NETWORK_MOTION === "true";
 
 export const workHeroVideoEnabled =
-  deploymentEnvironment === "preview" &&
   import.meta.env.VITE_SL_FEATURE_WORK_HERO_VIDEO === "true";
 
 export const productGalleryEnabled =
-  deploymentEnvironment === "preview" &&
   import.meta.env.VITE_SL_FEATURE_WORK_PRODUCTS_GALLERY === "true";
 
 export const founderExperienceGalleryEnabled =
-  deploymentEnvironment === "preview" &&
   import.meta.env.VITE_SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "true";
 
 export const googleTagManagerId = analyticsEnabled

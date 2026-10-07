@@ -63,14 +63,14 @@ assert(
 assert(
   contract.production.analyticsEnabled === true &&
     contract.production.indexingAllowed === true &&
-    contract.production.features.networkMotion === false &&
-    contract.production.features.workHeroVideo === false &&
-    contract.production.features.workProductsGallery === false &&
-    contract.production.features.founderExperienceGallery === false &&
+    contract.production.features.networkMotion === true &&
+    contract.production.features.workHeroVideo === true &&
+    contract.production.features.workProductsGallery === true &&
+    contract.production.features.founderExperienceGallery === true &&
     contract.production.cloudflareCommand === "wrangler deploy" &&
     contract.production.canonicalOrigin === "https://semanticlab.ai" &&
     typeof contract.production.googleTagManagerId === "string",
-  "The production source contract must retain analytics, indexing and canonical origin with network motion disabled.",
+  "The production source contract must enable the approved staging visuals and retain analytics, indexing and canonical origin.",
 );
 
 for (const [name, artifact] of [
@@ -126,14 +126,14 @@ if (expectedEnvironment === "preview") {
   assert(
     clientArtifact.analyticsEnabled === true &&
       clientArtifact.indexingAllowed === true &&
-      clientArtifact.features.networkMotion === false &&
-      clientArtifact.features.workHeroVideo === false &&
-      clientArtifact.features.workProductsGallery === false &&
-      clientArtifact.features.founderExperienceGallery === false &&
+      clientArtifact.features.networkMotion === true &&
+      clientArtifact.features.workHeroVideo === true &&
+      clientArtifact.features.workProductsGallery === true &&
+      clientArtifact.features.founderExperienceGallery === true &&
       clientArtifact.canonicalOrigin === "https://semanticlab.ai" &&
       clientArtifact.googleTagManagerId ===
         contract.production.googleTagManagerId,
-    "Production artifacts must preserve approved SEO/analytics and disable network motion.",
+    "Production artifacts must preserve approved visuals, SEO and analytics.",
   );
 }
 
@@ -149,11 +149,13 @@ const flattened = JSON.parse(
 );
 assert(
   wrangler.vars.SL_DEPLOY_ENV === "production" &&
-    wrangler.vars.SL_FEATURE_NETWORK_MOTION === "false" &&
-    wrangler.vars.SL_FEATURE_WORK_HERO_VIDEO === "false" &&
-    wrangler.vars.SL_FEATURE_WORK_PRODUCTS_GALLERY === "false" &&
-    wrangler.vars.SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "false",
-  "Ambiguous source configuration must be production-safe.",
+    wrangler.vars.SL_FEATURE_NETWORK_MOTION === "true" &&
+    wrangler.vars.SL_FEATURE_WORK_HERO_VIDEO === "true" &&
+    wrangler.vars.SL_FEATURE_WORK_PRODUCTS_GALLERY === "true" &&
+    wrangler.vars.SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "true" &&
+    wrangler.vars.SL_INDEXING_ALLOWED === "true" &&
+    wrangler.vars.SL_ANALYTICS_ENABLED === "true",
+  "Source bindings must match the approved production defaults.",
 );
 assert(
   !("SL_FEATURE_GALAXY_MOTION" in wrangler.vars),

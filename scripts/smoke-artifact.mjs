@@ -1,8 +1,11 @@
 import { spawn } from 'node:child_process';
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 const environment = process.argv[2];
 assert(['preview','production'].includes(environment));
 const preview = environment === 'preview';
+const contract = JSON.parse(await readFile(new URL('../config/deployment-contract.json', import.meta.url), 'utf8'));
+const featuresEnabled = Object.values(contract[environment].features).every(Boolean);
 async function smoke(disableFeature = false) {
  const args = ['dev','--config','build/server/wrangler.json','--port','8788'];
  if(disableFeature) args.push('--var','SL_FEATURE_NETWORK_MOTION:false');
@@ -20,8 +23,8 @@ async function smoke(disableFeature = false) {
   }
   assert(ready,log);
   const response=await fetch('http://127.0.0.1:8788/'); const html=await response.text();
-  assert.equal(html.includes('data-network-motion="true"'),preview&&!disableFeature,'Network motion must require BOTH preview build and runtime flag');
-  assert.equal(html.includes('data-cta-network="true"'),preview&&!disableFeature,'CTA network must require BOTH preview build and runtime flag');
+  assert.equal(html.includes('data-network-motion="true"'),featuresEnabled&&!disableFeature,'Network motion must require both build and runtime flags');
+  assert.equal(html.includes('data-cta-network="true"'),featuresEnabled&&!disableFeature,'CTA network must require both build and runtime flags');
   assert(!html.includes('data-galaxy-motion'), 'Homepage must not render the galaxy canvas');
   assert(!html.includes('semantic-hero__landscape'), 'Homepage must not render the dot landscape');
   assert.equal(html.includes('googletagmanager.com'),!preview,'Analytics isolation');
@@ -31,11 +34,11 @@ async function smoke(disableFeature = false) {
   assert.equal(/Disallow: \/(?:\n|$)/.test(robots),preview);
   for(const path of ['/services','/founders','/work','/design-system']) assert.equal((await fetch(`http://127.0.0.1:8788${path}`)).status,200,path);
   const workHtml=await (await fetch('http://127.0.0.1:8788/work')).text();
-  assert.equal(workHtml.includes('data-work-hero-video="true"'),preview&&!disableFeature,'Work video must require BOTH preview build and runtime flag');
-  assert.equal(workHtml.includes('data-work-product-gallery="true"'),preview&&!disableFeature,'Work product gallery must require BOTH preview build and runtime flag');
-  assert.equal(workHtml.includes('work-evidence-list--light'),!preview||disableFeature,'Original product rows must remain when the gallery is disabled');
-  assert.equal(workHtml.includes('data-founder-experience-gallery="true"'),preview&&!disableFeature,'Founder experience gallery must require BOTH preview build and runtime flag');
-  assert.equal(workHtml.includes('work-evidence-list--dark'),!preview||disableFeature,'Original founder rows must remain when the gallery is disabled');
+  assert.equal(workHtml.includes('data-work-hero-video="true"'),featuresEnabled&&!disableFeature,'Work video must require both build and runtime flags');
+  assert.equal(workHtml.includes('data-work-product-gallery="true"'),featuresEnabled&&!disableFeature,'Work product gallery must require both build and runtime flags');
+  assert.equal(workHtml.includes('work-evidence-list--light'),!featuresEnabled||disableFeature,'Original product rows must remain when the gallery is disabled');
+  assert.equal(workHtml.includes('data-founder-experience-gallery="true"'),featuresEnabled&&!disableFeature,'Founder experience gallery must require both build and runtime flags');
+  assert.equal(workHtml.includes('work-evidence-list--dark'),!featuresEnabled||disableFeature,'Original founder rows must remain when the gallery is disabled');
   console.log(`${environment}: network flag ${disableFeature?'disabled':'default'}, homepage, analytics, robots, canonical and supporting routes passed.`);
  } finally {
   child.kill('SIGTERM');
@@ -43,4 +46,4 @@ async function smoke(disableFeature = false) {
  }
 }
 await smoke();
-if(preview) await smoke(true);
+await smoke(true);

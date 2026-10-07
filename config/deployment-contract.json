@@ -14,10 +14,10 @@
     "analyticsEnabled": true,
     "indexingAllowed": true,
     "features": {
-      "networkMotion": false,
-      "workHeroVideo": false,
-      "workProductsGallery": false,
-      "founderExperienceGallery": false
+      "networkMotion": true,
+      "workHeroVideo": true,
+      "workProductsGallery": true,
+      "founderExperienceGallery": true
     },
     "cloudflareCommand": "wrangler deploy",
     "canonicalOrigin": "https://semanticlab.ai",
