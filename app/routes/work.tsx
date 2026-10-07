@@ -10,7 +10,7 @@ export function meta({}: Route.MetaArgs) {
   const title = "Selected Work | SemanticLab";
   const description =
     "Recent products and selected founder experience showing how SemanticLab carries strategy into intelligent products, systems and operations.";
-  const ogImage = "/images/og-default.jpg";
+  const ogImage = "https://semanticlab.ai/images/brand/services-data-convergence.png";
   const url = "https://semanticlab.ai/work";
 
   return [

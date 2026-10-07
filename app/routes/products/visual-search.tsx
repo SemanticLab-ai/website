@@ -10,7 +10,7 @@ export function meta() {
     "Visual Search - AI-Powered Shopify Discovery | SemanticLab";
   const description =
     "AI-powered visual search for fashion and lifestyle Shopify stores. Let your shoppers find products by uploading photos instead of typing keywords. Coming soon.";
-  const ogImage = "/images/og-default.jpg";
+  const ogImage = "https://semanticlab.ai/images/brand/services-data-convergence.png";
   const url = "https://semanticlab.ai/products/visual-search";
 
   return [

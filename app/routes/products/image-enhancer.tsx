@@ -12,7 +12,7 @@ export function meta() {
     "Image Enhancer - AI Product Photo Enhancement | SemanticLab";
   const description =
     "Turn ugly product photos into professional images in seconds. AI-powered background removal, auto-centering, and enhancement for e-commerce sellers and brands.";
-  const ogImage = "/images/og-default.jpg";
+  const ogImage = "https://semanticlab.ai/images/brand/services-data-convergence.png";
   const url = "https://semanticlab.ai/products/image-enhancer";
 
   return [

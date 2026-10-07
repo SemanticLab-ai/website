@@ -8,7 +8,7 @@ export function meta() {
   const title = "Founders | SemanticLab";
   const description =
     "Meet Naila Rahman and Raihan Razi, the founder-led partnership connecting product strategy, experience design, intelligence and engineering at SemanticLab.";
-  const ogImage = "/images/og-default.jpg";
+  const ogImage = "https://semanticlab.ai/images/brand/services-data-convergence.png";
   const url = "https://semanticlab.ai/founders";
 
   return [
