@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router";
-import { ImagePlus, Layers, Clock, Settings, Menu, User } from "lucide-react";
-import { useState } from "react";
+import { ImagePlus, Layers, Clock, Settings, Menu, User, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { name: "Enhance", href: "/app/image-enhancer", icon: ImagePlus },
@@ -16,45 +16,61 @@ export function AppTopBar({ remaining }: { remaining: number }) {
   const current = navItems.find((item) => location.pathname === item.href);
   const breadcrumb = current?.name || "App";
 
+  useEffect(() => {
+    setMobileNavOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (!mobileNavOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileNavOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [mobileNavOpen]);
+
   return (
-    <header className="h-14 bg-white border-b border-slate/10 flex items-center justify-between px-4 md:px-6 flex-shrink-0">
+    <header className="h-14 bg-white border-b border-slate/10 flex items-center justify-between gap-2 px-3 sm:px-4 md:px-6 flex-shrink-0">
       {/* Left: Mobile nav + Breadcrumb */}
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 items-center gap-1.5 sm:gap-3">
         {/* Mobile hamburger */}
         <button
-          className="md:hidden p-2 text-charcoal hover:bg-pearl rounded-lg transition-colors"
+          className="md:hidden grid h-10 w-10 flex-shrink-0 place-items-center text-charcoal hover:bg-pearl rounded-lg transition-colors"
           onClick={() => setMobileNavOpen(!mobileNavOpen)}
-          aria-label="Toggle navigation menu"
+          aria-label={mobileNavOpen ? "Close app navigation" : "Open app navigation"}
+          aria-expanded={mobileNavOpen}
+          aria-controls="app-mobile-navigation"
         >
-          <Menu className="w-5 h-5" />
+          {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
 
-        <div className="flex items-center gap-2 text-sm">
-          <Link to="/" className="text-slate hover:text-charcoal transition-colors">
+        <div className="flex min-w-0 items-center gap-2 text-sm">
+          <Link to="/" className="hidden sm:inline text-slate hover:text-charcoal transition-colors">
             SemanticLab
           </Link>
-          <span className="text-slate/50">/</span>
-          <span className="text-charcoal font-medium">{breadcrumb}</span>
+          <span className="hidden sm:inline text-slate/50">/</span>
+          <span className="truncate text-charcoal font-medium">{breadcrumb}</span>
         </div>
       </div>
 
       {/* Right: Usage counter + User */}
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-pearl rounded-full">
-          <div className={`w-2 h-2 rounded-full ${remaining > 0 ? "bg-emerald-500" : "bg-vector-rose"}`} />
-          <span className="text-xs font-medium text-charcoal">
+      <div className="flex flex-shrink-0 items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 px-2 sm:px-3 py-1.5 bg-pearl rounded-full" aria-label={`${remaining} free ${remaining === 1 ? "image" : "images"} left`}>
+          <div className={`w-2 h-2 flex-shrink-0 rounded-full ${remaining > 0 ? "bg-emerald-500" : "bg-vector-rose"}`} />
+          <span className="sm:hidden text-xs font-medium text-charcoal">{remaining} {remaining === 1 ? "image" : "images"} left</span>
+          <span className="hidden sm:inline text-xs font-medium text-charcoal">
             {remaining} free {remaining === 1 ? "image" : "images"} left
           </span>
         </div>
 
-        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-vector-rose to-vector-rose-dark flex items-center justify-center text-white">
+        <div className="hidden min-[360px]:flex w-8 h-8 flex-shrink-0 rounded-full bg-gradient-to-br from-vector-rose to-vector-rose-dark items-center justify-center text-white">
           <User className="w-4 h-4" />
         </div>
       </div>
 
       {/* Mobile nav dropdown */}
       {mobileNavOpen && (
-        <div className="md:hidden absolute top-14 left-0 right-0 bg-white border-b border-slate/10 shadow-lg z-50 p-4 space-y-1">
+        <nav id="app-mobile-navigation" aria-label="App navigation" className="md:hidden absolute top-14 left-0 right-0 bg-white border-b border-slate/10 shadow-lg z-50 p-4 space-y-1">
           {navItems.map((item) => (
             <Link
               key={item.name}
@@ -68,7 +84,7 @@ export function AppTopBar({ remaining }: { remaining: number }) {
               {item.name}
             </Link>
           ))}
-        </div>
+        </nav>
       )}
     </header>
   );

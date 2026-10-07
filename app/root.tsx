@@ -61,12 +61,14 @@ export const links: Route.LinksFunction = () => [
 export function Layout({ children }: { children: React.ReactNode }) {
   let isAppRoute = false;
   let usesOwnChrome = false;
+  let isProductMarketingRoute = false;
   let pathname = "/";
   try {
     // useLocation may throw during SSR error boundaries when no router context exists
     const location = useLocation();
     pathname = location.pathname;
     isAppRoute = pathname.startsWith("/app");
+    isProductMarketingRoute = pathname.startsWith("/products/");
     usesOwnChrome = isAppRoute || pathname === "/design-system";
   } catch {
     // Fallback: show marketing chrome (nav/footer) if location is unavailable
@@ -123,7 +125,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           Skip to main content
         </a>
         {!usesOwnChrome && <Navigation />}
-        <main id="main-content">{children}</main>
+        <main
+          id="main-content"
+          className={isProductMarketingRoute ? "product-marketing" : undefined}
+        >
+          {children}
+        </main>
         {!usesOwnChrome && <Footer />}
         <ScrollRestoration />
         <Scripts />
