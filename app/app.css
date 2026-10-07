@@ -2976,6 +2976,31 @@ body {
   outline: 0;
 }
 
+.strategy-form input[aria-invalid="true"],
+.strategy-form select[aria-invalid="true"],
+.strategy-form textarea[aria-invalid="true"] {
+  border-color: var(--sl-color-graphite);
+}
+
+.strategy-form label .strategy-form__error {
+  margin-left: 0;
+  color: var(--sl-color-graphite);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.strategy-form__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.strategy-form__turnstile {
+  min-height: 65px;
+}
+
 .strategy-form__footer {
   display: flex;
   gap: 28px;
@@ -3015,6 +3040,11 @@ body {
 
 .strategy-form__footer .strategy-button:active {
   transform: translateY(0);
+}
+
+.strategy-form__footer .strategy-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
 }
 
 .strategy-form__status {
