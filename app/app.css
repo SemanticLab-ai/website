@@ -684,7 +684,7 @@ body {
 .semantic-hero {
   position: relative;
   display: flex;
-  min-height: 900px;
+  min-height: 720px;
   align-items: stretch;
   overflow: hidden;
   background: var(--semantic-ink);
@@ -2133,7 +2133,7 @@ body {
   }
 
   .semantic-hero {
-    min-height: 850px;
+    min-height: 660px;
   }
 
   .semantic-hero__inner {
