@@ -67,7 +67,7 @@ async function smoke(disableFeature = false) {
   assert(!html.includes('hello@semanticlab.ai'),'Homepage must not expose the recipient address');
   const servicesHtml=pageHtmlByPath.get('/services');
   assert.equal(servicesHtml.includes('Preview mode: your details are checked but no email is sent.'), preview, 'Direct form preview copy');
-  assert.equal(servicesHtml.includes('Your request is sent securely to SemanticLab.'), !preview, 'Production direct form copy');
+  assert.equal(servicesHtml.includes('Your request goes directly to SemanticLab.'), !preview, 'Production direct form copy');
   const leadForm=new URLSearchParams({
    name:'Preview Test', email:'preview@example.com', organisation:'Test Organisation', role:'',
    stage:'Exploring where to focus', horizon:'Timing is still open',
@@ -81,23 +81,30 @@ async function smoke(disableFeature = false) {
   });
   assert.equal(leadResponse.status, preview ? 200 : 403, 'Server form origin gate');
   assert.equal((await leadResponse.text()).includes('No email was sent.'), preview, 'Preview delivery gate');
-  const oversizedBody=new ReadableStream({
-   start(controller) {
-    controller.enqueue(new Uint8Array(16_385));
-    controller.close();
-   },
-  });
-  const oversizedResponse=await fetch(`${origin}/services`,{
-   method:'POST',
-   headers:{ Origin:origin, 'Content-Type':'application/x-www-form-urlencoded' },
-   body:oversizedBody,
-   duplex:'half',
-   signal:AbortSignal.timeout(10_000),
-  });
+  let oversizedResponse;
+  let oversizedResponseBody='';
+  for(let attempt=0;attempt<3;attempt++) {
+   const oversizedBody=new ReadableStream({
+    start(controller) {
+     controller.enqueue(new Uint8Array(16_385));
+     controller.close();
+    },
+   });
+   oversizedResponse=await fetch(`${origin}/services`,{
+    method:'POST',
+    headers:{ Origin:origin, 'Content-Type':'application/x-www-form-urlencoded' },
+    body:oversizedBody,
+    duplex:'half',
+    signal:AbortSignal.timeout(10_000),
+   });
+   oversizedResponseBody=await oversizedResponse.text();
+   if(oversizedResponse.status!==503 || !oversizedResponseBody.includes('Your worker restarted mid-request.')) break;
+   await new Promise(resolve=>setTimeout(resolve,250));
+  }
   assert.equal(
    oversizedResponse.status,
    413,
-   `Headerless oversized form body: ${await oversizedResponse.text()}\nWorker log: ${log.slice(-1500)}`,
+   `Headerless oversized form body: ${oversizedResponseBody.slice(0,200)}\nWorker log: ${log.slice(-1500)}`,
   );
   const workHtml=pageHtmlByPath.get('/work');
   assert.equal(workHtml.includes('data-work-hero-video="true"'),featuresEnabled&&!disableFeature,'Work video must require both build and runtime flags');

@@ -5,7 +5,7 @@ import { isPreviewBuild, turnstileSiteKey } from "~/lib/deployment";
 import { horizons, stages, type StrategyActionData } from "~/lib/strategy-engagement";
 
 type TurnstileClient = {
-  render: (element: HTMLElement, options: { sitekey: string; action: string; theme: string }) => string;
+  render: (element: HTMLElement, options: { sitekey: string; action: string; theme: "light"; size: "flexible" | "compact" }) => string;
   reset: (widgetId: string) => void;
   remove: (widgetId: string) => void;
 };
@@ -19,13 +19,15 @@ declare global {
 export function StrategyEngagement() {
   const actionData = useActionData() as StrategyActionData | undefined;
   const navigation = useNavigation();
-  const formRef = useRef<HTMLFormElement>(null);
+  const confirmationRef = useRef<HTMLDivElement>(null);
   const turnstileContainer = useRef<HTMLDivElement>(null);
   const widgetId = useRef<string | null>(null);
   const fieldErrors = actionData?.status === "error" ? actionData.fieldErrors ?? {} : {};
   const submitting = navigation.state === "submitting";
+  const sent = actionData?.status === "sent";
+
   useEffect(() => {
-    if (!turnstileSiteKey) return;
+    if (!turnstileSiteKey || sent) return;
 
     let cancelled = false;
     const render = () => {
@@ -33,7 +35,8 @@ export function StrategyEngagement() {
       widgetId.current = window.turnstile.render(turnstileContainer.current, {
         sitekey: turnstileSiteKey,
         action: "strategy_engagement",
-        theme: "auto",
+        theme: "light",
+        size: window.matchMedia("(max-width: 380px)").matches ? "compact" : "flexible",
       });
     };
 
@@ -55,13 +58,21 @@ export function StrategyEngagement() {
       if (widgetId.current && window.turnstile) window.turnstile.remove(widgetId.current);
       widgetId.current = null;
     };
-  }, []);
+  }, [sent]);
 
   useEffect(() => {
-    if (!actionData) return;
+    if (!actionData || sent) return;
     if (widgetId.current && window.turnstile) window.turnstile.reset(widgetId.current);
-    if (actionData.status === "sent") formRef.current?.reset();
-  }, [actionData]);
+  }, [actionData, sent]);
+
+  useEffect(() => {
+    if (!sent) return;
+    confirmationRef.current?.focus({ preventScroll: true });
+    confirmationRef.current?.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "center",
+    });
+  }, [sent]);
 
   const errorFor = (field: string) => fieldErrors[field]
     ? <small className="strategy-form__error">{fieldErrors[field]}</small>
@@ -95,8 +106,26 @@ export function StrategyEngagement() {
 
         </div>
 
+        {sent ? (
+          <div ref={confirmationRef} className="strategy-form strategy-form--confirmation" role="status" aria-live="polite" tabIndex={-1}>
+            <div className="strategy-form__confirmation-top">
+              <span>Strategy Engagement / Request received</span>
+              <span className="strategy-form__confirmation-icon" aria-hidden="true"><Check /></span>
+            </div>
+            <div className="strategy-form__confirmation-message">
+              <h3>Thank you. We’ll take it from here.</h3>
+              <p>{actionData.message}</p>
+            </div>
+            <div className="strategy-form__confirmation-next">
+              <span>What happens next</span>
+              <p>We’ll review what you shared and reply to the work email you provided.</p>
+            </div>
+            <a className="semantic-text-link strategy-form__confirmation-link" href="/work">
+              Explore selected work <ArrowUpRight aria-hidden="true" />
+            </a>
+          </div>
+        ) : (
         <Form
-          ref={formRef}
           className="strategy-form"
           method="post"
         >
@@ -183,12 +212,23 @@ export function StrategyEngagement() {
           <div className="strategy-form__honeypot" aria-hidden="true">
             <label>Company website <input name="company_website" tabIndex={-1} autoComplete="off" /></label>
           </div>
-          {turnstileSiteKey ? <div ref={turnstileContainer} className="strategy-form__turnstile" /> : null}
+          {turnstileSiteKey ? (
+            <div className="strategy-form__verification">
+              <div className="strategy-form__verification-copy">
+                <span>Final check</span>
+                <p>Verify your request before it goes directly to SemanticLab.</p>
+              </div>
+              <div ref={turnstileContainer} className="strategy-form__turnstile" />
+            </div>
+          ) : null}
 
           <div className="strategy-form__footer">
-            <p>{isPreviewBuild
-              ? "Preview mode: your details are checked but no email is sent."
-              : "Your request is sent securely to SemanticLab."}</p>
+            <div className="strategy-form__footer-copy">
+              <span>Ready to send</span>
+              <p>{isPreviewBuild
+                ? "Preview mode: your details are checked but no email is sent."
+                : "Your request goes directly to SemanticLab. We’ll reply to your work email."}</p>
+            </div>
             <button className="strategy-button" type="submit" disabled={submitting}>
               {submitting ? "Sending..." : isPreviewBuild ? "Check my request" : "Send my request"}
               <ArrowUpRight aria-hidden="true" />
@@ -201,6 +241,7 @@ export function StrategyEngagement() {
             </p>
           ) : null}
         </Form>
+        )}
       </div>
     </section>
   );
