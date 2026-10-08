@@ -8,7 +8,7 @@ if (expectedEnvironment !== "preview" && expectedEnvironment !== "production") {
   );
 }
 
-const [contract, wrangler, packageJson, clientArtifact, serverArtifact] =
+const [contract, wrangler, packageJson, wranglerSchema, clientArtifact, serverArtifact] =
   await Promise.all([
     readFile(
       new URL("../config/deployment-contract.json", import.meta.url),
@@ -20,6 +20,10 @@ const [contract, wrangler, packageJson, clientArtifact, serverArtifact] =
     readFile(new URL("../package.json", import.meta.url), "utf8").then(
       JSON.parse,
     ),
+    readFile(
+      new URL("../node_modules/wrangler/config-schema.json", import.meta.url),
+      "utf8",
+    ).then(JSON.parse),
     readFile(
       new URL("../build/client/deployment-contract.json", import.meta.url),
       "utf8",
@@ -54,13 +58,19 @@ assert(
 );
 assert(
   wrangler.observability?.enabled === true &&
-    wrangler.observability.redact_query_string === true &&
+    wrangler.observability.redact_query_string === undefined &&
     wrangler.observability.issues === undefined,
-  "Source Wrangler config must preserve Workers Logs, redact query strings, and leave Issues selection to the branch-aware build.",
+  "Source Wrangler config must preserve Workers Logs and leave redaction and Issues selection to the branch-aware build.",
+);
+assert(
+  wranglerSchema.definitions?.Observability?.properties?.redact_query_string?.type ===
+    "boolean",
+  "Pinned Wrangler must support observability.redact_query_string in upload artifacts.",
 );
 
 assert(
   contract.preview.analyticsEnabled === false &&
+    contract.preview.redactQueryString === true &&
     contract.preview.issuesEnabled === false &&
     contract.preview.indexingAllowed === false &&
     contract.preview.features.directForm === true &&
@@ -76,6 +86,7 @@ assert(
 
 assert(
   contract.production.analyticsEnabled === true &&
+    contract.production.redactQueryString === true &&
     contract.production.issuesEnabled === true &&
     contract.production.indexingAllowed === true &&
     contract.production.features.directForm === true &&
@@ -227,7 +238,7 @@ assert(
 );
 assert(
   flattened.observability?.enabled === true &&
-    flattened.observability.redact_query_string === true &&
+    flattened.observability.redact_query_string === expected.redactQueryString &&
     flattened.observability.issues?.enabled === expected.issuesEnabled,
   `Flattened ${expectedEnvironment} observability must redact query strings and select the expected Issues setting.`,
 );

@@ -120,7 +120,7 @@ flattened.vars = {
 };
 flattened.observability = {
   ...flattened.observability,
-  redact_query_string: true,
+  redact_query_string: selected.redactQueryString,
   issues: { enabled: selected.issuesEnabled },
 };
 if (deploymentEnvironment === "preview") {

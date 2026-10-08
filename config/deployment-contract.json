@@ -1,6 +1,7 @@
 {
   "preview": {
     "analyticsEnabled": false,
+    "redactQueryString": true,
     "issuesEnabled": false,
     "indexingAllowed": false,
     "features": {
@@ -16,6 +17,7 @@
   },
   "production": {
     "analyticsEnabled": true,
+    "redactQueryString": true,
     "issuesEnabled": true,
     "indexingAllowed": true,
     "features": {
