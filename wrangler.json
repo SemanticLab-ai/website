@@ -9,7 +9,8 @@
   "workers_dev": false,
   "preview_urls": true,
   "observability": {
-    "enabled": true
+    "enabled": true,
+    "redact_query_string": true
   },
   "upload_source_maps": true,
   "send_email": [

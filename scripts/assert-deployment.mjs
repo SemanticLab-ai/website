@@ -54,8 +54,9 @@ assert(
 );
 assert(
   wrangler.observability?.enabled === true &&
+    wrangler.observability.redact_query_string === true &&
     wrangler.observability.issues === undefined,
-  "Source Wrangler config must preserve Workers Logs; Issues is selected by the branch-aware build.",
+  "Source Wrangler config must preserve Workers Logs, redact query strings, and leave Issues selection to the branch-aware build.",
 );
 
 assert(
@@ -226,8 +227,9 @@ assert(
 );
 assert(
   flattened.observability?.enabled === true &&
+    flattened.observability.redact_query_string === true &&
     flattened.observability.issues?.enabled === expected.issuesEnabled,
-  `Flattened ${expectedEnvironment} Issues setting must match the environment contract.`,
+  `Flattened ${expectedEnvironment} observability must redact query strings and select the expected Issues setting.`,
 );
 if (expectedEnvironment === "preview") {
   assert(
