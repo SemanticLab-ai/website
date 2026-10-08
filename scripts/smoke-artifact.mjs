@@ -45,7 +45,7 @@ async function smoke(disableFeature = false) {
   assert.equal(html.includes('data-cta-network="true"'),featuresEnabled&&!disableFeature,'CTA network must require both build and runtime flags');
   assert(!html.includes('data-galaxy-motion'), 'Homepage must not render the galaxy canvas');
   assert(!html.includes('semantic-hero__landscape'), 'Homepage must not render the dot landscape');
-  assert.equal(html.includes('googletagmanager.com'),!preview,'Analytics isolation');
+  assert.equal(html.includes('googletagmanager.com'),contract[environment].analyticsEnabled,'Analytics isolation');
   assert.equal(response.headers.get('x-robots-tag')?.includes('noindex')??false,preview,'Indexing isolation');
   assert(html.includes('https://semanticlab.ai/'),'Canonical unchanged');
   const robots=await (await fetch(`${origin}/robots.txt`)).text();

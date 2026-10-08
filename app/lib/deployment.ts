@@ -32,5 +32,5 @@ export const founderExperienceGalleryEnabled =
   import.meta.env.VITE_SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "true";
 
 export const googleTagManagerId = analyticsEnabled
-  ? import.meta.env.VITE_SL_GTM_ID || "GTM-XXXXXXX"
+  ? import.meta.env.VITE_SL_GTM_ID || null
   : null;

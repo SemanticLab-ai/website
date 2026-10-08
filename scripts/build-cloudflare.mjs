@@ -70,7 +70,9 @@ const buildEnvironment = {
   VITE_SL_FEATURE_WORK_PRODUCTS_GALLERY: String(selected.features.workProductsGallery),
   VITE_SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY: String(selected.features.founderExperienceGallery),
   VITE_SL_GTM_ID:
-    deploymentEnvironment === "production" ? selected.googleTagManagerId : "",
+    deploymentEnvironment === "production" && selected.analyticsEnabled
+      ? selected.googleTagManagerId
+      : "",
 };
 
 console.log(`Building SemanticLab for ${deploymentEnvironment} (${branch}).`);
@@ -89,7 +91,9 @@ const artifact = {
   turnstileSiteKey: selected.turnstileSiteKey,
   cloudflareCommand: selected.cloudflareCommand,
   canonicalOrigin: selected.canonicalOrigin || null,
-  googleTagManagerId: selected.googleTagManagerId || null,
+  googleTagManagerId: selected.analyticsEnabled
+    ? selected.googleTagManagerId
+    : null,
 };
 
 for (const directory of ["../build/client", "../build/server"]) {

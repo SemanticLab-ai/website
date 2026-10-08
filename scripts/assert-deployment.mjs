@@ -85,9 +85,9 @@ assert(
 );
 
 assert(
-  contract.production.analyticsEnabled === true &&
+  contract.production.analyticsEnabled === false &&
     contract.production.redactQueryString === true &&
-    contract.production.issuesEnabled === true &&
+    contract.production.issuesEnabled === false &&
     contract.production.indexingAllowed === true &&
     contract.production.features.directForm === true &&
     contract.production.leadEmailEnabled === true &&
@@ -98,8 +98,8 @@ assert(
     contract.production.features.founderExperienceGallery === true &&
     contract.production.cloudflareCommand === "wrangler deploy" &&
     contract.production.canonicalOrigin === "https://semanticlab.ai" &&
-    typeof contract.production.googleTagManagerId === "string",
-  "The production source contract must enable the approved staging visuals and retain analytics, indexing and canonical origin.",
+    contract.production.googleTagManagerId === null,
+  "The production source contract must preserve approved visuals, indexing and canonical origin while disabling GTM and Issues.",
 );
 
 for (const [name, artifact] of [
@@ -118,8 +118,9 @@ for (const [name, artifact] of [
   );
   assert(
     artifact.analyticsEnabled ===
-      contract[expectedEnvironment].analyticsEnabled,
-    `${name} artifact analytics flag does not match the source contract.`,
+      contract[expectedEnvironment].analyticsEnabled &&
+      artifact.googleTagManagerId === null,
+    `${name} artifact must match the disabled analytics source contract and omit the GTM ID.`,
   );
   assert(
     artifact.indexingAllowed === contract[expectedEnvironment].indexingAllowed,
@@ -159,16 +160,15 @@ if (expectedEnvironment === "preview") {
   );
 } else {
   assert(
-    clientArtifact.analyticsEnabled === true &&
+    clientArtifact.analyticsEnabled === false &&
       clientArtifact.indexingAllowed === true &&
       clientArtifact.features.networkMotion === true &&
       clientArtifact.features.workHeroVideo === true &&
       clientArtifact.features.workProductsGallery === true &&
       clientArtifact.features.founderExperienceGallery === true &&
       clientArtifact.canonicalOrigin === "https://semanticlab.ai" &&
-      clientArtifact.googleTagManagerId ===
-        contract.production.googleTagManagerId,
-    "Production artifacts must preserve approved visuals, SEO and analytics.",
+      clientArtifact.googleTagManagerId === null,
+    "Production artifacts must preserve approved visuals and SEO while omitting analytics.",
   );
 }
 
@@ -191,7 +191,7 @@ assert(
     wrangler.vars.SL_FEATURE_WORK_PRODUCTS_GALLERY === "true" &&
     wrangler.vars.SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "true" &&
     wrangler.vars.SL_INDEXING_ALLOWED === "true" &&
-    wrangler.vars.SL_ANALYTICS_ENABLED === "true",
+    wrangler.vars.SL_ANALYTICS_ENABLED === "false",
   "Source bindings must match the approved production defaults.",
 );
 assert(
@@ -296,8 +296,11 @@ if (expectedEnvironment === "preview") {
   );
 } else {
   assert(
-    serverCode.includes("googletagmanager.com"),
-    "Production server must retain approved analytics code.",
+    !serverCode.includes("googletagmanager.com") &&
+      !clientCode.includes("googletagmanager.com") &&
+      !serverCode.includes("GTM-XXXXXXX") &&
+      !clientCode.includes("GTM-XXXXXXX"),
+    "Production JavaScript must omit GTM and the placeholder ID.",
   );
   assert(
     serverCode.includes("https://semanticlab.ai/"),

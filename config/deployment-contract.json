@@ -16,9 +16,9 @@
     "turnstileSiteKey": null
   },
   "production": {
-    "analyticsEnabled": true,
+    "analyticsEnabled": false,
     "redactQueryString": true,
-    "issuesEnabled": true,
+    "issuesEnabled": false,
     "indexingAllowed": true,
     "features": {
       "directForm": true,
@@ -31,6 +31,6 @@
     "leadEmailEnabled": true,
     "turnstileSiteKey": "0x4AAAAAAFQJq0KBSROttM6B",
     "canonicalOrigin": "https://semanticlab.ai",
-    "googleTagManagerId": "GTM-XXXXXXX"
+    "googleTagManagerId": null
   }
 }
