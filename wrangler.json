@@ -8,6 +8,14 @@
   ],
   "workers_dev": false,
   "preview_urls": true,
+  "assets": {
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/images/deck/tieman/*",
+      "/videos/deck/tieman/*",
+      "/assets/*"
+    ]
+  },
   "observability": {
     "enabled": true
   },
@@ -41,6 +49,7 @@
     "SL_FEATURE_WORK_HERO_VIDEO": "true",
     "SL_FEATURE_WORK_PRODUCTS_GALLERY": "true",
     "SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY": "true",
+    "SL_FEATURE_CLIENT_TIEMAN_PRESO": "true",
     "SL_INDEXING_ALLOWED": "true",
     "SL_ANALYTICS_ENABLED": "false"
   }

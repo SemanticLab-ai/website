@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 
 const expectedEnvironment = process.argv[2];
 
@@ -53,6 +53,13 @@ assert(
   "The production workers.dev route must stay disabled in Wrangler.",
 );
 assert(
+  wrangler.assets?.binding === "ASSETS" &&
+    ["/images/deck/tieman/*", "/videos/deck/tieman/*", "/assets/*"].every(
+      (pattern) => wrangler.assets.run_worker_first?.includes(pattern),
+    ),
+  "The Worker must inspect the deck media and client bundles before static asset delivery.",
+);
+assert(
   packageJson.scripts.build === "node scripts/build-cloudflare.mjs",
   "The shared build command must use the branch-aware selector.",
 );
@@ -80,6 +87,7 @@ assert(
     contract.preview.features.workHeroVideo === true &&
     contract.preview.features.workProductsGallery === true &&
     contract.preview.features.founderExperienceGallery === true &&
+    contract.preview.features.clientTiemanPreso === true &&
     contract.preview.cloudflareCommand === "wrangler versions upload",
   "The preview source contract must enable network motion, disable analytics/indexing and upload a version.",
 );
@@ -96,6 +104,7 @@ assert(
     contract.production.features.workHeroVideo === true &&
     contract.production.features.workProductsGallery === true &&
     contract.production.features.founderExperienceGallery === true &&
+    contract.production.features.clientTiemanPreso === true &&
     contract.production.cloudflareCommand === "wrangler deploy" &&
     contract.production.canonicalOrigin === "https://semanticlab.ai" &&
     contract.production.googleTagManagerId === null,
@@ -145,6 +154,10 @@ for (const [name, artifact] of [
     `${name} artifact founder-experience-gallery flag does not match the source contract.`,
   );
   assert(
+    artifact.features.clientTiemanPreso === contract[expectedEnvironment].features.clientTiemanPreso,
+    `${name} artifact Tieman presentation flag does not match the source contract.`,
+  );
+  assert(
     artifact.cloudflareCommand ===
       contract[expectedEnvironment].cloudflareCommand,
     `${name} artifact Cloudflare command does not match the source contract.`,
@@ -166,6 +179,7 @@ if (expectedEnvironment === "preview") {
       clientArtifact.features.workHeroVideo === true &&
       clientArtifact.features.workProductsGallery === true &&
       clientArtifact.features.founderExperienceGallery === true &&
+      clientArtifact.features.clientTiemanPreso === true &&
       clientArtifact.canonicalOrigin === "https://semanticlab.ai" &&
       clientArtifact.googleTagManagerId === null,
     "Production artifacts must preserve approved visuals and SEO while omitting analytics.",
@@ -190,6 +204,7 @@ assert(
     wrangler.vars.SL_FEATURE_WORK_HERO_VIDEO === "true" &&
     wrangler.vars.SL_FEATURE_WORK_PRODUCTS_GALLERY === "true" &&
     wrangler.vars.SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "true" &&
+    wrangler.vars.SL_FEATURE_CLIENT_TIEMAN_PRESO === "true" &&
     wrangler.vars.SL_INDEXING_ALLOWED === "true" &&
     wrangler.vars.SL_ANALYTICS_ENABLED === "false",
   "Source bindings must match the approved production defaults.",
@@ -221,6 +236,7 @@ for (const [key, value] of Object.entries({
   SL_FEATURE_WORK_HERO_VIDEO: String(expected.features.workHeroVideo),
   SL_FEATURE_WORK_PRODUCTS_GALLERY: String(expected.features.workProductsGallery),
   SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY: String(expected.features.founderExperienceGallery),
+  SL_FEATURE_CLIENT_TIEMAN_PRESO: String(expected.features.clientTiemanPreso),
   SL_INDEXING_ALLOWED: String(expected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(expected.analyticsEnabled),
 })) {
@@ -236,6 +252,30 @@ assert(
     flattened.legacy_env === undefined,
   "Flattened artifact must retain the shared Worker and previews while disabling the production workers.dev route.",
 );
+assert(
+  flattened.assets?.binding === "ASSETS" &&
+    ["/images/deck/tieman/*", "/videos/deck/tieman/*", "/assets/*"].every(
+      (pattern) => flattened.assets.run_worker_first?.includes(pattern),
+    ),
+  "Flattened artifact must preserve private deck asset routing.",
+);
+const clientAssetDirectory = new URL("../build/client/assets/", import.meta.url);
+const clientAssetNames = await readdir(clientAssetDirectory);
+const privateBundleNames = clientAssetNames.filter((name) => /^tieman-client-preso-[\w-]+\.(?:js|css)$/.test(name));
+assert(
+  privateBundleNames.some((name) => name.endsWith(".js")) &&
+    privateBundleNames.some((name) => name.endsWith(".css")),
+  "The deck must emit dedicated, name-gated JavaScript and CSS bundles.",
+);
+for (const name of clientAssetNames.filter((name) => name.endsWith(".js"))) {
+  const code = await readFile(new URL(name, clientAssetDirectory), "utf8");
+  if (code.includes("Watch the concept in motion") || code.includes("Tieman's vision")) {
+    assert(
+      name.startsWith("tieman-client-preso-"),
+      `Private deck copy leaked into a public client bundle: ${name}.`,
+    );
+  }
+}
 assert(
   flattened.observability?.enabled === true &&
     flattened.observability.redact_query_string === expected.redactQueryString &&
@@ -260,7 +300,6 @@ assert(
   !("SL_FEATURE_GALAXY_MOTION" in flattened.vars),
   "Retired galaxy flag must not remain in flattened bindings.",
 );
-const { readdir } = await import("node:fs/promises");
 async function scriptsUnder(path) {
   const entries = await readdir(path, { withFileTypes: true });
   const chunks = await Promise.all(
