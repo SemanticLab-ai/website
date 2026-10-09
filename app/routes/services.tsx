@@ -138,7 +138,7 @@ export function meta({}: Route.MetaArgs) {
   const title = "Services | SemanticLab Product Innovation Partner";
   const description =
     "Strategy, experience, intelligence and engineering connected around the business opportunity, from first question through launch and evolution.";
-  const ogImage = "/images/og-default.jpg";
+  const ogImage = "https://semanticlab.ai/images/brand/services-data-convergence.png";
   const url = "https://semanticlab.ai/services";
 
   return [

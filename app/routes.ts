@@ -2,6 +2,7 @@ import { type RouteConfig, index, route, layout } from "@react-router/dev/routes
 
 export default [
   // SEO
+  route(".well-known/security.txt", "routes/security.txt.tsx"),
   route("robots.txt", "routes/robots.txt.tsx"),
   route("sitemap.xml", "routes/sitemap.xml.tsx"),
 
@@ -12,6 +13,7 @@ export default [
   route("work", "routes/work.tsx"),
   route("work/:slug", "routes/work-case-study.tsx"),
   route("design-system", "routes/design-system.tsx"),
+  route("preso", "routes/tieman-client-preso.tsx"),
 
   // Product marketing pages
   route("products/syncd", "routes/products/syncd.tsx"),

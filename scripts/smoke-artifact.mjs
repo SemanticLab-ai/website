@@ -1,7 +1,8 @@
 import { spawn } from 'node:child_process';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { createServer } from 'node:net';
+import { request as httpRequest } from 'node:http';
 const environment = process.argv[2];
 assert(['preview','production'].includes(environment));
 const preview = environment === 'preview';
@@ -22,6 +23,16 @@ async function freePort() {
   });
  });
 }
+function requestWithHost(port,path,host) {
+ return new Promise((resolve,reject)=>{
+  const req=httpRequest({hostname:'127.0.0.1',port,path,headers:{Host:host}},res=>{
+   resolve({status:res.statusCode,headers:res.headers});
+   res.destroy();
+  });
+  req.once('error',reject);
+  req.end();
+ });
+}
 async function smoke(disableFeature = false) {
  const port=await freePort();
  const origin=`http://127.0.0.1:${port}`;
@@ -30,6 +41,7 @@ async function smoke(disableFeature = false) {
  if(disableFeature) args.push('--var','SL_FEATURE_WORK_HERO_VIDEO:false');
  if(disableFeature) args.push('--var','SL_FEATURE_WORK_PRODUCTS_GALLERY:false');
  if(disableFeature) args.push('--var','SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY:false');
+ if(disableFeature) args.push('--var','SL_FEATURE_CLIENT_TIEMAN_PRESO:false');
  const child = spawn('node_modules/.bin/wrangler', args, { stdio: ['ignore','pipe','pipe'] });
  let log = ''; child.stdout.on('data', d=>log+=d); child.stderr.on('data',d=>log+=d);
  try {
@@ -45,9 +57,30 @@ async function smoke(disableFeature = false) {
   assert.equal(html.includes('data-cta-network="true"'),featuresEnabled&&!disableFeature,'CTA network must require both build and runtime flags');
   assert(!html.includes('data-galaxy-motion'), 'Homepage must not render the galaxy canvas');
   assert(!html.includes('semantic-hero__landscape'), 'Homepage must not render the dot landscape');
-  assert.equal(html.includes('googletagmanager.com'),!preview,'Analytics isolation');
+  assert.equal(html.includes('googletagmanager.com'),contract[environment].analyticsEnabled,'Analytics isolation');
   assert.equal(response.headers.get('x-robots-tag')?.includes('noindex')??false,preview,'Indexing isolation');
   assert(html.includes('https://semanticlab.ai/'),'Canonical unchanged');
+  const deckBundleName=(await readdir(new URL('../build/client/assets/', import.meta.url)))
+   .find(name=>/^tieman-client-preso-[\w-]+\.js$/.test(name));
+  assert(deckBundleName,'Dedicated Tieman client bundle must exist');
+  for(const [host,allowed] of [
+   ['semanticlab.ai',preview&&!disableFeature],
+   ['tieman.semanticlab.ai',!disableFeature],
+  ]) {
+   for(const [path,expectedType] of [
+    ['/preso','text/html'],
+    ['/images/deck/tieman/logo.png','image/png'],
+    ['/videos/deck/tieman/foundation.mp4','video/mp4'],
+    [`/assets/${deckBundleName}`,'text/javascript'],
+   ]) {
+    const deckResponse=await requestWithHost(port,path,host);
+    assert.equal(deckResponse.status,allowed?200:404,`${environment}: ${host}${path}`);
+    if(allowed) {
+     assert(deckResponse.headers['content-type']?.startsWith(expectedType),`${path} content type`);
+     assert(deckResponse.headers['x-robots-tag']?.includes('noindex'),`${path} noindex`);
+    }
+   }
+  }
   const robots=await (await fetch(`${origin}/robots.txt`)).text();
   assert.equal(/Disallow: \/(?:\n|$)/.test(robots),preview);
   const pageHtmlByPath=new Map([['/',html]]);
@@ -98,7 +131,13 @@ async function smoke(disableFeature = false) {
     signal:AbortSignal.timeout(10_000),
    });
    oversizedResponseBody=await oversizedResponse.text();
-   if(oversizedResponse.status!==503 || !oversizedResponseBody.includes('Your worker restarted mid-request.')) break;
+   const workerRestarted=oversizedResponse.status===503 &&
+    oversizedResponseBody.includes('Your worker restarted mid-request.');
+   const miniflareConnectionLost=oversizedResponse.status===500 &&
+    oversizedResponseBody.includes('Error: Network connection lost.');
+   // Miniflare can lose the local connection when the Worker cancels this streamed body.
+   // Retry only its transport errors; the final response must still return 413.
+   if(!workerRestarted && !miniflareConnectionLost) break;
    await new Promise(resolve=>setTimeout(resolve,250));
   }
   assert.equal(

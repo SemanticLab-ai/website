@@ -69,8 +69,11 @@ const buildEnvironment = {
   VITE_SL_FEATURE_WORK_HERO_VIDEO: String(selected.features.workHeroVideo),
   VITE_SL_FEATURE_WORK_PRODUCTS_GALLERY: String(selected.features.workProductsGallery),
   VITE_SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY: String(selected.features.founderExperienceGallery),
+  VITE_SL_FEATURE_CLIENT_TIEMAN_PRESO: String(selected.features.clientTiemanPreso),
   VITE_SL_GTM_ID:
-    deploymentEnvironment === "production" ? selected.googleTagManagerId : "",
+    deploymentEnvironment === "production" && selected.analyticsEnabled
+      ? selected.googleTagManagerId
+      : "",
 };
 
 console.log(`Building SemanticLab for ${deploymentEnvironment} (${branch}).`);
@@ -89,7 +92,9 @@ const artifact = {
   turnstileSiteKey: selected.turnstileSiteKey,
   cloudflareCommand: selected.cloudflareCommand,
   canonicalOrigin: selected.canonicalOrigin || null,
-  googleTagManagerId: selected.googleTagManagerId || null,
+  googleTagManagerId: selected.analyticsEnabled
+    ? selected.googleTagManagerId
+    : null,
 };
 
 for (const directory of ["../build/client", "../build/server"]) {
@@ -104,6 +109,8 @@ for (const directory of ["../build/client", "../build/server"]) {
 // The uploaded flattened configuration carries the same explicit runtime contract.
 const flattenedPath = new URL("../build/server/wrangler.json", import.meta.url);
 const flattened = JSON.parse(await readFile(flattenedPath, "utf8"));
+// The pinned Vite plugin emits this legacy setting; modern Wrangler rejects it.
+delete flattened.legacy_env;
 flattened.vars = {
   ...flattened.vars,
   SL_DEPLOY_ENV: deploymentEnvironment,
@@ -113,8 +120,14 @@ flattened.vars = {
   SL_FEATURE_WORK_HERO_VIDEO: String(selected.features.workHeroVideo),
   SL_FEATURE_WORK_PRODUCTS_GALLERY: String(selected.features.workProductsGallery),
   SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY: String(selected.features.founderExperienceGallery),
+  SL_FEATURE_CLIENT_TIEMAN_PRESO: String(selected.features.clientTiemanPreso),
   SL_INDEXING_ALLOWED: String(selected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(selected.analyticsEnabled),
+};
+flattened.observability = {
+  ...flattened.observability,
+  redact_query_string: selected.redactQueryString,
+  issues: { enabled: selected.issuesEnabled },
 };
 if (deploymentEnvironment === "preview") {
   // Preview submissions exercise validation without access to mail or quotas.
