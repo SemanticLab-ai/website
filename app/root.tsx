@@ -69,13 +69,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
     pathname = location.pathname;
     isAppRoute = pathname.startsWith("/app");
     isProductMarketingRoute = pathname.startsWith("/products/");
-    usesOwnChrome = isAppRoute || pathname === "/design-system";
+    usesOwnChrome = isAppRoute || pathname === "/design-system" || pathname === "/preso";
   } catch {
     // Fallback: show marketing chrome (nav/footer) if location is unavailable
   }
 
   useEffect(() => {
-    if (analyticsEnabled && typeof window !== "undefined" && window.dataLayer) {
+    if (pathname !== "/preso" && analyticsEnabled && typeof window !== "undefined" && window.dataLayer) {
       window.dataLayer.push({
         event: "virtualPageview",
         pagePath: pathname,
@@ -89,7 +89,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {analyticsEnabled && googleTagManagerId ? (
+        {pathname !== "/preso" && analyticsEnabled && googleTagManagerId ? (
           <>
             <script
               dangerouslySetInnerHTML={{
@@ -111,7 +111,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <Links />
       </head>
       <body>
-        {analyticsEnabled && googleTagManagerId ? (
+        {pathname !== "/preso" && analyticsEnabled && googleTagManagerId ? (
           <noscript>
             <iframe
               src={`https://www.googletagmanager.com/ns.html?id=${googleTagManagerId}`}

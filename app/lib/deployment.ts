@@ -31,6 +31,9 @@ export const productGalleryEnabled =
 export const founderExperienceGalleryEnabled =
   import.meta.env.VITE_SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "true";
 
+export const clientTiemanPresoEnabled =
+  import.meta.env.VITE_SL_FEATURE_CLIENT_TIEMAN_PRESO === "true";
+
 export const googleTagManagerId = analyticsEnabled
   ? import.meta.env.VITE_SL_GTM_ID || null
   : null;

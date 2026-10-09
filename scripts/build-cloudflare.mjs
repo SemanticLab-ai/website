@@ -69,6 +69,7 @@ const buildEnvironment = {
   VITE_SL_FEATURE_WORK_HERO_VIDEO: String(selected.features.workHeroVideo),
   VITE_SL_FEATURE_WORK_PRODUCTS_GALLERY: String(selected.features.workProductsGallery),
   VITE_SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY: String(selected.features.founderExperienceGallery),
+  VITE_SL_FEATURE_CLIENT_TIEMAN_PRESO: String(selected.features.clientTiemanPreso),
   VITE_SL_GTM_ID:
     deploymentEnvironment === "production" && selected.analyticsEnabled
       ? selected.googleTagManagerId
@@ -119,6 +120,7 @@ flattened.vars = {
   SL_FEATURE_WORK_HERO_VIDEO: String(selected.features.workHeroVideo),
   SL_FEATURE_WORK_PRODUCTS_GALLERY: String(selected.features.workProductsGallery),
   SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY: String(selected.features.founderExperienceGallery),
+  SL_FEATURE_CLIENT_TIEMAN_PRESO: String(selected.features.clientTiemanPreso),
   SL_INDEXING_ALLOWED: String(selected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(selected.analyticsEnabled),
 };
