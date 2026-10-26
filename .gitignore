@@ -10,3 +10,4 @@
 # Cloudflare
 .wrangler/
 /tmp/
+/.playwright-cli/

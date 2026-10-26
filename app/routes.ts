@@ -14,6 +14,7 @@ export default [
   route("work/:slug", "routes/work-case-study.tsx"),
   route("design-system", "routes/design-system.tsx"),
   route("preso", "routes/tieman-client-preso.tsx"),
+  route("proposal/podly", "routes/podly-proposal.tsx"),
 
   // Product marketing pages
   route("products/syncd", "routes/products/syncd.tsx"),

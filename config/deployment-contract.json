@@ -10,7 +10,8 @@
       "workHeroVideo": true,
       "workProductsGallery": true,
       "founderExperienceGallery": true,
-      "clientTiemanPreso": true
+      "clientTiemanPreso": true,
+      "clientPodlyProposal": true
     },
     "cloudflareCommand": "wrangler versions upload",
     "leadEmailEnabled": false,
@@ -27,7 +28,8 @@
       "workHeroVideo": true,
       "workProductsGallery": true,
       "founderExperienceGallery": true,
-      "clientTiemanPreso": true
+      "clientTiemanPreso": true,
+      "clientPodlyProposal": true
     },
     "cloudflareCommand": "wrangler deploy",
     "leadEmailEnabled": true,

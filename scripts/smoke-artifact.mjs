@@ -42,6 +42,7 @@ async function smoke(disableFeature = false) {
  if(disableFeature) args.push('--var','SL_FEATURE_WORK_PRODUCTS_GALLERY:false');
  if(disableFeature) args.push('--var','SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY:false');
  if(disableFeature) args.push('--var','SL_FEATURE_CLIENT_TIEMAN_PRESO:false');
+ if(disableFeature) args.push('--var','SL_FEATURE_CLIENT_PODLY_PROPOSAL:false');
  const child = spawn('node_modules/.bin/wrangler', args, { stdio: ['ignore','pipe','pipe'] });
  let log = ''; child.stdout.on('data', d=>log+=d); child.stderr.on('data',d=>log+=d);
  try {
@@ -63,6 +64,23 @@ async function smoke(disableFeature = false) {
   const deckBundleName=(await readdir(new URL('../build/client/assets/', import.meta.url)))
    .find(name=>/^tieman-client-preso-[\w-]+\.js$/.test(name));
   assert(deckBundleName,'Dedicated Tieman client bundle must exist');
+  const podlyBundleName=(await readdir(new URL('../build/client/assets/', import.meta.url)))
+   .find(name=>/^podly-proposal-[\w-]+\.js$/.test(name));
+  assert(podlyBundleName,'Dedicated Podly proposal bundle must exist');
+  for(const [host,allowed] of [
+   ['semanticlab.ai',preview&&!disableFeature],
+   ['podly.semanticlab.ai',!disableFeature],
+  ]) {
+   for(const path of ['/proposal/podly',`/assets/${podlyBundleName}`]) {
+    const podlyResponse=await requestWithHost(port,path,host);
+    assert.equal(podlyResponse.status,allowed?200:404,`${environment}: ${host}${path}`);
+    if(allowed) assert(podlyResponse.headers['x-robots-tag']?.includes('noindex'),`${host}${path} noindex`);
+   }
+  }
+  const podlyHome=await requestWithHost(port,'/','podly.semanticlab.ai');
+  assert.equal(podlyHome.status,disableFeature?404:302,`${environment}: Podly root redirect`);
+  const podlyOther=await requestWithHost(port,'/services','podly.semanticlab.ai');
+  assert.equal(podlyOther.status,404,`${environment}: Podly host route isolation`);
   for(const [host,allowed] of [
    ['semanticlab.ai',preview&&!disableFeature],
    ['tieman.semanticlab.ai',!disableFeature],
