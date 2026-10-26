@@ -29,7 +29,7 @@
       "workProductsGallery": true,
       "founderExperienceGallery": true,
       "clientTiemanPreso": true,
-      "clientPodlyProposal": false
+      "clientPodlyProposal": true
     },
     "cloudflareCommand": "wrangler deploy",
     "leadEmailEnabled": true,

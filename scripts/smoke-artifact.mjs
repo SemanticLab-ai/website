@@ -67,11 +67,20 @@ async function smoke(disableFeature = false) {
   const podlyBundleName=(await readdir(new URL('../build/client/assets/', import.meta.url)))
    .find(name=>/^podly-proposal-[\w-]+\.js$/.test(name));
   assert(podlyBundleName,'Dedicated Podly proposal bundle must exist');
-  for(const path of ['/proposal/podly',`/assets/${podlyBundleName}`]) {
-   const podlyResponse=await requestWithHost(port,path,'semanticlab.ai');
-   assert.equal(podlyResponse.status,preview&&!disableFeature?200:404,`${environment}: ${path}`);
-   if(preview&&!disableFeature) assert(podlyResponse.headers['x-robots-tag']?.includes('noindex'),`${path} noindex`);
+  for(const [host,allowed] of [
+   ['semanticlab.ai',preview&&!disableFeature],
+   ['podly.semanticlab.ai',!disableFeature],
+  ]) {
+   for(const path of ['/proposal/podly',`/assets/${podlyBundleName}`]) {
+    const podlyResponse=await requestWithHost(port,path,host);
+    assert.equal(podlyResponse.status,allowed?200:404,`${environment}: ${host}${path}`);
+    if(allowed) assert(podlyResponse.headers['x-robots-tag']?.includes('noindex'),`${host}${path} noindex`);
+   }
   }
+  const podlyHome=await requestWithHost(port,'/','podly.semanticlab.ai');
+  assert.equal(podlyHome.status,disableFeature?404:302,`${environment}: Podly root redirect`);
+  const podlyOther=await requestWithHost(port,'/services','podly.semanticlab.ai');
+  assert.equal(podlyOther.status,404,`${environment}: Podly host route isolation`);
   for(const [host,allowed] of [
    ['semanticlab.ai',preview&&!disableFeature],
    ['tieman.semanticlab.ai',!disableFeature],

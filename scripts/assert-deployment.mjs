@@ -106,7 +106,7 @@ assert(
     contract.production.features.workProductsGallery === true &&
     contract.production.features.founderExperienceGallery === true &&
     contract.production.features.clientTiemanPreso === true &&
-    contract.production.features.clientPodlyProposal === false &&
+    contract.production.features.clientPodlyProposal === true &&
     contract.production.cloudflareCommand === "wrangler deploy" &&
     contract.production.canonicalOrigin === "https://semanticlab.ai" &&
     contract.production.googleTagManagerId === null,
@@ -187,7 +187,7 @@ if (expectedEnvironment === "preview") {
       clientArtifact.features.workProductsGallery === true &&
       clientArtifact.features.founderExperienceGallery === true &&
       clientArtifact.features.clientTiemanPreso === true &&
-      clientArtifact.features.clientPodlyProposal === false &&
+      clientArtifact.features.clientPodlyProposal === true &&
       clientArtifact.canonicalOrigin === "https://semanticlab.ai" &&
       clientArtifact.googleTagManagerId === null,
     "Production artifacts must preserve approved visuals and SEO while omitting analytics.",
@@ -213,7 +213,7 @@ assert(
     wrangler.vars.SL_FEATURE_WORK_PRODUCTS_GALLERY === "true" &&
     wrangler.vars.SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "true" &&
     wrangler.vars.SL_FEATURE_CLIENT_TIEMAN_PRESO === "true" &&
-    wrangler.vars.SL_FEATURE_CLIENT_PODLY_PROPOSAL === "false" &&
+    wrangler.vars.SL_FEATURE_CLIENT_PODLY_PROPOSAL === "true" &&
     wrangler.vars.SL_INDEXING_ALLOWED === "true" &&
     wrangler.vars.SL_ANALYTICS_ENABLED === "false",
   "Source bindings must match the approved production defaults.",

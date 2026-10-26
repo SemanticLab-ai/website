@@ -39,9 +39,9 @@ const stages = [
   },
 ] as const;
 
-export function loader({ context }: Route.LoaderArgs) {
+export function loader({ context, request }: Route.LoaderArgs) {
   if (
-    !isPreviewBuild ||
+    !(isPreviewBuild || new URL(request.url).hostname === "podly.semanticlab.ai") ||
     !clientPodlyProposalEnabled ||
     context.cloudflare.env.SL_FEATURE_CLIENT_PODLY_PROPOSAL !== "true"
   ) {

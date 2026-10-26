@@ -2,6 +2,7 @@ import { clientPodlyProposalEnabled, clientTiemanPresoEnabled, isPreviewBuild } 
 import { createRequestHandler } from "react-router";
 
 const privateHostname = "tieman.semanticlab.ai";
+const podlyHostname = "podly.semanticlab.ai";
 const privateMedia = /^\/(?:images|videos)\/deck\/tieman\//;
 const deckBundle = /^\/assets\/(?:tieman-client-preso|TiemanDeck|DeckPresentation|tieman-deck|sales-deck)[-.]/i;
 const podlyBundle = /^\/assets\/podly-proposal[-.]/i;
@@ -31,10 +32,11 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const isPrivateHost = url.hostname === privateHostname;
+    const isPodlyHost = url.hostname === podlyHostname;
     const mayServePreso = clientTiemanPresoEnabled &&
       env.SL_FEATURE_CLIENT_TIEMAN_PRESO === "true" &&
       (isPreviewBuild || isPrivateHost);
-    const mayServePodlyProposal = isPreviewBuild &&
+    const mayServePodlyProposal = (isPreviewBuild || isPodlyHost) &&
       clientPodlyProposalEnabled &&
       env.SL_FEATURE_CLIENT_PODLY_PROPOSAL === "true";
 
@@ -61,14 +63,28 @@ export default {
       return new Response("Not Found", { status: 404, headers: { "X-Robots-Tag": "noindex, nofollow, noarchive" } });
     }
 
+    if (isPodlyHost && !mayServePodlyProposal) {
+      return new Response("Not Found", { status: 404 });
+    }
+
+    if (isPodlyHost && url.pathname === "/") {
+      return Response.redirect(new URL("/proposal/podly", request.url), 302);
+    }
+
+    if (isPodlyHost && url.pathname !== "/proposal/podly" &&
+        !url.pathname.startsWith("/assets/") &&
+        !["/favicon.ico", "/favicon.png"].includes(url.pathname)) {
+      return new Response("Not Found", { status: 404, headers: { "X-Robots-Tag": "noindex, nofollow, noarchive" } });
+    }
+
     if (url.pathname.startsWith("/assets/") || privateMedia.test(url.pathname)) {
       const assetResponse = await env.ASSETS.fetch(request);
-      return isPreviewBuild || isPrivateHost ? noIndex(assetResponse) : assetResponse;
+      return isPreviewBuild || isPrivateHost || isPodlyHost ? noIndex(assetResponse) : assetResponse;
     }
 
     const response = await requestHandler(request, {
       cloudflare: { env, ctx },
     });
-    return isPreviewBuild || isPrivateHost ? noIndex(response) : response;
+    return isPreviewBuild || isPrivateHost || isPodlyHost ? noIndex(response) : response;
   },
 } satisfies ExportedHandler<Env>;
