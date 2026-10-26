@@ -1,9 +1,10 @@
-import { clientTiemanPresoEnabled, isPreviewBuild } from "../app/lib/deployment";
+import { clientPodlyProposalEnabled, clientTiemanPresoEnabled, isPreviewBuild } from "../app/lib/deployment";
 import { createRequestHandler } from "react-router";
 
 const privateHostname = "tieman.semanticlab.ai";
 const privateMedia = /^\/(?:images|videos)\/deck\/tieman\//;
 const deckBundle = /^\/assets\/(?:tieman-client-preso|TiemanDeck|DeckPresentation|tieman-deck|sales-deck)[-.]/i;
+const podlyBundle = /^\/assets\/podly-proposal[-.]/i;
 
 function noIndex(response: Response) {
   const headers = new Headers(response.headers);
@@ -33,8 +34,15 @@ export default {
     const mayServePreso = clientTiemanPresoEnabled &&
       env.SL_FEATURE_CLIENT_TIEMAN_PRESO === "true" &&
       (isPreviewBuild || isPrivateHost);
+    const mayServePodlyProposal = isPreviewBuild &&
+      clientPodlyProposalEnabled &&
+      env.SL_FEATURE_CLIENT_PODLY_PROPOSAL === "true";
 
     if ((privateMedia.test(url.pathname) || deckBundle.test(url.pathname)) && !mayServePreso) {
+      return new Response("Not Found", { status: 404 });
+    }
+
+    if (podlyBundle.test(url.pathname) && !mayServePodlyProposal) {
       return new Response("Not Found", { status: 404 });
     }
 

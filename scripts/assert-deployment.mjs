@@ -88,6 +88,7 @@ assert(
     contract.preview.features.workProductsGallery === true &&
     contract.preview.features.founderExperienceGallery === true &&
     contract.preview.features.clientTiemanPreso === true &&
+    contract.preview.features.clientPodlyProposal === true &&
     contract.preview.cloudflareCommand === "wrangler versions upload",
   "The preview source contract must enable network motion, disable analytics/indexing and upload a version.",
 );
@@ -105,6 +106,7 @@ assert(
     contract.production.features.workProductsGallery === true &&
     contract.production.features.founderExperienceGallery === true &&
     contract.production.features.clientTiemanPreso === true &&
+    contract.production.features.clientPodlyProposal === false &&
     contract.production.cloudflareCommand === "wrangler deploy" &&
     contract.production.canonicalOrigin === "https://semanticlab.ai" &&
     contract.production.googleTagManagerId === null,
@@ -158,6 +160,10 @@ for (const [name, artifact] of [
     `${name} artifact Tieman presentation flag does not match the source contract.`,
   );
   assert(
+    artifact.features.clientPodlyProposal === contract[expectedEnvironment].features.clientPodlyProposal,
+    `${name} artifact Podly proposal flag does not match the source contract.`,
+  );
+  assert(
     artifact.cloudflareCommand ===
       contract[expectedEnvironment].cloudflareCommand,
     `${name} artifact Cloudflare command does not match the source contract.`,
@@ -168,6 +174,7 @@ if (expectedEnvironment === "preview") {
   assert(
     clientArtifact.analyticsEnabled === false &&
       clientArtifact.indexingAllowed === false &&
+      clientArtifact.features.clientPodlyProposal === true &&
       clientArtifact.googleTagManagerId === null,
     "Preview artifacts must be non-indexable and contain no production analytics identifier.",
   );
@@ -180,6 +187,7 @@ if (expectedEnvironment === "preview") {
       clientArtifact.features.workProductsGallery === true &&
       clientArtifact.features.founderExperienceGallery === true &&
       clientArtifact.features.clientTiemanPreso === true &&
+      clientArtifact.features.clientPodlyProposal === false &&
       clientArtifact.canonicalOrigin === "https://semanticlab.ai" &&
       clientArtifact.googleTagManagerId === null,
     "Production artifacts must preserve approved visuals and SEO while omitting analytics.",
@@ -205,6 +213,7 @@ assert(
     wrangler.vars.SL_FEATURE_WORK_PRODUCTS_GALLERY === "true" &&
     wrangler.vars.SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY === "true" &&
     wrangler.vars.SL_FEATURE_CLIENT_TIEMAN_PRESO === "true" &&
+    wrangler.vars.SL_FEATURE_CLIENT_PODLY_PROPOSAL === "false" &&
     wrangler.vars.SL_INDEXING_ALLOWED === "true" &&
     wrangler.vars.SL_ANALYTICS_ENABLED === "false",
   "Source bindings must match the approved production defaults.",
@@ -237,6 +246,7 @@ for (const [key, value] of Object.entries({
   SL_FEATURE_WORK_PRODUCTS_GALLERY: String(expected.features.workProductsGallery),
   SL_FEATURE_FOUNDER_EXPERIENCE_GALLERY: String(expected.features.founderExperienceGallery),
   SL_FEATURE_CLIENT_TIEMAN_PRESO: String(expected.features.clientTiemanPreso),
+  SL_FEATURE_CLIENT_PODLY_PROPOSAL: String(expected.features.clientPodlyProposal),
   SL_INDEXING_ALLOWED: String(expected.indexingAllowed),
   SL_ANALYTICS_ENABLED: String(expected.analyticsEnabled),
 })) {
@@ -267,12 +277,24 @@ assert(
     privateBundleNames.some((name) => name.endsWith(".css")),
   "The deck must emit dedicated, name-gated JavaScript and CSS bundles.",
 );
+const podlyBundleNames = clientAssetNames.filter((name) => /^podly-proposal-[\w-]+\.(?:js|css)$/.test(name));
+assert(
+  podlyBundleNames.some((name) => name.endsWith(".js")) &&
+    podlyBundleNames.some((name) => name.endsWith(".css")),
+  "The Podly proposal must emit dedicated JavaScript and CSS bundles.",
+);
 for (const name of clientAssetNames.filter((name) => name.endsWith(".js"))) {
   const code = await readFile(new URL(name, clientAssetDirectory), "utf8");
   if (code.includes("Watch the concept in motion") || code.includes("Tieman's vision")) {
     assert(
       name.startsWith("tieman-client-preso-"),
       `Private deck copy leaked into a public client bundle: ${name}.`,
+    );
+  }
+  if (code.includes("Test the product") || code.includes("Private proposal for Podly")) {
+    assert(
+      name.startsWith("podly-proposal-"),
+      `Private Podly proposal copy leaked into a public client bundle: ${name}.`,
     );
   }
 }
